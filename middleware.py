@@ -1,13 +1,13 @@
-class OverrideHTTPVerbMiddleware(object):
+class HTTPMethodOverrideMiddleware(object):
     """
-    With this middleware installed, a _method HTTP variable will override
-    the actual HTTP verb used in making the request. For example, if
+    With this middleware installed, a _method HTTP parameter will override
+    the actual HTTP method used in making the request. For example, if
     a browser makes an HTTP POST request while specifying _method=PUT,
     it will be treated as a PUT request instead.
     
-    This follows the convention established and used by Ruby on Rails.
-    It is designed for standard web browsers, which can only submit HTTP
-    forms using either the GET or POST verbs.
+    This follows the convention established and used by Ruby on Rails
+    (Rack::MethodOverride). It is designed for standard web browsers, 
+    which can only submit HTTP forms using either the GET or POST methods.
     """
     def __init__(self, app):
         self.app = app
