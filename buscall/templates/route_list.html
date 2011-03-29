@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<body>
+<h1>Routes</h1>
+<ul>
+{% for route in routes %}
+	<li>{{route.getAttribute('tag')}}</li>
+{% endfor %}
+</ul>
+</body>
+</html>
