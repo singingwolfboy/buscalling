@@ -2,11 +2,11 @@
 <html>
 <body>
 <h1>Route {{route.title}}</h1>
-{% for title, stops in directions.items() %}
-<h2>{{title}}</h2>
+{% for direction in directions %}
+<h2>{{direction.title}}</h2>
 <ul>
-	{% for stop in stops %}
-	<li>{{stop.title}}</li>
+	{% for stop in direction.stops %}
+	<li><a href="{{url_for('predict_for_stop', route_id=route.id, stop_id=stop.id, dir_id=direction.id)}}">{{stop.title}}</a></li>
 	{% endfor %}
 </ul>
 {% endfor %}

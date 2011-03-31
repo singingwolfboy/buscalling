@@ -63,12 +63,19 @@ def show_route(route_id):
     # organize stop/direction info
     directions = memcache.get("show_route|%s|directions" % route_id)
     if directions is None:
-        directions = {}
+        directions = []
         for dir_id, direc in route['directions'].items():
             stops = []
             for stop_id in direc['stops']:
-                stops.append(route['stops'][stop_id])
-            directions[direc['title']] = stops
+                stop_info = route['stops'][stop_id]
+                stop_info['id'] = stop_id
+                stops.append(stop_info)
+            
+            directions.append({
+                'title': direc['title'],
+                'id': dir_id,
+                'stops': stops,
+            })
         
         saved = memcache.set("show_route|%s|directions" % route_id, directions, 3600)
         if not saved:
@@ -114,10 +121,26 @@ def parse_route_xml(tree):
 @app.route('/predict/<route_id>/<stop_id>')
 @app.route('/predict/<route_id>/<stop_id>/<dir_id>')
 def predict_for_stop(route_id, stop_id, dir_id=None):
-    predictions = memcache.get("predict|%s|%s|%s" % (route_id, stop_id, dir_id))
-    if predictions is None:
-        pass 
-
-
-
+    prediction = memcache.get("predict|%s|%s|%s" % (route_id, stop_id, dir_id))
+    if prediction is None:
+        rpc = urlfetch.create_rpc()
+        url = RPC_URL + "&command=predictions&r=%s&s=%s" % (route_id, stop_id)
+        if dir_id:
+            url += "&d=%s" % dir_id
+        urlfetch.make_fetch_call(rpc, url)
+        try:
+            result = rpc.get_result()
+            if result.status_code != 200:
+                logging.error("predict_for_stop %s, %s, %s RPC returned status code %s" % (route_id, stop_id, dir_id, result.status_code))
+        except urlfetch.DownloadError:
+            logging.error("Download error: " + url)
         
+        tree = ElementTree.fromstring(result.content)
+        # do work here
+        prediction = None
+
+        saved = memcache.set("predict|%s|%s|%s" % (route_id, stop_id, dir_id), prediction, 20)
+        if not saved:
+            logging.error("Memcache set failed for predict_for_stop %s|%s|%s" % (route_id, stop_id, dir_id))
+    
+    return render_template('routes/predict.html', prediction=prediction)
