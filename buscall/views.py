@@ -15,9 +15,7 @@ def index_routes():
     "Asynchronously fetch the list of supported MBTA routes."
     # check memcache first
     routes = memcache.get("index_routes")
-    if routes is not None:
-        logging.info("Retrieved index_routes from memcache")
-    else:
+    if routes is None:
         rpc = urlfetch.create_rpc()
         url = RPC_URL + "&command=routeList"
         urlfetch.make_fetch_call(rpc, url)
@@ -42,7 +40,7 @@ def index_routes():
 @app.route('/routes/<route_id>')
 def show_route(route_id):
     route = memcache.get("show_route|%s" % route_id)
-    if not route:
+    if route is None:
         rpc = urlfetch.create_rpc()
         url = RPC_URL + "&command=routeConfig&r=%s" % route_id
         urlfetch.make_fetch_call(rpc, url)
@@ -64,7 +62,7 @@ def show_route(route_id):
     
     # organize stop/direction info
     directions = memcache.get("show_route|%s|directions" % route_id)
-    if not directions:
+    if directions is None:
         directions = {}
         for dir_id, direc in route['directions'].items():
             stops = []
@@ -113,7 +111,12 @@ def parse_route_xml(tree):
 
     return route
 
-
+@app.route('/predict/<route_id>/<stop_id>')
+@app.route('/predict/<route_id>/<stop_id>/<dir_id>')
+def predict_for_stop(route_id, stop_id, dir_id=None):
+    predictions = memcache.get("predict|%s|%s|%s" % (route_id, stop_id, dir_id))
+    if predictions is None:
+        pass 
 
 
 
