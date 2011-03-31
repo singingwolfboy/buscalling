@@ -39,17 +39,17 @@ def index_routes():
     
     return render_template('routes/index.html', routes=routes)
 
-@app.route('/routes/<int:route_id>')
+@app.route('/routes/<route_id>')
 def show_route(route_id):
-    route = memcache.get("show_route|%d" % route_id)
+    route = memcache.get("show_route|%s" % route_id)
     if not route:
         rpc = urlfetch.create_rpc()
-        url = RPC_URL + "&command=routeConfig&r=%d" % route_id
+        url = RPC_URL + "&command=routeConfig&r=%s" % route_id
         urlfetch.make_fetch_call(rpc, url)
         try:
             result = rpc.get_result()
             if result.status_code != 200:
-                logging.error("show_route %d RPC returned status code %s" % (route_id, result.status_code))
+                logging.error("show_route %s RPC returned status code %s" % (route_id, result.status_code))
         except urlfetch.DownloadError:
             logging.error("Download error: " + url)
         
@@ -58,11 +58,25 @@ def show_route(route_id):
         # stick ID in, just for good measure
         route['id'] = route_id
 
-        saved = memcache.set("show_route|%d" % route_id, route, 3600)
+        saved = memcache.set("show_route|%s" % route_id, route, 3600)
         if not saved:
-            logging.error("Memcache set failed for show_route %d" % route_id)
+            logging.error("Memcache set failed for show_route %s" % route_id)
     
-    return render_template('routes/show.html', route=route)
+    # organize stop/direction info
+    directions = memcache.get("show_route|%s|directions" % route_id)
+    if not directions:
+        directions = {}
+        for dir_id, direc in route['directions'].items():
+            stops = []
+            for stop_id in direc['stops']:
+                stops.append(route['stops'][stop_id])
+            directions[direc['title']] = stops
+        
+        saved = memcache.set("show_route|%s|directions" % route_id, directions, 3600)
+        if not saved:
+            logging.error("Memcache set failed for show_route %s directions" % route_id)
+
+    return render_template('routes/show.html', route=route, directions=directions)
 
 def parse_route_xml(tree):
     routeElem = tree.find('route')
