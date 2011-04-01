@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<body>
+<h1>Route {{route.title}}</h1>
+<h2>Stop {{stop.title}}</h2>
+{% for dir_id, prediction_info in predictions.items() %}
+<h2>{{route.directions}}</h2>
+<ul>
+	{% for prediction in prediction_info.predictions %}
+	<li>{{prediction.minutes}} minutes</li>
+	{% endfor %}
+</ul>
+{% endfor %}
+</body>
+</html>

@@ -8,19 +8,26 @@ import logging
 def hello():
     return render_template('hello.html')
 
+@app.route('/flush')
+def flush():
+    if memcache.flush_all():
+        return "FLUSHED"
+    else:
+        return "FLUSH FAILED"
+
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?a=mbta"
 
 @app.route('/routes')
 def index_routes():
-    "Asynchronously fetch the list of supported MBTA routes."
-    # check memcache first
+    routes = get_all_routes()
+    return render_template('routes/index.html', routes=routes)
+
+def get_all_routes():
     routes = memcache.get("index_routes")
     if routes is None:
         rpc = urlfetch.create_rpc()
         url = RPC_URL + "&command=routeList"
         urlfetch.make_fetch_call(rpc, url)
-        # Here we could do things asynchronously, but in this case, 
-        # we need the result of the RPC before we can do anything else.
         try:
             result = rpc.get_result()
             if result.status_code != 200:
@@ -28,17 +35,24 @@ def index_routes():
         except urlfetch.DownloadError:
             logging.error("Download error: " + url)
 
-        body = ElementTree.fromstring(result.content)
-        routes = [route.attrib for route in body.findall('route')]
+        tree = ElementTree.fromstring(result.content)
+        routes = parse_index_xml(tree)
 
         saved = memcache.set("index_routes", routes, 3600)
         if not saved:
             logging.error("Memcache set failed for index_routes")
-    
-    return render_template('routes/index.html', routes=routes)
+    return routes
+
+def parse_index_xml(tree):
+    return [clean_booleans(route.attrib) for route in tree.findall('route')]
 
 @app.route('/routes/<route_id>')
 def show_route(route_id):
+    route = get_route(route_id)
+    directions = get_route_directions(route)
+    return render_template('routes/show.html', route=route, directions=directions)
+
+def get_route(route_id):
     route = memcache.get("show_route|%s" % route_id)
     if route is None:
         rpc = urlfetch.create_rpc()
@@ -59,9 +73,45 @@ def show_route(route_id):
         saved = memcache.set("show_route|%s" % route_id, route, 3600)
         if not saved:
             logging.error("Memcache set failed for show_route %s" % route_id)
+    return route
+
+def parse_route_xml(tree):
+    routeElem = tree.find('route')
+    # basic route attributes
+    route = clean_booleans(routeElem.attrib)
+
+    # detailed info about stops
+    stops = {}
+    for stop in routeElem.findall("stop"):
+        stop_info = stop.attrib
+        stop_id = stop_info['tag']
+        del stop_info['tag']
+        stops[stop_id] = clean_booleans(stop_info)
+    route['stops'] = stops
+
+    # directions (inbound, outbound)
+    directions = {}
+    for direction in routeElem.findall('direction'):
+        dir_info = direction.attrib
+        dir_id = dir_info['tag']
+        del dir_info['tag']
+        # make list of stops
+        dir_info['stops'] = [stop.get('tag') for stop in direction.findall('stop')]
+        directions[dir_id] = clean_booleans(dir_info)
+    route['directions'] = directions
     
-    # organize stop/direction info
-    directions = memcache.get("show_route|%s|directions" % route_id)
+    # path of lat/long points
+    route_path = []
+    for path in routeElem.findall('path'):
+        segment = [(point.get('lat'), point.get('lon')) 
+            for point in path.findall('point')]
+        route_path.append(segment)
+    route['path'] = route_path
+
+    return route
+
+def get_route_directions(route):
+    directions = memcache.get("show_route|%s|directions" % route['id'])
     if directions is None:
         directions = []
         for dir_id, direc in route['directions'].items():
@@ -77,52 +127,23 @@ def show_route(route_id):
                 'stops': stops,
             })
         
-        saved = memcache.set("show_route|%s|directions" % route_id, directions, 3600)
+        saved = memcache.set("show_route|%s|directions" % route['id'], directions, 3600)
         if not saved:
-            logging.error("Memcache set failed for show_route %s directions" % route_id)
+            logging.error("Memcache set failed for show_route %s directions" % route['id'])
+    return directions
 
-    return render_template('routes/show.html', route=route, directions=directions)
-
-def parse_route_xml(tree):
-    routeElem = tree.find('route')
-    # basic route attributes
-    route = routeElem.attrib
-
-    # detailed info about stops
-    stops = {}
-    for stop in routeElem.findall("stop"):
-        stop_info = stop.attrib
-        stop_id = stop_info['tag']
-        del stop_info['tag']
-        stops[stop_id] = stop_info
-    route['stops'] = stops
-
-    # directions (inbound, outbound)
-    directions = {}
-    for direction in routeElem.findall('direction'):
-        dir_info = direction.attrib
-        dir_id = dir_info['tag']
-        del dir_info['tag']
-        # make list of stops
-        dir_info['stops'] = [stop.get('tag') for stop in direction.findall('stop')]
-        directions[dir_id] = dir_info
-    route['directions'] = directions
-    
-    # path of lat/long points
-    route_path = []
-    for path in routeElem.findall('path'):
-        segment = [(point.get('lat'), point.get('lon')) 
-            for point in path.findall('point')]
-        route_path.append(segment)
-    route['path'] = route_path
-
-    return route
 
 @app.route('/predict/<route_id>/<stop_id>')
 @app.route('/predict/<route_id>/<stop_id>/<dir_id>')
 def predict_for_stop(route_id, stop_id, dir_id=None):
-    prediction = memcache.get("predict|%s|%s|%s" % (route_id, stop_id, dir_id))
-    if prediction is None:
+    route = get_route(route_id)
+    stop = route['stops'][stop_id]
+    predictions = get_predictions(route_id, stop_id, dir_id)
+    return render_template('routes/predict.html', route=route, stop=stop, predictions=predictions)
+
+def get_predictions(route_id, stop_id, dir_id=None):
+    predictions = memcache.get("predict|%s|%s|%s" % (route_id, stop_id, dir_id))
+    if predictions is None:
         rpc = urlfetch.create_rpc()
         url = RPC_URL + "&command=predictions&r=%s&s=%s" % (route_id, stop_id)
         if dir_id:
@@ -136,11 +157,45 @@ def predict_for_stop(route_id, stop_id, dir_id=None):
             logging.error("Download error: " + url)
         
         tree = ElementTree.fromstring(result.content)
-        # do work here
-        prediction = None
+        predictions = parse_predict_xml(tree)
 
-        saved = memcache.set("predict|%s|%s|%s" % (route_id, stop_id, dir_id), prediction, 20)
+        saved = memcache.set("predict|%s|%s|%s" % (route_id, stop_id, dir_id), predictions, 20)
         if not saved:
             logging.error("Memcache set failed for predict_for_stop %s|%s|%s" % (route_id, stop_id, dir_id))
+    return predictions
+
+def parse_predict_xml(tree):
+    predictions = {}
+    predElem = tree.find('predictions')
+    directions = predElem.findall('direction')
+    for direction in directions:
+        firstPred = direction.find('prediction')
+        pred_dir_id = firstPred.get('dirTag')
+        epochTime = firstPred.get('epochTime')
+
+        predList = []
+        for prediction in direction.findall('prediction'):
+            p = prediction.attrib
+            # strip off what we don't care about
+            del p['dirTag']
+            del p['epochTime']
+            predList.append(clean_booleans(p))
+        
+        predictions[pred_dir_id] = {
+            'epochTime': int(epochTime),
+            'predictions': predList,
+        }
     
-    return render_template('routes/predict.html', prediction=prediction)
+    return predictions
+
+def clean_booleans(d):
+    for key in d.keys():
+        try:
+            val = d[key].lower()
+            if val == 'true' or val == 't':
+                d[key] = True
+            elif val == 'false' or val == 'f':
+                d[key] = False
+        except AttributeError:
+            pass
+    return d
