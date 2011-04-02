@@ -29,9 +29,18 @@ def run_app():
     # sys.path has been updated. Otherwise, they will fail!
     from buscall import app
 
+    # If we're in development mode, turn on the Werkzeug debugger and
+    # monkeypatch it to work with App Engine. Note that the debugger
+    # is a WSGI middleware, and it must be the FIRST middleware to be
+    # applied: if you want to apply others, apply them after!
+    if os.environ.get('SERVER_SOFTWARE').startswith('Dev'):
+        from werkzeug_debugger_appengine import get_debugged_app
+        app.debug=True
+        app = get_debugged_app(app)
+
     # Grab your middleware and wrap the app
     from middleware import HTTPMethodOverrideMiddleware
-    app.wsgi_app = HTTPMethodOverrideMiddleware(app.wsgi_app)
+    app = HTTPMethodOverrideMiddleware(app)
 
     # Run the app using Werkzeug
     from wsgiref.handlers import CGIHandler
