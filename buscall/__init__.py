@@ -1,5 +1,5 @@
 from flask import Flask
 
-app = Flask('buscall')
+app = Flask(__name__)
 
-import views
+import buscall.views

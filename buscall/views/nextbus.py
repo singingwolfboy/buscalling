@@ -2,17 +2,6 @@ from buscall import app
 from flask import render_template
 from buscall.models import nextbus
 
-@app.route('/')
-def hello():
-    return render_template('hello.html')
-
-@app.route('/flush')
-def flush():
-    if memcache.flush_all():
-        return "FLUSHED"
-    else:
-        return "FLUSH FAILED"
-
 @app.route('/routes')
 def index_routes():
     routes = nextbus.get_all_routes()
