@@ -1,7 +1,6 @@
 from buscall import app
 from flask import render_template
-from buscall.models import nextbus
-import twilio_api as tw
+from buscall.models import nextbus, twilio
 
 @app.route('/routes')
 def index_routes():
@@ -19,11 +18,6 @@ def show_route(route_id):
 def predict_for_stop(route_id, stop_id, format="html"):
     prediction = nextbus.get_prediction(route_id, stop_id)
     if format.lower() == "twiml":
-        return get_twiml(route, stop, prediction)
+        return twilio.get_twiml(prediction)
     else:
         return render_template('routes/predict.html', prediction=prediction)
-
-def get_twiml(route, stop, prediction):
-    r = tw.Response()
-    r.addSay("%s minutes until %s bus arrives at %s, heading towards %s.")
-    return r
