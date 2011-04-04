@@ -109,52 +109,54 @@ def get_route_directions(route):
     return directions
 
 
-def get_predictions(route_id, stop_id, dir_id=None):
-    predictions = memcache.get("predict|%s|%s|%s" % (route_id, stop_id, dir_id))
-    if predictions is None:
+def get_prediction(route_id, stop_id):
+    "Each physical stop has multiple IDs, depending on the bus direction."
+    prediction = memcache.get("predict|%s|%s" % (route_id, stop_id))
+    if prediction is None:
         rpc = urlfetch.create_rpc()
         url = RPC_URL + "&command=predictions&r=%s&s=%s" % (route_id, stop_id)
-        if dir_id:
-            url += "&d=%s" % dir_id
         urlfetch.make_fetch_call(rpc, url)
         try:
             result = rpc.get_result()
             if result.status_code != 200:
-                logging.error("predict_for_stop %s, %s, %s RPC returned status code %s" % (route_id, stop_id, dir_id, result.status_code))
+                logging.error("predict_for_stop %s, %s RPC returned status code %s" % (route_id, stop_id, result.status_code))
         except urlfetch.DownloadError:
             logging.error("Download error: " + url)
         
         tree = etree.fromstring(result.content)
-        predictions = parse_predict_xml(tree)
+        prediction = parse_predict_xml(tree)
 
-        saved = memcache.set("predict|%s|%s|%s" % (route_id, stop_id, dir_id), predictions, 20)
+        saved = memcache.set("predict|%s|%s" % (route_id, stop_id), prediction, 20)
         if not saved:
-            logging.error("Memcache set failed for predict_for_stop %s|%s|%s" % (route_id, stop_id, dir_id))
-    return predictions
+            logging.error("Memcache set failed for predict_for_stop %s|%s" % (route_id, stop_id))
+    return prediction
 
 def parse_predict_xml(tree):
-    predictions = {}
-    predElem = tree.find('predictions')
-    directions = predElem.findall('direction')
-    for direction in directions:
-        firstPred = direction.find('prediction')
-        pred_dir_id = firstPred.get('dirTag')
-        epochTime = firstPred.get('epochTime')
+    prediction_el = tree.find('predictions')
+    direction_el = prediction_el.find('direction')
+    predictions_el = direction_el.findall('prediction')
+    buses, epoch_time = parse_predictions_element(predictions_el)
 
-        predList = []
-        for prediction in direction.findall('prediction'):
-            p = prediction.attrib
-            # strip off what we don't care about
-            del p['dirTag']
-            del p['epochTime']
-            predList.append(clean_booleans(p))
-        
-        predictions[pred_dir_id] = {
-            'epochTime': int(epochTime),
-            'predictions': predList,
-        }
-    
-    return predictions
+    return {
+        'route_id':     prediction_el.get('routeTag'),
+        'route_title':  prediction_el.get('routeTitle'),
+        'stop_id':      prediction_el.get('stopTag'),
+        'stop_title':   prediction_el.get('stopTitle'),
+        'direction':    direction_el.get('title'),
+        'buses':        buses,
+        'epoch_time':   epoch_time
+    }
+
+def parse_predictions_element(predictions_el):
+    buses = []
+    for prediction_el in predictions_el:
+        p = prediction_el.attrib
+        epoch_time = p['epochTime']
+        # strip off what we don't care about
+        del p['dirTag']
+        del p['epochTime']
+        buses.append(clean_booleans(p))
+    return buses, epoch_time
 
 def clean_booleans(d):
     for key in d.keys():

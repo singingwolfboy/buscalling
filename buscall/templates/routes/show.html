@@ -6,7 +6,7 @@
 <h2>{{direction.title}}</h2>
 <ul>
 	{% for stop in direction.stops %}
-	<li><a href="{{url_for('predict_for_stop', route_id=route.id, stop_id=stop.id, dir_id=direction.id)}}">{{stop.title}}</a></li>
+	<li><a href="{{url_for('predict_for_stop', route_id=route.id, stop_id=stop.id)}}">{{stop.title}}</a></li>
 	{% endfor %}
 </ul>
 {% endfor %}

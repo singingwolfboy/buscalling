@@ -1,17 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <body>
-<h1>Route {{route.title}}</h1>
-<h2>Stop {{stop.title}}</h2>
-{% for dir_id, prediction_info in predictions.items() %}
-<h2>Towards {{route.directions[dir_id].title}}</h2>
+<h1>Route {{prediction.route_title}}</h1>
+<h2>Stop {{prediction.stop_title}}</h2>
+<h2>Towards {{prediction.direction}}</h2>
+{% if prediction.buses %}
 <ul>
-	{% for prediction in prediction_info.predictions %}
-	<li>{{prediction.minutes}} minutes</li>
+	{% for bus in prediction.buses %}
+	<li>{{bus.minutes}} minutes</li>
 	{% endfor %}
 </ul>
 {% else %}
-<h2>No predictions</h2>
-{% endfor %}
+<p>No buses predicted</p>
+{% endif %}
 </body>
 </html>
