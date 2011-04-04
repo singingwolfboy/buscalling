@@ -134,8 +134,8 @@ def get_prediction(route_id, stop_id):
 def parse_predict_xml(tree):
     prediction_el = tree.find('predictions')
     direction_el = prediction_el.find('direction')
-    predictions_el = direction_el.findall('prediction')
-    buses, epoch_time = parse_predictions_element(predictions_el)
+    prediction_els = direction_el.findall('prediction')
+    buses, epoch_time = parse_prediction_elements(prediction_els)
 
     return {
         'route_id':     prediction_el.get('routeTag'),
@@ -147,14 +147,19 @@ def parse_predict_xml(tree):
         'epoch_time':   epoch_time
     }
 
-def parse_predictions_element(predictions_el):
+def parse_prediction_elements(prediction_els):
     buses = []
-    for prediction_el in predictions_el:
+    for prediction_el in prediction_els:
         p = prediction_el.attrib
         epoch_time = p['epochTime']
+        
         # strip off what we don't care about
         del p['dirTag']
         del p['epochTime']
+        # parse ints for minutes and seconds
+        p['minutes'] = int(p['minutes'])
+        p['seconds'] = int(p['seconds'])
+
         buses.append(clean_booleans(p))
     return buses, epoch_time
 
