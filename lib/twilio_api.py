@@ -48,7 +48,7 @@ class HTTPErrorProcessor(urllib2.HTTPErrorProcessor):
                 'http', request, response, code, msg, hdrs)
         return response
 
-class HTTPErrorAppEngine(Exception): pass
+class HTTPErrorAppEngine(urllib2.HTTPError): pass
 
 class TwilioUrlRequest(urllib2.Request):
     def get_method(self):
@@ -75,7 +75,7 @@ class Account:
         self.id = id
         self.token = token
         self.opener = None
-        if self.test:
+        if test:
             self.api_url = "https://twilioapi.appspot.com"
         else:
             self.api_url = "https://api.twilio.com"
@@ -123,13 +123,16 @@ class Account:
         
         authstring = base64.encodestring('%s:%s' % (self.id, self.token))
         authstring = authstring.replace('\n', '')
-        r = urlfetch.fetch(url=uri, payload=urllib.urlencode(params),
-            method=httpmethod,
-            headers={'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic %s' % authstring})
+        payload = urllib.urlencode(params)
+        headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic %s' % authstring
+        }
+        r = urlfetch.fetch(url=uri, payload=payload,
+            method=httpmethod, headers=headers)
         if r.status_code >= 300:
-            raise HTTPErrorAppEngine("HTTP %s: %s" % \
-                (r.status_code, r.content))
+            raise HTTPErrorAppEngine(r.final_url, r.status_code,
+                r.content, r.headers, None)
         return r.content
     
     def request(self, path, method=None, vars={}):
