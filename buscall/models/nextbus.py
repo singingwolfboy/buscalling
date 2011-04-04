@@ -1,5 +1,5 @@
 from google.appengine.api import urlfetch, memcache
-from xml.etree import ElementTree
+from xml.etree import ElementTree as etree
 import logging
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?a=mbta"
@@ -17,7 +17,7 @@ def get_all_routes():
         except urlfetch.DownloadError:
             logging.error("Download error: " + url)
 
-        tree = ElementTree.fromstring(result.content)
+        tree = etree.fromstring(result.content)
         routes = parse_index_xml(tree)
 
         saved = memcache.set("index_routes", routes, 3600)
@@ -41,7 +41,7 @@ def get_route(route_id):
         except urlfetch.DownloadError:
             logging.error("Download error: " + url)
         
-        tree = ElementTree.fromstring(result.content)
+        tree = etree.fromstring(result.content)
         route = parse_route_xml(tree)
         # stick ID in, just for good measure
         route['id'] = route_id
@@ -124,7 +124,7 @@ def get_predictions(route_id, stop_id, dir_id=None):
         except urlfetch.DownloadError:
             logging.error("Download error: " + url)
         
-        tree = ElementTree.fromstring(result.content)
+        tree = etree.fromstring(result.content)
         predictions = parse_predict_xml(tree)
 
         saved = memcache.set("predict|%s|%s|%s" % (route_id, stop_id, dir_id), predictions, 20)
