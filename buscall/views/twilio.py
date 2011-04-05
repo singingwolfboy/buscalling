@@ -12,16 +12,16 @@ if TESTING:
 else:
 	from ..credentials import (account, ACCOUNT_SID, PHONE_NUMBER)
 
-@app.route("/call")
-@app.route("/call/<int:phone_num>")
+@app.route("/call/<route_id>/<stop_id>/<phone_num>")
 @login_required
-def test_call(phone_num="3015238533"):
+def call_prediction(route_id, stop_id, phone_num):
 	user = users.get_current_user()
 	app.logger.info("%s (%s) called %s" % (user.nickname(), user.user_id(), phone_num))
 	call_info = {
 		'From': PHONE_NUMBER,
 		'To': phone_num,
-		'Url': 'http://demo.twilio.com/welcome',
+		'Url': 'http://buscalling.appspot.com/predict/%s/%s.twiml' % \
+			(route_id, stop_id),
 	}
 	try:
 		call_json = account.request(
@@ -37,6 +37,6 @@ def test_call(phone_num="3015238533"):
 			err = json.loads(e.msg)
 			message = err['Message']
 			return "REMOTE ERROR: %s" % (message,)
-		except AttributeError:
+		except:
 			return "Couldn't parse error output:<br>\n%s" % e.msg
 
