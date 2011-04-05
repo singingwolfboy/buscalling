@@ -1,6 +1,7 @@
 from google.appengine.api import urlfetch, memcache
 from xml.etree import ElementTree as etree
 import logging
+import time
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?a=mbta"
 
@@ -133,21 +134,34 @@ def get_prediction(route_id, stop_id):
 
 def parse_predict_xml(tree):
     prediction_el = tree.find('predictions')
-    direction_el = prediction_el.find('direction')
-    prediction_els = direction_el.findall('prediction')
-    buses, epoch_time = parse_prediction_elements(prediction_els)
 
-    return {
+    predict_info = {
         'route_id':     prediction_el.get('routeTag'),
         'route_title':  prediction_el.get('routeTitle'),
         'stop_id':      prediction_el.get('stopTag'),
         'stop_title':   prediction_el.get('stopTitle'),
-        'direction':    direction_el.get('title'),
-        'buses':        buses,
-        'epoch_time':   epoch_time
     }
 
+    direction_el = prediction_el.find('direction')
+    try:
+        predict_info['direction'] = direction_el.get('title')
+    except AttributeError:
+        predict_info['direction'] = prediction_el.get('dirTitleBecauseNoPredictions')
+
+    if direction_el:
+        prediction_els = direction_el.findall('prediction')
+    else:
+        prediction_els = None
+    buses, epoch_time = parse_prediction_elements(prediction_els)
+
+    predict_info['buses'] = buses
+    predict_info['epoch_time'] = epoch_time
+    
+    return predict_info
+
 def parse_prediction_elements(prediction_els):
+    if prediction_els is None:
+        return [], time.time()
     buses = []
     for prediction_el in prediction_els:
         p = prediction_el.attrib
