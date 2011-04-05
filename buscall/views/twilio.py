@@ -26,7 +26,7 @@ def call_prediction(route_id, stop_id, phone_num):
 	try:
 		call_json = account.request(
 			'/%s/Accounts/%s/Calls.json' % (API_VERSION, ACCOUNT_SID),
-			'POST', 
+			'GET', 
 			call_info)
 		app.logger.info(call_json)
 		call = json.loads(call_json)
