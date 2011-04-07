@@ -29,6 +29,10 @@ def run_app():
     # sys.path has been updated. Otherwise, they will fail!
     from buscall import app
 
+    # set the secret key
+    from credentials import SECRET_KEY
+    app.secret_key = SECRET_KEY
+
     # If we're in development mode, turn on the Werkzeug debugger and
     # monkeypatch it to work with App Engine. Note that the debugger
     # is a WSGI middleware, and it must be the FIRST middleware to be
