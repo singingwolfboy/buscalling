@@ -1,0 +1,44 @@
+#container {
+    min-width: 600px;
+    margin: 0 3em;
+}
+
+#waitlist {
+    border: 5px solid black;
+    float: right;
+    width: 20%;
+    padding: 1em 1.5em 0 1.5em;
+    margin-left: 2em;
+}
+
+#waitlist p {
+    margin: 0;
+    padding: 0;
+}
+
+#waitlist form {
+    width: 100%;
+}
+
+#email {
+    width: 100%;
+    line-height: 1.5;
+}
+input.defaultValue {
+    color: gray;
+}
+
+p.fade {
+    color: gray;
+    font-size: 80%;
+}
+
+#waitlist #location {
+    margin-top: .8em;
+}
+
+#waitlist input[type="submit"] {
+    margin: 1em auto;
+    display: block;
+    width: 10em;
+}
