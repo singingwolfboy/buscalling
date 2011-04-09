@@ -5,31 +5,52 @@
   <h2>Time management before the coffee kicks in.</h2>
 {% endblock %}
 {% block main %}
+  <aside id="waitlist">
+    {# use launchrock? #}
+    <form id="signup" action="{{ url_for('lander') }}" method="POST">
+      <p>Bus Calling isn't live yet, but you can get on the waitlist now! Just put in your email address and hit that button.</p>
+
+      {% if form.email.errors %}
+      <ul class="errors">
+        {% for error in form.email.errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {{ form.email }}
+
+      <p class="fade">(We take privacy seriously: we won't sell or give away your email address to anyone.)</p>
+
+      <div id="location">
+        {% if form.location_lat.data and form.location_long.data %}
+          {% set checked='checked="checked"' %}
+          {% set label='Got location. Thanks!' %}
+        {% else %}
+          {% set checked='' %}
+          {% set label='Include location?' %}
+        {% endif %}
+
+        {% if form.location_lat.errors or form.location_long.errors %}
+        <ul class="errors">
+          {% for error in form.location_lat.errors %}
+          <li>Latitude: {{error}}</li>
+          {% endfor %}
+          {% for error in form.location_long.errors %}
+          <li>Longitude: {{error}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <input type="checkbox" id="use_location" {{checked}}/>
+        <label for="use_location" id="location_label">{{label}}</label>
+        <p class="fade">Not required. Used to determine which bus routes are near you.</p>
+        {{ form.location_lat }}
+        {{ form.location_long }}
+      </div>
+
+      <input type="submit" value="Sign me up!" />
+    </form>
+  </aside>
   <p>Public transportation is a dangerous game when the buses don't follow the schedule. Waiting at the bus stop is boring and uncomfortable -- but waiting at home is inviting disaster. What do you do when the bus rolls by while you're enjoying your morning coffee?</p>
 
   <p>Relax: we've got your back. Bus Calling tracks your bus <strong>in real time</strong>, so we know if the bus is running early or if it's delayed. We'll <strong>give you a call</strong> (or <em>send you a text!</em>) when the bus is 10 minutes away from your stop, so <strong>you're prepared,</strong> whenever your ride gets there. The bus doesn't follow the schedule -- <em>why should you?</em></p>
-
-  <p>Bus Calling isn't live yet, but you can get on the waitlist now! Just put in your email address and hit that button. (We take privacy seriously: we won't sell or give away your email address to anyone.)</p>
-  {# use launchrock? #}
-
-  {#
-  <form>
-  	<input type="text"/>
-  	<input type="submit" value="Sign me up!"/>
-  </form>
-  #}
-
-  <form action="{{ url_for('lander') }}" method="POST">
-    {{ form.email|safe }}
-
-    {% if form.email.errors %}
-    <ul class="errors">
-      {% for error in form.email.errors %}
-      <li>{{error}}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-
-    <input type="submit" value="Sign me up!" />
-  </form>
 {% endblock %}
