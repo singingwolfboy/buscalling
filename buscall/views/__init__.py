@@ -5,6 +5,7 @@ from .twilio import call_prediction
 from buscall.models import WaitlistEntry
 from buscall.forms import WaitlistForm
 from google.appengine.api import memcache
+from google.appengine.ext import db
 
 @app.route('/', methods = ['GET', 'POST'])
 def lander():
@@ -17,8 +18,13 @@ def lander():
                 ip = request.environ['REMOTE_ADDR']
             except KeyError:
                 ip = None
+        
+        if request.form['location_lat'] and request.form['location_long']:
+            pt = db.GeoPt(request.form['location_lat'], request.form['location_long'])
+        else:
+            pt = None
 
-        entry = WaitlistEntry(email=form.email.data, ip=ip)
+        entry = WaitlistEntry(email=form.email.data, ip=ip, location=pt)
         entry.put()
         flash("Thanks, %s! You're on the waitlist." % (form.email.data,))
         # clear form
