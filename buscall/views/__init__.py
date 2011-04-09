@@ -4,8 +4,15 @@ from .nextbus import index_routes, show_route, predict_for_stop
 from .twilio import call_prediction
 from buscall.models import WaitlistEntry
 from buscall.forms import WaitlistForm
-from google.appengine.api import memcache
+from google.appengine.api import memcache, mail
 from google.appengine.ext import db
+
+ALERT_MAIL_BODY = """
+Someone signed up for the Bus Calling waitlist!
+email: %s
+ip: %s
+location: %s, %s
+""".strip()
 
 @app.route('/', methods = ['GET', 'POST'])
 def lander():
@@ -24,9 +31,17 @@ def lander():
         else:
             pt = None
 
-        entry = WaitlistEntry(email=form.email.data, ip=ip, location=pt)
+        email = form.email.data
+        entry = WaitlistEntry(email=email, ip=ip, location=pt)
         entry.put()
-        flash("Thanks, %s! You're on the waitlist." % (form.email.data,))
+        flash("Thanks, %s! You're on the waitlist." % (email,))
+
+        # alert via mail
+        mail.send_mail(sender="Bus Calling <noreply@buscalling.appspotmail.com>",
+            to="David Baumgold <singingwolfboy@gmail.com>",
+            subject="New waitlist email: " + email,
+            body=ALERT_MAIL_BODY % (email, ip, pt.lat, pt.lon))
+
         # clear form
         form = WaitlistForm()
     return render_template('lander.html', form=form)
