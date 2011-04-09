@@ -1,4 +1,3 @@
-#from ndb import model
 from google.appengine.ext import db
 
 class WaitlistEntry(db.Model):
