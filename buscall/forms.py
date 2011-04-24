@@ -16,7 +16,7 @@ from wtforms import widgets as w
 class EmailInput(w.Input):
     input_type = "email"
 
-class EmailField(w.TextField):
+class EmailField(f.TextField):
     widget = EmailInput()
 
     def __init__(self, *args, **kwargs):
@@ -26,7 +26,7 @@ class EmailField(w.TextField):
         super(EmailField, self).__init__(*args, **kwargs)
 
 class WaitlistForm(Form):
-    email = f.EmailField(u'Email', default='email@example.com',
+    email = EmailField(u'Email', default='email@example.com',
         validators=[v.required()])
     location_lat  = f.DecimalField(u'Latitude', widget=w.HiddenInput(),
         validators=[v.optional()])
