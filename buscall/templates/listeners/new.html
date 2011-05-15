@@ -1,0 +1,9 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<body>
+<h1>New Listener</h1>
+{% for field in form %}
+    <p>{{field.label}} {% if field.flags.required %}*{% endif %} <br/> {{field}}</p>
+{% endfor %}
+</body>
+</html>

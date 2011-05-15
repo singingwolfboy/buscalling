@@ -8,6 +8,7 @@
   <aside id="waitlist">
     {# use launchrock? #}
     <form id="signup" action="{{ url_for('lander') }}" method="POST">
+      {{form.csrf}}
       <p>Bus Calling isn't live yet, but you can get on the waitlist now! Just put in your email address and hit that button.</p>
 
       {% if form.email.errors %}

@@ -5,8 +5,8 @@ from flaskext.wtf import HiddenInput
 from flaskext.wtf import Required, Optional
 from wtforms.widgets import Input
 from wtforms.fields import Field
+from wtforms.validators import ValidationError
 from flaskext.wtf.html5 import EmailField
-from models.nextbus import get_all_routes
 
 class TimeInput(Input):
     input_type = "time"
@@ -18,6 +18,7 @@ class TimeField(Field):
         super(TimeField, self).__init__(label, validators, **kwargs)
         self.format = format
 
+    def _value(self):
         if self.raw_data:
             return u' '.join(self.raw_data)
         else:
@@ -45,14 +46,11 @@ class WaitlistForm(Form):
     def validate_email(form, field):
         if field.data == field.default:
             field.message = u'%s cannot be %s' % (field.label.text, field.data)
-            raise v.ValidationError(field.message)
-
-#routes = [(r['title'], r['tag']) for r in get_all_routes()['stops'] ]
-routes = [('1', '1'), ('556', '556')]
+            raise ValidationError(field.message)
 
 class BusListenerForm(Form):
-    route_id = SelectField(routes)
-    stop_id = SelectField()
+    route_id = SelectField(choices=[])
+    stop_id = SelectField(choices=[])
     start = TimeField(validators=[Required()])
     end = TimeField(validators=[Required()])
     mon = BooleanField()

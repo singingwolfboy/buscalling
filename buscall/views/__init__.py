@@ -1,5 +1,5 @@
 from buscall import app
-from flask import render_template, request, flash
+from flask import render_template, request, flash, redirect, url_for
 from .nextbus import index_routes, show_route, predict_for_stop
 from .twilio import call_prediction
 from .profile import index_listeners
@@ -17,8 +17,8 @@ location: %s, %s
 
 @app.route('/', methods = ['GET', 'POST'])
 def lander():
-    form = WaitlistForm(request.form)
-    if request.method == 'POST' and form.validate():
+    form = WaitlistForm()
+    if form.validate_on_submit():
         try:
             ip = request.environ['HTTP_X_FORWARDED_FOR']
         except KeyError:
@@ -38,13 +38,18 @@ def lander():
         flash("Thanks, %s! You're on the waitlist." % (email,))
 
         # alert via mail
+        try:
+            lat = pt.lat
+            lon = pt.lon
+        except AttributeError:
+            lat = None
+            lon = None
         mail.send_mail(sender="Bus Calling <noreply@buscalling.appspotmail.com>",
             to="David Baumgold <singingwolfboy@gmail.com>",
             subject="New waitlist email: " + email,
-            body=ALERT_MAIL_BODY % (email, ip, pt.lat, pt.lon))
+            body=ALERT_MAIL_BODY % (email, ip, lat, lon))
 
-        # clear form
-        form = WaitlistForm()
+        return redirect(url_for("lander"))
     return render_template('lander.html', form=form)
 
 @app.route('/flush')
