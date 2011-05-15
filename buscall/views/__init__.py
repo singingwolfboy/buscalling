@@ -2,6 +2,7 @@ from buscall import app
 from flask import render_template, request, flash
 from .nextbus import index_routes, show_route, predict_for_stop
 from .twilio import call_prediction
+from .profile import index_listeners
 from buscall.models import WaitlistEntry
 from buscall.forms import WaitlistForm
 from google.appengine.api import memcache, mail

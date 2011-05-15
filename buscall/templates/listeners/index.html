@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<body>
+<h1>Your Listeners</h1>
+{% if listeners %}
+<ul>
+{% for l in listeners %}
+    <li>{{l.route_id}}, {{l.stop_id}} between {{l.start}} and {{l.end}}; {{l.repeat_descriptor}}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>You have not set any bus listeners.</p>
+{% endif %}
+</body>
+</html>
