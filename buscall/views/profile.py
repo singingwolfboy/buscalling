@@ -12,8 +12,6 @@ class GqlQuery(TruthyGqlQuery):
 @app.route('/listeners')
 @login_required
 def index_listeners():
-    import gae_pdb
-    gae_pdb.set_trace()
     listeners = GqlQuery("SELECT * FROM BusListener WHERE user = :1", 
         users.get_current_user())
     return render_template('listeners/index.html', listeners=listeners)

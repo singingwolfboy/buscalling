@@ -10,41 +10,41 @@ except ImportError:
 days_of_week = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
 class UserProfile(db.Model):
-    user = db.UserProperty()
+    user = db.UserProperty(required=True)
 
 class BusListener(db.Model):
-    user = db.UserProperty()
+    user = db.UserProperty(required=True)
 
     # info about bus stop
-    agency =   db.StringProperty(default="mbta")
-    route_id = db.StringProperty()
-    stop_id =  db.StringProperty()
+    agency =   db.StringProperty(required=True, default="mbta")
+    route_id = db.StringProperty(required=True)
+    stop_id =  db.StringProperty(required=True)
 
     # when to start and stop listening
-    start = db.TimeProperty()
-    end   = db.TimeProperty()
+    start = db.TimeProperty(required=True)
+    end   = db.TimeProperty(required=True)
 
     # day of week: since we'll be sorting by this,
     # it actually makes sense to keep them as separate properties
-    mon = db.BooleanProperty()
-    tue = db.BooleanProperty()
-    wed = db.BooleanProperty()
-    thu = db.BooleanProperty()
-    fri = db.BooleanProperty()
-    sat = db.BooleanProperty()
-    sun = db.BooleanProperty()
+    mon = db.BooleanProperty(required=True, default=True)
+    tue = db.BooleanProperty(required=True, default=True)
+    wed = db.BooleanProperty(required=True, default=True)
+    thu = db.BooleanProperty(required=True, default=True)
+    fri = db.BooleanProperty(required=True, default=True)
+    sat = db.BooleanProperty(required=True, default=True)
+    sun = db.BooleanProperty(required=True, default=True)
 
     @property
     def daily(self):
-        return all((getattr(self, d) for d in days_of_week)
+        return all((getattr(self, d) for d in days_of_week))
 
     @property
     def weekdays(self):
-        return all((getattr(self, d) for d in days_of_week[0:5])
+        return all((getattr(self, d) for d in days_of_week[0:5]))
 
     @property
     def weekends(self):
-        return all((getattr(self, d) for d in days_of_week[-2:])
+        return all((getattr(self, d) for d in days_of_week[-2:]))
 
     @property
     def repeat_descriptor(self):
@@ -61,9 +61,5 @@ class BusListener(db.Model):
             days.insert(0, "weekends")
         else:
             days = compress(day_names, day_vals)
-        
+
         return ", ".join(days)
-
-    
-        
-
