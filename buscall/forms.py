@@ -49,8 +49,10 @@ class WaitlistForm(Form):
             raise ValidationError(field.message)
 
 class BusListenerForm(Form):
-    route_id = SelectField(choices=[])
-    stop_id = SelectField(choices=[])
+    agency = SelectField("Agency", choices=[('mbta', "MBTA")], validators=[Required()])
+    route_id = SelectField("Route", choices=[], validators=[Required()])
+    dir_id = SelectField("Direction", choices=[], validators=[Optional()])
+    stop_id = SelectField("Stop", choices=[], validators=[Required()])
     start = TimeField(validators=[Required()])
     end = TimeField(validators=[Required()])
     mon = BooleanField()

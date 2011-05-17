@@ -18,6 +18,7 @@ class BusListener(db.Model):
     # info about bus stop
     agency =   db.StringProperty(required=True, default="mbta")
     route_id = db.StringProperty(required=True)
+    dir_id =   db.StringProperty(required=False)
     stop_id =  db.StringProperty(required=True)
 
     # when to start and stop listening
