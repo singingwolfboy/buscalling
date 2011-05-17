@@ -2,6 +2,7 @@ from google.appengine.api import urlfetch, memcache
 from xml.etree import ElementTree as etree
 import logging
 import time
+from decimal import Decimal
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?a=mbta"
 
@@ -27,7 +28,14 @@ def get_all_routes():
     return routes
    
 def parse_index_xml(tree):
-    return [clean_booleans(route.attrib) for route in tree.findall('route')]
+    parsed = []
+    for route in tree.findall('route'):
+        info = clean_booleans(route.attrib)
+        if "tag" in info and not "id" in info:
+            info["id"] = info["tag"]
+            del info["tag"]
+        parsed.append(info)
+    return parsed
 
 def get_route(route_id):
     route = memcache.get("show_route|%s" % route_id)
@@ -56,6 +64,12 @@ def parse_route_xml(tree):
     routeElem = tree.find('route')
     # basic route attributes
     route = clean_booleans(routeElem.attrib)
+    if "tag" in route and "id" not in route:
+        route['id'] = route['tag']
+        del route['tag']
+    for tag in ('latMin', 'latMax', 'lonMin', 'lonMax'):
+        if tag in route:
+            route[tag] = Decimal(route[tag])
 
     # detailed info about stops
     stops = {}
@@ -63,6 +77,12 @@ def parse_route_xml(tree):
         stop_info = stop.attrib
         stop_id = stop_info['tag']
         del stop_info['tag']
+        for tag in ('lat', 'lon'):
+            if tag in stop_info:
+                stop_info[tag] = Decimal(stop_info[tag])
+        if "stopId" in stop_info and "id" not in stop_info:
+            stop_info['id'] = stop_info['stopId']
+            del stop_info['stopId']
         stops[stop_id] = clean_booleans(stop_info)
     route['stops'] = stops
 
@@ -80,7 +100,7 @@ def parse_route_xml(tree):
     # path of lat/long points
     route_path = []
     for path in routeElem.findall('path'):
-        segment = [(point.get('lat'), point.get('lon')) 
+        segment = [(Decimal(point.get('lat')), Decimal(point.get('lon'))) 
             for point in path.findall('point')]
         route_path.append(segment)
     route['path'] = route_path

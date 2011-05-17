@@ -18,11 +18,11 @@ def index_listeners():
         users.get_current_user())
     return render_template('listeners/index.html', listeners=listeners)
 
-@app.route('/listeners/new')
+@app.route('/listeners/new', methods=['GET', 'POST'])
 @login_required
 def new_listener():
     form = BusListenerForm()
-    routes = [(r['tag'], r['title']) for r in get_all_routes() ]
+    routes = [(r['id'], r['title']) for r in get_all_routes() ]
     form.route_id.choices = routes
     if form.validate_on_submit():
         user = users.get_current_user()
