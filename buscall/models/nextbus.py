@@ -1,31 +1,26 @@
-from google.appengine.api import urlfetch, memcache
+from google.appengine.api import urlfetch
 from xml.etree import ElementTree as etree
 import logging
 import time
 from decimal import Decimal
+from buscall import cache
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?a=mbta"
 
+@cache.memoize(timeout=3600)
 def get_all_routes():
-    routes = memcache.get("index_routes")
-    if routes is None:
-        rpc = urlfetch.create_rpc()
-        url = RPC_URL + "&command=routeList"
-        urlfetch.make_fetch_call(rpc, url)
-        try:
-            result = rpc.get_result()
-            if result.status_code != 200:
-                logging.error("index_routes RPC returned status code %s" % result.status_code)
-        except urlfetch.DownloadError:
-            logging.error("Download error: " + url)
+    rpc = urlfetch.create_rpc()
+    url = RPC_URL + "&command=routeList"
+    urlfetch.make_fetch_call(rpc, url)
+    try:
+        result = rpc.get_result()
+        if result.status_code != 200:
+            logging.error("index_routes RPC returned status code %s" % result.status_code)
+    except urlfetch.DownloadError:
+        logging.error("Download error: " + url)
 
-        tree = etree.fromstring(result.content)
-        routes = parse_index_xml(tree)
-
-        saved = memcache.set("index_routes", routes, 3600)
-        if not saved:
-            logging.error("Memcache set failed for index_routes")
-    return routes
+    tree = etree.fromstring(result.content)
+    return parse_index_xml(tree)
    
 def parse_index_xml(tree):
     parsed = []
@@ -37,27 +32,23 @@ def parse_index_xml(tree):
         parsed.append(info)
     return parsed
 
+@cache.memoize(timeout=3600)
 def get_route(route_id):
-    route = memcache.get("show_route|%s" % route_id)
-    if route is None:
-        rpc = urlfetch.create_rpc()
-        url = RPC_URL + "&command=routeConfig&r=%s" % route_id
-        urlfetch.make_fetch_call(rpc, url)
-        try:
-            result = rpc.get_result()
-            if result.status_code != 200:
-                logging.error("show_route %s RPC returned status code %s" % (route_id, result.status_code))
-        except urlfetch.DownloadError:
-            logging.error("Download error: " + url)
-        
-        tree = etree.fromstring(result.content)
-        route = parse_route_xml(tree)
-        # stick ID in, just for good measure
-        route['id'] = route_id
+    rpc = urlfetch.create_rpc()
+    url = RPC_URL + "&command=routeConfig&r=%s" % route_id
+    urlfetch.make_fetch_call(rpc, url)
+    try:
+        result = rpc.get_result()
+        if result.status_code != 200:
+            logging.error("show_route %s RPC returned status code %s" % (route_id, result.status_code))
+    except urlfetch.DownloadError:
+        logging.error("Download error: " + url)
+    
+    tree = etree.fromstring(result.content)
+    route = parse_route_xml(tree)
+    # stick ID in, just for good measure
+    route['id'] = route_id
 
-        saved = memcache.set("show_route|%s" % route_id, route, 3600)
-        if not saved:
-            logging.error("Memcache set failed for show_route %s" % route_id)
     return route
 
 def parse_route_xml(tree):
@@ -107,50 +98,39 @@ def parse_route_xml(tree):
 
     return route
 
+@cache.memoize(timeout=3600)
 def get_route_directions(route):
-    directions = memcache.get("show_route|%s|directions" % route['id'])
-    if directions is None:
-        directions = []
-        for dir_id, direc in route['directions'].items():
-            stops = []
-            for stop_id in direc['stops']:
-                stop_info = route['stops'][stop_id]
-                stop_info['id'] = stop_id
-                stops.append(stop_info)
-            
-            directions.append({
-                'title': direc['title'],
-                'id': dir_id,
-                'stops': stops,
-            })
+    directions = []
+    for dir_id, direc in route['directions'].items():
+        stops = []
+        for stop_id in direc['stops']:
+            stop_info = route['stops'][stop_id]
+            stop_info['id'] = stop_id
+            stops.append(stop_info)
         
-        saved = memcache.set("show_route|%s|directions" % route['id'], directions, 3600)
-        if not saved:
-            logging.error("Memcache set failed for show_route %s directions" % route['id'])
+        directions.append({
+            'title': direc['title'],
+            'id': dir_id,
+            'stops': stops,
+        })
     return directions
 
-
+@cache.memoize(timeout=20)
 def get_prediction(route_id, stop_id):
     "Each physical stop has multiple IDs, depending on the bus direction."
-    prediction = memcache.get("predict|%s|%s" % (route_id, stop_id))
-    if prediction is None:
-        rpc = urlfetch.create_rpc()
-        url = RPC_URL + "&command=predictions&r=%s&s=%s" % (route_id, stop_id)
-        urlfetch.make_fetch_call(rpc, url)
-        try:
-            result = rpc.get_result()
-            if result.status_code != 200:
-                logging.error("predict_for_stop %s, %s RPC returned status code %s" % (route_id, stop_id, result.status_code))
-        except urlfetch.DownloadError:
-            logging.error("Download error: " + url)
-        
-        tree = etree.fromstring(result.content)
-        prediction = parse_predict_xml(tree)
+    rpc = urlfetch.create_rpc()
+    url = RPC_URL + "&command=predictions&r=%s&s=%s" % (route_id, stop_id)
+    urlfetch.make_fetch_call(rpc, url)
+    try:
+        result = rpc.get_result()
+        if result.status_code != 200:
+            logging.error("predict_for_stop %s, %s RPC returned status code %s" % (route_id, stop_id, result.status_code))
+    except urlfetch.DownloadError:
+        logging.error("Download error: " + url)
+    
+    tree = etree.fromstring(result.content)
+    return parse_predict_xml(tree)
 
-        saved = memcache.set("predict|%s|%s" % (route_id, stop_id), prediction, 20)
-        if not saved:
-            logging.error("Memcache set failed for predict_for_stop %s|%s" % (route_id, stop_id))
-    return prediction
 
 def parse_predict_xml(tree):
     prediction_el = tree.find('predictions')
