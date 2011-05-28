@@ -38,15 +38,12 @@ def run_app():
     # is a WSGI middleware, and it must be the FIRST middleware to be
     # applied: if you want to apply others, apply them after!
     if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
-        # Enable ctypes for Werkzeug debugging
+        # Enable Werkzeug debugger
+        app.debug=True
+
+        # Enable Jinja2 debugging
         from google.appengine.tools.dev_appserver import HardenedModulesHook
         HardenedModulesHook._WHITE_LIST_C_MODULES += ['_ctypes', 'gestalt']
-
-        # Enable Werkzeug debugger
-        from werkzeug_debugger_appengine import get_debugged_app
-        app.debug=True
-        app.wsgi_app = get_debugged_app(app.wsgi_app)
-
 
     # Grab your middleware and wrap the app
     from middleware import HTTPMethodOverrideMiddleware
