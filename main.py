@@ -40,6 +40,8 @@ def run_app():
     if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
         # Enable Werkzeug debugger
         app.debug=True
+        from tipfy.debugger import DebuggedApplication
+        app.wsgi_app = DebuggedApplication(app.wsgi_app, evalex=True)
 
         # Enable Jinja2 debugging
         from google.appengine.tools.dev_appserver import HardenedModulesHook
@@ -47,7 +49,7 @@ def run_app():
 
     # Grab your middleware and wrap the app
     from middleware import HTTPMethodOverrideMiddleware
-    app = HTTPMethodOverrideMiddleware(app)
+    app.wsgi_app = HTTPMethodOverrideMiddleware(app.wsgi_app)
 
     # Run the app using Werkzeug
     run_wsgi_app(app)
