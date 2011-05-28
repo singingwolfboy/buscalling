@@ -3,8 +3,8 @@ This file is run at the very beginning of every dynamic request. Note
 that the first thing it must do is alter sys.path so that App Engine
 can find the modules and eggs in the local lib directory.
 """
-import sys
-import os
+import os, sys
+from google.appengine.ext.webapp.util import run_wsgi_app
 
 def get_updated_sys_path():
     """
@@ -37,18 +37,23 @@ def run_app():
     # monkeypatch it to work with App Engine. Note that the debugger
     # is a WSGI middleware, and it must be the FIRST middleware to be
     # applied: if you want to apply others, apply them after!
-    if os.environ.get('SERVER_SOFTWARE').startswith('Dev'):
+    if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
+        # Enable ctypes for Werkzeug debugging
+        from google.appengine.tools.dev_appserver import HardenedModulesHook
+        HardenedModulesHook._WHITE_LIST_C_MODULES += ['_ctypes', 'gestalt']
+
+        # Enable Werkzeug debugger
         from werkzeug_debugger_appengine import get_debugged_app
         app.debug=True
-        app = get_debugged_app(app)
+        app.wsgi_app = get_debugged_app(app.wsgi_app)
+
 
     # Grab your middleware and wrap the app
     from middleware import HTTPMethodOverrideMiddleware
     app = HTTPMethodOverrideMiddleware(app)
 
     # Run the app using Werkzeug
-    from wsgiref.handlers import CGIHandler
-    CGIHandler().run(app)
+    run_wsgi_app(app)
 
 if __name__ == "__main__":
     sys.path = get_updated_sys_path()        
