@@ -120,8 +120,6 @@ class DebuggedApplication(object):
 
     def execute_command(self, request, command, frame):
         """Execute a command in a console."""
-        #import gae_pdb
-        #gae_pdb.set_trace()
         return Response(frame.console.eval(command), mimetype='text/html')
 
     def display_console(self, request):

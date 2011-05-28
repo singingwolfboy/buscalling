@@ -83,7 +83,6 @@ class ThreadedStream(object):
         # already generating HTML for us.
         if obj is not None:
             stream._write(debug_repr(obj))
-        sys.__stdout__.write(obj) #debug the debugger
     displayhook = staticmethod(displayhook)
 
     def __setattr__(self, name, value):
@@ -107,7 +106,7 @@ class ThreadedStream(object):
 
 # add the threaded stream as display hook
 _displayhook = sys.displayhook
-#sys.displayhook = ThreadedStream.displayhook
+sys.displayhook = ThreadedStream.displayhook
 
 
 class _ConsoleLoader(object):
@@ -156,8 +155,6 @@ class _InteractiveConsole(code.InteractiveInterpreter):
         prompt = self.more and '... ' or '>>> '
         try:
             source_to_eval = ''.join(self.buffer + [source])
-            #import gae_pdb
-            #gae_pdb.set_trace()
             if code.InteractiveInterpreter.runsource(self,
                source_to_eval, '<debugger>', 'single'):
                 self.more = True
