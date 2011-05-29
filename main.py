@@ -33,14 +33,13 @@ def run_app():
     from credentials import SECRET_KEY
     app.secret_key = SECRET_KEY
 
-    # If we're in development mode, turn on the Werkzeug debugger and
-    # monkeypatch it to work with App Engine. Note that the debugger
-    # is a WSGI middleware, and it must be the FIRST middleware to be
-    # applied: if you want to apply others, apply them after!
+    # If we're in development mode...
     if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
-        # Enable Werkzeug debugger
+        # show stack traces rather than HTTP error pages
         app.debug=True
-        from tipfy.debugger import DebuggedApplication
+
+        # Enable Werkzeug debugger
+        from werkzeug import DebuggedApplication
         app.wsgi_app = DebuggedApplication(app.wsgi_app, evalex=True)
 
         # Enable Jinja2 debugging
