@@ -5,6 +5,10 @@ $().ready(function() {
     if (emailField.val() == emailField.data("defaultValue")) {
         $("input#email").addClass("defaultValue")
     }
+
+    if(!navigator.geolocation) {
+        $("#use_location").hide()
+    }
 })
 
 $("input#email").focus(function() {

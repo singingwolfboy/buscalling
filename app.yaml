@@ -4,14 +4,19 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: /img
-  static_dir: static/img
+# shortcut for jquery :)
+- url: /js/jquery.js
+  static_files: static/js/jquery-1.6.1.min.js
+  upload: static/js/jquery-1.6.1.min.js
 
 - url: /js
   static_dir: static/js
 
 - url: /css
   static_dir: static/css
+
+- url: /img
+  static_dir: static/img
 
 - url: .*
   script: main.py
