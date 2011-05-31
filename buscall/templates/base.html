@@ -22,6 +22,7 @@
     {% endblock %}</footer>
   </div>
   <script src="js/yepnope.1.0.1-min.js"></script>
+  {% if jsfile %}
   <script>
     yepnope([{
       load: "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
@@ -34,9 +35,10 @@
       test: window.JSON,
       load: "/js/json2.js"       
     }, {
-      load: "/js/main.js"
+      load: "/js/{{ jsfile }}.js"
     }])
   </script>
+  {% endif %}
   <!--
   <script>
     var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
