@@ -18,5 +18,10 @@ handlers:
 - url: /img
   static_dir: static/img
 
+- url: /favicon.(ico|png)
+  static_files: static/img/favicon.png
+  upload: static/img/favicon.png
+  # source: http://www.freeiconsweb.com/128x28_city_icons.html
+
 - url: .*
   script: main.py
