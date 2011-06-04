@@ -5,7 +5,7 @@ from google.appengine.api import users
 from buscall.models.profile import BusListener
 from buscall.forms import BusListenerForm
 from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
-from buscall.models.nextbus import get_all_routes
+from buscall.models.nextbus import AGENCIES, get_routes
 
 class GqlQuery(TruthyGqlQuery):
     def __nonzero__(self):
@@ -20,10 +20,19 @@ def index_listeners():
 
 @app.route('/listeners/new', methods=['GET', 'POST'])
 @login_required
-def new_listener():
+def new_listener(agency_id="mbta"):
     form = BusListenerForm()
-    routes = [(r['id'], r['title']) for r in get_all_routes() ]
-    form.route_id.choices = routes
+    # set default agency
+    if agency_id and agency_id in AGENCIES:
+        # filter out the blank choice
+        form.agency.choices = [c for c in form.agency.choices if c != ('', '')]
+        # set the default
+        form.agency.default = agency_id
+        # need to set "data" attribute so that it will render as default
+        form.agency.data = agency_id
+        # pull the routes already: no need for the extra waiting
+        routes = [('','')] + [(r['id'], r['title']) for r in get_routes(agency_id) ]
+        form.route_id.choices = routes
     if form.validate_on_submit():
         user = users.get_current_user()
         listener = BusListener(user=user)
@@ -33,5 +42,5 @@ def new_listener():
         listener.put()
         flash("Listener created!")
         return redirect(url_for("index_listeners"))
-    return render_template("listeners/new.html", form=form)
+    return render_template("listeners/new.html", form=form, jsfile="listeners")
 

@@ -7,6 +7,7 @@ from wtforms.widgets import Input
 from wtforms.fields import Field
 from wtforms.validators import ValidationError
 from flaskext.wtf.html5 import EmailField
+from buscall.models.nextbus import AGENCIES
 
 class TimeInput(Input):
     input_type = "time"
@@ -49,8 +50,8 @@ class WaitlistForm(Form):
             raise ValidationError(field.message)
 
 class BusListenerForm(Form):
-    agency = SelectField("Agency", choices=[('', ''), ('mbta', "MBTA")], 
-        default='mbta', validators=[Required()])
+    agency = SelectField("Agency", choices=[('', '')] + [(key, val) for (key, val) in AGENCIES.items()],
+        validators=[Required()])
     route_id = SelectField("Route", choices=[('', '')], validators=[Required()])
     dir_id = SelectField("Direction", choices=[('', '')], validators=[Optional()])
     stop_id = SelectField("Stop", choices=[('', '')], validators=[Required()])

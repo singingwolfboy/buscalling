@@ -6,29 +6,40 @@ import simplejson as json
 def render_json(obj):
     return Response(json.dumps(obj, use_decimal=True), mimetype="application/json")
 
-@app.route('/routes')
-@app.route('/routes.<format>')
-def index_routes(format="html"):
-    routes = nextbus.get_all_routes()
+@app.route('/<agency_id>')
+@app.route('/<agency_id>.<format>')
+def show_agency(agency_id, format="html"):
+    #routes = nextbus.get_routes(agency_id=agency_id)
+    if format.lower() == "json":
+        return render_json(agency_id)
+    else:
+        return render_template('agencies/show.html', agency_id=agency_id)
+
+@app.route('/<agency_id>/routes')
+@app.route('/<agency_id>/routes.<format>')
+def routes_for_agency(agency_id, format="html"):
+    routes = nextbus.get_routes(agency_id=agency_id)
     if format.lower() == "json":
         return render_json(routes)
     else:
-        return render_template('routes/index.html', routes=routes)
+        return render_template('routes/index.html',
+            agency_id=agency_id, routes=routes)
 
-@app.route('/routes/<route_id>')
-@app.route('/routes/<route_id>.<format>')
-def show_route(route_id, format="html"):
-    route = nextbus.get_route(route_id)
+@app.route('/<agency_id>/routes/<route_id>')
+@app.route('/<agency_id>/routes/<route_id>.<format>')
+def show_route(agency_id, route_id, format="html"):
+    route = nextbus.get_route(agency_id, route_id)
     directions = nextbus.get_route_directions(route)
     if format.lower() == "json":
         return render_json(directions)
     else:
-        return render_template('routes/show.html', route=route, directions=directions)
+        return render_template('routes/show.html',
+            agency_id=agency_id, route=route, directions=directions)
 
-@app.route('/predict/<route_id>/<stop_id>')
-@app.route('/predict/<route_id>/<stop_id>.<format>')
-def predict_for_stop(route_id, stop_id, format="html"):
-    prediction = nextbus.get_prediction(route_id, stop_id)
+@app.route('/predict/<agency_id>/<route_id>/<stop_id>')
+@app.route('/predict/<agency_id>/<route_id>/<stop_id>.<format>')
+def predict_for_stop(agency_id, route_id, stop_id, format="html"):
+    prediction = nextbus.get_prediction(agency_id, route_id, stop_id)
     if format.lower() == "twiml":
         twiml = twilio.get_twiml(prediction)
         return Response(twiml, mimetype="text/xml")

@@ -5,12 +5,19 @@ import time
 from decimal import Decimal
 from buscall import cache
 
-RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?a=mbta"
+RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
+AGENCIES = {'mbta': "MBTA"}
+
+def url_params(url_info):
+    return "&".join(["%s=%s" % (key, val) for (key, val) in url_info.items()])
 
 @cache.memoize(timeout=3600)
-def get_all_routes():
+def get_routes(agency_id):
     rpc = urlfetch.create_rpc()
-    url = RPC_URL + "&command=routeList"
+    url = RPC_URL + url_params({
+        "a": agency_id,
+        "command": "routeList",
+    })
     urlfetch.make_fetch_call(rpc, url)
     try:
         result = rpc.get_result()
@@ -33,9 +40,13 @@ def parse_index_xml(tree):
     return parsed
 
 @cache.memoize(timeout=3600)
-def get_route(route_id):
+def get_route(agency_id, route_id):
     rpc = urlfetch.create_rpc()
-    url = RPC_URL + "&command=routeConfig&r=%s" % route_id
+    url = RPC_URL + url_params({
+        "a": agency_id,
+        "r": route_id,
+        "command": "routeConfig",
+    })
     urlfetch.make_fetch_call(rpc, url)
     try:
         result = rpc.get_result()
@@ -116,10 +127,15 @@ def get_route_directions(route):
     return directions
 
 @cache.memoize(timeout=20)
-def get_prediction(route_id, stop_id):
+def get_prediction(agency_id, route_id, stop_id):
     "Each physical stop has multiple IDs, depending on the bus direction."
     rpc = urlfetch.create_rpc()
-    url = RPC_URL + "&command=predictions&r=%s&s=%s" % (route_id, stop_id)
+    url = RPC_URL + url_params({
+        "a": agency_id,
+        "r": route_id,
+        "s": stop_id,
+        "command": "predictions",
+    })
     urlfetch.make_fetch_call(rpc, url)
     try:
         result = rpc.get_result()
