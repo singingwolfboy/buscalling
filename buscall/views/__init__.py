@@ -50,7 +50,7 @@ def lander():
             body=ALERT_MAIL_BODY % (email, ip, lat, lon))
 
         return redirect(url_for("lander"))
-    return render_template('lander.html', form=form, jsfile="lander")
+    return render_template('lander.html', form=form, js_file="lander")
 
 @app.route('/flush')
 def flush():

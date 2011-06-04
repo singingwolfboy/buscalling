@@ -21,8 +21,11 @@
       Copyright 2011, <a href="http://davidbaumgold.com">David Baumgold</a>
     {% endblock %}</footer>
   </div>
+  {% if js_file %}
   <script src="/js/yepnope.1.0.1-min.js"></script>
-  {% if jsfile %}
+    {% if js_model %}
+    <script>window.model = {{js_model|safe}}</script>
+    {% endif %}
   <script>
     yepnope([{
       load: "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
@@ -35,7 +38,7 @@
       test: window.JSON,
       nope: "/js/json2.js"
     }, {
-      load: "/js/{{ jsfile }}.js"
+      load: "/js/{{ js_file }}.js"
     }])
   </script>
   {% endif %}
