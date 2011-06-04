@@ -1,7 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<body>
-<h1>New Listener</h1>
+{% extends 'base.html' %}
+{% block title %}New Listener{% endblock %}
+
+{% block header %}<h1>New Listener</h1>{% endblock %}
 {% macro with_errors(field) %}
     <div class="form_field">
     {{field.label}}
@@ -14,6 +14,7 @@
     {% endif %}
     </div>
 {% endmacro %}
+{% block main %}
 <form method="POST" action="{{ url_for('new_listener') }}">
     {{form.hidden_tag()}}
     <fieldset id="bus-info">
@@ -50,5 +51,4 @@
     </fieldset>
     <input type="submit" value="Create Listener" />
 </form>
-</body>
-</html>
+{% endblock %}
