@@ -1,12 +1,18 @@
 $().ready(function() {
-    var option_template = '<option value="{0}">{1}</option>',
-        option_blank = '<option value></option>';
+    var model = window.app.model,
+        option_template = '<option value="{0}">{1}</option>',
+        option_blank = '<option value></option>',
+        agency_elmt = $("form #agency"),
+        route_elmt = $("form #route"),
+        direction_elmt = $("form #direction"),
+        stop_elmt = $("form #stop");
+
     var update_routes = function(agency) {
         var routes = [option_blank]
         orderedLoop(model[agency].routes, function (id, route) {
             routes.push(option_template.format(id, route["title"]))
         })
-        $("form #route option").replaceWith($(routes.join("")));
+        route_elmt.children().replaceWith($(routes.join("")));
     };
     var update_directions = function(agency, route) {
         var directions = [option_blank],
@@ -15,7 +21,7 @@ $().ready(function() {
         for(dir_id in dir_info) {
             directions.push(option_template.format(dir_id, dir_info[dir_id]["title"]));
         }
-        $("form #direction option").replaceWith($(directions.join("")));
+        direction_elmt.children().replaceWith($(directions.join("")));
     }
     var update_stops = function(agency, route, direction) {
         var stops = [option_blank],
@@ -24,14 +30,17 @@ $().ready(function() {
         dir_stop_list.forEach(function(id) {
             stops.push(option_template.format(id, stop_info[id]["title"]));
         })
-        $("form #stop option").replaceWith($(stops.join("")));
+        stop_elmt.children().replaceWith($(stops.join("")));
     }
 
-    $('form #agency').live('change', function () {
-        $('form #stop option').replaceWith($(option_blank));
-        $('form #direction option').replaceWith($(option_blank));
+    var clear_select = function(elmt) {
+        elmt.children().replaceWith($(option_blank));
+    }
 
-        var agency = this.value
+    agency_elmt.change(function () {
+        [route_elmt, direction_elmt, stop_elmt].forEach(clear_select)
+
+        var agency = agency_elmt.val()
         if(model[agency].routes) {
             update_routes(agency)
         } else {
@@ -41,11 +50,11 @@ $().ready(function() {
             })
         }
     })
-    $('form #route').live('change', function () {
-        $('form #stop option').replaceWith($(option_blank));
+    route_elmt.change(function () {
+        [direction_elmt, stop_elmt].forEach(clear_select)
 
-        var agency = $('form #agency').val(),
-            route  = this.value
+        var agency = agency_elmt.val(),
+            route  = route_elmt.val()
         if(model[agency].routes[route].directions) {
             update_directions(agency, route)
         } else {
@@ -55,10 +64,12 @@ $().ready(function() {
             })
         } 
     })
-    $('form #direction').live('change', function () {
-        var agency = $('form #agency').val(),
-            route  = $('form #route').val(),
-            direction = this.value;
+    direction_elmt.change(function () {
+        [stop_elmt].forEach(clear_select)
+
+        var agency = agency_elmt.val(),
+            route  = route_elmt.val(),
+            direction = direction_elmt.val();
         update_stops(agency, route, direction);
     })
 })

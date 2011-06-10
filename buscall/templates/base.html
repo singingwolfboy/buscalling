@@ -1,4 +1,4 @@
-{# based on HTML5 boilerplate: http://html5boilerplate.com/ #}
+{#- based on HTML5 boilerplate: http://html5boilerplate.com/ #}
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +11,9 @@
 <body>
   <div id="container">
     <header>{% block header %}{% endblock %}</header>
-    {% for category, msg in get_flashed_messages(with_categories=true) %}
+    {%- for category, msg in get_flashed_messages(with_categories=true) %}
       <p class=flash-{{ category }}>{{ msg }}</p>
-    {% endfor %}
+    {%- endfor %}
     <div id="main" role="main">
       {% block main %}{% endblock %}
     </div>
@@ -22,44 +22,45 @@
     {% endblock %}</footer>
   </div>
   {% if js_file %}
-  <script src="/js/yepnope.1.0.1-min.js"></script>
-    {% if js_model %}
-    <script>window.model = {{js_model|safe}}</script>
-    {% endif %}
+      <script>
+        window.app = {};
+        app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};
+      </script>
     {% if config.DEBUG %}
-      {%- for script in ["jquery-1.6.1", "proto-ext", "json2", js_file] %}
+      {%- for script in ["jquery-1.6.1", "jquery-ui", "underscore", "proto-ext", "json2", js_file] %}
         <script src="/js/{{script}}.js"></script>
       {%- endfor %}
     {% else %}
-    <script>
-      yepnope([{
-        load: {
-          'jquery': "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
-          'ext':   "/js/proto-ext.js"
-        },
-        callback: {
-          'jquery': function(url, result, key) {
-            if (!window.jQuery) {
-              yepnope("/js/jquery-1.6.1.min.js");
+      <script src="/js/yepnope.1.0.1-min.js"></script>
+      <script>
+        yepnope([{
+          load: {
+            'jquery': "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
+            'und': "/js/underscore.min.js",
+            'ext': "/js/proto-ext.js"
+          },
+          callback: {
+            'jquery': function(url, result, key) {
+              if (!window.jQuery) {
+                yepnope("/js/jquery-1.6.1.min.js");
+              }
             }
           }
-        }
-      }, {
-        test: window.JSON,
-        nope: "/js/json2.js"
-      }, {
-        load: "/js/{{ js_file }}.js"
-      }])
-    </script>
+        }, {
+          load: "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js",
+          callback: function(url, result, key) {
+            if (!jQuery.ui) {
+              yepnope("/js/jquery-ui.min.js");
+            }
+          }
+        }, {
+          test: window.JSON,
+          nope: "/js/json2.js"
+        }, {
+          load: "/js/{{ js_file }}.js"
+        }])
+      </script>
     {% endif %}
   {% endif %}
-  <!--
-  <script>
-    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-    s.parentNode.insertBefore(g,s)}(document,"script"));
-  </script>
-  -->
 </body>
 </html>
