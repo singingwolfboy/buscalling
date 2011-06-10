@@ -26,21 +26,32 @@
     {% if js_model %}
     <script>window.model = {{js_model|safe}}</script>
     {% endif %}
-  <script>
-    yepnope([{
-      load: "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
-      complete: function() {
-        if (!window.jQuery) {
-          yepnope("/js/jquery-1.6.1.min.js");
+    {% if config.DEBUG %}
+      {%- for script in ["jquery-1.6.1", "proto-ext", "json2", js_file] %}
+        <script src="/js/{{script}}.js"></script>
+      {%- endfor %}
+    {% else %}
+    <script>
+      yepnope([{
+        load: {
+          'jquery': "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
+          'ext':   "/js/proto-ext.js"
+        },
+        callback: {
+          'jquery': function(url, result, key) {
+            if (!window.jQuery) {
+              yepnope("/js/jquery-1.6.1.min.js");
+            }
+          }
         }
-      }
-    }, {
-      test: window.JSON,
-      nope: "/js/json2.js"
-    }, {
-      load: "/js/{{ js_file }}.js"
-    }])
-  </script>
+      }, {
+        test: window.JSON,
+        nope: "/js/json2.js"
+      }, {
+        load: "/js/{{ js_file }}.js"
+      }])
+    </script>
+    {% endif %}
   {% endif %}
   <!--
   <script>
