@@ -54,7 +54,7 @@ class BusListenerForm(Form):
         id="agency", validators=[Required()])
     route_id = SelectField("Route", choices=[('', '')], 
         id="route", validators=[Required()])
-    dir_id = SelectField("Direction", choices=[('', '')],
+    direction_id = SelectField("Direction", choices=[('', '')],
         id="direction", validators=[Optional()])
     stop_id = SelectField("Stop", choices=[('', '')], 
         id="stop", validators=[Required()])

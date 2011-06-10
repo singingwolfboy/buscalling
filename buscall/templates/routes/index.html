@@ -3,8 +3,8 @@
 <body>
 <h1>Routes</h1>
 <ul>
-{% for route in routes %}
-	<li><a href="{{url_for('show_route', agency_id=agency_id, route_id=route.id)}}">{{route.title}}</a></li>
+{% for id, info in routes.iteritems() %}
+	<li><a href="{{url_for('show_route', agency_id=agency_id, route_id=id)}}">{{info.title}}</a></li>
 {% endfor %}
 </ul>
 </body>
