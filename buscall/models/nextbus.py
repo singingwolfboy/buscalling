@@ -4,6 +4,10 @@ import logging
 import time
 from decimal import Decimal
 from buscall import cache
+try:
+    from collections import OrderedDict
+except ImportError:
+    from ordereddict import OrderedDict
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
 AGENCIES = {'mbta': "MBTA"}
@@ -30,13 +34,18 @@ def get_routes(agency_id):
     return parse_index_xml(tree)
    
 def parse_index_xml(tree):
-    parsed = []
+    parsed = OrderedDict()
     for route in tree.findall('route'):
         info = clean_booleans(route.attrib)
-        if "tag" in info and not "id" in info:
-            info["id"] = info["tag"]
+        if "id" in info:
+            id = info["id"]
+            del info["id"]
+        elif "tag" in info:
+            id = info["tag"]
             del info["tag"]
-        parsed.append(info)
+        else:
+            continue
+        parsed[id] = info 
     return parsed
 
 @cache.memoize(timeout=3600)
@@ -74,7 +83,7 @@ def parse_route_xml(tree):
             route[tag] = Decimal(route[tag])
 
     # detailed info about stops
-    stops = {}
+    stops = OrderedDict()
     for stop in routeElem.findall("stop"):
         stop_info = stop.attrib
         stop_id = stop_info['tag']
@@ -89,7 +98,7 @@ def parse_route_xml(tree):
     route['stops'] = stops
 
     # directions (inbound, outbound)
-    directions = {}
+    directions = OrderedDict()
     for direction in routeElem.findall('direction'):
         dir_info = direction.attrib
         dir_id = dir_info['tag']

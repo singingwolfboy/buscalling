@@ -2,18 +2,26 @@ from buscall import app
 from flask import render_template, Response
 from buscall.models import nextbus, twilio
 import simplejson as json
+from buscall.models.nextbus import AGENCIES
+try:
+    from collections import OrderedDict
+except ImportError:
+    from ordereddict import OrderedDict
 
 def render_json(obj):
+    if isinstance(obj, OrderedDict):
+        obj["_order"] = obj.keys()
     return Response(json.dumps(obj, use_decimal=True), mimetype="application/json")
 
 @app.route('/<agency_id>')
 @app.route('/<agency_id>.<format>')
 def show_agency(agency_id, format="html"):
     #routes = nextbus.get_routes(agency_id=agency_id)
+    agency = {"id": agency_id, "name": AGENCIES[agency_id]}
     if format.lower() == "json":
-        return render_json(agency_id)
+        return render_json(agency)
     else:
-        return render_template('agencies/show.html', agency_id=agency_id)
+        return render_template('agencies/show.html', agency=agency)
 
 @app.route('/<agency_id>/routes')
 @app.route('/<agency_id>/routes.<format>')
@@ -31,7 +39,7 @@ def show_route(agency_id, route_id, format="html"):
     route = nextbus.get_route(agency_id, route_id)
     directions = nextbus.get_route_directions(route)
     if format.lower() == "json":
-        return render_json(directions)
+        return render_json(route)
     else:
         return render_template('routes/show.html',
             agency_id=agency_id, route=route, directions=directions)
