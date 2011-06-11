@@ -72,4 +72,6 @@ $().ready(function() {
             direction = direction_elmt.val();
         update_stops(agency, route, direction);
     })
+
+    $("input[type=time]").timepickr()
 })
