@@ -1,7 +1,7 @@
 import datetime
 import time
 from flaskext.wtf import Form, DecimalField, SelectField, BooleanField
-from flaskext.wtf import HiddenInput
+from flaskext.wtf import HiddenInput, FieldList, FormField, IntegerField
 from flaskext.wtf import Required, Optional
 from wtforms.widgets import Input
 from wtforms.fields import Field
@@ -49,6 +49,10 @@ class WaitlistForm(Form):
             field.message = u'%s cannot be %s' % (field.label.text, field.data)
             raise ValidationError(field.message)
 
+class AlertForm(Form):
+    minutes = IntegerField(default=5)
+    medium = SelectField(choices=(('phone', 'Phone'), ('txt', 'Text')))
+
 class BusListenerForm(Form):
     agency_id = SelectField("Agency", choices=[('', '')] + [(key, val) for (key, val) in AGENCIES.items()],
         id="agency", validators=[Required()])
@@ -58,8 +62,9 @@ class BusListenerForm(Form):
         id="direction", validators=[Optional()])
     stop_id = SelectField("Stop", choices=[('', '')], 
         id="stop", validators=[Required()])
-    start = TimeField(validators=[Required()])
-    end = TimeField(validators=[Required()])
+    start = TimeField("Start Checking", validators=[Required()])
+    end = TimeField("Stop Checking", validators=[Required()])
+    alerts = FieldList(FormField(AlertForm), min_entries=1)
     mon = BooleanField()
     tue = BooleanField()
     wed = BooleanField()
@@ -67,3 +72,4 @@ class BusListenerForm(Form):
     fri = BooleanField()
     sat = BooleanField()
     sun = BooleanField()
+

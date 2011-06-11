@@ -3,7 +3,7 @@
 
 {% block header %}<h1>New Listener</h1>{% endblock %}
 {% macro with_errors(field) %}
-    <div class="form_field">
+    <div class="form_field {{field.id}}">
     {{field.label}}
     {% if field.errors %}
         {% set css_class = 'has_error ' + kwargs.pop('class', '') %}
@@ -28,7 +28,7 @@
         {{ with_errors(form.start) }}
         {{ with_errors(form.end) }}
 
-        <table>
+        <table id="weekpicker">
             <thead>
                 <th>{{form.sun.label}}</th>
                 <th>{{form.mon.label}}</th>
@@ -48,6 +48,9 @@
                 <td>{{form.sat}}</td>
             </tbody>
         </table>
+    </fieldset>
+    <fieldset id="alerts">
+        {{ with_errors(form.alerts) }}
     </fieldset>
     <input type="submit" value="Create Listener" />
 </form>

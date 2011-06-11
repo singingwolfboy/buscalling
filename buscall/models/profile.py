@@ -64,3 +64,8 @@ class BusListener(db.Model):
             days = compress(day_names, day_vals)
 
         return ", ".join(days)
+
+class BusAlert(db.Model):
+    listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
+    minutes = db.IntegerProperty(required=True, validator=lambda x: 0 < x <= 30)
+    medium = db.StringProperty(choices=["phone", "txt"], required=True)
