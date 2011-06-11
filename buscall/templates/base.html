@@ -34,10 +34,10 @@
       <script src="/js/yepnope.1.0.1-min.js"></script>
       <script>
         yepnope([{
+          // no prior dependencies
           load: {
             'jquery': "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
             'und': "/js/underscore.min.js",
-            'ext': "/js/proto-ext.js"
           },
           callback: {
             'jquery': function(url, result, key) {
@@ -47,10 +47,18 @@
             }
           }
         }, {
-          load: "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js",
-          callback: function(url, result, key) {
-            if (!jQuery.ui) {
-              yepnope("/js/jquery-ui.min.js");
+          load: {
+            // jQuery UI depends on jQuery
+            'ui': "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js",
+            // prototype extensions depend on Underscore
+            // Note that this is NOT the Prototype.js library
+            'ext': "/js/proto-ext.js"
+          },
+          callback: {
+            'ui': function(url, result, key) {
+              if (!jQuery.ui) {
+                yepnope("/js/jquery-ui.min.js");
+              }
             }
           }
         }, {

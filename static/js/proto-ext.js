@@ -1,30 +1,8 @@
-"use strict"; // Strict mode, see http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
-
-//
-// Standard extensions
-//
-if (!Array.prototype.forEach) {
-  Array.prototype.forEach = function(fun /*, thisp */) {
-    if (this === void 0 || this === null)
-      throw new TypeError();
-
-    var t = Object(this);
-    var len = t.length >>> 0;
-    if (typeof fun !== "function")
-      throw new TypeError();
-
-    var thisp = arguments[1];
-    for (var i = 0; i < len; i++) {
-      if (i in t) {
-        fun.call(thisp, t[i], i, t);
-      }
-    }
-  };
-}
-
 ////////////////////////////
 // Nonstandard extensions //
 ////////////////////////////
+"use strict"; // Strict mode, see http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
+
 
 /**  orderedLoop()
  * Iterate through an object's properties, similar to a "for in" loop.
@@ -34,14 +12,14 @@ if (!Array.prototype.forEach) {
  */
 window.orderedLoop = function(obj, fun /*, thisp */) {
   if (obj === void 0 || obj === null)
-    throw new TypeError();
-  if (typeof fun !== "function")
-    throw new TypeError();
-  if (!(typeof obj._order == "object" && obj._order instanceof Array)) 
+    throw new TypeError("first arg cannot be null");
+  if (!_.isFunction(fun))
+    throw new TypeError("second argument must be a function");
+  if (!_.isArray(obj._order))
     throw new TypeError("missing _order attribute")
   
   var thisp = arguments[1];
-  obj._order.forEach(function(key, i) {
+  _.each(obj._order, function(key, i) {
     if (obj.hasOwnProperty(key)) {
       fun.call(thisp, key, obj[key], i, obj);
     }
@@ -63,7 +41,7 @@ if (!String.prototype.format) {
     var ret = this
     if (typeof(context)== "object") {
       if (context instanceof Array) {
-        context.forEach(function (val, i) {
+        _.each(context, function (val, i) {
           ret = ret.split("{"+i+"}").join(val);
         })
       } else {
@@ -79,8 +57,7 @@ if (!String.prototype.format) {
         }
       }
     } else {
-      var i=0, l=arguments.length;
-      for(;i<l;i++) {
+      for (var i=0, l=arguments.length; i<l; i++) {
         ret = ret.split("{"+i+"}").join(arguments[i])
       }
     }

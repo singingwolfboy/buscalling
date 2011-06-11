@@ -13,7 +13,7 @@ $().ready(function() {
             routes.push(option_template.format(id, route["title"]))
         })
         route_elmt.children().replaceWith($(routes.join("")));
-    };
+    }
     var update_directions = function(agency, route) {
         var directions = [option_blank],
             dir_info = model[agency].routes[route].directions,
@@ -38,7 +38,7 @@ $().ready(function() {
     }
 
     agency_elmt.change(function () {
-        [route_elmt, direction_elmt, stop_elmt].forEach(clear_select)
+        _.each([route_elmt, direction_elmt, stop_elmt], clear_select)
 
         var agency = agency_elmt.val()
         if(model[agency].routes) {
@@ -51,7 +51,7 @@ $().ready(function() {
         }
     })
     route_elmt.change(function () {
-        [direction_elmt, stop_elmt].forEach(clear_select)
+        _.each([direction_elmt, stop_elmt], clear_select)
 
         var agency = agency_elmt.val(),
             route  = route_elmt.val()
@@ -65,7 +65,7 @@ $().ready(function() {
         } 
     })
     direction_elmt.change(function () {
-        [stop_elmt].forEach(clear_select)
+        _.each([stop_elmt], clear_select)
 
         var agency = agency_elmt.val(),
             route  = route_elmt.val(),
