@@ -6,8 +6,8 @@
     <title>{% block title %}{% endblock %} | Bus Calling</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/css/le-frog/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" />
-    <link href="/css/ui.timepickr.css" rel="stylesheet" type="text/css" />
+    {#- <link href="/css/le-frog/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" /> #}
+    <link href="/css/timepicker.css" rel="stylesheet" type="text/css" />
   {% endblock %}
 </head>
 <body>
@@ -29,7 +29,7 @@
         app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};
       </script>
     {% if config.DEBUG %}
-      {%- for script in ["jquery-1.6.1", "jquery-ui", "jquery.utils", "jquery.strings", "ui.timepickr", "underscore", "proto-ext", "json2", js_file] %}
+      {%- for script in ["jquery-1.6.1", "jquery.timepicker", "underscore", "proto-ext", "json2", js_file] %}
         <script src="/js/{{script}}.js"></script>
       {%- endfor %}
     {% else %}
@@ -50,22 +50,12 @@
           }
         }, {
           load: {
-            // jQuery UI depends on jQuery
-            'ui': "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js",
+            // timePicker depends on jQuery
+            'time': "/js/jquery.timePicker.min.js",
             // prototype extensions depend on Underscore
             // Note that this is NOT the Prototype.js library
             'ext': "/js/proto-ext.js"
-          },
-          callback: {
-            'ui': function(url, result, key) {
-              if (!jQuery.ui) {
-                yepnope("/js/jquery-ui.min.js");
-              }
-            }
           }
-        }, {
-          // timepickr relies on jQuery UI
-          load: ["js/jquery.utils.js", "js/jquery.strings.js", "/js/ui.timepickr.js"]
         }, {
           test: window.JSON,
           nope: "/js/json2.js"
