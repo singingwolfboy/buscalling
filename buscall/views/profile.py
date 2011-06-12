@@ -33,7 +33,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         "direction_id": direction_id or request.args.get('direction', None),
         "stop_id":      stop_id      or request.args.get('stop', None),
     }
-    form = get_listener_form_with_defaults(BusListenerForm(), **kwargs)
+    form = get_listener_form_with_defaults(BusListenerForm(request.form), **kwargs)
     if form.validate_on_submit():
         user = users.get_current_user()
         listener = BusListener(user=user)
@@ -84,7 +84,7 @@ def make_js_model(agency_id=None, route_id=None, direction_id=None, stop_id=None
 
 def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, direction_id=None, stop_id=None):
     if form is None:
-        form = BusListenerForm()
+        form = BusListenerForm(request.form)
     if agency_id in AGENCIES:
         # filter out the blank choice
         form.agency_id.choices = [c for c in form.agency_id.choices if c != ('', '')]

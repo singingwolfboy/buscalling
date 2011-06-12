@@ -7,7 +7,7 @@ from wtforms.widgets import Input
 from wtforms.fields import Field
 from wtforms.validators import ValidationError
 from flaskext.wtf.html5 import EmailField
-from buscall.models.nextbus import AGENCIES
+from buscall.models.nextbus import NextbusError, AGENCIES, get_routes, get_route
 from buscall.models.profile import days_of_week, alert_choices
 
 class TimeInput(Input):
@@ -81,14 +81,62 @@ class WeekForm(Form):
         return success
 """
 
+class RouteField(SelectField):
+    def __init__(self, *args, **kwargs):
+        if not 'choices' in kwargs:
+            kwargs['choices'] = [('','')]
+        super(RouteField, self).__init__(*args, **kwargs)
+
+    def pre_validate(self, form):
+        if form.agency_id.data:
+            try:
+                routes = get_routes(form.agency_id.data)
+                self.choices = [(id, i['title']) for id, i in routes.iteritems()]
+            except NextbusError:
+                pass
+        super(RouteField, self).pre_validate(form)
+
+class DirectionField(SelectField):
+    def __init__(self, *args, **kwargs):
+        if not 'choices' in kwargs:
+            kwargs['choices'] = [('','')]
+        super(DirectionField, self).__init__(*args, **kwargs)
+
+    def pre_validate(self, form):
+        if form.agency_id.data and form.route_id.data:
+            try:
+                route_info = get_route(form.agency_id.data, form.route_id.data)
+                self.choices = [(id, i['title']) for id, i in route_info['directions'].items()]
+            except NextbusError:
+                pass
+        super(DirectionField, self).pre_validate(form)
+
+class StopField(SelectField):
+    def __init__(self, *args, **kwargs):
+        if not 'choices' in kwargs:
+            kwargs['choices'] = [('','')]
+        super(StopField, self).__init__(*args, **kwargs)
+
+    def pre_validate(self, form):
+        if form.agency_id.data and form.route_id.data and form.direction_id.data:
+            agency = form.agency_id.data
+            route = form.route_id.data
+            direction = form.direction_id.data
+            try:
+                route_info = get_route(agency, route)
+                self.choices = [(id, route_info['stops'][id]['title']) for id in route_info['directions'][direction]['stops']]
+            except NextbusError:
+                pass
+        super(StopField, self).pre_validate(form)
+
 class BusListenerForm(Form):
     agency_id = SelectField("Agency", choices=[('', '')] + [(key, val) for (key, val) in AGENCIES.items()],
         id="agency", validators=[Required()])
-    route_id = SelectField("Route", choices=[('', '')], 
+    route_id = RouteField("Route",
         id="route", validators=[Required()])
-    direction_id = SelectField("Direction", choices=[('', '')],
+    direction_id = DirectionField("Direction",
         id="direction", validators=[Required()])
-    stop_id = SelectField("Stop", choices=[('', '')], 
+    stop_id = StopField("Stop",
         id="stop", validators=[Required()])
     start = TimeField("Start Checking", validators=[Required()])
     end = TimeField("Stop Checking", validators=[Required()])
