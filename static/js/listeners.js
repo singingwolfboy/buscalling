@@ -73,5 +73,5 @@ $().ready(function() {
         update_stops(agency, route, direction);
     })
 
-    $("input[type=time]").timepickr()
+    //$("input[type=time]").timepickr()
 })

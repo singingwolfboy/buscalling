@@ -8,6 +8,7 @@ except ImportError:
         return (d for d, s in izip(data, selectors) if s)
 
 days_of_week = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+alert_choices = (('phone', 'Phone'), ('txt', 'Text'), ('email', 'Email'))
 
 class UserProfile(db.Model):
     user = db.UserProperty(required=True)
@@ -68,4 +69,4 @@ class BusListener(db.Model):
 class BusAlert(db.Model):
     listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
     minutes = db.IntegerProperty(required=True, validator=lambda x: 0 < x <= 30)
-    medium = db.StringProperty(choices=["phone", "txt"], required=True)
+    medium = db.StringProperty(choices=[k for k,v in alert_choices], required=True)

@@ -8,6 +8,7 @@ from wtforms.fields import Field
 from wtforms.validators import ValidationError
 from flaskext.wtf.html5 import EmailField
 from buscall.models.nextbus import AGENCIES
+from buscall.models.profile import days_of_week, alert_choices
 
 class TimeInput(Input):
     input_type = "time"
@@ -51,20 +52,15 @@ class WaitlistForm(Form):
 
 class AlertForm(Form):
     minutes = IntegerField(default=5)
-    medium = SelectField(choices=(('phone', 'Phone'), ('txt', 'Text')))
+    medium = SelectField(choices=alert_choices)
 
-class BusListenerForm(Form):
-    agency_id = SelectField("Agency", choices=[('', '')] + [(key, val) for (key, val) in AGENCIES.items()],
-        id="agency", validators=[Required()])
-    route_id = SelectField("Route", choices=[('', '')], 
-        id="route", validators=[Required()])
-    direction_id = SelectField("Direction", choices=[('', '')],
-        id="direction", validators=[Optional()])
-    stop_id = SelectField("Stop", choices=[('', '')], 
-        id="stop", validators=[Required()])
-    start = TimeField("Start Checking", validators=[Required()])
-    end = TimeField("Stop Checking", validators=[Required()])
-    alerts = FieldList(FormField(AlertForm), min_entries=1)
+    def __init__(self, *args, **kwargs):
+        kwargs['csrf_enabled'] = False
+        super(AlertForm, self).__init__(*args, **kwargs)
+
+"""
+class WeekForm(Form):
+    sun = BooleanField()
     mon = BooleanField()
     tue = BooleanField()
     wed = BooleanField()
@@ -73,3 +69,45 @@ class BusListenerForm(Form):
     sat = BooleanField()
     sun = BooleanField()
 
+    def __init__(self, *args, **kwargs):
+        kwargs['csrf_enabled'] = False
+        super(WeekForm, self).__init__(*args, **kwargs)
+
+    def validate(self, *args, **kwargs):
+        success = super(WeekForm, self).validate(*args, **kwargs)
+        if not any((self._fields[d].data for d in days_of_week)):
+            self.errors
+            self._errors["form"] = "At least one day of the week must be selected."
+            success = False
+        return success
+"""
+
+class BusListenerForm(Form):
+    agency_id = SelectField("Agency", choices=[('', '')] + [(key, val) for (key, val) in AGENCIES.items()],
+        id="agency", validators=[Required()])
+    route_id = SelectField("Route", choices=[('', '')], 
+        id="route", validators=[Required()])
+    direction_id = SelectField("Direction", choices=[('', '')],
+        id="direction", validators=[Required()])
+    stop_id = SelectField("Stop", choices=[('', '')], 
+        id="stop", validators=[Required()])
+    start = TimeField("Start Checking", validators=[Required()])
+    end = TimeField("Stop Checking", validators=[Required()])
+    alerts = FieldList(FormField(AlertForm), min_entries=1)
+    # week = FieldList(FormField(WeekForm), min_entries=1, max_entries=1)
+    sun = BooleanField()
+    mon = BooleanField()
+    tue = BooleanField()
+    wed = BooleanField()
+    thu = BooleanField()
+    fri = BooleanField()
+    sat = BooleanField()
+    sun = BooleanField()
+
+    def validate(self, *args, **kwargs):
+        success = super(BusListenerForm, self).validate(*args, **kwargs)
+        if not any((self._fields[d].data for d in days_of_week)):
+            self.errors # generate the error dict
+            self._errors["week"] = "At least one day of the week must be selected."
+            success = False
+        return success
