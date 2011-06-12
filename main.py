@@ -4,7 +4,6 @@ that the first thing it must do is alter sys.path so that App Engine
 can find the modules and eggs in the local lib directory.
 """
 import os, sys
-from google.appengine.ext.webapp.util import run_wsgi_app
 
 def get_updated_sys_path():
     """
@@ -51,6 +50,7 @@ def run_app():
     app.wsgi_app = HTTPMethodOverrideMiddleware(app.wsgi_app)
 
     # Run the app using Werkzeug
+    from google.appengine.ext.webapp.util import run_wsgi_app
     run_wsgi_app(app)
 
 if __name__ == "__main__":
