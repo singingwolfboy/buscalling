@@ -38,17 +38,16 @@ class TimeField(Field):
 
 
 class WaitlistForm(Form):
-    email = EmailField(u'Email', default='email@example.com',
-        validators=[Required()])
+    email = EmailField(u'Email', validators=[Required()])
     location_lat  = DecimalField(u'Latitude', widget=HiddenInput(),
         validators=[Optional()])
     location_long = DecimalField(u'Longitude', widget=HiddenInput(),
         validators=[Optional()])
 
-    def validate_email(form, field):
-        if field.data == field.default:
-            field.message = u'%s cannot be %s' % (field.label.text, field.data)
-            raise ValidationError(field.message)
+#    def validate_email(form, field):
+#        if field.data == field.default:
+#            field.message = u'%s cannot be %s' % (field.label.text, field.data)
+#            raise ValidationError(field.message)
 
 class AlertForm(Form):
     minutes = IntegerField(default=5)

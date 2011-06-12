@@ -133,6 +133,8 @@ class Field(object):
         Any HTML attribute passed to the method will be added to the tag
         and entity-escaped properly.
         """
+        if 'required' in self.flags:
+            kwargs.setdefault('required', True)
         return self.widget(self, **kwargs)
 
     def gettext(self, string):

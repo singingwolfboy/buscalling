@@ -1,16 +1,18 @@
 $().ready(function() {
+    /*
     //$("input#email").data("defaultValue", $("input#email").val())
     emailField = $("input#email")
     emailField.data("defaultValue", "email@example.com")
     if (emailField.val() == emailField.data("defaultValue")) {
         $("input#email").addClass("defaultValue")
     }
+    */
 
     if(!navigator.geolocation) {
         $("#use_location").hide()
     }
 })
-
+/*
 $("input#email").focus(function() {
     if($(this).val() == $(this).data("defaultValue")) {
         $(this).removeClass("defaultValue");
@@ -22,6 +24,7 @@ $("input#email").focus(function() {
         $(this).val($(this).data("defaultValue"))
     }
 });
+*/
 
 $("#use_location").change(function() {
     var label = $("#location_label")
