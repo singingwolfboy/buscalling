@@ -56,7 +56,7 @@ class TwilioUrlRequest(urllib2.Request):
             return self.http_method
         return urllib2.Request.get_method(self)
 
-class Account:
+class Account(object):
     """Twilio account object that provides helper functions for making
     REST requests to the Twilio API.  This helper library works both in
     standalone python applications using the urllib/urlib2 libraries and
@@ -162,7 +162,7 @@ class Account:
 # TwiML Response Helpers
 # ===========================================================================
 
-class Verb:
+class Verb(object):
     """Twilio basic verb object.
     """
     def __init__(self, **kwargs):
@@ -456,7 +456,7 @@ class Reject(Verb):
 # Twilio Utility function and Request Validation
 # ===========================================================================
 
-class Utils:
+class Utils(object):
     def __init__(self, id, token):
         """initialize a twilio utility object
         
