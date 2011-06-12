@@ -14,6 +14,7 @@
  *   step: # of minutes to step the time by
  *   startTime: beginning of the range of acceptable times
  *   endTime: end of the range of acceptable times
+ *   defaultSelected: if the user has not yet selected a time, select this by default
  *   separator: separator string to use between hours and minutes (e.g. ':')
  *   show24Hours: use a 24-hour scheme
  */
