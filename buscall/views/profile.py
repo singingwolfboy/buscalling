@@ -2,7 +2,7 @@ from buscall import app
 from flask import render_template, request, flash, redirect, url_for
 from ..decorators import login_required
 from google.appengine.api import users
-from buscall.models.profile import BusListener
+from buscall.models.profile import BusListener, BusAlert
 from buscall.forms import BusListenerForm
 from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
 from buscall.models.nextbus import AGENCIES, get_routes, get_route
@@ -35,12 +35,17 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     }
     form = get_listener_form_with_defaults(BusListenerForm(request.form), **kwargs)
     if form.validate_on_submit():
-        user = users.get_current_user()
-        listener = BusListener(user=user)
-        for param in ('route_id', 'stop_id', 'start', 'end', \
-            'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):
-            setattr(listener, param, form.data[param])
+        params = {
+            "user": users.get_current_user(),
+        }
+        for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'end', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):
+            params[param] = form.data[param]
+        listener = BusListener(**params)
         listener.put()
+        for alert_data in form.data['alerts']:
+            alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'])
+            alert.put()
+
         flash("Listener created!")
         return redirect(url_for("index_listeners"))
     context = {

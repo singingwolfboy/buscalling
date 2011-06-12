@@ -17,10 +17,10 @@ class BusListener(db.Model):
     user = db.UserProperty(required=True)
 
     # info about bus stop
-    agency =   db.StringProperty(required=True, default="mbta")
+    agency_id = db.StringProperty(required=True, default="mbta")
     route_id = db.StringProperty(required=True)
-    dir_id =   db.StringProperty(required=False)
-    stop_id =  db.StringProperty(required=True)
+    direction_id = db.StringProperty(required=False)
+    stop_id = db.StringProperty(required=True)
 
     # when to start and stop listening
     start = db.TimeProperty(required=True)
@@ -68,5 +68,5 @@ class BusListener(db.Model):
 
 class BusAlert(db.Model):
     listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
-    minutes = db.IntegerProperty(required=True, validator=lambda x: 0 < x <= 30)
+    minutes = db.IntegerProperty(required=True)
     medium = db.StringProperty(choices=[k for k,v in alert_choices], required=True)

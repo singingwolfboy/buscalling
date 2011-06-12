@@ -1,5 +1,6 @@
 import datetime
 import time
+from flask import request
 from flaskext.wtf import Form, DecimalField, SelectField, BooleanField
 from flaskext.wtf import HiddenInput, FieldList, FormField, IntegerField
 from flaskext.wtf import Required, Optional
@@ -13,28 +14,35 @@ from buscall.models.profile import days_of_week, alert_choices
 class TimeInput(Input):
     input_type = "time"
 
+time_formats = ['%H:%M']
+
 class TimeField(Field):
     widget = TimeInput()
 
-    def __init__(self, label=u'', validators=None, format='%H:%M:%S', **kwargs):
+    def __init__(self, label=u'', validators=None, formats=time_formats, **kwargs):
         super(TimeField, self).__init__(label, validators, **kwargs)
-        self.format = format
+        self.formats = formats
 
     def _value(self):
         if self.raw_data:
             return u' '.join(self.raw_data)
         else:
-            return self.data and self.data.strftime(self.format) or u''
+            return self.data and self.data.strftime(self.formats[0]) or u''
 
     def process_formdata(self, valuelist):
         if valuelist:
             date_str = u' '.join(valuelist)
-            try:
-                timetuple = time.strptime(date_str, self.format)
-                self.data = datetime.datetime(*timetuple[:6])
-            except ValueError:
-                self.data = None
-                raise
+            for format in self.formats:
+                try:
+                    timetuple = time.strptime(date_str, format)
+                    # dropping DST info: timetuple.tm_isdst (fixme later)
+                    self.data = datetime.time(*timetuple[3:6])
+                    return
+                except ValueError:
+                    pass #try the next format
+            # if we got here, we weren't able to serialize the data at all.
+            self.data = None
+            raise
 
 
 class WaitlistForm(Form):
