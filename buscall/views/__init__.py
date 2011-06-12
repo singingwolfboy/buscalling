@@ -20,7 +20,7 @@ location: %s, %s
 
 @app.route('/', methods = ['GET', 'POST'])
 def lander():
-    form = WaitlistForm()
+    form = WaitlistForm(request.form)
     if form.validate_on_submit():
         try:
             ip = request.environ['HTTP_X_FORWARDED_FOR']
