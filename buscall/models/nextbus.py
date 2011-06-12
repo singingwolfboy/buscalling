@@ -4,6 +4,7 @@ import logging
 import time
 from decimal import Decimal
 from buscall import cache
+from functools import wraps
 try:
     from collections import OrderedDict
 except ImportError:
@@ -14,6 +15,24 @@ AGENCIES = {'mbta': "MBTA"}
 
 def url_params(url_info):
     return "&".join(["%s=%s" % (key, val) for (key, val) in url_info.items()])
+
+class NextbusError(Exception):
+    def __init__(self, message, shouldRetry):
+        self.message = message
+        self.retry = shouldRetry
+
+    def __str__(self):
+        return self.message
+
+def errcheck_xml(func):
+    @wraps(func)
+    def wrapper(tree):
+        error = tree.find('Error')
+        if error is not None:
+            raise NextbusError(error.text.strip(), error.attrib['shouldRetry'])
+        return func(tree)
+    return wrapper
+
 
 @cache.memoize(timeout=3600)
 def get_routes(agency_id):
@@ -32,7 +51,8 @@ def get_routes(agency_id):
 
     tree = etree.fromstring(result.content)
     return parse_index_xml(tree)
-   
+
+@errcheck_xml
 def parse_index_xml(tree):
     parsed = OrderedDict()
     for route in tree.findall('route'):
@@ -71,6 +91,7 @@ def get_route(agency_id, route_id):
 
     return route
 
+@errcheck_xml
 def parse_route_xml(tree):
     routeElem = tree.find('route')
     # basic route attributes
@@ -156,7 +177,7 @@ def get_prediction(agency_id, route_id, stop_id):
     tree = etree.fromstring(result.content)
     return parse_predict_xml(tree)
 
-
+@errcheck_xml
 def parse_predict_xml(tree):
     prediction_el = tree.find('predictions')
 
