@@ -112,18 +112,30 @@ class Form(BaseForm):
         
         self.csrf_enabled = csrf_enabled
 
-        self.csrf_session_key = kwargs.pop('csrf_session_key', None)
+        if csrf_enabled:
+            self.csrf = fields.HiddenField()
 
-        if self.csrf_session_key is None:
-            self.csrf_session_key = \
-                current_app.config.get('CSRF_SESSION_KEY', '_csrf_token')
+            self.csrf_session_key = kwargs.pop('csrf_session_key', None)
 
-        csrf_token = session.get(self.csrf_session_key, None)
+            if self.csrf_session_key is None:
+                self.csrf_session_key = \
+                    current_app.config.get('CSRF_SESSION_KEY', '_csrf_token')
 
-        if csrf_token is None:
-            csrf_token = self.reset_csrf()
+            if not 'csrf' in kwargs:
+                csrf_token = session.get(self.csrf_session_key, None)
 
-        super(Form, self).__init__(formdata, csrf=csrf_token, *args, **kwargs)
+                if csrf_token is None:
+                    csrf_token = self.reset_csrf()
+
+                kwargs['csrf'] = csrf_token
+
+        super(Form, self).__init__(formdata, *args, **kwargs)
+
+        if not csrf_enabled:
+            if self._unbound_fields:
+                self._unbound_fields = [f for f in self._unbound_fields if f[0] != 'csrf']
+            if self._fields and 'csrf' in self._fields:
+                del self._fields['csrf']
 
     def is_submitted(self):
         """
