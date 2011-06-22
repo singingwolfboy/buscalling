@@ -1,2 +1,3 @@
 from .waitlist import WaitlistEntry
-from .profile import UserProfile, BusListener
+from .profile import UserProfile
+from .listener import BusListener

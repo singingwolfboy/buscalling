@@ -5,7 +5,7 @@ try:
     from .twilio import call_prediction
 except AttributeError:
     print("Could not import Twilio call_prediction view: ignoring.")
-from .profile import index_listeners
+from .listener import index_listeners
 from buscall.models import WaitlistEntry
 from buscall.forms import WaitlistForm
 from google.appengine.api import memcache, mail

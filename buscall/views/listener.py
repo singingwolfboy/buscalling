@@ -2,7 +2,7 @@ from buscall import app
 from flask import render_template, request, flash, redirect, url_for
 from ..decorators import login_required
 from google.appengine.api import users
-from buscall.models.profile import BusListener, BusAlert
+from buscall.models.listener import BusListener, BusAlert
 from buscall.forms import BusListenerForm
 from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
 from buscall.models.nextbus import AGENCIES, get_routes, get_route

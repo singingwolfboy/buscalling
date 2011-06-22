@@ -4,7 +4,7 @@ from flaskext.wtf import Required, Optional
 from flaskext.wtf.html5 import EmailField
 from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField
 from buscall.models.nextbus import AGENCIES
-from buscall.models.profile import ALERT_CHOICES
+from buscall.models.listener import ALERT_CHOICES
 from buscall.util import DAYS_OF_WEEK
 
 class WaitlistForm(Form):
