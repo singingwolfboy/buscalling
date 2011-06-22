@@ -7,8 +7,7 @@ except ImportError:
     def compress(data, selectors):
         return (d for d, s in izip(data, selectors) if s)
 
-days_of_week = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-alert_choices = (('phone', 'Phone'), ('txt', 'Text'), ('email', 'Email'))
+ALERT_CHOICES = (('phone', 'Phone'), ('txt', 'Text'), ('email', 'Email'))
 
 class UserProfile(db.Model):
     user = db.UserProperty(required=True)
@@ -69,4 +68,4 @@ class BusListener(db.Model):
 class BusAlert(db.Model):
     listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
     minutes = db.IntegerProperty(required=True)
-    medium = db.StringProperty(choices=[k for k,v in alert_choices], required=True)
+    medium = db.StringProperty(choices=[k for k,v in ALERT_CHOICES], required=True)

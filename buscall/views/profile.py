@@ -6,7 +6,7 @@ from buscall.models.profile import BusListener, BusAlert
 from buscall.forms import BusListenerForm
 from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
 from buscall.models.nextbus import AGENCIES, get_routes, get_route
-from buscall.models.profile import days_of_week
+from buscall.util import DAYS_OF_WEEK
 import simplejson as json
 try:
     from collections import OrderedDict
@@ -52,7 +52,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         "form": form,
         "js_file": "listeners",
         "js_model": make_js_model(**kwargs),
-        "days_of_week": days_of_week,
+        "DAYS_OF_WEEK": DAYS_OF_WEEK,
     }
     return render_template("listeners/new.html", **context)
 

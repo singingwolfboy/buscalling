@@ -9,12 +9,10 @@ try:
     from collections import OrderedDict
 except ImportError:
     from ordereddict import OrderedDict
+from buscall.util import url_params, clean_booleans
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
 AGENCIES = {'mbta': "MBTA"}
-
-def url_params(url_info):
-    return "&".join(["%s=%s" % (key, val) for (key, val) in url_info.items()])
 
 class NextbusError(Exception):
     def __init__(self, message, shouldRetry):
@@ -222,15 +220,3 @@ def parse_prediction_elements(prediction_els):
 
         buses.append(clean_booleans(p))
     return buses, epoch_time
-
-def clean_booleans(d):
-    for key in d.keys():
-        try:
-            val = d[key].lower()
-            if val == 'true' or val == 't':
-                d[key] = True
-            elif val == 'false' or val == 'f':
-                d[key] = False
-        except AttributeError:
-            pass
-    return d

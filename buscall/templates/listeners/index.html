@@ -1,7 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<body>
-<h1>Your Listeners</h1>
+{% extends 'base.html' %}
+{% block title %}Your Listeners{% endblock %}
+
+{% block header %}<h1>Your Listeners</h1>{% endblock %}
+{% from "_formhelpers.html" import with_errors %}
+{% block main %}
 {% if listeners %}
 <ul>
 {% for l in listeners %}
@@ -11,5 +13,5 @@
 {% else %}
 <p>You have not set any bus listeners.</p>
 {% endif %}
-</body>
-</html>
+<p><a href="{{ url_for('new_listener') }}">New Listener</a></p>
+{% endblock %}

@@ -27,12 +27,12 @@
             {% endif %}
             <table id="weekpicker">
                 <thead>
-                    {% for day in days_of_week %}
+                    {% for day in DAYS_OF_WEEK %}
                     <th>{{form[day].label}}</th>
                     {% endfor %}
                 </thead>
                 <tbody>
-                    {% for day in days_of_week %}
+                    {% for day in DAYS_OF_WEEK %}
                     <td>{{form[day]}}</td>
                     {% endfor %}
                 </tbody>
