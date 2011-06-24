@@ -3,3 +3,4 @@ from google.appengine.ext import db
 
 class UserProfile(db.Model):
     user = db.UserProperty(required=True)
+    phone = db.PhoneNumberProperty()
