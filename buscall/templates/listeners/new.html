@@ -41,10 +41,19 @@
     </fieldset>
     <fieldset id="alerts">
         <legend>{{form.alerts.label}}</legend>
+        <input type="hidden" name="{{form.alerts.id}}-length" id="{{form.alerts.id}}-length" value="{{form.alerts.entries|length}}" />
+        <ul id="alert-list">
         {% for alert in form.alerts.entries %}
+            <li>
             {{ with_errors(alert.minutes) }}
             {{ with_errors(alert.medium) }}
+            {% if not loop.first %}
+                <a href="" id="{{alert.id}}-remove">Remove Alert</a>
+            {% endif %}
+            </li>
         {% endfor %}
+        </ul>
+        <input type="button" value="Add Alert" id="add-alert" />
     </fieldset>
     <input type="submit" value="Create Listener" />
 </form>

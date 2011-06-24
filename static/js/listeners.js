@@ -106,4 +106,24 @@ $().ready(function() {
             $.timePicker("#start").setTime(d)
         }
     })
+
+    // Alerts
+    var setAttr = function(value) {
+        return function (i, oldAttr) {
+            if(oldAttr) {
+                return oldAttr.replace(/-\d+-/, "-"+value+"-");
+            }
+        }
+    }
+    $("#add-alert").click(function () {
+        var len = parseInt($("#alerts-length").val(), 10),
+            new_alert = $("#alert-list li:first-child").clone(),
+            replaceFun = setAttr(len);
+        $("*", new_alert).attr("id", setAttr(len)).attr("name", replaceFun).attr("for", replaceFun);
+        $("#alerts-"+len+"-minutes".format(len), new_alert).val("");
+        $("#alert-list").append(new_alert);
+        len = len+1
+        $("#alerts-length").val(len);
+        return len
+    })
 })
