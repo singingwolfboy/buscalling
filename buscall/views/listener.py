@@ -4,18 +4,13 @@ from ..decorators import login_required
 from google.appengine.api import users
 from buscall.models.listener import BusListener, BusAlert
 from buscall.forms import BusListenerForm
-from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
 from buscall.models.nextbus import AGENCIES, get_routes, get_route
-from buscall.util import DAYS_OF_WEEK
+from buscall.util import GqlQuery, DAYS_OF_WEEK
 import simplejson as json
 try:
     from collections import OrderedDict
 except ImportError:
     from ordereddict import OrderedDict
-
-class GqlQuery(TruthyGqlQuery):
-    def __nonzero__(self):
-        return self.count(1) != 0
 
 @app.route('/listeners')
 @login_required

@@ -1,4 +1,8 @@
 # Utility functions and variables
+from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
+class GqlQuery(TruthyGqlQuery):
+    def __nonzero__(self):
+        return self.count(1) != 0
 
 DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
