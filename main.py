@@ -30,7 +30,7 @@ def run_app():
     from buscall import app
 
     # set the secret key
-    from credentials import SECRET_KEY
+    from buscall.credentials import SECRET_KEY
     app.secret_key = SECRET_KEY
 
     # If we're in development mode...
