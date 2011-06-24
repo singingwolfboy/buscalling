@@ -10,9 +10,6 @@ except ImportError:
 
 ALERT_CHOICES = (('phone', 'Phone'), ('txt', 'Text'), ('email', 'Email'))
 
-class UserProfile(db.Model):
-    user = db.UserProperty(required=True)
-
 class BusListener(db.Model):
     user = db.UserProperty(required=True)
 
