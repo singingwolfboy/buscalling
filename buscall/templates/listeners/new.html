@@ -42,7 +42,7 @@
     <fieldset id="alerts">
         <legend>{{form.alerts.label}}</legend>
         <input type="hidden" name="{{form.alerts.id}}-length" id="{{form.alerts.id}}-length" value="{{form.alerts.entries|length}}" />
-        <ul id="alert-list">
+        <ul id="alerts-list">
         {% for alert in form.alerts.entries %}
             <li>
             {{ with_errors(alert.minutes) }}

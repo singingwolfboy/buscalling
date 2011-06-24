@@ -117,11 +117,11 @@ $().ready(function() {
     }
     $("#add-alert").click(function () {
         var len = parseInt($("#alerts-length").val(), 10),
-            new_alert = $("#alert-list li:first-child").clone(),
+            new_alert = $("#alerts-list li:first-child").clone(),
             replaceFun = setAttr(len);
         $("*", new_alert).attr("id", setAttr(len)).attr("name", replaceFun).attr("for", replaceFun);
         $("#alerts-"+len+"-minutes".format(len), new_alert).val("");
-        $("#alert-list").append(new_alert);
+        $("#alerts-list").append(new_alert);
         len = len+1
         $("#alerts-length").val(len);
         return len
