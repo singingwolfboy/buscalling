@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Copyright (c) 2009 Twilio, Inc.
 
@@ -23,17 +24,19 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 """
 
-__VERSION__ = "2.0.8"
+__VERSION__ = "2.0.10"
 
 import urllib, urllib2, base64, hmac
 from hashlib import sha1
-from xml.sax.saxutils import escape, quoteattr
+from xml.dom.minidom import Document
 
 try:
     from google.appengine.api import urlfetch
     APPENGINE = True
 except:
     APPENGINE = False
+
+_TWILIO_API_URL = 'https://api.twilio.com'
 
 class TwilioException(Exception): pass
 
@@ -48,7 +51,7 @@ class HTTPErrorProcessor(urllib2.HTTPErrorProcessor):
                 'http', request, response, code, msg, hdrs)
         return response
 
-class HTTPErrorAppEngine(urllib2.HTTPError): pass
+class HTTPErrorAppEngine(Exception): pass
 
 class TwilioUrlRequest(urllib2.Request):
     def get_method(self):
@@ -62,24 +65,18 @@ class Account(object):
     standalone python applications using the urllib/urlib2 libraries and
     inside Google App Engine applications using urlfetch.
     """
-    def __init__(self, id, token, test=False):
-        """initialize a Twilio account object
-        
+    def __init__(self, id, token):
+        """initialize a twilio account object
+
         id: Twilio account SID/ID
         token: Twilio account token
-        test: if False, use the real Twilio API. If True, use the fake Twilio
-          testing API hosted at https://twilioapi.appspot.com
-        
+
         returns a Twilio account object
         """
         self.id = id
         self.token = token
         self.opener = None
-        if test:
-            self.api_url = "https://twilioapi.appspot.com"
-        else:
-            self.api_url = "https://api.twilio.com"
-    
+
     def _build_get_uri(self, uri, params):
         if params and len(params) > 0:
             if uri.find('?') > 0:
@@ -89,13 +86,13 @@ class Account(object):
             else:
                 uri = uri + '?' + urllib.urlencode(params)
         return uri
-    
+
     def _urllib2_fetch(self, uri, params, method=None):
         # install error processor to handle HTTP 201 response correctly
         if self.opener == None:
             self.opener = urllib2.build_opener(HTTPErrorProcessor)
             urllib2.install_opener(self.opener)
-        
+
         if method and method == 'GET':
             uri = self._build_get_uri(uri, params)
             req = TwilioUrlRequest(uri)
@@ -103,45 +100,42 @@ class Account(object):
             req = TwilioUrlRequest(uri, urllib.urlencode(params))
             if method and (method == 'DELETE' or method == 'PUT'):
                 req.http_method = method
-        
+
         authstring = base64.encodestring('%s:%s' % (self.id, self.token))
         authstring = authstring.replace('\n', '')
         req.add_header("Authorization", "Basic %s" % authstring)
-        
+
         response = urllib2.urlopen(req)
         return response.read()
-    
+
     def _appengine_fetch(self, uri, params, method):
         if method == 'GET':
             uri = self._build_get_uri(uri, params)
-        
+
         try:
             httpmethod = getattr(urlfetch, method)
         except AttributeError:
             raise NotImplementedError(
                 "Google App Engine does not support method '%s'" % method)
-        
+
         authstring = base64.encodestring('%s:%s' % (self.id, self.token))
         authstring = authstring.replace('\n', '')
-        payload = urllib.urlencode(params)
-        headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic %s' % authstring
-        }
-        r = urlfetch.fetch(url=uri, payload=payload,
-            method=httpmethod, headers=headers)
+        r = urlfetch.fetch(url=uri, payload=urllib.urlencode(params),
+            method=httpmethod,
+            headers={'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic %s' % authstring})
         if r.status_code >= 300:
-            raise HTTPErrorAppEngine(r.final_url, r.status_code,
-                r.content, r.headers, None)
+            raise HTTPErrorAppEngine("HTTP %s: %s" % \
+                (r.status_code, r.content))
         return r.content
-    
+
     def request(self, path, method=None, vars={}):
         """sends a request and gets a response from the Twilio REST API
-        
+
         path: the URL (relative to the endpoint URL, after the /v1
         url: the HTTP method to use, defaults to POST
         vars: for POST or PUT, a dict of data to send
-        
+
         returns Twilio response in XML or raises an exception on error
         """
         if not path or len(path) < 1:
@@ -149,12 +143,12 @@ class Account(object):
         if method and method not in ['GET', 'POST', 'DELETE', 'PUT']:
             raise NotImplementedError(
                 'HTTP %s method not implemented' % method)
-        
+
         if path[0] == '/':
-            uri = self.api_url + path
+            uri = _TWILIO_API_URL + path
         else:
-            uri = _self.api_url + '/' + path
-        
+            uri = _TWILIO_API_URL + '/' + path
+
         if APPENGINE:
             return self._appengine_fetch(uri, vars, method)
         return self._urllib2_fetch(uri, vars, method)
@@ -169,33 +163,42 @@ class Verb(object):
         self.name = self.__class__.__name__
         self.body = None
         self.nestables = None
-        
+
         self.verbs = []
         self.attrs = {}
         for k, v in kwargs.items():
             if k == "sender": k = "from"
-            if v: self.attrs[k] = quoteattr(str(v))
-    
+            if v != None: self.attrs[k] = unicode(v)
+
     def __repr__(self):
-        s = '<%s' % self.name
+        """
+        String representation of an verb
+        """
+        doc = Document()
+        return self._xml(doc).toxml()
+
+    def _xml(self, root):
+        """
+        Return an XML element representing this verb
+        """
+        verb = root.createElement(self.name)
+
+        # Add attributes
         keys = self.attrs.keys()
         keys.sort()
         for a in keys:
-            s += ' %s=%s' % (a, self.attrs[a])
-        if self.body or len(self.verbs) > 0:
-            s += '>'
-            if self.body:
-                s += escape(self.body)
-            if len(self.verbs) > 0:
-                s += '\n'
-                for v in self.verbs:
-                    for l in str(v)[:-1].split('\n'):
-                        s += "\t%s\n" % l
-            s += '</%s>\n' % self.name
-        else:
-            s += '/>\n'
-        return s
-    
+            verb.setAttribute(a, self.attrs[a])
+
+        if self.body:
+            text = root.createTextNode(self.body)
+            verb.appendChild(text)
+
+        for c in self.verbs:
+            verb.appendChild(c._xml(root))
+
+        return verb
+
+
     def append(self, verb):
         if not self.nestables:
             raise TwilioException("%s is not nestable" % self.name)
@@ -204,56 +207,59 @@ class Verb(object):
                 (verb.name, self.name))
         self.verbs.append(verb)
         return verb
-    
+
     def asUrl(self):
         return urllib.quote(str(self))
-    
+
     def addSay(self, text, **kwargs):
         return self.append(Say(text, **kwargs))
-    
+
     def addPlay(self, url, **kwargs):
         return self.append(Play(url, **kwargs))
-    
+
     def addPause(self, **kwargs):
         return self.append(Pause(**kwargs))
-    
+
     def addRedirect(self, url=None, **kwargs):
-        return self.append(Redirect(url, **kwargs))   
-    
+        return self.append(Redirect(url, **kwargs))
+
     def addHangup(self, **kwargs):
-        return self.append(Hangup(**kwargs)) 
-    
+        return self.append(Hangup(**kwargs))
+
+    def addReject(self, **kwargs):
+        return self.append(Reject(**kwargs))
+
     def addGather(self, **kwargs):
         return self.append(Gather(**kwargs))
-    
+
     def addNumber(self, number, **kwargs):
         return self.append(Number(number, **kwargs))
-    
+
     def addDial(self, number=None, **kwargs):
         return self.append(Dial(number, **kwargs))
-    
+
     def addRecord(self, **kwargs):
         return self.append(Record(**kwargs))
-    
+
     def addConference(self, name, **kwargs):
         return self.append(Conference(name, **kwargs))
-        
+
     def addSms(self, msg, **kwargs):
         return self.append(Sms(msg, **kwargs))
 
 class Response(Verb):
     """Twilio response object.
-    
+
     version: Twilio API version e.g. 2008-08-01
     """
     def __init__(self, version=None, **kwargs):
         Verb.__init__(self, version=version, **kwargs)
         self.nestables = ['Say', 'Play', 'Gather', 'Record', 'Dial',
-            'Redirect', 'Pause', 'Hangup', 'Sms']
+            'Redirect', 'Pause', 'Hangup', 'Reject', 'Sms']
 
 class Say(Verb):
     """Say text
-    
+
     text: text to say
     voice: MAN or WOMAN
     language: language to use
@@ -261,12 +267,12 @@ class Say(Verb):
     """
     MAN = 'man'
     WOMAN = 'woman'
-    
+
     ENGLISH = 'en'
     SPANISH = 'es'
     FRENCH = 'fr'
     GERMAN = 'de'
-    
+
     def __init__(self, text, voice=None, language=None, loop=None, **kwargs):
         Verb.__init__(self, voice=voice, language=language, loop=loop,
             **kwargs)
@@ -274,7 +280,7 @@ class Say(Verb):
         if voice and (voice != self.MAN and voice != self.WOMAN):
             raise TwilioException( \
                 "Invalid Say voice parameter, must be 'man' or 'woman'")
-        if language and (language != self.ENGLISH and language != self.SPANISH 
+        if language and (language != self.ENGLISH and language != self.SPANISH
             and language != self.FRENCH and language != self.GERMAN):
             raise TwilioException( \
                 "Invalid Say language parameter, must be " + \
@@ -282,7 +288,7 @@ class Say(Verb):
 
 class Play(Verb):
     """Play audio file at a URL
-    
+
     url: url of audio file, MIME type on file must be set correctly
     loop: number of time to say this text
     """
@@ -292,7 +298,7 @@ class Play(Verb):
 
 class Pause(Verb):
     """Pause the call
-    
+
     length: length of pause in seconds
     """
     def __init__(self, length=None, **kwargs):
@@ -300,12 +306,12 @@ class Pause(Verb):
 
 class Redirect(Verb):
     """Redirect call flow to another URL
-    
+
     url: redirect url
     """
     GET = 'GET'
     POST = 'POST'
-    
+
     def __init__(self, url=None, method=None, **kwargs):
         Verb.__init__(self, method=method, **kwargs)
         if method and (method != self.GET and method != self.POST):
@@ -321,7 +327,7 @@ class Hangup(Verb):
 
 class Gather(Verb):
     """Gather digits from the caller's keypad
-    
+
     action: URL to which the digits entered will be sent
     method: submit to 'action' url using GET or POST
     numDigits: how many digits to gather before returning
@@ -333,7 +339,7 @@ class Gather(Verb):
 
     def __init__(self, action=None, method=None, numDigits=None, timeout=None,
         finishOnKey=None, **kwargs):
-        
+
         Verb.__init__(self, action=action, method=method,
             numDigits=numDigits, timeout=timeout, finishOnKey=finishOnKey,
             **kwargs)
@@ -344,7 +350,7 @@ class Gather(Verb):
 
 class Number(Verb):
     """Specify phone number in a nested Dial element.
-    
+
     number: phone number to dial
     sendDigits: key to press after connecting to the number
     """
@@ -354,7 +360,7 @@ class Number(Verb):
 
 class Sms(Verb):
     """ Send a Sms Message to a phone number
-    
+
     to: whom to send message to, defaults based on the direction of the call
     sender: whom to send message from.
     action: url to request after the message is queued
@@ -363,7 +369,7 @@ class Sms(Verb):
     """
     GET = 'GET'
     POST = 'POST'
-    
+
     def __init__(self, msg, to=None, sender=None, method=None, action=None,
         statusCallback=None, **kwargs):
         Verb.__init__(self, action=action, method=method, to=to, sender=sender,
@@ -375,8 +381,8 @@ class Sms(Verb):
 
 class Conference(Verb):
     """Specify conference in a nested Dial element.
-    
-    name: friendly name of conference 
+
+    name: friendly name of conference
     muted: keep this participant muted (bool)
     beep: play a beep when this participant enters/leaves (bool)
     startConferenceOnEnter: start conf when this participants joins (bool)
@@ -386,7 +392,7 @@ class Conference(Verb):
     """
     GET = 'GET'
     POST = 'POST'
-    
+
     def __init__(self, name, muted=None, beep=None,
         startConferenceOnEnter=None, endConferenceOnExit=None, waitUrl=None,
         waitMethod=None, **kwargs):
@@ -401,13 +407,13 @@ class Conference(Verb):
 
 class Dial(Verb):
     """Dial another phone number and connect it to this call
-    
+
     action: submit the result of the dial to this URL
     method: submit to 'action' url using GET or POST
     """
     GET = 'GET'
     POST = 'POST'
-    
+
     def __init__(self, number=None, action=None, method=None, **kwargs):
         Verb.__init__(self, action=action, method=method, **kwargs)
         self.nestables = ['Number', 'Conference']
@@ -422,7 +428,7 @@ class Dial(Verb):
 
 class Record(Verb):
     """Record audio from caller
-    
+
     action: submit the result of the dial to this URL
     method: submit to 'action' url using GET or POST
     maxLength: maximum number of seconds to record
@@ -430,9 +436,9 @@ class Record(Verb):
     """
     GET = 'GET'
     POST = 'POST'
-    
-    def __init__(self, action=None, method=None, maxLength=None, 
-        timeout=None, **kwargs):
+
+    def __init__(self, action=None, method=None, maxLength=None,
+                 timeout=None, **kwargs):
         Verb.__init__(self, action=action, method=method, maxLength=maxLength,
             timeout=timeout, **kwargs)
         if method and (method != self.GET and method != self.POST):
@@ -441,12 +447,12 @@ class Record(Verb):
 
 class Reject(Verb):
     """Reject an incoming call
-    
+
     reason: message to play when rejecting a call
     """
     REJECTED = 'rejected'
     BUSY = 'busy'
-    
+
     def __init__(self, reason=None, **kwargs):
         Verb.__init__(self, reason=reason, **kwargs)
         if reason and (reason != self.REJECTED and reason != self.BUSY):
@@ -459,31 +465,31 @@ class Reject(Verb):
 class Utils(object):
     def __init__(self, id, token):
         """initialize a twilio utility object
-        
+
         id: Twilio account SID/ID
         token: Twilio account token
-        
+
         returns a Twilio util object
         """
         self.id = id
         self.token = token
-    
+
     def validateRequest(self, uri, postVars, expectedSignature):
         """validate a request from twilio
-        
+
         uri: the full URI that Twilio requested on your server
         postVars: post vars that Twilio sent with the request
         expectedSignature: signature in HTTP X-Twilio-Signature header
-        
+
         returns true if the request passes validation, false if not
         """
-        
+
         # append the POST variables sorted by key to the uri
         s = uri
         if len(postVars) > 0:
             for k, v in sorted(postVars.items()):
                 s += k + v
-        
+
         # compute signature and compare signatures
         return (base64.encodestring(hmac.new(self.token, s, sha1).digest()).\
             strip() == expectedSignature)
