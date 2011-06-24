@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 """
 This file is run at the very beginning of every dynamic request. Note
 that the first thing it must do is alter sys.path so that App Engine

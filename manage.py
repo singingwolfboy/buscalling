@@ -1,4 +1,5 @@
 #!/opt/local/bin/python2.5
+from __future__ import absolute_import
 import sys
 from main import get_updated_sys_path
 sys.path = get_updated_sys_path()
@@ -17,7 +18,8 @@ apiproxy_stub_map.apiproxy.RegisterStub('mail', mail_stub.MailServiceStub())
 
 from flaskext.script import Shell, Manager
 
-from buscall import app, models, views, forms
+from buscall import app
+from buscall import models, views, forms
 from google.appengine.ext import db
 
 from credentials import SECRET_KEY

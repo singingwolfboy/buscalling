@@ -1,10 +1,7 @@
 from buscall import app
 from flask import render_template, request, flash, redirect, url_for
 from .nextbus import show_agency, routes_for_agency, show_route, predict_for_stop
-try:
-    from .twilio import call_prediction
-except AttributeError:
-    print("Could not import Twilio call_prediction view: ignoring.")
+from .twilio import call_prediction
 from .listener import index_listeners
 from buscall.models import WaitlistEntry
 from buscall.forms import WaitlistForm

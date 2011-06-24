@@ -1,16 +1,14 @@
+from __future__ import absolute_import
+
 from buscall import app
-import twilio_api as tw
+from twilio_api import Account, HTTPErrorAppEngine
 import simplejson as json
 from google.appengine.api import users
-from ..decorators import login_required
+from buscall.decorators import login_required
+from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
 
 API_VERSION = "2010-04-01"
-TESTING = False
-
-if TESTING:
-	from ..credentials.test import (account, ACCOUNT_SID, PHONE_NUMBER)
-else:
-	from ..credentials import (account, ACCOUNT_SID, PHONE_NUMBER)
+account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)
 
 @app.route("/call/<route_id>/<stop_id>/<phone_num>")
 @login_required
@@ -32,7 +30,7 @@ def call_prediction(route_id, stop_id, phone_num):
 		app.logger.info(call_json)
 		call = json.loads(call_json)
 		return "Now calling %s with call ID %s" % (call['to'], call['sid'])
-	except tw.HTTPErrorAppEngine, e:
+	except HTTPErrorAppEngine, e:
 		app.logger.error(e)
 		try:
 			err = json.loads(e.msg)

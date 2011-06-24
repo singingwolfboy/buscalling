@@ -1,7 +1,7 @@
-import twilio_api as tw
+from twilio_api import Response
 
 def get_twiml(prediction):
-    r = tw.Response()
+    r = Response()
     buses = prediction['buses']
     if len(buses) == 0:
         r.addSay("No buses predicted.", language="en")

@@ -1,6 +1,7 @@
 from buscall import app
 from flask import render_template, Response
-from buscall.models import nextbus, twilio
+from buscall.models import nextbus
+from buscall.models.twilio import get_twiml
 import simplejson as json
 from buscall.models.nextbus import AGENCIES
 try:
@@ -49,7 +50,7 @@ def show_route(agency_id, route_id, format="html"):
 def predict_for_stop(agency_id, route_id, stop_id, format="html"):
     prediction = nextbus.get_prediction(agency_id, route_id, stop_id)
     if format.lower() == "twiml":
-        twiml = twilio.get_twiml(prediction)
+        twiml = get_twiml(prediction)
         return Response(twiml, mimetype="text/xml")
     elif format.lower() == "json":
         return render_json(prediction)
