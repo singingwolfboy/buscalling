@@ -44,12 +44,9 @@
         <input type="hidden" name="{{form.alerts.id}}-length" id="{{form.alerts.id}}-length" value="{{form.alerts.entries|length}}" />
         <ul id="alerts-list">
         {% for alert in form.alerts.entries %}
-            <li>
-            {{ with_errors(alert.minutes) }}
-            {{ with_errors(alert.medium) }}
-            {% if not loop.first %}
-                <a href="" id="{{alert.id}}-remove">Remove Alert</a>
-            {% endif %}
+            <li id="{{alert.id}}">
+                {{ with_errors(alert.minutes, class="form_field alerts-minutes") }}
+                {{ with_errors(alert.medium,  class="form_field alerts-medium") }}
             </li>
         {% endfor %}
         </ul>

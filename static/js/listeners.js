@@ -111,16 +111,21 @@ $().ready(function() {
     var setAttr = function(value) {
         return function (i, oldAttr) {
             if(oldAttr) {
-                return oldAttr.replace(/-\d+-/, "-"+value+"-");
+                return oldAttr.replace(/-\d+-/, "-"+value+"-").replace(/-\d+$/, "-"+value);
             }
         }
     }
     $("#add-alert").click(function () {
         var len = parseInt($("#alerts-length").val(), 10),
             new_alert = $("#alerts-list li:first-child").clone(),
-            replaceFun = setAttr(len);
-        $("*", new_alert).attr("id", setAttr(len)).attr("name", replaceFun).attr("for", replaceFun);
-        $("#alerts-"+len+"-minutes".format(len), new_alert).val("");
+            elmts = new_alert.find("*").andSelf(),
+            setLen = setAttr(len);
+        console.log(elmts);
+        $.each(["id", "name", "for"], function(i, attrName) {
+            elmts.attr(attrName, setLen);
+        })
+
+        $("#alerts-"+len+"-minutes", new_alert).val("");
         $("#alerts-list").append(new_alert);
         len = len+1
         $("#alerts-length").val(len);
