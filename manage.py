@@ -22,7 +22,7 @@ from buscall import app
 from buscall import models, views, forms
 from google.appengine.ext import db
 
-from credentials import SECRET_KEY
+from buscall.credentials import SECRET_KEY
 app.secret_key = SECRET_KEY
 
 def _make_context():
