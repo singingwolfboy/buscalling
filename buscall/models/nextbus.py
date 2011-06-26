@@ -155,12 +155,13 @@ def get_route_directions(route):
     return directions
 
 @cache.memoize(timeout=20)
-def get_prediction(agency_id, route_id, stop_id):
+def get_predictions(agency_id, route_id, direction_id, stop_id):
     "Each physical stop has multiple IDs, depending on the bus direction."
     rpc = urlfetch.create_rpc()
     url = RPC_URL + url_params({
         "a": agency_id,
         "r": route_id,
+        "d": direction_id,
         "s": stop_id,
         "command": "predictions",
     })

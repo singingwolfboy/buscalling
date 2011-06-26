@@ -1,5 +1,6 @@
 from google.appengine.api import users
 from google.appengine.ext import db
+from buscall.models.nextbus import get_predictions
 from buscall.util import DAYS_OF_WEEK
 try:
     from itertools import compress
@@ -62,6 +63,10 @@ class BusListener(db.Model):
             days = compress(day_names, day_vals)
 
         return ", ".join(days)
+    
+    def get_predictions(self):
+        "Use the Nextbus API to get route prediction information."
+        return get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
 
 class BusAlert(db.Model):
     listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
