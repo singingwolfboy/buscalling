@@ -64,6 +64,21 @@ class BusListener(db.Model):
 
         return ", ".join(days)
     
+    def __str__(self):
+        values = {}
+        for prop in self.properties().keys():
+            values[prop] = getattr(self, prop, None)
+        for time in [u'start', u'end']:
+            try:
+                values[time] = values[time].time()
+            except AttributeError:
+                pass
+        values[u'class'] = self.__class__.__name__
+        values[u'repeat'] = self.repeat_descriptor
+        return "%(class)s for %(user)s: %(agency_id)s %(route_id)s " \
+            "%(direction_id)s %(stop_id)s %(start)s-%(end)s %(repeat)s" \
+            % values
+    
     def get_predictions(self):
         "Use the Nextbus API to get route prediction information."
         return get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
