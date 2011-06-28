@@ -1,11 +1,17 @@
 #!/opt/local/bin/python2.5
 from __future__ import absolute_import
-from os import path
+import os
 import sys
-root_path = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
-lib_path = path.join(root_path, 'lib')
+dirname = os.path.dirname
+root_path = dirname(dirname(dirname(os.path.abspath(__file__))))
+lib_path = os.path.join(root_path, 'lib')
 sys.path.insert(0, lib_path)
 sys.path.insert(0, root_path)
+
+# flush old data
+from buscall.util import DATASTORE_FILE
+if os.path.exists(DATASTORE_FILE):
+    os.remove(DATASTORE_FILE)
 
 from buscall.util import setup_for_testing
 setup_for_testing()
