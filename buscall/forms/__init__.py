@@ -34,7 +34,6 @@ class BusListenerForm(Form):
     stop_id = StopField("Stop",
         id="stop", validators=[Required()])
     start = TimeField("Start Checking", validators=[Required()])
-    end = TimeField("Stop Checking", validators=[Required()])
     alerts = FieldList(FormField(AlertForm), min_entries=1)
     sun = BooleanField()
     mon = BooleanField()

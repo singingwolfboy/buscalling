@@ -1,7 +1,7 @@
-from google.appengine.api import users
+from google.appengine.api import users, mail
 from google.appengine.ext import db
-from buscall.models.nextbus import get_predictions
-from buscall.util import DAYS_OF_WEEK
+from buscall.models.nextbus import AGENCIES, get_predictions, get_route
+from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
 try:
     from itertools import compress
 except ImportError:
@@ -20,9 +20,13 @@ class BusListener(db.Model):
     direction_id = db.StringProperty(required=False)
     stop_id = db.StringProperty(required=True)
 
-    # when to start and stop listening
+    # when to start listening
+    # App Engine doesn't allow inequality filters on multiple entities
+    # (such as time is after start and time is before end)
+    # so instead we'll use a boolean to determine whether this needs to be checked
     start = db.TimeProperty(required=True)
-    end   = db.TimeProperty(required=True)
+    # when all your alerts have been satisfied, set seen=True
+    seen  = db.BooleanProperty(required=True, default=False)
 
     # day of week: since we'll be sorting by this,
     # it actually makes sense to keep them as separate properties
@@ -64,11 +68,27 @@ class BusListener(db.Model):
 
         return ", ".join(days)
     
+    @property
+    def agency(self):
+        return AGENCIES[self.agency_id]
+    
+    @property
+    def route(self):
+        return get_route(self.agency_id, self.route_id)
+    
+    @property
+    def direction(self):
+        return self.route['directions'][self.direction_id]
+    
+    @property
+    def stop(self):
+        return self.route['stops'][self.stop_id]
+    
     def __str__(self):
         values = {}
         for prop in self.properties().keys():
             values[prop] = getattr(self, prop, None)
-        for time in [u'start', u'end']:
+        for time in [u'start']:
             try:
                 values[time] = values[time].time()
             except AttributeError:
@@ -76,7 +96,7 @@ class BusListener(db.Model):
         values[u'class'] = self.__class__.__name__
         values[u'repeat'] = self.repeat_descriptor
         return "%(class)s for %(user)s: %(agency_id)s %(route_id)s " \
-            "%(direction_id)s %(stop_id)s %(start)s-%(end)s %(repeat)s" \
+            "%(direction_id)s %(stop_id)s %(start)s %(repeat)s" \
             % values
     
     def get_predictions(self):
@@ -87,3 +107,25 @@ class BusAlert(db.Model):
     listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
     minutes = db.IntegerProperty(required=True)
     medium = db.StringProperty(choices=[k for k,v in ALERT_CHOICES], required=True)
+    executed = db.BooleanProperty(required=True, default=False)
+
+    def execute(self, minutes=None):
+        "minutes parameter is the actual prediction time"
+        route = get_route(self.listener.agency_id, self.listener.route_id)
+        stop = route.stops.getattr(self.listener.stop_id)
+        if minutes is None:
+            minutes = self.minutes
+
+        if self.medium == "email":
+            subject = "ALERT: %s bus, %s" % (route.title, stop.title)
+            body = "Your bus is coming in %d minutes." % (minutes)
+            mail.send_mail(sender=MAIL_SENDER,
+                to=self.listener.user.email(),
+                subject=subject, body=body)
+        else:
+            raise NotImplementedError
+        
+        self.executed = True
+        
+
+

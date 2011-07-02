@@ -32,13 +32,14 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     if form.validate_on_submit():
         params = {
             "user": users.get_current_user(),
+            "seen": False,
         }
-        for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'end', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):
+        for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):
             params[param] = form.data[param]
         listener = BusListener(**params)
         listener.put()
         for alert_data in form.data['alerts']:
-            alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'])
+            alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
             alert.put()
 
         flash("Listener created!")
@@ -54,7 +55,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
 def make_js_model(agency_id=None, route_id=None, direction_id=None, stop_id=None):
     model = OrderedDict()
     for key, value in AGENCIES.items():
-        model[key] = {"name": value}
+        model[key] = {"title": value['title']}
     
     if agency_id in AGENCIES:
         routes = get_routes(agency_id)

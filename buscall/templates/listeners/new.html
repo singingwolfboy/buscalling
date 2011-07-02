@@ -17,7 +17,6 @@
     <fieldset id="time-info">
         <legend>Time</legend>
         {{ with_errors(form.start, placeholder="07:00:00") }}
-        {{ with_errors(form.end) }}
 
         <div class="form_field week">
             {% if form.errors.week %}
