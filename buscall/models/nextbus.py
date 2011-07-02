@@ -12,7 +12,7 @@ except ImportError:
 from buscall.util import url_params, clean_booleans
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
-AGENCIES = {'mbta': "MBTA"}
+AGENCIES = {'mbta': {'title': "MBTA"}}
 
 class NextbusError(Exception):
     def __init__(self, message, shouldRetry):

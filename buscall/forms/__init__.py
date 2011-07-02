@@ -22,8 +22,10 @@ class AlertForm(Form):
         kwargs['csrf_enabled'] = False
         super(AlertForm, self).__init__(*args, **kwargs)
 
+agency_choices = [('','')] + [(key, val['title']) for (key, val) in AGENCIES.items()]
+
 class BusListenerForm(Form):
-    agency_id = SelectField("Agency", choices=[('', '')] + [(key, val) for (key, val) in AGENCIES.items()],
+    agency_id = SelectField("Agency", choices=agency_choices,
         id="agency", validators=[Required()])
     route_id = RouteField("Route",
         id="route", validators=[Required()])
