@@ -7,7 +7,7 @@
 {% if listeners %}
 <ul>
 {% for l in listeners %}
-    <li>{{l.route_id}}, {{l.stop_id}} between {{l.start}} and {{l.end}}; {{l.repeat_descriptor}}</li>
+    <li>{{l.agency.title}} route {{l.route.title}} at {{l.stop.title}} towards {{l.direction.title}}, starting at {{l.start}}; {{l.repeat_descriptor}}</li>
 {% endfor %}
 </ul>
 {% else %}
