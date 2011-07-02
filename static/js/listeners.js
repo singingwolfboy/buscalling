@@ -77,36 +77,6 @@ $().ready(function() {
         defaultSelected: "07:00",
     });
 
-    var check_end_before_start = function() {
-        var startTime = $.timePicker("#start").getTime(),
-            endTime = $.timePicker("#end").getTime();
-        if(endTime < startTime) {
-            $("#start, #end").addClass("error");
-        } else {
-            $("#start, #end").removeClass("error");
-        }
-    };
-
-    // Default to half hour between inputs.
-    $("#start").change(function() {
-        if($("#end").val()) {
-            check_end_before_start()
-        } else {
-            var d = new Date();
-            d.setTime($.timePicker(this).getTime().getTime() + (30*60*1000))
-            $.timePicker("#end").setTime(d)
-        }
-    })
-    $("#end").change(function() {
-        if($("#start").val()) {
-            check_end_before_start()
-        } else {
-            var d = new Date();
-            d.setTime($.timePicker(this).getTime().getTime() - (30*60*1000))
-            $.timePicker("#start").setTime(d)
-        }
-    })
-
     // Alerts
     var setAttr = function(value) {
         return function (i, oldAttr) {
