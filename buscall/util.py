@@ -5,9 +5,15 @@ class GqlQuery(TruthyGqlQuery):
         return self.count(1) != 0
 
 DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
 
-def url_params(url_info):
-    return "&".join(["%s=%s" % (key, val) for (key, val) in url_info.items()])
+def url_params(params):
+    try:
+        # if we were passed a dictionary, convert it into a list of tuples
+        params = params.items()
+    except AttributeError:
+        pass
+    return "&".join(["%s=%s" % (key, val) for (key, val) in params])
 
 def clean_booleans(d):
     for key in d.keys():
@@ -25,21 +31,18 @@ def clean_booleans(d):
 APP_ID = u'buscalling'
 DATASTORE_FILE = '/tmp/appengine-datastore' # or /dev/null
 AUTH_DOMAIN = 'gmail.com'
-LOGGED_IN_USER = {
-    # set to blanks for no logged in user 
-    'EMAIL': 'test@example.com',
-    'ID': '123456',
-    'ADMIN?': '0', # set to 1 for admin user
-}
+LOGGED_IN_USER = 'test@example.com' # set to '' for no logged in user 
+LOGGED_IN_USER_ID = '123456'
+LOGGED_IN_USER_ADMIN = '0' # set to '1' for admin user
 
 def setup_for_testing():
     "Do all setup assuming that sys.path has already been fixed"
     import os
     os.environ['APPLICATION_ID'] = APP_ID
     os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
-    os.environ['USER_EMAIL'] = LOGGED_IN_USER['EMAIL']
-    os.environ['USER_ID'] = LOGGED_IN_USER['ID']
-    os.environ['USER_IS_ADMIN'] = LOGGED_IN_USER['ADMIN?']
+    os.environ['USER_EMAIL'] = LOGGED_IN_USER
+    os.environ['USER_ID'] = LOGGED_IN_USER_ID
+    os.environ['USER_IS_ADMIN'] = LOGGED_IN_USER_ADMIN
 
     # set up appengine modules: http://groups.google.com/group/google-appengine/browse_thread/thread/7c7cd1babc4484d
     from google.appengine.api import urlfetch_stub

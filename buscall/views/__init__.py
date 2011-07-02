@@ -3,6 +3,7 @@ from flask import render_template, request, flash, redirect, url_for
 from .nextbus import show_agency, routes_for_agency, show_route, predict_for_stop
 from .twilio import call_prediction
 from .listener import index_listeners
+from buscall.util import MAIL_SENDER
 from buscall.models import WaitlistEntry
 from buscall.forms import WaitlistForm
 from google.appengine.api import memcache, mail
@@ -44,7 +45,7 @@ def lander():
         except AttributeError:
             lat = None
             lon = None
-        mail.send_mail(sender="Bus Calling <noreply@buscalling.appspotmail.com>",
+        mail.send_mail(sender=MAIL_SENDER,
             to="David Baumgold <singingwolfboy@gmail.com>",
             subject="New waitlist email: " + email,
             body=ALERT_MAIL_BODY % (email, ip, lat, lon))
