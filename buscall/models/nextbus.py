@@ -8,7 +8,7 @@ from functools import wraps
 try:
     from collections import OrderedDict
 except ImportError:
-    from ordereddict import OrderedDict
+    from collections_backport import OrderedDict
 from buscall.util import url_params, clean_booleans
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"

@@ -110,14 +110,10 @@ from decimal import Decimal
 
 from decoder import JSONDecoder, JSONDecodeError
 from encoder import JSONEncoder
-def _import_OrderedDict():
-    import collections
-    try:
-        return collections.OrderedDict
-    except AttributeError:
-        import ordered_dict
-        return ordered_dict.OrderedDict
-OrderedDict = _import_OrderedDict()
+try:
+    from collections import OrderedDict
+except ImportError:
+    from collections_backport import OrderedDict
 
 def _import_c_make_encoder():
     try:

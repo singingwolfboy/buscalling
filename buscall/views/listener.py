@@ -10,7 +10,7 @@ import simplejson as json
 try:
     from collections import OrderedDict
 except ImportError:
-    from ordereddict import OrderedDict
+    from collections_backport import OrderedDict
 
 @app.route('/listeners')
 @login_required

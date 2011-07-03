@@ -7,7 +7,7 @@ from buscall.models.nextbus import AGENCIES
 try:
     from collections import OrderedDict
 except ImportError:
-    from ordereddict import OrderedDict
+    from collections_backport import OrderedDict
 
 def render_json(obj):
     if isinstance(obj, OrderedDict):
