@@ -15,6 +15,6 @@ from fixture import GoogleDatastoreFixture
 from fixture.style import NamedDataStyle
 
 datafixture = GoogleDatastoreFixture(env=models, style=NamedDataStyle())
-data = datafixture.data(datasets.BusListenerData)
+data = datafixture.data(datasets.BusListenerData, datasets.BusAlertData)
 data.setup()
 print "Data loaded into datastore"

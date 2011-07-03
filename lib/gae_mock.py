@@ -116,7 +116,7 @@ class ServiceTestCase(unittest.TestCase):
     
     # insert new data
     datafixture = GoogleDatastoreFixture(env=models, style=NamedDataStyle())
-    data = datafixture.data(datasets.BusListenerData)
+    data = datafixture.data(datasets.BusListenerData, datasets.BusAlertData)
     data.setup()
   
   @property
