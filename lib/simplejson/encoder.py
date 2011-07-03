@@ -374,7 +374,15 @@ def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
             else:
                 yield buf
                 if isinstance(value, (list, tuple)):
-                    chunks = _iterencode_list(value, _current_indent_level)
+                    ######
+                    # Modified by David Baumgold to support named tuples
+                    # code from http://stackoverflow.com/questions/5906831/serializing-a-python-namedtuple-to-json
+                    if hasattr(value, '_asdict'):
+                        chunks = _iterencode_dict(value._asdict(), _current_indent_level)
+                    else:
+                        chunks = _iterencode_list(value, _current_indent_level)
+                    # end modification
+                    ######
                 elif isinstance(value, dict):
                     chunks = _iterencode_dict(value, _current_indent_level)
                 else:
@@ -453,7 +461,15 @@ def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
                 yield str(value)
             else:
                 if isinstance(value, (list, tuple)):
-                    chunks = _iterencode_list(value, _current_indent_level)
+                    ########
+                    # Modified by David Baumgold to support namedtuples
+                    # code from http://stackoverflow.com/questions/5906831/serializing-a-python-namedtuple-to-json
+                    if hasattr(value, '_asdict'):
+                        chunks = _iterencode_dict(value._asdict(), _current_indent_level)
+                    else:
+                        chunks = _iterencode_list(value, _current_indent_level)
+                    # end modification
+                    #######
                 elif isinstance(value, dict):
                     chunks = _iterencode_dict(value, _current_indent_level)
                 else:
@@ -481,8 +497,17 @@ def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
         elif isinstance(o, float):
             yield _floatstr(o)
         elif isinstance(o, (list, tuple)):
-            for chunk in _iterencode_list(o, _current_indent_level):
-                yield chunk
+            #########
+            # Modified by David Baumgold to support namedtuples
+            # code from http://stackoverflow.com/questions/5906831/serializing-a-python-namedtuple-to-json
+            if hasattr(o, '_asdict'):
+                for chunk in _iterencode_dict(o._asdict(), _current_indent_level):
+                    yield chunk
+            else:
+                for chunk in _iterencode_list(o, _current_indent_level):
+                    yield chunk
+            # end modification
+            #########
         elif isinstance(o, dict):
             for chunk in _iterencode_dict(o, _current_indent_level):
                 yield chunk
