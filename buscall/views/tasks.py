@@ -23,9 +23,9 @@ def poll(struct_time=None):
     for listener in listeners:
         predictions = listener.get_predictions()
         for alert in listener.alerts:
-            for bus in predictions.buses:
-                if alert.minutes == bus.minutes:
-                    alert.execute(bus.minutes)
+            for bus in predictions['buses']:
+                if alert.minutes == bus['minutes']:
+                    alert.execute(bus['minutes'])
     
     return redirect(url_for("lander"))
         
