@@ -20,7 +20,12 @@ from google.appengine.api import user_service_stub
 from google.appengine.api.memcache import memcache_stub
 from google.appengine.api.urlfetch_stub import URLFetchServiceStub, \
   _API_CALL_DEADLINE, _API_CALL_VALIDATE_CERTIFICATE_DEFAULT
-from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
+from fixture import GoogleDatastoreFixture
+from fixture.style import NamedDataStyle
+from buscall import models
+from buscall.tests import datasets
+from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER, DATASTORE_FILE
+TEST_DATASTORE_FILE = DATASTORE_FILE + "_test"
 
 class ServiceTestCase(unittest.TestCase):
   ''' 
@@ -95,15 +100,24 @@ class ServiceTestCase(unittest.TestCase):
     os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
     os.environ['USER_EMAIL'] = LOGGED_IN_USER
 
+    # flush old data
+    if os.path.exists(TEST_DATASTORE_FILE):
+      os.remove(TEST_DATASTORE_FILE)
+
     self.urlfetch_stub = ServiceTestCase.UrlFetchStub()
     self.mail_stub = ServiceTestCase.LoggingMailStub()
     self.memcache_stub = memcache_stub.MemcacheServiceStub()
     self.user_stub = user_service_stub.UserServiceStub()
-    self.datastore_v3_stub = datastore_file_stub.DatastoreFileStub(APP_ID, None)
+    self.datastore_v3_stub = datastore_file_stub.DatastoreFileStub(APP_ID, TEST_DATASTORE_FILE)
 
     apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
     for stub_name in ('urlfetch', 'mail', 'memcache', 'user', 'datastore_v3'):
       apiproxy_stub_map.apiproxy.RegisterStub(stub_name, getattr(self, stub_name+"_stub"))
+    
+    # insert new data
+    datafixture = GoogleDatastoreFixture(env=models, style=NamedDataStyle())
+    data = datafixture.data(datasets.BusListenerData)
+    data.setup()
   
   @property
   def mail_messages(self):
