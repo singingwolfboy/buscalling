@@ -1,9 +1,14 @@
 from fixture import DataSet
 import datetime
+import os
 from google.appengine.ext import db
-from google.appengine.api import users
+from google.appengine.api.users import User
 
-test_user = users.User("test@example.com")
+# need to set AUTH_DOMAIN before we can create User objects
+if not 'AUTH_DOMAIN' in os.environ:
+    from buscall.util import AUTH_DOMAIN
+    os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
+test_user = User("test@example.com")
 
 class BusListenerData(DataSet):
     class morning_bus:
@@ -56,7 +61,7 @@ class BusListenerData(DataSet):
 
 class BusAlertData(DataSet):
     class cron_bus_20_min:
-        listener = cron_bus
+        listener = BusListenerData.cron_bus
         minutes = 20
         medium = "email"
         executed = False
