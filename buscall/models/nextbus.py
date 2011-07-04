@@ -23,7 +23,7 @@ DirectionID = namedtuple("DirectionID", ['id', 'title'])
 Stop = namedtuple("Stop", ['id', 'title', 'lat', 'lon'])
 StopID = namedtuple("StopID", ['id', 'title'])
 Point = namedtuple("Point", ['lat', 'lon'])
-Prediction = namedtuple("Prediction", ["buses", "epoch_time", "route", "direction", "stop"])
+Prediction = namedtuple("Prediction", ["buses", "time", "route", "direction", "stop"])
 PredictedBus = namedtuple("PredictedBus", ["minutes", "seconds", "vehicle", "trip_id", "block", "departure", "affectedByLayover"])
 
 
@@ -212,7 +212,7 @@ def parse_predict_xml(tree, direction_id=""):
         # we have predictions
         first_prediction_el = direction_el.find('prediction')
         directionID = DirectionID(first_prediction_el.get('dirTag'), direction_el.get('title'))
-        epoch_time = first_prediction_el.get('epochTime')
+        epoch_time = time.localtime(int(first_prediction_el.get('epochTime')))
 
         buses = []
         for prediction_el in direction_el.findall('prediction'):
@@ -227,9 +227,11 @@ def parse_predict_xml(tree, direction_id=""):
                 if not key in PredictedBus._fields:
                     del bus[key]
             bus = clean_booleans(bus)
+            bus['minutes'] = int(bus['minutes'])
+            bus['seconds'] = int(bus['seconds'])
             buses.append(PredictedBus(**bus))
 
-        return Prediction(buses=buses, epoch_time=epoch_time, route=routeID, direction=directionID, stop=stopID)
+        return Prediction(buses=buses, time=epoch_time, route=routeID, direction=directionID, stop=stopID)
     
     else: # no buses predicted
         directionID = DirectionID(direction_id, predictions_el.get('dirTitleBecauseNoPredictions'))
