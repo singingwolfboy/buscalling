@@ -74,7 +74,7 @@ class BusListener(db.Model):
     
     @property
     def route(self):
-        if not self._route:
+        if not getattr(self, "_route", None):
             self._route = get_route(self.agency_id, self.route_id, use_dicts=True)
         return self._route
     
@@ -111,6 +111,14 @@ class BusAlert(db.Model):
     medium = db.StringProperty(choices=[k for k,v in ALERT_CHOICES], required=True)
     executed = db.BooleanProperty(required=True, default=False)
 
+    def __str__(self):
+        if self.executed:
+            status = "executed"
+        else:
+            status = "not executed"
+        return "%s for <%s>, %d minutes before via %s, %s" % \
+            (self.__class__.__name__, self.listener, self.minutes, self.medium, status)
+
     def execute(self, minutes=None):
         "minutes parameter is the actual prediction time"
         route = self.listener.route
@@ -128,6 +136,3 @@ class BusAlert(db.Model):
             raise NotImplementedError
         
         self.executed = True
-        
-
-
