@@ -1,4 +1,5 @@
 import time
+import datetime
 from google.appengine.ext.db import GqlQuery
 from buscall import app
 from buscall.models.nextbus import get_predictions
@@ -16,11 +17,14 @@ def poll(struct_time=None):
     """
     if struct_time is None:
         struct_time = time.localtime() # current time
+
     # get all currently active listeners
     listeners = GqlQuery("SELECT * FROM BusListener WHERE " +
         DAYS_OF_WEEK[struct_time.tm_wday] + " = True AND start <= :time AND seen = False",
         time="TIME(%d, %d, %d)" % (struct_time.tm_hour, struct_time.tm_min, struct_time.tm_sec))
     for listener in listeners:
+        if not listener.start <= datetime.time(struct_time.tm_hour, struct_time.tm_min, struct_time.tm_sec):
+            continue # should have been filtered out by GqlQuery, but wasn't
         predictions = listener.get_predictions()
         for alert in listener.alerts:
             for bus in predictions.buses:
