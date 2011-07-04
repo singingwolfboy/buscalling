@@ -111,8 +111,8 @@ class BusAlert(db.Model):
 
     def execute(self, minutes=None):
         "minutes parameter is the actual prediction time"
-        route = get_route(self.listener.agency_id, self.listener.route_id)
-        stop = route['stops'][self.listener.stop_id]
+        route = self.listener.route
+        stop = self.listener.stop
         if minutes is None:
             minutes = self.minutes
 
