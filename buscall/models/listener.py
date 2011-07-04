@@ -74,7 +74,9 @@ class BusListener(db.Model):
     
     @property
     def route(self):
-        return get_route(self.agency_id, self.route_id, use_dicts=True)
+        if not self._route:
+            self._route = get_route(self.agency_id, self.route_id, use_dicts=True)
+        return self._route
     
     @property
     def direction(self):
