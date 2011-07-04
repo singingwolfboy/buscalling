@@ -2,16 +2,16 @@ from twilio_api import Response
 
 def get_twiml(prediction):
     r = Response()
-    buses = prediction['buses']
+    buses = prediction.buses
     if len(buses) == 0:
         r.addSay("No buses predicted.", language="en")
         return str(r)
         
     first = buses[0]
-    time = pluralize_minutes(first['minutes'])
+    time = pluralize_minutes(first.minutes)
     say = "%s until %s bus arrives at %s, heading towards %s." % \
-        (time.capitalize(), prediction['route_title'], 
-        prediction['stop_title'], prediction['direction'])
+        (time.capitalize(), prediction.route.title, 
+        prediction.stop.title, prediction.direction.title)
     r.addSay(say, language="en")
     
     if len(buses) == 1:

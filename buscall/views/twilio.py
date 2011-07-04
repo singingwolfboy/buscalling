@@ -10,16 +10,16 @@ from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
 API_VERSION = "2010-04-01"
 account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)
 
-@app.route("/call/<route_id>/<stop_id>/<phone_num>")
+@app.route("/call/<agency_id>/<route_id>/<direction_id>/<stop_id>/<phone_num>")
 @login_required
-def call_prediction(route_id, stop_id, phone_num):
+def call_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
 	user = users.get_current_user()
 	app.logger.info("%s (%s) called %s" % (user.nickname(), user.user_id(), phone_num))
 	call_info = {
 		'From': PHONE_NUMBER,
 		'To': phone_num,
-		'Url': 'http://buscalling.appspot.com/predict/%s/%s.twiml' % \
-			(route_id, stop_id),
+		'Url': 'http://www.buscalling.com/predict/%s/%s/%s/%s.twiml' % \
+			(agency_id, route_id, direction_id, stop_id),
 		'Method': 'GET',
 	}
 	try:
