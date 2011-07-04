@@ -1,9 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <body>
-<h1>Route {{prediction.route_title}}</h1>
-<h2>Stop {{prediction.stop_title}}</h2>
-<h2>Towards {{prediction.direction}}</h2>
+<h1>Route {{prediction.route.title}}</h1>
+<h2>Stop {{prediction.stop.title}}</h2>
+<h2>Towards {{prediction.direction.title}}</h2>
 {% if prediction.buses %}
 <ul>
 	{% for bus in prediction.buses %}

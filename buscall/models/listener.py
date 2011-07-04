@@ -74,15 +74,15 @@ class BusListener(db.Model):
     
     @property
     def route(self):
-        return get_route(self.agency_id, self.route_id)
+        return get_route(self.agency_id, self.route_id, use_dicts=True)
     
     @property
     def direction(self):
-        return self.route['directions'][self.direction_id]
+        return self.route.directions[self.direction_id]
     
     @property
     def stop(self):
-        return self.route['stops'][self.stop_id]
+        return self.route.stops[self.stop_id]
     
     def __str__(self):
         values = {}

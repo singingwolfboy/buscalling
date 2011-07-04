@@ -4,7 +4,7 @@
 <h1>Routes</h1>
 <ul>
 {% for id, info in routes.iteritems() %}
-	<li><a href="{{url_for('show_route', agency_id=agency_id, route_id=id)}}">{{info.title}}</a></li>
+	<li><a href="{{url_for('show_route', agency_id=agency.id, route_id=id)}}">{{info.title}}</a></li>
 {% endfor %}
 </ul>
 </body>

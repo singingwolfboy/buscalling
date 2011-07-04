@@ -25,7 +25,7 @@ $().ready(function() {
     }
     var update_stops = function(agency, route, direction) {
         var stops = [option_blank],
-            dir_stop_list = model[agency].routes[route].directions[direction].stops,
+            dir_stop_list = model[agency].routes[route].directions[direction].stop_ids,
             stop_info = model[agency].routes[route].stops;
         dir_stop_list.forEach(function(id) {
             stops.push(option_template.format(id, stop_info[id]["title"]));

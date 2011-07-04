@@ -50,7 +50,7 @@ class RouteField(SelectField):
         if form.agency_id.data:
             try:
                 routes = get_routes(form.agency_id.data)
-                self.choices = [(id, i['title']) for id, i in routes.iteritems()]
+                self.choices = [(id, route.title) for id, route in routes.iteritems()]
             except NextbusError:
                 pass
         super(RouteField, self).pre_validate(form)
@@ -65,7 +65,7 @@ class DirectionField(SelectField):
         if form.agency_id.data and form.route_id.data:
             try:
                 route_info = get_route(form.agency_id.data, form.route_id.data)
-                self.choices = [(id, i['title']) for id, i in route_info['directions'].items()]
+                self.choices = [(d.id, d.title) for d in route_info.directions]
             except NextbusError:
                 pass
         super(DirectionField, self).pre_validate(form)
@@ -78,12 +78,12 @@ class StopField(SelectField):
 
     def pre_validate(self, form):
         if form.agency_id.data and form.route_id.data and form.direction_id.data:
-            agency = form.agency_id.data
-            route = form.route_id.data
-            direction = form.direction_id.data
+            agency_id = form.agency_id.data
+            route_id = form.route_id.data
+            direction_id = form.direction_id.data
             try:
-                route_info = get_route(agency, route)
-                self.choices = [(id, route_info['stops'][id]['title']) for id in route_info['directions'][direction]['stops']]
+                route = get_route(agency_id, route_id, use_dicts=True)
+                self.choices = [(id, route.stops[id].title) for id in route.directions[direction_id].stop_ids]
             except NextbusError:
                 pass
         super(StopField, self).pre_validate(form)

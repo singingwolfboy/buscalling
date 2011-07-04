@@ -55,11 +55,11 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
 def make_js_model(agency_id=None, route_id=None, direction_id=None, stop_id=None):
     model = OrderedDict()
     for key, value in AGENCIES.items():
-        model[key] = {"title": value['title']}
+        model[key] = {"title": value.title}
     
     if agency_id in AGENCIES:
         routes = get_routes(agency_id)
-        route_list = [(id, route_info['title']) for id, route_info in routes.iteritems()]
+        route_list = [(id, route_info.title) for id, route_info in routes.iteritems()]
         route_dict = OrderedDict()
         for id, title in route_list:
             route_dict[id] = {"title": title}
@@ -67,18 +67,17 @@ def make_js_model(agency_id=None, route_id=None, direction_id=None, stop_id=None
         model[agency_id]["routes"] = route_dict
 
         if route_id in routes:
-            route_info = get_route(agency_id, route_id)
-            directions = route_info['directions']
+            route_info = get_route(agency_id, route_id, use_dicts=True)
+            directions = route_info.directions
             dir_dict = {}
             for id, dir_info in directions.items():
-                del dir_info["useForUI"]
                 dir_dict[id] = dir_info
             model[agency_id]["routes"][route_id]["directions"] = dir_dict
 
-            stops = route_info['stops']
+            stops = route_info.stops
             stop_dict = {}
             for id, stop_info in stops.items():
-                stop_dict[id] = {"title": stop_info["title"]}
+                stop_dict[id] = {"title": stop_info.title}
             stop_dict["_order"] = stop_dict.keys()
             model[agency_id]["routes"][route_id]["stops"] = stop_dict   
     return json.dumps(model)
@@ -95,7 +94,7 @@ def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, di
         form.agency_id.data = agency_id
         # pull the routes already: no need for the extra waiting
         routes = get_routes(agency_id)
-        route_list = [(id, route_info['title']) for id, route_info in routes.iteritems()]
+        route_list = [(id, route_info.title) for id, route_info in routes.iteritems()]
         form.route_id.choices = [('','')] + route_list
 
         if route_id in routes:
@@ -106,9 +105,9 @@ def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, di
             # need to set "data" attribute so that it will render as default
             form.route_id.data = route_id
             # pull the directions already: no need for the extra waiting
-            route_info = get_route(agency_id, route_id)
-            directions = route_info['directions']
-            dir_list = [(dir_id, dir_info['title']) for dir_id, dir_info in directions.items()]
+            route_info = get_route(agency_id, route_id, use_dicts=True)
+            directions = route_info.directions
+            dir_list = [(dir_id, dir_info.title) for dir_id, dir_info in directions.items()]
             form.direction_id.choices = [('','')] + dir_list
 
             if direction_id in directions:
@@ -119,8 +118,8 @@ def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, di
                 # need to set "data" attribute so that it will render as default
                 form.direction_id.data = direction_id
                 # pull the stops already: no need for the extra waiting 
-                stops = route_info['stops']
-                stop_list = [(id, stop_info['title']) for id, stop_info in stops.items()]
+                stops = route_info.stops
+                stop_list = [(id, stop_info.title) for id, stop_info in stops.items()]
                 form.stop_id.choices = [('','')] + stop_list
                 
                 if stop_id in stops:

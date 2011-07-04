@@ -5,14 +5,30 @@ import time
 from decimal import Decimal
 from buscall import cache
 from functools import wraps
+from buscall.util import url_params, clean_booleans
 try:
     from collections import OrderedDict
 except ImportError:
     from collections_backport import OrderedDict
-from buscall.util import url_params, clean_booleans
+try:
+    from collections import namedtuple
+except ImportError:
+    from collections_backport import namedtuple
+
+Agency = namedtuple("Agency", ['id', 'title'])
+Route = namedtuple("Route", ['id', 'title', 'directions', 'stops', 'path', 'latMin', 'latMax', 'lonMin', 'lonMax'])
+RouteID = namedtuple("RouteID", ['id', 'title'])
+Direction = namedtuple("Direction", ['id', 'title', 'name', 'stop_ids'])
+DirectionID = namedtuple("DirectionID", ['id', 'title'])
+Stop = namedtuple("Stop", ['id', 'title', 'lat', 'lon'])
+StopID = namedtuple("StopID", ['id', 'title'])
+Point = namedtuple("Point", ['lat', 'lon'])
+Prediction = namedtuple("Prediction", ["buses", "epoch_time", "route", "direction", "stop"])
+PredictedBus = namedtuple("PredictedBus", ["minutes", "seconds", "vehicle", "trip_id", "block", "departure", "affectedByLayover"])
+
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
-AGENCIES = {'mbta': {'title': "MBTA"}}
+AGENCIES = {'mbta': Agency('mbta', "MBTA")}
 
 class NextbusError(Exception):
     def __init__(self, message, shouldRetry):
@@ -24,11 +40,11 @@ class NextbusError(Exception):
 
 def errcheck_xml(func):
     @wraps(func)
-    def wrapper(tree):
+    def wrapper(tree, *args, **kwargs):
         error = tree.find('Error')
         if error is not None:
             raise NextbusError(error.text.strip(), error.attrib['shouldRetry'])
-        return func(tree)
+        return func(tree, *args, **kwargs)
     return wrapper
 
 
@@ -54,20 +70,16 @@ def get_routes(agency_id):
 def parse_index_xml(tree):
     parsed = OrderedDict()
     for route in tree.findall('route'):
-        info = clean_booleans(route.attrib)
-        if "id" in info:
-            id = info["id"]
-            del info["id"]
-        elif "tag" in info:
-            id = info["tag"]
-            del info["tag"]
-        else:
-            continue
-        parsed[id] = info 
+        route_info = clean_booleans(route.attrib)
+        if "tag" in route_info and "id" not in route_info:
+            route_info['id'] = route_info['tag']
+            del route_info['tag']
+        route = RouteID(**route_info)
+        parsed[route.id] = route
     return parsed
 
 @cache.memoize(timeout=3600)
-def get_route(agency_id, route_id):
+def get_route(agency_id, route_id, use_dicts=False):
     rpc = urlfetch.create_rpc()
     url = RPC_URL + url_params({
         "a": agency_id,
@@ -83,76 +95,89 @@ def get_route(agency_id, route_id):
         logging.error("Download error: " + url)
     
     tree = etree.fromstring(result.content)
-    route = parse_route_xml(tree)
-    # stick ID in, just for good measure
-    route['id'] = route_id
+    route = parse_route_xml(tree, use_dicts)
 
     return route
 
 @errcheck_xml
-def parse_route_xml(tree):
+def parse_route_xml(tree, use_dicts=False):
+    if use_dicts:
+        def add(d, obj):
+            d[obj.id] = obj
+    else:
+        def add(l, obj):
+            l.append(obj)
+
     routeElem = tree.find('route')
     # basic route attributes
-    route = clean_booleans(routeElem.attrib)
-    if "tag" in route and "id" not in route:
-        route['id'] = route['tag']
-        del route['tag']
+    routeDict = clean_booleans(routeElem.attrib)
+    if "tag" in routeDict and "id" not in routeDict:
+        routeDict['id'] = routeDict['tag']
+        del routeDict['tag']
     for tag in ('latMin', 'latMax', 'lonMin', 'lonMax'):
-        if tag in route:
-            route[tag] = Decimal(route[tag])
+        if tag in routeDict:
+            routeDict[tag] = Decimal(routeDict[tag])
 
     # detailed info about stops
-    stops = OrderedDict()
+    if use_dicts:
+        stops = OrderedDict()
+    else:
+        stops = []
     for stop in routeElem.findall("stop"):
         stop_info = stop.attrib
-        stop_id = stop_info['tag']
-        del stop_info['tag']
+        if 'tag' in stop_info and 'id' not in stop_info:
+            stop_info['id'] = stop_info['tag']
+            del stop_info['tag']
         for tag in ('lat', 'lon'):
             if tag in stop_info:
                 stop_info[tag] = Decimal(stop_info[tag])
-        if "stopId" in stop_info and "id" not in stop_info:
-            stop_info['id'] = stop_info['stopId']
-            del stop_info['stopId']
-        stops[stop_id] = clean_booleans(stop_info)
-    route['stops'] = stops
+        if "stopId" in stop_info:
+            del stop_info["stopId"]
+        stop_info = clean_booleans(stop_info)
+        stop = Stop(**stop_info)
+        add(stops, stop)
+    routeDict['stops'] = stops
 
     # directions (inbound, outbound)
-    directions = OrderedDict()
+    if use_dicts:
+        directions = OrderedDict()
+    else:
+        directions = []
     for direction in routeElem.findall('direction'):
         dir_info = direction.attrib
-        dir_id = dir_info['tag']
-        del dir_info['tag']
+        if 'tag' in dir_info and 'id' not in dir_info:
+            dir_info['id'] = dir_info['tag']
+            del dir_info['tag']
         # make list of stops
-        dir_info['stops'] = [stop.get('tag') for stop in direction.findall('stop')]
-        directions[dir_id] = clean_booleans(dir_info)
-    route['directions'] = directions
+        dir_info['stop_ids'] = [stop.get('tag') for stop in direction.findall('stop')]
+        dir_info = clean_booleans(dir_info)
+        for key in dir_info.keys():
+            if key not in Direction._fields:
+                del dir_info[key]
+        add(directions, Direction(**dir_info))
+    routeDict['directions'] = directions
     
     # path of lat/long points
     route_path = []
     for path in routeElem.findall('path'):
-        segment = [(Decimal(point.get('lat')), Decimal(point.get('lon'))) 
+        segment = [Point(Decimal(point.get('lat')), Decimal(point.get('lon'))) 
             for point in path.findall('point')]
         route_path.append(segment)
-    route['path'] = route_path
+    routeDict['path'] = route_path
 
-    return route
+    for key in routeDict.keys():
+        if key not in Route._fields:
+            del routeDict[key]
 
-@cache.memoize(timeout=3600)
-def get_route_directions(route):
-    directions = []
-    for dir_id, direc in route['directions'].items():
-        stops = []
-        for stop_id in direc['stops']:
-            stop_info = route['stops'][stop_id]
-            stop_info['id'] = stop_id
-            stops.append(stop_info)
-        
-        directions.append({
-            'title': direc['title'],
-            'id': dir_id,
-            'stops': stops,
-        })
-    return directions
+    return Route(**routeDict)
+
+def get_direction(agency_id, route_id, direction_id):
+    route = get_route(agency_id, route_id, use_dicts=True)
+    return route.directions[direction_id]
+
+def get_stop(agency_id, route_id, direction_id, stop_id):
+    route = get_route(agency_id, route_id, use_dicts=True)
+    return route.stops[stop_id]
 
 @cache.memoize(timeout=20)
 def get_predictions(agency_id, route_id, direction_id, stop_id):
@@ -174,50 +199,40 @@ def get_predictions(agency_id, route_id, direction_id, stop_id):
         logging.error("Download error: " + url)
     
     tree = etree.fromstring(result.content)
-    return parse_predict_xml(tree)
+    return parse_predict_xml(tree, direction_id)
 
 @errcheck_xml
-def parse_predict_xml(tree):
-    prediction_el = tree.find('predictions')
+def parse_predict_xml(tree, direction_id=""):
+    predictions_el = tree.find('predictions')
+    stopID = StopID(predictions_el.get('stopTag'), predictions_el.get('stopTitle'))
+    routeID = RouteID(predictions_el.get('routeTag'), predictions_el.get('routeTitle'))
 
-    predict_info = {
-        'route_id':     prediction_el.get('routeTag'),
-        'route_title':  prediction_el.get('routeTitle'),
-        'stop_id':      prediction_el.get('stopTag'),
-        'stop_title':   prediction_el.get('stopTitle'),
-    }
-
-    direction_el = prediction_el.find('direction')
-    try:
-        predict_info['direction'] = direction_el.get('title')
-    except AttributeError:
-        predict_info['direction'] = prediction_el.get('dirTitleBecauseNoPredictions')
-
+    direction_el = predictions_el.find('direction')
     if direction_el:
-        prediction_els = direction_el.findall('prediction')
-    else:
-        prediction_els = None
-    buses, epoch_time = parse_prediction_elements(prediction_els)
+        # we have predictions
+        first_prediction_el = direction_el.find('prediction')
+        directionID = DirectionID(first_prediction_el.get('dirTag'), direction_el.get('title'))
+        epoch_time = first_prediction_el.get('epochTime')
 
-    predict_info['buses'] = buses
-    predict_info['epoch_time'] = epoch_time
+        buses = []
+        for prediction_el in direction_el.findall('prediction'):
+            bus = prediction_el.attrib
+            logging.error(bus)
+            if 'departure' not in bus and 'isDeparture' in bus:
+                bus['departure'] = bus['isDeparture']
+                del bus['isDeparture']
+            if 'trip_id' not in bus and 'tripTag' in bus:
+                bus['trip_id'] = bus['tripTag']
+                del bus['tripTag']
+            for key in bus.keys():
+                if not key in PredictedBus._fields:
+                    del bus[key]
+            bus = clean_booleans(bus)
+            buses.append(PredictedBus(**bus))
+
+        return Prediction(buses=buses, epoch_time=epoch_time, route=routeID, direction=directionID, stop=stopID)
     
-    return predict_info
+    else: # no buses predicted
+        directionID = DirectionID(direction_id, predictions_el.get('dirTitleBecauseNoPredictions'))
+        return Prediction(buses=[], epoch_time=None, route=routeID, direction=directionID, stop=stopID)
 
-def parse_prediction_elements(prediction_els):
-    if prediction_els is None:
-        return [], time.time()
-    buses = []
-    for prediction_el in prediction_els:
-        p = prediction_el.attrib
-        epoch_time = p['epochTime']
-        
-        # strip off what we don't care about
-        del p['dirTag']
-        del p['epochTime']
-        # parse ints for minutes and seconds
-        p['minutes'] = int(p['minutes'])
-        p['seconds'] = int(p['seconds'])
-
-        buses.append(clean_booleans(p))
-    return buses, epoch_time
