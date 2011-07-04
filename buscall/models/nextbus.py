@@ -217,7 +217,6 @@ def parse_predict_xml(tree, direction_id=""):
         buses = []
         for prediction_el in direction_el.findall('prediction'):
             bus = prediction_el.attrib
-            logging.error(bus)
             if 'departure' not in bus and 'isDeparture' in bus:
                 bus['departure'] = bus['isDeparture']
                 del bus['isDeparture']
