@@ -37,39 +37,6 @@ class ServiceTestCase(unittest.TestCase):
   Where the arrange step isn't duplicated between tests.
 
   '''
-  class LoggingMailStub(mail_stub.MailServiceStub):
-    def __init__(self, host=None, port=25, user='', password='',
-          enable_sendmail=False, show_mail_body=False, service_name='mail'):
-      """Constructor.
-
-      Args:
-        host: Host of SMTP mail server.
-        post: Port of SMTP mail server.
-        user: Sending user of SMTP mail.
-        password: SMTP password.
-        enable_sendmail: Whether sendmail enabled or not.
-        show_mail_body: Whether to show mail body in log.
-        service_name: Service name expected for all calls.
-      """
-      super(mail_stub.MailServiceStub, self).__init__(service_name)
-      self._smtp_host = host
-      self._smtp_port = port
-      self._smtp_user = user
-      self._smtp_password = password
-      self._enable_sendmail = enable_sendmail
-      self._show_mail_body = show_mail_body
-      self.messages = []
-
-    def _GenerateLog(self, method, message, log):
-      self.messages.append(message)
-      return
-    
-  class Struct:
-    def __init__(self, **entries): self.__dict__.update(entries)
-    def __repr__(self):
-        args = ['%s=%s' % (k, repr(v)) for (k, v) in vars(self).items()]
-        return 'Struct(%s)' % ', '.join(args)
-
   class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
     """Stub version of the urlfetch API to be used with apiproxy_stub_map."""
 
@@ -105,7 +72,7 @@ class ServiceTestCase(unittest.TestCase):
       os.remove(TEST_DATASTORE_FILE)
 
     self.urlfetch_stub = ServiceTestCase.UrlFetchStub()
-    self.mail_stub = ServiceTestCase.LoggingMailStub()
+    self.mail_stub = mail_stub.MailServiceStub()
     self.memcache_stub = memcache_stub.MemcacheServiceStub()
     self.user_stub = user_service_stub.UserServiceStub()
     self.datastore_v3_stub = datastore_file_stub.DatastoreFileStub(APP_ID, TEST_DATASTORE_FILE)
@@ -119,9 +86,12 @@ class ServiceTestCase(unittest.TestCase):
     data = datafixture.data(datasets.BusListenerData, datasets.BusAlertData)
     data.setup()
   
+  def get_sent_messages(self, *args, **kwargs):
+    return self.mail_stub.get_sent_messages(*args, **kwargs)
+  
   @property
-  def mail_messages(self):
-    return self.mail_stub.messages
+  def sent_messages(self):
+    return self.get_sent_messages()
   
   def get_urlfetch_responses(self):
     return self.urlfetch_stub.responses

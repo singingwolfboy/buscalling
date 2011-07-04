@@ -24,13 +24,13 @@ class UrlfetchTestCase(MockUrlfetchTestCase):
         quiet_moment = datetime.datetime(2011, 7, 2, 0, 0, 0) # Midnight on Sat, July 2
         with app.test_request_context('/tasks/poll'):
             poll(quiet_moment.timetuple())
-            self.assertEqual(len(self.mail_messages), 0)
+            self.assertEqual(len(self.sent_messages), 0)
     
     def test_cron_with_listeners(self):
         active_moment = datetime.datetime(2011, 7, 2, 15, 10, 24) # 3:10:24 on Sat, July 2
         with app.test_request_context('/tasks/poll'):
             poll(active_moment.timetuple())
-            self.assertEqual(len(self.mail_messages), 1)
+            self.assertEqual(len(self.sent_messages), 1)
 
 if __name__ == '__main__':
     unittest.main()
