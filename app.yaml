@@ -23,5 +23,9 @@ handlers:
   upload: static/img/favicon.png
   # source: http://www.freeiconsweb.com/128x28_city_icons.html
 
+- url: /tasks/.*
+  script: main.py
+  login: admin # secured for cron
+
 - url: .*
   script: main.py

@@ -1,0 +1,4 @@
+cron:
+- description: poll nextbus every minute
+  url: /tasks/poll
+  schedule: every minute
