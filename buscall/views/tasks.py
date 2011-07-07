@@ -32,4 +32,11 @@ def poll(struct_time=None):
                     alert.execute(bus.minutes)
     
     return redirect(url_for("lander"))
-        
+
+@app.route('/tasks/reset_seen_flags')
+def reset_seen_flags():
+    seen = GqlQuery("SELECT * FROM BusListener WHERE seen = True")
+    for listener in seen:
+        listener.seen = False
+        listener.put()
+    return redirect(url_for("lander"))
