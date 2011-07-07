@@ -59,9 +59,31 @@ class BusListenerData(DataSet):
         start = datetime.time(15,00) # 3:00 PM
         seen = False
 
+    class seen_bus:
+        user = test_user
+        agency_id = "mbta"
+        route_id = "70"
+        direction_id = "70_0_var1"
+        stop_id = "88333"
+        mon = True
+        tue = False
+        wed = True
+        thu = False
+        fri = True
+        sat = False
+        sun = True
+        start = datetime.time(4,0)
+        seen = True
+
 class BusAlertData(DataSet):
     class cron_bus_20_min:
         listener = BusListenerData.cron_bus
         minutes = 20
         medium = "email"
         executed = False
+
+    class seen_bus_alert:
+        listener = BusListenerData.seen_bus
+        minutes = 3
+        medium = "email"
+        executed = True
