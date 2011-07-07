@@ -5,6 +5,7 @@ from gae_mock import ServiceTestCase
 from urlfetch_mock import MockUrlfetchTestCase
 from buscall import app
 from buscall.models import nextbus
+from buscall.models.listener import BusListener
 from buscall.views.tasks import poll, reset_seen_flags
 from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
 from google.appengine.ext import db
@@ -34,13 +35,19 @@ class UrlfetchTestCase(MockUrlfetchTestCase):
             poll(active_moment.timetuple())
             self.assertEqual(len(self.sent_messages), 1)
 
-class DatastoreTestCase(ServiceTestCase):
+class DatastoreTestCase(MockUrlfetchTestCase):
+    def test_set_seen_flag(self):
+        listener = BusListener.gql("WHERE seen = False").fetch(1)
+        for alert in listener.alerts:
+            alert.execute()
+        self.assertTrue(listener.seen)
+
     def test_reset_seen_flags(self):
-        seen = db.GqlQuery("SELECT * FROM BusListener WHERE seen = True").fetch(1)
+        seen = BusListener.gql("WHERE seen = True").fetch(1)
         self.assertTrue(len(seen) > 0)
         with app.test_request_context('/tasks/reset_seen_flags'):
             reset_seen_flags()
-        seen = db.GqlQuery("SELECT * FROM BusListener WHERE seen = True").fetch(1)
+        seen = BusListener.gql("WHERE seen = True").fetch(1)
         self.assertEqual(len(seen), 0)
 
 if __name__ == '__main__':
