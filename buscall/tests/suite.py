@@ -37,7 +37,7 @@ class UrlfetchTestCase(MockUrlfetchTestCase):
 
 class DatastoreTestCase(MockUrlfetchTestCase):
     def test_set_seen_flag(self):
-        listener = BusListener.gql("WHERE seen = False").fetch(1)
+        listener = BusListener.gql("WHERE seen = False").fetch(1)[0]
         for alert in listener.alerts:
             alert.execute()
         self.assertTrue(listener.seen)
