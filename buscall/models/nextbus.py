@@ -229,6 +229,8 @@ def parse_predict_xml(tree, direction_id=""):
             bus = clean_booleans(bus)
             bus['minutes'] = int(bus['minutes'])
             bus['seconds'] = int(bus['seconds'])
+            if 'affectedByLayover' not in bus:
+                bus['affectedByLayover'] = None
             buses.append(PredictedBus(**bus))
 
         return Prediction(buses=buses, time=epoch_time, route=routeID, direction=directionID, stop=stopID)
