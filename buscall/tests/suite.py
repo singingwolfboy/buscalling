@@ -37,9 +37,20 @@ class UrlfetchTestCase(MockUrlfetchTestCase):
 
 class DatastoreTestCase(MockUrlfetchTestCase):
     def test_set_seen_flag(self):
-        listener = BusListener.gql("WHERE seen = False").fetch(1)[0]
+        # get a listener that has alerts
+        listeners = BusListener.gql("WHERE seen = False").fetch(5)
+        listener = None
+        for l in listeners:
+            if l.alerts.count() > 0:
+                listener = l
+                break
+        if not listener:
+            raise Exception("Couldn't find a BusListener that has associated BusAlerts")
+
         for alert in listener.alerts:
             alert.execute()
+        # refresh from db
+        listener = BusListener.get(listener.key())
         self.assertTrue(listener.seen)
 
     def test_reset_seen_flags(self):

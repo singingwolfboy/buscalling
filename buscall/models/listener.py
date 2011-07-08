@@ -104,6 +104,10 @@ class BusListener(db.Model):
     def get_predictions(self):
         "Use the Nextbus API to get route prediction information."
         return get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
+    
+    def check_alerts(self):
+        self.seen = all([alert.executed for alert in self.alerts])
+        self.put()
 
 class BusAlert(db.Model):
     listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
@@ -136,3 +140,5 @@ class BusAlert(db.Model):
             raise NotImplementedError
         
         self.executed = True
+        self.put()
+        self.listener.check_alerts()
