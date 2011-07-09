@@ -10,21 +10,20 @@ try:
     from collections import OrderedDict
 except ImportError:
     from collections_backport import OrderedDict
-try:
-    from collections import namedtuple
-except ImportError:
-    from collections_backport import namedtuple
+from namedtuple2 import namedtuple2
 
-Agency = namedtuple("Agency", ['id', 'title'])
-Route = namedtuple("Route", ['id', 'title', 'directions', 'stops', 'path', 'latMin', 'latMax', 'lonMin', 'lonMax'])
-RouteID = namedtuple("RouteID", ['id', 'title'])
-Direction = namedtuple("Direction", ['id', 'title', 'name', 'stop_ids'])
-DirectionID = namedtuple("DirectionID", ['id', 'title'])
-Stop = namedtuple("Stop", ['id', 'title', 'lat', 'lon'])
-StopID = namedtuple("StopID", ['id', 'title'])
-Point = namedtuple("Point", ['lat', 'lon'])
-Prediction = namedtuple("Prediction", ["buses", "time", "route", "direction", "stop"])
-PredictedBus = namedtuple("PredictedBus", ["minutes", "seconds", "vehicle", "trip_id", "block", "departure", "affectedByLayover"])
+Agency = namedtuple2("Agency", 'id', 'title')
+Route = namedtuple2("Route", 'id', 'title', 'directions', 'stops', 
+    path=None, latMin=None, latMax=None, lonMin=None, lonMax=None)
+RouteID = namedtuple2("RouteID", 'id', 'title')
+Direction = namedtuple2("Direction", 'id', 'title', 'name', 'stop_ids')
+DirectionID = namedtuple2("DirectionID", 'id', 'title')
+Stop = namedtuple2("Stop", 'id', 'title', lat=None, lon=None)
+Point = namedtuple2("Point", 'lat', 'lon')
+Prediction = namedtuple2("Prediction", "buses", "route", "direction", "stop", time=None)
+PredictedBus = namedtuple2("PredictedBus", "minutes", "vehicle",
+    seconds=None, trip_id=None, block=None, departure=None, 
+    affectedByLayover=None, delayed=None, slowness=None)
 
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
@@ -151,9 +150,6 @@ def parse_route_xml(tree, use_dicts=False):
         # make list of stops
         dir_info['stop_ids'] = [stop.get('tag') for stop in direction.findall('stop')]
         dir_info = clean_booleans(dir_info)
-        for key in dir_info.keys():
-            if key not in Direction._fields:
-                del dir_info[key]
         add(directions, Direction(**dir_info))
     routeDict['directions'] = directions
     
@@ -164,10 +160,6 @@ def parse_route_xml(tree, use_dicts=False):
             for point in path.findall('point')]
         route_path.append(segment)
     routeDict['path'] = route_path
-
-    for key in routeDict.keys():
-        if key not in Route._fields:
-            del routeDict[key]
 
     return Route(**routeDict)
 
@@ -204,8 +196,8 @@ def get_predictions(agency_id, route_id, direction_id, stop_id):
 @errcheck_xml
 def parse_predict_xml(tree, direction_id=""):
     predictions_el = tree.find('predictions')
-    stopID = StopID(predictions_el.get('stopTag'), predictions_el.get('stopTitle'))
-    routeID = RouteID(predictions_el.get('routeTag'), predictions_el.get('routeTitle'))
+    stop = Stop(id=predictions_el.get('stopTag'), title=predictions_el.get('stopTitle'))
+    routeID = RouteID(id=predictions_el.get('routeTag'), title=predictions_el.get('routeTitle'))
 
     direction_el = predictions_el.find('direction')
     if direction_el:
@@ -223,19 +215,15 @@ def parse_predict_xml(tree, direction_id=""):
             if 'trip_id' not in bus and 'tripTag' in bus:
                 bus['trip_id'] = bus['tripTag']
                 del bus['tripTag']
-            for key in bus.keys():
-                if not key in PredictedBus._fields:
-                    del bus[key]
             bus = clean_booleans(bus)
             bus['minutes'] = int(bus['minutes'])
             bus['seconds'] = int(bus['seconds'])
-            if 'affectedByLayover' not in bus:
-                bus['affectedByLayover'] = None
+
             buses.append(PredictedBus(**bus))
 
-        return Prediction(buses=buses, time=epoch_time, route=routeID, direction=directionID, stop=stopID)
+        return Prediction(buses=buses, time=epoch_time, route=routeID, direction=directionID, stop=stop)
     
     else: # no buses predicted
         directionID = DirectionID(direction_id, predictions_el.get('dirTitleBecauseNoPredictions'))
-        return Prediction(buses=[], epoch_time=None, route=routeID, direction=directionID, stop=stopID)
+        return Prediction(buses=[], epoch_time=None, route=routeID, direction=directionID, stop=stop)
 
