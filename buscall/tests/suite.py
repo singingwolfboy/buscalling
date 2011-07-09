@@ -2,16 +2,16 @@
 from __future__ import with_statement 
 import unittest
 from gae_mock import ServiceTestCase
-from urlfetch_mock import MockUrlfetchTestCase
 from buscall import app
 from buscall.models import nextbus
 from buscall.models.listener import BusListener
 from buscall.views.tasks import poll, reset_seen_flags
 from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
 from google.appengine.ext import db
+from google.appengine.api.users import User
 import datetime
 
-class UrlfetchTestCase(MockUrlfetchTestCase):
+class UrlfetchTestCase(ServiceTestCase):
     # Mock responses to URLs are set in the setUp() method of the MockUrlfetchTestCase class
 
     def test_predictions(self):
@@ -35,7 +35,7 @@ class UrlfetchTestCase(MockUrlfetchTestCase):
             poll(active_moment.timetuple())
             self.assertEqual(len(self.sent_messages), 1)
 
-class DatastoreTestCase(MockUrlfetchTestCase):
+class DatastoreTestCase(ServiceTestCase):
     def test_set_seen_flag(self):
         # get a listener that has alerts
         listeners = BusListener.gql("WHERE seen = False").fetch(5)

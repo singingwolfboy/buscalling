@@ -8,10 +8,13 @@ reference back to the original author, Morten Nielsen.
 
 http://www.morkeleb.com/2010/06/28/testing-on-google-appengine-python-sdk/
 '''
+from __future__ import with_statement
 import os
 import time
 import unittest
 from httplib import HTTPResponse
+from StringIO import StringIO
+from urlparse import urlparse
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
 from google.appengine.api import mail_stub
@@ -24,7 +27,19 @@ from fixture import GoogleDatastoreFixture
 from fixture.style import NamedDataStyle
 from buscall import models
 from buscall.tests import datasets
-from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
+from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER, parse_url_params
+
+class TestException(Exception): pass
+
+class FakeSocket(StringIO):
+    def makefile(self, *args, **kw):
+        return self
+
+def httpparse(fp):
+    socket = FakeSocket(fp.read())
+    response = HTTPResponse(socket)
+    response.begin()
+    return response
 
 class ServiceTestCase(unittest.TestCase):
   ''' 
@@ -38,24 +53,35 @@ class ServiceTestCase(unittest.TestCase):
   '''
   class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
     """Stub version of the urlfetch API to be used with apiproxy_stub_map."""
-
-    def __init__(self, service_name='urlfetch'):
-      """Initializer.
-
-      Args:
-        service_name: Service name expected for all calls.
-      """
-      self.responses = {};
-      super(URLFetchServiceStub, self).__init__(service_name)
     
     def _RetrieveURL(self, url, payload, method, headers, request, response,
                    follow_redirects=True, deadline=_API_CALL_DEADLINE,
                    validate_certificate=_API_CALL_VALIDATE_CERTIFICATE_DEFAULT):
-      response.set_statuscode(200)
-      response.set_content(self.responses[url])
+      parts = urlparse(url)
+      params = parse_url_params(parts.query)
+      resp_file = None
+      if parts.netloc == "webservices.nextbus.com":
+        try:
+          command = params['command']
+        except KeyError:
+          resp_file = os.path.join("urlfetch", "nextbus_api", "no_params.xml")
+          break
+        if command == "routeList":
+          resp_file = os.path.join("urlfetch", "nextbus_api", params['a'], "route_list.xml")
+        elif command == "routeConfig":
+          resp_file = os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], "config.xml")
+        elif command == "predictions":
+          resp_file = os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], params['s']+".xml")
+        else:
+          raise TestException("unknown command: "+command)
       
-    def set_content(self, url, c):
-      self.responses[url] = c
+      if not resp_file:
+        raise TestException("unknown URL: "+url)
+
+      with open(resp_file) as f:
+        resp = httpparse(f)
+        response.set_statuscode(resp.status)
+        response.set_content(resp.fp.read())
 
   def setUp(self):
     # Ensure we're in UTC.
