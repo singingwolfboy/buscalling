@@ -53,28 +53,29 @@ class ServiceTestCase(unittest.TestCase):
   '''
   class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
     """Stub version of the urlfetch API to be used with apiproxy_stub_map."""
-    
-    def _RetrieveURL(self, url, payload, method, headers, request, response,
-                   follow_redirects=True, deadline=_API_CALL_DEADLINE,
-                   validate_certificate=_API_CALL_VALIDATE_CERTIFICATE_DEFAULT):
+
+    def _response_file(self, url):
       parts = urlparse(url)
       params = parse_url_params(parts.query)
-      resp_file = None
       if parts.netloc == "webservices.nextbus.com":
         try:
           command = params['command']
         except KeyError:
-          resp_file = os.path.join("urlfetch", "nextbus_api", "no_params.xml")
-          break
+          return os.path.join("urlfetch", "nextbus_api", "no_params.xml")
         if command == "routeList":
-          resp_file = os.path.join("urlfetch", "nextbus_api", params['a'], "route_list.xml")
+          return os.path.join("urlfetch", "nextbus_api", params['a'], "route_list.xml")
         elif command == "routeConfig":
-          resp_file = os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], "config.xml")
+          return os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], "config.xml")
         elif command == "predictions":
-          resp_file = os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], params['s']+".xml")
-        else:
-          raise TestException("unknown command: "+command)
-      
+          return os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], params['s']+".xml")
+
+      return None
+    
+    def _RetrieveURL(self, url, payload, method, headers, request, response,
+                   follow_redirects=True, deadline=_API_CALL_DEADLINE,
+                   validate_certificate=_API_CALL_VALIDATE_CERTIFICATE_DEFAULT):
+      resp_file = self._response_file(url)
+
       if not resp_file:
         raise TestException("unknown URL: "+url)
 
