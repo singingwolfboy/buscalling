@@ -31,6 +31,7 @@ from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER, parse_url_params
 
 class TestException(Exception): pass
 
+# from http://pythonwise.blogspot.com/2010/02/parse-http-response.html
 class FakeSocket(StringIO):
     def makefile(self, *args, **kw):
         return self
@@ -40,10 +41,11 @@ def httpparse(fp):
     response = HTTPResponse(socket)
     response.begin()
     return response
+# end http://pythonwise.blogspot.com/2010/02/parse-http-response.html
 
 class ServiceTestCase(unittest.TestCase):
   ''' 
-  defines a test case, with appengine test stubs setup.
+  Defines a test case, with appengine test stubs setup.
   Has methods to access email messages sent during the tested methods executed
   
   This class assists in creating AAA tests for appengine.
