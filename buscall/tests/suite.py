@@ -61,5 +61,18 @@ class DatastoreTestCase(ServiceTestCase):
         seen = BusListener.gql("WHERE seen = True").fetch(1)
         self.assertEqual(len(seen), 0)
 
+class BusListenerTestCase(ServiceTestCase):
+    def test_create_bus_listener(self):
+        num_listeners = BusListener.all().count()
+        user = User("carl@example.com")
+        listener = BusListener(user=user, agency_id="mbta", route_id="556", direction_id="556_1_var0", stop_id="77378",
+            start=datetime.time(3,0), mon=True, tue=False, wed=True, thu=True, fri=True, sat=False, sun=False)
+        listener.put()
+        self.assertEqual(BusListener.all().count() - num_listeners, 1)
+        self.assertEqual(listener.user, user)
+        self.assertEqual(listener.stop.id, "77378")
+        self.assertEqual(listener.seen, False)
+        self.assertEqual(listener.start, datetime.time(3,0))
+
 if __name__ == '__main__':
     unittest.main()
