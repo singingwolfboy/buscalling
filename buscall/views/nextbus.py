@@ -56,6 +56,8 @@ def show_route(agency_id, route_id, format="html"):
 
 @app.route('/predict/<agency_id>/<route_id>/<direction_id>/<stop_id>')
 @app.route('/predict/<agency_id>/<route_id>/<direction_id>/<stop_id>.<format>')
+@app.route('/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predict')
+@app.route('/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predict.<format>')
 def predict_for_stop(agency_id, route_id, direction_id, stop_id, format="html"):
     prediction = nextbus.get_predictions(agency_id, route_id, direction_id, stop_id)
     if format.lower() == "twiml":

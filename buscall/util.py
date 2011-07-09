@@ -6,6 +6,7 @@ class GqlQuery(TruthyGqlQuery):
 
 DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
+DOMAIN = "http://www.buscalling.com"
 
 def url_params(params):
     try:
