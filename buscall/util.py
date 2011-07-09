@@ -8,13 +8,18 @@ DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
 DOMAIN = "http://www.buscalling.com"
 
-def url_params(params):
+def build_url_params(params):
+    "Take a dict or list of tuples, and return a URL queryparam string."
     try:
         # if we were passed a dictionary, convert it into a list of tuples
         params = params.items()
     except AttributeError:
         pass
     return "&".join(["%s=%s" % (key, val) for (key, val) in params])
+
+def parse_url_params(string):
+    "Take a URL queryparam string, and return a dict of the params."
+    return dict([param.split('=') for param in string.split('&')])
 
 def clean_booleans(d):
     for key in d.keys():
