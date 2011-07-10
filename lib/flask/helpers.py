@@ -9,12 +9,15 @@
     :license: BSD, see LICENSE for more details.
 """
 
+from __future__ import with_statement
+
 import os
 import sys
 import posixpath
 import mimetypes
 from time import time
 from zlib import adler32
+from threading import RLock
 
 # try to load the best simplejson implementation available.  If JSON
 # is not installed, we add a failing class.
@@ -33,7 +36,7 @@ except ImportError:
             json_available = False
 
 
-from werkzeug import Headers, wrap_file, cached_property
+from werkzeug import Headers, wrap_file
 from werkzeug.exceptions import NotFound
 
 from jinja2 import FileSystemLoader
@@ -56,6 +59,10 @@ if not json_available or '\\/' not in json.dumps('/'):
         return json.dumps(*args, **kwargs).replace('/', '\\/')
 else:
     _tojson_filter = json.dumps
+
+
+# sentinel
+_missing = object()
 
 
 # what separators does this operating system provide that are not a slash?
@@ -151,23 +158,16 @@ def make_response(*args):
 
 def url_for(endpoint, **values):
     """Generates a URL to the given endpoint with the method provided.
-    The endpoint is relative to the active module if modules are in use.
-
-    Here are some examples:
-
-    ==================== ======================= =============================
-    Active Module        Target Endpoint         Target Function
-    ==================== ======================= =============================
-    `None`               ``'index'``             `index` of the application
-    `None`               ``'.index'``            `index` of the application
-    ``'admin'``          ``'index'``             `index` of the `admin` module
-    any                  ``'.index'``            `index` of the application
-    any                  ``'admin.index'``       `index` of the `admin` module
-    ==================== ======================= =============================
 
     Variable arguments that are unknown to the target endpoint are appended
     to the generated URL as query arguments.  If the value of a query argument
-    is `None`, the whole pair is skipped.
+    is `None`, the whole pair is skipped.  In case blueprints are active
+    you can shortcut references to the same blueprint by prefixing the
+    local endpoint with a dot (``.``).
+
+    This will reference the index function local to the current blueprint::
+
+        url_for('.index')
 
     For more information, head over to the :ref:`Quickstart <url-building>`.
 
@@ -176,13 +176,22 @@ def url_for(endpoint, **values):
     :param _external: if set to `True`, an absolute URL is generated.
     """
     ctx = _request_ctx_stack.top
-    if '.' not in endpoint:
-        mod = ctx.request.module
-        if mod is not None:
-            endpoint = mod + '.' + endpoint
-    elif endpoint.startswith('.'):
-        endpoint = endpoint[1:]
+    blueprint_name = request.blueprint
+    if not ctx.request._is_old_module:
+        if endpoint[:1] == '.':
+            if blueprint_name is not None:
+                endpoint = blueprint_name + endpoint
+            else:
+                endpoint = endpoint[1:]
+    else:
+        # TODO: get rid of this deprecated functionality in 1.0
+        if '.' not in endpoint:
+            if blueprint_name is not None:
+                endpoint = blueprint_name + '.' + endpoint
+        elif endpoint.startswith('.'):
+            endpoint = endpoint[1:]
     external = values.pop('_external', False)
+    ctx.app.inject_url_defaults(endpoint, values)
     return ctx.url_adapter.build(endpoint, values, force_external=external)
 
 
@@ -379,7 +388,10 @@ def send_file(filename_or_fp, mimetype=None, as_attachment=False,
         rv.set_etag('flask-%s-%s-%s' % (
             os.path.getmtime(filename),
             os.path.getsize(filename),
-            adler32(filename) & 0xffffffff
+            adler32(
+                filename.encode('utf8') if isinstance(filename, unicode)
+                else filename
+            ) & 0xffffffff
         ))
         if conditional:
             rv = rv.make_conditional(request)
@@ -456,15 +468,67 @@ def _get_package_path(name):
         return os.getcwd()
 
 
+class locked_cached_property(object):
+    """A decorator that converts a function into a lazy property.  The
+    function wrapped is called the first time to retrieve the result
+    and then that calculated result is used the next time you access
+    the value.  Works like the one in Werkzeug but has a lock for
+    thread safety.
+    """
+
+    def __init__(self, func, name=None, doc=None):
+        self.__name__ = name or func.__name__
+        self.__module__ = func.__module__
+        self.__doc__ = doc or func.__doc__
+        self.func = func
+        self.lock = RLock()
+
+    def __get__(self, obj, type=None):
+        if obj is None:
+            return self
+        with self.lock:
+            value = obj.__dict__.get(self.__name__, _missing)
+            if value is _missing:
+                value = self.func(obj)
+                obj.__dict__[self.__name__] = value
+            return value
+
+
 class _PackageBoundObject(object):
 
-    def __init__(self, import_name):
+    def __init__(self, import_name, template_folder=None):
         #: The name of the package or module.  Do not change this once
         #: it was set by the constructor.
         self.import_name = import_name
 
+        #: location of the templates.  `None` if templates should not be
+        #: exposed.
+        self.template_folder = template_folder
+
         #: Where is the app root located?
         self.root_path = _get_package_path(self.import_name)
+
+        self._static_folder = None
+        self._static_url_path = None
+
+    def _get_static_folder(self):
+        if self._static_folder is not None:
+            return os.path.join(self.root_path, self._static_folder)
+    def _set_static_folder(self, value):
+        self._static_folder = value
+    static_folder = property(_get_static_folder, _set_static_folder)
+    del _get_static_folder, _set_static_folder
+
+    def _get_static_url_path(self):
+        if self._static_url_path is None:
+            if self.static_folder is None:
+                return None
+            return '/' + os.path.basename(self.static_folder)
+        return self._static_url_path
+    def _set_static_url_path(self, value):
+        self._static_url_path = value
+    static_url_path = property(_get_static_url_path, _set_static_url_path)
+    del _get_static_url_path, _set_static_url_path
 
     @property
     def has_static_folder(self):
@@ -473,15 +537,17 @@ class _PackageBoundObject(object):
 
         .. versionadded:: 0.5
         """
-        return os.path.isdir(os.path.join(self.root_path, 'static'))
+        return self.static_folder is not None
 
-    @cached_property
+    @locked_cached_property
     def jinja_loader(self):
         """The Jinja loader for this package bound object.
 
         .. versionadded:: 0.5
         """
-        return FileSystemLoader(os.path.join(self.root_path, 'templates'))
+        if self.template_folder is not None:
+            return FileSystemLoader(os.path.join(self.root_path,
+                                                 self.template_folder))
 
     def send_static_file(self, filename):
         """Function used internally to send static files from the static
@@ -489,8 +555,9 @@ class _PackageBoundObject(object):
 
         .. versionadded:: 0.5
         """
-        return send_from_directory(os.path.join(self.root_path, 'static'),
-                                   filename)
+        if not self.has_static_folder:
+            raise RuntimeError('No static folder for this object')
+        return send_from_directory(self.static_folder, filename)
 
     def open_resource(self, resource):
         """Opens a resource from the application's resource folder.  To see
