@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block header %}
+  <h1>Bus Calling</h1>
+  <h2>Time management before the coffee kicks in.</h2>
+{% endblock %}
+{% block main %}
+<p>Welcome {{user}}, you're logged in!</p>
+{% if listeners %}
+<ul>
+{% for listener in listeners %}
+  <li>{{listener}}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>You have no listeners.</p>
+{% endif %}
+<a href="{{url_for('new_listener')}}">New Listener</a>
+{% endblock %}

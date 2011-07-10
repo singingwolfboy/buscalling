@@ -16,6 +16,15 @@
     {%- for category, msg in get_flashed_messages(with_categories=true) %}
       <p class=flash-{{ category }}>{{ msg }}</p>
     {%- endfor %}
+    {% block nav %}
+    <nav>
+      {% if user %}
+      <a href="{{url_for('logout')}}">Logout</a>
+      {% else %}
+      <a href="{{url_for('login')}}">Login</a>
+      {% endif %}
+    </nav>
+    {% endblock %}
     <div id="main" role="main">
       {% block main %}{% endblock %}
     </div>

@@ -13,15 +13,18 @@ except ImportError:
     from collections_backport import OrderedDict
 
 @app.route('/listeners')
-@login_required
 def index_listeners():
-    listeners = GqlQuery("SELECT * FROM BusListener WHERE user = :1", 
-        users.get_current_user())
+    user = users.get_current_user()
+    if not user:
+        return redirect(url_for('login'))
+    listeners = GqlQuery("SELECT * FROM BusListener WHERE user = :user", user=user) 
     return render_template('listeners/index.html', listeners=listeners)
 
 @app.route('/listeners/new', methods=['GET', 'POST'])
-@login_required
 def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=None):
+    user = users.get_current_user()
+    if not user:
+        return redirect(url_for('login'))
     kwargs = {
         "agency_id":    agency_id    or request.args.get('agency', None),
         "route_id":     route_id     or request.args.get('route', None),

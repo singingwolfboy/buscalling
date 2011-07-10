@@ -14,9 +14,10 @@ account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)
 
 @app.route("/call/<agency_id>/<route_id>/<direction_id>/<stop_id>/<phone_num>")
 @app.route("/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/call/<phone_num>")
-@login_required
 def call_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
 	user = users.get_current_user()
+	if not user:
+		return redirect(url_for('login'))
 	app.logger.info("%s (%s) called %s" % (user.nickname(), user.user_id(), phone_num))
 	url = DOMAIN + url_for('predict_for_stop', agency_id=agency_id, 
 		route_id=route_id, direction_id=direction_id, stop_id=stop_id, format="twiml")
