@@ -17,7 +17,7 @@
     decoded into an unicode object if possible and if it makes sense.
 
 
-    :copyright: (c) 2010 by the Werkzeug Team, see AUTHORS for more details.
+    :copyright: (c) 2011 by the Werkzeug Team, see AUTHORS for more details.
     :license: BSD, see LICENSE for more details.
 """
 import urlparse
@@ -113,11 +113,8 @@ class BaseRequest(object):
     #: the charset for the request, defaults to utf-8
     charset = 'utf-8'
 
-    #: the error handling procedure for errors, defaults to 'ignore'
-    encoding_errors = 'ignore'
-
-    #: set to True if the application runs behind an HTTP proxy
-    is_behind_proxy = False
+    #: the error handling procedure for errors, defaults to 'replace'
+    encoding_errors = 'replace'
 
     #: the maximum content length.  This is forwarded to the form data
     #: parsing function (:func:`parse_form_data`).  When set and the
@@ -288,7 +285,7 @@ class BaseRequest(object):
                                'that, set `shallow` to False.')
         data = None
         stream = _empty_stream
-        if self.environ['REQUEST_METHOD'] in ('POST', 'PUT'):
+        if self.environ['REQUEST_METHOD'] in ('POST', 'PUT', 'PATCH'):
             try:
                 data = parse_form_data(self.environ, self._get_file_stream,
                                        self.charset, self.encoding_errors,
@@ -391,7 +388,7 @@ class BaseRequest(object):
         value in :attr:`files` is a Werkzeug :class:`FileStorage` object.
 
         Note that :attr:`files` will only contain data if the request method was
-        POST or PUT and the ``<form>`` that posted to the request had
+        POST, PUT or PATCH and the ``<form>`` that posted to the request had
         ``enctype="multipart/form-data"``.  It will be empty otherwise.
 
         See the :class:`MultiDict` / :class:`FileStorage` documentation for more
@@ -473,8 +470,6 @@ class BaseRequest(object):
     @property
     def remote_addr(self):
         """The remote address of the client."""
-        if self.is_behind_proxy and self.access_route:
-            return self.access_route[0]
         return self.environ.get('REMOTE_ADDR')
 
     remote_user = environ_property('REMOTE_USER', doc='''
@@ -971,8 +966,10 @@ class BaseResponse(object):
         # if we can determine the content length automatically, we
         # should try to do that.  But only if this does not involve
         # flattening the iterator or encoding of unicode strings in
-        # the response.
-        if self.is_sequence and content_length is None:
+        # the response.  We however should not do that if we have a 304
+        # response.
+        if self.is_sequence and content_length is None and \
+           self.status_code != 304:
             try:
                 content_length = sum(len(str(x)) for x in self.response)
             except UnicodeError:
@@ -1035,7 +1032,7 @@ class BaseResponse(object):
         else:
             headers = self.get_wsgi_headers(environ)
         app_iter = self.get_app_iter(environ)
-        return app_iter, self.status, headers.to_list(self.charset)
+        return app_iter, self.status, headers.to_list()
 
     def __call__(self, environ, start_response):
         """Process this response as WSGI application.

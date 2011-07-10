@@ -7,14 +7,14 @@
     them are used by the request and response wrappers but especially for
     middleware development it makes sense to use them without the wrappers.
 
-    :copyright: (c) 2010 by the Werkzeug Team, see AUTHORS for more details.
+    :copyright: (c) 2011 by the Werkzeug Team, see AUTHORS for more details.
     :license: BSD, see LICENSE for more details.
 """
 import re
 import os
 import sys
 from time import time
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from werkzeug._internal import _decode_unicode, \
      _iter_modules, _ExtendedCookie, _ExtendedMorsel, \
@@ -341,7 +341,7 @@ def unescape(s):
     return _entity_re.sub(handle_match, s)
 
 
-def parse_cookie(header, charset='utf-8', errors='ignore',
+def parse_cookie(header, charset='utf-8', errors='replace',
                  cls=None):
     """Parse a cookie.  Either from a string or WSGI environ.
 
@@ -453,7 +453,7 @@ def redirect(location, code=302):
        the :func:`iri_to_uri` function.
 
     :param location: the location the response should redirect to.
-    :param code: the redirect status code.
+    :param code: the redirect status code. defaults to 302.
     """
     assert code in (201, 301, 302, 303, 305, 307), 'invalid code'
     from werkzeug.wrappers import BaseResponse

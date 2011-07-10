@@ -92,7 +92,7 @@
     method is raised.
 
 
-    :copyright: (c) 2010 by the Werkzeug Team, see AUTHORS for more details.
+    :copyright: (c) 2011 by the Werkzeug Team, see AUTHORS for more details.
                              Thomas Johansson.
     :license: BSD, see LICENSE for more details.
 """
@@ -102,7 +102,7 @@ from pprint import pformat
 from urlparse import urljoin
 from itertools import izip
 
-from werkzeug.urls import url_encode, url_decode, url_quote
+from werkzeug.urls import url_encode, url_quote
 from werkzeug.utils import redirect, format_string
 from werkzeug.exceptions import HTTPException, NotFound, MethodNotAllowed
 from werkzeug._internal import _get_environ
@@ -121,6 +121,56 @@ _rule_re = re.compile(r'''
     >
 ''', re.VERBOSE)
 _simple_rule_re = re.compile(r'<([^>]+)>')
+_converter_args_re = re.compile(r'''
+    ((?P<name>\w+)\s*=\s*)?
+    (?P<value>
+        True|False|
+        \d+.\d+|
+        \d+.|
+        \d+|
+        \w+|
+        [urUR]?(?P<stringval>"[^"]*?"|'[^']*')
+    )\s*,
+''', re.VERBOSE|re.UNICODE)
+
+
+_PYTHON_CONSTANTS = {
+    'None':     None,
+    'True':     True,
+    'False':    False
+}
+
+
+def _pythonize(value):
+    if value in _PYTHON_CONSTANTS:
+        return _PYTHON_CONSTANTS[value]
+    for convert in int, float:
+        try:
+            return convert(value)
+        except ValueError:
+            pass
+    if value[:1] == value[-1:] and value[0] in '"\'':
+        value = value[1:-1]
+    return unicode(value)
+
+
+def parse_converter_args(argstr):
+    argstr += ','
+    args = []
+    kwargs = {}
+
+    for item in _converter_args_re.finditer(argstr):
+        value = item.group('stringval')
+        if value is None:
+            value = item.group('value')
+        value = _pythonize(value)
+        if not item.group('name'):
+            args.append(value)
+        else:
+            name = item.group('name')
+            kwargs[name] = value
+
+    return tuple(args), kwargs
 
 
 def parse_rule(rule):
@@ -164,8 +214,7 @@ def get_converter(map, name, args):
     if not name in map.converters:
         raise LookupError('the converter %r does not exist' % name)
     if args:
-        storage = type('_Storage', (), {'__getitem__': lambda s, x: x})()
-        args, kwargs = eval(u'(lambda *a, **kw: (a, kw))(%s)' % args, {}, storage)
+        args, kwargs = parse_converter_args(args)
     else:
         args = ()
         kwargs = {}
@@ -198,6 +247,13 @@ class RequestRedirect(HTTPException, RoutingException):
 
 class RequestSlash(RoutingException):
     """Internal exception."""
+
+
+class RequestAliasRedirect(RoutingException):
+    """This rule is an alias and wants to redirect to the canonical URL."""
+
+    def __init__(self, matched_values):
+        self.matched_values = matched_values
 
 
 class BuildError(RoutingException, LookupError):
@@ -475,11 +531,23 @@ class Rule(RuleFactory):
         Keep in mind that the URL will be joined against the URL root of the
         script so don't use a leading slash on the target URL unless you
         really mean root of that domain.
+
+    `alias`
+        If enabled this rule serves as an alias for another rule with the same
+        endpoint and arguments.
+
+    `host`
+        If provided and the URL map has host matching enabled this can be
+        used to provide a match rule for the whole host.  This also means
+        that the subdomain feature is disabled.
+
+    .. versionadded:: 0.7
+       The `alias` and `host` parameters were added.
     """
 
     def __init__(self, string, defaults=None, subdomain=None, methods=None,
                  build_only=False, endpoint=None, strict_slashes=None,
-                 redirect_to=None):
+                 redirect_to=None, alias=False, host=None):
         if not string.startswith('/'):
             raise ValueError('urls must start with a leading slash')
         self.rule = string
@@ -488,8 +556,10 @@ class Rule(RuleFactory):
         self.map = None
         self.strict_slashes = strict_slashes
         self.subdomain = subdomain
+        self.host = host
         self.defaults = defaults
         self.build_only = build_only
+        self.alias = alias
         if methods is None:
             self.methods = None
         else:
@@ -497,7 +567,6 @@ class Rule(RuleFactory):
             if 'HEAD' not in self.methods and 'GET' in self.methods:
                 self.methods.add('HEAD')
         self.endpoint = endpoint
-        self.greediness = 0
         self.redirect_to = redirect_to
 
         if defaults is not None:
@@ -514,7 +583,7 @@ class Rule(RuleFactory):
             defaults = dict(self.defaults)
         return Rule(self.rule, defaults, self.subdomain, self.methods,
                     self.build_only, self.endpoint, self.strict_slashes,
-                    self.redirect_to)
+                    self.redirect_to, self.alias, self.host)
 
     def get_rules(self, map):
         yield self
@@ -546,42 +615,54 @@ class Rule(RuleFactory):
     def compile(self):
         """Compiles the regular expression and stores it."""
         assert self.map is not None, 'rule not bound'
-        rule = self.subdomain + '|' + (self.is_leaf and self.rule
-                                       or self.rule.rstrip('/'))
+
+        if self.map.host_matching:
+            domain_rule = self.host or ''
+        else:
+            domain_rule = self.subdomain or ''
 
         self._trace = []
         self._converters = {}
         self._weights = []
-
         regex_parts = []
-        for converter, arguments, variable in parse_rule(rule):
-            if converter is None:
-                regex_parts.append(re.escape(variable))
-                self._trace.append((False, variable))
-                self._weights.append(len(variable))
-            else:
-                convobj = get_converter(self.map, converter, arguments)
-                regex_parts.append('(?P<%s>%s)' % (variable, convobj.regex))
-                self._converters[variable] = convobj
-                self._trace.append((True, variable))
-                self._weights.append(convobj.weight)
-                self.arguments.add(str(variable))
-                if convobj.is_greedy:
-                    self.greediness += 1
+
+        def _build_regex(rule):
+            for converter, arguments, variable in parse_rule(rule):
+                if converter is None:
+                    regex_parts.append(re.escape(variable))
+                    self._trace.append((False, variable))
+                    for part in variable.split('/'):
+                        if part:
+                            self._weights.append((0, -len(part)))
+                else:
+                    convobj = get_converter(self.map, converter, arguments)
+                    regex_parts.append('(?P<%s>%s)' % (variable, convobj.regex))
+                    self._converters[variable] = convobj
+                    self._trace.append((True, variable))
+                    self._weights.append((1, convobj.weight))
+                    self.arguments.add(str(variable))
+
+        _build_regex(domain_rule)
+        regex_parts.append('\\|')
+        self._trace.append((False, '|'))
+        _build_regex(self.is_leaf and self.rule or self.rule.rstrip('/'))
         if not self.is_leaf:
             self._trace.append((False, '/'))
 
-        if not self.build_only:
-            regex = r'^%s%s$' % (
-                u''.join(regex_parts),
-                (not self.is_leaf or not self.strict_slashes) and \
-                    '(?<!/)(?P<__suffix__>/?)' or ''
-            )
-            self._regex = re.compile(regex, re.UNICODE)
+        if self.build_only:
+            return
+        regex = r'^%s%s$' % (
+            u''.join(regex_parts),
+            (not self.is_leaf or not self.strict_slashes) and \
+                '(?<!/)(?P<__suffix__>/?)' or ''
+        )
+        self._regex = re.compile(regex, re.UNICODE)
 
     def match(self, path):
         """Check if the rule matches a given path. Path is a string in the
-        form ``"subdomain|/path(method)"`` and is assembled by the map.
+        form ``"subdomain|/path(method)"`` and is assembled by the map.  If
+        the map is doing host matching the subdomain part will be the host
+        instead.
 
         If the rule matches a dict with the converted values is returned,
         otherwise the return value is `None`.
@@ -613,6 +694,10 @@ class Rule(RuleFactory):
                     result[str(name)] = value
                 if self.defaults is not None:
                     result.update(self.defaults)
+
+                if self.alias and self.map.redirect_defaults:
+                    raise RequestAliasRedirect(result)
+
                 return result
 
     def build(self, values, append_unknown=True):
@@ -633,7 +718,7 @@ class Rule(RuleFactory):
                 processed.add(data)
             else:
                 add(data)
-        subdomain, url = (u''.join(tmp)).split('|', 1)
+        domain_part, url = (u''.join(tmp)).split('|', 1)
 
         if append_unknown:
             query_vars = MultiDict(values)
@@ -646,7 +731,7 @@ class Rule(RuleFactory):
                                         sort=self.map.sort_parameters,
                                         key=self.map.sort_key)
 
-        return subdomain, url
+        return domain_part, url
 
     def provides_defaults_for(self, rule):
         """Check if this rule has defaults for a given rule.
@@ -681,64 +766,29 @@ class Rule(RuleFactory):
 
         return True
 
-    def match_compare(self, other):
-        """Compare this object with another one for matching.
+    def match_compare_key(self):
+        """The match compare key for sorting.
+
+        Current implementation:
+
+        1.  rules without any arguments come first for performance
+            reasons only as we expect them to match faster and some
+            common ones usually don't have any arguments (index pages etc.)
+        2.  The more complex rules come first so the second argument is the
+            negative length of the number of weights.
+        3.  lastly we order by the actual weights.
 
         :internal:
         """
-        for sw, ow in izip(self._weights, other._weights):
-            if sw > ow:
-                return -1
-            elif sw < ow:
-                return 1
-        if len(self._weights) > len(other._weights):
-            return -1
-        if len(self._weights) < len(other._weights):
-            return 1
-        if not other.arguments and self.arguments:
-            return 1
-        elif other.arguments and not self.arguments:
-            return -1
-        elif other.defaults is None and self.defaults is not None:
-            return 1
-        elif other.defaults is not None and self.defaults is None:
-            return -1
-        elif self.greediness > other.greediness:
-            return -1
-        elif self.greediness < other.greediness:
-            return 1
-        elif len(self.arguments) > len(other.arguments):
-            return 1
-        elif len(self.arguments) < len(other.arguments):
-            return -1
-        return 1
+        return bool(self.arguments), -len(self._weights), self._weights
 
-    def build_compare(self, other):
-        """Compare this object with another one for building.
+    def build_compare_key(self):
+        """The build compare key for sorting.
 
         :internal:
         """
-        if not other.arguments and self.arguments:
-            return -1
-        elif other.arguments and not self.arguments:
-            return 1
-        elif other.defaults is None and self.defaults is not None:
-            return -1
-        elif other.defaults is not None and self.defaults is None:
-            return 1
-        elif self.provides_defaults_for(other):
-            return -1
-        elif other.provides_defaults_for(self):
-            return 1
-        elif self.greediness > other.greediness:
-            return -1
-        elif self.greediness < other.greediness:
-            return 1
-        elif len(self.arguments) > len(other.arguments):
-            return -1
-        elif len(self.arguments) < len(other.arguments):
-            return 1
-        return -1
+        return self.alias and 1 or 0, -len(self.arguments), \
+               -len(self.defaults or ())
 
     def __eq__(self, other):
         return self.__class__ is other.__class__ and \
@@ -776,7 +826,6 @@ class Rule(RuleFactory):
 class BaseConverter(object):
     """Base class for all converters."""
     regex = '[^/]+'
-    is_greedy = False
     weight = 100
 
     def __init__(self, map):
@@ -825,9 +874,9 @@ class UnicodeConverter(BaseConverter):
 
 class AnyConverter(BaseConverter):
     """Matches one of the items provided.  Items can either be Python
-    identifiers or unicode strings::
+    identifiers or strings::
 
-        Rule('/<any(about, help, imprint, u"class"):page_name>')
+        Rule('/<any(about, help, imprint, class, "foo,bar"):page_name>')
 
     :param map: the :class:`Map`.
     :param items: this function accepts the possible items as positional
@@ -849,8 +898,7 @@ class PathConverter(BaseConverter):
     :param map: the :class:`Map`.
     """
     regex = '[^/].*?'
-    is_greedy = True
-    weight = 50
+    weight = 200
 
 
 class NumberConverter(BaseConverter):
@@ -858,6 +906,7 @@ class NumberConverter(BaseConverter):
 
     :internal:
     """
+    weight = 50
 
     def __init__(self, map, fixed_digits=0, min=None, max=None):
         BaseConverter.__init__(self, map)
@@ -951,12 +1000,16 @@ class Map(object):
                             See `url_encode` for more details.
     :param sort_key: The sort key function for `url_encode`.
     :param encoding_errors: the error method to use for decoding
+    :param host_matching: if set to `True` it enables the host matching
+                          feature and disables the subdomain one.  If
+                          enabled the `host` parameter to rules is used
+                          instead of the `subdomain` one.
 
     .. versionadded:: 0.5
         `sort_parameters` and `sort_key` was added.
 
     .. versionadded:: 0.7
-        `encoding_errors` was added.
+        `encoding_errors` and `host_matching` was added.
     """
 
     #: .. versionadded:: 0.6
@@ -966,7 +1019,7 @@ class Map(object):
     def __init__(self, rules=None, default_subdomain='', charset='utf-8',
                  strict_slashes=True, redirect_defaults=True,
                  converters=None, sort_parameters=False, sort_key=None,
-                 encoding_errors='ignore'):
+                 encoding_errors='replace', host_matching=False):
         self._rules = []
         self._rules_by_endpoint = {}
         self._remap = True
@@ -976,6 +1029,7 @@ class Map(object):
         self.encoding_errors = encoding_errors
         self.strict_slashes = strict_slashes
         self.redirect_defaults = redirect_defaults
+        self.host_matching = host_matching
 
         self.converters = self.default_converters.copy()
         if converters:
@@ -1014,6 +1068,7 @@ class Map(object):
                          are returned.
         :return: an iterator
         """
+        self.update()
         if endpoint is not None:
             return iter(self._rules_by_endpoint[endpoint])
         return iter(self._rules)
@@ -1052,7 +1107,11 @@ class Map(object):
         .. versionadded:: 0.7
            `query_args` added
         """
-        if subdomain is None:
+        if self.host_matching:
+            if subdomain is not None:
+                raise RuntimeError('host matching enabled and a '
+                                   'subdomain was provided')
+        elif subdomain is None:
             subdomain = self.default_subdomain
         if script_name is None:
             script_name = '/'
@@ -1098,7 +1157,7 @@ class Map(object):
                 if (environ['wsgi.url_scheme'], environ['SERVER_PORT']) not \
                    in (('https', '443'), ('http', '80')):
                     server_name += ':' + environ['SERVER_PORT']
-        elif subdomain is None:
+        elif subdomain is None and not self.host_matching:
             if 'HTTP_HOST' in environ:
                 wsgi_server_name = environ.get('HTTP_HOST')
             else:
@@ -1124,14 +1183,14 @@ class Map(object):
         in the correct order after things changed.
         """
         if self._remap:
-            self._rules.sort(lambda a, b: a.match_compare(b))
+            self._rules.sort(key=lambda x: x.match_compare_key())
             for rules in self._rules_by_endpoint.itervalues():
-                rules.sort(lambda a, b: a.build_compare(b))
+                rules.sort(key=lambda x: x.build_compare_key())
             self._remap = False
 
     def __repr__(self):
         rules = self.iter_rules()
-        return '%s([%s])' % (self.__class__.__name__, pformat(list(rules)))
+        return '%s(%s)' % (self.__class__.__name__, pformat(list(rules)))
 
 
 class MapAdapter(object):
@@ -1290,7 +1349,10 @@ class MapAdapter(object):
         if query_args is None:
             query_args = self.query_args
         method = (method or self.default_method).upper()
-        path = u'%s|/%s' % (self.subdomain, path_info.lstrip('/'))
+
+        path = u'%s|/%s' % (self.map.host_matching and self.server_name or
+                            self.subdomain, path_info.lstrip('/'))
+
         have_match_for = set()
         for rule in self.map._rules:
             try:
@@ -1298,6 +1360,9 @@ class MapAdapter(object):
             except RequestSlash:
                 raise RequestRedirect(self.make_redirect_url(
                     path_info + '/', query_args))
+            except RequestAliasRedirect, e:
+                raise RequestRedirect(self.make_alias_redirect_url(
+                    path, rule.endpoint, e.matched_values, method, query_args))
             if rv is None:
                 continue
             if rule.methods is not None and method not in rule.methods:
@@ -1308,9 +1373,9 @@ class MapAdapter(object):
                     if r.provides_defaults_for(rule) and \
                        r.suitable_for(rv, method):
                         rv.update(r.defaults)
-                        subdomain, path = r.build(rv)
+                        domain_part, path = r.build(rv)
                         raise RequestRedirect(self.make_redirect_url(
-                            path, query_args, subdomain=subdomain))
+                            path, query_args, domain_part=domain_part))
             if rule.redirect_to is not None:
                 if isinstance(rule.redirect_to, basestring):
                     def _handle_match(match):
@@ -1364,21 +1429,45 @@ class MapAdapter(object):
             pass
         return []
 
-    def make_redirect_url(self, path_info, query_args=None, subdomain=None):
-        """Creates a redirect URL."""
+    def get_host(self, domain_part):
+        """Figures out the full host name for the given domain part.  The
+        domain part is a subdomain in case host matching is disabled or
+        a full host name.
+        """
+        if self.map.host_matching:
+            if domain_part is None:
+                return self.server_name
+            return domain_part
+        subdomain = domain_part
+        if subdomain is None:
+            subdomain = self.subdomain
+        return (subdomain and subdomain + '.' or '') + self.server_name
+
+    def make_redirect_url(self, path_info, query_args=None, domain_part=None):
+        """Creates a redirect URL.
+
+        :internal:
+        """
         suffix = ''
         if query_args:
             suffix = '?' + url_encode(query_args, self.map.charset)
-        if subdomain is None:
-            subdomain = self.subdomain
-        return str('%s://%s%s/%s%s' % (
+        return str('%s://%s/%s%s' % (
             self.url_scheme,
-            subdomain and subdomain + '.' or '',
-            self.server_name,
+            self.get_host(domain_part),
             posixpath.join(self.script_name[:-1].lstrip('/'),
                            url_quote(path_info.lstrip('/'), self.map.charset)),
             suffix
         ))
+
+    def make_alias_redirect_url(self, path, endpoint, values, method, query_args):
+        """Internally called to make an alias redirect URL."""
+        url = self.build(endpoint, values, method, append_unknown=False,
+                         force_external=True)
+        if query_args:
+            url += '?' + url_encode(query_args, self.map.charset)
+        assert url != path, 'detected invalid alias setting.  No canonical ' \
+               'URL found'
+        return url
 
     def _partial_build(self, endpoint, values, method, append_unknown):
         """Helper for :meth:`build`.  Returns subdomain and path for the
@@ -1468,14 +1557,18 @@ class MapAdapter(object):
         rv = self._partial_build(endpoint, values, method, append_unknown)
         if rv is None:
             raise BuildError(endpoint, values, method)
-        subdomain, path = rv
+        domain_part, path = rv
 
-        if not force_external and subdomain == self.subdomain:
+        host = self.get_host(domain_part)
+
+        # shortcut this.
+        if not force_external and (
+            (self.map.host_matching and host == self.server_name) or
+            (not self.map.host_matching and domain_part == self.subdomain)):
             return str(urljoin(self.script_name, './' + path.lstrip('/')))
-        return str('%s://%s%s%s/%s' % (
+        return str('%s://%s%s/%s' % (
             self.url_scheme,
-            subdomain and subdomain + '.' or '',
-            self.server_name,
+            host,
             self.script_name[:-1],
             path.lstrip('/')
         ))
