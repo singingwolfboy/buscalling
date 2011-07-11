@@ -6,6 +6,7 @@ from buscall import app
 from buscall.models import nextbus
 from buscall.models.listener import BusListener
 from buscall.views.tasks import poll, reset_seen_flags
+from buscall.views.twilio import call_prediction
 from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
 from google.appengine.ext import db
 from google.appengine.api.users import User
@@ -34,6 +35,10 @@ class UrlfetchTestCase(ServiceTestCase):
         with app.test_request_context('/tasks/poll'):
             poll(active_moment.timetuple())
             self.assertEqual(len(self.sent_messages), 1)
+    
+    def test_call_prediction(self):
+        with app.test_request_context('/call/mbta/26/26_1_var1/492/9999999999'):
+            call_prediction("mbta", "26", "26_1_var1", "492", "9999999999")
 
 class DatastoreTestCase(ServiceTestCase):
     def test_set_seen_flag(self):

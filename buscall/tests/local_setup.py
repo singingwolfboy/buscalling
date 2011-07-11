@@ -70,6 +70,8 @@ class ServiceTestCase(unittest.TestCase):
           return os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], "config.xml")
         elif command == "predictions":
           return os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], params['s']+".xml")
+      elif parts.netloc == "api.twilio.com":
+        return os.path.join("urlfetch", "twilio_api", "response.json")
 
       return None
     
