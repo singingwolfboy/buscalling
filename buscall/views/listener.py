@@ -46,7 +46,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
             alert.put()
 
         flash("Listener created!")
-        return redirect(url_for("index_listeners"))
+        return redirect(url_for("lander"))
     context = {
         "form": form,
         "js_file": "listeners",
