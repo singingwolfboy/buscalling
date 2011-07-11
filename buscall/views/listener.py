@@ -1,5 +1,5 @@
 from buscall import app
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for, abort
 from ..decorators import login_required
 from google.appengine.api import users
 from buscall.models.listener import BusListener, BusAlert
@@ -133,3 +133,18 @@ def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, di
                     # need to set "data" attribute so that it will render as default
                     form.stop_id.data = stop_id         
     return form
+
+@app.route('/listeners/<int:listener_id>', methods=['DELETE'])
+def destroy_listener(listener_id):
+    user = users.get_current_user()
+    if not user:
+        return redirect(url_for('login'))
+    listener = BusListener.get_by_id(listener_id)
+    if not listener:
+        abort(404)
+    if listener.user != user:
+        abort(401)
+    listener.delete()
+    flash('Listener deleted!')
+    return redirect(url_for('lander'))
+    

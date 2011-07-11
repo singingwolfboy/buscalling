@@ -9,7 +9,12 @@
 {% if listeners %}
 <ul>
 {% for listener in listeners %}
-  <li>{{listener}}</li>
+  <li>{{listener}}
+    <form action="{{url_for('destroy_listener', listener_id=listener.key().id())}}" method="POST">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Delete Listener" />
+    </form>
+  </li>
 {% endfor %}
 </ul>
 {% else %}
