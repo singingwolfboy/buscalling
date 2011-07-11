@@ -1,4 +1,8 @@
-class HTTPMethodOverrideMiddleware(object):
+from werkzeug import Request
+import logging
+from buscall.util import parse_url_params
+
+class MethodRewriteMiddleware(object):
     """
     With this middleware installed, a _method HTTP parameter will override
     the actual HTTP method used in making the request. For example, if
@@ -9,15 +13,25 @@ class HTTPMethodOverrideMiddleware(object):
     (Rack::MethodOverride). It is designed for standard web browsers, 
     which can only submit HTTP forms using either the GET or POST methods.
     """
-    def __init__(self, app):
+    def __init__(self, app, input_name='_method'):
         self.app = app
+        self.input_name = input_name
 
     def __call__(self, environ, start_response):
-        method = environ.get('_method')
-        if method:
-            environ['REQUEST_METHOD'] = method.upper()
-        return self.app(environ, start_response)
+        pf = environ.get('wsgi.input', None)
+        if not pf:
+            return self.app(environ, start_response)
 
+        params = parse_url_params(pf.read())
+        pf.seek(0)
+
+        if self.input_name in params:
+            method = params[self.input_name].upper()
+
+            if method in ['GET', 'POST', 'PUT', 'DELETE']:
+                environ['REQUEST_METHOD'] = method
+
+        return self.app(environ, start_response)
 
 class DummyMiddleware(object):
     "For testing purposes."

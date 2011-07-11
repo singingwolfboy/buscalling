@@ -19,6 +19,8 @@ def build_url_params(params):
 
 def parse_url_params(string):
     "Take a URL queryparam string, and return a dict of the params."
+    if string == "":
+        return {}
     return dict([param.split('=') for param in string.split('&')])
 
 def clean_booleans(d):

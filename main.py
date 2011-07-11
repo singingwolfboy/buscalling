@@ -47,12 +47,12 @@ def run_app():
         HardenedModulesHook._WHITE_LIST_C_MODULES += ['_ctypes', 'gestalt']
 
     # Grab your middleware and wrap the app
-    from middleware import HTTPMethodOverrideMiddleware
-    app.wsgi_app = HTTPMethodOverrideMiddleware(app.wsgi_app)
+    from middleware import MethodRewriteMiddleware
+    app.wsgi_app =MethodRewriteMiddleware(app.wsgi_app)
 
     # Run the app using Werkzeug
     from google.appengine.ext.webapp.util import run_wsgi_app
-    run_wsgi_app(app)
+    run_wsgi_app(app.wsgi_app)
 
 if __name__ == "__main__":
     sys.path = get_updated_sys_path()        
