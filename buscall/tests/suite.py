@@ -1,7 +1,7 @@
 #!/opt/local/bin/python2.5
 from __future__ import with_statement 
 import unittest
-from gae_mock import ServiceTestCase
+from local_setup import ServiceTestCase
 from buscall import app
 from buscall.models import nextbus
 from buscall.models.listener import BusListener

@@ -76,7 +76,8 @@ class ServiceTestCase(unittest.TestCase):
     def _RetrieveURL(self, url, payload, method, headers, request, response,
                    follow_redirects=True, deadline=_API_CALL_DEADLINE,
                    validate_certificate=_API_CALL_VALIDATE_CERTIFICATE_DEFAULT):
-      resp_file = self._response_file(url)
+      resp_rel_path = self._response_file(url)
+      resp_file = os.path.join(os.path.dirname(__file__), resp_rel_path)
 
       if not resp_file:
         raise TestException("unknown URL: "+url)
