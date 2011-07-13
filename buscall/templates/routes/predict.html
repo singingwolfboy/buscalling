@@ -1,9 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<body>
-<h1>Route {{prediction.route.title}}</h1>
-<h2>Stop {{prediction.stop.title}}</h2>
-<h2>Towards {{prediction.direction.title}}</h2>
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block header %}
+    <h1>Route {{prediction.route.title}}</h1>
+    <h2>Stop {{prediction.stop.title}}</h2>
+    <h2>Towards {{prediction.direction.title}}</h2>
+{% endblock %}
+{% block main %}
+
 {% if prediction.buses %}
 <ul>
 	{% for bus in prediction.buses %}
@@ -13,5 +16,5 @@
 {% else %}
 <p>No buses predicted</p>
 {% endif %}
-</body>
-</html>
+
+{% endblock %}

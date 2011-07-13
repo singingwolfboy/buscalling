@@ -1,11 +1,14 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<body>
-<h1>Routes</h1>
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block header %}
+    <h1>Routes</h1>
+{% endblock %}
+{% block main %}
+
 <ul>
 {% for id, info in routes.iteritems() %}
 	<li><a href="{{url_for('show_route', agency_id=agency.id, route_id=id)}}">{{info.title}}</a></li>
 {% endfor %}
 </ul>
-</body>
-</html>
+
+{% endblock %}
