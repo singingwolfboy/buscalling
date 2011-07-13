@@ -19,12 +19,14 @@ location: %s, %s
 
 @app.context_processor
 def inject_user():
-    return dict(user=users.get_current_user())
+    return {"user": users.get_current_user()}
 
-@app.before_request
-def add_auth_url_rules():
-    app.add_url_rule(users.create_login_url( request.url), 'login')
-    app.add_url_rule(users.create_logout_url(url_for('lander')), 'logout')
+@app.context_processor
+def inject_auth_urls():
+    return {
+        "login_url":  users.create_login_url(request.url),
+        "logout_url": users.create_logout_url(url_for('lander')),
+    }
 
 @app.route('/', methods = ['GET', 'POST'])
 def lander():

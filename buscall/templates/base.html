@@ -19,9 +19,9 @@
     {% block nav %}
     <nav>
       {% if user %}
-      <a href="{{url_for('logout')}}">Logout</a>
+      <a href="{{ logout_url }}">Logout</a>
       {% else %}
-      <a href="{{url_for('login')}}">Login</a>
+      <a href="{{ login_url }}">Login</a>
       {% endif %}
     </nav>
     {% endblock %}
