@@ -19,7 +19,7 @@ def get_twiml(prediction):
     else:
         times_lst = []
         for bus in buses[1:]:
-            times_lst.append(pluralize_minutes(bus['minutes']))
+            times_lst.append(pluralize_minutes(bus.minutes))
         
         if len(times_lst) == 1:
             say = "One more bus coming in %s" % (times_lst[0])
@@ -45,4 +45,5 @@ def humanize_list(lst):
     elif len(lst) == 2:
         return " and ".join(lst)
     else:
-        return ", ".join(lst[:-2]) + ", and ".join(lst[-2:])
+
+        return ", ".join(lst[:-1]) + ", and " + lst[-1]
