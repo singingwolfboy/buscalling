@@ -1,5 +1,6 @@
 #!/opt/local/bin/python2.5
 from __future__ import with_statement 
+import os
 import unittest
 from local_setup import ServiceTestCase
 from buscall import app
@@ -36,6 +37,7 @@ class UrlfetchTestCase(ServiceTestCase):
             self.assertEqual(len(self.sent_messages), 1)
     
     def test_call_prediction(self):
+        os.environ['USER_IS_ADMIN'] = "1"
         with app.test_request_context('/call/mbta/26/26_1_var1/492/9999999999'):
             call_prediction("mbta", "26", "26_1_var1", "492", "9999999999")
 
