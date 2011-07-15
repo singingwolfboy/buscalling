@@ -1,6 +1,6 @@
 from functools import wraps
 from google.appengine.api import users
-from flask import redirect, request
+from flask import redirect, request, abort
 
 def login_required(func):
     """
@@ -27,6 +27,22 @@ def login_required(func):
     def decorated_view(*args, **kwargs):
         if not users.get_current_user():
             return redirect(users.create_login_url(request.url))
+        return func(*args, **kwargs)
+    # @app.route() creates a url rule based on the name of the view function,
+    # so we need to pull that information up and through this decorator.
+    decorated_view.__name__ = func.__name__
+    return decorated_view
+
+def admin_required(func):
+    """
+    Indicates that view requires an admin user. Supersedes @login_required:
+    no need to use both. Subject to the same routing restrictions.
+    """
+    @wraps(func)
+    def decorated_view(*args, **kwargs):
+        user = users.get_current_user()
+        if not users.is_current_user_admin():
+            abort(403)
         return func(*args, **kwargs)
     # @app.route() creates a url rule based on the name of the view function,
     # so we need to pull that information up and through this decorator.
