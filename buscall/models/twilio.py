@@ -1,4 +1,11 @@
-from twilio_api import Response
+from twilio_api import Account, Response
+from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
+from buscall.util import DOMAIN, pluralize_minutes, humanize_list
+from flask import url_for
+import simplejson as json
+
+API_VERSION = "2010-04-01"
+account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)
 
 def get_twiml(prediction):
     r = Response()
@@ -29,21 +36,20 @@ def get_twiml(prediction):
 
     return str(r)
 
-def pluralize_minutes(minutes):
-    if minutes == 0:
-        return "less than a minute"
-    elif minutes == 1:
-        return "one minute"
-    else:
-        return "%s minutes" % (minutes)
-
-def humanize_list(lst):
-    if len(lst) == 0:
-        return ""
-    elif len(lst) == 1:
-        return lst[0]
-    elif len(lst) == 2:
-        return " and ".join(lst)
-    else:
-
-        return ", ".join(lst[:-1]) + ", and " + lst[-1]
+def alert_by_phone(listener):
+    url = DOMAIN + url_for('predict_for_stop', 
+        agency_id=listener.agency.id, 
+        route_id=listener.route.id, 
+        direction_id=listener.direction.id, 
+        stop_id=listener.stop.id, 
+        format="twiml")
+    call_info = {
+        'From': PHONE_NUMBER,
+        'To': listener.userprofile.phone,
+        'Url': url,
+        'Method': 'GET',
+    }
+    return json.loads(account.request(
+        '/%s/Accounts/%s/Calls.json' % (API_VERSION, ACCOUNT_SID),
+        'POST', 
+        call_info))

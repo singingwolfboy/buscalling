@@ -8,11 +8,24 @@ from google.appengine.api.users import User
 if not 'AUTH_DOMAIN' in os.environ:
     from buscall.util import AUTH_DOMAIN
     os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
-test_user = User("test@example.com")
+
+class UserProfileData(DataSet):
+    class test_profile:
+        user = User("test@example.com")
+        paid = True
+        joined = datetime.datetime(2010, 2, 3, 10, 32, 45)
+        last_login = datetime.datetime(2011, 7, 14, 7, 0, 0)
+
+    class with_phone:
+        user = User("phone@example.com")
+        paid = True
+        phone = "999-888-7777"
+        joined = datetime.datetime(2011, 2, 9, 10, 11, 12)
+        last_login = datetime.datetime(2011, 6, 10, 10, 15)
 
 class BusListenerData(DataSet):
     class morning_bus:
-        user = test_user
+        userprofile = UserProfileData.test_profile
         agency_id = "mbta"
         route_id = "556"
         direction_id = "556_5560006v0_1"
@@ -28,7 +41,7 @@ class BusListenerData(DataSet):
         seen = False
 
     class afternoon_bus:
-        user = test_user
+        userprofile = UserProfileData.test_profile
         agency_id = "mbta"
         route_id = "59"
         direction_id = "59_590008v0_1"
@@ -44,7 +57,7 @@ class BusListenerData(DataSet):
         seen = False
 
     class cron_bus:
-        user = test_user
+        userprofile = UserProfileData.test_profile
         agency_id = "mbta"
         route_id = "26"
         direction_id = "26_1_var1"
@@ -60,7 +73,7 @@ class BusListenerData(DataSet):
         seen = False
 
     class seen_bus:
-        user = test_user
+        userprofile = UserProfileData.with_phone
         agency_id = "mbta"
         route_id = "70"
         direction_id = "70_0_var1"
@@ -82,8 +95,14 @@ class BusAlertData(DataSet):
         medium = "email"
         executed = False
 
-    class seen_bus_alert:
+    class seen_bus_email_alert:
         listener = BusListenerData.seen_bus
         minutes = 3
         medium = "email"
         executed = True
+
+    class seen_bus_phone_alert:
+        listener = BusListenerData.seen_bus
+        minutes = 5
+        medium = "phone"
+        executed = False

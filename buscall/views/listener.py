@@ -3,6 +3,7 @@ from flask import render_template, request, flash, redirect, url_for, abort
 from ..decorators import login_required
 from google.appengine.api import users
 from buscall.models.listener import BusListener, BusAlert
+from buscall.models.profile import UserProfile
 from buscall.forms import BusListenerForm
 from buscall.models.nextbus import AGENCIES, get_routes, get_route
 from buscall.util import GqlQuery, DAYS_OF_WEEK
@@ -30,8 +31,10 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     }
     form = get_listener_form_with_defaults(BusListenerForm(request.form), **kwargs)
     if form.validate_on_submit():
+        user = users.get_current_user()
+        profile = UserProfile.gql("WHERE user = :user", user=user)
         params = {
-            "user": users.get_current_user(),
+            "userprofile": profile,
             "seen": False,
         }
         for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):

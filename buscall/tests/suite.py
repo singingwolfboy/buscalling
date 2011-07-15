@@ -3,8 +3,9 @@ from __future__ import with_statement
 import unittest
 from local_setup import ServiceTestCase
 from buscall import app
-from buscall.models import nextbus
-from buscall.models.listener import BusListener
+from buscall.models import nextbus, twilio
+from buscall.models.listener import BusListener, BusAlert
+from buscall.models.profile import UserProfile
 from buscall.views.tasks import poll, reset_seen_flags
 from buscall.views.twilio import call_prediction
 from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
@@ -13,8 +14,6 @@ from google.appengine.api.users import User
 import datetime
 
 class UrlfetchTestCase(ServiceTestCase):
-    # Mock responses to URLs are set in the setUp() method of the MockUrlfetchTestCase class
-
     def test_predictions(self):
         agency_id = "mbta"
         route_id = "26"
@@ -39,6 +38,12 @@ class UrlfetchTestCase(ServiceTestCase):
     def test_call_prediction(self):
         with app.test_request_context('/call/mbta/26/26_1_var1/492/9999999999'):
             call_prediction("mbta", "26", "26_1_var1", "492", "9999999999")
+
+    def test_phone_alert(self):
+        alert = BusAlert.gql("WHERE medium = :medium AND executed = False", medium="phone").fetch(1)[0]
+        with app.test_request_context('/tasks/poll'):
+            result = twilio.alert_by_phone(alert.listener)
+            self.assertEqual(result['to'], alert.listener.userprofile.phone)
 
 class DatastoreTestCase(ServiceTestCase):
     def test_set_seen_flag(self):
@@ -70,11 +75,13 @@ class BusListenerTestCase(ServiceTestCase):
     def test_create_bus_listener(self):
         num_listeners = BusListener.all().count()
         user = User("carl@example.com")
-        listener = BusListener(user=user, agency_id="mbta", route_id="556", direction_id="556_1_var0", stop_id="77378",
+        key_name = user.user_id() or user.email()
+        profile = UserProfile.get_or_insert(key_name, user=user)
+        listener = BusListener(userprofile=profile, agency_id="mbta", route_id="556", direction_id="556_1_var0", stop_id="77378",
             start=datetime.time(3,0), mon=True, tue=False, wed=True, thu=True, fri=True, sat=False, sun=False)
         listener.put()
         self.assertEqual(BusListener.all().count() - num_listeners, 1)
-        self.assertEqual(listener.user, user)
+        self.assertEqual(listener.userprofile, profile)
         self.assertEqual(listener.stop.id, "77378")
         self.assertEqual(listener.seen, False)
         self.assertEqual(listener.start, datetime.time(3,0))
