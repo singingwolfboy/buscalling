@@ -1,7 +1,9 @@
 from google.appengine.api import users, mail
 from google.appengine.ext import db
 from buscall.models.nextbus import AGENCIES, get_predictions, get_route
+from buscall.models.profile import UserProfile
 from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
+from buscall.models.twilio import alert_by_phone
 try:
     from itertools import compress
 except ImportError:
@@ -12,7 +14,7 @@ except ImportError:
 ALERT_CHOICES = (('phone', 'Phone'), ('txt', 'Text'), ('email', 'Email'))
 
 class BusListener(db.Model):
-    user = db.UserProperty(required=True)
+    userprofile = db.ReferenceProperty(UserProfile, collection_name="listeners", required=True)
 
     # info about bus stop
     agency_id = db.StringProperty(required=True, default="mbta")
@@ -37,6 +39,16 @@ class BusListener(db.Model):
     fri = db.BooleanProperty(required=True, default=True)
     sat = db.BooleanProperty(required=True, default=True)
     sun = db.BooleanProperty(required=True, default=True)
+
+    # if we pass in a user object instead of a user profile object, 
+    # make it work anyway
+    def __init__(self, *args, **kwargs):
+        if 'user' in kwargs and 'userprofile' not in kwargs:
+            user = kwargs['user']
+            key_name = user.user_id() or user.email()
+            profile = UserProfile.get_or_insert(key_name, user=user)
+            kwargs['userprofile'] = profile
+        db.Model.__init__(self, *args, **kwargs)
 
     @property
     def daily(self):
@@ -96,6 +108,7 @@ class BusListener(db.Model):
             except AttributeError:
                 pass
         values[u'class'] = self.__class__.__name__
+        values[u'user'] = self.userprofile.user
         values[u'repeat'] = self.repeat_descriptor
         return "%(class)s for %(user)s: %(agency_id)s %(route_id)s " \
             "%(direction_id)s %(stop_id)s %(start)s %(repeat)s" \
@@ -134,8 +147,10 @@ class BusAlert(db.Model):
             subject = "ALERT: %s bus, %s" % (route.title, stop.title)
             body = "Your bus is coming in %d minutes." % (minutes)
             mail.send_mail(sender=MAIL_SENDER,
-                to=self.listener.user.email(),
+                to=self.listener.userprofile.email,
                 subject=subject, body=body)
+        elif self.medium == "phone":
+            alert_by_phone(self.listener)
         else:
             raise NotImplementedError
         
