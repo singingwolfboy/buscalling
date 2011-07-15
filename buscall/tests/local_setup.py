@@ -116,6 +116,7 @@ class ServiceTestCase(unittest.TestCase):
     os.environ['APPLICATION_ID'] = APP_ID
     os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
     os.environ['USER_EMAIL'] = LOGGED_IN_USER
+    os.environ['USER_IS_ADMIN'] = "0"
 
     self.urlfetch_stub = ServiceTestCase.UrlFetchStub()
     self.mail_stub = mail_stub.MailServiceStub()
