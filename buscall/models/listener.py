@@ -138,22 +138,28 @@ class BusAlert(db.Model):
 
     def execute(self, minutes=None):
         "minutes parameter is the actual prediction time"
-        route = self.listener.route
-        stop = self.listener.stop
         if minutes is None:
             minutes = self.minutes
 
         if self.medium == "email":
-            subject = "ALERT: %s bus, %s" % (route.title, stop.title)
-            body = "Your bus is coming in %d minutes." % (minutes)
-            mail.send_mail(sender=MAIL_SENDER,
-                to=self.listener.userprofile.email,
-                subject=subject, body=body)
+            alert_by_email(self.listener, minutes)
         elif self.medium == "phone":
-            alert_by_phone(self.listener)
+            alert_by_phone(self.listener, minutes)
+        elif self.medium == "txt":
+            alert_by_txt(self.listener, minutes)
         else:
             raise NotImplementedError
         
         self.executed = True
         self.put()
         self.listener.check_alerts()
+
+def alert_by_email(listener, minutes=None):
+    if minutes is None:
+        predictions = listener.get_predictions()
+        minutes = predictions.buses[0].minutes
+    subject = "ALERT: %s bus, %s" % (listener.route.title, listener.stop.title)
+    body = "Your bus is coming in %d minutes." % (minutes)
+    mail.send_mail(sender=MAIL_SENDER,
+        to=listener.userprofile.email,
+        subject=subject, body=body)
