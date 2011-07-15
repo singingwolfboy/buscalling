@@ -8,21 +8,6 @@ DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
 DOMAIN = "http://www.buscalling.com"
 
-def build_url_params(params):
-    "Take a dict or list of tuples, and return a URL queryparam string."
-    try:
-        # if we were passed a dictionary, convert it into a list of tuples
-        params = params.items()
-    except AttributeError:
-        pass
-    return "&".join(["%s=%s" % (key, val) for (key, val) in params])
-
-def parse_url_params(string):
-    "Take a URL queryparam string, and return a dict of the params."
-    if string == "":
-        return {}
-    return dict([param.split('=') for param in string.split('&')])
-
 def clean_booleans(d):
     for key in d.keys():
         try:
@@ -34,6 +19,24 @@ def clean_booleans(d):
         except AttributeError:
             pass
     return d
+
+def pluralize_minutes(minutes):
+    if minutes == 0:
+        return "less than a minute"
+    elif minutes == 1:
+        return "one minute"
+    else:
+        return "%s minutes" % (minutes)
+
+def humanize_list(lst):
+    if len(lst) == 0:
+        return ""
+    elif len(lst) == 1:
+        return lst[0]
+    elif len(lst) == 2:
+        return " and ".join(lst)
+    else:
+        return ", ".join(lst[:-1]) + ", and " + lst[-1]
 
 # for testing only
 APP_ID = u'buscalling'

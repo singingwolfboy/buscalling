@@ -12,6 +12,7 @@ from __future__ import with_statement
 import os
 import time
 import unittest
+import simplejson as json
 from httplib import HTTPResponse
 from StringIO import StringIO
 from urlparse import urlparse
@@ -27,20 +28,28 @@ from fixture import GoogleDatastoreFixture
 from fixture.style import NamedDataStyle
 from buscall import models
 from buscall.tests import datasets
-from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER, parse_url_params
+from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
+try:
+  from urlparse import parse_qs
+except ImportError:
+  from cgi import parse_qs
 
 class TestException(Exception): pass
 
 # from http://pythonwise.blogspot.com/2010/02/parse-http-response.html
 class FakeSocket(StringIO):
-    def makefile(self, *args, **kw):
-        return self
+  def makefile(self, *args, **kw):
+    return self
 
 def httpparse(fp):
-    socket = FakeSocket(fp.read())
-    response = HTTPResponse(socket)
-    response.begin()
-    return response
+  try:
+    contents = fp.read()
+  except AttributeError:
+    contents = fp
+  socket = FakeSocket(contents)
+  response = HTTPResponse(socket)
+  response.begin()
+  return response
 # end http://pythonwise.blogspot.com/2010/02/parse-http-response.html
 
 class ServiceTestCase(unittest.TestCase):
@@ -56,38 +65,48 @@ class ServiceTestCase(unittest.TestCase):
   class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
     """Stub version of the urlfetch API to be used with apiproxy_stub_map."""
 
-    def _response_file(self, url):
+    def _get_response(self, url, payload):
       parts = urlparse(url)
-      params = parse_url_params(parts.query)
       if parts.netloc == "webservices.nextbus.com":
-        try:
-          command = params['command']
-        except KeyError:
-          return os.path.join("urlfetch", "nextbus_api", "no_params.xml")
-        if command == "routeList":
-          return os.path.join("urlfetch", "nextbus_api", params['a'], "route_list.xml")
-        elif command == "routeConfig":
-          return os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], "config.xml")
-        elif command == "predictions":
-          return os.path.join("urlfetch", "nextbus_api", params['a'], params['r'], params['s']+".xml")
+        rel_path = self._get_nextbus_path(parse_qs(parts.query))
+        if not rel_path: return None
+        return open(os.path.join(os.path.dirname(__file__), rel_path))
       elif parts.netloc == "api.twilio.com":
-        return os.path.join("urlfetch", "twilio_api", "response.json")
+        return self._get_twilio_response(parse_qs(payload))
 
       return None
+    
+    def _get_nextbus_path(self, params):
+      try:
+        command = params['command'][0]
+      except KeyError:
+        return os.path.join("urlfetch", "nextbus_api", "no_params.xml")
+      if command == "routeList":
+        return os.path.join("urlfetch", "nextbus_api", params['a'][0], "route_list.xml")
+      elif command == "routeConfig":
+        return os.path.join("urlfetch", "nextbus_api", params['a'][0], params['r'][0], "config.xml")
+      elif command == "predictions":
+        return os.path.join("urlfetch", "nextbus_api", params['a'][0], params['r'][0], params['s'][0]+".xml")
+      return None
+    
+    def _get_twilio_response(self, params):
+      return json.dumps({
+        "to": params["To"][0],
+        "from": params["From"][0],
+        "sid": "1234567890",
+      })
     
     def _RetrieveURL(self, url, payload, method, headers, request, response,
                    follow_redirects=True, deadline=_API_CALL_DEADLINE,
                    validate_certificate=_API_CALL_VALIDATE_CERTIFICATE_DEFAULT):
-      resp_rel_path = self._response_file(url)
-      resp_file = os.path.join(os.path.dirname(__file__), resp_rel_path)
+      resp = self._get_response(url, payload)
 
-      if not resp_file:
+      if not resp:
         raise TestException("unknown URL: "+url)
 
-      with open(resp_file) as f:
-        resp = httpparse(f)
-        response.set_statuscode(resp.status)
-        response.set_content(resp.fp.read())
+      http_resp = httpparse(resp)
+      response.set_statuscode(http_resp.status)
+      response.set_content(http_resp.fp.read())
 
   def setUp(self):
     # Ensure we're in UTC.
@@ -110,7 +129,7 @@ class ServiceTestCase(unittest.TestCase):
     
     # insert fixture data
     datafixture = GoogleDatastoreFixture(env=models, style=NamedDataStyle())
-    data = datafixture.data(datasets.BusListenerData, datasets.BusAlertData)
+    data = datafixture.data(datasets.UserProfileData, datasets.BusListenerData, datasets.BusAlertData)
     data.setup()
   
   def get_sent_messages(self, *args, **kwargs):

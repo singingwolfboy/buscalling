@@ -3,9 +3,10 @@ from xml.etree import ElementTree as etree
 import logging
 import time
 from decimal import Decimal
+from urllib import urlencode
 from buscall import cache
 from functools import wraps
-from buscall.util import build_url_params, clean_booleans
+from buscall.util import clean_booleans
 try:
     from collections import OrderedDict
 except ImportError:
@@ -50,7 +51,7 @@ def errcheck_xml(func):
 @cache.memoize(timeout=3600)
 def get_routes(agency_id):
     rpc = urlfetch.create_rpc()
-    url = RPC_URL + build_url_params({
+    url = RPC_URL + urlencode({
         "a": agency_id,
         "command": "routeList",
     })
@@ -80,7 +81,7 @@ def parse_index_xml(tree):
 @cache.memoize(timeout=3600)
 def get_route(agency_id, route_id, use_dicts=False):
     rpc = urlfetch.create_rpc()
-    url = RPC_URL + build_url_params({
+    url = RPC_URL + urlencode({
         "a": agency_id,
         "r": route_id,
         "command": "routeConfig",
@@ -175,7 +176,7 @@ def get_stop(agency_id, route_id, direction_id, stop_id):
 def get_predictions(agency_id, route_id, direction_id, stop_id):
     "Each physical stop has multiple IDs, depending on the bus direction."
     rpc = urlfetch.create_rpc()
-    url = RPC_URL + build_url_params({
+    url = RPC_URL + urlencode({
         "a": agency_id,
         "r": route_id,
         "d": direction_id,

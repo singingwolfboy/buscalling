@@ -1,6 +1,8 @@
 from werkzeug import Request
-import logging
-from buscall.util import parse_url_params
+try:
+    from urlparse import parse_qs
+except ImportError:
+    from cgi import parse_qs
 
 class MethodRewriteMiddleware(object):
     """
@@ -22,11 +24,11 @@ class MethodRewriteMiddleware(object):
         if not pf:
             return self.app(environ, start_response)
 
-        params = parse_url_params(pf.read())
+        params = parse_qs(pf.read())
         pf.seek(0)
 
         if self.input_name in params:
-            method = params[self.input_name].upper()
+            method = params[self.input_name][0].upper()
 
             if method in ['GET', 'POST', 'PUT', 'DELETE']:
                 environ['REQUEST_METHOD'] = method
