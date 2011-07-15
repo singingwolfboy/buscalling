@@ -36,7 +36,7 @@ def get_twiml(prediction):
 
     return str(r)
 
-def alert_by_phone(listener):
+def alert_by_phone(listener, minutes=None):
     url = DOMAIN + url_for('predict_for_stop', 
         agency_id=listener.agency.id, 
         route_id=listener.route.id, 
@@ -53,3 +53,38 @@ def alert_by_phone(listener):
         '/%s/Accounts/%s/Calls.json' % (API_VERSION, ACCOUNT_SID),
         'POST', 
         call_info))
+
+def alert_by_txt(listener, minutes=None):
+    prediction = listener.get_predictions()
+    if len(prediction.buses) > 1:
+        first = prediction.buses[0]
+        rest = prediction.buses[1:]
+        body = "%s until %s arrives at %s. %d more buses: %s." % (
+            pluralize_minutes(first.minutes), 
+            listener.route.title, 
+            listener.stop.title,
+            len(rest),
+            ", ".join([pluralize_minutes(bus.minutes) for bus in rest]),
+        )
+    elif prediction.buses == 1:
+        first = prediction.buses[0]
+        next = prediction.buses[1]
+        body = "%s until %s arrives at %s. One more bus in %s." % (
+            pluralize_minutes(first.minutes),
+            listener.route.title,
+            listener.stop.title,
+            pluralize_minutes(next.minutes),
+        )
+    else:
+        body = "No buses predicted (%s, %s)" % (listener.route.title, listener.stop.title)
+
+    sms_info = {
+        'From': PHONE_NUMBER,
+        'To': listener.userprofile.phone,
+        'Body': body,
+    }
+    return json.loads(account.request(
+        '/%s/Accounts/%s/SMS/Messages' % (API_VERSION, ACCOUNT_SID),
+        'POST',
+        sms_info
+    ))
