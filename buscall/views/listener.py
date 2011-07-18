@@ -32,7 +32,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     form = get_listener_form_with_defaults(BusListenerForm(request.form), **kwargs)
     if form.validate_on_submit():
         user = users.get_current_user()
-        profile = UserProfile.gql("WHERE user = :user", user=user)
+        profile = UserProfile.get_by_user(user)
         params = {
             "userprofile": profile,
             "seen": False,

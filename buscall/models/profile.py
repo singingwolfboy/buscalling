@@ -17,8 +17,15 @@ class UserProfile(db.Model):
     def email(self):
         return self.user.email()
     @property
-    def nickname(self):
-        return self.user.nickname()
+    def name(self):
+        if self.first_name and self.last_name:
+            return "%s %s" % (self.first_name, self.last_name)
+        elif self.first_name:
+            return self.first_name
+        elif self.last_name:
+            return self.last_name
+        else:
+            return self.user.nickname()
     @property
     def user_id(self):
         return self.user.user_id()
@@ -34,3 +41,13 @@ class UserProfile(db.Model):
         if not 'key' in kwargs and not 'key_name' in kwargs:
             kwargs['key_name'] = kwargs['user'].user_id() or kwargs['user'].email()
         db.Model.__init__(self, *args, **kwargs)
+
+    @classmethod
+    def get_by_user(cls, user):
+        key_name = user.user_id() or user.email()
+        return cls.get_by_key_name(key_name)
+    
+    @classmethod
+    def get_or_insert_by_user(cls, user):
+        key_name = user.user_id() or user.email()
+        return cls.get_or_insert(key_name, user=user)

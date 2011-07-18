@@ -98,6 +98,10 @@ class BusListener(db.Model):
     def stop(self):
         return self.route.stops[self.stop_id]
     
+    @property
+    def id(self):
+        return self.key().id()
+    
     def __str__(self):
         values = {}
         for prop in self.properties().keys():
