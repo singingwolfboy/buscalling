@@ -4,8 +4,8 @@ from .nextbus import show_agency, routes_for_agency, show_route, predict_for_sto
 from .twilio import call_prediction
 from .listener import index_listeners
 from buscall.util import MAIL_SENDER, GqlQuery
-from buscall.models import WaitlistEntry, BusListener
-from buscall.forms import WaitlistForm
+from buscall.models import WaitlistEntry, BusListener, UserProfile
+from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
 from google.appengine.api import users
@@ -28,7 +28,7 @@ def inject_auth_urls():
         "logout_url": users.create_logout_url(url_for('lander')),
     }
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/', methods = ['GET', 'POST', 'PUT'])
 def lander():
     user = users.get_current_user()
     if user:
@@ -74,5 +74,13 @@ def lander_guest():
 
 def lander_user():
     user = users.get_current_user()
-    listeners = GqlQuery("SELECT * FROM BusListener WHERE user = :user", user=user)
-    return render_template("lander_user.html", user=user, listeners=listeners)
+    profile = UserProfile.get_or_insert_by_user(user)
+    form = UserProfileForm(request.form, profile)
+    if form.validate_on_submit():
+        profile.first_name = form.first_name.data
+        profile.last_name  = form.last_name.data
+        profile.phone = form.phone.data
+        profile.put()
+        flash("Thanks, %s! Your data has been updated." % (profile.name,))
+        return redirect(url_for("lander"))
+    return render_template("lander_user.html", profile=profile, form=form)

@@ -2,12 +2,18 @@ import datetime
 import time
 from wtforms.widgets import Input
 from wtforms.fields import Field
-from flaskext.wtf import SelectField
+from flaskext.wtf import SelectField, TextField
 from buscall.models.nextbus import NextbusError, AGENCIES, get_routes, get_route
 
-__all__ = ['TimeInput', 'TimeField', 'RouteField', 'DirectionField', 'StopField']
+__all__ = ['TelInput', 'TelephoneField', 'TimeInput', 'TimeField', 'RouteField', 'DirectionField', 'StopField']
 
 time_formats = ['%H:%M']
+
+class TelInput(Input):
+    input_type = "tel"
+
+class TelephoneField(TextField):
+    widget = TelInput()
 
 class TimeInput(Input):
     input_type = "time"

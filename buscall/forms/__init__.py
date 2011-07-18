@@ -1,8 +1,8 @@
-from flaskext.wtf import Form, DecimalField, SelectField, BooleanField
+from flaskext.wtf import Form, DecimalField, SelectField, BooleanField, TextField, HiddenField
 from flaskext.wtf import HiddenInput, FieldList, FormField, IntegerField
-from flaskext.wtf import Required, Optional
+from flaskext.wtf import Required, Optional, Regexp, Length
 from flaskext.wtf.html5 import EmailField
-from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField
+from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField, TelephoneField
 from buscall.models.nextbus import AGENCIES
 from buscall.models.listener import ALERT_CHOICES
 from buscall.util import DAYS_OF_WEEK
@@ -51,3 +51,10 @@ class BusListenerForm(Form):
             self._errors["week"] = "At least one day of the week must be selected."
             success = False
         return success
+
+tel_validator = Regexp(r"^[0-9 \-+()]+$", messages={"invalid": "Contains invalid characters."})
+
+class UserProfileForm(Form):
+    first_name = TextField(validators=[Optional()])
+    last_name  = TextField(validators=[Optional()])
+    phone = TelephoneField("Phone", validators=[Optional(), Length(min=7), tel_validator])

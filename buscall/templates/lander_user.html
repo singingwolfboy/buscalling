@@ -4,13 +4,22 @@
   <h1>Bus Calling</h1>
   <h2>Time management before the coffee kicks in.</h2>
 {% endblock %}
+{% from "_formhelpers.html" import with_errors %}
 {% block main %}
-<p>Welcome {{user}}, you're logged in!</p>
-{% if listeners %}
+<p>Welcome {{profile.name}}, you're logged in!</p>
+<form method="POST" action="{{ url_for('lander') }}">
+    <input type="hidden" name="_method" value="PUT" />
+    {{form.hidden_tag()}}
+    {{with_errors(form.first_name)}}
+    {{with_errors(form.last_name)}}
+    {{with_errors(form.phone)}}
+    <input type="submit" value="Update" />
+</form>
+{% if profile.listeners.fetch(1) %}
 <ul>
-{% for listener in listeners %}
+{% for listener in profile.listeners %}
   <li>{{listener}}
-    <form action="{{url_for('destroy_listener', listener_id=listener.key().id())}}" method="POST">
+    <form action="{{url_for('destroy_listener', listener_id=listener.id)}}" method="POST">
         <input type="hidden" name="_method" value="DELETE" />
         <input type="submit" value="Delete Listener" />
     </form>
