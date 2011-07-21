@@ -30,4 +30,10 @@
 <p>You have no listeners.</p>
 {% endif %}
 <a href="{{url_for('new_listener')}}">New Listener</a>
+
+{% if profile.paid %}
+<p>Your account is paid up, and your listeners are all active.</p>
+{% else %}
+<p>Your account is unpaid, and your listeners are inactive. <a href="/subscribe">Activate them by purchasing a subscription!</a></p>
+{% endif %}
 {% endblock %}
