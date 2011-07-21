@@ -52,6 +52,61 @@ def httpparse(fp):
   return response
 # end http://pythonwise.blogspot.com/2010/02/parse-http-response.html
 
+class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
+  """Stub version of the urlfetch API to be used with apiproxy_stub_map."""
+
+  def __init__(self, *args, **kwargs):
+    super(UrlFetchStub, self).__init__(*args, **kwargs)
+    self.history = []
+    self.responses = {}
+
+  def _get_response(self, url, payload):
+    parts = urlparse(url)
+    if parts.netloc == "webservices.nextbus.com":
+      rel_path = self._get_nextbus_path(parse_qs(parts.query))
+      if not rel_path: return None
+      return open(os.path.join(os.path.dirname(__file__), rel_path))
+    elif parts.netloc == "api.twilio.com":
+      return self._get_twilio_response(parse_qs(payload))
+
+    return None
+  
+  def _get_nextbus_path(self, params):
+    try:
+      command = params['command'][0]
+    except KeyError:
+      return os.path.join("urlfetch", "nextbus_api", "no_params.xml")
+    if command == "routeList":
+      return os.path.join("urlfetch", "nextbus_api", params['a'][0], "route_list.xml")
+    elif command == "routeConfig":
+      return os.path.join("urlfetch", "nextbus_api", params['a'][0], params['r'][0], "config.xml")
+    elif command == "predictions":
+      return os.path.join("urlfetch", "nextbus_api", params['a'][0], params['r'][0], params['s'][0]+".xml")
+    return None
+  
+  def _get_twilio_response(self, params):
+    return json.dumps({
+      "to": params["To"][0],
+      "from": params["From"][0],
+      "sid": "1234567890",
+    })
+  
+  def _RetrieveURL(self, url, payload, method, headers, request, response,
+                 follow_redirects=True, deadline=_API_CALL_DEADLINE,
+                 validate_certificate=_API_CALL_VALIDATE_CERTIFICATE_DEFAULT):
+    resp = self._get_response(url, payload)
+
+    if not resp:
+      raise TestException("unknown URL: "+url)
+
+    http_resp = httpparse(resp)
+    content = http_resp.fp.read()
+    response.set_statuscode(http_resp.status)
+    response.set_content(content)
+    self.history.append(url)
+    self.responses[url] = content
+
+
 class ServiceTestCase(unittest.TestCase):
   ''' 
   Defines a test case, with appengine test stubs setup.
@@ -62,60 +117,6 @@ class ServiceTestCase(unittest.TestCase):
   Where the arrange step isn't duplicated between tests.
 
   '''
-  class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
-    """Stub version of the urlfetch API to be used with apiproxy_stub_map."""
-
-    def __init__(self, *args, **kwargs):
-      super(ServiceTestCase.UrlFetchStub, self).__init__(*args, **kwargs)
-      self.history = []
-      self.responses = {}
-
-    def _get_response(self, url, payload):
-      parts = urlparse(url)
-      if parts.netloc == "webservices.nextbus.com":
-        rel_path = self._get_nextbus_path(parse_qs(parts.query))
-        if not rel_path: return None
-        return open(os.path.join(os.path.dirname(__file__), rel_path))
-      elif parts.netloc == "api.twilio.com":
-        return self._get_twilio_response(parse_qs(payload))
-
-      return None
-    
-    def _get_nextbus_path(self, params):
-      try:
-        command = params['command'][0]
-      except KeyError:
-        return os.path.join("urlfetch", "nextbus_api", "no_params.xml")
-      if command == "routeList":
-        return os.path.join("urlfetch", "nextbus_api", params['a'][0], "route_list.xml")
-      elif command == "routeConfig":
-        return os.path.join("urlfetch", "nextbus_api", params['a'][0], params['r'][0], "config.xml")
-      elif command == "predictions":
-        return os.path.join("urlfetch", "nextbus_api", params['a'][0], params['r'][0], params['s'][0]+".xml")
-      return None
-    
-    def _get_twilio_response(self, params):
-      return json.dumps({
-        "to": params["To"][0],
-        "from": params["From"][0],
-        "sid": "1234567890",
-      })
-    
-    def _RetrieveURL(self, url, payload, method, headers, request, response,
-                   follow_redirects=True, deadline=_API_CALL_DEADLINE,
-                   validate_certificate=_API_CALL_VALIDATE_CERTIFICATE_DEFAULT):
-      resp = self._get_response(url, payload)
-
-      if not resp:
-        raise TestException("unknown URL: "+url)
-
-      http_resp = httpparse(resp)
-      content = http_resp.fp.read()
-      response.set_statuscode(http_resp.status)
-      response.set_content(content)
-      self.history.append(url)
-      self.responses[url] = content
-
   def setUp(self):
     # Ensure we're in UTC.
     os.environ['TZ'] = 'UTC'
@@ -126,7 +127,7 @@ class ServiceTestCase(unittest.TestCase):
     os.environ['USER_EMAIL'] = LOGGED_IN_USER
     os.environ['USER_IS_ADMIN'] = "0"
 
-    self.urlfetch_stub = ServiceTestCase.UrlFetchStub()
+    self.urlfetch_stub = UrlFetchStub()
     self.mail_stub = mail_stub.MailServiceStub()
     self.memcache_stub = memcache_stub.MemcacheServiceStub()
     self.user_stub = user_service_stub.UserServiceStub()
