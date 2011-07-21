@@ -84,7 +84,7 @@ def alert_by_txt(listener, minutes=None):
         'Body': body,
     }
     return json.loads(account.request(
-        '/%s/Accounts/%s/SMS/Messages' % (API_VERSION, ACCOUNT_SID),
+        '/%s/Accounts/%s/SMS/Messages.json' % (API_VERSION, ACCOUNT_SID),
         'POST',
         sms_info
     ))
