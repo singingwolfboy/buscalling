@@ -65,6 +65,11 @@ class ServiceTestCase(unittest.TestCase):
   class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
     """Stub version of the urlfetch API to be used with apiproxy_stub_map."""
 
+    def __init__(self, *args, **kwargs):
+      super(ServiceTestCase.UrlFetchStub, self).__init__(*args, **kwargs)
+      self.history = []
+      self.responses = {}
+
     def _get_response(self, url, payload):
       parts = urlparse(url)
       if parts.netloc == "webservices.nextbus.com":
@@ -105,8 +110,11 @@ class ServiceTestCase(unittest.TestCase):
         raise TestException("unknown URL: "+url)
 
       http_resp = httpparse(resp)
+      content = http_resp.fp.read()
       response.set_statuscode(http_resp.status)
-      response.set_content(http_resp.fp.read())
+      response.set_content(content)
+      self.history.append(url)
+      self.responses[url] = content
 
   def setUp(self):
     # Ensure we're in UTC.
@@ -140,19 +148,10 @@ class ServiceTestCase(unittest.TestCase):
   def sent_messages(self):
     return self.get_sent_messages()
   
-  def get_urlfetch_responses(self):
+  @property
+  def urlfetch_history(self):
+    return self.urlfetch_stub.history
+  
+  @property
+  def urlfetch_responses(self):
     return self.urlfetch_stub.responses
-  def set_urlfetch_responses(self, responses):
-    self.urlfetch_stub.responses = responses
-  urlfetch_responses = property(get_urlfetch_responses, set_urlfetch_responses)
-  
-  def update_urlfetch_responses(self, responses):
-    self.urlfetch_stub.responses.update(responses)
-
-  def set_urlfetch_response(self, url, content):
-    "sets the content that will be returned for a given url when fetched"
-    self.urlfetch_stub.set_content(url, content)
-  
-  def update_responses(self, responses):
-    ""
-    self.urlfetch_stub.responses = responses

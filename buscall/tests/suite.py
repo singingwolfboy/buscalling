@@ -10,6 +10,7 @@ from buscall.models.profile import UserProfile
 from buscall.views.tasks import poll, reset_seen_flags
 from buscall.views.twilio import call_prediction, sms_prediction
 from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
+from buscall.credentials import ACCOUNT_SID
 from google.appengine.ext import db
 from google.appengine.api.users import User
 import datetime
@@ -40,10 +41,15 @@ class UrlfetchTestCase(ServiceTestCase):
         os.environ['USER_IS_ADMIN'] = "1"
         with app.test_request_context('/call/mbta/26/26_1_var1/492/9999999999'):
             call_prediction("mbta", "26", "26_1_var1", "492", "9999999999")
+            url = "https://api.twilio.com/2010-04-01/Accounts/%s/Calls.json" % (ACCOUNT_SID,)
+            self.assertTrue(url in self.urlfetch_history)
+
     def test_sms_prediction(self):
         os.environ['USER_IS_ADMIN'] = "1"
         with app.test_request_context('/call/mbta/26/26_1_var1/492/9999999999'):
             sms_prediction("mbta", "26", "26_1_var1", "492", "9999999999")
+            url = "https://api.twilio.com/2010-04-01/Accounts/%s/SMS/Messages.json" % (ACCOUNT_SID,)
+            self.assertTrue(url in self.urlfetch_history)
 
     def test_phone_alert(self):
         alert = BusAlert.gql("WHERE medium = :medium AND executed = False", medium="phone").fetch(1)[0]
