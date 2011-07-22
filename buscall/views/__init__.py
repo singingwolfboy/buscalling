@@ -3,6 +3,7 @@ from flask import render_template, request, flash, redirect, url_for
 from .nextbus import show_agency, routes_for_agency, show_route, predict_for_stop
 from .twilio import call_prediction
 from .listener import index_listeners
+from .paypal import paypal_ipn
 from buscall.util import MAIL_SENDER, GqlQuery
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.forms import WaitlistForm, UserProfileForm
