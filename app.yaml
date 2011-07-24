@@ -18,6 +18,10 @@ handlers:
 - url: /img
   static_dir: static/img
 
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
+
 - url: /favicon.(ico|png)
   static_files: static/img/favicon.png
   upload: static/img/favicon.png
