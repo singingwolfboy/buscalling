@@ -35,8 +35,7 @@ def run_app():
 
     # If we're in development mode...
     if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
-        # show stack traces rather than HTTP error pages
-        app.debug=True
+        # don't set app.debug here, already set in buscall/__init__.py
 
         # Enable Werkzeug debugger
         from werkzeug import DebuggedApplication
