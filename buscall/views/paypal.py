@@ -6,6 +6,8 @@ try:
 except ImportError:
     from cgi import parse_qs
 from google.appengine.api import urlfetch, users
+from buscall.models.paypal import url as paypal_url
+from buscall.models.paypal import pdt_token
 from buscall.models.profile import UserProfile
 from buscall.decorators import login_required
 
@@ -16,12 +18,8 @@ def paypal_ipn():
     params = request.form.to_dict()
     app.logger.debug(params)
     params['cmd'] = "_notify-validate"
-    if app.debug:
-        paypal_domain = "www.sandbox.paypal.com"
-    else:
-        paypal_domain = "www.paypal.com"
     rpc = urlfetch.create_rpc()
-    urlfetch.make_fetch_call(rpc, "https://%s/cgi-bin/webscr" % (paypal_domain,),
+    urlfetch.make_fetch_call(rpc, paypal_url,
         method="POST", payload=urlencode(params))
     
     try:
@@ -44,16 +42,11 @@ def paypal_success():
     "PayPal Payment Data Transfer handler"
     params = {
         "cmd": "_notify-synch",
+        "at": pdt_token,
         "tx": request.form.get("tx", None),
     }
-    if app.debug:
-        paypal_domain = "www.sandbox.paypal.com"
-        params["at"] = "VXASrbamQDoW0olGqyfA7Ty-HdawXzNfCfvbGQ_83Dv1Ecle4PF7Wpe8oP0"
-    else:
-        paypal_domain = "www.paypal.com"
-        params["at"] = "SWCM2tf41PckuxT-MNYirYukaWXdkTS9kWIqmSNMDKrGzXHstbhO8RGZ5pu"
     rpc = urlfetch.create_rpc()
-    urlfetch.make_fetch_call(rpc, "https://%s/cgi-bin/webscr" % (paypal_domain,),
+    urlfetch.make_fetch_call(rpc, paypal_url,
         method="POST", payload=urlencode(params))
 
     user_id = request.form.get("cm", None)

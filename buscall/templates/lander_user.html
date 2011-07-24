@@ -31,28 +31,18 @@
 {% endif %}
 <a href="{{url_for('new_listener')}}">New Listener</a>
 
-{% if config.DEBUG %}
-  {% set paypal_domain = "www.sandbox.paypal.com" %}
-  {% set sub_button_id = "GUUGPYAWQ63CG" %}
-  {% set unsub_alias   = "BPQAK7D34287Q" %}
-{% else %}
-  {% set paypal_domain = "www.paypal.com" %}
-  {% set sub_button_id = "W42Q7VA9H8USQ" %}
-  {% set unsub_alias   = "WYWXRN23UG45Q" %}
-{% endif %}
-
 {% if profile.paid %}
 <p>Your account is paid up, and your listeners are all active.</p>
-<a href="https://{{paypal_domain}}/cgi-bin/webscr?cmd=_subscr-find&amp;alias={{ubsub_alias}}">
+<a href="{{paypal_url}}?cmd=_subscr-find&amp;alias={{unsub_id}}">
 <img src="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif">
 </a>
 
 {% else %}
 <p>Your account is unpaid, and your listeners are inactive. Activate them by purchasing a subscription!</p>
-<form action="https://{{paypal_domain}}/cgi-bin/webscr" method="post">
+<form action="{{paypal_url}}" method="post">
 <div style="display:none;">
   <input type="hidden" name="cmd" value="_s-xclick" />
-  <input type="hidden" name="hosted_button_id" value="{{sub_button_id}}" />
+  <input type="hidden" name="hosted_button_id" value="{{sub_id}}" />
   <input type="hidden" name="custom" value="{{profile.user_id}}" />
   <input type="hidden" name="notify_url" value="https://buscalling.appspot.com{{ url_for('paypal_ipn') }}" />
 </div>

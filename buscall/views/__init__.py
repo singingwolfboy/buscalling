@@ -6,6 +6,8 @@ from .listener import index_listeners
 from .paypal import paypal_ipn
 from buscall.util import MAIL_SENDER, GqlQuery
 from buscall.models import WaitlistEntry, BusListener, UserProfile
+from buscall.models.paypal import url as paypal_url
+from buscall.models.paypal import subscribe_button_id, unsubscribe_button_id
 from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
@@ -84,4 +86,6 @@ def lander_user():
         profile.put()
         flash("Thanks, %s! Your data has been updated." % (profile.name,))
         return redirect(url_for("lander"), 303)
-    return render_template("lander_user.html", profile=profile, form=form)
+    return render_template("lander_user.html", profile=profile, form=form,
+        paypal_url=paypal_url, 
+        sub_id=subscribe_button_id, unsub_id=unsubscribe_button_id)
