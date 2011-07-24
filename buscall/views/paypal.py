@@ -4,7 +4,7 @@ from urllib import urlencode
 from google.appengine.api import urlfetch
 
 @app.route('/paypal/ipn', methods=['POST'])
-def paypal_ipn(self):
+def paypal_ipn():
     "PayPal Instant Payment Notification handler"
     # validate request with PayPal
     params = request.form.to_dict()
