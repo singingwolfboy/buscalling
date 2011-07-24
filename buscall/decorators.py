@@ -26,7 +26,7 @@ def login_required(func):
     @wraps(func)
     def decorated_view(*args, **kwargs):
         if not users.get_current_user():
-            return redirect(users.create_login_url(request.url))
+            return redirect(users.create_login_url(request.url), 303)
         return func(*args, **kwargs)
     # @app.route() creates a url rule based on the name of the view function,
     # so we need to pull that information up and through this decorator.

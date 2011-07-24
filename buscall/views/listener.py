@@ -46,7 +46,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
             alert.put()
 
         flash("Listener created!")
-        return redirect(url_for("lander"))
+        return redirect(url_for("lander"), 303)
     context = {
         "form": form,
         "js_file": "listeners",
@@ -145,5 +145,5 @@ def destroy_listener(listener_id):
         abort(401)
     listener.delete()
     flash('Listener deleted!')
-    return redirect(url_for('lander'))
+    return redirect(url_for('lander'), 303)
     

@@ -70,7 +70,7 @@ def lander_guest():
             subject="New waitlist email: " + email,
             body=ALERT_MAIL_BODY % (email, ip, lat, lon))
 
-        return redirect(url_for("lander"))
+        return redirect(url_for("lander"), 303)
     return render_template('lander_guest.html', form=form, js_file="lander")
 
 def lander_user():
@@ -83,5 +83,5 @@ def lander_user():
         profile.phone = form.phone.data
         profile.put()
         flash("Thanks, %s! Your data has been updated." % (profile.name,))
-        return redirect(url_for("lander"))
+        return redirect(url_for("lander"), 303)
     return render_template("lander_user.html", profile=profile, form=form)

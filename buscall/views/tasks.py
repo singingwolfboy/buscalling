@@ -31,7 +31,7 @@ def poll(struct_time=None):
                 if alert.minutes == bus.minutes:
                     alert.execute(bus.minutes)
     
-    return redirect(url_for("lander"))
+    return redirect(url_for("lander"), 303)
 
 @app.route('/tasks/reset_seen_flags')
 def reset_seen_flags():
@@ -39,4 +39,4 @@ def reset_seen_flags():
     for listener in seen:
         listener.seen = False
         listener.put()
-    return redirect(url_for("lander"))
+    return redirect(url_for("lander"), 303)
