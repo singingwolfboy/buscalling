@@ -47,15 +47,16 @@ def paypal_success():
     params = {
         "cmd": "_notify-synch",
         "at": pdt_token,
-        "tx": request.form.get("tx", None),
+        "tx": request.args.get("tx", None),
     }
     rpc = urlfetch.create_rpc()
     urlfetch.make_fetch_call(rpc, paypal_url,
         method="POST", payload=urlencode(params))
 
-    user_id = request.form.get("cm", None)
+    user_id = request.args.get("cm", None)
     user = users.get_current_user()
-    if not user.user_id() == user_id:
+    if user.user_id() != user_id:
+        app.logger.debug("custom message: %s  logged-in user id: %s" % (user_id, user.user_id()))
         abort(401)
     profile = UserProfile.get_by_user(user)
 
