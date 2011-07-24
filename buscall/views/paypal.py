@@ -7,6 +7,7 @@ except ImportError:
     from cgi import parse_qs
 from google.appengine.api import urlfetch, users
 from buscall.models.profile import UserProfile
+from buscall.decorators import login_required
 
 @app.route('/paypal/ipn', methods=['POST'])
 def paypal_ipn():
