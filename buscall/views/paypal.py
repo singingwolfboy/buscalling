@@ -8,6 +8,7 @@ def paypal_ipn():
     "PayPal Instant Payment Notification handler"
     # validate request with PayPal
     params = request.form.to_dict()
+    app.logger.debug(params)
     params['cmd'] = "_notify-validate"
     rpc = urlfetch.create_rpc()
     urlfetch.make_fetch_call(rpc, "https://www.paypal.com/cgi-bin/webscr",
