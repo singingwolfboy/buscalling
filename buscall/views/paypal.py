@@ -35,6 +35,10 @@ def paypal_ipn():
     except urlfetch.DownloadError:
         # request timed out or failed.
         pass
+    
+    # we need to return status code 200 to make PayPal happy,
+    # and Flask needs some kind of response, so we'll just return an empty string.
+    return ""
 
 @app.route('/paypal/success')
 @login_required
