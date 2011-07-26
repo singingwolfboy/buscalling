@@ -56,7 +56,6 @@ def paypal_success():
     user_id = request.args.get("cm", None)
     user = users.get_current_user()
     if user.user_id() != user_id:
-        app.logger.debug("custom message: %s  logged-in user id: %s" % (user_id, user.user_id()))
         abort(401)
     profile = UserProfile.get_by_user(user)
 
@@ -67,7 +66,7 @@ def paypal_success():
             # yay
             txn = parse_qs("&".join(lines[1:]))
             app.logger.debug(txn)
-            flash("Payment Success: " + txn)
+            flash("Payment Success: " + str(txn))
         elif lines[0] == "FAIL":
             # boo
             flash("Payment Failed", category="error")
