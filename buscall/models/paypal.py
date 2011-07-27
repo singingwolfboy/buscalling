@@ -1,6 +1,7 @@
 from buscall import app
 
-if app.debug:
+#if app.debug:
+if True:
     # sandbox info
     url = "https://www.sandbox.paypal.com/cgi-bin/webscr"
     pdt_token = "VXASrbamQDoW0olGqyfA7Ty-HdawXzNfCfvbGQ_83Dv1Ecle4PF7Wpe8oP0"
