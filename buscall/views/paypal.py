@@ -73,7 +73,7 @@ def paypal_success():
                 processor="paypal",
                 id=txn_info['txn_id'][0],
                 userprofile=profile,
-                date=datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y %Z"),
+                date=datetime.datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y %Z"),
                 amount=decimal.Decimal(txn_info['payment_gross'][0]),
                 subscription_id=txn_info['subscr_id'][0],
                 payment_status=txn_info['payment_status'][0],
