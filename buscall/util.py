@@ -1,4 +1,6 @@
 # Utility functions and variables
+import decimal
+from google.appengine.ext import db
 from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
 class GqlQuery(TruthyGqlQuery):
     def __nonzero__(self):
@@ -7,6 +9,40 @@ class GqlQuery(TruthyGqlQuery):
 DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
 DOMAIN = "http://www.buscalling.com"
+
+def decimalproperty_factory(exponent=2):
+    """
+    Returns a DecimalProperty class that stores decimals using 
+    fixed-point arithmetic, for a given exponent.
+    """
+    class DecimalProperty(db.Property):
+        data_type = decimal.Decimal
+        exponent = exponent
+
+        def get_value_for_datastore(self, model_instance):
+            d = super(DecimalProperty, self).get_value_for_datastore(model_instance)
+            return int(d._int) * self.exponent
+
+        def make_value_from_datastore(self, value):
+            s = str(value)
+            decimal_str = "%s.%s" % (s[0:self.exponent], s[self.exponent:])
+            return decimal.Decimal(decimal_str)
+
+        def validate(self, value):
+            value = super(DecimalProperty, self).validate(value)
+            if value is None:
+                return value
+            if isinstance(value, basestring):
+                value = decimal.Decimal(value)
+            if not isinstance(value, decimal.Decimal):
+                raise db.BadValueError("Property %s must be a Decimal or string." % self.name)
+            if value._exp > self.exponent:
+                raise db.BadValueError("Property %s can save at most %d digits of precision" % (self.name, self.exponent))
+            return value
+    
+    return DecimalProperty
+
+CurrencyProperty = decimalproperty_factory(2)
 
 def clean_booleans(d):
     for key in d.keys():

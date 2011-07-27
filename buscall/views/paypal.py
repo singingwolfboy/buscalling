@@ -1,15 +1,19 @@
 from buscall import app
 from flask import request, abort, flash, redirect, url_for
 from urllib import urlencode
+import datetime
+import decimal
 try:
     from urlparse import parse_qs
 except ImportError:
     from cgi import parse_qs
-from google.appengine.api import urlfetch, users
+from google.appengine.api import urlfetch, users, mail
 from buscall.models.paypal import url as paypal_url
 from buscall.models.paypal import pdt_token
 from buscall.models.profile import UserProfile
+from buscall.models.txn import Transaction
 from buscall.decorators import login_required
+from buscall.util import MAIL_SENDER
 
 @app.route('/paypal/ipn', methods=['POST'])
 def paypal_ipn():
@@ -64,16 +68,32 @@ def paypal_success():
         lines = result.content.splitlines()
         if lines[0] == "SUCCESS":
             # yay
-            txn = parse_qs("&".join(lines[1:]))
-            app.logger.debug(txn)
-            flash("Payment Success: " + str(txn))
+            txn_info = parse_qs("&".join(lines[1:]))
+            txn = Transaction(
+                processor="paypal",
+                id=txn_info['id'][0],
+                userprofile=profile,
+                date=datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y %Z"),
+                amount=decimal.Decimal(txn_info['payment_gross'][0]),
+                subscription_id=txn_info['subscr_id'][0],
+                payment_status=txn_info['payment_status'][0],
+            )
+            txn.put()
+            # update the user to indicate that they have paid
+            profile.paid = True
+            profile.put()
+            flash("Payment succeeded. Your listeners are now active. Thank you!")
         elif lines[0] == "FAIL":
             # boo
-            flash("Payment Failed", category="error")
+            flash("Payment failed.", category="error")
         else:
             app.logger.info("Got unexpected result from PayPal PDT validation: "+result.content)
     except urlfetch.DownloadError:
         # request timed out or failed.
-        pass
+        flash("Could not verify payment with Paypal. Please email contact@buscalling.com.")
+        mail.send_mail(sender=MAIL_SENDER,
+            to="BusCalling Admin <contact@buscalling.com>",
+            subject="Error validating payment with Paypal",
+            body="Error validating payment with Paypal for user %s, txn id %s" % (user.email, params["tx"]))
     
     return redirect(url_for('lander'), 303)
