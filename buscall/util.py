@@ -10,22 +10,22 @@ DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
 DOMAIN = "http://www.buscalling.com"
 
-def decimalproperty_factory(exponent=2):
+def decimalproperty_factory(precision=2):
     """
     Returns a DecimalProperty class that stores decimals using 
     fixed-point arithmetic, for a given exponent.
     """
     class DecimalProperty(db.Property):
         data_type = decimal.Decimal
-        exponent = exponent
+        exp = precision
 
         def get_value_for_datastore(self, model_instance):
             d = super(DecimalProperty, self).get_value_for_datastore(model_instance)
-            return int(d._int) * self.exponent
+            return int(d._int) * self.exp
 
         def make_value_from_datastore(self, value):
             s = str(value)
-            decimal_str = "%s.%s" % (s[0:self.exponent], s[self.exponent:])
+            decimal_str = "%s.%s" % (s[0:self.exp], s[self.exp:])
             return decimal.Decimal(decimal_str)
 
         def validate(self, value):
@@ -36,8 +36,8 @@ def decimalproperty_factory(exponent=2):
                 value = decimal.Decimal(value)
             if not isinstance(value, decimal.Decimal):
                 raise db.BadValueError("Property %s must be a Decimal or string." % self.name)
-            if value._exp > self.exponent:
-                raise db.BadValueError("Property %s can save at most %d digits of precision" % (self.name, self.exponent))
+            if value._exp > self.exp:
+                raise db.BadValueError("Property %s can save at most %d digits of precision" % (self.name, self.exp))
             return value
     
     return DecimalProperty
