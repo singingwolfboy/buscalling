@@ -73,7 +73,7 @@ def paypal_success():
                 processor="paypal",
                 id=txn_info['txn_id'][0],
                 userprofile=profile,
-                date=datetime.datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y %Z"),
+                date=datetime.datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y PDT"),
                 amount=decimal.Decimal(txn_info['payment_gross'][0]),
                 subscription_id=txn_info['subscr_id'][0],
                 payment_status=txn_info['payment_status'][0],
@@ -94,6 +94,6 @@ def paypal_success():
         mail.send_mail(sender=MAIL_SENDER,
             to="BusCalling Admin <contact@buscalling.com>",
             subject="Error validating payment with Paypal",
-            body="Error validating payment with Paypal for user %s, txn id %s" % (user.email, params["tx"]))
+            body="Error validating payment with Paypal for user %s. GET info:\n%s" % (user.email, str(request.args)))
     
     return redirect(url_for('lander'), 303)
