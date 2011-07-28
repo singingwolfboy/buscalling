@@ -12,7 +12,7 @@ from __future__ import with_statement
 import os
 import time
 import unittest
-import simplejson as json
+import simplejson_mod as json
 from httplib import HTTPResponse
 from StringIO import StringIO
 from urlparse import urlparse

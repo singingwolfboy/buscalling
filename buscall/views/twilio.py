@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from buscall import app
 from twilio_api import Account, HTTPErrorAppEngine
-import simplejson as json
+import simplejson_mod as json
 from google.appengine.api import users
 from buscall.models.nextbus import get_predictions, get_route, get_stop
 from buscall.decorators import admin_required

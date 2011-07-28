@@ -2,7 +2,7 @@ from buscall import app
 from flask import render_template, Response
 from buscall.models import nextbus
 from buscall.models.twilio import get_twiml
-import simplejson as json
+import simplejson_mod as json
 from buscall.models.nextbus import AGENCIES
 try:
     from collections import OrderedDict

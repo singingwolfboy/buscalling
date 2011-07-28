@@ -2,7 +2,7 @@ from twilio_api import Account, Response
 from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
 from buscall.util import DOMAIN, pluralize_minutes, humanize_list
 from flask import url_for
-import simplejson as json
+import simplejson_mod as json
 
 API_VERSION = "2010-04-01"
 account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)
