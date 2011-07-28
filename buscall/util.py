@@ -13,19 +13,24 @@ DOMAIN = "http://www.buscalling.com"
 def decimalproperty_factory(precision=2):
     """
     Returns a DecimalProperty class that stores decimals using 
-    fixed-point arithmetic, for a given exponent.
+    fixed-point arithmetic, for a given precision.
     """
     class DecimalProperty(db.Property):
         data_type = decimal.Decimal
-        exp = precision
+        prec = precision
 
         def get_value_for_datastore(self, model_instance):
             d = super(DecimalProperty, self).get_value_for_datastore(model_instance)
-            return int(d._int) * self.exp
+            value = int(d._int)
+            # d._exp is negative: 1.23 => 123 * 10**-2
+            # so to get the difference, we can just add a posistive
+            for magnatude in xrange(d._exp + self.prec):
+                value = value * 10
+            return value
 
         def make_value_from_datastore(self, value):
             s = str(value)
-            decimal_str = "%s.%s" % (s[0:self.exp], s[self.exp:])
+            decimal_str = "%s.%s" % (s[0:self.prec], s[self.prec:])
             return decimal.Decimal(decimal_str)
 
         def validate(self, value):
@@ -36,8 +41,8 @@ def decimalproperty_factory(precision=2):
                 value = decimal.Decimal(value)
             if not isinstance(value, decimal.Decimal):
                 raise db.BadValueError("Property %s must be a Decimal or string." % self.name)
-            if value._exp > self.exp:
-                raise db.BadValueError("Property %s can save at most %d digits of precision" % (self.name, self.exp))
+            if abs(value._exp) > self.prec:
+                raise db.BadValueError("Property %s can save at most %d digits of precision" % (self.name, self.prec))
             return value
     
     return DecimalProperty
