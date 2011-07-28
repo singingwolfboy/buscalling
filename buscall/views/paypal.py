@@ -9,7 +9,7 @@ except ImportError:
     from cgi import parse_qs
 from google.appengine.api import urlfetch, users, mail
 from buscall.models.paypal import url as paypal_url
-from buscall.models.paypal import pdt_token
+from buscall.models.paypal import pdt_token, sandbox
 from buscall.models.profile import UserProfile
 from buscall.models.txn import Transaction
 from buscall.decorators import login_required
@@ -21,6 +21,9 @@ def paypal_ipn():
     # validate request with PayPal
     params = request.form.to_dict()
     app.logger.debug(params)
+    if not sandbox and params.get("test_ipn", False):
+        # someone's trying to trick us...
+        return ""
     params['cmd'] = "_notify-validate"
     rpc = urlfetch.create_rpc()
     urlfetch.make_fetch_call(rpc, paypal_url,
@@ -69,11 +72,14 @@ def paypal_success():
         if lines[0] == "SUCCESS":
             # yay
             txn_info = parse_qs("&".join(lines[1:]))
+            txn_id = txn_info['txn_id'][0]
+            txn_date = datetime.datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y PDT")
             txn = Transaction(
+                parent=profile,
                 processor="paypal",
-                id=txn_info['txn_id'][0],
-                userprofile=profile,
-                date=datetime.datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y PDT"),
+                id=txn_id,
+                key_name="paypal|"+txn_id,
+                date=txn_date,
                 amount=decimal.Decimal(txn_info['payment_gross'][0]),
                 subscription_id=txn_info['subscr_id'][0],
                 payment_status=txn_info['payment_status'][0],
