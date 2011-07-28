@@ -22,10 +22,10 @@ def decimalproperty_factory(precision=2):
         def get_value_for_datastore(self, model_instance):
             d = super(DecimalProperty, self).get_value_for_datastore(model_instance)
             value = int(d._int)
-            # d._exp is negative: 1.23 => 123 * 10**-2
-            # so to get the difference, we can just add a posistive
-            for magnatude in xrange(d._exp + self.prec):
-                value = value * 10
+            # if we were passed a decimal with smaller precision, bump it up
+            # to the level we want.
+            # Don't forget that d._exp is negative: 1.23 => 123 * 10**-2
+            value = value * 10**(self.prec - abs(d._exp))
             return value
 
         def make_value_from_datastore(self, value):
