@@ -1,5 +1,6 @@
 from google.appengine.api import users
 from google.appengine.ext import db
+from buscall.util import GqlQuery
 
 class UserProfile(db.Model):
     user = db.UserProperty(required=True)
@@ -11,6 +12,11 @@ class UserProfile(db.Model):
     phone = db.PhoneNumberProperty()
     first_name = db.StringProperty()
     last_name = db.StringProperty()
+
+    @property
+    def listeners(self):
+        # BusListener.all().ancestor(self)
+        return GqlQuery("SELECT * FROM BusListener WHERE ANCESTOR IS :profile", profile=self)
 
     # pass-throughs
     @property

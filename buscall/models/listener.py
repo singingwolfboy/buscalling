@@ -14,7 +14,7 @@ except ImportError:
 ALERT_CHOICES = (('phone', 'Phone'), ('txt', 'Text'), ('email', 'Email'))
 
 class BusListener(db.Model):
-    userprofile = db.ReferenceProperty(UserProfile, collection_name="listeners", required=True)
+    # parent should be the UserProfile that this BusListener is associated with
 
     # info about bus stop
     agency_id = db.StringProperty(required=True, default="mbta")
@@ -39,16 +39,6 @@ class BusListener(db.Model):
     fri = db.BooleanProperty(required=True, default=True)
     sat = db.BooleanProperty(required=True, default=True)
     sun = db.BooleanProperty(required=True, default=True)
-
-    # if we pass in a user object instead of a user profile object, 
-    # make it work anyway
-    def __init__(self, *args, **kwargs):
-        if 'user' in kwargs and 'userprofile' not in kwargs:
-            user = kwargs['user']
-            key_name = user.user_id() or user.email()
-            profile = UserProfile.get_or_insert(key_name, user=user)
-            kwargs['userprofile'] = profile
-        db.Model.__init__(self, *args, **kwargs)
 
     @property
     def daily(self):
@@ -102,6 +92,14 @@ class BusListener(db.Model):
     def id(self):
         return self.key().id()
     
+    @property
+    def userprofile(self):
+        return self.parent()
+    
+    @property
+    def alerts(self):
+        return BusAlert.all().ancestor(self)
+    
     def __str__(self):
         values = {}
         for prop in self.properties().keys():
@@ -123,11 +121,11 @@ class BusListener(db.Model):
         return get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
     
     def check_alerts(self):
-        self.seen = all([alert.executed for alert in self.alerts])
+        self.seen = all((alert.executed for alert in self.alerts))
         self.put()
 
 class BusAlert(db.Model):
-    listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
+    # parent should be the BusListener that this BusAlert is associated with
     minutes = db.IntegerProperty(required=True)
     medium = db.StringProperty(choices=[k for k,v in ALERT_CHOICES], required=True)
     executed = db.BooleanProperty(required=True, default=False)
@@ -139,6 +137,10 @@ class BusAlert(db.Model):
             status = "not executed"
         return "%s for <%s>, %d minutes before via %s, %s" % \
             (self.__class__.__name__, self.listener, self.minutes, self.medium, status)
+    
+    @property
+    def listener(self):
+        return self.parent()
 
     def execute(self, minutes=None):
         "minutes parameter is the actual prediction time"

@@ -34,7 +34,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         user = users.get_current_user()
         profile = UserProfile.get_by_user(user)
         params = {
-            "userprofile": profile,
+            "parent": profile,
             "seen": False,
         }
         for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):
@@ -42,7 +42,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         listener = BusListener(**params)
         listener.put()
         for alert_data in form.data['alerts']:
-            alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
+            alert = BusAlert(parent=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
             alert.put()
 
         flash("Listener created!")
@@ -137,11 +137,11 @@ def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, di
 @app.route('/listeners/<int:listener_id>', methods=['DELETE'])
 @login_required
 def destroy_listener(listener_id):
-    user = users.get_current_user()
+    userprofile = UserProfile.get_by_user(users.get_current_user())
     listener = BusListener.get_by_id(listener_id)
     if not listener:
         abort(404)
-    if listener.user != user:
+    if listener.userprofile != userprofile:
         abort(401)
     listener.delete()
     flash('Listener deleted!')
