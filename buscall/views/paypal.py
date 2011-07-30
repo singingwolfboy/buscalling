@@ -1,7 +1,6 @@
 from buscall import app
 from flask import request, abort, flash, redirect, url_for
 from urllib import urlencode
-import datetime
 import decimal
 try:
     from urlparse import parse_qs
@@ -9,9 +8,9 @@ except ImportError:
     from cgi import parse_qs
 from google.appengine.api import urlfetch, users, mail
 from buscall.models.paypal import url as paypal_url
-from buscall.models.paypal import pdt_token, sandbox
+from buscall.models.paypal import pdt_token, sandbox, parse_paypal_date
 from buscall.models.profile import UserProfile
-from buscall.models.txn import Transaction
+from buscall.models.txn import Subscription, Payment
 from buscall.decorators import login_required
 from buscall.util import MAIL_SENDER
 
@@ -32,10 +31,64 @@ def paypal_ipn():
     try:
         result = rpc.get_result()
         if result.content == "VERIFIED":
-            # yay
-            pass
+            user_id = params['custom'][0]
+            profile = UserProfile.get_by_key_name(user_id)
+            if not profile:
+                abort(400)
+            if 'payer_id' in params and hasattr(profile, "paypal_id"):
+                if params['payer_id'][0] != profile.paypal_id:
+                    abort(400)
+            txn_type = params['txn_type'][0]
+            txn_id = params['txn_id'][0]
+            subscr_id = params['subscr_id'][0]
+            txn_date = parse_paypal_date(params['payment_date'][0])
+            
+            if txn_type == "subscr_signup":
+                subscr = Subscription(
+                    parent=profile,
+                    processor="paypal",
+                    subscription_id=subscr_id,
+                    key_name="paypal|"+subscr_id,
+                    active=True,
+                    start_transaction_id=txn_id,
+                    start_date=txn_date,
+                    amount=decimal.Decimal(params['payment_gross'][0]),
+                )
+                subscr.put()
+                profile.paid = True
+                profile.put()
+
+            elif txn_type == "subscr_payment":
+                subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
+                if not subscr:
+                    abort(400)
+                pmt = Payment(
+                    processor="paypal",
+                    subscription=subscr,
+                    transaction_id=txn_id,
+                    key_name="paypal|"+txn_id,
+                    date=txn_date,
+                    amount=decimal.Decimal(params['payment_gross'][0]),
+                    status=params['payment_status'][0],
+                )
+                pmt.put()
+                
+            elif txn_type == "subscr_cancel":
+                subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
+                if not subscr:
+                    abort(400)
+                subscr.end_transaction_id = txn_id
+                subscr.end_date = txn_date
+                subscr.active = False
+                subscr.put()
+                profile = subscr.userprofile
+                profile.paid = False
+                profile.put()
+            
+            else:
+                app.logger.info("Got unexpected transaction type from Paypal IPN: "+str(params))
+
         elif result.content == "INVALID":
-            # boo
             pass
         else:
             app.logger.info("Got unexpected result from PayPal IPN validation: "+result.content)
@@ -72,19 +125,26 @@ def paypal_success():
         if lines[0] == "SUCCESS":
             # yay
             txn_info = parse_qs("&".join(lines[1:]))
+            payer_id = txn_info['payer_id'][0]
+            if not getattr(profile, "paypal_id", None):
+                profile.paypal_id = payer_id
+            if profile.paypal_id != payer_id:
+                app.logger.warn("Got different PayPal ID for user %s: recorded ID is %s, but got %s" % (user, profile.paypal_id, payer_id))
+                abort(401)
             txn_id = txn_info['txn_id'][0]
-            txn_date = datetime.datetime.strptime(txn_info['payment_date'][0], "%H:%M:%S %b %d, %Y PDT")
-            txn = Transaction(
+            subscr_id = txn_info['subscr_id'][0]
+            txn_date = parse_paypal_date(txn_info['payment_date'][0])
+            subscr = Subscription(
                 parent=profile,
                 processor="paypal",
-                id=txn_id,
-                key_name="paypal|"+txn_id,
-                date=txn_date,
+                subscription_id=subscr_id,
+                key_name="paypal|"+subscr_id,
+                active=True,
+                start_transaction_id=txn_id,
+                start_date=txn_date,
                 amount=decimal.Decimal(txn_info['payment_gross'][0]),
-                subscription_id=txn_info['subscr_id'][0],
-                payment_status=txn_info['payment_status'][0],
             )
-            txn.put()
+            subscr.put()
             # update the user to indicate that they have paid
             profile.paid = True
             profile.put()

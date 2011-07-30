@@ -1,4 +1,5 @@
 from buscall import app
+import datetime
 
 #if app.debug:
 if True:
@@ -15,3 +16,6 @@ else:
     pdt_token = "SWCM2tf41PckuxT-MNYirYukaWXdkTS9kWIqmSNMDKrGzXHstbhO8RGZ5pu"
     subscribe_button_id = "W42Q7VA9H8USQ"
     unsubscribe_button_id = "WYWXRN23UG45Q"
+
+def parse_paypal_date(date_str):
+    return datetime.datetime.strptime(date_str, "%H:%M:%S %b %d, %Y PDT")

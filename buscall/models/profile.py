@@ -2,7 +2,7 @@ from google.appengine.api import users
 from google.appengine.ext import db
 from buscall.util import GqlQuery
 
-class UserProfile(db.Model):
+class UserProfile(db.Expando):
     user = db.UserProperty(required=True)
     paid = db.BooleanProperty(required=True, default=False)
     joined = db.DateTimeProperty(required=True, auto_now_add=True)
