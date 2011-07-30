@@ -44,14 +44,13 @@ def paypal_ipn():
             subscr_id = params['subscr_id']
 
             if txn_type == "subscr_signup":
-                txn_id = params['txn_id']
                 subscr = Subscription(
                     parent=profile,
                     processor="paypal",
                     subscription_id=subscr_id,
                     key_name="paypal|"+subscr_id,
                     active=True,
-                    start_transaction_id=txn_id,
+                    start_transaction_id=params['ipn_track_id'],
                     start_date=parse_paypal_date(params['subscr_date']),
                     amount=decimal.Decimal(params['payment_gross']),
                 )
@@ -78,7 +77,6 @@ def paypal_ipn():
                 pmt.put()
                 
             elif txn_type == "subscr_cancel":
-                # we don't get a transaction ID, for some reason
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
                     abort(400)
