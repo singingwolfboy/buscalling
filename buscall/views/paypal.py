@@ -31,19 +31,19 @@ def paypal_ipn():
     try:
         result = rpc.get_result()
         if result.content == "VERIFIED":
-            user_id = params['custom'][0]
+            user_id = params['custom']
             profile = UserProfile.get_by_key_name(user_id)
             if not profile:
                 app.logger.warn("UserProfile not found")
                 abort(400)
             if 'payer_id' in params and hasattr(profile, "paypal_id"):
-                if params['payer_id'][0] != profile.paypal_id:
-                    app.logger.warn("UserProfile's PayPal ID (%s) did not match PayPal ID from request (%s)" % (profile.paypal_id, params['payer_id'][0]))
+                if params['payer_id'] != profile.paypal_id:
+                    app.logger.warn("UserProfile's PayPal ID (%s) did not match PayPal ID from request (%s)" % (profile.paypal_id, params['payer_id']))
                     abort(400)
-            txn_type = params['txn_type'][0]
-            txn_id = params['txn_id'][0]
-            subscr_id = params['subscr_id'][0]
-            txn_date = parse_paypal_date(params['payment_date'][0])
+            txn_type = params['txn_type']
+            txn_id = params['txn_id']
+            subscr_id = params['subscr_id']
+            txn_date = parse_paypal_date(params['payment_date'])
 
             if txn_type == "subscr_signup":
                 subscr = Subscription(
@@ -54,7 +54,7 @@ def paypal_ipn():
                     active=True,
                     start_transaction_id=txn_id,
                     start_date=txn_date,
-                    amount=decimal.Decimal(params['payment_gross'][0]),
+                    amount=decimal.Decimal(params['payment_gross']),
                 )
                 subscr.put()
                 profile.paid = True
@@ -70,7 +70,7 @@ def paypal_ipn():
                     transaction_id=txn_id,
                     key_name="paypal|"+txn_id,
                     date=txn_date,
-                    amount=decimal.Decimal(params['payment_gross'][0]),
+                    amount=decimal.Decimal(params['payment_gross']),
                     status=params['payment_status'][0],
                 )
                 pmt.put()
