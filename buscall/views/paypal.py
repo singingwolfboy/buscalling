@@ -41,11 +41,11 @@ def paypal_ipn():
                     app.logger.warn("UserProfile's PayPal ID (%s) did not match PayPal ID from request (%s)" % (profile.paypal_id, params['payer_id']))
                     abort(400)
             txn_type = params['txn_type']
-            txn_id = params['txn_id']
             subscr_id = params['subscr_id']
             txn_date = parse_paypal_date(params['payment_date'])
 
             if txn_type == "subscr_signup":
+                txn_id = params['txn_id']
                 subscr = Subscription(
                     parent=profile,
                     processor="paypal",
@@ -61,6 +61,7 @@ def paypal_ipn():
                 profile.put()
 
             elif txn_type == "subscr_payment":
+                txn_id = params['txn_id']
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
                     abort(400)
@@ -78,10 +79,11 @@ def paypal_ipn():
                 pmt.put()
                 
             elif txn_type == "subscr_cancel":
+                # we don't get a transaction ID, for some reason
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
                     abort(400)
-                subscr.end_transaction_id = txn_id
+                subscr.end_track_id = params['ipn_track_id']
                 subscr.end_date = txn_date
                 subscr.active = False
                 subscr.put()
