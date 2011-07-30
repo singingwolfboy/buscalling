@@ -34,15 +34,17 @@ def paypal_ipn():
             user_id = params['custom'][0]
             profile = UserProfile.get_by_key_name(user_id)
             if not profile:
+                app.logger.warn("UserProfile not found")
                 abort(400)
             if 'payer_id' in params and hasattr(profile, "paypal_id"):
                 if params['payer_id'][0] != profile.paypal_id:
+                    app.logger.warn("UserProfile's PayPal ID (%s) did not match PayPal ID from request (%s)" % (profile.paypal_id, params['payer_id'][0]))
                     abort(400)
             txn_type = params['txn_type'][0]
             txn_id = params['txn_id'][0]
             subscr_id = params['subscr_id'][0]
             txn_date = parse_paypal_date(params['payment_date'][0])
-            
+
             if txn_type == "subscr_signup":
                 subscr = Subscription(
                     parent=profile,
