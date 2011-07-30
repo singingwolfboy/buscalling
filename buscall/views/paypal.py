@@ -42,7 +42,6 @@ def paypal_ipn():
                     abort(400)
             txn_type = params['txn_type']
             subscr_id = params['subscr_id']
-            txn_date = parse_paypal_date(params['payment_date'])
 
             if txn_type == "subscr_signup":
                 txn_id = params['txn_id']
@@ -53,7 +52,7 @@ def paypal_ipn():
                     key_name="paypal|"+subscr_id,
                     active=True,
                     start_transaction_id=txn_id,
-                    start_date=txn_date,
+                    start_date=parse_paypal_date(params['subscr_date']),
                     amount=decimal.Decimal(params['payment_gross']),
                 )
                 subscr.put()
@@ -70,7 +69,7 @@ def paypal_ipn():
                     subscription=subscr,
                     transaction_id=txn_id,
                     key_name="paypal|"+txn_id,
-                    date=txn_date,
+                    date=parse_paypal_date(params['payment_date']),
                     amount=decimal.Decimal(params['payment_gross']),
                     status=params['payment_status'][0],
                 )
@@ -84,7 +83,7 @@ def paypal_ipn():
                 if not subscr:
                     abort(400)
                 subscr.end_track_id = params['ipn_track_id']
-                subscr.end_date = txn_date
+                subscr.end_date = parse_paypal_date(params['subscr_date'])
                 subscr.active = False
                 subscr.put()
                 profile = subscr.userprofile
