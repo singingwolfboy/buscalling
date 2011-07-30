@@ -73,6 +73,8 @@ def paypal_ipn():
                     amount=decimal.Decimal(params['payment_gross']),
                     status=params['payment_status'][0],
                 )
+                if 'ipn_track_id' in params:
+                    pmt.track_id = params['ipn_track_id']
                 pmt.put()
                 
             elif txn_type == "subscr_cancel":

@@ -25,3 +25,4 @@ class Payment(db.Model):
     date = db.DateTimeProperty(required=True)
     amount = CurrencyProperty(required=True)
     status = db.StringProperty(required=True)
+    track_id = db.StringProperty()
