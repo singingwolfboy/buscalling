@@ -46,7 +46,7 @@ def paypal_ipn():
             if txn_type == "subscr_signup":
                 # create or update Subscription object
                 key_name = "paypal|"+subscr_id
-                subscr = Subscription.get_by_key_name(key_name)
+                subscr = Subscription.get_by_key_name(key_name, parent=profile)
                 if subscr:
                     subscr.start_track_id=params['ipn_track_id']
                     subscr.start_date=parse_paypal_date(params['subscr_date'])
@@ -69,7 +69,7 @@ def paypal_ipn():
             elif txn_type == "subscr_payment":
                 # get or create Subscription object
                 txn_id = params['txn_id']
-                subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
+                subscr = Subscription.get_by_key_name("paypal|"+subscr_id, parent=profile)
                 if not subscr:
                     subscr = Subscription(
                         parent=profile,
@@ -98,7 +98,7 @@ def paypal_ipn():
                 pmt.put()
                 
             elif txn_type == "subscr_cancel":
-                subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
+                subscr = Subscription.get_by_key_name("paypal|"+subscr_id, parent=profile)
                 if not subscr:
                     app.logger.warn("Could not find Subscription: paypal|"+subscr_id)
                     abort(400)
@@ -162,7 +162,7 @@ def paypal_success():
 
             # find or create the Subscription object
             key_name = "paypal|"+subscr_id
-            subscr = Subscription.get_by_key_name(key_name)
+            subscr = Subscription.get_by_key_name(key_name, parent=profile)
             if not subscr:
                 subscr = Subscription(
                     parent=profile,
