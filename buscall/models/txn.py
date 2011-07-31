@@ -8,7 +8,7 @@ class Subscription(db.Model):
     processor = db.StringProperty(required=True, choices=['paypal', 'amazon'])
     subscription_id = db.StringProperty(required=True)
     active = db.BooleanProperty(required=True, default=True)
-    start_transaction_id = db.StringProperty(required=True)
+    start_track_id = db.StringProperty()
     end_track_id = db.StringProperty()
     start_date = db.DateTimeProperty(required=True)
     end_date = db.DateTimeProperty()

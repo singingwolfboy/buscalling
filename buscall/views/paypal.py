@@ -44,24 +44,34 @@ def paypal_ipn():
             subscr_id = params['subscr_id']
 
             if txn_type == "subscr_signup":
-                subscr = Subscription(
-                    parent=profile,
-                    processor="paypal",
-                    subscription_id=subscr_id,
-                    key_name="paypal|"+subscr_id,
-                    active=True,
-                    start_transaction_id=params['ipn_track_id'],
-                    start_date=parse_paypal_date(params['subscr_date']),
-                    amount=decimal.Decimal(params['payment_gross']),
-                )
-                subscr.put()
+                # create or update Subscription object
+                key_name = "paypal|"+subscr_id
+                subscr = Subscription.get_by_key_name(key_name)
+                if subscr:
+                    subscr.start_track_id=params['ipn_track_id']
+                    subscr.start_date=parse_paypal_date(params['subscr_date'])
+                    subscr.put()
+                else:
+                    subscr = Subscription(
+                        parent=profile,
+                        processor="paypal",
+                        subscription_id=subscr_id,
+                        key_name="paypal|"+subscr_id,
+                        active=True,
+                        start_track_id=params['ipn_track_id'],
+                        start_date=parse_paypal_date(params['subscr_date']),
+                        amount=decimal.Decimal(params['payment_gross']),
+                    )
+                    subscr.put()
                 profile.paid = True
                 profile.put()
 
             elif txn_type == "subscr_payment":
+                # create Payment object
                 txn_id = params['txn_id']
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
+                    app.logger.warn("Could not find Subscription: paypal|"+subscr_id)
                     abort(400)
                 pmt = Payment(
                     processor="paypal",
@@ -79,6 +89,7 @@ def paypal_ipn():
             elif txn_type == "subscr_cancel":
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
+                    app.logger.warn("Could not find Subscription: paypal|"+subscr_id)
                     abort(400)
                 subscr.end_track_id = params['ipn_track_id']
                 subscr.end_date = parse_paypal_date(params['subscr_date'])
@@ -126,7 +137,6 @@ def paypal_success():
         result = rpc.get_result()
         lines = result.content.splitlines()
         if lines[0] == "SUCCESS":
-            # yay
             txn_info = parse_qs("&".join(lines[1:]))
             payer_id = txn_info['payer_id'][0]
             if not getattr(profile, "paypal_id", None):
@@ -137,17 +147,37 @@ def paypal_success():
             txn_id = txn_info['txn_id'][0]
             subscr_id = txn_info['subscr_id'][0]
             txn_date = parse_paypal_date(txn_info['payment_date'][0])
-            subscr = Subscription(
-                parent=profile,
+            amount = decimal.Decimal(txn_info['payment_gross'][0])
+
+            # find or create the Subscription object
+            key_name = "paypal|"+subscr_id
+            subscr = Subscription.get_by_key_name(key_name)
+            if not subscr:
+                subscr = Subscription(
+                    parent=profile,
+                    processor="paypal",
+                    subscription_id=subscr_id,
+                    key_name=key_name,
+                    active=True,
+                    start_date=txn_date,
+                    amount=amount,
+                )
+                subscr.put()
+            
+            # create the Payment object
+            pmt = Payment(
+                subscription=subscr,
                 processor="paypal",
-                subscription_id=subscr_id,
-                key_name="paypal|"+subscr_id,
-                active=True,
-                start_transaction_id=txn_id,
-                start_date=txn_date,
-                amount=decimal.Decimal(txn_info['payment_gross'][0]),
+                transaction_id=txn_id,
+                key_name="paypal|"+txn_id,
+                date=txn_date,
+                amount=amount,
+                status=txn_info['payment_status'][0],
             )
-            subscr.put()
+            if 'ipn_track_id' in txn_info:
+                pmt.track_id = txn_info['ipn_track_id'][0]
+            pmt.put()
+
             # update the user to indicate that they have paid
             profile.paid = True
             profile.put()
