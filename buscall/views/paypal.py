@@ -3,9 +3,9 @@ from flask import request, abort, flash, redirect, url_for
 from urllib import urlencode
 import decimal
 try:
-    from urlparse import parse_qs
+    from urlparse import parse_qsl
 except ImportError:
-    from cgi import parse_qs
+    from cgi import parse_qsl
 from google.appengine.api import urlfetch, users, mail
 from buscall.models.paypal import url as paypal_url
 from buscall.models.paypal import pdt_token, sandbox, parse_paypal_date
@@ -91,7 +91,7 @@ def paypal_ipn():
                     key_name="paypal|"+txn_id,
                     date=parse_paypal_date(params['payment_date']),
                     amount=decimal.Decimal(params['payment_gross']),
-                    status=params['payment_status'][0],
+                    status=params['payment_status'],
                 )
                 if 'ipn_track_id' in params:
                     pmt.track_id = params['ipn_track_id']
@@ -148,17 +148,17 @@ def paypal_success():
         result = rpc.get_result()
         lines = result.content.splitlines()
         if lines[0] == "SUCCESS":
-            txn_info = parse_qs("&".join(lines[1:]))
-            payer_id = txn_info['payer_id'][0]
+            txn_info = dict(parse_qsl("&".join(lines[1:])))
+            payer_id = txn_info['payer_id']
             if not getattr(profile, "paypal_id", None):
                 profile.paypal_id = payer_id
             if profile.paypal_id != payer_id:
                 app.logger.warn("Got different PayPal ID for user %s: recorded ID is %s, but got %s" % (user, profile.paypal_id, payer_id))
                 abort(401)
-            txn_id = txn_info['txn_id'][0]
-            subscr_id = txn_info['subscr_id'][0]
-            txn_date = parse_paypal_date(txn_info['payment_date'][0])
-            amount = decimal.Decimal(txn_info['payment_gross'][0])
+            txn_id = txn_info['txn_id']
+            subscr_id = txn_info['subscr_id']
+            txn_date = parse_paypal_date(txn_info['payment_date'])
+            amount = decimal.Decimal(txn_info['payment_gross'])
 
             # find or create the Subscription object
             key_name = "paypal|"+subscr_id
@@ -183,10 +183,10 @@ def paypal_success():
                 key_name="paypal|"+txn_id,
                 date=txn_date,
                 amount=amount,
-                status=txn_info['payment_status'][0],
+                status=txn_info['payment_status'],
             )
             if 'ipn_track_id' in txn_info:
-                pmt.track_id = txn_info['ipn_track_id'][0]
+                pmt.track_id = txn_info['ipn_track_id']
             pmt.put()
 
             # update the user to indicate that they have paid
