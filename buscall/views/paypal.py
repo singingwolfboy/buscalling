@@ -60,19 +60,30 @@ def paypal_ipn():
                         active=True,
                         start_track_id=params['ipn_track_id'],
                         start_date=parse_paypal_date(params['subscr_date']),
-                        amount=decimal.Decimal(params['payment_gross']),
+                        amount=decimal.Decimal(params['amount3']),
                     )
                     subscr.put()
                 profile.paid = True
                 profile.put()
 
             elif txn_type == "subscr_payment":
-                # create Payment object
+                # get or create Subscription object
                 txn_id = params['txn_id']
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
-                    app.logger.warn("Could not find Subscription: paypal|"+subscr_id)
-                    abort(400)
+                    subscr = Subscription(
+                        parent=profile,
+                        processor="paypal",
+                        subscription_id=subscr_id,
+                        key_name="paypal|"+subscr_id,
+                        active=True,
+                        start_track_id=params['ipn_track_id'],
+                        start_date=parse_paypal_date(params['payment_date']),
+                        amount=decimal.Decimal(params['payment_gross']),
+                    )
+                    subscr.put()
+
+                # create Payment object
                 pmt = Payment(
                     processor="paypal",
                     subscription=subscr,
