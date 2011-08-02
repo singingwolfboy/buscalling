@@ -40,7 +40,7 @@ def reset_seen_flags():
         listener.seen = False
         listener.put()
     executed = GqlQuery("SELECT * FROM BusAlert WHERE executed = True")
-    from alert in executed:
+    for alert in executed:
         alert.executed = False
         alert.put()
     return redirect(url_for("lander"), 303)
