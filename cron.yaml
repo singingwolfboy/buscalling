@@ -1,8 +1,8 @@
 cron:
 - url: /tasks/poll
   description: poll nextbus every minute
-  schedule: every minute
+  schedule: every 1 minutes
 
 - url: /tasks/reset_seen_flags
   description: Reset the "seen" flags on all bus listeners every night
-  schedule: every day at midnight
+  schedule: "every day 00:00"
