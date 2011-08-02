@@ -1,58 +1,32 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
+{% block flash %}{% endblock %}
+{% block nav %}{% endblock %}
 {% block header %}
   <h1>Bus Calling</h1>
   <h2>Time management before the coffee kicks in.</h2>
+  <a class="login" href="{{ login_url }}"><img src="/img/login-with-google.png" alt="Login with Google" /></a>
 {% endblock %}
-{% block nav %}{% endblock %}
 {% block main %}
-  <aside id="waitlist">
-    {# use launchrock? #}
-    <form id="signup" action="{{ url_for('lander') }}" method="POST">
-      {{form.hidden_tag()}}
-      <p>Bus Calling isn't live yet, but you can get on the waitlist now! Just put in your email address and hit that button.</p>
+  <div id="features">
+    <img src="http://placehold.it/350x350.png" />
+    <ul>
+      <li>Track buses in real time</li>
+      <li>Get a phone call or a text message when it's time to go</li>
+      <li>No need to create a new account, just use your Gmail</li>
+      <li>Set it up once, rely on it as long as you need</li>
+      <li>Never miss your morning bus again!</li>
+    </ul>
+  </div>
+  <div id="longform">
+    <p>Public transportation is a dangerous game when the buses don't follow the schedule. Waiting at the bus stop is boring and uncomfortable -- but waiting at home is inviting disaster. What do you do when the bus rolls by while you're enjoying your morning coffee?</p>
 
-      {% if form.email.errors %}
-      <ul class="errors">
-        {% for error in form.email.errors %}
-        <li>{{error}}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-      {{ form.email(placeholder="email@example.com") }}
-
-      <p class="fade">(We take privacy seriously: we won't sell or give away your email address to anyone.)</p>
-
-      <div id="location">
-        {% if form.location_lat.data and form.location_long.data %}
-          {% set checked='checked="checked"' %}
-          {% set label='Got location. Thanks!' %}
-        {% else %}
-          {% set checked='' %}
-          {% set label='Include location?' %}
-        {% endif %}
-
-        {% if form.location_lat.errors or form.location_long.errors %}
-        <ul class="errors">
-          {% for error in form.location_lat.errors %}
-          <li>Latitude: {{error}}</li>
-          {% endfor %}
-          {% for error in form.location_long.errors %}
-          <li>Longitude: {{error}}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-        <input type="checkbox" id="use_location" {{checked}}/>
-        <label for="use_location" id="location_label">{{label}}</label>
-        <p class="fade">Not required. Used to determine which bus routes are near you.</p>
-        {{ form.location_lat }}
-        {{ form.location_long }}
-      </div>
-
-      <input type="submit" value="Sign me up!" />
-    </form>
-  </aside>
-  <p>Public transportation is a dangerous game when the buses don't follow the schedule. Waiting at the bus stop is boring and uncomfortable -- but waiting at home is inviting disaster. What do you do when the bus rolls by while you're enjoying your morning coffee?</p>
-
-  <p>Relax: we've got your back. Bus Calling tracks your bus <strong>in real time</strong>, so we know if the bus is running early or if it's delayed. We'll <strong>give you a call</strong> (or <em>send you a text!</em>) when the bus is 10 minutes away from your stop, so <strong>you're prepared,</strong> whenever your ride gets there. The bus doesn't follow the schedule -- <em>why should you?</em></p>
+    <p>Relax: we've got your back. Bus Calling tracks your bus <strong>in real time</strong>, so we know if the bus is running early or if it's delayed. We'll <strong>give you a call</strong> (or <em>send you a text!</em>) when the bus is 10 minutes away from your stop, so <strong>you're prepared,</strong> whenever your ride gets there. The bus doesn't follow the schedule -- <em>why should you?</em></p>
+  </div>
+  <div id="highlight">
+    <a class="login" href="{{ login_url }}"><img src="/img/login-with-google.png" alt="Login with Google" /></a>
+    <div id="price">
+      Only <em>$5 per month</em> for as many alerts as you need. We use PayPal to keep your information safe. Cancel anytime.
+    </div>
+  </div>
 {% endblock %}

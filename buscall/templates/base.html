@@ -13,9 +13,11 @@
 <body>
   <div id="container">
     <header>{% block header %}{% endblock %}</header>
+    {% block flash %}
     {%- for category, msg in get_flashed_messages(with_categories=true) %}
       <p class=flash-{{ category }}>{{ msg }}</p>
     {%- endfor %}
+    {% endblock %}
     {% block nav %}
     <nav>
       {% if user %}

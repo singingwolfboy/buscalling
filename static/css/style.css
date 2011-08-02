@@ -1,12 +1,18 @@
 #container {
-    min-width: 600px;
-    margin: 0 3em;
+    width: 800px;
+    margin: 0 auto;
     position: relative;
 }
 
 nav {
     position: absolute;
     top: .2em;
+    right: .2em;
+}
+header .login {
+    display: block;
+    position: absolute;
+    top: .7em;
     right: .2em;
 }
 
@@ -23,44 +29,34 @@ p.flash-error {
     padding: .5em 1em;
 }
 
-#waitlist {
-    border: 5px solid black;
+#features {
+    position: relative;
+    overflow: auto;
+}
+#features img {
+    float: left;
+}
+
+#features ul {
+    list-style: none;
+    margin-left: 350px;
+}
+#features ul li {
+    padding: 1em;
+    margin: 1em 0;
+    background-color: lightgreen;
+}
+#highlight .login {
     float: right;
-    width: 20%;
-    padding: 1em 1.5em 0 1.5em;
-    margin-left: 2em;
-}
-
-#waitlist p {
-    margin: 0;
-    padding: 0;
-}
-
-#waitlist form {
-    width: 100%;
-}
-
-#email {
-    width: 100%;
-    line-height: 1.5;
-}
-input.defaultValue {
-    color: gray;
-}
-
-p.fade {
-    color: gray;
-    font-size: 80%;
-}
-
-#waitlist #location {
     margin-top: .8em;
 }
-
-#waitlist input[type="submit"] {
-    margin: 1em auto;
-    display: block;
-    width: 10em;
+#price {
+    border: 3px solid green;
+    margin: .7em 0;
+    padding: .8em;
+    text-align: center;
+    background-color: lightgreen;
+    margin-right: 200px;
 }
 
 .form_field.start {

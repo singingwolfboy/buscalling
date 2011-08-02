@@ -37,9 +37,9 @@ def lander():
     if user:
         return lander_user()
     else:
-        return lander_guest()
+        return render_template('lander_guest.html')
 
-def lander_guest():
+def lander_signup():
     form = WaitlistForm(request.form)
     if form.validate_on_submit():
         try:
