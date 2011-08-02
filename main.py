@@ -51,7 +51,7 @@ def run_app():
 
     # Run the app using Werkzeug
     from google.appengine.ext.webapp.util import run_wsgi_app
-    run_wsgi_app(app.wsgi_app)
+    run_wsgi_app(app)
 
 if __name__ == "__main__":
     sys.path = get_updated_sys_path()        
