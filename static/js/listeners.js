@@ -5,7 +5,8 @@ $().ready(function() {
         agency_elmt = $("form #agency"),
         route_elmt = $("form #route"),
         direction_elmt = $("form #direction"),
-        stop_elmt = $("form #stop");
+        stop_elmt = $("form #stop"),
+        loader_icon = $('<img src="/img/ajax-loader.gif"/>'); // preload img
 
     var update_routes = function(agency) {
         var routes = [option_blank]
@@ -44,7 +45,9 @@ $().ready(function() {
         if(model[agency].routes) {
             update_routes(agency)
         } else {
+            $(".form_field.agency").append(loader_icon);
             $.getJSON('/{0}/routes.json'.format(agency), function(data) {
+                $(".form_field.agency img").remove()
                 model[agency].routes = data
                 update_routes(agency)
             })
@@ -58,7 +61,9 @@ $().ready(function() {
         if(model[agency].routes[route].directions) {
             update_directions(agency, route)
         } else {
+            $(".form_field.route").append(loader_icon);
             $.getJSON('/{0}/routes/{1}.json'.format(agency, route), function(data) {
+                $(".form_field.route img").remove();
                 model[agency].routes[route] = data
                 update_directions(agency, route)
             })
