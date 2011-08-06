@@ -78,27 +78,49 @@ $().ready(function() {
     });
 
     // Alerts
-    var setAttr = function(value) {
-        return function (i, oldAttr) {
-            if(oldAttr) {
-                return oldAttr.replace(/-\d+-/, "-"+value+"-").replace(/-\d+$/, "-"+value);
-            }
-        }
-    }
-    $("#add-alert").click(function () {
-        var len = parseInt($("#alerts-length").val(), 10),
-            new_alert = $("#alerts-list li:first-child").clone(),
-            elmts = new_alert.find("*").andSelf(),
-            setLen = setAttr(len);
-        console.log(elmts);
-        $.each(["id", "name", "for"], function(i, attrName) {
-            elmts.attr(attrName, setLen);
+    window.app.alerts = [];
+    window.app.alerts.addFromHTML = function (elmt) {
+        window.app.alerts.push({
+            "id": parseInt($(elmt).attr("id").match(/\d+/)[0], 10),
+            "medium": $("input.alerts-medium", elmt).val(),
+            "minutes": parseInt($("input.alerts-minutes", elmt).val())
         })
+    }
+    $("ul#alerts-list li").each(function () {
+        window.app.alerts.addFromHTML(this);
+    });
 
-        $("#alerts-"+len+"-minutes", new_alert).val("");
+    $(".add-alert").live('click', function () {
+        var li =  $(this).parentsUntil("ul#alerts-list").last(),
+            opt = $("option:selected", li).val(),
+            new_alert = li.clone(),
+            elmts = new_alert.find("*").andSelf(),
+            l = window.app.alerts.length;
+        $.each(["id", "name", "for"], function(i, attrName) {
+            elmts.attr(attrName, function (i, oldAttr) {
+                if(oldAttr) {
+                    return oldAttr.replace(/\d+/, l);
+                }
+            });
+        })
+        $("select.alerts-medium option[value="+opt+"]", new_alert).attr("selected", "selected");
+        window.app.alerts.addFromHTML(new_alert);
         $("#alerts-list").append(new_alert);
-        len = len+1
-        $("#alerts-length").val(len);
-        return len
+        if (window.app.alerts.length > 1) {
+            $("ul#alerts-list li input.delete-alert").each(function() {
+                $(this).attr('disabled', false);
+            })
+        }
+        return window.app.alerts.length;
+    });
+    $(".delete-alert").live('click', function () {
+        var li = $(this).parentsUntil("ul#alerts-list").last(),
+            id = parseInt(li.attr("id").match(/\d+/)[0], 10);
+        delete window.app.alerts[id];
+        li.remove();
+        // if we have only one alert left, disable the delete button
+        if (_.compact(window.app.alerts).length== 1) {
+            $(".delete-alert").first().attr('disabled', true);
+        }
     })
 })

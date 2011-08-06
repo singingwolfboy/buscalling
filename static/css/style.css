@@ -68,3 +68,33 @@ p.flash-error {
 .form_field.week {
     clear: left;
 }
+input.has_error {
+    background-color: #ff6666;
+}
+
+ul#alerts-list {
+    margin: .3em;
+    padding-left: 0;
+    list-style: none;
+}
+ul#alerts-list li {
+    margin: .5em auto;
+}
+.alerts-minutes {
+    width: 3em;
+    text-align: right;
+}
+#alerts-list p,
+.alerts-controls,
+.alerts-controls input {
+    display: inline;
+}
+.alerts-controls {
+    margin-left: 2em;
+    border: 1px solid green;
+    background-color: lightgreen;
+    padding: .2em;
+}
+.alerts-controls input {
+    margin: 0;
+}

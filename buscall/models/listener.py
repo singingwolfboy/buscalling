@@ -11,7 +11,7 @@ except ImportError:
     def compress(data, selectors):
         return (d for d, s in izip(data, selectors) if s)
 
-ALERT_CHOICES = (('phone', 'Phone'), ('txt', 'Text'), ('email', 'Email'))
+ALERT_CHOICES = (('phone', 'Call'), ('txt', 'Text'), ('email', 'Email'))
 
 class BusListener(db.Model):
     # parent should be the UserProfile that this BusListener is associated with

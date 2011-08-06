@@ -44,12 +44,34 @@
         <ul id="alerts-list">
         {% for alert in form.alerts.entries %}
             <li id="{{alert.id}}">
-                {{ with_errors(alert.minutes, class="form_field alerts-minutes") }}
-                {{ with_errors(alert.medium,  class="form_field alerts-medium") }}
+                {% if alert.medium.errors or alert.minutes.errors %}
+                <ul class="errors">
+                    {% for error in alert.medium.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in alert.minutes.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if alert.medium.errors %}
+                    {% set medium_class = "alerts-medium has_error" %}
+                {% else %}
+                    {% set medium_class = "alerts-medium" %}
+                {% endif %}
+                {% if alert.minutes.errors %}
+                    {% set minutes_class = "alerts-minutes has_error" %}
+                {% else %}
+                    {% set minutes_class = "alerts-minutes" %}
+                {% endif %}
+                <p>{{alert.medium(class=medium_class)}} me {{alert.minutes(class=minutes_class)}} minutes before the bus arrives</p>
+                <div class="alerts-controls">
+                    <input type="button" value="+" class="add-alert">
+                    <input type="button" value="-" class="delete-alert" {% if form.alerts.entries|length == 1 %}disabled="disabled"{% endif %}/>
+                </div>
             </li>
         {% endfor %}
         </ul>
-        <input type="button" value="Add Alert" id="add-alert" />
     </fieldset>
     <input type="submit" value="Create Listener" />
 </form>
