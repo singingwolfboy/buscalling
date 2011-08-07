@@ -31,28 +31,28 @@ p.flash-error {
 #features {
     position: relative;
     overflow: auto;
-    background: url("/img/bus-pic.jpeg") no-repeat;
+    background: url("/img/bus-pic.jpg") no-repeat;
 }
 #bus-float {
     width: 500px;
     height: 450px;
     background-color: blue;
 }
-#features ul {
-    list-style: none;
+p#description {
     margin-left: 500px;
     margin-right: 10px;
-    min-height: 400px;
+    min-height: 350px;
     padding: 0;
+    font-size: 20px;
+    line-height: 1.8;
 }
 #features ul li {
     margin: 1em 0;
 }
-#features ul li,
+p#description,
 #price {
-    font-family: "Gill Sans";
+    font-family: "Gentium Basic", serif;
     font-weight: bold;
-    font-size: 16px;
     border: 3px solid green;
     padding: .8em;
     text-align: center;
@@ -61,6 +61,7 @@ p.flash-error {
 }
 #features #price {
     margin-right: 200px;
+    font-size: 16px;
 }
 #highlight .login {
     float: right;
@@ -75,6 +76,13 @@ p.flash-error {
 }
 #faq-grid {
     overflow: auto;
+}
+
+#faq-grid h2 {
+    margin: .1em 0;
+}
+#faq-grid p {
+    margin: .1em 0;
 }
 
 .form_field.start {
