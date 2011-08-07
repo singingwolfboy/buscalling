@@ -1,8 +1,7 @@
 from buscall import app
 import datetime
 
-#if app.debug:
-if True:
+if app.debug:
     # sandbox info
     sandbox = True
     url = "https://www.sandbox.paypal.com/cgi-bin/webscr"
