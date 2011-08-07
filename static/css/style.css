@@ -28,35 +28,53 @@ p.flash-error {
     border-radius: 5px;
     padding: .5em 1em;
 }
-
 #features {
     position: relative;
     overflow: auto;
+    background: url("/img/bus-pic.jpeg") no-repeat;
 }
-#features img {
-    float: left;
+#bus-float {
+    width: 500px;
+    height: 450px;
+    background-color: blue;
 }
-
 #features ul {
     list-style: none;
-    margin-left: 350px;
+    margin-left: 500px;
+    margin-right: 10px;
+    min-height: 400px;
+    padding: 0;
 }
 #features ul li {
-    padding: 1em;
     margin: 1em 0;
-    background-color: lightgreen;
+}
+#features ul li,
+#price {
+    font-family: "Gill Sans";
+    font-weight: bold;
+    font-size: 16px;
+    border: 3px solid green;
+    padding: .8em;
+    text-align: center;
+    background-color: rgba(200, 255, 200, .8);
+    border-radius: 10px;
+}
+#features #price {
+    margin-right: 200px;
 }
 #highlight .login {
     float: right;
     margin-top: .8em;
+    margin-right: .8em;
 }
-#price {
-    border: 3px solid green;
-    margin: .7em 0;
-    padding: .8em;
-    text-align: center;
-    background-color: lightgreen;
-    margin-right: 200px;
+
+.faq-entry {
+    width: 380px;
+    float: left;
+    padding: 10px;
+}
+#faq-grid {
+    overflow: auto;
 }
 
 .form_field.start {
