@@ -13,6 +13,7 @@ from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
 from google.appengine.api import users
+import datetime
 
 ALERT_MAIL_BODY = """
 Someone signed up for the Bus Calling waitlist!
@@ -31,6 +32,15 @@ def inject_auth_urls():
         "login_url":  users.create_login_url(request.url),
         "logout_url": users.create_logout_url(url_for('lander')),
     }
+
+@app.before_request
+def update_userprofile_last_login():
+    user = users.get_current_user()
+    if user:
+        profile = UserProfile.get_by_user(user)
+        if profile:
+            profile.last_access = datetime.datetime.now()
+            db.put_async(profile)
 
 @app.route('/', methods = ['GET', 'POST', 'PUT'])
 def lander():

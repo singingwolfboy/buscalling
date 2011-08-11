@@ -6,7 +6,7 @@ class UserProfile(db.Expando):
     user = db.UserProperty(required=True)
     paid = db.BooleanProperty(required=True, default=False)
     joined = db.DateTimeProperty(required=True, auto_now_add=True)
-    last_login = db.DateTimeProperty(required=True, auto_now=True)
+    last_access = db.DateTimeProperty(required=True, auto_now=True)
 
     # optional properties
     phone = db.PhoneNumberProperty()
