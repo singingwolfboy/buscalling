@@ -3,6 +3,9 @@ version: 0-9-1
 runtime: python
 api_version: 1
 
+builtins:
+- datastore_admin: on
+
 handlers:
 # shortcut for jquery :)
 - url: /js/jquery.js
