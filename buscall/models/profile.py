@@ -43,6 +43,13 @@ class UserProfile(db.Expando):
             kwargs['key_name'] = kwargs['user'].user_id() or kwargs['user'].email()
         db.Model.__init__(self, *args, **kwargs)
 
+    def __cmp__(self, othr):
+        if not isinstance(othr, UserProfile):
+            return NotImplemented
+        # we won't compare last_access, since that always changes
+        return cmp((self.user, self.paid, self.joined, self.phone, self.first_name, self.last_name),
+                   (othr.user, othr.paid, othr.joined, othr.phone, othr.first_name, othr.last_name))
+
     @classmethod
     def get_by_user(cls, user):
         key_name = user.user_id() or user.email()
