@@ -15,6 +15,7 @@ import werkzeug
 from textwrap import wrap
 from werkzeug.wrappers import BaseRequest as Request, BaseResponse as Response
 from werkzeug.utils import escape
+__test__ = False
 
 
 logo = Response('''R0lGODlhoACgAOMIAAEDACwpAEpCAGdgAJaKAM28AOnVAP3rAP/////////
