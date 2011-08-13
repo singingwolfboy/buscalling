@@ -1,7 +1,7 @@
 import math
 from unittest import TestCase
 
-import simplejson as json
+import simplejson_mod as json
 
 class TestFloat(TestCase):
     def test_floats(self):

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-import simplejson as json
+import simplejson_mod as json
 
 class TestErrors(TestCase):
     def test_string_keys_error(self):

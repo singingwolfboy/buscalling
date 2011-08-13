@@ -2,7 +2,7 @@ from decimal import Decimal
 from unittest import TestCase
 from StringIO import StringIO
 
-import simplejson as json
+import simplejson_mod as json
 
 class TestDecimal(TestCase):
     NUMS = "1.0", "10.00", "1.1", "1234567890.1234567890", "500"

@@ -1,5 +1,5 @@
 from unittest import TestCase
-import simplejson as json
+import simplejson_mod as json
 
 def default_iterable(obj):
     return list(obj)

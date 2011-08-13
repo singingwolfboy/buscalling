@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-import simplejson as json
+import simplejson_mod as json
 
 class TestUnicode(TestCase):
     def test_encoding1(self):

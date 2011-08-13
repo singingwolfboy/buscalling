@@ -11,7 +11,7 @@ extension for speedups.
 
 Encoding basic Python object hierarchies::
 
-    >>> import simplejson as json
+    >>> import simplejson_mod as json
     >>> json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])
     '["foo", {"bar": ["baz", null, 1.0, 2]}]'
     >>> print json.dumps("\"foo\bar")
@@ -30,13 +30,13 @@ Encoding basic Python object hierarchies::
 
 Compact encoding::
 
-    >>> import simplejson as json
+    >>> import simplejson_mod as json
     >>> json.dumps([1,2,3,{'4': 5, '6': 7}], separators=(',',':'))
     '[1,2,3,{"4":5,"6":7}]'
 
 Pretty printing::
 
-    >>> import simplejson as json
+    >>> import simplejson_mod as json
     >>> s = json.dumps({'4': 5, '6': 7}, sort_keys=True, indent='    ')
     >>> print '\n'.join([l.rstrip() for l in  s.splitlines()])
     {
@@ -46,7 +46,7 @@ Pretty printing::
 
 Decoding JSON::
 
-    >>> import simplejson as json
+    >>> import simplejson_mod as json
     >>> obj = [u'foo', {u'bar': [u'baz', None, 1.0, 2]}]
     >>> json.loads('["foo", {"bar":["baz", null, 1.0, 2]}]') == obj
     True
@@ -59,7 +59,7 @@ Decoding JSON::
 
 Specializing JSON object decoding::
 
-    >>> import simplejson as json
+    >>> import simplejson_mod as json
     >>> def as_complex(dct):
     ...     if '__complex__' in dct:
     ...         return complex(dct['real'], dct['imag'])
@@ -74,7 +74,7 @@ Specializing JSON object decoding::
 
 Specializing JSON object encoding::
 
-    >>> import simplejson as json
+    >>> import simplejson_mod as json
     >>> def encode_complex(obj):
     ...     if isinstance(obj, complex):
     ...         return [obj.real, obj.imag]
@@ -117,7 +117,7 @@ except ImportError:
 
 def _import_c_make_encoder():
     try:
-        from simplejson._speedups import make_encoder
+        from simplejson_mod._speedups import make_encoder
         return make_encoder
     except ImportError:
         return None
@@ -399,9 +399,9 @@ def loads(s, encoding=None, cls=None, object_hook=None, parse_float=None,
 
 
 def _toggle_speedups(enabled):
-    import simplejson.decoder as dec
-    import simplejson.encoder as enc
-    import simplejson.scanner as scan
+    import simplejson_mod.decoder as dec
+    import simplejson_mod.encoder as enc
+    import simplejson_mod.scanner as scan
     c_make_encoder = _import_c_make_encoder()
     if enabled:
         dec.scanstring = dec.c_scanstring or dec.py_scanstring
