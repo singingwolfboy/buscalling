@@ -46,14 +46,14 @@ def paypal_ipn():
             if txn_type == "subscr_signup":
                 # create or update Subscription object
                 key_name = "paypal|"+subscr_id
-                subscr = Subscription.get_by_key_name(key_name, parent=profile)
+                subscr = Subscription.get_by_key_name(key_name)
                 if subscr:
                     subscr.start_track_id=params['ipn_track_id']
                     subscr.start_date=parse_paypal_date(params['subscr_date'])
                     subscr.put()
                 else:
                     subscr = Subscription(
-                        parent=profile,
+                        userprofile=profile,
                         processor="paypal",
                         subscription_id=subscr_id,
                         key_name="paypal|"+subscr_id,
@@ -69,10 +69,10 @@ def paypal_ipn():
             elif txn_type == "subscr_payment":
                 # get or create Subscription object
                 txn_id = params['txn_id']
-                subscr = Subscription.get_by_key_name("paypal|"+subscr_id, parent=profile)
+                subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
                     subscr = Subscription(
-                        parent=profile,
+                        userprofile=profile,
                         processor="paypal",
                         subscription_id=subscr_id,
                         key_name="paypal|"+subscr_id,
@@ -98,7 +98,7 @@ def paypal_ipn():
                 pmt.put()
                 
             elif txn_type == "subscr_cancel":
-                subscr = Subscription.get_by_key_name("paypal|"+subscr_id, parent=profile)
+                subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
                     app.logger.warn("Could not find Subscription: paypal|"+subscr_id)
                     abort(400)
@@ -162,10 +162,10 @@ def paypal_success():
 
             # find or create the Subscription object
             key_name = "paypal|"+subscr_id
-            subscr = Subscription.get_by_key_name(key_name, parent=profile)
+            subscr = Subscription.get_by_key_name(key_name)
             if not subscr:
                 subscr = Subscription(
-                    parent=profile,
+                    userprofile=profile,
                     processor="paypal",
                     subscription_id=subscr_id,
                     key_name=key_name,

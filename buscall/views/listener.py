@@ -34,7 +34,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         user = users.get_current_user()
         profile = UserProfile.get_by_user(user)
         params = {
-            "parent": profile,
+            "userprofile": profile,
             "seen": False,
         }
         for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):
@@ -42,7 +42,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         listener = BusListener(**params)
         listener.put()
         for alert_data in form.data['alerts']:
-            alert = BusAlert(parent=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
+            alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
             alert.put()
 
         flash("Listener created!")

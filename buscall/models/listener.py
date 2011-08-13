@@ -14,7 +14,7 @@ except ImportError:
 ALERT_CHOICES = (('phone', 'Call'), ('txt', 'Text'), ('email', 'Email'))
 
 class BusListener(db.Model):
-    # parent should be the UserProfile that this BusListener is associated with
+    userprofile = db.ReferenceProperty(UserProfile, collection_name="listeners", required=True)
 
     # info about bus stop
     agency_id = db.StringProperty(required=True, default="mbta")
@@ -92,14 +92,6 @@ class BusListener(db.Model):
     def id(self):
         return self.key().id()
     
-    @property
-    def userprofile(self):
-        return self.parent()
-    
-    @property
-    def alerts(self):
-        return BusAlert.all().ancestor(self)
-    
     def __str__(self):
         values = {}
         for prop in self.properties().keys():
@@ -125,7 +117,7 @@ class BusListener(db.Model):
         self.put()
 
 class BusAlert(db.Model):
-    # parent should be the BusListener that this BusAlert is associated with
+    listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
     minutes = db.IntegerProperty(required=True)
     medium = db.StringProperty(choices=[k for k,v in ALERT_CHOICES], required=True)
     executed = db.BooleanProperty(required=True, default=False)
@@ -137,10 +129,6 @@ class BusAlert(db.Model):
             status = "not executed"
         return "%s for <%s>, %d minutes before via %s, %s" % \
             (self.__class__.__name__, self.listener, self.minutes, self.medium, status)
-    
-    @property
-    def listener(self):
-        return self.parent()
 
     def execute(self, minutes=None):
         "minutes parameter is the actual prediction time"

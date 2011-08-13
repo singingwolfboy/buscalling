@@ -13,11 +13,6 @@ class UserProfile(db.Expando):
     first_name = db.StringProperty()
     last_name = db.StringProperty()
 
-    @property
-    def listeners(self):
-        # BusListener.all().ancestor(self)
-        return GqlQuery("SELECT * FROM BusListener WHERE ANCESTOR IS :profile", profile=self)
-
     # pass-throughs
     @property
     def email(self):
