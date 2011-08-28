@@ -3,7 +3,7 @@ import time
 from itertools import izip
 from wtforms.widgets import Input, RadioInput, ListWidget
 from wtforms.fields import Field, FieldList, _unset_value
-from flaskext.wtf import SelectField, TextField, BooleanField
+from flaskext.wtf import SelectField, TextField, BooleanField, RadioField
 from buscall.models.nextbus import NextbusError, AGENCIES, get_routes, get_route
 
 __all__ = ['TelInput', 'TelephoneField', 'RadioBooleanField', 'TimeInput', 'TimeField', 'RouteField', 'DirectionField', 'StopField']
@@ -16,35 +16,41 @@ class TelInput(Input):
 class TelephoneField(TextField):
     widget = TelInput()
 
-class RadioBooleanField(BooleanField, SelectField):
-    widget = ListWidget()
-    option_widget = RadioInput()
-
-    def __init__(self, label=None, validators=None, choices=((True, "True"), (False, "False")), **kwargs):
-        SelectField.__init__(self, label, validators, bool, choices, **kwargs)
-        self.data = None
-    
-    def __iter__(self):
-        opts = dict(widget=self.option_widget, _name=self.name, _form=None)
-        for value, label in self.choices:
-            if value == None:
-                id_type = "none"
-            else:
-                id_type = str(bool(value)).lower() # "true" or "false"
-            bf = BooleanField(label=label, id=u'%s-%s' % (self.id, id_type), **opts)
-            bf.process(None, value)
-            if value == self.default:
-                bf.checked = True
-            else:
-                bf.checked = False
-            yield bf
+class RadioBooleanField(RadioField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("coerce", bool)
+        super(RadioField, self).__init__(*args, **kwargs)
 
     def process_formdata(self, valuelist):
-        if valuelist:
-            try:
-                self.data = self.coerce(valuelist[0])
-            except ValueError:
-                raise ValueError(self.gettext(u'Invalid Choice: could not coerce'))
+        if not valuelist:
+            self.data = False
+        if valuelist[0].lower() in ['n', 'no', 'false', '0']:
+            self.data = False
+        else:
+            self.data = True
+    
+    def iter_choices(self):
+        for value, label in self.choices:
+            if value:
+                v = u"y"
+            else:
+                v = u"n"
+            yield (v, label, self.coerce(value) == self.data)
+
+def maybe_unicode(s):
+    if s == None:
+        return s
+    return unicode(s)
+
+class MaybeRadioField(RadioField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("coerce", maybe_unicode)
+        super(MaybeRadioField, self).__init__(*args, **kwargs)
+    
+    def pre_validate(self, form):
+        if self.data is None:
+            return
+        super(MaybeRadioField, self).pre_validate(form)
 
 class TimeInput(Input):
     input_type = "time"

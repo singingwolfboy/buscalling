@@ -2,7 +2,7 @@ from flaskext.wtf import Form, DecimalField, SelectField, BooleanField, TextFiel
 from flaskext.wtf import HiddenInput, FieldList, FormField, IntegerField
 from flaskext.wtf import Required, Optional, Regexp, Length
 from flaskext.wtf.html5 import EmailField
-from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField, TelephoneField
+from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField, TelephoneField, RadioBooleanField, MaybeRadioField
 from buscall.models.nextbus import AGENCIES
 from buscall.models.listener import ALERT_CHOICES
 from buscall.util import DAYS_OF_WEEK
@@ -33,9 +33,10 @@ class BusListenerForm(Form):
         id="direction", validators=[Required()])
     stop_id = StopField("Stop",
         id="stop", validators=[Required()])
-    recur = RadioField(choices=(("recurring", "Recurring"), ("one-time", "One Time")))
+    recur = RadioBooleanField(choices=[(True, "Recurring"), (False, "One Time")], default=True)
     start = TimeField("Start Checking", validators=[Required()])
     alerts = FieldList(FormField(AlertForm), min_entries=1)
+    # day of week booleans used for recurring listeners
     sun = BooleanField()
     mon = BooleanField()
     tue = BooleanField()
@@ -44,13 +45,26 @@ class BusListenerForm(Form):
     fri = BooleanField()
     sat = BooleanField()
     sun = BooleanField()
+    # day of week radio used for one-time listeners
+    dow = MaybeRadioField(choices=[(day, day.capitalize()) for day in DAYS_OF_WEEK])
+
 
     def validate(self, *args, **kwargs):
         success = super(BusListenerForm, self).validate(*args, **kwargs)
-        if not any((self._fields[d].data for d in DAYS_OF_WEEK)):
+        recur = self._fields["recur"].data
+        if recur and not any((self._fields[d].data for d in DAYS_OF_WEEK)):
             self.errors # generate the error dict
-            self._errors["week"] = "At least one day of the week must be selected."
+            if not "week" in self._errors:
+                self._errors["week"] = []
+            self._errors["week"].append("Please select at least one day of the week.")
             success = False
+        if not recur and (self._fields["dow"].data is None or self._fields["dow"].data == "None"):
+            self.errors # generate the error dict
+            if not "week" in self._errors:
+                self._errors["week"] = []
+            self._errors["week"].append("Please select exactly one day of the week.")
+            success = False
+        
         return success
 
 tel_validator = Regexp(r"^[0-9 \-+()]+$", messages={"invalid": "Contains invalid characters."})

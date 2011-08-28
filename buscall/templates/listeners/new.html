@@ -20,9 +20,14 @@
         {{ with_errors(form.start, placeholder="07:00:00") }}
 
         <div class="form_field week">
-            {% if form.errors.week %}
+            {% if form.errors.week or form.dow.errors %}
                 <ul class="errors">
-                    <li>{{ form.errors.week }}</li>
+                    {% for error in form.errors.week %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in form.dow.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
                 </ul>
             {% endif %}
             <table id="weekpicker">
@@ -32,9 +37,16 @@
                     {% endfor %}
                 </thead>
                 <tbody>
+                    <tr id="week_checkboxes">
                     {% for day in DAYS_OF_WEEK %}
-                    <td>{{form[day]}}</td>
+                        <td>{{form[day]}}</td>
                     {% endfor %}
+                    </tr>
+                    <tr id="week_radio">
+                    {% for day in form.dow %}
+                        <td>{{day}}</td>
+                    {% endfor %}
+                    </tr>
                 </tbody>
             </table>
         </div>
