@@ -1,12 +1,20 @@
 from google.appengine.api import users
 from google.appengine.ext import db
+from collections import defaultdict
 from buscall.util import GqlQuery
 
 class UserProfile(db.Expando):
     user = db.UserProperty(required=True)
-    paid = db.BooleanProperty(required=True, default=False)
     joined = db.DateTimeProperty(required=True, auto_now_add=True)
     last_access = db.DateTimeProperty(required=True, auto_now=True)
+
+    # money-related properties
+    # freeloader starts as True, becomes False as soon as they spend any money at all
+    freeloader = db.BooleanProperty(required=True, default=True)
+    # whether the user is currently a paid subscriber
+    subscribed = db.BooleanProperty(required=True, default=False)
+    # one-off alert credits (new users get 10 as a free trial)
+    credits = db.IntegerProperty(required=True, default=10)
 
     # optional properties
     phone = db.PhoneNumberProperty()

@@ -4,7 +4,7 @@ from buscall.models.profile import UserProfile
 from buscall.util import CurrencyProperty
 
 class Subscription(db.Model):
-    userprofile = db.ReferenceProperty(UserProfile, required=True, collection_name="transactions")
+    userprofile = db.ReferenceProperty(UserProfile, required=True, collection_name="subscriptions")
     processor = db.StringProperty(required=True, choices=['paypal', 'amazon'])
     subscription_id = db.StringProperty(required=True)
     active = db.BooleanProperty(required=True, default=True)

@@ -63,7 +63,8 @@ def paypal_ipn():
                         amount=decimal.Decimal(params['amount3']),
                     )
                     subscr.put()
-                profile.paid = True
+                profile.freeloader = False
+                profile.subscribed = True
                 profile.put()
 
             elif txn_type == "subscr_payment":
@@ -107,7 +108,7 @@ def paypal_ipn():
                 subscr.active = False
                 subscr.put()
                 profile = subscr.userprofile
-                profile.paid = False
+                profile.subscribed = False
                 profile.put()
             
             else:
@@ -190,7 +191,8 @@ def paypal_success():
             pmt.put()
 
             # update the user to indicate that they have paid
-            profile.paid = True
+            profile.freeloader = False
+            profile.subscribed = True
             profile.put()
             flash("Payment succeeded. Your listeners are now active. Thank you!")
         elif lines[0] == "FAIL":

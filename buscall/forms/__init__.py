@@ -1,4 +1,4 @@
-from flaskext.wtf import Form, DecimalField, SelectField, BooleanField, TextField, HiddenField
+from flaskext.wtf import Form, DecimalField, SelectField, BooleanField, TextField, HiddenField, RadioField
 from flaskext.wtf import HiddenInput, FieldList, FormField, IntegerField
 from flaskext.wtf import Required, Optional, Regexp, Length
 from flaskext.wtf.html5 import EmailField
@@ -33,6 +33,7 @@ class BusListenerForm(Form):
         id="direction", validators=[Required()])
     stop_id = StopField("Stop",
         id="stop", validators=[Required()])
+    recur = RadioField(choices=(("recurring", "Recurring"), ("one-time", "One Time")))
     start = TimeField("Start Checking", validators=[Required()])
     alerts = FieldList(FormField(AlertForm), min_entries=1)
     sun = BooleanField()

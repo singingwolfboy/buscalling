@@ -42,6 +42,13 @@ def update_userprofile_last_login():
             profile.last_access = datetime.datetime.now()
             db.put_async(profile)
 
+@app.template_filter('timeformat')
+def time_format(time):
+    s = time.strftime("%I:%M%p")
+    if s.startswith("0"):
+        s = s[1:]
+    return s
+
 @app.route('/', methods = ['GET', 'POST', 'PUT'])
 def lander():
     user = users.get_current_user()

@@ -37,8 +37,13 @@ def poll(struct_time=None):
 def reset_seen_flags():
     seen = GqlQuery("SELECT * FROM BusListener WHERE seen = True")
     for listener in seen:
-        listener.seen = False
-        listener.put()
+        if listener.recur:
+            # reset the "seen" flag
+            listener.seen = False
+            listener.put()
+        else:
+            # the listener has run, and it shouldn't run again, so delete it
+            listener.delete()
     executed = GqlQuery("SELECT * FROM BusAlert WHERE executed = True")
     for alert in executed:
         alert.executed = False

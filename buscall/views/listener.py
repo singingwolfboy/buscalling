@@ -39,6 +39,10 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         }
         for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'):
             params[param] = form.data[param]
+        if form.data['recur'] == 'recurring':
+            params['recur'] = True
+        else:
+            params['recur'] = False
         listener = BusListener(**params)
         listener.put()
         for alert_data in form.data['alerts']:

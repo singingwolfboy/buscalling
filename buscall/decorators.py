@@ -48,3 +48,24 @@ def admin_required(func):
     # so we need to pull that information up and through this decorator.
     decorated_view.__name__ = func.__name__
     return decorated_view
+
+def check_user_payment(func):
+    def noop(listener, minutes=None):
+        pass
+    @wraps(func)
+    def decorated_alert(listener, minutes=None):
+        userprofile = listener.userprofile
+        subscribed = userprofile.subscribed
+        credits = userprofile.credits
+        if not subscribed and credits < 1:
+            # no money, no alert
+            return noop
+        # otherwise, do the alert
+        result = func(listener, minutes)
+        if not subscribed:
+            # deduct a credit
+            userprofile.credits = credits - 1
+            userprofile.put()
+        # and return the original result
+        return result
+    return decorated_alert

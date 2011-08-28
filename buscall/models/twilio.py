@@ -1,6 +1,7 @@
 from twilio_api import Account, Response
 from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
 from buscall.util import DOMAIN, pluralize_minutes, humanize_list
+from buscall.decorators import check_user_payment
 from flask import url_for
 import simplejson_mod as json
 
@@ -36,6 +37,7 @@ def get_twiml(prediction):
 
     return str(r)
 
+@check_user_payment
 def alert_by_phone(listener, minutes=None):
     url = DOMAIN + url_for('predict_for_stop', 
         agency_id=listener.agency.id, 
@@ -54,6 +56,7 @@ def alert_by_phone(listener, minutes=None):
         'POST', 
         call_info))
 
+@check_user_payment
 def alert_by_txt(listener, minutes=None):
     prediction = listener.get_predictions()
     if len(prediction.buses) > 1:

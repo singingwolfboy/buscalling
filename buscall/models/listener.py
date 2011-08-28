@@ -4,6 +4,7 @@ from buscall.models.nextbus import AGENCIES, get_predictions, get_route
 from buscall.models.profile import UserProfile
 from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
 from buscall.models.twilio import alert_by_phone
+from buscall.decorators import check_user_payment
 try:
     from itertools import compress
 except ImportError:
@@ -21,6 +22,9 @@ class BusListener(db.Model):
     route_id = db.StringProperty(required=True)
     direction_id = db.StringProperty(required=False)
     stop_id = db.StringProperty(required=True)
+
+    # is this a one-time alert, or a recurring alert?
+    recur = db.BooleanProperty(required=True)
 
     # when to start listening
     # App Engine doesn't allow inequality filters on multiple entities
@@ -114,7 +118,17 @@ class BusListener(db.Model):
     
     def check_alerts(self):
         self.seen = all((alert.executed for alert in self.alerts))
-        self.put()
+        if self.seen and not self.recur:
+            self.delete()
+        else:
+            self.put()
+    
+    def delete(self):
+        # delete all your associated alerts first
+        for alert in self.alerts:
+            alert.delete()
+        # and then delete yourself
+        super(BusListener, self).delete()
 
 class BusAlert(db.Model):
     listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
@@ -132,6 +146,11 @@ class BusAlert(db.Model):
 
     def execute(self, minutes=None):
         "minutes parameter is the actual prediction time"
+        userprofile = self.listener.userprofile
+        if not userprofile.subscribed and userprofile.credits < 1:
+            # no money, no alert
+            return
+
         if minutes is None:
             minutes = self.minutes
 
@@ -148,6 +167,7 @@ class BusAlert(db.Model):
         self.put()
         self.listener.check_alerts()
 
+@check_user_payment
 def alert_by_email(listener, minutes=None):
     if minutes is None:
         predictions = listener.get_predictions()
