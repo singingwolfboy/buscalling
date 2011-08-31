@@ -122,24 +122,25 @@ class ServiceTestCase(unittest.TestCase):
         for stub_name in ('urlfetch', 'mail', 'memcache', 'user', 'datastore_v3'):
             apiproxy_stub_map.apiproxy.RegisterStub(stub_name, getattr(self, stub_name+"_stub"))
         
+        # make sure we start out logged out
+        self.logout()
+        
         # do some black magic to detect if we're also subclassing from fixture.DataTestCase
         if DataTestCase in self.__class__.__mro__:
             DataTestCase.setUp(self)
   
-    def login(self, email, domain="gmail.com", admin=False, user_id=None):
+    def login(self, email, admin=False, user_id=None):
         os.environ['USER_EMAIL'] = email
         os.environ['USER_ID'] = str(user_id) or str(abs(hash(email)))
-        os.environ['AUTH_DOMAIN'] = domain
         if admin:
           os.environ['USER_IS_ADMIN'] = "1"
         else:
           os.environ['USER_IS_ADMIN'] = "0"
   
     def logout(self):
-        del os.environ['USER_EMAIL']
-        del os.environ['USER_ID']
-        del os.environ['AUTH_DOMAIN']
-        del os.environ['USER_IS_ADMIN']
+        for key in ['USER_EMAIL', 'USER_ID', 'USER_IS_ADMIN']:
+            if key in os.environ:
+                del os.environ[key]
   
     def get_sent_messages(self, *args, **kwargs):
         return self.mail_stub.get_sent_messages(*args, **kwargs)
