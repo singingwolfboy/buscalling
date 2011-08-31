@@ -1,24 +1,29 @@
-from fixture import DataSet
+from __future__ import with_statement
+from buscall import app
+from buscall.models import nextbus, twilio
+from buscall.models.listener import BusListener, BusAlert
+from buscall.models.profile import UserProfile
+from buscall.views.tasks import reset_seen_flags
+from buscall.tests.util import ServiceTestCase
+
+from fixture import DataSet, DataTestCase
 import datetime
 import os
 from google.appengine.ext import db
 from google.appengine.api.users import User
 
-# need to set AUTH_DOMAIN before we can create User objects
-if not 'AUTH_DOMAIN' in os.environ:
-    from buscall.util import AUTH_DOMAIN
-    os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
-
 class UserProfileData(DataSet):
     class test_profile:
         user = User("test@example.com")
-        paid = True
+        subscribed = True
+        credits = 8
         joined = datetime.datetime(2010, 2, 3, 10, 32, 45)
         last_login = datetime.datetime(2011, 7, 14, 7, 0, 0)
 
     class with_phone:
         user = User("phone@example.com")
-        paid = True
+        subscribed = True
+        credits = 0
         phone = "999-888-7777"
         joined = datetime.datetime(2011, 2, 9, 10, 11, 12)
         last_login = datetime.datetime(2011, 6, 10, 10, 15)
@@ -30,6 +35,7 @@ class BusListenerData(DataSet):
         route_id = "556"
         direction_id = "556_5560006v0_1"
         stop_id = "77378"
+        recur = True
         mon = True
         tue = True
         wed = True
@@ -40,44 +46,13 @@ class BusListenerData(DataSet):
         start = datetime.time(8, 0) # 8:00 AM
         seen = False
 
-    class afternoon_bus:
-        userprofile = UserProfileData.test_profile
-        agency_id = "mbta"
-        route_id = "59"
-        direction_id = "59_590008v0_1"
-        stop_id = "82048"
-        mon = True
-        tue = True
-        wed = True
-        thu = True
-        fri = True
-        sat = False
-        sun = False
-        start = datetime.time(16,45) # 4:45 PM
-        seen = False
-
-    class cron_bus:
-        userprofile = UserProfileData.test_profile
-        agency_id = "mbta"
-        route_id = "26"
-        direction_id = "26_1_var1"
-        stop_id = "492"
-        mon = False
-        tue = False
-        wed = False
-        thu = False
-        fri = False
-        sat = True
-        sun = True
-        start = datetime.time(15,00) # 3:00 PM
-        seen = False
-
     class seen_bus:
         userprofile = UserProfileData.with_phone
         agency_id = "mbta"
         route_id = "70"
         direction_id = "70_0_var1"
         stop_id = "88333"
+        recur = True
         mon = True
         tue = False
         wed = True
@@ -89,8 +64,8 @@ class BusListenerData(DataSet):
         seen = True
 
 class BusAlertData(DataSet):
-    class cron_bus_20_min:
-        listener = BusListenerData.cron_bus
+    class morning_bus_20_min:
+        listener = BusListenerData.morning_bus
         minutes = 20
         medium = "email"
         executed = False
@@ -106,3 +81,28 @@ class BusAlertData(DataSet):
         minutes = 5
         medium = "phone"
         executed = False
+
+class DatastoreTestCase(ServiceTestCase, DataTestCase):
+    datasets = [UserProfileData, BusListenerData, BusAlertData]
+
+    def test_set_seen_flag(self):
+        # get a listener that has alerts
+        listener = BusListener.gql("WHERE seen = False").fetch(1)[0]
+        assert not listener.seen
+        for alert in listener.alerts:
+            alert.execute()
+        # refresh from db
+        key = listener.key()
+        del listener
+        listener = BusListener.get(key)
+        assert listener.seen
+
+    def test_reset_seen_flags(self):
+        seen = BusListener.gql("WHERE seen = True").fetch(1)
+        assert len(seen) == 1
+        self.assertTrue(len(seen) > 0)
+        with app.test_request_context('/tasks/reset_seen_flags'):
+            reset_seen_flags()
+        seen = BusListener.gql("WHERE seen = True").fetch(1)
+        self.assertEqual(len(seen), 0)
+      

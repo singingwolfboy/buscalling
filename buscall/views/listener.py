@@ -39,13 +39,16 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         }
         for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'recur'):
             params[param] = form.data[param]
+        # if recur is true, use checkboxes.
+        # if recur is false, use radio buttons.
+        checkboxes = [form.data[day] for day in DAYS_OF_WEEK]
+        radio = [form.data['dow'] == day for day in DAYS_OF_WEEK]
         if form.data['recur']:
-            for day in DAYS_OF_WEEK:
-                params[day] = form.data[day]
+            week_info = checkboxes
         else:
-            for day in DAYS_OF_WEEK:
-                params[day] = False
-            params[form.data['dow']] = True
+            week_info = radio
+        for day, value in zip(DAYS_OF_WEEK, week_info):
+            params[day] = value
 
         listener = BusListener(**params)
         listener.put()

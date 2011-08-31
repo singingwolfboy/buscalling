@@ -29,10 +29,6 @@ def run_app():
     # sys.path has been updated. Otherwise, they will fail!
     from buscall import app
 
-    # set the secret key
-    from buscall.credentials import SECRET_KEY
-    app.secret_key = SECRET_KEY
-
     # If we're in development mode...
     if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
         # don't set app.debug here, already set in buscall/__init__.py
@@ -47,7 +43,7 @@ def run_app():
 
     # Grab your middleware and wrap the app
     from middleware import MethodRewriteMiddleware
-    app.wsgi_app =MethodRewriteMiddleware(app.wsgi_app)
+    app.wsgi_app = MethodRewriteMiddleware(app.wsgi_app)
 
     # Run the app using Werkzeug
     from google.appengine.ext.webapp.util import run_wsgi_app

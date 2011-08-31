@@ -52,6 +52,16 @@ class MaybeRadioField(RadioField):
             return
         super(MaybeRadioField, self).pre_validate(form)
 
+class MaybeSelectField(SelectField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("coerce", maybe_unicode)
+        super(MaybeSelectField, self).__init__(*args, **kwargs)
+    
+    def pre_validate(self, form):
+        if self.data is None:
+            return
+        super(MaybeSelectField, self).pre_validate(form)
+
 class TimeInput(Input):
     input_type = "time"
 
@@ -83,7 +93,7 @@ class TimeField(Field):
             self.data = None
             raise
 
-class RouteField(SelectField):
+class RouteField(MaybeSelectField):
     def __init__(self, *args, **kwargs):
         if not 'choices' in kwargs:
             kwargs['choices'] = [('','')]
@@ -98,7 +108,7 @@ class RouteField(SelectField):
                 pass
         super(RouteField, self).pre_validate(form)
 
-class DirectionField(SelectField):
+class DirectionField(MaybeSelectField):
     def __init__(self, *args, **kwargs):
         if not 'choices' in kwargs:
             kwargs['choices'] = [('','')]
@@ -113,7 +123,7 @@ class DirectionField(SelectField):
                 pass
         super(DirectionField, self).pre_validate(form)
 
-class StopField(SelectField):
+class StopField(MaybeSelectField):
     def __init__(self, *args, **kwargs):
         if not 'choices' in kwargs:
             kwargs['choices'] = [('','')]
