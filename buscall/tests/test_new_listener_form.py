@@ -1,7 +1,7 @@
-from local_setup import ServiceTestCase
 from google.appengine.api.users import User
 from buscall.models.profile import UserProfile
 from buscall.models.listener import BusListener
+from buscall.tests.util import ServiceTestCase
 
 class NewListenerFormTest(ServiceTestCase):
     def test_create_recurring_listener(self):

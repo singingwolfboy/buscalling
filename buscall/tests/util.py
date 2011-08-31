@@ -18,7 +18,6 @@ from fixture import GoogleDatastoreFixture, DataTestCase
 from fixture.style import NamedDataStyle
 import buscall
 from buscall import models
-from buscall.tests import datasets
 from buscall.util import APP_ID, AUTH_DOMAIN, LOGGED_IN_USER
 try:
   from urlparse import parse_qs
@@ -26,6 +25,11 @@ except ImportError:
   from cgi import parse_qs
 
 class TestException(Exception): pass
+
+# need to set AUTH_DOMAIN before we can create User objects,
+# so just do this on import
+if not 'AUTH_DOMAIN' in os.environ:
+    os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
 
 # from http://pythonwise.blogspot.com/2010/02/parse-http-response.html
 class FakeSocket(StringIO):

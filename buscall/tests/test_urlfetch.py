@@ -8,11 +8,8 @@ from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
 from buscall.tests.util import ServiceTestCase
 
-
 from fixture import DataSet, DataTestCase
 import datetime
-import os
-from google.appengine.ext import db
 from google.appengine.api.users import User
 
 class UserProfileData(DataSet):
