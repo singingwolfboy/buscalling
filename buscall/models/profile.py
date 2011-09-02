@@ -64,6 +64,14 @@ class UserProfile(db.Expando):
         return cls.get_by_key_name(key_name)
     
     @classmethod
+    def get_current_profile(cls):
+        user = users.get_current_user()
+        if user:
+            return cls.get_by_user(user)
+        else:
+            return None
+    
+    @classmethod
     def get_or_insert_by_user(cls, user):
         key_name = user.user_id() or user.email()
         return cls.get_or_insert(key_name, user=user)
