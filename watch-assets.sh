@@ -1,12 +1,18 @@
 #!/bin/bash
 if [ -z $1 ] ; then
-    echo "Please provide path to project root as first argument"
-    exit 1
+    ROOT=`pwd`
+else
+    ROOT=$1
 fi
+COMPASS="/Users/singingwolfboy/clones/compass/frameworks/compass/stylesheets"
+
+# http://reinout.vanrees.org/weblog/2009/08/14/readline-invisible-character-hack.html
+export TERM="linux"
 
 trap "kill 0" EXIT
-coffee -o $1/static/js -w $1/static/coffee &
+coffee -o $ROOT/static/js -w $ROOT/static/coffee &
 watchmedo-2.7 shell-command --patterns="*.scss" \
-    --command='dname=`dirname ${watch_src_path}`/../css; fname=`basename ${watch_src_path} .scss`; pyscss ${watch_src_path} > ${dname}/${fname}.css; echo "compiled ${watch_src_path}"' \
-    $1/static/scss &
+    --command=$ROOT/compile-assets.sh \
+    $ROOT/static/scss &
 wait
+

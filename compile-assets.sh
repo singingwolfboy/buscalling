@@ -1,14 +1,19 @@
 #!/bin/bash
 if [ -z $1 ] ; then
-    echo "Please provide path to project root as first argument"
-    exit 1
+    ROOT=`pwd`
+else
+    ROOT=$1
 fi
+COMPASS="/Users/singingwolfboy/clones/compass/frameworks/compass/stylesheets"
 
-coffee -o $1/static/js/ -c $1/static/coffee/
-for f in $1/static/scss/*.scss
+# http://reinout.vanrees.org/weblog/2009/08/14/readline-invisible-character-hack.html
+export TERM="linux"
+
+coffee -o $ROOT/static/js/ -c $ROOT/static/coffee/
+for f in $ROOT/static/scss/*.scss
   do
     base=`basename $f .scss`
     if [ ${base:0:1} != "_" ] ; then
-        pyscss -o $1/static/css/$base.css $f
+        pyscss -o $ROOT/static/css/$base.css -I $COMPASS $f
     fi
 done
