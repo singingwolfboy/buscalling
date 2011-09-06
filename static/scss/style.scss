@@ -1,4 +1,5 @@
 @import "compass/reset";
+@import "compass/css3";
 @import "functions/golden-ratio";
 
 @mixin clearfix {
@@ -18,28 +19,32 @@ $container-width: 800px;
     height: 100%;
     margin: 0 auto;
     padding: {
-        top: .5em;
         left: 1em;
         right: 1em;
-        bottom: .5em;
     }
     position: relative; 
-}  
+}
  
+h1, h2 {
+    font: {
+        family: "Gentium Basic";
+    }
+}
+h1 {
+    font-size: 20pt;
+}
+h2 {
+    font-size: 14pt;
+}
+
 header {
     position: relative;
-
-    h1, h2 {
-        font: {
-            family: "Gentium Basic";
-            
-        }
-    }
-    h1 {
-        font-size: 20pt;
-    }
-    h2 {
-        font-size: 14pt;
+    background-color: white;
+    z-index: 2;
+    padding-top: .5em;
+    #dropdowns .dropdown {
+        position: absolute;
+        z-index: 1;
     }
 
     #auth-info {
@@ -48,60 +53,109 @@ header {
         right: 0;
     }
 
-    ul {
+    ul#tabs {
+        margin-top: .2em;
         background-color: pink;
         @include clearfix;
 
         li {
-            float: left;
+            a {
+                display: block;
+                color: black;
+                text-decoration: none;
+                padding: {
+                    top: .3em;
+                    bottom: .3em;
+                    left: 1em;
+                    right: 1em;
+                }
+            }
+
+            &#payment-tab {
+                float: left;
+                width: golden-ratio($container-width, -1);
+                cursor: pointer;
+            }
             &#profile-tab {
                 float: right;
+                width: $container-width - golden-ratio($container-width, -1);
+                cursor: pointer;
             }
-
-            padding: {
-                top: .3em;
-                bottom: .3em;
-                left: 1em;
-                right: 1em;
+            &:hover {
+                background-color: red;
             }
         }
-
     }
-    #dropdowns {
-        position: relative;
-        // @include clearfix;
-        // display: none;
+}
 
-        .dropdown {
-            position: absolute;
-            background-color: white;
-            top: 0;
-            // width: golden ratio (see below)
+#dropdowns {
+    position: relative;
+    // @include clearfix;
+    // display: none;
 
-            // can't put border on .dropdown, because it mucks with the width
-            // so put the border on .dropdown-interal, instead
-            .dropdown-internal {
-                border: 2px solid black;
-                padding: .5em;
+    $dropdown-internal-padding: 10px;
+    .dropdown {
+        position: absolute;
+        background-color: white;
+        bottom: 0; 
+        // width: golden ratio (see below)
+
+        // can't put border on .dropdown, because it mucks with the width
+        // so put the border on .dropdown-interal, instead
+        .dropdown-internal {
+            padding: $dropdown-internal-padding;
+            border: {
+                top: 0;
+                left: 1px;
+                right: 1px;
+                bottom: 1px;
+                style: dotted;
+                color: gray;
+            }
+            @include border-bottom-radius(5px);
+        }
+    }
+
+    #payment-dropdown {
+        left: 0;
+        width: golden-ratio($container-width, -1);
+
+        #subscription-button-wrap {
+            $width: 200px;
+            margin: 0 auto;
+
+            width: $width;
+            button { width: $width; }
+        }
+    }
+
+    #profile-dropdown {
+        $dropdown-width: $container-width - golden-ratio($container-width, -1);
+        right: 0;
+        width: $dropdown-width;
+
+        $label-width: 80px;
+        .form_field {
+            input {
+                width: $dropdown-width - $label-width - 3*$dropdown-internal-padding;
+            }
+            label {
+                display: block;
+                width: $label-width;
+                white-space: nowrap;
+                float: left;
+                padding: {
+                    top: 4px;
+                    bottom: 2px;
+                }
             }
         }
-
-        #payment-dropdown {
-            left: 0;
-            width: golden-ratio($container-width, -1);
-
-            #subscription-button-wrap {
-                $width: 200px;
-                margin: 0 auto;
-
-                width: $width;
-                button { width: $width; }
-            }
+        input[type=submit] {
+            margin-left: $label-width;
         }
-
-        #profile-dropdown {
-            right: 0;
-            width: $container-width - golden-ratio($container-width, -1);
+        #profile-dropdown-cancel {
+            float: right;
+            margin-top: 3px;
         }
     }
 }

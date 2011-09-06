@@ -1,8 +1,21 @@
 $().ready ->
     $("#tabs li").each ->
+        tab = $(this)
         name = $(this).attr('id').match(/\w+/)[0]
-        $(this).toggle (->
-            $("##{name}-dropdown").show()
+        dropdown = $("##{name}-dropdown")
+        tab.toggle (->
+            dropdown.animate({
+                bottom: -dropdown.height()
+            }, 'fast', 'swing', ->
+                $(".arrow", tab).text("▲")
+            )
         ), (->
-            $("##{name}-dropdown").hide()
+            dropdown.animate({
+                bottom: 0
+            }, 'fast', 'swing', ->
+                $(".arrow", tab).text("▼")
+            ) 
         )
+    
+    $("#profile-dropdown-cancel").click ->
+        $("#profile-tab").click()

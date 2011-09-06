@@ -14,7 +14,7 @@
 <body>
   <div id="container">
     <header>
-      <div>
+      <div id="title-top">
         <h1>Bus Calling</h1>
         <h2>Time management before the coffee kicks in.</h2>
         <div id="auth-info">
@@ -28,26 +28,31 @@
       </div>
       {% if profile %}
         <ul id="tabs">
-          <li id="payment-tab">
+          <li id="payment-tab"><a href="#">
             {% if profile.subscribed %}
-              You are subscribed. ▼
+              You are subscribed.
             {% else %}
               {% if profile.credits > 1 %}
-                You have {{profile.credits}} credits remaining. ▼
+                You have {{profile.credits}} credits remaining.
               {% elif profile.credits == 1 %}
-                You have only {{profile.credits}} credit remaining. ▼
+                You have only {{profile.credits}} credit remaining.
               {% else %}
-                Your account is disabled. ▼
+                Your account is disabled.
               {% endif %}
             {% endif %}
-          </li>
-          <li id="profile-tab">
-            Edit Profile ▼
-          </li>
+            <span class="arrow">▼</span>
+          </a></li>
+          <li id="profile-tab"><a href="#">
+            Edit Profile 
+            <span class="arrow">▼</span>
+          </a></li>
         </ul>
+      {% endif %}
+      </header>
+      {% if profile %}
         <div id="dropdowns">
           {# all dropdowns start with display: none; the JS displays them on click #}
-          <div id="payment-dropdown" class="dropdown" style="display: none;">
+          <div id="payment-dropdown" class="dropdown" {# style="display: none;" #}>
             <div class="dropdown-internal">
               {% if profile.subscribed %}
                 <p>You are subscribed. All your bus alerts are free!</p>
@@ -78,17 +83,17 @@
               <button>Buy 6 credits<br>$5.00</button>
             </div>
           </div>
-          <div id="profile-dropdown" class="dropdown" style="display: none">
+          <div id="profile-dropdown" class="dropdown" {# style="display: none" #}>
             <form class="dropdown-internal">
               {{ with_errors(profile_form.first_name) }}
               {{ with_errors(profile_form.last_name) }}
               {{ with_errors(profile_form.phone) }}
               <input type="submit" value="Update" />
+              <a href="#" id="profile-dropdown-cancel">Cancel</a>
             </form>
           </div>
         </div>
       {% endif %}
-    </header>
     {% block flash %}
     {%- for category, msg in get_flashed_messages(with_categories=true) %}
       <p class="flash-{{ category }}">{{ msg }}</p>
