@@ -1,4 +1,4 @@
-{#- based on HTML5 boilerplate: http://html5boilerplate.com/ #}
+{% from "_formhelpers.html" import with_errors %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,20 +13,86 @@
 </head>
 <body>
   <div id="container">
-    <header>{% block header %}{% endblock %}</header>
+    <header>
+      <div>
+        <h1>Bus Calling</h1>
+        <h2>Time management before the coffee kicks in.</h2>
+        <div id="auth-info">
+        {% if profile %}
+          <span class="email">{{profile.email}}</span>
+          <a href="{{ url_for("logout") }}">Log out</a>
+        {% else %}
+          <a href="{{ url_for("login") }}">Log in</a>
+        {% endif %}
+        </div>
+      </div>
+      {% if profile %}
+        <ul id="tabs">
+          <li id="payment-tab">
+            {% if profile.subscribed %}
+              You are subscribed. ▼
+            {% else %}
+              {% if profile.credits > 1 %}
+                You have {{profile.credits}} credits remaining. ▼
+              {% elif profile.credits == 1 %}
+                You have only {{profile.credits}} credit remaining. ▼
+              {% else %}
+                Your account is disabled. ▼
+              {% endif %}
+            {% endif %}
+          </li>
+          <li id="profile-tab">
+            Edit Profile ▼
+          </li>
+        </ul>
+        <div id="dropdowns">
+          {# all dropdowns start with display: none; the JS displays them on click #}
+          <div id="payment-dropdown" class="dropdown" style="display: none;">
+            <div class="dropdown-internal">
+              {% if profile.subscribed %}
+                <p>You are subscribed. All your bus alerts are free!</p>
+                <div id="subscription-button-wrap">
+                  <button id="unsubscribe-button" class="subscription-button">Unsubscribe</button>
+                </div>
+                <p>If you decide to unsubscribe, you can use credits instead: One credit per bus pickup. Credits never expire.
+                {% if profile.credits == 1 %}
+                  You have {{profile.credits}} credit left, but since you're subscribed, you don't need it.
+                {% else %}
+                  You have {{profile.credits}} credits left, but since you're subscribed, you don't need them.
+                {% endif %}
+                </p>
+              {% else %}
+                <p>You are not subscribed. While you are subscribed, all your bus alerts are free!</p>
+                <div id="subscription-button-wrap">
+                  <button id="subscribe-button" class="subscription-button">Subscribe for $5 per month</button>
+                </div>
+                <p>If you don't take the bus very often, you can use credits instead: One credit per bus pickup. If you have no remaining credits and you do not have an active subscription, you will not receive any alerts.
+                {% if profile.credits == 1 %}
+                  You have {{profile.credits}} credit left.
+                {% else %}
+                  You have {{profile.credits}} credits left.
+                {% endif %}
+                </p>
+              {% endif %}
+              <button>Buy 1 credit<br>$0.99</button>
+              <button>Buy 6 credits<br>$5.00</button>
+            </div>
+          </div>
+          <div id="profile-dropdown" class="dropdown" style="display: none">
+            <form class="dropdown-internal">
+              {{ with_errors(profile_form.first_name) }}
+              {{ with_errors(profile_form.last_name) }}
+              {{ with_errors(profile_form.phone) }}
+              <input type="submit" value="Update" />
+            </form>
+          </div>
+        </div>
+      {% endif %}
+    </header>
     {% block flash %}
     {%- for category, msg in get_flashed_messages(with_categories=true) %}
-      <p class=flash-{{ category }}>{{ msg }}</p>
+      <p class="flash-{{ category }}">{{ msg }}</p>
     {%- endfor %}
-    {% endblock %}
-    {% block nav %}
-    <nav>
-      {% if user %}
-      <a href="{{ logout_url }}">Logout</a>
-      {% else %}
-      <a href="{{ login_url }}">Login</a>
-      {% endif %}
-    </nav>
     {% endblock %}
     <div id="main" role="main">
       {% block main %}{% endblock %}
@@ -36,46 +102,13 @@
     {% endblock %}</footer>
   </div>
   {% if js_file %}
-      <script>
-        window.app = {};
-        app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};
-      </script>
-    {% if config.DEBUG %}
-      {%- for script in ["jquery-1.6.1", "jquery.timepicker", "underscore", "proto-ext", "json2", js_file] %}
-        <script src="/js/{{script}}.js"></script>
-      {%- endfor %}
-    {% else %}
-      <script src="/js/yepnope.1.0.1-min.js"></script>
-      <script>
-        yepnope([{
-          // no prior dependencies
-          load: {
-            'jquery': "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
-            'und': "/js/underscore.min.js",
-          },
-          callback: {
-            'jquery': function(url, result, key) {
-              if (!window.jQuery) {
-                yepnope("/js/jquery-1.6.1.min.js");
-              }
-            }
-          }
-        }, {
-          load: {
-            // timePicker depends on jQuery
-            'time': "/js/jquery.timepicker.js",
-            // prototype extensions depend on Underscore
-            // Note that this is NOT the Prototype.js library
-            'ext': "/js/proto-ext.js"
-          }
-        }, {
-          test: window.JSON,
-          nope: "/js/json2.js"
-        }, {
-          load: "/js/{{ js_file }}.js"
-        }])
-      </script>
-    {% endif %}
+    <script>
+      window.app = {};
+      app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};
+    </script>
   {% endif %}
+  {%- for script in ["jquery-1.6.1", "base", "jquery.timepicker", "underscore", "proto-ext", "json2", js_file] %}
+    <script src="/js/{{script}}.js"></script>
+  {%- endfor %}
 </body>
 </html>

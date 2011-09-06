@@ -1,10 +1,112 @@
-#container {
-    width: 800px;
-    margin: 0 auto;
-    position: relative;
+@import "compass/reset";
+@import "functions/golden-ratio";
+
+@mixin clearfix {
+    overflow: hidden;
 }
 
-nav {
+html, body {
+    height: 100%;
+}
+body {
+    background-color: lightblue;
+}
+$container-width: 800px; 
+#container {   
+    background-color: white; 
+    width: $container-width;
+    height: 100%;
+    margin: 0 auto;
+    padding: {
+        top: .5em;
+        left: 1em;
+        right: 1em;
+        bottom: .5em;
+    }
+    position: relative; 
+}  
+ 
+header {
+    position: relative;
+
+    h1, h2 {
+        font: {
+            family: "Gentium Basic";
+            
+        }
+    }
+    h1 {
+        font-size: 20pt;
+    }
+    h2 {
+        font-size: 14pt;
+    }
+
+    #auth-info {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    ul {
+        background-color: pink;
+        @include clearfix;
+
+        li {
+            float: left;
+            &#profile-tab {
+                float: right;
+            }
+
+            padding: {
+                top: .3em;
+                bottom: .3em;
+                left: 1em;
+                right: 1em;
+            }
+        }
+
+    }
+    #dropdowns {
+        position: relative;
+        // @include clearfix;
+        // display: none;
+
+        .dropdown {
+            position: absolute;
+            background-color: white;
+            top: 0;
+            // width: golden ratio (see below)
+
+            // can't put border on .dropdown, because it mucks with the width
+            // so put the border on .dropdown-interal, instead
+            .dropdown-internal {
+                border: 2px solid black;
+                padding: .5em;
+            }
+        }
+
+        #payment-dropdown {
+            left: 0;
+            width: golden-ratio($container-width, -1);
+
+            #subscription-button-wrap {
+                $width: 200px;
+                margin: 0 auto;
+
+                width: $width;
+                button { width: $width; }
+            }
+        }
+
+        #profile-dropdown {
+            right: 0;
+            width: $container-width - golden-ratio($container-width, -1);
+        }
+    }
+}
+
+nav { 
     position: absolute;
     top: .2em;
     right: .2em;
@@ -21,8 +123,8 @@ p.flash-message {
     background-color: lightyellow;
     border-radius: 5px;
     padding: .5em 1em;
-}
-p.flash-error {
+} 
+p.flash-error {  
     border: 2px solid red;
     background-color: pink;
     border-radius: 5px;
