@@ -15,11 +15,11 @@
   <div id="container">
     <header>
       <div id="title-top">
-        <h1>Bus Calling</h1>
-        <h2>Time management before the coffee kicks in.</h2>
+        <h1><a href="{{ url_for('dashboard') }}">Bus Calling</a></h1>
+        <h2><a href="{{ url_for('dashboard') }}">Time management before the coffee kicks in.</a></h2>
         <div id="auth-info">
         {% if profile %}
-          <span class="email">{{profile.email}}</span>
+          <span class="email">{{profile.email}}</span> |
           <a href="{{ url_for("logout") }}">Log out</a>
         {% else %}
           <a href="{{ url_for("login") }}">Log in</a>
@@ -51,8 +51,7 @@
       </header>
       {% if profile %}
         <div id="dropdowns">
-          {# all dropdowns start with display: none; the JS displays them on click #}
-          <div id="payment-dropdown" class="dropdown" {# style="display: none;" #}>
+          <div id="payment-dropdown" class="dropdown">
             <div class="dropdown-internal">
               {% if profile.subscribed %}
                 <p>You are subscribed. All your bus alerts are free!</p>
@@ -80,13 +79,13 @@
                 </p>
               {% endif %}
               <ul id="buy-credits">
-                <li><button>Buy 1 credit<br>$0.99</button></li>
-                <li><button>Buy 6 credits<br>$5.00</button></li>
+                <li><span><button>Buy 1 credit<br>$0.99</button></span></li>
+                <li><span><button>Buy 6 credits<br>$5.00</button></span></li>
               </ul>
-              <a href="#" id="payment-dropdown-cancel">Cancel</a>
+              <a href="#" id="payment-dropdown-cancel" class="dropdown-cancel">Cancel</a>
             </div>
           </div>
-          <div id="profile-dropdown" class="dropdown" {# style="display: none" #}>
+          <div id="profile-dropdown" class="dropdown">
             <form class="dropdown-internal" method="POST" action="{{ url_for("update_profile", profile_id=profile.id) }}">
               {{profile_form.hidden_tag()}}
               <input type="hidden" name="_method" value="PUT" />
@@ -94,7 +93,7 @@
               {{ with_errors(profile_form.last_name) }}
               {{ with_errors(profile_form.phone) }}
               <input type="submit" value="Update" />
-              <a href="#" id="profile-dropdown-cancel">Cancel</a>
+              <a href="#" id="profile-dropdown-cancel" class="dropdown-cancel">Cancel</a>
             </form>
           </div>
         </div>
@@ -107,10 +106,10 @@
     <div id="main" role="main">
       {% block main %}{% endblock %}
     </div>
-    <footer>{% block footer %}
-      Copyright 2011, <a href="http://davidbaumgold.com">David Baumgold</a>
-    {% endblock %}</footer>
   </div>
+  <footer><div id="footer-internal">{% block footer %}
+    Copyright 2011, <a href="http://davidbaumgold.com">David Baumgold</a>
+  {% endblock %}</div></footer>
   <script>
     window.app = {};
     app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};

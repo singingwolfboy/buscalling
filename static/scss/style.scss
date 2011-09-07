@@ -13,16 +13,36 @@ body {
     background-color: lightblue;
 }
 $container-width: 800px; 
-#container {   
+$footer-height: 25px;
+#container, footer {   
     background-color: white; 
     width: $container-width;
-    height: 100%;
     margin: 0 auto;
-    padding: {
-        left: 1em;
-        right: 1em;
-    }
     position: relative; 
+}
+#container {
+    min-height: 100%;
+}
+#main {
+    overflow: auto;
+    padding-bottom: $footer-height;
+}
+footer {
+    position: relative;
+    margin-top: -$footer-height;
+    height: $footer-height;
+    clear: both;
+    background-color: black;
+    color: white;
+    opacity: .7;
+
+    #footer-internal {
+        padding: {
+            top: 5px;
+            left: 5px;
+            right: 5px;
+        }
+    }
 }
  
 h1, h2 {
@@ -41,16 +61,27 @@ header {
     position: relative;
     background-color: white;
     z-index: 2;
-    padding-top: .5em;
-    #dropdowns .dropdown {
-        position: absolute;
-        z-index: 1;
+
+    #title-top {
+        padding: {
+            left: 1em;
+            right: 1em;
+            top: .5em;
+        }
+        h1 a, h2 a {
+            color: black;
+            text-decoration: none;
+        }
     }
 
     #auth-info {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: .5em;
+        right: 1em;
+
+        .email {
+            font-weight: bold;
+        }
     }
 
     ul#tabs {
@@ -59,6 +90,8 @@ header {
         @include clearfix;
 
         li {
+            cursor: pointer;
+
             a {
                 display: block;
                 color: black;
@@ -74,12 +107,11 @@ header {
             &#payment-tab {
                 float: left;
                 width: golden-ratio($container-width, -1);
-                cursor: pointer;
             }
             &#profile-tab {
                 float: right;
                 width: $container-width - golden-ratio($container-width, -1);
-                cursor: pointer;
+                text-align: right;
             }
             &:hover {
                 background-color: red;
@@ -114,6 +146,13 @@ header {
             }
             @include border-bottom-radius(5px);
         }
+
+        .dropdown-cancel {
+            display: block;
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+        }
     }
 
     #payment-dropdown {
@@ -126,6 +165,25 @@ header {
 
             width: $width;
             button { width: $width; }
+        }
+
+        ul#buy-credits {
+            overflow: hidden;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                float: left;
+                width: 50%;
+
+                span {
+                    button {
+                        display: block;
+                        margin: 0 auto;
+                        width: 10em;
+                    }
+                }
+            }
         }
     }
 
@@ -152,10 +210,6 @@ header {
         }
         input[type=submit] {
             margin-left: $label-width;
-        }
-        #profile-dropdown-cancel {
-            float: right;
-            margin-top: 3px;
         }
     }
 }

@@ -21,3 +21,5 @@ $().ready ->
         $("#profile-tab").click()
     $("#payment-dropdown-cancel").click ->
         $("#payment-tab").click()
+    $("#auth-info .email").click ->
+        $("#profile-tab").click()
