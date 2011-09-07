@@ -5,6 +5,7 @@ from .nextbus import show_agency, routes_for_agency, show_route, predict_for_sto
 from .twilio import call_prediction
 from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
+from .profile import update_profile
 from buscall.util import MAIL_SENDER, GqlQuery
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.models.paypal import url as paypal_url

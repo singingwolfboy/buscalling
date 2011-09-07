@@ -19,3 +19,5 @@ $().ready ->
     
     $("#profile-dropdown-cancel").click ->
         $("#profile-tab").click()
+    $("#payment-dropdown-cancel").click ->
+        $("#payment-tab").click()

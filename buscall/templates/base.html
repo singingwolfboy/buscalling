@@ -79,12 +79,17 @@
                 {% endif %}
                 </p>
               {% endif %}
-              <button>Buy 1 credit<br>$0.99</button>
-              <button>Buy 6 credits<br>$5.00</button>
+              <ul id="buy-credits">
+                <li><button>Buy 1 credit<br>$0.99</button></li>
+                <li><button>Buy 6 credits<br>$5.00</button></li>
+              </ul>
+              <a href="#" id="payment-dropdown-cancel">Cancel</a>
             </div>
           </div>
           <div id="profile-dropdown" class="dropdown" {# style="display: none" #}>
-            <form class="dropdown-internal">
+            <form class="dropdown-internal" method="POST" action="{{ url_for("update_profile", profile_id=profile.id) }}">
+              {{profile_form.hidden_tag()}}
+              <input type="hidden" name="_method" value="PUT" />
               {{ with_errors(profile_form.first_name) }}
               {{ with_errors(profile_form.last_name) }}
               {{ with_errors(profile_form.phone) }}
@@ -106,13 +111,15 @@
       Copyright 2011, <a href="http://davidbaumgold.com">David Baumgold</a>
     {% endblock %}</footer>
   </div>
+  <script>
+    window.app = {};
+    app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};
+  </script>
+  {% set scripts = ["jquery-1.6.1", "base", "jquery.timepicker", "underscore", "proto-ext", "json2"] %}
   {% if js_file %}
-    <script>
-      window.app = {};
-      app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};
-    </script>
+    {% do scripts.append(js_file) %}
   {% endif %}
-  {%- for script in ["jquery-1.6.1", "base", "jquery.timepicker", "underscore", "proto-ext", "json2", js_file] %}
+  {%- for script in scripts %}
     <script src="/js/{{script}}.js"></script>
   {%- endfor %}
 </body>

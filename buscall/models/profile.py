@@ -50,6 +50,10 @@ class UserProfile(db.Expando):
         if not 'key' in kwargs and not 'key_name' in kwargs:
             kwargs['key_name'] = kwargs['user'].user_id() or kwargs['user'].email()
         db.Model.__init__(self, *args, **kwargs)
+    
+    @property
+    def id(self):
+        return self.user_id
 
     def __cmp__(self, othr):
         if not isinstance(othr, UserProfile):

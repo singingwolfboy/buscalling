@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% block header %}<h1>Edit Profile</h1>{% endblock %}
+{% block main %}
+<form method="POST" action="{{ url_for("update_profile", profile_id=profile.id) }}">
+    {{form.hidden_tag()}}
+    <input type="hidden" name="_method" value="PUT" />
+    {{ with_errors(form.first_name) }}
+    {{ with_errors(form.last_name) }}
+    {{ with_errors(form.phone) }}
+    <input type="submit" value="Update" />
+</form>
+{% endblock %}
