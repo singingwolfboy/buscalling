@@ -53,11 +53,12 @@
         <div id="dropdowns">
           <div id="payment-dropdown" class="dropdown">
             <div class="dropdown-internal">
+              <img src="https://www.paypal.com/en_US/Marketing/i/banner/bnr_payments_120x30_y.gif" id="paypal-logo" alt="Payments by PayPal" />
               {% if profile.subscribed %}
                 <p>You are subscribed. All your bus alerts are free!</p>
-                <div id="subscription-button-wrap">
-                  <button id="unsubscribe-button" class="subscription-button">Unsubscribe</button>
-                </div>
+                <a href="{{paypal_url}}?cmd=_subscr-find&amp;alias={{ paypal_button_id['unsubscribe'] }}" id="subscription-button-wrap">
+                  <img id="unsubscribe-button" class="subscription-button" src="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" alt="Unsubscribe">
+                </a>
                 <p>If you decide to unsubscribe, you can use credits instead: One credit per bus pickup. Credits never expire.
                 {% if profile.credits == 1 %}
                   You have {{profile.credits}} credit left, but since you're subscribed, you don't need it.
@@ -67,10 +68,32 @@
                 </p>
               {% else %}
                 <p>You are not subscribed. While you are subscribed, all your bus alerts are free!</p>
+                {#
                 <div id="subscription-button-wrap">
                   <button id="subscribe-button" class="subscription-button">Subscribe for $5 per month</button>
                 </div>
-                <p>If you don't take the bus very often, you can use credits instead: One credit per bus pickup. If you have no remaining credits and you do not have an active subscription, you will not receive any alerts.
+                #}
+                
+                <form action="{{paypal_url}}" method="post" id="subscription-button-wrap">
+                  <div style="display:none;">
+                    <input type="hidden" name="cmd" value="_s-xclick" />
+                    <input type="hidden" name="hosted_button_id" value="{{ paypal_button_id['subscribe'] }}" />
+                    <input type="hidden" name="custom" value="{{profile.user_id}}" />
+                    <input type="hidden" name="notify_url" value="https://buscalling.appspot.com{{ url_for('paypal_ipn') }}" />
+                  </div>
+                  {#
+                  <input type="image" id="subscribe-button" class="subscription-button" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" name="submit" alt="Subscribe with PayPal" />
+                  <img class="pixel-tracer" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
+                  #}
+                  <button type="submit" id="subscribe-button" class="subscription-button">
+                    <span class="action">Subscribe</span>
+                    <span class="price">$5 per month</span>
+                  </button>
+                </form>
+
+
+                <p>If you don't take the bus very often, you can use credits instead: One credit per bus pickup. If you have no remaining credits and you do not have an active subscription, you will not receive any alerts.</p>
+                <p id="credits-left">
                 {% if profile.credits == 1 %}
                   You have {{profile.credits}} credit left.
                 {% else %}
@@ -79,8 +102,22 @@
                 </p>
               {% endif %}
               <ul id="buy-credits">
-                <li><span><button>Buy 1 credit<br>$0.99</button></span></li>
-                <li><span><button>Buy 6 credits<br>$5.00</button></span></li>
+                <li>
+                  <form>
+                    <button type="submit">
+                      <span class="action">Buy 1 credit</span>
+                      <span class="price">$0.99</span>
+                    </button>
+                  </form>
+                </li>
+                <li>
+                  <form>
+                    <button type="submit">
+                      <span class="action">Buy 6 credits</span>
+                      <span class="price">$5.00</span>
+                    </button>
+                  </form>
+                </li>
               </ul>
               <a href="#" id="payment-dropdown-cancel" class="dropdown-cancel">Cancel</a>
             </div>

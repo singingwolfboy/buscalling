@@ -1,6 +1,7 @@
 @import "compass/reset";
 @import "compass/css3";
 @import "functions/golden-ratio";
+@import "addons/button";
 
 @mixin clearfix {
     overflow: hidden;
@@ -35,6 +36,10 @@ footer {
     background-color: black;
     color: white;
     opacity: .7;
+
+    a {
+        color: #ccc;
+    }
 
     #footer-internal {
         padding: {
@@ -153,18 +158,53 @@ header {
             bottom: 12px;
             right: 12px;
         }
+
+        button {
+            @include button(simple, #fec);
+
+            span.action {
+                display: block;
+                font: {
+                    weight: bold;
+                    size: 12pt;
+                }
+            }
+            span.price {
+                display: block;
+                font: {
+                    weight: normal;
+                    size: 9pt;
+                }
+            }
+        }
     }
 
     #payment-dropdown {
         left: 0;
         width: golden-ratio($container-width, -1);
 
+        img#paypal-logo {
+            float: right;
+        }
+
+        p#credits-left {
+            margin: 1em 0;
+            text-align: center;
+        }
+
         #subscription-button-wrap {
-            $width: 200px;
-            margin: 0 auto;
+            $width: 147px;
+            margin: .5em auto;
+            display: block;
 
             width: $width;
-            button { width: $width; }
+            button { 
+                width: $width;
+                display: block;
+            }
+            img.pixel-tracer {
+                float: left;
+            }
         }
 
         ul#buy-credits {
@@ -175,13 +215,10 @@ header {
             li {
                 float: left;
                 width: 50%;
+                text-align: center;
 
-                span {
-                    button {
-                        display: block;
-                        margin: 0 auto;
-                        width: 10em;
-                    }
+                form {
+                    text-align: center;
                 }
             }
         }

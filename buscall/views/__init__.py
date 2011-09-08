@@ -8,8 +8,7 @@ from .paypal import paypal_ipn
 from .profile import update_profile
 from buscall.util import MAIL_SENDER, GqlQuery
 from buscall.models import WaitlistEntry, BusListener, UserProfile
-from buscall.models.paypal import url as paypal_url
-from buscall.models.paypal import subscribe_button_id, unsubscribe_button_id
+from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
 from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
@@ -24,11 +23,13 @@ location: %s, %s
 """.strip()
 
 @app.context_processor
-def inject_profile():
+def inject_base_vars():
     profile = UserProfile.get_current_profile()
     return {
         "profile": profile,
         "profile_form": UserProfileForm(request.form, profile),
+        "paypal_url": paypal_url,
+        "paypal_button_id": paypal_button_id,
     }
 
 @app.before_request
@@ -54,13 +55,7 @@ def time_format(time):
 def page_root():
     user = users.get_current_user()
     if user:
-        args = dict(
-            profile = UserProfile.get_or_insert_by_user(user),
-            paypay_url = paypal_url,
-            sub_id = subscribe_button_id,
-            unsub_id = unsubscribe_button_id,
-        )
-        return render_template("dashboard.html", **args)
+        return render_template("dashboard.html")
     else:
         return render_template('lander.html')
 app.add_url_rule('/', 'dashboard', page_root)
