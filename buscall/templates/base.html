@@ -33,9 +33,9 @@
               You are subscribed.
             {% else %}
               {% if profile.credits > 1 %}
-                You have {{profile.credits}} credits remaining.
+                You have {{profile.credits}} pickups remaining.
               {% elif profile.credits == 1 %}
-                You have only {{profile.credits}} credit remaining.
+                You have only {{profile.credits}} pickups remaining.
               {% else %}
                 Your account is disabled.
               {% endif %}
@@ -55,19 +55,19 @@
             <div class="dropdown-internal">
               <img src="https://www.paypal.com/en_US/Marketing/i/banner/bnr_payments_120x30_y.gif" id="paypal-logo" alt="Payments by PayPal" />
               {% if profile.subscribed %}
-                <p>You are subscribed. All your bus alerts are free!</p>
+                <p>You are subscribed. All your pickups are free!</p>
                 <a href="{{paypal_url}}?cmd=_subscr-find&amp;alias={{ paypal_button_id['unsubscribe'] }}" id="subscription-button-wrap">
                   <img id="unsubscribe-button" class="subscription-button" src="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" alt="Unsubscribe">
                 </a>
-                <p>If you decide to unsubscribe, you can use credits instead: One credit per bus pickup. Credits never expire.
+                <p>If you decide to unsubscribe, you can pay per-pickup, instead. Pickups credited to your account never expire.
                 {% if profile.credits == 1 %}
-                  You have {{profile.credits}} credit left, but since you're subscribed, you don't need it.
+                  You have {{profile.credits}} pickup left, but since you're subscribed, you don't need it.
                 {% else %}
-                  You have {{profile.credits}} credits left, but since you're subscribed, you don't need them.
+                  You have {{profile.credits}} pickups left, but since you're subscribed, you don't need them.
                 {% endif %}
                 </p>
               {% else %}
-                <p>You are not subscribed. While you are subscribed, all your bus alerts are free!</p>
+                <p>You are not subscribed. While you are subscribed, all your pickups are free!</p>
                 {#
                 <div id="subscription-button-wrap">
                   <button id="subscribe-button" class="subscription-button">Subscribe for $5 per month</button>
@@ -92,12 +92,12 @@
                 </form>
 
 
-                <p>If you don't take the bus very often, you can use credits instead: One credit per bus pickup. If you have no remaining credits and you do not have an active subscription, you will not receive any alerts.</p>
+                <p>If you don't take the bus very often, you can pay per-pickup rather than per-month. If you have no remaining pickups on your account and you do not have an active subscription, you will not receive any alerts.</p>
                 <p id="credits-left">
                 {% if profile.credits == 1 %}
-                  You have {{profile.credits}} credit left.
+                  You have {{profile.credits}} pickup left.
                 {% else %}
-                  You have {{profile.credits}} credits left.
+                  You have {{profile.credits}} pickups left.
                 {% endif %}
                 </p>
               {% endif %}
@@ -105,7 +105,7 @@
                 <li>
                   <form>
                     <button type="submit">
-                      <span class="action">Buy 1 credit</span>
+                      <span class="action">Buy 1 pickup</span>
                       <span class="price">$0.99</span>
                     </button>
                   </form>
@@ -113,7 +113,7 @@
                 <li>
                   <form>
                     <button type="submit">
-                      <span class="action">Buy 6 credits</span>
+                      <span class="action">Buy 6 pickups</span>
                       <span class="price">$5.00</span>
                     </button>
                   </form>
