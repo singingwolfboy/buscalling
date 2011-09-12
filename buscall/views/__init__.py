@@ -55,6 +55,7 @@ def time_format(time):
 def page_root():
     user = users.get_current_user()
     if user:
+        profile = UserProfile.get_or_insert_by_user(user)
         return render_template("dashboard.html")
     else:
         return render_template('lander.html')
