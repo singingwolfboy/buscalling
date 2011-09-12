@@ -15,6 +15,6 @@ for f in $ROOT/static/scss/*.scss
   do
     base=`basename $f .scss`
     if [ ${base:0:1} != "_" ] ; then
-        pyscss -o $ROOT/static/css/$base.css -I $COMPASS -I $BOURBON $f
+        pyscss -o $ROOT/static/css/$base.css -I $ROOT/static/scss -I $COMPASS -I $BOURBON $f
     fi
 done

@@ -1,0 +1,63 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "functions/golden-ratio";
+@import "addons/button";
+
+@mixin clearfix {
+    overflow: hidden;
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    background-color: lightblue;
+}
+$container-width: 800px; 
+$footer-height: 25px;
+#container, footer {   
+    background-color: white; 
+    width: $container-width;
+    margin: 0 auto;
+    position: relative; 
+}
+#container {
+    min-height: 100%;
+}
+#main {
+    overflow: auto;
+    padding-bottom: $footer-height;
+}
+footer {
+    position: relative;
+    margin-top: -$footer-height;
+    height: $footer-height;
+    clear: both;
+    background-color: black;
+    color: white;
+    opacity: .7;
+
+    a {
+        color: #ccc;
+    }
+
+    #footer-internal {
+        padding: {
+            top: 5px;
+            left: 5px;
+            right: 5px;
+        }
+    }
+}
+ 
+h1, h2 {
+    font: {
+        family: "Gentium Basic";
+    }
+}
+h1 {
+    font-size: 20pt;
+}
+h2 {
+    font-size: 14pt;
+}

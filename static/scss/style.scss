@@ -1,67 +1,7 @@
-@import "compass/reset";
-@import "compass/css3";
+@import "shared";
 @import "functions/golden-ratio";
 @import "addons/button";
-
-@mixin clearfix {
-    overflow: hidden;
-}
-
-html, body {
-    height: 100%;
-}
-body {
-    background-color: lightblue;
-}
-$container-width: 800px; 
-$footer-height: 25px;
-#container, footer {   
-    background-color: white; 
-    width: $container-width;
-    margin: 0 auto;
-    position: relative; 
-}
-#container {
-    min-height: 100%;
-}
-#main {
-    overflow: auto;
-    padding-bottom: $footer-height;
-}
-footer {
-    position: relative;
-    margin-top: -$footer-height;
-    height: $footer-height;
-    clear: both;
-    background-color: black;
-    color: white;
-    opacity: .7;
-
-    a {
-        color: #ccc;
-    }
-
-    #footer-internal {
-        padding: {
-            top: 5px;
-            left: 5px;
-            right: 5px;
-        }
-    }
-}
  
-h1, h2 {
-    font: {
-        family: "Gentium Basic";
-    }
-}
-h1 {
-    font-size: 20pt;
-}
-h2 {
-    font-size: 14pt;
-}
-
 header {
     position: relative;
     background-color: white;
@@ -127,8 +67,6 @@ header {
 
 #dropdowns {
     position: relative;
-    // @include clearfix;
-    // display: none;
 
     $dropdown-internal-padding: 10px;
     .dropdown {
@@ -158,7 +96,7 @@ header {
             bottom: 12px;
             right: 12px;
         }
-
+ 
         button {
             @include button(simple, #fec);
 
@@ -249,125 +187,4 @@ header {
             margin-left: $label-width;
         }
     }
-}
-
-nav { 
-    position: absolute;
-    top: .2em;
-    right: .2em;
-}
-header .login {
-    display: block;
-    position: absolute;
-    top: .7em;
-    right: .2em;
-}
-
-p.flash-message {
-    border: 2px solid yellow;
-    background-color: lightyellow;
-    border-radius: 5px;
-    padding: .5em 1em;
-} 
-p.flash-error {  
-    border: 2px solid red;
-    background-color: pink;
-    border-radius: 5px;
-    padding: .5em 1em;
-}
-#features {
-    position: relative;
-    overflow: auto;
-    background: url("/img/bus-pic.jpg") no-repeat;
-}
-#bus-float {
-    width: 500px;
-    height: 450px;
-    background-color: blue;
-}
-p#description {
-    margin-left: 500px;
-    margin-right: 10px;
-    min-height: 350px;
-    padding: 0;
-    font-size: 20px;
-    line-height: 1.8;
-}
-#features ul li {
-    margin: 1em 0;
-}
-p#description,
-#price {
-    font-family: "Gentium Basic", serif;
-    font-weight: bold;
-    border: 3px solid green;
-    padding: .8em;
-    text-align: center;
-    background-color: rgba(200, 255, 200, .8);
-    border-radius: 10px;
-}
-#features #price {
-    margin-right: 200px;
-    font-size: 16px;
-}
-#highlight .login {
-    float: right;
-    margin-top: .8em;
-    margin-right: .8em;
-}
-
-.faq-entry {
-    width: 380px;
-    float: left;
-    padding: 10px;
-}
-#faq-grid {
-    overflow: auto;
-}
-
-#faq-grid h2 {
-    margin: .1em 0;
-}
-#faq-grid p {
-    margin: .1em 0;
-}
-
-.form_field.start {
-    float: left;
-}
-.form_field.end {
-    float: left;
-}
-.form_field.week {
-    clear: left;
-}
-input.has_error {
-    background-color: #ff6666;
-}
-
-ul#alerts-list {
-    margin: .3em;
-    padding-left: 0;
-    list-style: none;
-}
-ul#alerts-list li {
-    margin: .5em auto;
-}
-.alerts-minutes {
-    width: 3em;
-    text-align: right;
-}
-#alerts-list p,
-.alerts-controls,
-.alerts-controls input {
-    display: inline;
-}
-.alerts-controls {
-    margin-left: 2em;
-    border: 1px solid green;
-    background-color: lightgreen;
-    padding: .2em;
-}
-.alerts-controls input {
-    margin: 0;
 }

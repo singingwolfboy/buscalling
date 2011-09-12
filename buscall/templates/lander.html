@@ -2,48 +2,51 @@
 <html> 
 <head> 
   <title>Bus Calling</title> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link href="/css/lander.css" rel="stylesheet" type="text/css" />
   <link href='http://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'> 
 </head> 
 <body> 
-  <header> 
-    <h1>Bus Calling</h1> 
-    <h2>Time management before the coffee kicks in.</h2> 
-    <a class="login" href="{{ url_for("login") }}"><img src="/img/login-with-google.png" alt="Login with Google" /></a> 
-  </header> 
-  <div id="main" role="main"> 
-    <div id="features"> 
-      <p id="description">Bus Calling will tell you exactly when to leave in order to get to the bus stop just before your bus arrives. No more waiting! We use real-time bus tracking information, so whether your bus is early or late, you're on time.</p> 
-      <div id="highlight"> 
-        <a class="login" href="{{ url_for("login") }}"><img src="/img/login-with-google.png" alt="Login with Google" /></a> 
-        <div id="price"> 
-          Only <em>$5 per month</em> for as many alerts as you need. <br/> We use PayPal to keep your information safe. Cancel anytime.
+  <div id="container">
+    <header> 
+      <h1>Bus Calling</h1> 
+      <h2>Time management before the coffee kicks in.</h2> 
+      <a class="login" href="{{ url_for("login") }}"><img src="/img/login-with-google.png" alt="Login with Google" /></a> 
+    </header> 
+    <div id="main" role="main"> 
+      <div id="features"> 
+        <p id="description">Bus Calling will tell you exactly when to leave in order to get to the bus stop just before your bus arrives. No more waiting! We use real-time bus tracking information, so whether your bus is early or late, you're on time.</p> 
+        <div id="highlight"> 
+          <a class="login" href="{{ url_for("login") }}"><img src="/img/login-with-google.png" alt="Login with Google" /></a> 
+          <div id="price"> 
+            Only <em>$5 per month</em> for as many alerts as you need. <br/> We use PayPal to keep your information safe. Cancel anytime.
+          </div> 
+        </div> 
+      </div> 
+      <div id="faq-grid"> 
+        <div id="faq-row-1" class="faq-row"> 
+          <div id="how-does-it-work" class="faq-entry"> 
+            <h2>How does it work?</h2> 
+            <p>We use information provided by <a href="http://www.nextbus.com">NextBus</a>, which works with public transportation services across the United States. Buses are equipped with GPS tracking systems, which constantly track their location and speed. Based on that information, <a href="http://www.nextbus.com">NextBus</a> can estimate when each bus will arrive at each stop. We check those estimations constantly, and alert you when it's time for you to go.</p> 
+          </div> 
+          <div id="what-do-i-do" class="faq-entry"> 
+            <h2>What do I do?</h2> 
+            <p>It's simple! Just log in with your Google account -- no need to remember yet another username and password. Select your bus route, and tell us what time your bus normally arrives. Then tell us when you want to be alerted: for example, we can call you 5 minutes before the bus actually arrives, regardless of how early or late the bus is running. Lastly, put in your phone number so we know how to reach you, and use your PayPal account to activate your alert.</p> 
+          </div> 
+        </div> 
+        <div id="faq-row-2" class="faq-row"> 
+          <div id="smartphone" class="faq-entry"> 
+            <h2>Do I need a fancy phone?</h2> 
+            <p><strong>No!</strong> Any sort of phone will work. You don't need an app or an internet connection. As long as your phone can receive phone calls, it works with Bus Calling!</p> 
+          </div> 
+        </div> 
+        <div class="faq-entry"> 
+          <h2>Try it now!</h2> 
+          <p>What are you waiting for? Poking around the website is free: you only pay if you decide you want the alerts. <a href="{{ url_for("login") }}">Login now!</a></p> 
         </div> 
       </div> 
     </div> 
-    <div id="faq-grid"> 
-      <div id="faq-row-1" class="faq-row"> 
-        <div id="how-does-it-work" class="faq-entry"> 
-          <h2>How does it work?</h2> 
-          <p>We use information provided by <a href="http://www.nextbus.com">NextBus</a>, which works with public transportation services across the United States. Buses are equipped with GPS tracking systems, which constantly track their location and speed. Based on that information, <a href="http://www.nextbus.com">NextBus</a> can estimate when each bus will arrive at each stop. We check those estimations constantly, and alert you when it's time for you to go.</p> 
-        </div> 
-        <div id="what-do-i-do" class="faq-entry"> 
-          <h2>What do I do?</h2> 
-          <p>It's simple! Just log in with your Google account -- no need to remember yet another username and password. Select your bus route, and tell us what time your bus normally arrives. Then tell us when you want to be alerted: for example, we can call you 5 minutes before the bus actually arrives, regardless of how early or late the bus is running. Lastly, put in your phone number so we know how to reach you, and use your PayPal account to activate your alert.</p> 
-        </div> 
-      </div> 
-      <div id="faq-row-2" class="faq-row"> 
-        <div id="smartphone" class="faq-entry"> 
-          <h2>Do I need a fancy phone?</h2> 
-          <p><strong>No!</strong> Any sort of phone will work. You don't need an app or an internet connection. As long as your phone can receive phone calls, it works with Bus Calling!</p> 
-        </div> 
-      </div> 
-      <div class="faq-entry"> 
-        <h2>Try it now!</h2> 
-        <p>What are you waiting for? Poking around the website is free: you only pay if you decide you want the alerts. <a href="{{ url_for("login") }}">Login now!</a></p> 
-      </div> 
-    </div> 
-  </div> 
+  </div>
   <footer> 
     Copyright 2011, <a href="http://davidbaumgold.com">David Baumgold</a> 
   </footer> 
