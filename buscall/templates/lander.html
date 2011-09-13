@@ -10,10 +10,67 @@
   <div id="container">
     <header> 
       <h1>Bus Calling</h1> 
-      <h2>Time management before the coffee kicks in.</h2> 
-      <a class="login" href="{{ url_for("login") }}"><img src="/img/login-with-google.png" alt="Login with Google" /></a> 
+      <h2>Time management before the coffee kicks in.</h2>
+      <form class="login" action="{{ url_for("login") }}" method="get">
+        <button>
+          <span class="action">Log In</span>
+          <span class="service">with Google</span>
+        </button>
+      </form>
     </header> 
-    <div id="main" role="main"> 
+    <div id="main" role="main">
+      <div id="headline">
+        <p>Unreliable bus?</p>
+        <img src="/img/too-late.png" alt="Too late!" />
+        <p>Get some reliable help.</p>
+        <img src="/img/on-time.png" alt="Ready to go!" />
+        <p>We'll let you know when you <em>really</em> need to go, <br/> even if the bus is early or late.</p>
+        <p class="small">And let's face it, how often is the bus really on time?</p>
+      </div>
+      <div id="sub-headline">
+        <div id="price-info">
+          <p class="h1">How much?</p>
+          <p class="you-are">Veteran bus-rider?</p>
+          <div class="category">
+            <span class="title">Commuter Price</span>
+            <span class="price">$5 per month</span>
+            <span class="note">unlimited pickups</span>
+          </div>
+          <p class="you-are">Just the occasional ride?</p>
+          <div class="category">
+            <span class="title">Pay As You Go</span>
+            <span class="price">$0.99 per pickup</span>
+            <span class="note">or 6 pickups for $5</span>
+          </div>
+          <div id="paypal">
+            <img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_50x34.gif" id="paypal-logo" alt="Payments by PayPal" />
+            <p>We use PayPal to keep your payment information safe and secure.</p>
+          </div>
+        </div>
+
+        <div id="description">
+          <p class="h1">Here's the scoop</p>
+          <ol id="the-scoop">
+            <li>You log in and tell us which bus you want, which stop you use, and what time it usually comes.</li>
+            <li>We use GPS systems to check on your bus in real time, and find out if it's early or late.</li>
+            <li>When you need to go, we'll call or text you to let you know.</li>
+            <li>You get to the bus stop just in time to see the bus arrive.</li>
+          </ol>
+          <p class="free-trial">We'll even give you <em>5 free pickups</em> to get started!</p>
+          <form class="login" action="{{ url_for("login") }}" method="get">
+            <button>
+              <span class="action">Log In</span>
+              <span class="service">with Google</span>
+            </button>
+          </form>
+          <p class="oauth-explanation">You don't need another username and password to remember: just <a href="{{ url_for("login") }}">log in with your Google Account</a> and give it a try!</p>
+        </div>
+      </div>
+      
+      <div id="supported-agencies">We only support the Boston MBTA for now. If you want Bus Calling for your bus system, <a href="mailto:contact@buscalling.com">let us know!</a></div>
+
+
+      <!--
       <div id="features"> 
         <p id="description">Bus Calling will tell you exactly when to leave in order to get to the bus stop just before your bus arrives. No more waiting! We use real-time bus tracking information, so whether your bus is early or late, you're on time.</p> 
         <div id="highlight"> 
@@ -45,10 +102,12 @@
           <p>What are you waiting for? Poking around the website is free: you only pay if you decide you want the alerts. <a href="{{ url_for("login") }}">Login now!</a></p> 
         </div> 
       </div> 
+      -->
     </div> 
   </div>
-  <footer> 
-    Copyright 2011, <a href="http://davidbaumgold.com">David Baumgold</a> 
-  </footer> 
+  <footer><div id="footer-internal">
+    <a class="contact" href="mailto:contact@buscalling.com">Contact Us</a>
+    <p class="copyright">Copyright 2011, <a href="http://davidbaumgold.com">David Baumgold</a></p>
+  </div></footer> 
 </body> 
 </html>

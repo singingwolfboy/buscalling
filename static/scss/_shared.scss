@@ -1,7 +1,7 @@
 @import "compass/reset";
 @import "compass/css3";
-@import "functions/golden-ratio";
-@import "addons/button";
+
+$paypal-green = #fec;
 
 @mixin clearfix {
     overflow: hidden;
@@ -9,6 +9,10 @@
 
 html, body {
     height: 100%;
+    font-family: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
+}
+h1, h2, p.h1, p.h2 {
+    font-family: "Gentium Basic", "Garamond", "Hoefler Text", Times, serif;
 }
 body {
     background-color: lightblue;
@@ -33,12 +37,12 @@ footer {
     margin-top: -$footer-height;
     height: $footer-height;
     clear: both;
-    background-color: black;
-    color: white;
+    background-color: #333;
+    color: #ccc;
     opacity: .7;
 
     a {
-        color: #ccc;
+        color: #aaa;
     }
 
     #footer-internal {
@@ -48,11 +52,13 @@ footer {
             right: 5px;
         }
     }
-}
- 
-h1, h2 {
-    font: {
-        family: "Gentium Basic";
+
+    .contact {
+        display: block;
+        float: left;
+    }
+    .copyright {
+        float: right;
     }
 }
 h1 {
