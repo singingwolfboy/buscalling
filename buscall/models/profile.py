@@ -13,8 +13,8 @@ class UserProfile(db.Expando):
     freeloader = db.BooleanProperty(required=True, default=True)
     # whether the user is currently a paid subscriber
     subscribed = db.BooleanProperty(required=True, default=False)
-    # one-off alert credits (new users get 10 as a free trial)
-    credits = db.IntegerProperty(required=True, default=10)
+    # one-off pickup credits (new users get 5 as a free trial)
+    credits = db.IntegerProperty(required=True, default=5)
 
     # optional properties
     phone = db.PhoneNumberProperty()
