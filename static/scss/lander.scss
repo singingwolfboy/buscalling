@@ -4,15 +4,21 @@
 @import "compass/css3/border-radius";
 
 
-form.login button {
+a.button {
     @include button(simple, $paypal-green);
+    color: black;
+    text-decoration: none;
 
-    span.action {
+    span {
         display: block;
-        font-size: 12pt;
+        text-align: center;
+
+        &.action {
+            font-size: 12pt;
+        }
     }
 }
-header form.login {
+header a.login {
     position: absolute;
     top: 0;
     right: 0;
