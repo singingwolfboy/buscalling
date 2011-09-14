@@ -67,3 +67,61 @@ h1 {
 h2 {
     font-size: 14pt;
 }
+
+// flash messages
+div.flash {
+    $flash-icon-width: 32px;
+    $flash-icon-margin: 10px;
+
+    width: 100%;
+    min-height: $flash-icon-width;
+    background: $paypal-green $flash-icon-margin center no-repeat;
+    border: 2px solid darken($paypal-green, 10%);
+
+    &.success {
+        border-color: green;
+        background: {
+            color: lighten(green, 30%);
+            image: url(check.png);
+        }
+    }
+    &.warn {
+        border-color: yellow;
+        background: {
+            color: lighten(yellow, 30%);
+            image: url(warn.png);
+        }
+    }
+    &.error {
+        border-color: red;
+        background: {
+            color: lighten(red, 30%);
+            image: url(error-x.png);
+        }
+    }
+
+    .wrap {
+        padding: {
+            left: $flash-icon-width + 2*$flash-icon-margin;
+            right: $flash-icon-width + 2*$flash-icon-margin;
+            top: 5px;
+            bottom: 5px;
+        }
+        width: 100%;
+        display: table;
+    }
+
+    p {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        height: 32px;
+        padding: auto 2em;
+
+        &:before, &:after; {
+            content: "";
+            display: table-cell;
+            width: 32px;
+        }
+    }
+}

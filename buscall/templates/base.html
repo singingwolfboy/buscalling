@@ -5,10 +5,9 @@
   {% block head %}
     <title>{% block title %}{% endblock %} | Bus Calling</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
-    {#- <link href="/css/le-frog/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" /> #}
-    <link href="/css/timepicker.css" rel="stylesheet" type="text/css" />
+    <link href="/static/timepicker.css" rel="stylesheet" type="text/css" />
   {% endblock %}
 </head>
 <body>
@@ -135,9 +134,15 @@
           </div>
         </div>
       {% endif %}
+    {% macro show_flash(category, msg="message") %}
+      <div class="flash {{category}}"><div class="wrap"><p>{{ msg }}</p></div></div>
+    {% endmacro %}
     {% block flash %}
+    <noscript>
+      {{ show_flash("warn", "Your browser has Javascript disabled. Some parts of this website will not work correctly without it.") }}
+    </noscript>
     {%- for category, msg in get_flashed_messages(with_categories=true) %}
-      <p class="flash-{{ category }}">{{ msg }}</p>
+      {{ show_flash(category, msg) }}
     {%- endfor %}
     {% endblock %}
     <div id="main" role="main">
@@ -156,7 +161,7 @@
     {% do scripts.append(js_file) %}
   {% endif %}
   {%- for script in scripts %}
-    <script src="/js/{{script}}.js"></script>
+    <script src="/static/{{script}}.js"></script>
   {%- endfor %}
 </body>
 </html>
