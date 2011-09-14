@@ -73,6 +73,7 @@ header {
         position: absolute;
         background-color: white;
         bottom: 0; 
+        @include border-bottom-radius(5px);
         // width: golden ratio (see below)
 
         // can't put border on .dropdown, because it mucks with the width
