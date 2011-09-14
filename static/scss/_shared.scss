@@ -99,11 +99,14 @@ div.flash {
             image: url(error-x.png);
         }
     }
+    &.message {
+        background-image: url(info.png);
+    }
 
     .wrap {
         padding: {
             left: $flash-icon-width + 2*$flash-icon-margin;
-            right: $flash-icon-width + 2*$flash-icon-margin;
+            right: $flash-icon-margin;
             top: 5px;
             bottom: 5px;
         }
@@ -114,7 +117,7 @@ div.flash {
     p {
         display: table-cell;
         vertical-align: middle;
-        text-align: center;
+        text-align: left;
         height: 32px;
         padding: auto 2em;
 
