@@ -1,14 +1,11 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block header %}
-    <h1>Routes</h1>
-{% endblock %}
+{% extends "standard.html" %}
+{% block title %}Routes | {{ super() }}{% endblock %}
+
 {% block main %}
-
-<ul>
-{% for id, info in routes.iteritems() %}
-	<li><a href="{{url_for('show_route', agency_id=agency.id, route_id=id)}}">{{info.title}}</a></li>
-{% endfor %}
-</ul>
-
+  <h1>Routes</h1>
+  <ul>
+    {% for id, info in routes.iteritems() %}
+      <li><a href="{{url_for('show_route', agency_id=agency.id, route_id=id)}}">{{info.title}}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}

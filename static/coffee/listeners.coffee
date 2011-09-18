@@ -7,12 +7,16 @@ $().ready ->
   route_elmt = $("form #route")
   direction_elmt = $("form #direction")
   stop_elmt = $("form #stop")
-  loader_icon = $("<img src=\"/img/ajax-loader.gif\"/>")
+  loader_icon = $("<img src=\"/static/ajax-loader.gif\"/>")
   update_routes = (agency) ->
     routes = [ option_blank ]
-    orderedLoop model[agency].routes, (id, route) ->
+    # JS objects don't have a defined ordering, so we've defined that ordering as
+    # a ._order array, which contains the route IDs in the order we want. Loop
+    # through the array, and for each ID, pull the appropriate route from the JS
+    # object.
+    _.each model[agency].routes._order, (id) ->
+      route = model[agency].routes[id]
       routes.push option_fill(route["title"], id)
-    
     route_elmt.children().replaceWith $(routes.join(""))
   
   update_directions = (agency, route) ->

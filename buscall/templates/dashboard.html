@@ -1,40 +1,39 @@
-{% extends "base.html" %}
-{% block title %}Dashboard{% endblock %}
+{% extends "standard.html" %}
+{% block title %}Dashboard | {{super()}}{% endblock %}
 {% block main %}
-<h2>Listeners</h2>
-{% set listener_map = profile.listeners|groupby('agency') %}
-{% macro render_listener(listener) -%}
+  <h2>Listeners</h2>
+  {% set listener_map = profile.listeners|groupby('agency') %}
+  {% macro render_listener(listener) -%}
     <li>{{listener.route.title}} bus at {{listener.stop.title}} towards {{listener.direction.title}}, at around {{listener.start|timeformat}}
       <form action="{{url_for('destroy_listener', listener_id=listener.id)}}" method="POST">
         <input type="hidden" name="_method" value="DELETE" />
         <input type="submit" value="Delete Listener" />
       </form>
     </li>
-{%- endmacro %}
-{% if listener_map|count == 0 %}
-  <p>You have no listeners.</p>
-{% elif listener_map|count == 1 %}
-  {% set agency, listeners = listener_map|first %}
-  <ul>
-  {% for listener in listeners %}
-    {{ render_listener(listener) }}
-  {% endfor %}
-  </ul>
-{% else %}
-  <ul>
-  {% for agency, listeners in listener_map %}
-    <li>
-      <div>{{agency.title}}</div>
-      <ul>
-      {% for listener in listeners %}
-        {{ render_listener(listener) }}
-      {% endfor %}
-      </ul>
-    </li>
-  {% endfor %}
-  </ul>
-{% endif %}
+  {% endmacro %}
+  {% if listener_map|count == 0 %}
+    <p>You have no listeners.</p>
+  {% elif listener_map|count == 1 %}
+    {% set agency, listeners = listener_map|first %}
+    <ul>
+    {% for listener in listeners %}
+      {{ render_listener(listener) }}
+    {% endfor %}
+    </ul>
+  {% else %}
+    <ul>
+    {% for agency, listeners in listener_map %}
+      <li>
+        <div>{{agency.title}}</div>
+        <ul>
+        {% for listener in listeners %}
+          {{ render_listener(listener) }}
+        {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
 
-<a href="{{url_for('new_listener')}}">New Listener</a>
-
+  <a href="{{url_for('new_listener')}}">New Listener</a>
 {% endblock %}

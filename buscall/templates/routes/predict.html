@@ -1,20 +1,17 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block header %}
-    <h1>Route {{prediction.route.title}}</h1>
-    <h2>Stop {{prediction.stop.title}}</h2>
-    <h2>Towards {{prediction.direction.title}}</h2>
-{% endblock %}
+{% extends "standard.html" %}
+{% block title %}Prediction | {{ super() }}{% endblock %}
+
 {% block main %}
-
-{% if prediction.buses %}
-<ul>
-	{% for bus in prediction.buses %}
-	<li>{{bus.minutes}} minutes</li>
-	{% endfor %}
-</ul>
-{% else %}
-<p>No buses predicted</p>
-{% endif %}
-
+  <h1>Route {{prediction.route.title}}</h1>
+  <h2>Stop {{prediction.stop.title}}</h2>
+  <h2>Towards {{prediction.direction.title}}</h2>
+  {% if prediction.buses %}
+    <ul>
+      {% for bus in prediction.buses %}
+        <li>{{bus.minutes}} minutes</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No buses predicted</p>
+  {% endif %}
 {% endblock %}

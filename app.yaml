@@ -28,9 +28,9 @@ handlers:
   static_files: static/coffee/\1
   upload: static/coffee/(.*\.coffee)
 
-- url: /static/(.*\.(png|jpg|jpeg))
+- url: /static/(.*\.(png|gif|jpg|jpeg))
   static_files: static/img/\1
-  upload: /static/img/(.*\.(png|jpg|jpeg))
+  upload: /static/img/(.*\.(png|gif|jpg|jpeg))
 
 - url: /robots.txt
   static_files: static/robots.txt

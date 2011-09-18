@@ -1,17 +1,17 @@
-{% extends 'base.html' %}
-{% block title %}Your Listeners{% endblock %}
-
-{% block header %}<h1>Your Listeners</h1>{% endblock %}
+{% extends 'standard.html' %}
+{% block title %}Your Listeners | {{ super() }}{% endblock %}
 
 {% block main %}
-{% if listeners %}
-<ul>
-{% for l in listeners %}
-    <li>{{l.agency.title}} route {{l.route.title}} at {{l.stop.title}} towards {{l.direction.title}}, starting at {{l.start}}; {{l.repeat_descriptor}}</li>
-{% endfor %}
-</ul>
-{% else %}
-<p>You have not set any bus listeners.</p>
-{% endif %}
-<p><a href="{{ url_for('new_listener') }}">New Listener</a></p>
+  <h1>Your Listeners</h1>
+  {% if listeners %}
+    <ul>
+    {% for l in listeners %}
+      <li>{{l.agency.title}} route {{l.route.title}} at {{l.stop.title}} towards {{l.direction.title}}, starting at {{l.start}}; {{l.repeat_descriptor}}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>You have not set any bus listeners.</p>
+  {% endif %}
+  
+  <p><a href="{{ url_for('new_listener') }}">New Listener</a></p>
 {% endblock %}

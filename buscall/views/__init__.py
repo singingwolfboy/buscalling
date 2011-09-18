@@ -13,14 +13,8 @@ from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
 from google.appengine.api import users
+import os
 import datetime
-
-ALERT_MAIL_BODY = """
-Someone signed up for the Bus Calling waitlist!
-email: %s
-ip: %s
-location: %s, %s
-""".strip()
 
 @app.context_processor
 def inject_base_vars():
@@ -31,6 +25,10 @@ def inject_base_vars():
         "paypal_url": paypal_url,
         "paypal_button_id": paypal_button_id,
     }
+
+@app.context_processor
+def inject_env():
+    return {"env": os.environ}
 
 @app.before_request
 def inject_auth_urls():

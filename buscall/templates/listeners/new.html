@@ -1,12 +1,9 @@
-{% extends 'base.html' %}
-{% block title %}New Listener{% endblock %}
-
-{% block header %}<h1>New Listener</h1>{% endblock %}
+{% extends 'standard.html' %}
+{% block title %}New Listener | {{super()}}{% endblock %}
 {% from "_formhelpers.html" import with_errors %}
 {% block main %}
 <form method="POST" action="{{ url_for('new_listener') }}">
     {{form.hidden_tag()}}
-    <noscript>This form requires Javascript.</noscript>
     {{ with_errors(form.recur) }}
     <fieldset id="bus-info">
         <legend>Bus</legend>

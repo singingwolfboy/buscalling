@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import with_errors %}
+
+{% block container %}
+<header>
+  <div id="title-top">
+    <h1><a href="{{ url_for('dashboard') }}">Bus Calling</a></h1>
+    <h2><a href="{{ url_for('dashboard') }}">Time management before the coffee kicks in.</a></h2>
+    <div id="auth-info">
+    {% if profile %}
+      <span class="email">{{profile.email}}</span> |
+      <a href="{{ url_for("logout") }}">Log out</a>
+    {% else %}
+      <a href="{{ url_for("login") }}">Log in</a>
+    {% endif %}
+    </div>
+  </div>
+  {% if profile %}
+    <ul id="tabs">
+      <li id="payment-tab"><a href="#">
+        {% if profile.subscribed %}
+          You are subscribed.
+        {% else %}
+          {% if profile.credits > 1 %}
+            You have {{profile.credits}} pickups remaining.
+          {% elif profile.credits == 1 %}
+            You have only {{profile.credits}} pickups remaining.
+          {% else %}
+            Your account is disabled.
+          {% endif %}
+        {% endif %}
+        <span class="arrow">▼</span>
+      </a></li>
+      <li id="profile-tab"><a href="#">
+        Edit Profile 
+        <span class="arrow">▼</span>
+      </a></li>
+    </ul>
+  {% endif %}
+  </header>
+  {% if profile %}
+    <div id="dropdowns">
+      <div id="payment-dropdown" class="dropdown">
+        <div class="dropdown-internal">
+          {% if env.HTTP_HOST and env.HTTP_HOST.split(':')[0] != "localhost" %}
+            {% set HTTP_HOST = env.HTTP_HOST %}
+          {% else %}
+            {% set HTTP_HOST = "buscalling.appspot.com" %}
+          {% endif %}
+          <img src="https://www.paypal.com/en_US/Marketing/i/banner/bnr_payments_120x30_y.gif" id="paypal-logo" alt="Payments by PayPal" />
+          {% if profile.subscribed %}
+            <p>You are subscribed. All your pickups are free!</p>
+            <a href="{{paypal_url}}?cmd=_subscr-find&amp;alias={{ paypal_button_id.unsubscribe }}" id="subscription-button-wrap">
+              <img id="unsubscribe-button" class="subscription-button" src="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" alt="Unsubscribe">
+            </a>
+            <p>If you decide to unsubscribe, you can pay per-pickup, instead. Pickups credited to your account never expire.
+            {% if profile.credits == 1 %}
+              You have {{profile.credits}} pickup left, but since you're subscribed, you don't need it.
+            {% else %}
+              You have {{profile.credits}} pickups left, but since you're subscribed, you don't need them.
+            {% endif %}
+            </p>
+          {% else %}
+            <p>You are not subscribed. While you are subscribed, all your pickups are free!</p>
+            
+            <form action="{{paypal_url}}" method="post" id="subscription-button-wrap">
+              <div style="display:none;">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="{{ paypal_button_id.subscribe }}" />
+                <input type="hidden" name="custom" value="{{profile.user_id}}" />
+                <input type="hidden" name="notify_url" value="https://{{ HTTP_HOST }}{{ url_for('paypal_ipn') }}" />
+              </div>
+              <button type="submit" id="subscribe-button" class="subscription-button">
+                <span class="action">Subscribe</span>
+                <span class="price">$5 per month</span>
+              </button>
+            </form>
+
+
+            <p>If you don't take the bus very often, you can pay per-pickup rather than per-month. If you have no remaining pickups on your account and you do not have an active subscription, you will not receive any alerts.</p>
+            <p id="credits-left">
+            {% if profile.credits == 1 %}
+              You have {{profile.credits}} pickup left.
+            {% else %}
+              You have {{profile.credits}} pickups left.
+            {% endif %}
+            </p>
+          {% endif %}
+          <ul id="buy-credits">
+            <li>
+              <form action="{{paypal_url}}" method="post">
+                <div style="display:none;">
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input type="hidden" name="hosted_button_id" value="{{ paypal_button_id.pickups_1 }}" />
+                  <input type="hidden" name="custom" value="{{profile.user_id}}" />
+                  <input type="hidden" name="notify_url" value="https://{{ HTTP_HOST }}{{ url_for('paypal_ipn') }}" />
+                </div>
+                <button type="submit">
+                  <span class="action">Buy 1 pickup</span>
+                  <span class="price">$0.99</span>
+                </button>
+              </form>
+            </li>
+            <li>
+              <form>
+                <button type="submit">
+                  <span class="action">Buy 6 pickups</span>
+                  <span class="price">$5.00</span>
+                </button>
+              </form>
+            </li>
+          </ul>
+          <a href="#" id="payment-dropdown-cancel" class="dropdown-cancel">Cancel</a>
+        </div>
+      </div>
+      <div id="profile-dropdown" class="dropdown">
+        <form class="dropdown-internal" method="POST" action="{{ url_for("update_profile", profile_id=profile.id) }}">
+          {{profile_form.hidden_tag()}}
+          <input type="hidden" name="_method" value="PUT" />
+          {{ with_errors(profile_form.first_name) }}
+          {{ with_errors(profile_form.last_name) }}
+          {{ with_errors(profile_form.phone) }}
+          <input type="submit" value="Update" />
+          <a href="#" id="profile-dropdown-cancel" class="dropdown-cancel">Cancel</a>
+        </form>
+      </div>
+    </div>
+  {% endif %}
+{% block flash %}
+  {% macro show_flash(category, msg="message") %}
+    <div class="flash {{category}}"><div class="wrap"><p>{{ msg }}</p></div></div>
+  {% endmacro %}
+  <noscript>
+    {{ show_flash("warn", "Your browser has Javascript disabled. Some parts of this website will not work correctly without it.") }}
+  </noscript>
+  {%- for category, msg in get_flashed_messages(with_categories=true) %}
+    {{ show_flash(category, msg) }}
+  {%- endfor %}
+{% endblock %}
+<div id="main" role="main">
+  {% block main %}{% endblock %}
+</div>
+{% endblock container %}
+
+{% block local_js %}
+<script>
+  window.app = {};
+  app.model = {% if js_model %}{{js_model|safe}}{% else %}null{% endif %};
+</script>
+{% set scripts = ["jquery-1.6.1", "base", "jquery.timepicker", "underscore", "json2"] %}
+{% if js_file %}
+  {% do scripts.append(js_file) %}
+{% endif %}
+{%- for script in scripts %}
+  <script src="/static/{{script}}.js"></script>
+  {%- endfor %}
+{% endblock %}
