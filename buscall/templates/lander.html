@@ -7,7 +7,7 @@
   <header> 
     <h1>Bus Calling</h1> 
     <h2>Time management before the coffee kicks in.</h2>
-    <a href="{{ url_for("login") }}" class="login button">
+    <a href="{{ login_url }}" class="login button">
       <span class="action">Log In</span>
       <span class="service">with Google</span>
     </a>
@@ -51,11 +51,11 @@
           <li>You get to the bus stop just in time to see the bus arrive.</li>
         </ol>
         <p class="free-trial">We'll even give you <em>5 free pickups</em> to get started!</p>
-        <a class="login button" href="{{ url_for("login") }}">
+        <a class="login button" href="{{ login_url }}">
           <span class="action">Log In</span>
           <span class="service">with Google</span>
         </a>
-        <p class="oauth-explanation">You don't need another username and password to remember: just <a href="{{ url_for("login") }}">log in with your Google Account</a> and give it a try!</p>
+        <p class="oauth-explanation">You don't need another username and password to remember: just <a href="{{ login_url }}">log in with your Google Account</a> and give it a try!</p>
       </div>
     </div>
     

@@ -9,9 +9,9 @@
     <div id="auth-info">
     {% if profile %}
       <span class="email">{{profile.email}}</span> |
-      <a href="{{ url_for("logout") }}">Log out</a>
+      <a href="{{ logout_url }}">Log out</a>
     {% else %}
-      <a href="{{ url_for("login") }}">Log in</a>
+      <a href="{{ login_url }}">Log in</a>
     {% endif %}
     </div>
   </div>

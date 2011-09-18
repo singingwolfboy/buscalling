@@ -30,10 +30,24 @@ def inject_base_vars():
 def inject_env():
     return {"env": os.environ}
 
-@app.before_request
+@app.context_processor
 def inject_auth_urls():
-    app.add_url_rule(users.create_login_url(request.url),        "login")
-    app.add_url_rule(users.create_logout_url(url_for('lander')), "logout")
+    login_url  = users.create_login_url(request.url)
+    logout_url = users.create_logout_url(url_for('lander'))
+
+    # It would be nice if we could hook these URLs up to the 
+    # Flask routing system, like so:
+    #
+    # (change @app.context_processor to @app.before_request)
+    # app.add_url_rule(login_url,  "login",  build_only=True)
+    # app.add_url_rule(logout_url, "logout", build_only=True)
+    #
+    # Unfortunately, in production those URLs are on a different domain,
+    # and the Flask routing system can't handle URLs to arbitrary domains. 
+    # So instead, we'll use a context processor to provide the URLs to 
+    # the template as variables.
+
+    return dict(login_url=login_url, logout_url=logout_url)
 
 @app.before_request
 def update_userprofile_last_login():
