@@ -1,7 +1,20 @@
 application: buscalling
-version: 0-9-1
+version: 0-9-2
 runtime: python
 api_version: 1
+
+skip_files:
+# begin default skip_files
+- ^(.*/)?(app|index)\.ya?ml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+# end default skip_files
+- ^\.git/.*
+- ^\.gitignore
+- ^(.*/)?\.DS_Store
 
 builtins:
 - datastore_admin: on
@@ -19,7 +32,7 @@ handlers:
 - url: /static/(.*\.scss)
   static_files: static/scss/\1
   upload: static/scss/(.*\.scss)
-  mime_type: "text/scss"
+  mime_type: text/scss
 
 - url: /static/(.*\.js)
   static_files: static/js/\1
@@ -28,11 +41,11 @@ handlers:
 - url: /static/(.*\.coffee)
   static_files: static/coffee/\1
   upload: static/coffee/(.*\.coffee)
-  mime_type: "text/coffeescript"
+  mime_type: text/coffeescript
 
 - url: /static/(.*\.(png|gif|jpg|jpeg))
   static_files: static/img/\1
-  upload: /static/img/(.*\.(png|gif|jpg|jpeg))
+  upload: static/img/(.*\.(png|gif|jpg|jpeg))
 
 - url: /robots.txt
   static_files: static/robots.txt
