@@ -1,7 +1,7 @@
 from buscall import app
 from flask import request, abort, flash, redirect, url_for
 from urllib import urlencode
-import decimal
+from decimal import Decimal
 try:
     from urlparse import parse_qsl
 except ImportError:
@@ -41,9 +41,10 @@ def paypal_ipn():
                     app.logger.warn("UserProfile's PayPal ID (%s) did not match PayPal ID from request (%s)" % (profile.paypal_id, params['payer_id']))
                     abort(400)
             txn_type = params['txn_type']
-            subscr_id = params['subscr_id']
 
+            # SUBSCRIPTION SIGNUP
             if txn_type == "subscr_signup":
+                subscr_id = params['subscr_id']
                 # create or update Subscription object
                 key_name = "paypal|"+subscr_id
                 subscr = Subscription.get_by_key_name(key_name)
@@ -60,14 +61,16 @@ def paypal_ipn():
                         active=True,
                         start_track_id=params['ipn_track_id'],
                         start_date=parse_paypal_date(params['subscr_date']),
-                        amount=decimal.Decimal(params['amount3']),
+                        amount=Decimal(params['amount3']),
                     )
                     subscr.put()
                 profile.freeloader = False
                 profile.subscribed = True
                 profile.put()
 
+            # PAYMENT ON A SUBSCRIPTION
             elif txn_type == "subscr_payment":
+                subscr_id = params['subscr_id']
                 # get or create Subscription object
                 txn_id = params['txn_id']
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
@@ -80,7 +83,7 @@ def paypal_ipn():
                         active=True,
                         start_track_id=params['ipn_track_id'],
                         start_date=parse_paypal_date(params['payment_date']),
-                        amount=decimal.Decimal(params['payment_gross']),
+                        amount=Decimal(params['payment_gross']),
                     )
                     subscr.put()
 
@@ -91,14 +94,16 @@ def paypal_ipn():
                     transaction_id=txn_id,
                     key_name="paypal|"+txn_id,
                     date=parse_paypal_date(params['payment_date']),
-                    amount=decimal.Decimal(params['payment_gross']),
+                    amount=Decimal(params['payment_gross']),
                     status=params['payment_status'],
                 )
                 if 'ipn_track_id' in params:
                     pmt.track_id = params['ipn_track_id']
                 pmt.put()
                 
+            # END OF SUBSCRIPTION
             elif txn_type == "subscr_cancel":
+                subscr_id = params['subscr_id']
                 subscr = Subscription.get_by_key_name("paypal|"+subscr_id)
                 if not subscr:
                     app.logger.warn("Could not find Subscription: paypal|"+subscr_id)
@@ -110,6 +115,44 @@ def paypal_ipn():
                 profile = subscr.userprofile
                 profile.subscribed = False
                 profile.put()
+            
+            # "BUY NOW" BUTTON
+            elif txn_type == "web_accept":
+                txn_id = params['txn_id']
+                pmt = Payment(
+                    processor="paypal",
+                    subscription=None,
+                    transaction_id=txn_id,
+                    key_name="paypal|"+txn_id,
+                    date=parse_payment_date(params['payment_date']),
+                    amount=Decimal(params['payment_gross']),
+                    status=params['payment_status'],
+                )
+                if 'ipn_track_id' in params:
+                    pmt.track_id = params['ipn_track_id']
+                pmt.put()
+
+                # how many credits did the user buy?
+                item_num = int(params['item_number'])
+                # list of possible items, of the form:
+                #   [item_id, item_cost, credit_num]
+                item_list = [
+                    (1, Decimal("0.99"), 1),
+                    (6, Decimal("5.00"), 6),
+                ]
+                for item_id, item_cost, credits in item_list:
+                    if item_num == item_id:
+                        # if ID matches, that's enough; but if the price doesn't match as well,
+                        # log a warning
+                        if not pmt.amount == item_cost:
+                            warning = "Paypal IPN: got item number %s but paid %s" % (item_num, pmt.amount)
+                            warning += "\n" + str(params)
+                            app.logger.warn(warning)
+                        # either way, increment the user's credit balance
+                        profile.credits += credits
+                        profile.freeloader = False
+                        profile.put()
+                        break
             
             else:
                 app.logger.info("Got unexpected transaction type from Paypal IPN: "+str(params))
@@ -159,7 +202,7 @@ def paypal_success():
             txn_id = txn_info['txn_id']
             subscr_id = txn_info['subscr_id']
             txn_date = parse_paypal_date(txn_info['payment_date'])
-            amount = decimal.Decimal(txn_info['payment_gross'])
+            amount = Decimal(txn_info['payment_gross'])
 
             # find or create the Subscription object
             key_name = "paypal|"+subscr_id
