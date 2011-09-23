@@ -124,7 +124,7 @@ def paypal_ipn():
                     subscription=None,
                     transaction_id=txn_id,
                     key_name="paypal|"+txn_id,
-                    date=parse_payment_date(params['payment_date']),
+                    date=parse_paypal_date(params['payment_date']),
                     amount=Decimal(params['payment_gross']),
                     status=params['payment_status'],
                 )
@@ -173,6 +173,7 @@ def paypal_ipn():
 @login_required
 def paypal_success():
     "PayPal Payment Data Transfer handler"
+    app.logger.debug(request.args.to_dict())
     params = {
         "cmd": "_notify-synch",
         "at": pdt_token,
