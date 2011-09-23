@@ -22,3 +22,5 @@ class Payment(db.Model):
     amount = CurrencyProperty(required=True)
     status = db.StringProperty(required=True)
     track_id = db.StringProperty()
+    item_id = db.IntegerProperty()
+    quantity = db.IntegerProperty() # the default is NOT 1, it is None, aka unknown

@@ -8,7 +8,7 @@ except ImportError:
     from cgi import parse_qsl
 from google.appengine.api import urlfetch, users, mail
 from buscall.models.paypal import url as paypal_url
-from buscall.models.paypal import pdt_token, sandbox, parse_paypal_date
+from buscall.models.paypal import pdt_token, sandbox, parse_paypal_date, item_map
 from buscall.models.profile import UserProfile
 from buscall.models.txn import Subscription, Payment
 from buscall.decorators import login_required
@@ -119,37 +119,42 @@ def paypal_ipn():
             # "BUY NOW" BUTTON
             elif txn_type == "web_accept":
                 txn_id = params['txn_id']
-                pmt = Payment(
-                    processor="paypal",
-                    subscription=None,
-                    transaction_id=txn_id,
-                    key_name="paypal|"+txn_id,
-                    date=parse_paypal_date(params['payment_date']),
-                    amount=Decimal(params['payment_gross']),
-                    status=params['payment_status'],
-                )
+                item_num = int(params['item_number'])
+                quantity = int(params.get('quantity', 1))
+                pmt = Payment.get_by_key_name("paypal|"+txn_id)
+                if not pmt:
+                    pmt = Payment(
+                        processor="paypal",
+                        subscription=None,
+                        transaction_id=txn_id,
+                        key_name="paypal|"+txn_id,
+                        date=parse_paypal_date(params['payment_date']),
+                        amount=Decimal(params['payment_gross']),
+                        status=params['payment_status'],
+                        item_id=item_num,
+                        quantity=quantity,
+                    )
+                # update fields regardless
+                if 'payment_status' in params:
+                    pmt.status = params['payment_status']
                 if 'ipn_track_id' in params:
                     pmt.track_id = params['ipn_track_id']
+                if 'payment_gross' in params:
+                    pmt.amount = Decimal(params['payment_gross'])
+
                 pmt.put()
 
                 # how many credits did the user buy?
-                item_num = int(params['item_number'])
-                # list of possible items, of the form:
-                #   [item_id, item_cost, credit_num]
-                item_list = [
-                    (1, Decimal("0.99"), 1),
-                    (6, Decimal("5.00"), 6),
-                ]
-                for item_id, item_cost, credits in item_list:
+                for item_id, (item_cost, credits) in item_map.items():
                     if item_num == item_id:
                         # if ID matches, that's enough; but if the price doesn't match as well,
                         # log a warning
-                        if not pmt.amount == item_cost:
-                            warning = "Paypal IPN: got item number %s but paid %s" % (item_num, pmt.amount)
+                        if not pmt.amount == item_cost * quantity:
+                            warning = "Paypal IPN: got item number %s (qty %s) but paid %s" % (item_num, quantity, pmt.amount)
                             warning += "\n" + str(params)
                             app.logger.warn(warning)
                         # either way, increment the user's credit balance
-                        profile.credits += credits
+                        profile.credits += credits * quantity
                         profile.freeloader = False
                         profile.put()
                         break
@@ -201,44 +206,67 @@ def paypal_success():
                 app.logger.warn("Got different PayPal ID for user %s: recorded ID is %s, but got %s" % (user, profile.paypal_id, payer_id))
                 abort(401)
             txn_id = txn_info['txn_id']
-            subscr_id = txn_info['subscr_id']
+
+            subscr_id = txn_info.get('subscr_id')
             txn_date = parse_paypal_date(txn_info['payment_date'])
             amount = Decimal(txn_info['payment_gross'])
 
-            # find or create the Subscription object
-            key_name = "paypal|"+subscr_id
-            subscr = Subscription.get_by_key_name(key_name)
-            if not subscr:
-                subscr = Subscription(
-                    userprofile=profile,
-                    processor="paypal",
-                    subscription_id=subscr_id,
-                    key_name=key_name,
-                    active=True,
-                    start_date=txn_date,
-                    amount=amount,
-                )
-                subscr.put()
+            # was this a subscription signup, or a credit purchase?
+            if subscr_id:
+                # find or create the Subscription object
+                key_name = "paypal|"+subscr_id
+                subscr = Subscription.get_by_key_name(key_name)
+                if not subscr:
+                    subscr = Subscription(
+                        userprofile=profile,
+                        processor="paypal",
+                        subscription_id=subscr_id,
+                        key_name=key_name,
+                        active=True,
+                        start_date=txn_date,
+                        amount=amount,
+                    )
+                    subscr.put()
+            else:
+                subscr = None
             
             # create the Payment object
-            pmt = Payment(
-                subscription=subscr,
-                processor="paypal",
-                transaction_id=txn_id,
-                key_name="paypal|"+txn_id,
-                date=txn_date,
-                amount=amount,
-                status=txn_info['payment_status'],
-            )
+            key_name = "paypal|"+txn_id
+            pmt = Payment.get_by_key_name(key_name)
+            if pmt:
+                pmt_seen = True
+            else:
+                pmt_seen = False
+                pmt = Payment(
+                    subscription=subscr,
+                    processor="paypal",
+                    transaction_id=txn_id,
+                    key_name="paypal|"+txn_id,
+                    date=txn_date,
+                    amount=amount,
+                    status=txn_info['payment_status'],
+                )
+            if 'item_number' in txn_info:
+                pmt.item_id = int(txn_info['item_number'])
+            if 'quantity' in txn_info:
+                pmt.quantity = int(txn_info['quantity'])
             if 'ipn_track_id' in txn_info:
                 pmt.track_id = txn_info['ipn_track_id']
             pmt.put()
 
-            # update the user to indicate that they have paid
+            # update the user profile
             profile.freeloader = False
-            profile.subscribed = True
+            if subscr:
+                profile.subscribed = True
+                msg = "Payment succeeded. Your listeners are now active. Thank you!"
+            else:
+                # we increment credits on IPN, not PDT
+                if pmt_seen:
+                    msg = "Payment succeeded. Your pickup balance has been updated. Thank you!"
+                else:
+                    msg = "Your pickup balance will be updated when we receive confirmation from PayPal. Thank you!"
             profile.put()
-            flash("Payment succeeded. Your listeners are now active. Thank you!")
+            flash(msg, category="success")
         elif lines[0] == "FAIL":
             # boo
             flash("Payment failed.", category="error")

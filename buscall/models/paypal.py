@@ -1,5 +1,10 @@
 from buscall import app
 import datetime
+from decimal import Decimal
+try:
+    from collections import namedtuple
+except ImportError:
+    from collections_backport import namedtuple
 
 if app.debug:
     # sandbox info
@@ -11,8 +16,6 @@ if app.debug:
         unsubscribe = "BPQAK7D34287Q",
         pickups_1   = "PTDH2YFRJQE38",
     )
-    subscribe_button_id = "GUUGPYAWQ63CG"
-    unsubscribe_button_id = "BPQAK7D34287Q"
 else:
     # real info
     sandbox = False
@@ -23,6 +26,13 @@ else:
         unsubscribe = "WYWXRN23UG45Q",
         pickups_1   = "K5PVGSXFYV6L8",
     )
+
+# build mapping of paypal item ID to price and number of credits
+Item = namedtuple("Item", ["price", "credits"])
+item_map = {
+    1: Item(price=Decimal("0.99"), credits=1),
+    6: Item(price=Decimal("5.00"), credits=6),
+}
 
 def parse_paypal_date(date_str):
     return datetime.datetime.strptime(date_str, "%H:%M:%S %b %d, %Y PDT")
