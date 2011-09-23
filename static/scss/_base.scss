@@ -76,27 +76,33 @@ div.flash {
     width: 100%;
     min-height: $flash-icon-width;
     background: $paypal-green $flash-icon-margin center no-repeat;
-    border: 2px solid darken($paypal-green, 10%);
 
     &.success {
-        border-color: green;
         background: {
             color: lighten(green, 30%);
             image: url(check.png);
         }
+
+        .wrap {
+            border-color: green;
+        }
     }
     &.warn {
-        border-color: yellow;
         background: {
             color: lighten(yellow, 30%);
             image: url(warn.png);
         }
+        .wrap {
+            border-color: yellow;
+        }
     }
     &.error {
-        border-color: red;
         background: {
             color: lighten(red, 30%);
             image: url(error-x.png);
+        }
+        .wrap {
+            border-color: red;
         }
     }
     &.message {
@@ -104,6 +110,7 @@ div.flash {
     }
 
     .wrap {
+        border: 2px solid darken($paypal-green, 10%);
         padding: {
             left: $flash-icon-width + 2*$flash-icon-margin;
             right: $flash-icon-margin;
