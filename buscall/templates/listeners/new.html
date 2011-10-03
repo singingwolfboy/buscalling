@@ -1,10 +1,16 @@
 {% extends 'standard.html' %}
 {% block title %}New Listener | {{super()}}{% endblock %}
 {% from "_formhelpers.html" import with_errors %}
+{% block local_css %}
+    <link href="/static/standard.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new-listener.css" rel="stylesheet" type="text/css" />
+{% endblock %}
 {% block main %}
 <form method="POST" action="{{ url_for('new_listener') }}">
     {{form.hidden_tag()}}
-    {{ with_errors(form.recur) }}
+    <fieldset id="recur-info">
+        {{ with_errors(form.recur) }}
+    </fieldset>
     <fieldset id="bus-info">
         <legend>Bus</legend>
         {{ with_errors(form.agency_id) }}
@@ -34,12 +40,12 @@
                     {% endfor %}
                 </thead>
                 <tbody>
-                    <tr id="week_checkboxes">
+                    <tr id="week_checkboxes" {% if not form.recur.data %}style="display:none;"{% endif %}>
                     {% for day in DAYS_OF_WEEK %}
                         <td>{{form[day]}}</td>
                     {% endfor %}
                     </tr>
-                    <tr id="week_radio">
+                    <tr id="week_radio" {% if form.recur.data %}style="display:none;"{% endif %}>
                     {% for day in form.dow %}
                         <td>{{day}}</td>
                     {% endfor %}
