@@ -73,6 +73,9 @@ def make_js_model(agency_id=None, route_id=None, direction_id=None, stop_id=None
     
     if agency_id in AGENCIES:
         routes = get_routes(agency_id)
+        # if we can't access the NextBus API, just return what we have
+        if not routes:
+            return json.dumps(model)
         route_list = [(id, route_info.title) for id, route_info in routes.iteritems()]
         route_dict = OrderedDict()
         for id, title in route_list:
@@ -108,6 +111,9 @@ def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, di
         form.agency_id.data = agency_id
         # pull the routes already: no need for the extra waiting
         routes = get_routes(agency_id)
+        # if we can't access the NextBus API, just return the form
+        if not routes:
+            return form
         route_list = [(id, route_info.title) for id, route_info in routes.iteritems()]
         form.route_id.choices = [('','')] + route_list
 
