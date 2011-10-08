@@ -62,6 +62,7 @@ def get_routes(agency_id):
             logging.error("index_routes RPC returned status code %s" % result.status_code)
     except urlfetch.DownloadError:
         logging.error("Download error: " + url)
+        return None
 
     tree = etree.fromstring(result.content)
     return parse_index_xml(tree)
@@ -93,6 +94,7 @@ def get_route(agency_id, route_id, use_dicts=False):
             logging.error("show_route %s RPC returned status code %s" % (route_id, result.status_code))
     except urlfetch.DownloadError:
         logging.error("Download error: " + url)
+        return None
     
     tree = etree.fromstring(result.content)
     route = parse_route_xml(tree, use_dicts)
@@ -190,6 +192,7 @@ def get_predictions(agency_id, route_id, direction_id, stop_id):
             logging.error("predict_for_stop %s, %s RPC returned status code %s" % (route_id, stop_id, result.status_code))
     except urlfetch.DownloadError:
         logging.error("Download error: " + url)
+        return None
     
     tree = etree.fromstring(result.content)
     return parse_predict_xml(tree, direction_id)
