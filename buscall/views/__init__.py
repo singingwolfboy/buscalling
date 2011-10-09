@@ -64,8 +64,15 @@ def time_format(time):
 def page_root():
     user = users.get_current_user()
     if user:
-        profile = UserProfile.get_or_insert_by_user(user)
-        return render_template("dashboard.html")
+        profile = UserProfile.get_by_user(user)
+        if profile:
+            return render_template("dashboard.html")
+        else:
+            # this user's first login
+            profile = UserProfile.get_or_insert_by_user(user)
+            # Flash a welcome message, and redirect to new listener form
+            flash("Welcome! To set up your first bus alert, just fill out this form.")
+            return redirect(url_for("new_listener"), 303)
     else:
         return render_template('lander.html')
 app.add_url_rule('/', 'dashboard', page_root)
