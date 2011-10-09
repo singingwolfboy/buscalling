@@ -5,6 +5,8 @@ $peach = #F95;
 
 .create-listener {
     @include button(simple, $peach);
+    color: black;
+    text-decoration: none;
     border-radius: 1em;
     margin: .5em;
 
