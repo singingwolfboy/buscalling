@@ -63,6 +63,23 @@
                 margin: .2em auto;
             }
         }
+
+        &.start input {
+            width: 5em;
+        }
+        p.help_text {
+            color: gray;
+            background: #f5fffa;
+            padding: .5em;
+            margin: .3em;
+            border: 1px solid gray;
+            border-radius: 3px;
+        }
+        img.help_icon {
+            vertical-align: middle;
+            cursor: pointer;
+            margin-left: .5em;
+        }
     } 
     fieldset#alerts {
         ul li {

@@ -61,8 +61,17 @@
             {% endif %}
         </div>
 
-
-        {{ with_errors(form.start, placeholder="7:00 AM") }}
+        <div class="form_field start">
+            {{ with_errors(form.start, placeholder="7:00 AM", wrapper=False) }}
+            <img src="/static/help.png" class="help_icon" />
+            <p class="help_text" style="display:none;">
+                This is the time that we will start checking your bus for you. For example, 
+                if you expect your bus to come at 7:00 AM and you want to be alerted 5 minutes 
+                before it arrives, you should set this not later than 6:55 AM, and 6:50 AM 
+                is probably a better idea (in case your bus is early). In general, set this 
+                5 or 10 minutes before the first alert you want to get for your bus.
+            </p>
+        </div>
 
     </fieldset>
     <fieldset id="alerts">
