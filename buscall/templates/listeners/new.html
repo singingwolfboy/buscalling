@@ -9,14 +9,14 @@
 <form method="POST" action="{{ url_for('new_listener') }}">
     {{form.hidden_tag()}}
     <fieldset id="bus-info">
-        <legend>Bus</legend>
+        <h2>Bus</h2>
         {{ with_errors(form.agency_id) }}
         {{ with_errors(form.route_id) }}
         {{ with_errors(form.direction_id) }}
         {{ with_errors(form.stop_id) }}
     </fieldset>
     <fieldset id="time-info">
-        <legend>Time</legend>
+        <h2>Time</h2>
 
         {{ with_errors(form.recur) }}
 
@@ -75,7 +75,7 @@
 
     </fieldset>
     <fieldset id="alerts">
-        <legend>{{form.alerts.label}}</legend>
+        <h2>{{form.alerts.label}}</h2>
         <input type="hidden" name="{{form.alerts.id}}-length" id="{{form.alerts.id}}-length" value="{{form.alerts.entries|length}}" />
         <ul id="alerts-list">
         {% for alert in form.alerts.entries %}
@@ -110,6 +110,6 @@
         </ul>
     </fieldset>
     <a href="{{ url_for('dashboard') }}" class="cancel">Cancel</a>
-    <input type="submit" value="Create Listener" />
+    <input type="submit" value="Create Alert" />
 </form>
 {% endblock %}
