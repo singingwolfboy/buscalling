@@ -1,14 +1,14 @@
 import datetime
 import time
 from itertools import izip
-from wtforms.widgets import Input, RadioInput, ListWidget
+from wtforms.widgets import Input, TextInput, RadioInput, ListWidget
 from wtforms.fields import Field, FieldList, _unset_value
 from flaskext.wtf import SelectField, TextField, BooleanField, RadioField
 from buscall.models.nextbus import NextbusError, AGENCIES, get_routes, get_route
 
 __all__ = ['TelInput', 'TelephoneField', 'RadioBooleanField', 'TimeInput', 'TimeField', 'RouteField', 'DirectionField', 'StopField']
 
-time_formats = ['%H:%M']
+time_formats = ['%I:%M%p', '%I:%M %p', '%H:%M']
 
 class TelInput(Input):
     input_type = "tel"
@@ -66,7 +66,8 @@ class TimeInput(Input):
     input_type = "time"
 
 class TimeField(Field):
-    widget = TimeInput()
+    # widget = TimeInput()
+    widget = TextInput()
 
     def __init__(self, label=u'', validators=None, formats=time_formats, **kwargs):
         super(TimeField, self).__init__(label, validators, **kwargs)

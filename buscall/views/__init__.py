@@ -58,10 +58,7 @@ def update_userprofile_last_login():
 
 @app.template_filter('timeformat')
 def time_format(time):
-    s = time.strftime("%I:%M%p")
-    if s.startswith("0"):
-        s = s[1:]
-    return s
+    return time.strftime("%-I:%M%p")
 
 @app.route('/')
 def page_root():

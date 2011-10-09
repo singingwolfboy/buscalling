@@ -1,10 +1,24 @@
 {% extends "standard.html" %}
 {% block title %}Dashboard | {{super()}}{% endblock %}
+{% block local_css %}
+<link href="/static/standard.css" rel="stylesheet" type="text/css" />
+<link href="/static/dashboard.css" rel="stylesheet" type="text/css" />
+{% endblock %}
 {% block main %}
-  <h2>Listeners</h2>
+  <a href="{{url_for('new_listener')}}" class="create-listener top">Add Alert</a>
+  <h2>Your Bus Alerts</h2>
   {% set listener_map = profile.listeners|groupby('agency') %}
   {% macro render_listener(listener) -%}
-    <li>{{listener.route.title}} bus at {{listener.stop.title}} towards {{listener.direction.title}}, at around {{listener.start|timeformat}}
+    <li>
+      <div><strong>{{listener.stop.title}}</strong> at around {{listener.start|timeformat}}</div>
+      <div>Bus <strong>{{listener.route.title}}</strong> toward {{listener.direction.title}}</div>
+      <div>
+        {% if listener.recur %}
+          <strong>Recurring</strong>, every {{listener.repeat_descriptor}}
+        {% else %}
+          <strong>Once</strong> on this {{listener.repeat_descriptor}}
+        {% endif %}
+      </div>
       <form action="{{url_for('destroy_listener', listener_id=listener.id)}}" method="POST">
         <input type="hidden" name="_method" value="DELETE" />
         <input type="submit" value="Delete Listener" />
@@ -35,5 +49,5 @@
     </ul>
   {% endif %}
 
-  <a href="{{url_for('new_listener')}}">New Listener</a>
+  <a href="{{url_for('new_listener')}}" class="create-listener">Add Alert</a>
 {% endblock %}

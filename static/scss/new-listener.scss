@@ -1,4 +1,4 @@
-form {
+#main form {
     padding: 1em;
 
     fieldset {
@@ -9,46 +9,54 @@ form {
     }
 
     .form_field {
-        padding: .3em;
+        $field-padding: .3em;
+        $sidebar-width: 10em;
+        padding: {
+            top: 0; //$field-padding;
+            bottom: 0; //$field-padding;
+            right: $field-padding;
+            left: $field-padding + $sidebar-width;
+        }
+        margin-top: $field-padding;
+        margin-bottom: $field-padding;
+        position: relative;
+        min-height: 1em;
 
         label {
-            float: left;
-            width: 10em;
-            padding-top: .2em;
+            position: absolute;
+            width: $sidebar-width;
+            top: $field-padding;
+            left: $field-padding;
+        }
+        table label, ul label {
+            position: static;
+            width: auto;
         }
         &.recur {
-            overflow: hidden;
-            label {
-                padding: .3em 0;
-            }
-            ul li {
-                float: left;
-                margin-right: 3em;
-                padding: .3em;
+            ul {
+                overflow: hidden;
 
-                label {
-                    width: auto;
-                    float: none;
-                }
-                input {
+                li {
                     float: left;
-                    margin: {
-                        top:0;
-                        bottom:0;
-                        left:0;
-                        right:.5em;
+                    margin-right: 3em;
+                    padding: .3em;
+
+                    input {
+                        float: left;
+                        margin: {
+                            top:0;
+                            bottom:0;
+                            left:0;
+                            right:.5em;
+                        }
                     }
                 }
             }
-
         }
         table {
             th {
                 font-weight: bold;
                 padding: 0 .2em;
-            }
-            label {
-                width: auto;
             }
             input {
                 display: block;
@@ -58,12 +66,17 @@ form {
     } 
     fieldset#alerts {
         ul li {
+            padding: 2px 0;
+
             p {
                 display: inline-block;
             }
             .alerts-controls {
                 display: inline-block;
                 margin-left: 3em;
+                background-color: lightgreen;
+                border-radius: 5px;
+                padding: 1px 5px;
             }
             input.alerts-minutes {
                 width: 3em;

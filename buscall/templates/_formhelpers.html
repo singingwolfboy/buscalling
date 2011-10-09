@@ -1,8 +1,10 @@
-{% macro with_errors(field, class=None) %}
-    {% if class == None %}
-        {% set class = "form_field "+field.id %}
+{% macro with_errors(field, class=None, wrapper=True) %}
+    {% if wrapper %}
+        {% if class == None %}
+            {% set class = "form_field "+field.id %}
+        {% endif %}
+        <div class="{{class}}">
     {% endif %}
-    <div class="{{class}}">
     {{field.label}}
     {% if field.errors %}
         <ul class="errors">{% for error in field.errors %}<li>{{ error }}</li>{% endfor %}</ul>
@@ -11,5 +13,7 @@
     {% else %}
         {{ field(**kwargs) }}
     {% endif %}
-    </div>
+    {% if wrapper %}
+        </div>
+    {% endif %}
 {% endmacro %}

@@ -70,7 +70,10 @@ $().ready ->
     direction = direction_elmt.val()
     update_stops agency, route, direction
   
-  $("input[type=time]").timePicker(defaultSelected: "07:00")
+  $(".form_field.start input").timePicker(
+    defaultSelected: "7:00 AM"
+    show24Hours: false
+  )
   window.app.alerts = []
   window.app.alerts.addFromHTML = (elmt) ->
     window.app.alerts.push 
@@ -111,8 +114,12 @@ $().ready ->
 
   $("#recur input[type=radio]").change ->
     if this.value == "y"
+      $("#dates-label-plural").show()
+      $("#dates-label-singular").hide()
       $("#week_checkboxes").show()
-      $("#week_radio").hide()
+      $("#dow").hide()
     else
-      $("#week_radio").show()
+      $("#dates-label-singular").show()
+      $("#dates-label-plural").hide()
+      $("#dow").show()
       $("#week_checkboxes").hide()

@@ -6,6 +6,7 @@ from buscall.forms.fields import TimeField, RouteField, DirectionField, StopFiel
 from buscall.models.nextbus import AGENCIES
 from buscall.models.listener import ALERT_CHOICES
 from buscall.util import DAYS_OF_WEEK
+import datetime
 
 class WaitlistForm(Form):
     email = EmailField(u'Email', validators=[Required()])
@@ -23,6 +24,18 @@ class AlertForm(Form):
         super(AlertForm, self).__init__(*args, **kwargs)
 
 agency_choices = [('','')] + [(id, agency.title) for (id, agency) in AGENCIES.items()]
+today = datetime.date.today()
+this_week = [today + datetime.timedelta(days=n) for n in range(7)]
+def weekday_choice_text_format(day):
+    formatted = day.strftime("%a, %b %-d")
+    if day == today:
+        return formatted + " (today)"
+    elif day == today + datetime.timedelta(days=1):
+        return formatted + " (tomorrow)"
+    else:
+        return formatted
+this_week_choices = [(day.strftime('%a').lower(), weekday_choice_text_format(day)) for day in this_week]
+
 
 class BusListenerForm(Form):
     agency_id = SelectField("Agency", choices=agency_choices,
@@ -33,20 +46,20 @@ class BusListenerForm(Form):
         id="direction", validators=[Required()])
     stop_id = StopField("Stop",
         id="stop", validators=[Required()])
-    recur = RadioBooleanField(choices=[(True, "Recurring"), (False, "One Time")], default=True)
+    recur = RadioBooleanField("Repeat", choices=[(True, "Every Week"), (False, "Don't Repeat")], default=True)
     start = TimeField("Start Checking", validators=[Required()])
     alerts = FieldList(FormField(AlertForm), min_entries=1)
     # day of week booleans used for recurring listeners
-    sun = BooleanField()
-    mon = BooleanField()
-    tue = BooleanField()
-    wed = BooleanField()
-    thu = BooleanField()
-    fri = BooleanField()
-    sat = BooleanField()
-    sun = BooleanField()
+    mon = BooleanField(default=(today.weekday() == 0))
+    tue = BooleanField(default=(today.weekday() == 1))
+    wed = BooleanField(default=(today.weekday() == 2))
+    thu = BooleanField(default=(today.weekday() == 3))
+    fri = BooleanField(default=(today.weekday() == 4))
+    sat = BooleanField(default=(today.weekday() == 5))
+    sun = BooleanField(default=(today.weekday() == 6))
     # day of week radio used for one-time listeners
-    dow = MaybeRadioField(choices=[(day, day.capitalize()) for day in DAYS_OF_WEEK])
+    #dow = MaybeRadioField(choices=[(day, day.capitalize()) for day in DAYS_OF_WEEK])
+    dow = SelectField("Date", choices=this_week_choices, default=today.strftime('%a').lower())
 
 
     def validate(self, *args, **kwargs):

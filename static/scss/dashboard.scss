@@ -1,0 +1,15 @@
+@import "compass/css3";
+@import "addons/button";
+
+$peach = #F95;
+
+.create-listener {
+    @include button(simple, $peach);
+    border-radius: 1em;
+    margin: .5em;
+
+    &.top {
+        float: right;
+    }
+}
+

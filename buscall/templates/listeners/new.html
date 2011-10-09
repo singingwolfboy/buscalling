@@ -8,9 +8,6 @@
 {% block main %}
 <form method="POST" action="{{ url_for('new_listener') }}">
     {{form.hidden_tag()}}
-    <fieldset id="recur-info">
-        {{ with_errors(form.recur) }}
-    </fieldset>
     <fieldset id="bus-info">
         <legend>Bus</legend>
         {{ with_errors(form.agency_id) }}
@@ -20,9 +17,17 @@
     </fieldset>
     <fieldset id="time-info">
         <legend>Time</legend>
-        {{ with_errors(form.start, placeholder="07:00:00") }}
 
-        <div class="form_field week">
+        {{ with_errors(form.recur) }}
+
+        <div class="form_field dates">
+            {% if form.recur.data %}
+                <label id="dates-label-plural">Dates</label>
+                {{ form.dow.label(id="dates-label-singular", style="display:none;") }}
+            {% else %}
+                <label id="dates-label-plural" style="display:none;">Dates</label>
+                {{ form.dow.label(id="dates-label-singular") }}
+            {% endif %}
             {% if form.errors.week or form.dow.errors %}
                 <ul class="errors">
                     {% for error in form.errors.week %}
@@ -33,26 +38,32 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <table id="weekpicker">
+
+            <table id="week_checkboxes" {% if not form.recur.data %}style="display:none;"{% endif %}>
                 <thead>
                     {% for day in DAYS_OF_WEEK %}
                     <th>{{form[day].label}}</th>
                     {% endfor %}
                 </thead>
                 <tbody>
-                    <tr id="week_checkboxes" {% if not form.recur.data %}style="display:none;"{% endif %}>
+                    <tr>
                     {% for day in DAYS_OF_WEEK %}
                         <td>{{form[day]}}</td>
                     {% endfor %}
                     </tr>
-                    <tr id="week_radio" {% if form.recur.data %}style="display:none;"{% endif %}>
-                    {% for day in form.dow %}
-                        <td>{{day}}</td>
-                    {% endfor %}
-                    </tr>
                 </tbody>
             </table>
+
+            {% if form.recur.data %}
+                {{ form.dow(style="display:none;") }}
+            {% else %}
+                {{ form.dow }}
+            {% endif %}
         </div>
+
+
+        {{ with_errors(form.start, placeholder="7:00 AM") }}
+
     </fieldset>
     <fieldset id="alerts">
         <legend>{{form.alerts.label}}</legend>
