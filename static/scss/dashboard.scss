@@ -17,9 +17,11 @@ $peach = #F95;
 
 ul#listeners {
     clear: both;
+    border-top: 1px dotted gray;
 
     li {
         padding: .5em 1em;
+        border-bottom: 1px dotted gray;
 
         .aside {
             float: right;
