@@ -10,32 +10,30 @@
   {% set listener_map = profile.listeners|groupby('agency') %}
   {% macro render_listener(listener) -%}
     <li>
-      <div><strong>{{listener.stop.title}}</strong> at around {{listener.start|timeformat}}</div>
-      <div>Bus <strong>{{listener.route.title}}</strong> toward {{listener.direction.title}}</div>
-      <div>
-        {% if listener.recur %}
-          <strong>Recurring</strong>, every {{listener.repeat_descriptor}}
-        {% else %}
-          <strong>Once</strong> on this {{listener.repeat_descriptor}}
-        {% endif %}
+      <div class="aside">
+        <div class="recur">{{listener.repeat_descriptor}}</div>
+        <form action="{{url_for('destroy_listener', listener_id=listener.id)}}" method="POST">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" />
+        </form>
       </div>
-      <form action="{{url_for('destroy_listener', listener_id=listener.id)}}" method="POST">
-        <input type="hidden" name="_method" value="DELETE" />
-        <input type="submit" value="Delete Listener" />
-      </form>
+      <div class="listener-info">
+        <div><strong>{{listener.stop.title}}</strong> at around {{listener.start|timeformat}}</div>
+        <div>Bus <strong>{{listener.route.title}}</strong> toward {{listener.direction.title}}</div>
+      </div>
     </li>
   {% endmacro %}
   {% if listener_map|count == 0 %}
     <p>You have no listeners.</p>
   {% elif listener_map|count == 1 %}
     {% set agency, listeners = listener_map|first %}
-    <ul>
+    <ul id="listeners">
     {% for listener in listeners %}
       {{ render_listener(listener) }}
     {% endfor %}
     </ul>
   {% else %}
-    <ul>
+    <ul id="listeners">
     {% for agency, listeners in listener_map %}
       <li>
         <div>{{agency.title}}</div>

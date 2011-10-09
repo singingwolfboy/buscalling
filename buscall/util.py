@@ -70,6 +70,8 @@ def pluralize_minutes(minutes):
         return "%s minutes" % (minutes)
 
 def humanize_list(lst):
+    if not hasattr(lst, "__len__"):
+        lst = list(lst)
     if len(lst) == 0:
         return ""
     elif len(lst) == 1:

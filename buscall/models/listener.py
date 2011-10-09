@@ -5,6 +5,8 @@ from buscall.models.profile import UserProfile
 from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
 from buscall.models.twilio import alert_by_phone
 from buscall.decorators import check_user_payment
+from buscall.util import humanize_list
+import datetime
 try:
     from itertools import compress
 except ImportError:
@@ -50,29 +52,41 @@ class BusListener(db.Model):
 
     @property
     def weekdays(self):
-        return all((getattr(self, d) for d in DAYS_OF_WEEK[0:5]))
+        return self.mon and self.tue and self.wed and self.thu and self.fri \
+            and not self.sat and not self.sun
 
     @property
     def weekends(self):
-        return all((getattr(self, d) for d in DAYS_OF_WEEK[-2:]))
+        return self.sat and self.sun \
+            and not self.mon and not self.tue and not self.wed and not self.thu and not self.fri
 
     @property
     def repeat_descriptor(self):
-        if(self.daily):
-            return "daily"
-
-        day_names =  [d.capitalize() for d in DAYS_OF_WEEK]
-        day_vals = [getattr(self, d) for d in DAYS_OF_WEEK]
-        if(self.weekdays):
-            days = list(compress(day_names[-2], day_vals[-2:]))
-            days.insert(0, "weekdays")
-        elif(self.weekends):
-            days = list(compress(day_names[0:4], day_vals[0:5]))
-            days.insert(0, "weekends")
+        if self.recur:
+            if self.daily:
+                return "every day"
+            if self.weekdays:
+                return "every weekday"
+            if self.weekends:
+                return "every weekend"
+            
+            day_names =  [day.capitalize() for day in DAYS_OF_WEEK]
+            day_vals = [getattr(self, day) for day in DAYS_OF_WEEK]
+            if not any(day_vals):
+                return "never" # should never get here
+            return "every %s" % (humanize_list(compress(day_names, day_vals)),)
+        
         else:
-            days = compress(day_names, day_vals)
-
-        return ", ".join(days)
+            today = datetime.date.today()
+            tomorrow = today + datetime.timedelta(days=1)
+            for i, day in enumerate(DAYS_OF_WEEK):
+                if getattr(self, day):
+                    if i == today.weekday():
+                        return "today"
+                    if i == tomorrow.weekday():
+                        return "tomorrow"
+                    return "on %s" % (day.capitalize())
+            return "never" # should never get here
     
     @property
     def agency(self):
