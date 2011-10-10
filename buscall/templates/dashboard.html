@@ -24,7 +24,10 @@
     </li>
   {% endmacro %}
   {% if listener_map|count == 0 %}
-    <p>You have no listeners.</p>
+    <p class="no-listeners">
+      You have not set up any bus alerts yet. 
+      Would you like to <a href="{{ url_for('new_listener') }}">create a new one?</a>
+    </p>
   {% elif listener_map|count == 1 %}
     {% set agency, listeners = listener_map|first %}
     <ul id="listeners">

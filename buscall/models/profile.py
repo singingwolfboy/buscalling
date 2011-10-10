@@ -62,6 +62,13 @@ class UserProfile(db.Expando):
         return cmp((self.user, self.subscribed, self.credits, self.joined, self.phone, self.first_name, self.last_name),
                    (othr.user, othr.subscribed, othr.credits, othr.joined, othr.phone, othr.first_name, othr.last_name))
 
+    def phone_required(self):
+        for listener in self.listeners:
+            for alert in listener.alerts:
+                if alert.medium in ['phone', 'txt']:
+                    return True
+        return False
+
     @classmethod
     def get_by_user(cls, user):
         key_name = user.user_id() or user.email()

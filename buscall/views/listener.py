@@ -56,7 +56,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
             alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
             alert.put()
 
-        flash("Alert created!")
+        flash("Alert created!", category="success")
         return redirect(url_for("lander"), 303)
     context = {
         "form": form,
@@ -161,6 +161,6 @@ def destroy_listener(listener_id):
     if listener.userprofile != userprofile:
         abort(401)
     listener.delete()
-    flash('Alert deleted!')
+    flash('Alert deleted!', category="success")
     return redirect(url_for('lander'), 303)
     

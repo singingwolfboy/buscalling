@@ -33,7 +33,7 @@ def update_profile(profile_id):
             else:
                 setattr(profile, field_name, None)
             profile.put()
-        flash("Profile updated!")
+        flash("Profile updated!", category="success")
         return redirect(url_for('lander'), 303)
     else:
         flash("Profile update failed", "error")
