@@ -9,6 +9,7 @@ from .profile import update_profile
 from buscall.util import MAIL_SENDER, GqlQuery
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
+from buscall.models.listener import NOTIFICATION_CHOICES
 from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
@@ -24,6 +25,7 @@ def inject_base_vars():
         "profile_form": UserProfileForm(request.form, profile),
         "paypal_url": paypal_url,
         "paypal_button_id": paypal_button_id,
+        "medium_map": dict(NOTIFICATION_CHOICES),
     }
 
 @app.context_processor

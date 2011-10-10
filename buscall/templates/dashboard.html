@@ -20,6 +20,13 @@
       <div class="listener-info">
         <div><strong>{{listener.stop.title}}</strong> at around {{listener.start|timeformat}}</div>
         <div>Bus <strong>{{listener.route.title}}</strong> toward {{listener.direction.title}}</div>
+        <div class="notifications-wrap">Notifications:
+          <ul class="notifications">
+          {% for notification in listener.notifications %}
+            <li>{{medium_map[notification.medium] | lower}} {{notification.minutes}}min{% if not loop.last %},{% endif %}</li>
+          {% endfor %}
+          </ul>
+        </div>
       </div>
     </li>
   {% endmacro %}

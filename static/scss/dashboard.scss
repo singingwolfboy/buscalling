@@ -34,5 +34,16 @@ ul#listeners {
                 text-align: right;
             }
         }
+
+        ul.notifications {
+            margin-top: .1em;
+            display: inline;
+
+            li {
+                display: inline;
+                border: 0;
+                padding: 0;
+            }
+        }
     }
 }
