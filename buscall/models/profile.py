@@ -5,8 +5,11 @@ from buscall.util import GqlQuery
 
 class UserProfile(db.Expando):
     user = db.UserProperty(required=True)
+
+    # reporting/historical
     joined = db.DateTimeProperty(required=True, auto_now_add=True)
     last_access = db.DateTimeProperty(required=True, auto_now=True)
+    total_listeners_created = db.IntegerProperty(required=True, default=0)
 
     # money-related properties
     # freeloader starts as True, becomes False as soon as they spend any money at all

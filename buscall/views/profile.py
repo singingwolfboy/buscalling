@@ -36,5 +36,5 @@ def update_profile(profile_id):
         flash("Profile updated!", category="success")
         return redirect(url_for('lander'), 303)
     else:
-        flash("Profile update failed", "error")
+        flash("Profile update failed", category="error")
         return render_template("profiles/edit.html", form=form)

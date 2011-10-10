@@ -56,6 +56,9 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
             alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
             alert.put()
 
+        profile.total_listeners_created += 1
+        profile.put()
+        
         flash("Alert created!", category="success")
         return redirect(url_for("lander"), 303)
     context = {
