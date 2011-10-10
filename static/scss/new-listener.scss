@@ -69,20 +69,6 @@ $cream = #f5fffa;
         &.start input {
             width: 5em;
         }
-        p.help_text {
-            color: gray;
-            background: $cream;
-            padding: .5em;
-            margin: .3em;
-            border: 1px solid gray;
-            border-radius: 3px;
-            line-height: 1.3;
-        }
-        img.help_icon {
-            vertical-align: middle;
-            cursor: pointer;
-            margin-left: .5em;
-        }
     } 
     fieldset#alerts {
         ul li {
@@ -103,6 +89,26 @@ $cream = #f5fffa;
                 text-align: right;
             }
         }
+    }
+    .help_text {
+        background: $cream;
+        padding: .5em;
+        margin: .3em;
+        border: 1px solid gray;
+        border-radius: 3px;
+        line-height: 1.3;
+
+        p {
+            margin-bottom: 1em;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    img.help_icon {
+        vertical-align: middle;
+        cursor: pointer;
+        margin-left: .5em;
     }
 
     a.cancel {

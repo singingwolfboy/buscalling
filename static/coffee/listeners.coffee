@@ -9,14 +9,6 @@ $().ready ->
   stop_elmt = $("form #stop")
   loader_icon = $("<img src=\"/static/ajax-loader.gif\"/>")
 
-  $(".form_field img.help_icon").each ->
-    help_text = $(this).siblings(".help_text")
-    $(this).toggle (->
-      help_text.show "fast"
-    ), (->
-      help_text.hide "fast"
-    )
-
   update_routes = (agency) ->
     routes = [ option_blank ]
     # JS objects don't have a defined ordering, so we've defined that ordering as
@@ -131,3 +123,18 @@ $().ready ->
       $("#dates-label-plural").hide()
       $("#dow").show()
       $("#week_checkboxes").hide()
+  
+  $(".form_field img.help_icon").each ->
+    help_text = $(this).siblings(".help_text")
+    $(this).toggle (->
+      help_text.show "fast"
+    ), (->
+      help_text.hide "fast"
+    )
+  
+  $(".alerts-medium").live "change", ->
+    if this.value == "txt"
+      $("#sms-warning").show "fast"
+      return
+    if _.all( $(".alerts-medium"), (select) -> select.value != "txt" )
+      $("#sms-warning").hide "fast"

@@ -11,7 +11,7 @@ html, body {
     height: 100%;
     font-family: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
 }
-h1, h2, p.h1, p.h2 {
+h1, h2, h3, p.h1, p.h2, p.h3 {
     font-family: "Gentium Basic", "Garamond", "Hoefler Text", Times, serif;
 }
 body {
@@ -66,6 +66,14 @@ h1 {
 }
 h2 {
     font-size: 14pt;
+}
+h3 {
+    font-size: 13pt;
+    text-align: center;
+    font-weight: bold;
+}
+strong {
+    font-weight: bold;
 }
 
 // flash messages

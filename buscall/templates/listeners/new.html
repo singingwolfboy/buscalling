@@ -108,6 +108,11 @@
             </li>
         {% endfor %}
         </ul>
+        <div id="sms-warning" class="help_text" style="display:none;">
+            <h3>Warning: Text Alerts are Unreliable</h3>
+            <p>Normal calls take priority over sending text messages on a network. When many people are making calls and sending texts all at once, the phone companies put the calls through immediately, but wait to deliver text messages until fewer people are using the network &mdash; which can take hours. Sometimes, texts are never delivered at all! (<a href="http://en.wikipedia.org/wiki/SMS#Unreliability">See Wikipedia for more information.</a>)</p>
+            <p>If you choose to use text alerts, Bus Calling will always send your text alert at the right time, but <strong>we cannot guarantee that you will receive it promptly, or at all</strong>. That isn't something we can control: it's up to the phone companies. Since a bus alert isn't very useful if it's delivered late, we don't recommend text messages as the only way of getting bus alerts.</p>
+        </div>
     </fieldset>
     <a href="{{ url_for('dashboard') }}" class="cancel">Cancel</a>
     <input type="submit" value="Create Alert" />
