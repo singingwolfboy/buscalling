@@ -4,7 +4,7 @@ from flaskext.wtf import Required, Optional, Regexp, Length
 from flaskext.wtf.html5 import EmailField
 from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField, TelephoneField, RadioBooleanField, MaybeRadioField
 from buscall.models.nextbus import AGENCIES
-from buscall.models.listener import ALERT_CHOICES
+from buscall.models.listener import NOTIFICATION_CHOICES
 from buscall.util import DAYS_OF_WEEK
 import datetime
 
@@ -15,13 +15,13 @@ class WaitlistForm(Form):
     location_long = DecimalField(u'Longitude', widget=HiddenInput(),
         validators=[Optional()])
 
-class AlertForm(Form):
+class NotificationForm(Form):
     minutes = IntegerField(default=5)
-    medium = SelectField(choices=ALERT_CHOICES)
+    medium = SelectField(choices=NOTIFICATION_CHOICES)
 
     def __init__(self, *args, **kwargs):
         kwargs['csrf_enabled'] = False
-        super(AlertForm, self).__init__(*args, **kwargs)
+        super(NotificationForm, self).__init__(*args, **kwargs)
 
 agency_choices = [('','')] + [(id, agency.title) for (id, agency) in AGENCIES.items()]
 today = datetime.date.today()
@@ -48,7 +48,7 @@ class BusListenerForm(Form):
         id="stop", validators=[Required()])
     recur = RadioBooleanField("Repeat", choices=[(True, "Every Week"), (False, "Don't Repeat")], default=True)
     start = TimeField("Start Checking", validators=[Required()])
-    alerts = FieldList(FormField(AlertForm), min_entries=1)
+    notifications = FieldList(FormField(NotificationForm), min_entries=1)
     # day of week booleans used for recurring listeners
     mon = BooleanField(default=(today.weekday() == 0))
     tue = BooleanField(default=(today.weekday() == 1))

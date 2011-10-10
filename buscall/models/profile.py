@@ -67,8 +67,8 @@ class UserProfile(db.Expando):
 
     def phone_required(self):
         for listener in self.listeners:
-            for alert in listener.alerts:
-                if alert.medium in ['phone', 'txt']:
+            for notification in listener.notifications:
+                if notification.medium in ['phone', 'txt']:
                     return True
         return False
 

@@ -1,7 +1,7 @@
 from __future__ import with_statement
 from buscall import app
 from buscall.models import nextbus, twilio
-from buscall.models.listener import BusListener, BusAlert
+from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
 from buscall.views.tasks import reset_seen_flags
 from buscall.tests.util import ServiceTestCase
@@ -61,34 +61,34 @@ class BusListenerData(DataSet):
         start = datetime.time(4,0)
         seen = True
 
-class BusAlertData(DataSet):
+class BusNotificationData(DataSet):
     class morning_bus_20_min:
         listener = BusListenerData.morning_bus
         minutes = 20
         medium = "email"
         executed = False
 
-    class seen_bus_email_alert:
+    class seen_bus_email_notification:
         listener = BusListenerData.seen_bus
         minutes = 3
         medium = "email"
         executed = True
 
-    class seen_bus_phone_alert:
+    class seen_bus_phone_notification:
         listener = BusListenerData.seen_bus
         minutes = 5
         medium = "phone"
         executed = False
 
 class DatastoreTestCase(ServiceTestCase, DataTestCase):
-    datasets = [UserProfileData, BusListenerData, BusAlertData]
+    datasets = [UserProfileData, BusListenerData, BusNotificationData]
 
     def test_set_seen_flag(self):
-        # get a listener that has alerts
+        # get a listener that has notifications
         listener = BusListener.gql("WHERE seen = False").fetch(1)[0]
         assert not listener.seen
-        for alert in listener.alerts:
-            alert.execute()
+        for notification in listener.notifications:
+            notification.execute()
         # refresh from db
         key = listener.key()
         del listener

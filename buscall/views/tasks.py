@@ -26,10 +26,10 @@ def poll(struct_time=None):
         if not listener.start <= datetime.time(struct_time.tm_hour, struct_time.tm_min, struct_time.tm_sec):
             continue # should have been filtered out by GqlQuery, but wasn't
         predictions = listener.get_predictions()
-        for alert in listener.alerts:
+        for notification in listener.notifications:
             for bus in predictions.buses:
-                if alert.minutes == bus.minutes:
-                    alert.execute(bus.minutes)
+                if notification.minutes == bus.minutes:
+                    notification.execute(bus.minutes)
     
     return redirect(url_for("lander"), 303)
 
@@ -44,8 +44,8 @@ def reset_seen_flags():
         else:
             # the listener has run, and it shouldn't run again, so delete it
             listener.delete()
-    executed = GqlQuery("SELECT * FROM BusAlert WHERE executed = True")
-    for alert in executed:
-        alert.executed = False
-        alert.put()
+    executed = GqlQuery("SELECT * FROM BusNotification WHERE executed = True")
+    for notification in executed:
+        notification.executed = False
+        notification.put()
     return redirect(url_for("lander"), 303)

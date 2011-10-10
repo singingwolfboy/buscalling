@@ -2,7 +2,7 @@ from __future__ import with_statement
 import datetime
 from buscall import app
 from buscall.models import nextbus, twilio
-from buscall.models.listener import BusListener, BusAlert
+from buscall.models.listener import BusListener
 from buscall.models.profile import UserProfile
 from buscall.tests.util import ServiceTestCase
 from google.appengine.api.users import User

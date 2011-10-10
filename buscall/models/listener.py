@@ -3,7 +3,7 @@ from google.appengine.ext import db
 from buscall.models.nextbus import AGENCIES, get_predictions, get_route
 from buscall.models.profile import UserProfile
 from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
-from buscall.models.twilio import alert_by_phone
+from buscall.models.twilio import notify_by_phone, notify_by_txt
 from buscall.decorators import check_user_payment
 from buscall.util import humanize_list
 import datetime
@@ -14,7 +14,7 @@ except ImportError:
     def compress(data, selectors):
         return (d for d, s in izip(data, selectors) if s)
 
-ALERT_CHOICES = (('phone', 'Call'), ('txt', 'Text'), ('email', 'Email'))
+NOTIFICATION_CHOICES = (('phone', 'Call'), ('txt', 'Text'), ('email', 'Email'))
 
 class BusListener(db.Model):
     userprofile = db.ReferenceProperty(UserProfile, collection_name="listeners", required=True)
@@ -33,7 +33,7 @@ class BusListener(db.Model):
     # (such as time is after start and time is before end)
     # so instead we'll use a boolean to determine whether this needs to be checked
     start = db.TimeProperty(required=True)
-    # when all your alerts have been satisfied, set seen=True
+    # when all your notifications have been satisfied, set seen=True
     seen  = db.BooleanProperty(required=True, default=False)
 
     # day of week: since we'll be sorting by this,
@@ -130,24 +130,24 @@ class BusListener(db.Model):
         "Use the Nextbus API to get route prediction information."
         return get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
     
-    def check_alerts(self):
-        self.seen = all((alert.executed for alert in self.alerts))
+    def check_notifications(self):
+        self.seen = all((notification.executed for notification in self.notifications))
         if self.seen and not self.recur:
             self.delete()
         else:
             self.put()
     
     def delete(self):
-        # delete all your associated alerts first
-        for alert in self.alerts:
-            alert.delete()
+        # delete all your associated notifications first
+        for notification in self.notifications:
+            notification.delete()
         # and then delete yourself
         super(BusListener, self).delete()
 
-class BusAlert(db.Model):
-    listener = db.ReferenceProperty(BusListener, collection_name="alerts", required=True)
+class BusNotification(db.Model):
+    listener = db.ReferenceProperty(BusListener, collection_name="notifications", required=True)
     minutes = db.IntegerProperty(required=True)
-    medium = db.StringProperty(choices=[k for k,v in ALERT_CHOICES], required=True)
+    medium = db.StringProperty(choices=[k for k,v in NOTIFICATION_CHOICES], required=True)
     executed = db.BooleanProperty(required=True, default=False)
 
     def __str__(self):
@@ -162,27 +162,27 @@ class BusAlert(db.Model):
         "minutes parameter is the actual prediction time"
         userprofile = self.listener.userprofile
         if not userprofile.subscribed and userprofile.credits < 1:
-            # no money, no alert
+            # no money, no notification
             return
 
         if minutes is None:
             minutes = self.minutes
 
         if self.medium == "email":
-            alert_by_email(self.listener, minutes)
+            notify_by_email(self.listener, minutes)
         elif self.medium == "phone":
-            alert_by_phone(self.listener, minutes)
+            notify_by_phone(self.listener, minutes)
         elif self.medium == "txt":
-            alert_by_txt(self.listener, minutes)
+            notify_by_txt(self.listener, minutes)
         else:
             raise NotImplementedError
         
         self.executed = True
         self.put()
-        self.listener.check_alerts()
+        self.listener.check_notifications()
 
 @check_user_payment
-def alert_by_email(listener, minutes=None):
+def notify_by_email(listener, minutes=None):
     if minutes is None:
         predictions = listener.get_predictions()
         minutes = predictions.buses[0].minutes

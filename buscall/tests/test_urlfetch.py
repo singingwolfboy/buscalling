@@ -2,7 +2,7 @@ from __future__ import with_statement
 import datetime
 from buscall import app
 from buscall.models import nextbus, twilio
-from buscall.models.listener import BusListener, BusAlert
+from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
 from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
@@ -63,21 +63,21 @@ class BusListenerData(DataSet):
         start = datetime.time(4,0)
         seen = True
 
-class BusAlertData(DataSet):
+class BusNotificationData(DataSet):
     class cron_bus_20_min:
         listener = BusListenerData.cron_bus
         minutes = 20
         medium = "email"
         executed = False
 
-    class seen_bus_phone_alert:
+    class seen_bus_phone_notification:
         listener = BusListenerData.seen_bus
         minutes = 5
         medium = "phone"
         executed = False
 
 class UrlfetchTestCase(ServiceTestCase, DataTestCase):
-    datasets = [UserProfileData, BusListenerData, BusAlertData]
+    datasets = [UserProfileData, BusListenerData, BusNotificationData]
 
     def test_predictions(self):
         agency_id = "mbta"
@@ -112,8 +112,8 @@ class UrlfetchTestCase(ServiceTestCase, DataTestCase):
         url = "https://api.twilio.com/2010-04-01/Accounts/%s/SMS/Messages.json" % (ACCOUNT_SID,)
         assert url in self.urlfetch_history
 
-    def test_phone_alert(self):
-        alert = BusAlert.gql("WHERE medium = :medium AND executed = False", medium="phone").fetch(1)[0]
+    def test_phone_notification(self):
+        notification = BusNotification.gql("WHERE medium = :medium AND executed = False", medium="phone").fetch(1)[0]
         with app.test_request_context('/tasks/poll'):
-            result = twilio.alert_by_phone(alert.listener)
-            self.assertEqual(result['to'], alert.listener.userprofile.phone)
+            result = twilio.notify_by_phone(notification.listener)
+            self.assertEqual(result['to'], notification.listener.userprofile.phone)

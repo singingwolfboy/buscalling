@@ -72,10 +72,10 @@ def page_root():
             flash("Welcome! To set up your first bus alert, just fill out this form.")
             return redirect(url_for("new_listener"), 303)
         else:
-            # If the user has listeners with alerts that rely on a phone number,
+            # If the user has listeners with notifications that rely on a phone number,
             # but they have not entered their phone number, we should warn them of this.
             if not profile.phone and profile.phone_required():
-                flash("At least one of your alerts is set up to alert you "
+                flash("At least one of your alerts is set up to notify you "
                     "via phone or text message, but you have not set up your "
                     "phone number yet. To do so, click on \"Edit Profile\" above.",
                     category="warn")

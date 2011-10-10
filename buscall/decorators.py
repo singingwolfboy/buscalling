@@ -53,14 +53,14 @@ def check_user_payment(func):
     def noop(listener, minutes=None):
         pass
     @wraps(func)
-    def decorated_alert(listener, minutes=None):
+    def decorated_notification(listener, minutes=None):
         userprofile = listener.userprofile
         subscribed = userprofile.subscribed
         credits = userprofile.credits
         if not subscribed and credits < 1:
-            # no money, no alert
+            # no money, no notification
             return noop
-        # otherwise, do the alert
+        # otherwise notify
         result = func(listener, minutes)
         if not subscribed:
             # deduct a credit
@@ -68,4 +68,4 @@ def check_user_payment(func):
             userprofile.put()
         # and return the original result
         return result
-    return decorated_alert
+    return decorated_notification

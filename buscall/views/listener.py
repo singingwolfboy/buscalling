@@ -2,7 +2,7 @@ from buscall import app
 from flask import render_template, request, flash, redirect, url_for, abort
 from ..decorators import login_required
 from google.appengine.api import users
-from buscall.models.listener import BusListener, BusAlert
+from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
 from buscall.forms import BusListenerForm
 from buscall.models.nextbus import AGENCIES, get_routes, get_route
@@ -52,9 +52,9 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
 
         listener = BusListener(**params)
         listener.put()
-        for alert_data in form.data['alerts']:
-            alert = BusAlert(listener=listener, minutes=alert_data['minutes'], medium=alert_data['medium'], seen=False)
-            alert.put()
+        for notification_data in form.data['notifications']:
+            notification = BusNotification(listener=listener, minutes=notification_data['minutes'], medium=notification_data['medium'], seen=False)
+            notification.put()
 
         profile.total_listeners_created += 1
         profile.put()

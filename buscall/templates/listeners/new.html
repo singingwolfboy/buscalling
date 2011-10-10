@@ -66,52 +66,52 @@
             <img src="/static/help.png" class="help_icon" />
             <p class="help_text" style="display:none;">
                 This is the time that we will start checking your bus for you. For example, 
-                if you expect your bus to come at 7:00 AM and you want to be alerted 5 minutes 
+                if you expect your bus to come at 7:00 AM and you want to be notified 5 minutes 
                 before it arrives, you should set this not later than 6:55 AM, and 6:50 AM 
                 is probably a better idea (in case your bus is early). In general, set this 
-                5 or 10 minutes before the first alert you want to get for your bus.
+                5 or 10 minutes before the first notification you want to get for your bus.
             </p>
         </div>
 
     </fieldset>
-    <fieldset id="alerts">
-        <h2>{{form.alerts.label}}</h2>
-        <input type="hidden" name="{{form.alerts.id}}-length" id="{{form.alerts.id}}-length" value="{{form.alerts.entries|length}}" />
-        <ul id="alerts-list">
-        {% for alert in form.alerts.entries %}
-            <li id="{{alert.id}}">
-                {% if alert.medium.errors or alert.minutes.errors %}
+    <fieldset id="notifications">
+        <h2>{{form.notifications.label}}</h2>
+        <input type="hidden" name="{{form.notifications.id}}-length" id="{{form.notifications.id}}-length" value="{{form.notifications.entries|length}}" />
+        <ul id="notifications-list">
+        {% for notification in form.notifications.entries %}
+            <li id="{{notification.id}}">
+                {% if notification.medium.errors or notification.minutes.errors %}
                 <ul class="errors">
-                    {% for error in alert.medium.errors %}
+                    {% for error in notification.medium.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
-                    {% for error in alert.minutes.errors %}
+                    {% for error in notification.minutes.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
                 {% endif %}
-                {% if alert.medium.errors %}
-                    {% set medium_class = "alerts-medium has_error" %}
+                {% if notification.medium.errors %}
+                    {% set medium_class = "notifications-medium has_error" %}
                 {% else %}
-                    {% set medium_class = "alerts-medium" %}
+                    {% set medium_class = "notifications-medium" %}
                 {% endif %}
-                {% if alert.minutes.errors %}
-                    {% set minutes_class = "alerts-minutes has_error" %}
+                {% if notification.minutes.errors %}
+                    {% set minutes_class = "notifications-minutes has_error" %}
                 {% else %}
-                    {% set minutes_class = "alerts-minutes" %}
+                    {% set minutes_class = "notifications-minutes" %}
                 {% endif %}
-                <p>{{alert.medium(class=medium_class)}} me {{alert.minutes(class=minutes_class)}} minutes before the bus arrives</p>
-                <div class="alerts-controls">
-                    <input type="button" value="+" class="add-alert">
-                    <input type="button" value="-" class="delete-alert" {% if form.alerts.entries|length == 1 %}disabled="disabled"{% endif %}/>
+                <p>{{notification.medium(class=medium_class)}} me {{notification.minutes(class=minutes_class)}} minutes before the bus arrives</p>
+                <div class="notifications-controls">
+                    <input type="button" value="+" class="add-notification">
+                    <input type="button" value="-" class="delete-notification" {% if form.notifications.entries|length == 1 %}disabled="disabled"{% endif %}/>
                 </div>
             </li>
         {% endfor %}
         </ul>
         <div id="sms-warning" class="help_text" style="display:none;">
-            <h3>Warning: Text Alerts are Unreliable</h3>
+            <h3>Warning: Text Notifications are Unreliable</h3>
             <p>Normal calls take priority over sending text messages on a network. When many people are making calls and sending texts all at once, the phone companies put the calls through immediately, but wait to deliver text messages until fewer people are using the network &mdash; which can take hours. Sometimes, texts are never delivered at all! (<a href="http://en.wikipedia.org/wiki/SMS#Unreliability">See Wikipedia for more information.</a>)</p>
-            <p>If you choose to use text alerts, Bus Calling will always send your text alert at the right time, but <strong>we cannot guarantee that you will receive it promptly, or at all</strong>. That isn't something we can control: it's up to the phone companies. Since a bus alert isn't very useful if it's delivered late, we don't recommend text messages as the only way of getting bus alerts.</p>
+            <p>If you choose to use text notifications, Bus Calling will always send your text message at the right time, but <strong>we cannot guarantee that you will receive it promptly, or at all</strong>. That isn't something we can control: it's up to the phone companies. Since a bus notification isn't very useful if it's delivered late, we don't recommend text messages as the only way of getting bus notifications.</p>
         </div>
     </fieldset>
     <a href="{{ url_for('dashboard') }}" class="cancel">Cancel</a>

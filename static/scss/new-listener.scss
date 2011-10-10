@@ -70,21 +70,21 @@ $cream = #f5fffa;
             width: 5em;
         }
     } 
-    fieldset#alerts {
+    fieldset#notifications {
         ul li {
             padding: 2px 0;
 
             p {
                 display: inline-block;
             }
-            .alerts-controls {
+            .notifications-controls {
                 display: inline-block;
                 margin-left: 3em;
                 background-color: lightgreen;
                 border-radius: 5px;
                 padding: 1px 5px;
             }
-            input.alerts-minutes {
+            input.notifications-minutes {
                 width: 3em;
                 text-align: right;
             }

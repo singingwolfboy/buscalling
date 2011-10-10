@@ -38,7 +38,7 @@ def get_twiml(prediction):
     return str(r)
 
 @check_user_payment
-def alert_by_phone(listener, minutes=None):
+def notify_by_phone(listener, minutes=None):
     url = DOMAIN + url_for('predict_for_stop', 
         agency_id=listener.agency.id, 
         route_id=listener.route.id, 
@@ -57,7 +57,7 @@ def alert_by_phone(listener, minutes=None):
         call_info))
 
 @check_user_payment
-def alert_by_txt(listener, minutes=None):
+def notify_by_txt(listener, minutes=None):
     prediction = listener.get_predictions()
     if len(prediction.buses) > 1:
         first = prediction.buses[0]

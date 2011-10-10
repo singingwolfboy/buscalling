@@ -74,43 +74,43 @@ $().ready ->
     defaultSelected: "7:00 AM"
     show24Hours: false
   )
-  window.app.alerts = []
-  window.app.alerts.addFromHTML = (elmt) ->
-    window.app.alerts.push 
+  window.app.notifications = []
+  window.app.notifications.addFromHTML = (elmt) ->
+    window.app.notifications.push 
       id: parseInt($(elmt).attr("id").match(/\d+/)[0], 10)
-      medium: $("input.alerts-medium", elmt).val()
-      minutes: parseInt($("input.alerts-minutes", elmt).val(), 10)
+      medium: $("input.notifications-medium", elmt).val()
+      minutes: parseInt($("input.notifications-minutes", elmt).val(), 10)
   
-  $("ul#alerts-list li").each ->
-    window.app.alerts.addFromHTML this
+  $("ul#notifications-list li").each ->
+    window.app.notifications.addFromHTML this
   
-  $(".add-alert").live "click", ->
-    li = $(this).parentsUntil("ul#alerts-list").last()
+  $(".add-notification").live "click", ->
+    li = $(this).parentsUntil("ul#notifications-list").last()
     opt = $("option:selected", li).val()
-    new_alert = li.clone()
-    elmts = new_alert.find("*").andSelf()
-    l = window.app.alerts.length
+    new_notification = li.clone()
+    elmts = new_notification.find("*").andSelf()
+    l = window.app.notifications.length
     for attrName in [ "id", "name", "for" ]
       elmts.attr(attrName, (i, oldAttr) ->
         oldAttr.replace /\d+/, l  if oldAttr
       )
     
-    $("select.alerts-medium option[value=#{opt}]", new_alert).attr("selected", "selected")
-    window.app.alerts.addFromHTML new_alert
-    $("#alerts-list").append new_alert
-    if window.app.alerts.length > 1
-      $("ul#alerts-list li input.delete-alert").each ->
+    $("select.notifications-medium option[value=#{opt}]", new_notification).attr("selected", "selected")
+    window.app.notifications.addFromHTML new_notification
+    $("#notifications-list").append new_notification
+    if window.app.notifications.length > 1
+      $("ul#notifications-list li input.delete-notification").each ->
         $(this).attr "disabled", false
-    window.app.alerts.length
+    window.app.notifications.length
   
-  $(".delete-alert").live "click", ->
-    li = $(this).parentsUntil("ul#alerts-list").last()
+  $(".delete-notification").live "click", ->
+    li = $(this).parentsUntil("ul#notifications-list").last()
     id = parseInt(li.attr("id").match(/\d+/)[0], 10)
-    delete window.app.alerts[id]
+    delete window.app.notifications[id]
     
     li.remove()
-    if _.compact(window.app.alerts).length == 1
-      $(".delete-alert").first().attr("disabled", true)
+    if _.compact(window.app.notifications).length == 1
+      $(".delete-notification").first().attr("disabled", true)
 
   $("#recur input[type=radio]").change ->
     if this.value == "y"
@@ -132,9 +132,9 @@ $().ready ->
       help_text.hide "fast"
     )
   
-  $(".alerts-medium").live "change", ->
+  $(".notifications-medium").live "change", ->
     if this.value == "txt"
       $("#sms-warning").show "fast"
       return
-    if _.all( $(".alerts-medium"), (select) -> select.value != "txt" )
+    if _.all( $(".notifications-medium"), (select) -> select.value != "txt" )
       $("#sms-warning").hide "fast"
