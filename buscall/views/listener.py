@@ -39,14 +39,14 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         }
         for param in ('agency_id', 'route_id', 'direction_id', 'stop_id', 'start', 'recur'):
             params[param] = form.data[param]
-        # if recur is true, use checkboxes.
-        # if recur is false, use radio buttons.
+        # if recur is true, use checkbox table.
+        # if recur is false, use dropdown.
         checkboxes = [form.data[day] for day in DAYS_OF_WEEK]
-        radio = [form.data['dow'] == day for day in DAYS_OF_WEEK]
+        dropdown = [form.data['dow'] == day for day in DAYS_OF_WEEK]
         if form.data['recur']:
             week_info = checkboxes
         else:
-            week_info = radio
+            week_info = dropdown
         for day, value in zip(DAYS_OF_WEEK, week_info):
             params[day] = value
 
@@ -58,7 +58,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
 
         profile.total_listeners_created += 1
         profile.put()
-        
+
         flash("Alert created!", category="success")
         return redirect(url_for("lander"), 303)
     context = {
