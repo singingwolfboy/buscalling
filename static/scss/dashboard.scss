@@ -24,14 +24,19 @@ ul#listeners {
     border-top: 1px dotted gray;
 
     li {
+        position: relative;
         padding: .5em 1em;
         border-bottom: 1px dotted gray;
 
         .aside {
             float: right;
             text-align: right;
+
             form {
                 text-align: right;
+                position: absolute;
+                bottom: .5em;
+                right: 1em;
             }
         }
 
