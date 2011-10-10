@@ -1,7 +1,12 @@
 $cream = #f5fffa;
 
 #main form {
-    padding: 0 1em;
+    padding: {
+        top: 0;
+        bottom: 1em;
+        left: 1em;
+        right: 1em;
+    }
 
     fieldset {
         border: 1px solid #eee;
