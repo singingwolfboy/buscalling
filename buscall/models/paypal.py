@@ -15,6 +15,7 @@ if app.debug:
         subscribe   = "GUUGPYAWQ63CG",
         unsubscribe = "BPQAK7D34287Q",
         pickups_1   = "PTDH2YFRJQE38",
+        pickups_6   = "UUUYQ3WYNFLL6",
     )
 else:
     # real info
@@ -25,6 +26,7 @@ else:
         subscribe   = "W42Q7VA9H8USQ",
         unsubscribe = "WYWXRN23UG45Q",
         pickups_1   = "K5PVGSXFYV6L8",
+        pickups_6   = "3NWNSUD58M5ZQ",
     )
 
 # build mapping of paypal item ID to price and number of credits
