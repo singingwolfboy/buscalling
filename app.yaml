@@ -1,7 +1,8 @@
-application: buscalling
+application: buscallinghr
 version: 1-0-0
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
 
 skip_files:
 # begin default skip_files
@@ -18,6 +19,11 @@ skip_files:
 
 builtins:
 - datastore_admin: on
+- remote_api: on
+
+libraries:
+- name: jinja2
+  version: latest
 
 handlers:
 # shortcut for jquery :)
@@ -56,8 +62,8 @@ handlers:
   upload: static/img/favicon.png
 
 - url: /tasks/.*
-  script: main.py
+  script: main.app
   login: admin # secured for cron
 
-- url: .*
-  script: main.py
+- url: /.*
+  script: main.app

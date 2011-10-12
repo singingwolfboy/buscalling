@@ -22,33 +22,22 @@ def get_updated_sys_path():
     eggs.extend(sys.path)
     return eggs
 
-def run_app():
-    "Actually runs the Flask application."
-    # Note that these import statements must be INSIDE the function 
-    # definition, so that Python doesn't attempt to import until after
-    # sys.path has been updated. Otherwise, they will fail!
-    from buscall import app
+sys.path = get_updated_sys_path()
+from buscall import app
 
-    # If we're in development mode...
-    if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
-        # don't set app.debug here, already set in buscall/__init__.py
+# If we're in development mode...
+if os.environ.get('SERVER_SOFTWARE', '').startswith('Dev'):
+    # don't set app.debug here, already set in buscall/__init__.py
 
-        # Enable Werkzeug debugger
-        from werkzeug import DebuggedApplication
-        app.wsgi_app = DebuggedApplication(app.wsgi_app, evalex=True)
+    # Enable Werkzeug debugger
+    from werkzeug import DebuggedApplication
+    app.wsgi_app = DebuggedApplication(app.wsgi_app, evalex=True)
 
-        # Enable Jinja2 debugging
-        from google.appengine.tools.dev_appserver import HardenedModulesHook
-        HardenedModulesHook._WHITE_LIST_C_MODULES += ['_ctypes', 'gestalt']
+    # Enable Jinja2 debugging
+    from google.appengine.tools.dev_appserver import HardenedModulesHook
+    HardenedModulesHook._WHITE_LIST_C_MODULES += ['_ctypes', 'gestalt']
 
-    # Grab your middleware and wrap the app
-    from middleware import MethodRewriteMiddleware
-    app.wsgi_app = MethodRewriteMiddleware(app.wsgi_app)
+# Grab your middleware and wrap the app
+from middleware import MethodRewriteMiddleware
+app.wsgi_app = MethodRewriteMiddleware(app.wsgi_app)
 
-    # Run the app using Werkzeug
-    from google.appengine.ext.webapp.util import run_wsgi_app
-    run_wsgi_app(app)
-
-if __name__ == "__main__":
-    sys.path = get_updated_sys_path()        
-    run_app()
