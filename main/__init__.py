@@ -13,6 +13,8 @@ def get_updated_sys_path():
     """
     # root_path is directory containing this file
     root_path = os.path.dirname(os.path.abspath(__file__))
+    if not root_path.endswith("buscalling"):
+        root_path = os.path.dirname(root_path)
     # lib_path is directory containing other Python modules and eggs
     lib_path = os.path.join(root_path, 'lib')
     eggs = [os.path.join(lib_path, f) for f in 
