@@ -1,11 +1,9 @@
-from werkzeug import Request
-try:
-    from urlparse import parse_qs
-except ImportError:
-    from cgi import parse_qs
+from werkzeug import url_decode
 
 class MethodRewriteMiddleware(object):
     """
+    Based on http://flask.pocoo.org/snippets/38/
+
     With this middleware installed, a _method HTTP parameter will override
     the actual HTTP method used in making the request. For example, if
     a browser makes an HTTP POST request while specifying _method=PUT,
@@ -20,19 +18,12 @@ class MethodRewriteMiddleware(object):
         self.input_name = input_name
 
     def __call__(self, environ, start_response):
-        pf = environ.get('wsgi.input', None)
-        if not pf:
-            return self.app(environ, start_response)
-
-        params = parse_qs(pf.read())
-        pf.seek(0)
-
-        if self.input_name in params:
-            method = params[self.input_name][0].upper()
-
-            if method in ['GET', 'POST', 'PUT', 'DELETE']:
+        if self.input_name in environ.get('QUERY_STRING', ''):
+            args = url_decode(environ['QUERY_STRING'])
+            method = args.get(self.input_name)
+            if method:
+                method = method.encode('ascii', 'replace')
                 environ['REQUEST_METHOD'] = method
-
         return self.app(environ, start_response)
 
 class DummyMiddleware(object):

@@ -1,12 +1,12 @@
 from buscall import app
-from flask import render_template, request, flash, redirect, url_for, abort
+from flask import render_template, request, flash, redirect, url_for, abort, g
 from ..decorators import login_required
 from google.appengine.api import users
 from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
 from buscall.forms import BusListenerForm
 from buscall.models.nextbus import AGENCIES, get_routes, get_route
-from buscall.util import GqlQuery, DAYS_OF_WEEK
+from buscall.util import GqlQuery, DAYS_OF_WEEK, READONLY_ERR_MSG
 import simplejson_mod as json
 try:
     from collections import OrderedDict
@@ -31,6 +31,9 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     }
     form = get_listener_form_with_defaults(BusListenerForm(request.form), **kwargs)
     if form.validate_on_submit():
+        if g.readonly:
+            flash(READONLY_ERR_MSG, category="error")
+            return redirect(url_for("lander"), 303)
         user = users.get_current_user()
         profile = UserProfile.get_by_user(user)
         params = {

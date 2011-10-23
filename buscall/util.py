@@ -9,6 +9,11 @@ class GqlQuery(TruthyGqlQuery):
 DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
 DOMAIN = "http://www.buscalling.com"
+READONLY_ERR_MSG = """
+    Our database is currently in read-only mode. You can poke around and 
+    explore the website, but nothing you do will be saved. Sorry about this:
+    We'll be back to normal soon!
+"""
 
 def decimalproperty_factory(precision=2):
     """
