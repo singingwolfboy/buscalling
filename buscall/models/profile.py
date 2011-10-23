@@ -51,7 +51,7 @@ class UserProfile(db.Expando):
     # set key_name to user's ID or email address
     def __init__(self, *args, **kwargs):
         if not 'key' in kwargs and not 'key_name' in kwargs:
-            kwargs['key_name'] = kwargs['user'].user_id() or kwargs['user'].email()
+            kwargs['key_name'] = UserProfile.get_key_name_from_user(kwargs['user'])
         db.Model.__init__(self, *args, **kwargs)
     
     @property
@@ -71,10 +71,14 @@ class UserProfile(db.Expando):
                 if notification.medium in ['phone', 'txt']:
                     return True
         return False
+    
+    @classmethod
+    def get_key_name_from_user(cls, user):
+        return user.user_id() or user.email()
 
     @classmethod
     def get_by_user(cls, user):
-        key_name = user.user_id() or user.email()
+        key_name = cls.get_key_name_from_user(user)
         return cls.get_by_key_name(key_name)
     
     @classmethod
@@ -87,5 +91,5 @@ class UserProfile(db.Expando):
     
     @classmethod
     def get_or_insert_by_user(cls, user):
-        key_name = user.user_id() or user.email()
+        key_name = cls.get_key_name_from_user(user)
         return cls.get_or_insert(key_name, user=user)

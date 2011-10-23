@@ -1,12 +1,12 @@
 from buscall import app
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for, g
 from .tasks import poll, reset_seen_flags
 from .nextbus import show_agency, routes_for_agency, show_route, predict_for_stop
 from .twilio import call_prediction
 from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
 from .profile import update_profile
-from buscall.util import MAIL_SENDER, GqlQuery
+from buscall.util import MAIL_SENDER, READONLY_ERR_MSG, GqlQuery
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
 from buscall.models.listener import NOTIFICATION_CHOICES
@@ -14,6 +14,8 @@ from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
 from google.appengine.api import users
+from google.appengine.api.capabilities import CapabilitySet
+from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
 import os
 import datetime
 
@@ -53,10 +55,12 @@ def inject_auth_urls():
 
 @app.before_request
 def update_userprofile_last_login():
-    profile = UserProfile.get_current_profile()
-    if profile:
-        profile.last_access = datetime.datetime.now()
-        db.put_async(profile)
+    g.readonly = CapabilitySet('datastore_v3', capabilities=['write']).is_enabled()
+    if not g.readonly:
+        profile = UserProfile.get_current_profile()
+        if profile:
+            profile.last_access = datetime.datetime.now()
+            db.put_async(profile)
 
 @app.template_filter('timeformat')
 def time_format(time):
@@ -69,9 +73,12 @@ def page_root():
         profile = UserProfile.get_by_user(user)
         if not profile:
             # this user's first login
-            profile = UserProfile.get_or_insert_by_user(user)
-            # Flash a welcome message, and redirect to new listener form
-            flash("Welcome! To set up your first bus alert, just fill out this form.")
+            try:
+                profile = UserProfile.get_or_insert_by_user(user)
+                # Flash a welcome message, and redirect to new listener form
+                flash("Welcome! To set up your first bus alert, just fill out this form.")
+            except CapabilityDisabledError:
+                flash(READONLY_ERR_MSG, category="warn")
             return redirect(url_for("new_listener"), 303)
         else:
             # If the user has listeners with notifications that rely on a phone number,
