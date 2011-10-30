@@ -27,7 +27,8 @@ agency_choices = [('','')] + [(id, agency.title) for (id, agency) in AGENCIES.it
 today = datetime.date.today()
 this_week = [today + datetime.timedelta(days=n) for n in range(7)]
 def weekday_choice_text_format(day):
-    formatted = day.strftime("%a, %b %-d")
+    number = int(day.strftime("%d"))
+    formatted = "%s %d" % (day.strftime("%a, %b"), number)
     if day == today:
         return formatted + " (today)"
     elif day == today + datetime.timedelta(days=1):
