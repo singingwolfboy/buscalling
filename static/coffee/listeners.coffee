@@ -9,6 +9,14 @@ $().ready ->
   stop_elmt = $("form #stop")
   loader_icon = $("<img src=\"/static/ajax-loader.gif\"/>")
 
+  # Google Map
+  window.app.map = new google.maps.Map $("#map_canvas").get(0), 
+    zoom: 10,
+    center: new google.maps.LatLng(42.373, -71.111), # cambridge
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI: true
+  map = window.app.map
+
   update_routes = (agency) ->
     routes = [ option_blank ]
     # JS objects don't have a defined ordering, so we've defined that ordering as
@@ -37,6 +45,27 @@ $().ready ->
   
   clear_select = (elmt) ->
     elmt.children().replaceWith $(option_blank)
+
+  update_map = (options) ->
+    if options.stop
+      stop = model[options.agency].routes[options.route].stops[options.stop] 
+      marker = new google.maps.Marker
+        position: new google.maps.LatLng stop.lat, stop.lon
+        title: stop.title
+        map: map
+    if options.route
+      route = model[options.agency].routes[options.route]
+      bounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(route.latMin, route.lonMin),
+        new google.maps.LatLng(route.latMax, route.lonMax)
+      )
+      map.fitBounds(bounds)
+      polylines = []
+      for subpath in route.path
+        ll_subpath = (new google.maps.LatLng(p.lat, p.lon) for p in subpath)
+        polylines.push new google.maps.Polyline
+          path: ll_subpath
+          map: map
   
   agency_elmt.change ->
     clear_select(elmt) for elmt in [ route_elmt, direction_elmt, stop_elmt ]
@@ -56,12 +85,18 @@ $().ready ->
     route = route_elmt.val()
     if model[agency].routes[route].directions
       update_directions agency, route
+      update_map
+       agency: agency
+       route: route
     else
       $(".form_field.route").append loader_icon
       $.getJSON "/#{agency}/routes/#{route}.json", (data) ->
         $(".form_field.route img").remove()
         model[agency].routes[route] = data
         update_directions agency, route
+        update_map
+          agency: agency
+          route: route
   
   direction_elmt.change ->
     _.each [ stop_elmt ], clear_select
@@ -69,6 +104,13 @@ $().ready ->
     route = route_elmt.val()
     direction = direction_elmt.val()
     update_stops agency, route, direction
+
+  stop_elmt.change ->
+    update_map
+      agency: agency_elmt.val()
+      route: route_elmt.val()
+      direction: direction_elmt.val()
+      stop: stop_elmt.val()
   
   $(".form_field.start input").timePicker(
     defaultSelected: "7:00 AM"
@@ -138,3 +180,5 @@ $().ready ->
       return
     if _.all( $(".notifications-medium"), (select) -> select.value != "txt" )
       $("#sms-warning").hide "fast"
+
+

@@ -159,5 +159,6 @@
 {% endif %}
 {%- for script in scripts %}
   <script src="/static/{{script}}.js"></script>
-  {%- endfor %}
+{%- endfor %}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 {% endblock %}

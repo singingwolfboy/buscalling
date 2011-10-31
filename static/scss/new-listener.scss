@@ -1,4 +1,5 @@
 $cream = #f5fffa;
+$yellowish = #ff9;
 
 #main form {
     padding: {
@@ -10,9 +11,10 @@ $cream = #f5fffa;
 
     fieldset {
         border: 1px solid #eee;
-        background-color: #ff9;
+        background-color: $yellowish;
         padding: .3em;
         margin: .8em 0;
+        position: relative;
     }
 
     .form_field {
@@ -122,3 +124,14 @@ $cream = #f5fffa;
     }
 }
 
+#map_canvas {
+    position: absolute;
+    width: 15em;
+    height: 15em;
+    right: 0;
+    top: 0;
+    margin: .7em;
+    background-color: $yellowish;
+    border: .3em solid black;
+    z-index: 2;
+}

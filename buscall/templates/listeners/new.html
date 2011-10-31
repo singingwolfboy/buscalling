@@ -9,6 +9,7 @@
 <form method="POST" action="{{ url_for('new_listener') }}">
     {{form.hidden_tag()}}
     <fieldset id="bus-info">
+        <div id="map_canvas"></div>
         <h2>Bus</h2>
         {{ with_errors(form.agency_id) }}
         {{ with_errors(form.route_id) }}
