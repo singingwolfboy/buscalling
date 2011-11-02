@@ -16,6 +16,7 @@ $().ready ->
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: true
   map = window.app.map
+  map.active = {} # hold state
 
   update_routes = (agency) ->
     routes = [ option_blank ]
@@ -47,25 +48,53 @@ $().ready ->
     elmt.children().replaceWith $(option_blank)
 
   update_map = (options) ->
+    m = google.maps
     if options.stop
       stop = model[options.agency].routes[options.route].stops[options.stop] 
-      marker = new google.maps.Marker
-        position: new google.maps.LatLng stop.lat, stop.lon
-        title: stop.title
-        map: map
+      if not stop.marker
+        stop.marker = new m.Marker
+          position: new m.LatLng stop.lat, stop.lon
+          title: stop.title
+          map: map
+      if map.active.stop
+        map.active.stop.setVisible(false)
+      stop.marker.setVisible(true)
+      map.active.stop = stop.marker
+      map.panTo(map.active.stop.getPosition())
+      map.setZoom(16)
+      return map
+
     if options.route
       route = model[options.agency].routes[options.route]
-      bounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(route.latMin, route.lonMin),
-        new google.maps.LatLng(route.latMax, route.lonMax)
-      )
-      map.fitBounds(bounds)
-      polylines = []
-      for subpath in route.path
-        ll_subpath = (new google.maps.LatLng(p.lat, p.lon) for p in subpath)
-        polylines.push new google.maps.Polyline
-          path: ll_subpath
-          map: map
+      if not route.bounds
+        route.bounds = new m.LatLngBounds(
+          new m.LatLng(route.latMin, route.lonMin),
+          new m.LatLng(route.latMax, route.lonMax)
+        )
+      map.fitBounds(route.bounds)
+      if not route.polylines
+        polylines = []
+        for subpath in route.path
+          if not subpath.polyline
+            latlngs = []
+            for point in subpath
+              if not point.latlng
+                point.latlng = new m.LatLng(point.lat, point.lon)
+              latlngs.push(point.latlng)
+            subpath.polyline = new m.Polyline
+              path: latlngs
+              map: map
+          polylines.push(subpath.polyline)
+        route.polylines = polylines
+      if map.active.route
+        for polyline in map.active.route
+          polyline.setMap(null)
+      map.active.route = route.polylines
+      for polyline in map.active.route
+        polyline.setMap(map)
+      if map.active.stop
+        map.active.stop.setVisible(false)
+      return map
   
   agency_elmt.change ->
     clear_select(elmt) for elmt in [ route_elmt, direction_elmt, stop_elmt ]
