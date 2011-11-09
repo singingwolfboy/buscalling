@@ -1,6 +1,4 @@
-#!/opt/local/bin/python2.5
-from __future__ import absolute_import
-
+#!/opt/local/bin/python
 def main():
     from buscall.util import setup_for_testing
     setup_for_testing()
