@@ -24,6 +24,8 @@ builtins:
 libraries:
 - name: jinja2
   version: latest
+- name: markupsafe
+  version: latest
 
 handlers:
 # shortcut for jquery :)
