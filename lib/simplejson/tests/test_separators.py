@@ -1,7 +1,7 @@
 import textwrap
 from unittest import TestCase
 
-import simplejson_mod as json
+import simplejson as json
 
 
 class TestSeparators(TestCase):

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-import simplejson_mod as json
+import simplejson as json
 import textwrap
 from StringIO import StringIO
 

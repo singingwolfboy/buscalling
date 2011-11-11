@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-import simplejson_mod as json
+import simplejson as json
 
 # Fri Dec 30 18:57:26 2005
 JSONDOCS = [

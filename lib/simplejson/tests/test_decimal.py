@@ -2,7 +2,7 @@ from decimal import Decimal
 from unittest import TestCase
 from StringIO import StringIO
 
-import simplejson_mod as json
+import simplejson as json
 
 class TestDecimal(TestCase):
     NUMS = "1.0", "10.00", "1.1", "1234567890.1234567890", "500"
@@ -41,10 +41,15 @@ class TestDecimal(TestCase):
                 [d])
 
     def test_decimal_defaults(self):
-        d = Decimal(1)
-        sio = StringIO()
-        # use_decimal=False is the default
+        d = Decimal('1.1')
+        # use_decimal=True is the default
         self.assertRaises(TypeError, json.dumps, d, use_decimal=False)
-        self.assertRaises(TypeError, json.dumps, d)
-        self.assertRaises(TypeError, json.dump, d, sio, use_decimal=False)
-        self.assertRaises(TypeError, json.dump, d, sio)
+        self.assertEqual('1.1', json.dumps(d))
+        self.assertEqual('1.1', json.dumps(d, use_decimal=True))
+        self.assertRaises(TypeError, json.dump, d, StringIO(), use_decimal=False)
+        sio = StringIO()
+        json.dump(d, sio)
+        self.assertEqual('1.1', sio.getvalue())
+        sio = StringIO()
+        json.dump(d, sio, use_decimal=True)
+        self.assertEqual('1.1', sio.getvalue())

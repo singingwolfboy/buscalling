@@ -1,8 +1,7 @@
 import unittest
 
-import simplejson_mod as simplejson
-import simplejson_mod.decoder
-import simplejson_mod.encoder
+import simplejson.decoder
+import simplejson.encoder
 
 
 class TestEncodeForHTML(unittest.TestCase):

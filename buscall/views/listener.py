@@ -7,7 +7,7 @@ from buscall.models.profile import UserProfile
 from buscall.forms import BusListenerForm
 from buscall.models.nextbus import AGENCIES, get_routes, get_route
 from buscall.util import GqlQuery, DAYS_OF_WEEK, READONLY_ERR_MSG
-import simplejson_mod as json
+import simplejson as json
 try:
     from collections import OrderedDict
 except ImportError:

@@ -1,7 +1,7 @@
 from unittest import TestCase
 from cStringIO import StringIO
 
-import simplejson_mod as json
+import simplejson as json
 
 class TestDump(TestCase):
     def test_dump(self):

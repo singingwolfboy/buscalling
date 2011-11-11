@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-import simplejson_mod as json
+import simplejson as json
 
 # from http://json.org/JSON_checker/test/pass3.json
 JSON = r'''

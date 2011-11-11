@@ -1,9 +1,8 @@
 import sys
 from unittest import TestCase
 
-import simplejson_mod as simplejson
-import simplejson_mod as json
-import simplejson_mod.decoder
+import simplejson as json
+import simplejson.decoder
 
 class TestScanString(TestCase):
     def test_py_scanstring(self):

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from simplejson_mod import encoder, scanner
+from simplejson import encoder, scanner
 
 def has_speedups():
     return encoder.c_make_encoder is not None

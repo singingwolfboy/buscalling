@@ -3,7 +3,7 @@ from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
 from buscall.util import DOMAIN, pluralize_minutes, humanize_list
 from buscall.decorators import check_user_payment
 from flask import url_for
-import simplejson_mod as json
+import simplejson as json
 
 API_VERSION = "2010-04-01"
 account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)

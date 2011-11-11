@@ -5,15 +5,15 @@ from decimal import Decimal
 
 def _import_speedups():
     try:
-        from simplejson_mod import _speedups
+        from simplejson import _speedups
         return _speedups.encode_basestring_ascii, _speedups.make_encoder
     except ImportError:
         return None, None
 c_encode_basestring_ascii, c_make_encoder = _import_speedups()
 
-from simplejson_mod.decoder import PosInf
+from simplejson.decoder import PosInf
 
-ESCAPE = re.compile(r'[\x00-\x1f\\"\b\f\n\r\t]')
+ESCAPE = re.compile(ur'[\x00-\x1f\\"\b\f\n\r\t\u2028\u2029]')
 ESCAPE_ASCII = re.compile(r'([\\"]|[^\ -~])')
 HAS_UTF8 = re.compile(r'[\x80-\xff]')
 ESCAPE_DCT = {
@@ -24,6 +24,8 @@ ESCAPE_DCT = {
     '\n': '\\n',
     '\r': '\\r',
     '\t': '\\t',
+    u'\u2028': '\\u2028',
+    u'\u2029': '\\u2029',
 }
 for i in range(0x20):
     #ESCAPE_DCT.setdefault(chr(i), '\\u{0:04x}'.format(i))
@@ -78,7 +80,7 @@ class JSONEncoder(object):
     +-------------------+---------------+
     | Python            | JSON          |
     +===================+===============+
-    | dict              | object        |
+    | dict, namedtuple  | object        |
     +-------------------+---------------+
     | list, tuple       | array         |
     +-------------------+---------------+
@@ -104,7 +106,8 @@ class JSONEncoder(object):
     def __init__(self, skipkeys=False, ensure_ascii=True,
             check_circular=True, allow_nan=True, sort_keys=False,
             indent=None, separators=None, encoding='utf-8', default=None,
-            use_decimal=False):
+            use_decimal=True, namedtuple_as_object=True,
+            tuple_as_array=True):
         """Constructor for JSONEncoder, with sensible defaults.
 
         If skipkeys is false, then it is a TypeError to attempt
@@ -152,6 +155,11 @@ class JSONEncoder(object):
         be supported directly by the encoder. For the inverse, decode JSON
         with ``parse_float=decimal.Decimal``.
 
+        If namedtuple_as_object is true (the default), tuple subclasses with
+        ``_asdict()`` methods will be encoded as JSON objects.
+        
+        If tuple_as_array is true (the default), tuple (and subclasses) will
+        be encoded as JSON arrays.
         """
 
         self.skipkeys = skipkeys
@@ -160,6 +168,8 @@ class JSONEncoder(object):
         self.allow_nan = allow_nan
         self.sort_keys = sort_keys
         self.use_decimal = use_decimal
+        self.namedtuple_as_object = namedtuple_as_object
+        self.tuple_as_array = tuple_as_array
         if isinstance(indent, (int, long)):
             indent = ' ' * indent
         self.indent = indent
@@ -194,7 +204,7 @@ class JSONEncoder(object):
     def encode(self, o):
         """Return a JSON string representation of a Python data structure.
 
-        >>> from simplejson_mod import JSONEncoder
+        >>> from simplejson import JSONEncoder
         >>> JSONEncoder().encode({"foo": ["bar", "baz"]})
         '{"foo": ["bar", "baz"]}'
 
@@ -274,12 +284,14 @@ class JSONEncoder(object):
             _iterencode = c_make_encoder(
                 markers, self.default, _encoder, self.indent,
                 self.key_separator, self.item_separator, self.sort_keys,
-                self.skipkeys, self.allow_nan, key_memo, self.use_decimal)
+                self.skipkeys, self.allow_nan, key_memo, self.use_decimal,
+                self.namedtuple_as_object, self.tuple_as_array)
         else:
             _iterencode = _make_iterencode(
                 markers, self.default, _encoder, self.indent, floatstr,
                 self.key_separator, self.item_separator, self.sort_keys,
-                self.skipkeys, _one_shot, self.use_decimal)
+                self.skipkeys, _one_shot, self.use_decimal,
+                self.namedtuple_as_object, self.tuple_as_array)
         try:
             return _iterencode(o, 0)
         finally:
@@ -315,7 +327,7 @@ class JSONEncoderForHTML(JSONEncoder):
 
 def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
         _key_separator, _item_separator, _sort_keys, _skipkeys, _one_shot,
-        _use_decimal,
+        _use_decimal, _namedtuple_as_object, _tuple_as_array,
         ## HACK: hand-optimized bytecode; turn globals into locals
         False=False,
         True=True,
@@ -373,16 +385,14 @@ def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
                 yield buf + str(value)
             else:
                 yield buf
-                if isinstance(value, (list, tuple)):
-                    ######
-                    # Modified by David Baumgold to support named tuples
-                    # code from http://stackoverflow.com/questions/5906831/serializing-a-python-namedtuple-to-json
-                    if hasattr(value, '_asdict'):
-                        chunks = _iterencode_dict(value._asdict(), _current_indent_level)
-                    else:
-                        chunks = _iterencode_list(value, _current_indent_level)
-                    # end modification
-                    ######
+                if isinstance(value, list):
+                    chunks = _iterencode_list(value, _current_indent_level)
+                elif (_namedtuple_as_object and isinstance(value, tuple) and
+                        hasattr(value, '_asdict')):
+                    chunks = _iterencode_dict(value._asdict(),
+                                              _current_indent_level)
+                elif _tuple_as_array and isinstance(value, tuple):
+                    chunks = _iterencode_list(value, _current_indent_level)
                 elif isinstance(value, dict):
                     chunks = _iterencode_dict(value, _current_indent_level)
                 else:
@@ -460,16 +470,14 @@ def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
             elif _use_decimal and isinstance(value, Decimal):
                 yield str(value)
             else:
-                if isinstance(value, (list, tuple)):
-                    ########
-                    # Modified by David Baumgold to support namedtuples
-                    # code from http://stackoverflow.com/questions/5906831/serializing-a-python-namedtuple-to-json
-                    if hasattr(value, '_asdict'):
-                        chunks = _iterencode_dict(value._asdict(), _current_indent_level)
-                    else:
-                        chunks = _iterencode_list(value, _current_indent_level)
-                    # end modification
-                    #######
+                if isinstance(value, list):
+                    chunks = _iterencode_list(value, _current_indent_level)
+                elif (_namedtuple_as_object and isinstance(value, tuple) and
+                        hasattr(value, '_asdict')):
+                    chunks = _iterencode_dict(value._asdict(),
+                                              _current_indent_level)
+                elif _tuple_as_array and isinstance(value, tuple):
+                    chunks = _iterencode_list(value, _current_indent_level)
                 elif isinstance(value, dict):
                     chunks = _iterencode_dict(value, _current_indent_level)
                 else:
@@ -496,18 +504,16 @@ def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
             yield str(o)
         elif isinstance(o, float):
             yield _floatstr(o)
-        elif isinstance(o, (list, tuple)):
-            #########
-            # Modified by David Baumgold to support namedtuples
-            # code from http://stackoverflow.com/questions/5906831/serializing-a-python-namedtuple-to-json
-            if hasattr(o, '_asdict'):
-                for chunk in _iterencode_dict(o._asdict(), _current_indent_level):
-                    yield chunk
-            else:
-                for chunk in _iterencode_list(o, _current_indent_level):
-                    yield chunk
-            # end modification
-            #########
+        elif isinstance(o, list):
+            for chunk in _iterencode_list(o, _current_indent_level):
+                yield chunk
+        elif (_namedtuple_as_object and isinstance(o, tuple) and
+                hasattr(o, '_asdict')):
+            for chunk in _iterencode_dict(o._asdict(), _current_indent_level):
+                yield chunk
+        elif (_tuple_as_array and isinstance(o, tuple)):
+            for chunk in _iterencode_list(o, _current_indent_level):
+                yield chunk
         elif isinstance(o, dict):
             for chunk in _iterencode_dict(o, _current_indent_level):
                 yield chunk
