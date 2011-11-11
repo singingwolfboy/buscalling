@@ -40,7 +40,7 @@ $().ready ->
     model: Agency
     initialize: (options) ->
       # @bind()
-    fetchRoutes:
+    fetchRoutes: ->
       agency = @active
       $.getJSON "/#{agency}/routes.json", (data) ->
         $(".form_field.agency img").remove()
