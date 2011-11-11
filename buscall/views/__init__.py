@@ -94,3 +94,10 @@ def page_root():
         return render_template('lander.html')
 app.add_url_rule('/', 'dashboard', page_root)
 app.add_url_rule('/', 'lander', page_root)
+
+# @app.route('/flush_all')
+# def flush_all():
+#     if memcache.flush_all():
+#         return "Flushed"
+#     else:
+#         return "Failed"
