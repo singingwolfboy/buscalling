@@ -66,6 +66,12 @@ def clean_booleans(d):
             pass
     return d
 
+def filter_keys(d, allowed):
+    for key in d.keys():
+        if key not in allowed:
+            del d[key]
+    return d
+
 def pluralize_minutes(minutes):
     if minutes == 0:
         return "less than a minute"

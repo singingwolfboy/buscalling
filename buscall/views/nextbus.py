@@ -1,5 +1,5 @@
 from buscall import app
-from flask import render_template, Response
+from flask import render_template, request, Response
 from buscall.models import nextbus
 from buscall.models.twilio import get_twiml
 import simplejson_mod as json
@@ -38,7 +38,8 @@ def routes_for_agency(agency_id, format="html"):
 @app.route('/<agency_id>/routes/<route_id>.<format>')
 def show_route(agency_id, route_id, format="html"):
     if format.lower() == "json":
-        route = nextbus.get_route(agency_id, route_id, use_dicts=True)
+        route = nextbus.get_route(agency_id, route_id, 
+            full=request.args.get('full', False), use_dicts=True)
         return render_json(route)
     else:
         agency = AGENCIES[agency_id]
