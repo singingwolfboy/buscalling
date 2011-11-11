@@ -1,4 +1,103 @@
 $().ready ->
+  window.App = {} # instances
+  
+  ### Models  ###
+  class window.Stop             extends Backbone.Model
+
+  class window.Direction        extends Backbone.Model
+    initialize: (options) ->
+      @stops = options.stops or new StopList
+
+  class window.Route            extends Backbone.Model
+    initialize: (options) ->
+      @directions = options.direcions or new DirectionList
+
+  class window.Agency           extends Backbone.Model
+    initialize: (options) ->
+      @routes = options.routes or new RouteList
+
+  class window.StopList         extends Backbone.Collection
+    model: Stop
+  App.stops = new StopList
+  
+  class window.DirectionList    extends Backbone.Collection
+    model: Direction
+  App.directions = new DirectionList
+
+  class window.RouteList        extends Backbone.Collection
+    model: Route
+  App.routes = new RouteList
+
+  class window.AgencyList       extends Backbone.Collection
+    model: Agency
+  App.agencies = new AgencyList [
+    id: "mbta"
+    name: "MBTA"
+  ]
+
+  ### Templates and Views ###
+  fieldTemplate = _.template("""
+    <label for="{{id}}">{{name}}</label>
+    <select id="{{id}}" name="{{id}}_id" required>{{options}}</select>
+  """)
+  optionTemplate = _.template("""
+    <option value="{{value}}">{{title}}</option>
+  """)
+  class SelectorView            extends Backbone.View
+    # type is required: agency, route, direction, or stop
+    name: -> @type.capitalize()
+    className: "form_field"
+    id: -> "#{@type}_id"
+    render: ->
+      options = this.models.map (model) ->
+        optionTemplate(model.toJSON())
+      $(this.el).html(fieldTemplate(
+        id: @type
+        name: @name
+        options: options.join("")
+      ))
+      return this
+    
+    events:
+      "change select": "changeSelect"
+    
+    changeSelect: ->
+      id = this.$("select").val()
+      this.models.get(id).trigger("activate")
+  
+  class StopSelectorView        extends SelectorView
+    type: "stop"
+    models: App.stops
+  class DirectionSelectorView   extends SelectorView
+    type: "direction"
+    models: App.directions
+  class RouteSelectorView       extends SelectorView
+    type: "route"
+    models: App.routes
+  class AgencySelectorView      extends SelectorView
+    type: "agency"
+    models: App.agencies
+  
+  ### Router ###
+  class Router                  extends Backbone.Router
+    routes:
+      ":agency" :                       "setAgency"
+      ":agency/:route" :                "setRoute"
+      ":agency/:route/:direction":      "setDirection"
+      ":agency/:route/:direction/:stop":"setStop"
+    
+    # stubs
+    setAgency: -> @
+    setRoute: -> @
+    setDirection: -> @
+    setStop: -> @
+  
+  # kick off the app
+  App.router = new Router;
+
+  
+
+  
   model = window.app.model
   option_fill = (title, value) ->
     "<option value=\"#{value}\">#{title}</option>"

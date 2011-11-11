@@ -1,4 +1,7 @@
-$().ready ->
+String::capitalize = ->
+  @replace(/(?:^|\s)\S/g, (first) -> first.toUpperCase())
+
+jQuery ($) ->
     $("#tabs li").each ->
         tab = $(this)
         name = $(this).attr('id').match(/\w+/)[0]
