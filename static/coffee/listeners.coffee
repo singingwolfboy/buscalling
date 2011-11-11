@@ -26,10 +26,27 @@ $().ready ->
 
   class window.RouteList        extends Backbone.Collection
     model: Route
+    fetchDirections: ->
+      agency = App.agencies.active
+      route = @active
+      $.getJSON "/#{agency}/routes/#{route}.json", (data) ->
+        $(".form_field.agency img").remove()
+        model[agency].routes = data
+        update_routes(agency) 
+
   App.routes = new RouteList
 
   class window.AgencyList       extends Backbone.Collection
     model: Agency
+    initialize: (options) ->
+      # @bind()
+    fetchRoutes:
+      agency = @active
+      $.getJSON "/#{agency}/routes.json", (data) ->
+        $(".form_field.agency img").remove()
+        model[agency].routes = data
+        update_routes(agency)
+      
   App.agencies = new AgencyList [
     id: "mbta"
     name: "MBTA"
