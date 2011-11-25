@@ -13,7 +13,7 @@ from recordtype import recordtype
 Agency = recordtype("Agency", ['id', 'title'])
 Route = recordtype("Route", ['id', 'title', 'directions', 'path', 
     ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None)])
-FullRoute = recordtype("Route", ['id', 'title', 'directions', 'path', 'stops',
+FullRoute = recordtype("FullRoute", ['id', 'title', 'directions', 'path', 'stops',
     ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None)])
 RouteID = recordtype("RouteID", ['id', 'title'])
 Direction = recordtype("Direction", ['id', 'title', ('name', ''), ('stops', [])])
