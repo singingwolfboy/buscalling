@@ -1,13 +1,14 @@
 from __future__ import with_statement
+import unittest
 import datetime
 from buscall import app
 from buscall.models import nextbus, twilio
 from buscall.models.listener import BusListener
 from buscall.models.profile import UserProfile
-from buscall.tests.util import ServiceTestCase
+from buscall.tests.util import CustomTestCase
 from google.appengine.api.users import User
 
-class BusListenerTestCase(ServiceTestCase):
+class BusListenerTestCase(CustomTestCase):
     def test_create_recurring_bus_listener(self):
         num_listeners = BusListener.all().count()
         user = User("carl@example.com")

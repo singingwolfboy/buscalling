@@ -6,12 +6,9 @@ import simplejson as json
 from httplib import HTTPResponse
 from StringIO import StringIO
 from urlparse import urlparse
-from google.appengine.api import apiproxy_stub_map
-from google.appengine.api import datastore_file_stub
-from google.appengine.api import mail_stub
 from google.appengine.api import urlfetch_stub
-from google.appengine.api import user_service_stub
-from google.appengine.api.memcache import memcache_stub
+from google.appengine.api.capabilities import capability_stub
+from google.appengine.ext import testbed
 from google.appengine.api.urlfetch_stub import URLFetchServiceStub, \
   _API_CALL_DEADLINE, _API_CALL_VALIDATE_CERTIFICATE_DEFAULT
 from fixture import GoogleDatastoreFixture, DataTestCase
@@ -23,8 +20,6 @@ try:
   from urlparse import parse_qs
 except ImportError:
   from cgi import parse_qs
-
-class TestException(Exception): pass
 
 # need to set AUTH_DOMAIN before we can create User objects,
 # so just do this on import
@@ -47,10 +42,10 @@ def httpparse(fp):
     return response
 # end http://pythonwise.blogspot.com/2010/02/parse-http-response.html
 
-class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
+class CustomURLFetchServiceStub(urlfetch_stub.URLFetchServiceStub):
 
     def __init__(self, *args, **kwargs):
-        super(UrlFetchStub, self).__init__(*args, **kwargs)
+        super(CustomURLFetchServiceStub, self).__init__(*args, **kwargs)
         self.history = []
         self.responses = {}
 
@@ -91,7 +86,7 @@ class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
         resp = self._get_response(url, payload)
 
         if not resp:
-          raise TestException("unknown URL: "+url)
+          raise testbed.Error("unknown URL: "+url)
 
         http_resp = httpparse(resp)
         content = http_resp.fp.read()
@@ -100,34 +95,51 @@ class UrlFetchStub(urlfetch_stub.URLFetchServiceStub):
         self.history.append(url)
         self.responses[url] = content
 
+CAPABILITIES_SERVICE_NAME = 'capability_service'
 
-class ServiceTestCase(unittest.TestCase):
+class CustomTestbed(testbed.Testbed):
+    def init_urlfetch_stub(self, enable=True):
+        if not enable:
+            self._disable_stub(testbed.URLFETCH_SERVICE_NAME)
+            return
+        stub = CustomURLFetchServiceStub()
+        self._register_stub(testbed.URLFETCH_SERVICE_NAME, stub)
+
+    def init_capability_stub(self, enable=True):                                                                      
+        """Enable the capabilities stub.                                                     
+                                                                                      
+        Args:                                                                           
+          enable: True, if the fake service should be enabled, False if real            
+                service should be disabled.                                           
+        """                                                                             
+        if not enable:                                                                  
+            self._disable_stub(CAPABILITIES_SERVICE_NAME)                                      
+            return                                                                        
+        stub = capability_stub.CapabilityServiceStub()                                
+        self._register_stub(CAPABILITIES_SERVICE_NAME, stub)  
+
+class CustomTestCase(unittest.TestCase):
     app = buscall.app.test_client()
     fixture = GoogleDatastoreFixture(env=models, style=NamedDataStyle())
     
     def setUp(self):
-        # Ensure we're in UTC.
-        os.environ['TZ'] = 'UTC'
-        os.environ['SERVER_PORT'] = "8080"
-        os.environ['SERVER_NAME'] = "localhost"
-        os.environ['APPLICATION_ID'] = APP_ID
+        self.testbed = CustomTestbed()
+        self.testbed.activate()
+        self.testbed.init_datastore_v3_stub()
+        self.testbed.init_memcache_stub()
+        self.testbed.init_urlfetch_stub()
+        self.testbed.init_mail_stub()
+        self.testbed.init_capability_stub()
 
-        self.urlfetch_stub = UrlFetchStub()
-        self.mail_stub = mail_stub.MailServiceStub()
-        self.memcache_stub = memcache_stub.MemcacheServiceStub()
-        self.user_stub = user_service_stub.UserServiceStub()
-        self.datastore_v3_stub = datastore_file_stub.DatastoreFileStub(APP_ID, None)
-
-        apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
-        for stub_name in ('urlfetch', 'mail', 'memcache', 'user', 'datastore_v3'):
-            apiproxy_stub_map.apiproxy.RegisterStub(stub_name, getattr(self, stub_name+"_stub"))
-        
         # make sure we start out logged out
         self.logout()
         
         # do some black magic to detect if we're also subclassing from fixture.DataTestCase
         if DataTestCase in self.__class__.__mro__:
             DataTestCase.setUp(self)
+    
+    def tearDown(self):
+        self.testbed.deactivate()
   
     def login(self, email, admin=False, user_id=None):
         os.environ['USER_EMAIL'] = email
@@ -142,17 +154,10 @@ class ServiceTestCase(unittest.TestCase):
             if key in os.environ:
                 del os.environ[key]
   
-    def get_sent_messages(self, *args, **kwargs):
-        return self.mail_stub.get_sent_messages(*args, **kwargs)
-  
-    @property
-    def sent_messages(self):
-        return self.get_sent_messages()
-  
     @property
     def urlfetch_history(self):
-        return self.urlfetch_stub.history
+        return self.testbed.get_stub(testbed.URLFETCH_SERVICE_NAME).history
   
     @property
     def urlfetch_responses(self):
-        return self.urlfetch_stub.responses
+        return self.testbed.get_stub(testbed.URLFETCH_SERVICE_NAME).responses

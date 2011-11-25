@@ -6,7 +6,8 @@ from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
 from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
-from buscall.tests.util import ServiceTestCase
+from buscall.tests.util import CustomTestCase
+from google.appengine.ext import testbed
 
 from fixture import DataSet, DataTestCase
 import datetime
@@ -76,7 +77,7 @@ class BusNotificationData(DataSet):
         medium = "phone"
         executed = False
 
-class UrlfetchTestCase(ServiceTestCase, DataTestCase):
+class UrlfetchTestCase(CustomTestCase, DataTestCase):
     datasets = [UserProfileData, BusListenerData, BusNotificationData]
 
     def test_predictions(self):
@@ -89,16 +90,20 @@ class UrlfetchTestCase(ServiceTestCase, DataTestCase):
         self.assertEqual(len(predictions.buses), 3)
     
     def test_cron_no_listeners(self):
+        mail_stub = self.testbed.get_stub(testbed.MAIL_SERVICE_NAME)
         quiet_moment = datetime.datetime(2011, 7, 2, 0, 0, 0) # Midnight on Sat, July 2
         with app.test_request_context('/tasks/poll'):
             poll(quiet_moment.timetuple())
-            self.assertEqual(len(self.sent_messages), 0)
+            messages = mail_stub.get_sent_messages()
+            self.assertEqual(len(messages), 0)
     
     def test_cron_with_listeners(self):
+        mail_stub = self.testbed.get_stub(testbed.MAIL_SERVICE_NAME)
         active_moment = datetime.datetime(2011, 7, 2, 15, 10, 24) # 3:10:24 on Sat, July 2
         with app.test_request_context('/tasks/poll'):
             poll(active_moment.timetuple())
-            self.assertEqual(len(self.sent_messages), 1)
+            messages = mail_stub.get_sent_messages()
+            self.assertEqual(len(messages), 1)
     
     def test_call_prediction(self):
         self.login("bill@gmail.com", admin=True)

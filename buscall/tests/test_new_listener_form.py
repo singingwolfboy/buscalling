@@ -1,9 +1,9 @@
 from google.appengine.api.users import User
 from buscall.models.profile import UserProfile
 from buscall.models.listener import BusListener
-from buscall.tests.util import ServiceTestCase
+from buscall.tests.util import CustomTestCase
 
-class NewListenerFormTest(ServiceTestCase):
+class NewListenerFormTest(CustomTestCase):
     def test_create_recurring_listener(self):
         self.login("bob@gmail.com")
         self.app.post("/listeners/new", data={

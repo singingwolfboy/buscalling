@@ -4,7 +4,7 @@ from buscall.models import nextbus, twilio
 from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
 from buscall.views.tasks import reset_seen_flags
-from buscall.tests.util import ServiceTestCase
+from buscall.tests.util import CustomTestCase
 
 from fixture import DataSet, DataTestCase
 import datetime
@@ -80,7 +80,7 @@ class BusNotificationData(DataSet):
         medium = "phone"
         executed = False
 
-class DatastoreTestCase(ServiceTestCase, DataTestCase):
+class DatastoreTestCase(CustomTestCase, DataTestCase):
     datasets = [UserProfileData, BusListenerData, BusNotificationData]
 
     def test_set_seen_flag(self):
