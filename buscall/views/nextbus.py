@@ -1,6 +1,7 @@
 from buscall import app
-from flask import render_template, request, Response
+from flask import render_template, request, Response, abort, g
 from buscall.models import nextbus
+from buscall.models.nextbus import NextbusError
 from buscall.models.twilio import get_twiml
 import simplejson as json
 from buscall.models.nextbus import AGENCIES
@@ -15,29 +16,32 @@ def render_json(obj):
     return Response(json.dumps(obj, use_decimal=True), mimetype="application/json")
 
 @app.route('/<agency_id>')
-@app.route('/<agency_id>.<format>')
-def show_agency(agency_id, format="html"):
-    agency = AGENCIES[agency_id]
-    if format.lower() == "json":
+def show_agency(agency_id):
+    try:
+        agency = AGENCIES[agency_id]
+    except KeyError:
+        abort(404)
+    if g.request_format == "json":
         return render_json(agency)
     else:
         return render_template('agencies/show.html', agency=agency)
 
 @app.route('/<agency_id>/routes')
-@app.route('/<agency_id>/routes.<format>')
-def routes_for_agency(agency_id, format="html"):
-    agency = AGENCIES[agency_id]
+def routes_for_agency(agency_id):
+    try:
+        agency = AGENCIES[agency_id]
+    except KeyError:
+        abort(404)
     routes = nextbus.get_routes(agency_id=agency_id)
-    if format.lower() == "json":
+    if g.request_format == "json":
         return render_json(routes)
     else:
         return render_template('routes/index.html',
             agency=agency, routes=routes)
 
 @app.route('/<agency_id>/routes/<route_id>')
-@app.route('/<agency_id>/routes/<route_id>.<format>')
-def show_route(agency_id, route_id, format="html"):
-    if format.lower() == "json":
+def show_route(agency_id, route_id):
+    if g.request_format == "json":
         route = nextbus.get_route(agency_id, route_id, 
             full=request.args.get('full', False), use_dicts=True)
         return render_json(route)
@@ -55,16 +59,20 @@ def show_route(agency_id, route_id, format="html"):
             agency=agency, route=route, 
             directions=direction_dict, stops=stop_dict)
 
+@app.route('/<agency_id>/routes/<route_id>/directions/<direction_id>')
+def show_direction(agency_id, route_id, direction_id):
+    if g.request_format == "json":
+        direction = nextbus.get_direction(agency_id, route_id)
+
+
 @app.route('/predict/<agency_id>/<route_id>/<direction_id>/<stop_id>')
-@app.route('/predict/<agency_id>/<route_id>/<direction_id>/<stop_id>.<format>')
 @app.route('/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predict')
-@app.route('/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predict.<format>')
-def predict_for_stop(agency_id, route_id, direction_id, stop_id, format="html"):
+def predict_for_stop(agency_id, route_id, direction_id, stop_id):
     prediction = nextbus.get_predictions(agency_id, route_id, direction_id, stop_id)
-    if format.lower() == "twiml":
+    if g.request_format == "twiml":
         twiml = get_twiml(prediction)
         return Response(twiml, mimetype="text/xml")
-    elif format.lower() == "json":
+    elif g.request_format == "json":
         return render_json(prediction)
     else:
         return render_template('routes/predict.html', prediction=prediction)

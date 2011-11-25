@@ -6,7 +6,7 @@ from .twilio import call_prediction
 from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
 from .profile import update_profile
-from buscall.util import MAIL_SENDER, READONLY_ERR_MSG, GqlQuery
+from buscall.util import MAIL_SENDER, READONLY_ERR_MSG, GqlQuery, get_request_format
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
 from buscall.models.listener import NOTIFICATION_CHOICES
@@ -61,6 +61,10 @@ def update_userprofile_last_login():
         if profile:
             profile.last_access = datetime.datetime.now()
             db.put_async(profile)
+
+@app.before_request
+def set_request_format():
+    g.request_format = get_request_format()
 
 @app.template_filter('timeformat')
 def time_format(time):

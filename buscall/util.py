@@ -1,4 +1,5 @@
 # Utility functions and variables
+from flask import request
 import decimal
 from google.appengine.ext import db
 from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
@@ -53,6 +54,35 @@ def decimalproperty_factory(precision=2):
     return DecimalProperty
 
 CurrencyProperty = decimalproperty_factory(2)
+
+# based on http://flask.pocoo.org/snippets/45/
+def get_request_format():
+    """
+    Returns the format that the user requests.
+    Ideally, returns a short string like "html" or "json".
+    If given an unknown mimetype like "Accepts: foo/bar", returns
+    the text after the slash: in this example, "bar". If given
+    something completely unknown, returns it. If given nothing,
+    returns "html" as a default. All return values are lowercased.
+    """
+    # if the user specifies a `format` HTTP parameter, use that
+    mimetype = request.args.get('format', '').strip() or \
+        request.accept_mimetypes.best
+    mimetype = mimetype.lower()
+    if not mimetype:
+        return 'html' # default
+    choices = {
+        'application/json': 'json',
+        'application/twiml': 'twiml',
+        'text/html': 'html',
+        'text/plain': 'text',
+    }
+    if mimetype in choices:
+        return choices[mimetype]
+    bits = mimetype.split("/")
+    if len(bits) == 2:
+        return bits[-1]
+    return mimetype
 
 def clean_booleans(d):
     for key in d.keys():

@@ -1,7 +1,10 @@
+from buscall import app
+from flask import request, g, Response
 from google.appengine.api import urlfetch
 from xml.etree import ElementTree as etree
 import logging
 import time
+import re
 from decimal import Decimal
 from urllib import urlencode
 from buscall import cache
@@ -9,6 +12,7 @@ from functools import wraps
 from buscall.util import clean_booleans, filter_keys
 from collections import OrderedDict
 from recordtype import recordtype
+import simplejson as json
 
 Agency = recordtype("Agency", ['id', 'title'])
 Route = recordtype("Route", ['id', 'title', 'directions', 'path', 
@@ -47,6 +51,26 @@ def errcheck_xml(func):
         return func(tree, *args, **kwargs)
     return wrapper
 
+@app.errorhandler(NextbusError)
+def handle_nextbus_error(error):
+    if re.match(r'Could not get \w+ "[^"]+" for \w+ tag "[^"]+"', error.message):
+        status = 404
+    else:
+        status = 400
+    if g.request_format == "json":
+        message = json.dumps({
+            "message": error.message,
+            "should_retry": bool(error.retry),
+        })
+        mimetype = "application/json"
+    else:
+        message = error.message
+        if error.retry:
+            message += " You may retry this request."
+        else:
+            message += " You may not retry this request."
+        mimetype = None
+    return Response(message, status=status, mimetype=mimetype)
 
 @cache.memoize(timeout=3600)
 def get_routes(agency_id):
@@ -228,7 +252,7 @@ def parse_predict_xml(tree, direction_id=""):
     routeID = RouteID(id=predictions_el.get('routeTag'), title=predictions_el.get('routeTitle'))
 
     direction_el = predictions_el.find('direction')
-    if direction_el:
+    if direction_el is not None:
         # we have predictions
         first_prediction_el = direction_el.find('prediction')
         directionID = DirectionID(first_prediction_el.get('dirTag'), direction_el.get('title'))
