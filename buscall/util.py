@@ -68,9 +68,9 @@ def get_request_format():
     # if the user specifies a `format` HTTP parameter, use that
     mimetype = request.args.get('format', '').strip() or \
         request.accept_mimetypes.best
-    mimetype = mimetype.lower()
     if not mimetype:
         return 'html' # default
+    mimetype = mimetype.lower()
     choices = {
         'application/json': 'json',
         'application/twiml': 'twiml',
