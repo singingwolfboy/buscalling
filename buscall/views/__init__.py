@@ -1,5 +1,5 @@
 from buscall import app
-from flask import render_template, request, flash, redirect, url_for, g
+from flask import render_template, request, flash, redirect, url_for, g, abort
 from .tasks import poll, reset_seen_flags
 from .nextbus import show_agency, routes_for_agency, show_route, predict_for_stop
 from .twilio import call_prediction
@@ -99,9 +99,11 @@ def page_root():
 app.add_url_rule('/', 'dashboard', page_root)
 app.add_url_rule('/', 'lander', page_root)
 
-# @app.route('/flush_all')
-# def flush_all():
-#     if memcache.flush_all():
-#         return "Flushed"
-#     else:
-#         return "Failed"
+@app.route('/flush_all')
+def flush_all():
+    if not app.debug:
+        abort(404)
+    if memcache.flush_all():
+        return "Flushed"
+    else:
+        return "Failed"
