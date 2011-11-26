@@ -73,7 +73,7 @@ def handle_nextbus_error(error):
     return Response(message, status=status, mimetype=mimetype)
 
 @cache.memoize(timeout=3600)
-def get_routes(agency_id):
+def get_routes(agency_id, use_dicts=True):
     rpc = urlfetch.create_rpc()
     url = RPC_URL + urlencode({
         "a": agency_id,
@@ -89,11 +89,18 @@ def get_routes(agency_id):
         return None
 
     tree = etree.fromstring(result.content)
-    return parse_index_xml(tree)
+    return parse_index_xml(tree, use_dicts)
 
 @errcheck_xml
-def parse_index_xml(tree):
-    parsed = OrderedDict()
+def parse_index_xml(tree, use_dicts=True):
+    if use_dicts:
+        parsed = OrderedDict()
+        def add(d, obj):
+            d[obj.id] = obj
+    else:
+        parsed = []
+        def add(l, obj):
+            l.append(obj)
     for route in tree.findall('route'):
         route_info = clean_booleans(route.attrib)
         if "tag" in route_info and "id" not in route_info:
@@ -101,7 +108,7 @@ def parse_index_xml(tree):
             del route_info['tag']
         route_info = filter_keys(route_info, RouteID._fields)
         route = RouteID(**route_info)
-        parsed[route.id] = route
+        add(parsed, route)
     return parsed
 
 @cache.memoize(timeout=3600)

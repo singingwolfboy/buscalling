@@ -32,7 +32,7 @@ def routes_for_agency(agency_id):
         agency = AGENCIES[agency_id]
     except KeyError:
         abort(404)
-    routes = nextbus.get_routes(agency_id=agency_id)
+    routes = nextbus.get_routes(agency_id=agency_id, use_dicts=False)
     if g.request_format == "json":
         return render_json(routes)
     else:
