@@ -39,6 +39,7 @@ def get_twiml(prediction):
 
 @check_user_payment
 def notify_by_phone(listener, minutes=None):
+    print listener
     url = DOMAIN + url_for('predict_for_stop', 
         agency_id=listener.agency.id, 
         route_id=listener.route.id, 

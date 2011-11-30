@@ -1,6 +1,7 @@
 from google.appengine.api import users, mail
 from google.appengine.ext import db
-from buscall.models.nextbus import AGENCIES, get_predictions, get_route
+from buscall.models import nextbus
+from buscall.models.nextbus import get_agency, get_route,get_predictions, get_route
 from buscall.models.profile import UserProfile
 from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
 from buscall.models.twilio import notify_by_phone, notify_by_txt
@@ -90,21 +91,25 @@ class BusListener(db.Model):
     
     @property
     def agency(self):
-        return AGENCIES[self.agency_id]
+        return nextbus.get_agency(self.agency_id)
     
     @property
     def route(self):
         if not getattr(self, "_route", None):
-            self._route = get_route(self.agency_id, self.route_id, use_dicts=True)
+            self._route = nextbus.get_route(self.agency_id, self.route_id)
         return self._route
     
     @property
     def direction(self):
-        return self.route.directions[self.direction_id]
+        if not getattr(self, "_direction", None):
+            self._direction = nextbus.get_direction(self.agency_id, self.route_id, self.direction_id)
+        return self._direction
     
     @property
     def stop(self):
-        return self.route.stops[self.stop_id]
+        if not getattr(self, "_stop", None):
+            self._stop = nextbus.get_stop(self.agency_id, self.route_id, self.direction_id, self.stop_id)
+        return self._stop
     
     @property
     def id(self):
@@ -128,7 +133,7 @@ class BusListener(db.Model):
     
     def get_predictions(self):
         "Use the Nextbus API to get route prediction information."
-        return get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
+        return nextbus.get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
     
     def check_notifications(self):
         self.seen = all((notification.executed for notification in self.notifications))

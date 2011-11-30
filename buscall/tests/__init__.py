@@ -9,6 +9,7 @@ def all_tests_suite():
         'buscall.tests.test_datastore',
         'buscall.tests.test_urlfetch',
         'buscall.tests.test_new_listener_form',
+        'buscall.tests.test_smoke',
     ])
 
 def main():

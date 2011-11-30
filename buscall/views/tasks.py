@@ -3,7 +3,6 @@ import datetime
 from google.appengine.ext.db import GqlQuery
 from buscall import app
 from buscall.models.nextbus import get_predictions
-from buscall.models.listener import BusListener
 from buscall.util import DAYS_OF_WEEK
 from flask import redirect, url_for
 
@@ -27,7 +26,7 @@ def poll(struct_time=None):
             continue # should have been filtered out by GqlQuery, but wasn't
         predictions = listener.get_predictions()
         for notification in listener.notifications:
-            for bus in predictions.buses:
+            for bus in predictions:
                 if notification.minutes == bus.minutes:
                     notification.execute(bus.minutes)
     

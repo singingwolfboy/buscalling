@@ -4,7 +4,7 @@ from itertools import izip
 from wtforms.widgets import Input, TextInput, RadioInput, ListWidget
 from wtforms.fields import Field, FieldList, _unset_value
 from flaskext.wtf import SelectField, TextField, BooleanField, RadioField
-from buscall.models.nextbus import NextbusError, AGENCIES, get_routes, get_route
+from buscall.models.nextbus import NextbusError, get_agency, get_route
 
 __all__ = ['TelInput', 'TelephoneField', 'RadioBooleanField', 'TimeInput', 'TimeField', 'RouteField', 'DirectionField', 'StopField']
 
@@ -101,10 +101,15 @@ class RouteField(MaybeSelectField):
         super(RouteField, self).__init__(*args, **kwargs)
 
     def pre_validate(self, form):
-        if form.agency_id.data:
+        agency_id = form.agency_id.data
+        if agency_id:
             try:
-                routes = get_routes(form.agency_id.data)
-                self.choices = [(id, route.title) for id, route in routes.iteritems()]
+                agency = get_agency(agency_id)
+                choices = []
+                for route_id in agency.route_ids:
+                    route = get_route(agency_id, route_id)
+                    choices.append((route.id, route.title))
+                self.choices = choices
             except NextbusError:
                 pass
         super(RouteField, self).pre_validate(form)

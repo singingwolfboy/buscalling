@@ -86,8 +86,7 @@ class UrlfetchTestCase(CustomTestCase, DataTestCase):
         direction_id = "26_1_var1"
         stop_id = "492"
         predictions = nextbus.get_predictions(agency_id, route_id, direction_id, stop_id)
-        self.assertEqual(predictions.direction.title, "Ashmont Belt via Washington St.")
-        self.assertEqual(len(predictions.buses), 3)
+        self.assertEqual(len(predictions), 3)
     
     def test_cron_no_listeners(self):
         mail_stub = self.testbed.get_stub(testbed.MAIL_SERVICE_NAME)

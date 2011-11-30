@@ -1,9 +1,9 @@
+from flask import g
 from flaskext.wtf import Form, DecimalField, SelectField, BooleanField, TextField, HiddenField, RadioField
 from flaskext.wtf import HiddenInput, FieldList, FormField, IntegerField
 from flaskext.wtf import Required, Optional, Regexp, Length
 from flaskext.wtf.html5 import EmailField
 from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField, TelephoneField, RadioBooleanField, MaybeRadioField
-from buscall.models.nextbus import AGENCIES
 from buscall.models.listener import NOTIFICATION_CHOICES
 from buscall.util import DAYS_OF_WEEK
 import datetime
@@ -23,7 +23,6 @@ class NotificationForm(Form):
         kwargs['csrf_enabled'] = False
         super(NotificationForm, self).__init__(*args, **kwargs)
 
-agency_choices = [('','')] + [(id, agency.title) for (id, agency) in AGENCIES.items()]
 today = datetime.date.today()
 this_week = [today + datetime.timedelta(days=n) for n in range(7)]
 def weekday_choice_text_format(day):
@@ -39,7 +38,7 @@ this_week_choices = [(day.strftime('%a').lower(), weekday_choice_text_format(day
 
 
 class BusListenerForm(Form):
-    agency_id = SelectField("Agency", choices=agency_choices,
+    agency_id = SelectField("Agency", choices=[('', '')],
         id="agency", validators=[Required()])
     route_id = RouteField("Route",
         id="route", validators=[Required()])
@@ -62,6 +61,9 @@ class BusListenerForm(Form):
     #dow = MaybeRadioField(choices=[(day, day.capitalize()) for day in DAYS_OF_WEEK])
     dow = SelectField("Date", choices=this_week_choices, default=today.strftime('%a').lower())
 
+    def __init__(self, *args, **kwargs):
+        self.agency_id.choices = [('','')] + [(id, agency.title) for (id, agency) in g.AGENCIES.items()]
+        super(BusListenerForm, self).__init__(*args, **kwargs)
 
     def validate(self, *args, **kwargs):
         success = super(BusListenerForm, self).validate(*args, **kwargs)

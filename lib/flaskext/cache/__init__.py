@@ -135,16 +135,19 @@ class Cache(object):
                 if callable(unless) and unless() is True:
                     return f(*args, **kwargs)
 
-                if '%s' in key_prefix:
-                    cache_key = key_prefix % request.path
-                else:
-                    cache_key = key_prefix
-                
-                rv = self.cache.get(cache_key)
+                rv = self.cache.get(decorated_function.cache_key)
                 if rv is None:
                     rv = f(*args, **kwargs)
-                    self.cache.set(cache_key, rv, timeout=timeout)
+                    self.cache.set(decorated_function.cache_key, rv, timeout=decorated_function.cache_timeout)
                 return rv
+
+            decorated_function.uncached = f
+            decorated_function.cache_timeout = timeout
+            if '%s' in key_prefix:
+                decorated_function.cache_key = key_prefix % request.path
+            else:
+                decorated_function.cache_key = key_prefix
+
             return decorated_function
         return decorator
 
@@ -178,20 +181,28 @@ class Cache(object):
         def memoize(f):
             @wraps(f)
             def decorated_function(*args, **kwargs):
-                cache_key = hashlib.md5()
-                try:
-                    updated = "{0}{1}{2}".format(f.__name__, args, kwargs)
-                except AttributeError:
-                    updated = "%s%s%s" % (f.__name__, args, kwargs)
-                cache_key.update(updated)
-                cache_key = cache_key.hexdigest()
-                
+                cache_key = decorated_function.make_cache_key(f.__name__, args, kwargs)
                 rv = self.cache.get(cache_key)
                 if rv is None:
                     rv = f(*args, **kwargs)
-                    self.cache.set(cache_key, rv, timeout=timeout)
+                    self.cache.set(cache_key, rv, timeout=decorated_function.cache_timeout)
                     self._memoized.append((f.__name__, cache_key))
                 return rv
+
+            def make_cache_key(name, args, kwargs):
+                cache_key = hashlib.md5()
+                try:
+                    updated = "{0}{1}{2}".format(name, args, kwargs)
+                except AttributeError:
+                    updated = "%s%s%s" % (name, args, kwargs)
+                cache_key.update(updated)
+                cache_key = cache_key.hexdigest()
+                return cache_key
+
+            decorated_function.uncached = f
+            decorated_function.cache_timeout = timeout
+            decorated_function.make_cache_key = make_cache_key
+
             return decorated_function
         return memoize
     

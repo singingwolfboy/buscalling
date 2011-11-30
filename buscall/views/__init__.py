@@ -10,6 +10,7 @@ from buscall.util import MAIL_SENDER, READONLY_ERR_MSG, GqlQuery, get_request_fo
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
 from buscall.models.listener import NOTIFICATION_CHOICES
+from buscall.models.nextbus import get_agencies
 from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
@@ -65,6 +66,10 @@ def update_userprofile_last_login():
 @app.before_request
 def set_request_format():
     g.request_format = get_request_format()
+
+@app.before_request
+def set_agencies():
+    g.AGENCIES = get_agencies()
 
 @app.template_filter('timeformat')
 def time_format(time):

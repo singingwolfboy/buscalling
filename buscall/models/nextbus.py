@@ -1,59 +1,46 @@
 from buscall import app
-from flask import request, g, Response
+from flask import g, Response
 from google.appengine.api import urlfetch
-from xml.etree import ElementTree as etree
 import logging
-import time
 import re
 from decimal import Decimal
 from urllib import urlencode
 from buscall import cache
-from functools import wraps
 from buscall.util import clean_booleans, filter_keys
-from collections import OrderedDict
 from recordtype import recordtype
 import simplejson as json
+from lxml import etree
 
-Agency = recordtype("Agency", ['id', 'title'])
-Route = recordtype("Route", ['id', 'title', 'directions', 'path', 
+Agency = recordtype("Agency", ['id', 'title', 'region', 
+    ('short_title', None), ('route_ids', [])])
+Route = recordtype("Route", ['id', 'agency_id', 'title', 'paths', ('direction_ids', []),
     ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None)])
-FullRoute = recordtype("FullRoute", ['id', 'title', 'directions', 'path', 'stops',
-    ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None)])
-RouteID = recordtype("RouteID", ['id', 'title'])
-Direction = recordtype("Direction", ['id', 'title', ('name', ''), ('stops', [])])
-DirectionID = recordtype("DirectionID", ['id', 'title', ('name', '')])
-Stop = recordtype("Stop", ['id', 'title', 
+Direction = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', [])])
+Stop = recordtype("Stop", ['id', 'direction_id', 'route_id', 'agency_id', 'title', 
     ('lat', None), ('lng', None)])
 Point = recordtype("Point", ['lat', 'lng'])
-Prediction = recordtype("Prediction", ['buses', 'route', 'direction', 'stop', 
-    ('time', None)])
 PredictedBus = recordtype("PredictedBus", ['minutes', 'vehicle', 
     ('seconds', None), ('trip_id', None), ('block', None),  ('departure', None), 
-    ('affectedByLayover', None), ('delayed', None), ('slowness', None)])
+    ('affected_by_layover', None), ('delayed', None), ('slowness', None)])
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
-AGENCIES = {'mbta': Agency('mbta', "MBTA")}
+# cache durations
+SHORT = 20
+HOUR = 3600
+DAY = 86400
 
 class NextbusError(Exception):
-    def __init__(self, message, shouldRetry):
+    def __init__(self, message, retry):
         self.message = message
-        self.retry = shouldRetry
+        self.retry = retry
 
     def __str__(self):
         return self.message
 
-def errcheck_xml(func):
-    @wraps(func)
-    def wrapper(tree, *args, **kwargs):
-        error = tree.find('Error')
-        if error is not None:
-            raise NextbusError(error.text.strip(), error.attrib['shouldRetry'])
-        return func(tree, *args, **kwargs)
-    return wrapper
-
 @app.errorhandler(NextbusError)
 def handle_nextbus_error(error):
-    if re.match(r'Could not get \w+ "[^"]+" for \w+ tag "[^"]+"', error.message):
+    if re.match(r'Could not get \w+ "[^"]+" for \w+ tag "[^"]+"', error.message) or \
+       error.message.startswith("Invalid"):
         status = 404
     else:
         status = 400
@@ -72,218 +59,169 @@ def handle_nextbus_error(error):
         mimetype = None
     return Response(message, status=status, mimetype=mimetype)
 
-@cache.memoize(timeout=3600)
-def get_routes(agency_id, use_dicts=True):
+def get_nextbus_xml(params):
     rpc = urlfetch.create_rpc()
-    url = RPC_URL + urlencode({
-        "a": agency_id,
-        "command": "routeList",
-    })
+    url = RPC_URL + urlencode(params)
+    app.logger.info("fetching "+url)
     urlfetch.make_fetch_call(rpc, url)
     try:
         result = rpc.get_result()
         if result.status_code != 200:
-            logging.error("index_routes RPC returned status code %s" % result.status_code)
+            logging.error("status code %s for RPC with params %s" % (result.status_code, params))
     except urlfetch.DownloadError:
         logging.error("Download error: " + url)
         return None
 
     tree = etree.fromstring(result.content)
-    return parse_index_xml(tree, use_dicts)
+    error = tree.find('Error')
+    if error is not None:
+        raise NextbusError(error.text.strip(), error.attrib['shouldRetry'])
+    # return tree # FIXME: cache cannot handle lxml parsed objects
+    return etree.tostring(tree)
 
-@errcheck_xml
-def parse_index_xml(tree, use_dicts=True):
-    if use_dicts:
-        parsed = OrderedDict()
-        def add(d, obj):
-            d[obj.id] = obj
-    else:
-        parsed = []
-        def add(l, obj):
-            l.append(obj)
-    for route in tree.findall('route'):
-        route_info = clean_booleans(route.attrib)
-        if "tag" in route_info and "id" not in route_info:
-            route_info['id'] = route_info['tag']
-            del route_info['tag']
-        route_info = filter_keys(route_info, RouteID._fields)
-        route = RouteID(**route_info)
-        add(parsed, route)
-    return parsed
+@cache.memoize(timeout=DAY)
+def get_agencylist_xml():
+    return get_nextbus_xml({
+        "command": "agencyList",
+    })
 
-@cache.memoize(timeout=3600)
-def get_route(agency_id, route_id, full=True, use_dicts=False):
-    rpc = urlfetch.create_rpc()
-    url = RPC_URL + urlencode({
+@cache.memoize(timeout=HOUR)
+def get_routelist_xml(agency_id):
+    return get_nextbus_xml({
+        "a": agency_id,
+        "command": "routeList",
+    })
+
+@cache.memoize(timeout=HOUR)
+def get_route_xml(agency_id, route_id):
+    return get_nextbus_xml({
         "a": agency_id,
         "r": route_id,
         "command": "routeConfig",
     })
-    urlfetch.make_fetch_call(rpc, url)
-    try:
-        result = rpc.get_result()
-        if result.status_code != 200:
-            logging.error("show_route %s RPC returned status code %s" % (route_id, result.status_code))
-    except urlfetch.DownloadError:
-        logging.error("Download error: " + url)
-        return None
-    
-    tree = etree.fromstring(result.content)
-    route = parse_route_xml(tree, full, use_dicts)
 
-    return route
-
-@errcheck_xml
-def parse_route_xml(tree, full=True, use_dicts=False):
-    if use_dicts:
-        def add(d, obj):
-            d[obj.id] = obj
-    else:
-        def add(l, obj):
-            l.append(obj)
-
-    routeElem = tree.find('route')
-    # basic route attributes
-    routeDict = clean_booleans(routeElem.attrib)
-    if "tag" in routeDict and "id" not in routeDict:
-        routeDict['id'] = routeDict['tag']
-        del routeDict['tag']
-    for tag in ('latMin', 'latMax', 'lonMin', 'lonMax'):
-        if tag in routeDict:
-            newtag = tag.replace('lon', 'lng')
-            value = Decimal(routeDict[tag])
-            del routeDict[tag]
-            routeDict[newtag] = value
-
-    if full:
-        # detailed info about stops
-        if use_dicts:
-            stops = OrderedDict()
-        else:
-            stops = []
-        for stop in routeElem.findall("stop"):
-            stop_info = stop.attrib
-            if 'tag' in stop_info and 'id' not in stop_info:
-                stop_info['id'] = stop_info['tag']
-                del stop_info['tag']
-            for tag in ('lat', 'lon'):
-                if tag in stop_info:
-                    newtag = tag.replace('lon', 'lng')
-                    value = Decimal(stop_info[tag])
-                    del stop_info[tag]
-                    stop_info[newtag] = value
-            if "stopId" in stop_info:
-                del stop_info["stopId"]
-            stop_info = clean_booleans(stop_info)
-            stop_info = filter_keys(stop_info, Stop._fields)
-            stop = Stop(**stop_info)
-            add(stops, stop)
-        routeDict['stops'] = stops
-
-    # directions (inbound, outbound)
-    if use_dicts:
-        directions = OrderedDict()
-    else:
-        directions = []
-    for direction in routeElem.findall('direction'):
-        dir_info = direction.attrib
-        if 'tag' in dir_info and 'id' not in dir_info:
-            dir_info['id'] = dir_info['tag']
-            del dir_info['tag']
-        dir_info = clean_booleans(dir_info)
-        if full:
-            # add stop ids
-            dir_info['stops'] = [stop.get('tag') for stop in direction.findall('stop')]
-            dir_info = filter_keys(dir_info, Direction._fields)
-            direction = Direction(**dir_info)
-        else:
-            dir_info = filter_keys(dir_info, DirectionID._fields)
-            direction = DirectionID(**dir_info)
-        add(directions, direction)
-    routeDict['directions'] = directions
-    
-    # path of lat/long points
-    route_path = []
-    for path in routeElem.findall('path'):
-        segment = []
-        for point in path.findall('point'):
-            lat = point.get('lat')
-            lng = point.get('lon') or point.get('lng')
-            segment.append(Point(Decimal(lat), Decimal(lng)))
-        route_path.append(segment)
-    routeDict['path'] = route_path
-
-    if full:
-        routeDict = filter_keys(routeDict, FullRoute._fields)
-        route = FullRoute(**routeDict)
-    else:
-        routeDict = filter_keys(routeDict, Route._fields)
-        route = Route(**routeDict)
-    return route
-
-def get_direction(agency_id, route_id, direction_id):
-    route = get_route(agency_id, route_id, use_dicts=True)
-    return route.directions[direction_id]
-
-def get_stop(agency_id, route_id, direction_id, stop_id):
-    route = get_route(agency_id, route_id, use_dicts=True)
-    return route.stops[stop_id]
-
-@cache.memoize(timeout=20)
-def get_predictions(agency_id, route_id, direction_id, stop_id):
+@cache.memoize(timeout=SHORT)
+def get_predictions_xml(agency_id, route_id, direction_id, stop_id):
     "Each physical stop has multiple IDs, depending on the bus direction."
-    rpc = urlfetch.create_rpc()
-    url = RPC_URL + urlencode({
+    return get_nextbus_xml({
         "a": agency_id,
         "r": route_id,
         "d": direction_id,
         "s": stop_id,
         "command": "predictions",
     })
-    urlfetch.make_fetch_call(rpc, url)
-    try:
-        result = rpc.get_result()
-        if result.status_code != 200:
-            logging.error("predict_for_stop %s, %s RPC returned status code %s" % (route_id, stop_id, result.status_code))
-    except urlfetch.DownloadError:
-        logging.error("Download error: " + url)
-        return None
-    
-    tree = etree.fromstring(result.content)
-    return parse_predict_xml(tree, direction_id)
 
-@errcheck_xml
-def parse_predict_xml(tree, direction_id=""):
-    predictions_el = tree.find('predictions')
-    stop = Stop(id=predictions_el.get('stopTag'), title=predictions_el.get('stopTitle'))
-    routeID = RouteID(id=predictions_el.get('routeTag'), title=predictions_el.get('routeTitle'))
+@cache.memoize(get_agencylist_xml.cache_timeout)
+def get_agencies():
+    agencies = {}
+    agencies_tree = etree.fromstring(get_agencylist_xml())
+    if agencies_tree is None:
+        # FIXME: handle the case where nextbus is unreachable
+        pass
+    for agency_el in agencies_tree.findall('agency'):
+        id = agency_el.get("id") or agency_el.get("tag")
+        agency = Agency(id = id, 
+            title=agency_el.get("title"),
+            short_title = agency_el.get("shortTitle"),
+            region=agency_el.get("regionTitle"),
+        )
+        routelist_tree = etree.fromstring(get_routelist_xml(id))
+        route_ids = []
+        for route in routelist_tree.findall('route'):
+            route_ids.append(route.get("id") or route.get("tag"))
+        agency.route_ids = route_ids
+        agencies[id] = agency
+    return agencies
 
-    direction_el = predictions_el.find('direction')
-    if direction_el is not None:
-        # we have predictions
-        first_prediction_el = direction_el.find('prediction')
-        directionID = DirectionID(first_prediction_el.get('dirTag'), direction_el.get('title'))
-        epoch_time = time.localtime(int(first_prediction_el.get('epochTime')))
+@cache.memoize(get_agencies.cache_timeout)
+def get_agency(agency_id):
+    if not hasattr(g, "AGENCIES") or not g.AGENCIES:
+        g.AGENCIES = get_agencies()
+    if agency_id in g.AGENCIES:
+        return g.AGENCIES[agency_id]
+    raise NextbusError("Invalid agency", retry=False)
 
-        buses = []
-        for prediction_el in direction_el.findall('prediction'):
-            bus = prediction_el.attrib
-            if 'departure' not in bus and 'isDeparture' in bus:
-                bus['departure'] = bus['isDeparture']
-                del bus['isDeparture']
-            if 'trip_id' not in bus and 'tripTag' in bus:
-                bus['trip_id'] = bus['tripTag']
-                del bus['tripTag']
-            bus = clean_booleans(bus)
-            bus['minutes'] = int(bus['minutes'])
-            bus['seconds'] = int(bus['seconds'])
+@cache.memoize(get_route_xml.cache_timeout)
+def get_route(agency_id, route_id):
+    route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
+    route_el = route_tree.find('route')
+    attrs = dict(route_el.attrib)
+    attrs = clean_booleans(attrs)
+    if "tag" in attrs and not "id" in attrs:
+        attrs["id"] = attrs["tag"]
+        del attrs["tag"]
+    for lat in ("latMin", "latMax"):
+        if lat in attrs:
+            attrs[lat] = Decimal(attrs[lat])
+    for lon in ("lonMin", "lonMax"):
+        if lon in attrs:
+            attrs[lon.replace("lon", "lng")] = Decimal(attrs[lon])
+            del attrs[lon]
+    paths = []
+    for path_el in route_el.findall('path'):
+        paths.append([Point(Decimal(p.get("lat")), Decimal(p.get("lon"))) for p in path_el])
+    attrs["paths"] = paths
+    direction_ids = [d.get("id") or d.get("tag") for d in route_el.findall('direction')]
+    attrs["direction_ids"] = direction_ids
+        
+    attrs = filter_keys(attrs, Route._fields)
+    attrs['agency_id'] = agency_id
+    return Route(**attrs)
 
-            bus = filter_keys(bus, PredictedBus._fields)
-            buses.append(PredictedBus(**bus))
+@cache.memoize(get_route_xml.cache_timeout)
+def get_direction(agency_id, route_id, direction_id):
+    route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
+    for direction_el in route_tree.xpath('//body/route/direction'):
+        attrs = dict(direction_el.attrib)
+        if "tag" in attrs and not "id" in attrs:
+            attrs["id"] = attrs["tag"]
+            del attrs["tag"]
+        if direction_id != attrs["id"]:
+            continue
+        stop_ids = [s.get("id") or s.get("tag") for s in direction_el]
+        attrs["stop_ids"] = stop_ids
 
-        return Prediction(buses=buses, time=epoch_time, route=routeID, direction=directionID, stop=stop)
-    
-    else: # no buses predicted
-        directionID = DirectionID(direction_id, predictions_el.get('dirTitleBecauseNoPredictions'))
-        return Prediction(buses=[], epoch_time=None, route=routeID, direction=directionID, stop=stop)
+        attrs = filter_keys(attrs, Direction._fields)
+        attrs["agency_id"] = agency_id
+        attrs["route_id"] = route_id
+        return Direction(**attrs)
+    raise NextbusError("Invalid direction", retry=False)
+
+@cache.memoize(get_route_xml.cache_timeout)
+def get_stop(agency_id, route_id, direction_id, stop_id):
+    route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
+    logging.error(route_tree)
+    for stop_el in route_tree.xpath('//body/route/stop'):
+    # for stop_el in route_tree.findall('stop'):
+        attrs = dict(stop_el.attrib)
+        if "tag" in attrs and not "id" in attrs:
+            attrs["id"] = attrs["tag"]
+            del attrs["tag"]
+        if stop_id != attrs["id"]:
+            continue
+
+        attrs = filter_keys(attrs, Stop._fields)
+        attrs["agency_id"] = agency_id
+        attrs["route_id"] = route_id
+        attrs["direction_id"] = direction_id
+        return Stop(**attrs)
+    raise NextbusError("Invalid stop", retry=False)
+
+@cache.memoize(get_predictions_xml.cache_timeout)
+def get_predictions(agency_id, route_id, direction_id, stop_id):
+    predictions_tree = etree.fromstring(get_predictions_xml(agency_id, route_id, direction_id, stop_id))
+    buses = []
+    for prediction_el in predictions_tree.xpath('/body/predictions/direction/prediction'):
+        buses.append(PredictedBus(
+            minutes = int(prediction_el.get("minutes", 0)),
+            seconds = int(prediction_el.get("seconds", 0)),
+            vehicle = prediction_el.get("vehicle"),
+            trip_id = prediction_el.get("tripTag"),
+            block = prediction_el.get("block"),
+            departure = prediction_el.get("isDeparture", "").lower() == "true",
+            affected_by_layover = prediction_el.get("affectedByLayover", "").lower() == "true",
+            delayed = prediction_el.get("delayed", "").lower() == "true",
+            slowness = int(prediction_el.get("slowness", 0)),
+        ))
+    return buses
 

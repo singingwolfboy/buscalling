@@ -5,7 +5,6 @@ from google.appengine.api import users
 from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
 from buscall.forms import BusListenerForm
-from buscall.models.nextbus import AGENCIES, get_routes, get_route
 from buscall.util import GqlQuery, DAYS_OF_WEEK, READONLY_ERR_MSG
 import simplejson as json
 try:
@@ -67,11 +66,12 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     context = {
         "form": form,
         "js_file": "listeners",
-        "js_model": make_js_model(**kwargs),
+        # "js_model": make_js_model(**kwargs),
         "DAYS_OF_WEEK": DAYS_OF_WEEK,
     }
     return render_template("listeners/new.html", **context)
 
+"""
 def make_js_model(agency_id=None, route_id=None, direction_id=None, stop_id=None):
     model = OrderedDict()
     for key, value in AGENCIES.items():
@@ -104,10 +104,12 @@ def make_js_model(agency_id=None, route_id=None, direction_id=None, stop_id=None
             stop_dict["_order"] = stop_dict.keys()
             model[agency_id]["routes"][route_id]["stops"] = stop_dict   
     return json.dumps(model)
+"""
 
 def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, direction_id=None, stop_id=None):
     if form is None:
         form = BusListenerForm(request.form)
+    """
     if agency_id in AGENCIES:
         # filter out the blank choice
         form.agency_id.choices = [c for c in form.agency_id.choices if c != ('', '')]
@@ -155,6 +157,7 @@ def get_listener_form_with_defaults(form=None, agency_id=None, route_id=None, di
                     form.stop_id.default = stop_id
                     # need to set "data" attribute so that it will render as default
                     form.stop_id.data = stop_id         
+    """
     return form
 
 @app.route('/listeners/<int:listener_id>', methods=['DELETE'])
