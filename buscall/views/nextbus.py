@@ -1,19 +1,17 @@
 from buscall import app
-from flask import render_template, request, Response, abort, g
+from flask import render_template, Response, g
 from buscall.models import nextbus
-from buscall.models.nextbus import NextbusError
 from buscall.models.twilio import get_twiml
 import simplejson as json
 from buscall.models.nextbus import get_agency, get_route, get_direction, get_stop
-try:
-    from collections import OrderedDict
-except ImportError:
-    from collections_backport import OrderedDict
 
-def render_json(obj):
-    if isinstance(obj, OrderedDict):
-        obj["_order"] = obj.keys()
-    return Response(json.dumps(obj, use_decimal=True), mimetype="application/json")
+def render_json(obj, count=None):
+    resp = Response(json.dumps(obj, use_decimal=True), mimetype="application/json")
+    if count is not None:
+        resp.headers.add("X-Limit", g.limit)
+        resp.headers.add("X-Offset", g.offset)
+        resp.headers.add("X-TotalCount", count)
+    return resp
 
 @app.route('/<agency_id>')
 def show_agency(agency_id):
@@ -26,12 +24,15 @@ def show_agency(agency_id):
 @app.route('/<agency_id>/routes')
 def routes_for_agency(agency_id):
     agency = get_agency(agency_id)
-    routes = [get_route(agency_id, route_id) for route_id in agency.route_ids]
+    count = len(agency.route_ids)
     if g.request_format == "json":
-        return render_json(routes)
+        page = agency.route_ids[g.offset:g.offset+g.limit]
+        routes = [get_route(agency_id, route_id) for route_id in page]
+        return render_json(routes, count)
     else:
+        routes = [get_route(agency_id, route_id) for route_id in agency.route_ids]
         return render_template('routes/index.html',
-            agency=agency, routes=routes)
+            agency=agency, routes=routes, count=count)
 
 @app.route('/<agency_id>/routes/<route_id>')
 def show_route(agency_id, route_id):
