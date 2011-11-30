@@ -190,7 +190,6 @@ def get_direction(agency_id, route_id, direction_id):
 @cache.memoize(get_route_xml.cache_timeout)
 def get_stop(agency_id, route_id, direction_id, stop_id):
     route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
-    logging.error(route_tree)
     for stop_el in route_tree.xpath('//body/route/stop'):
     # for stop_el in route_tree.findall('stop'):
         attrs = dict(stop_el.attrib)
