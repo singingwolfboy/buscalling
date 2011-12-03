@@ -113,11 +113,11 @@ def get_predictions_xml(agency_id, route_id, direction_id, stop_id):
 
 @cache.memoize(get_agencylist_xml.cache_timeout)
 def get_agencies():
-    agencies = {}
+    agencies = []
     agencies_tree = etree.fromstring(get_agencylist_xml())
     if agencies_tree is None:
         # FIXME: handle the case where nextbus is unreachable
-        pass
+        return None
     for agency_el in agencies_tree.findall('agency'):
         id = agency_el.get("id") or agency_el.get("tag")
         agency = Agency(id = id, 
@@ -130,16 +130,32 @@ def get_agencies():
         for route in routelist_tree.findall('route'):
             route_ids.append(route.get("id") or route.get("tag"))
         agency.route_ids = route_ids
-        agencies[id] = agency
+        agencies.append(agency)
     return agencies
 
 @cache.memoize(get_agencies.cache_timeout)
 def get_agency(agency_id):
-    if not hasattr(g, "AGENCIES") or not g.AGENCIES:
-        g.AGENCIES = get_agencies()
-    if agency_id in g.AGENCIES:
-        return g.AGENCIES[agency_id]
-    raise NextbusError("Invalid agency", retry=False)
+    agencies_tree = etree.fromstring(get_agencylist_xml())
+    if agencies_tree is None:
+        # FIXME: handle the case where nextbus is unreachable
+        pass
+    expr = '//agency[@id="{id}" or @tag="{id}"][1]'.format(id=agency_id)
+    agency_els = agencies_tree.xpath(expr)
+    try:
+        agency_el = agency_els[0]
+    except IndexError:
+        raise NextbusError("Invalid agency", retry=False)
+    agency = Agency(id = agency_id,
+        title=agency_el.get("title"),
+        short_title = agency_el.get("shortTitle"),
+        region=agency_el.get("regionTitle"),
+    )
+    routelist_tree = etree.fromstring(get_routelist_xml(agency_id))
+    route_ids = []
+    for route in routelist_tree.findall('route'):
+        route_ids.append(route.get("id") or route.get("tag"))
+    agency.route_ids = route_ids
+    return agency
 
 @cache.memoize(get_route_xml.cache_timeout)
 def get_route(agency_id, route_id):
@@ -171,40 +187,39 @@ def get_route(agency_id, route_id):
 @cache.memoize(get_route_xml.cache_timeout)
 def get_direction(agency_id, route_id, direction_id):
     route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
-    for direction_el in route_tree.xpath('//body/route/direction'):
-        attrs = dict(direction_el.attrib)
-        if "tag" in attrs and not "id" in attrs:
-            attrs["id"] = attrs["tag"]
-            del attrs["tag"]
-        if direction_id != attrs["id"]:
-            continue
-        stop_ids = [s.get("id") or s.get("tag") for s in direction_el]
-        attrs["stop_ids"] = stop_ids
+    expr = '//route/direction[@id="{id}" or @tag="{id}"][1]'.format(id=direction_id)
+    direction_els = route_tree.xpath(expr)
+    try:
+        direction_el = direction_els[0]
+    except KeyError:
+        raise NextbusError("Invalid direction", retry=False)
 
-        attrs = filter_keys(attrs, Direction._fields)
-        attrs["agency_id"] = agency_id
-        attrs["route_id"] = route_id
-        return Direction(**attrs)
-    raise NextbusError("Invalid direction", retry=False)
+    attrs = dict(direction_el.attrib)
+    stop_ids = [s.get("id") or s.get("tag") for s in direction_el]
+    attrs["stop_ids"] = stop_ids
+
+    attrs = filter_keys(attrs, Direction._fields)
+    attrs["agency_id"] = agency_id
+    attrs["route_id"] = route_id
+    attrs["id"] = direction_id
+    return Direction(**attrs)
 
 @cache.memoize(get_route_xml.cache_timeout)
 def get_stop(agency_id, route_id, direction_id, stop_id):
     route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
-    for stop_el in route_tree.xpath('//body/route/stop'):
-    # for stop_el in route_tree.findall('stop'):
-        attrs = dict(stop_el.attrib)
-        if "tag" in attrs and not "id" in attrs:
-            attrs["id"] = attrs["tag"]
-            del attrs["tag"]
-        if stop_id != attrs["id"]:
-            continue
-
-        attrs = filter_keys(attrs, Stop._fields)
-        attrs["agency_id"] = agency_id
-        attrs["route_id"] = route_id
-        attrs["direction_id"] = direction_id
-        return Stop(**attrs)
-    raise NextbusError("Invalid stop", retry=False)
+    expr = '//route/stop[@id="{id}" or @tag="{id}"]'.format(id=stop_id)
+    stop_els = route_tree.xpath(expr)
+    try:
+        stop_el = stop_els[0]
+    except KeyError:
+        raise NextbusError("Invalid stop", retry=False)
+    attrs = dict(stop_el.attrib)
+    attrs = filter_keys(attrs, Stop._fields)
+    attrs["agency_id"] = agency_id
+    attrs["route_id"] = route_id
+    attrs["direction_id"] = direction_id
+    attrs["id"] = stop_id
+    return Stop(**attrs)
 
 @cache.memoize(get_predictions_xml.cache_timeout)
 def get_predictions(agency_id, route_id, direction_id, stop_id):
