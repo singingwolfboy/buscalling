@@ -1,7 +1,7 @@
 @import "compass/css3";
-@import "addons/button";
+@import "button";
 
-$peach = #F95;
+$peach: #F95;
 
 .create-listener {
     @include button(simple, $peach);

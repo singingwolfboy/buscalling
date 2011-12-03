@@ -1,6 +1,5 @@
 @import "base";
-@import "addons/button";
-@import "functions/golden-ratio";
+@import "button";
 @import "compass/css3/border-radius";
 
 
@@ -63,7 +62,7 @@ header {
     }
     #price-info {
         float: right;
-        width: $container-width - golden-ratio($container-width, -1) - 10;
+        width: 1/3 * $container-width - 10;
         margin: 5px;
 
         p.you-are {
@@ -127,7 +126,7 @@ header {
         }
     }
     #description {
-        width: golden-ratio($container-width, -1) - 10;
+        width: 2/3 * $container-width - 10;
         margin: 5px;
         font-size: 13pt;
 

@@ -1,7 +1,7 @@
 @import "compass/reset";
 @import "compass/css3";
 
-$paypal-green = #fec;
+$paypal-green: #fec;
 
 @mixin clearfix {
     overflow: hidden;
@@ -138,7 +138,7 @@ div.flash {
         height: 32px;
         padding: auto 2em;
 
-        &:before, &:after; {
+        &:before, &:after {
             content: "";
             display: table-cell;
             width: 32px;
