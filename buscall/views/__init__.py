@@ -1,7 +1,7 @@
 from buscall import app
 from flask import render_template, request, flash, redirect, url_for, g, abort
 from .tasks import poll, reset_seen_flags
-from .nextbus import show_agency, routes_for_agency, show_route, predict_for_stop
+from .nextbus import *
 from .twilio import call_prediction
 from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
@@ -73,8 +73,6 @@ def pagination():
         limit = int(request.args.get('limit', 20))
     except ValueError:
         limit = 20
-    if limit > 100:
-        limit = 100
     if limit < 0:
         limit = 0
     g.limit = limit
@@ -86,10 +84,6 @@ def pagination():
     if offset < 0:
         offset = 0
     g.offset = offset
-
-@app.before_request
-def set_agencies():
-    g.AGENCIES = get_agencies()
 
 @app.template_filter('timeformat')
 def time_format(time):
