@@ -19,7 +19,7 @@ account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)
 def call_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
     user = users.get_current_user()
     app.logger.info("%s (%s) called %s" % (user.nickname(), user.user_id(), phone_num))
-    url = DOMAIN + url_for('predict_for_stop', agency_id=agency_id, 
+    url = DOMAIN + url_for('prediction_list', agency_id=agency_id, 
         route_id=route_id, direction_id=direction_id, stop_id=stop_id, format="twiml")
     call_info = {
         'From': PHONE_NUMBER,

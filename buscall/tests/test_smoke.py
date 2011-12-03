@@ -23,17 +23,17 @@ class SmokeTestCase(CustomTestCase):
         assert rv.status.startswith("200"), rv.status
 
     def test_api_agency(self):
-        rv = self.app.get('/mbta?format=json')
+        rv = self.app.get('/agencies/mbta?format=json')
         assert rv.status.startswith("200"), rv.status
         agency = json.loads(rv.data)
         self.assertEqual(agency['id'], "mbta")
         assert isinstance(agency['route_ids'], list)
-        rv2 = self.app.get('/mbta', headers={"Accept": "application/json"})
+        rv2 = self.app.get('/agencies/mbta', headers={"Accept": "application/json"})
         self.assertEqual(rv.data, rv2.data)
 
     @unittest.skip("need to get a lot of test files for this")
     def test_api_routes(self):
-        rv = self.app.get('/mbta/routes?format=json')
+        rv = self.app.get('/agencies/mbta/routes?format=json')
         assert rv.status.startswith("200"), rv.status
         routes = json.loads(rv.data)
         assert isinstance(routes, list)

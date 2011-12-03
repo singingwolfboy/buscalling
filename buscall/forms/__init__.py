@@ -5,6 +5,7 @@ from flaskext.wtf import Required, Optional, Regexp, Length
 from flaskext.wtf.html5 import EmailField
 from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField, TelephoneField, RadioBooleanField, MaybeRadioField
 from buscall.models.listener import NOTIFICATION_CHOICES
+from buscall.models.nextbus import get_agencies
 from buscall.util import DAYS_OF_WEEK
 import datetime
 
@@ -62,7 +63,7 @@ class BusListenerForm(Form):
     dow = SelectField("Date", choices=this_week_choices, default=today.strftime('%a').lower())
 
     def __init__(self, *args, **kwargs):
-        self.agency_id.choices = [('','')] + [(id, agency.title) for (id, agency) in g.AGENCIES.items()]
+        self.agency_id.choices = [('','')] + [(agency.id, agency.title) for agency in get_agencies()]
         super(BusListenerForm, self).__init__(*args, **kwargs)
 
     def validate(self, *args, **kwargs):
