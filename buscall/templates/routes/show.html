@@ -5,7 +5,7 @@
   <h1>Route {{route.title}}</h1>
   <ul>
   {% for direction in directions %}
-  <li><a href="{{url_for('show_direction', agency_id=direction.agency_id, route_id=route.id, direction_id=direction.id)}}">{{direction.name}}: {{direction.title}}</a></li>
+  <li><a href="{{url_for('direction_detail', agency_id=direction.agency_id, route_id=route.id, direction_id=direction.id)}}">{{direction.name}}: {{direction.title}}</a></li>
   {% endfor %}
   </ul>
 {% endblock %}

@@ -5,7 +5,7 @@
   <h1>Route {{route.title}} towards {{direction.title}}</h1>
   <ul>
   {% for stop in stops %}
-  <li><a href="{{url_for('show_stop', agency_id=agency.id, route_id=route.id, direction_id=direction.id, stop_id=stop.id)}}">{{stop.title}}</a></li>
+  <li><a href="{{url_for('stop_detail', agency_id=agency.id, route_id=route.id, direction_id=direction.id, stop_id=stop.id)}}">{{stop.title}}</a></li>
   {% endfor %}
   </ul>
 {% endblock %}
