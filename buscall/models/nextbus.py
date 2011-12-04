@@ -191,7 +191,7 @@ def get_direction(agency_id, route_id, direction_id):
     direction_els = route_tree.xpath(expr)
     try:
         direction_el = direction_els[0]
-    except KeyError:
+    except IndexError:
         raise NextbusError("Invalid direction", retry=False)
 
     attrs = dict(direction_el.attrib)
@@ -211,7 +211,7 @@ def get_stop(agency_id, route_id, direction_id, stop_id):
     stop_els = route_tree.xpath(expr)
     try:
         stop_el = stop_els[0]
-    except KeyError:
+    except IndexError:
         raise NextbusError("Invalid stop", retry=False)
     attrs = dict(stop_el.attrib)
     attrs = filter_keys(attrs, Stop._fields)
