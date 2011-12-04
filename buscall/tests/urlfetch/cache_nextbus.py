@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import requests
 from requests import async
+from requests.status_codes import _codes
 from lxml import etree
 from urllib import urlencode
 import os
@@ -22,11 +23,16 @@ def raw_headers(response):
 
 def save_response(response, file):
     with open(file, "w") as f:
+        code = response.status_code
+        desc = _codes[code][0].upper().replace("_", " ")
+        http_line = "HTTP/1.1 {code} {desc}\n".format(code=code, desc=desc)
+        f.write(http_line)
         f.write(raw_headers(response))
         f.write("\n")
         f.write(response.content.replace("\r", ""))
 
 def handle_agencylist(response):
+    logger.info(response.url)
     save_response(response, os.path.join(FILE_ROOT, "agency_list.xml"))
     agencies_tree = etree.fromstring(response.content)
     agency_ids = agencies_tree.xpath('//agency/@tag')
@@ -39,12 +45,12 @@ def handle_agencylist(response):
         hooks = {
             "response": get_routelist_handler(agency_id),
         }
-        logger.info(url)
         requests.append(async.get(url, hooks=hooks))
     async.map(requests)
 
 def get_routelist_handler(agency_id):
     def handle_routelist(response):
+        logger.info(response.url)
         dir = os.path.join(FILE_ROOT, agency_id)
         if not os.path.exists(dir):
             os.mkdir(dir)
@@ -61,13 +67,13 @@ def get_routelist_handler(agency_id):
             hooks = {
                 "response": get_routeconfig_handler(agency_id, route_id),
             }
-            logger.info(url)
             requests.append(async.get(url, hooks=hooks))
         async.map(requests)
     return handle_routelist
 
 def get_routeconfig_handler(agency_id, route_id):
     def handle_routeconfig(response):
+        logger.info(response.url)
         dir = os.path.join(FILE_ROOT, agency_id, route_id)
         if not os.path.exists(dir):
             os.mkdir(dir)
@@ -77,5 +83,4 @@ def get_routeconfig_handler(agency_id, route_id):
 if __name__ == "__main__":
     url = NEXTBUS_URL + urlencode({"command": "agencyList"})
     hooks = dict(response=handle_agencylist)
-    logger.info(url)
     requests.get(url, hooks=hooks)
