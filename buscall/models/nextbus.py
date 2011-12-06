@@ -112,13 +112,18 @@ def get_predictions_xml(agency_id, route_id, direction_id, stop_id):
     })
 
 @cache.memoize(get_agencylist_xml.cache_timeout)
-def get_agencies():
+def get_agencies(offset=0, limit=None):
     agencies = []
     agencies_tree = etree.fromstring(get_agencylist_xml())
     if agencies_tree is None:
         # FIXME: handle the case where nextbus is unreachable
         return None
     for agency_el in agencies_tree.findall('agency'):
+        if offset > 0:
+            offset -= 1
+            continue
+        if limit == 0:
+            return agencies
         id = agency_el.get("id") or agency_el.get("tag")
         agency = Agency(id = id, 
             title=agency_el.get("title"),
@@ -131,6 +136,10 @@ def get_agencies():
             route_ids.append(route.get("id") or route.get("tag"))
         agency.route_ids = route_ids
         agencies.append(agency)
+        try:
+            limit -= 1
+        except TypeError:
+            pass
     return agencies
 
 @cache.memoize(get_agencies.cache_timeout)
