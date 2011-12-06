@@ -43,7 +43,7 @@ def route_list(agency_id):
     agency = get_agency(agency_id)
     count = len(agency.route_ids)
     if g.request_format == "json":
-        if g.offset:
+        if g.limit:
             page = agency.route_ids[g.offset:g.offset+g.limit]
         else:
             page = agency.route_ids[g.offset:]
