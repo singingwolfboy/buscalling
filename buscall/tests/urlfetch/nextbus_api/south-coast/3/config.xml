@@ -1,0 +1,215 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:53:02 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1658
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Gold Coast Transit 2011.">
+<route tag="3" title="3 Southside" shortTitle="Route 3" color="ff6600" oppositeColor="000000" latMin="34.17061" latMax="34.2000244" lonMin="-119.1950795" lonMax="-119.17673">
+<stop tag="1cstte" title="C St Terminal - Center Point Mall" lat="34.1757847" lon="-119.1813192" stopId="32900"/>
+<stop tag="156cstat" title="C St at Channel Islands" lat="34.1732223" lon="-119.1812174" stopId="32901"/>
+<stop tag="157cstat" title="C St at Teakwood" lat="34.1708538" lon="-119.1812553" stopId="32902"/>
+<stop tag="158teakw" title="Teakwood St at J" lat="34.17061" lon="-119.1855684" stopId="32903"/>
+<stop tag="159teakw" title="Teakwood St at K" lat="34.17061" lon="-119.1884286" stopId="32904"/>
+<stop tag="160teakw" title="Teakwood St at M" lat="34.17061" lon="-119.1915787" stopId="32905"/>
+<stop tag="161teakw" title="Teakwood St at Ventura" lat="34.1706689" lon="-119.1950795" stopId="32906"/>
+<stop tag="162ventu" title="Ventura Rd at Spruce" lat="34.1732756" lon="-119.1950081" stopId="32907"/>
+<stop tag="163chann" title="Channel Islands Blvd at Ventura" lat="34.1754188" lon="-119.194801" stopId="32908"/>
+<stop tag="164chann" title="Channel Islands Blvd at Lassen" lat="34.1754839" lon="-119.1903294" stopId="32909"/>
+<stop tag="165jstat" title="J St at Channel Islands" lat="34.1754499" lon="-119.1862302" stopId="32910"/>
+<stop tag="1cstte_2" title="C St Terminal - Center Point Mall" lat="34.1757908" lon="-119.181209" stopId="32911"/>
+<stop tag="166jstat" title="J St at Kamala" lat="34.1789527" lon="-119.1862579" stopId="32912"/>
+<stop tag="176jstat" title="J St at Hemlock" lat="34.1817807" lon="-119.1872605" stopId="32913"/>
+<stop tag="168jstat" title="J St at Fir" lat="34.1830219" lon="-119.1885592" stopId="32914"/>
+<stop tag="169jstat" title="J St at Hill" lat="34.1861848" lon="-119.1894502" stopId="32915"/>
+<stop tag="170hobso" title="Hobson Way at Wooley" lat="34.1905465" lon="-119.18949" stopId="31508"/>
+<stop tag="171hobso" title="Hobson Way at Community Center" lat="34.1938854" lon="-119.1891185" stopId="31411"/>
+<stop tag="172hobso" title="Hobson Way at Seventh" lat="34.1956668" lon="-119.1881419" stopId="31412"/>
+<stop tag="173hobso" title="Hobson Way at Fifth - Oxnard High School" lat="34.1975565" lon="-119.1878953" stopId="32916"/>
+<stop tag="81fifth" title="Fifth St at F" lat="34.1976834" lon="-119.1849919" stopId="31603"/>
+<stop tag="90cstat" title="C St at Fifth - Plaza Park" lat="34.1978214" lon="-119.1810561" stopId="31604"/>
+<stop tag="12oxnar" title="Oxnard Transit Center" lat="34.2000244" lon="-119.17673" stopId="31100"/>
+<stop tag="79cstat" title="C St at Fourth" lat="34.1984835" lon="-119.1811169" stopId="31301"/>
+<stop tag="80fifth" title="Fifth St at D" lat="34.1977219" lon="-119.1821201" stopId="31710"/>
+<stop tag="174hobso" title="Hobson Way at Fifth" lat="34.1974536" lon="-119.1879504" stopId="31413"/>
+<stop tag="175jstat" title="J St at Mckinna School" lat="34.1840604" lon="-119.1892012" stopId="33000"/>
+<stop tag="167jstat" title="J St at Hemlock (G St)" lat="34.1818108" lon="-119.1874208" stopId="33001"/>
+<stop tag="177cstat" title="C St at Kamala" lat="34.1784622" lon="-119.1813932" stopId="31307"/>
+<direction tag="otc" title="To Oxnard Transit Center" name="" useForUI="true">
+  <stop tag="1cstte" />
+  <stop tag="156cstat" />
+  <stop tag="157cstat" />
+  <stop tag="158teakw" />
+  <stop tag="159teakw" />
+  <stop tag="160teakw" />
+  <stop tag="161teakw" />
+  <stop tag="162ventu" />
+  <stop tag="163chann" />
+  <stop tag="164chann" />
+  <stop tag="165jstat" />
+  <stop tag="1cstte_2" />
+  <stop tag="166jstat" />
+  <stop tag="176jstat" />
+  <stop tag="168jstat" />
+  <stop tag="169jstat" />
+  <stop tag="170hobso" />
+  <stop tag="171hobso" />
+  <stop tag="172hobso" />
+  <stop tag="173hobso" />
+  <stop tag="81fifth" />
+  <stop tag="90cstat" />
+</direction>
+<direction tag="cpm" title="To Center Point Mall" name="" useForUI="true">
+  <stop tag="12oxnar" />
+  <stop tag="79cstat" />
+  <stop tag="80fifth" />
+  <stop tag="81fifth" />
+  <stop tag="174hobso" />
+  <stop tag="172hobso" />
+  <stop tag="170hobso" />
+  <stop tag="169jstat" />
+  <stop tag="175jstat" />
+  <stop tag="167jstat" />
+  <stop tag="166jstat" />
+  <stop tag="177cstat" />
+</direction>
+<path>
+<point lat="34.19999" lon="-119.17673"/>
+<point lat="34.20011" lon="-119.17673"/>
+<point lat="34.20011" lon="-119.17656"/>
+<point lat="34.19905" lon="-119.17654"/>
+</path>
+<path>
+<point lat="34.19905" lon="-119.17654"/>
+<point lat="34.19903" lon="-119.17744"/>
+</path>
+<path>
+<point lat="34.19898" lon="-119.17676"/>
+<point lat="34.2" lon="-119.17673"/>
+</path>
+<path>
+<point lat="34.19055" lon="-119.18949"/>
+<point lat="34.19232" lon="-119.1892"/>
+<point lat="34.19405" lon="-119.18911"/>
+</path>
+<path>
+<point lat="34.19899" lon="-119.1799"/>
+<point lat="34.19898" lon="-119.17675"/>
+</path>
+<path>
+<point lat="34.17582" lon="-119.18121"/>
+<point lat="34.17871" lon="-119.18131"/>
+<point lat="34.1788" lon="-119.18625"/>
+<point lat="34.18092" lon="-119.18636"/>
+<point lat="34.1830799" lon="-119.18862"/>
+<point lat="34.18421" lon="-119.18918"/>
+<point lat="34.18575" lon="-119.18926"/>
+<point lat="34.18639" lon="-119.18954"/>
+<point lat="34.18846" lon="-119.18948"/>
+<point lat="34.19021" lon="-119.18949"/>
+</path>
+<path>
+<point lat="34.19021" lon="-119.18949"/>
+<point lat="34.19055" lon="-119.18949"/>
+</path>
+<path>
+<point lat="34.19906" lon="-119.1811"/>
+<point lat="34.1977" lon="-119.18114"/>
+</path>
+<path>
+<point lat="34.19765" lon="-119.18106"/>
+<point lat="34.199" lon="-119.18103"/>
+</path>
+<path>
+<point lat="34.19903" lon="-119.17744"/>
+<point lat="34.19905" lon="-119.17986"/>
+</path>
+<path>
+<point lat="34.19028" lon="-119.18955"/>
+<point lat="34.18947" lon="-119.18956"/>
+<point lat="34.18634" lon="-119.1896"/>
+<point lat="34.18573" lon="-119.18931"/>
+<point lat="34.1841" lon="-119.18922"/>
+<point lat="34.1831699" lon="-119.18878"/>
+<point lat="34.18176" lon="-119.18737"/>
+<point lat="34.18087" lon="-119.1864"/>
+<point lat="34.17875" lon="-119.1863"/>
+</path>
+<path>
+<point lat="34.19567" lon="-119.18814"/>
+<point lat="34.19599" lon="-119.18795"/>
+<point lat="34.19771" lon="-119.18789"/>
+</path>
+<path>
+<point lat="34.1758" lon="-119.18132"/>
+<point lat="34.17368" lon="-119.18121"/>
+</path>
+<path>
+<point lat="34.199" lon="-119.18103"/>
+<point lat="34.19899" lon="-119.1799"/>
+</path>
+<path>
+<point lat="34.1787599" lon="-119.18631"/>
+<point lat="34.17872" lon="-119.18398"/>
+<point lat="34.17866" lon="-119.18139"/>
+</path>
+<path>
+<point lat="34.19405" lon="-119.18911"/>
+<point lat="34.19567" lon="-119.18814"/>
+</path>
+<path>
+<point lat="34.19771" lon="-119.18788"/>
+<point lat="34.19768" lon="-119.18462"/>
+<point lat="34.19764" lon="-119.18106"/>
+</path>
+<path>
+<point lat="34.17866" lon="-119.18139"/>
+<point lat="34.17743" lon="-119.18141"/>
+</path>
+<path>
+<point lat="34.17543" lon="-119.1948"/>
+<point lat="34.17554" lon="-119.19174"/>
+<point lat="34.17543" lon="-119.18897"/>
+<point lat="34.17545" lon="-119.18622"/>
+<point lat="34.17505" lon="-119.18384"/>
+<point lat="34.17345" lon="-119.18113"/>
+<point lat="34.17582" lon="-119.18121"/>
+</path>
+<path>
+<point lat="34.17743" lon="-119.1814"/>
+<point lat="34.1758" lon="-119.18132"/>
+</path>
+<path>
+<point lat="34.19771" lon="-119.18115"/>
+<point lat="34.19775" lon="-119.18439"/>
+<point lat="34.19779" lon="-119.18795"/>
+</path>
+<path>
+<point lat="34.17369" lon="-119.18121"/>
+<point lat="34.17056" lon="-119.18126"/>
+<point lat="34.17061" lon="-119.18455"/>
+<point lat="34.17061" lon="-119.18852"/>
+<point lat="34.17061" lon="-119.19169"/>
+<point lat="34.17067" lon="-119.19514"/>
+<point lat="34.17305" lon="-119.19503"/>
+<point lat="34.17543" lon="-119.1948"/>
+</path>
+<path>
+<point lat="34.1978" lon="-119.18794"/>
+<point lat="34.19614" lon="-119.18799"/>
+<point lat="34.19402" lon="-119.18921"/>
+<point lat="34.1921" lon="-119.1893"/>
+<point lat="34.1906" lon="-119.18955"/>
+<point lat="34.19028" lon="-119.18955"/>
+</path>
+<path>
+<point lat="34.1990399" lon="-119.17985"/>
+<point lat="34.19906" lon="-119.1811"/>
+</path>
+</route>
+</body>

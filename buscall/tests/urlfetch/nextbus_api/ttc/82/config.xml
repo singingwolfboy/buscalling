@@ -1,0 +1,182 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:50 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1585
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="82" title="82-Rosedale" color="ff0000" oppositeColor="ffffff" latMin="43.6768399" latMax="43.6869499" lonMin="-79.38887" lonMax="-79.37096">
+<stop tag="1518" title="Summerhill Avenue At Maclennan Avenue" lat="43.6857199" lon="-79.37768" stopId="7378"/>
+<stop tag="1525" title="Maclennan Avenue At Douglas Drive" lat="43.6847199" lon="-79.3777699" stopId="6536"/>
+<stop tag="4526" title="Scholfield Avenue At Maclennan Avenue Farside" lat="43.6832799" lon="-79.3776599" stopId="7106"/>
+<stop tag="4136" title="Highland Avenue At Roxborough Drive Farside" lat="43.68184" lon="-79.3764899" stopId="6420"/>
+<stop tag="5588" title="Highland Avenue At Glen Road" lat="43.68103" lon="-79.37403" stopId="6419"/>
+<stop tag="3747" title="South Drive At Glen Road Farside" lat="43.6777099" lon="-79.37585" stopId="7337"/>
+<stop tag="9194" title="Crescent Road At Lamport Avenue" lat="43.6779199" lon="-79.3782199" stopId="6331"/>
+<stop tag="2772" title="Crescent Road At Mount Pleasant Road" lat="43.6782199" lon="-79.3801299" stopId="6333"/>
+<stop tag="8906" title="Crescent Place At South Drive" lat="43.67854" lon="-79.3825099" stopId="6337"/>
+<stop tag="1728" title="Crescent Road At Rosedale Road Farside" lat="43.6777699" lon="-79.38488" stopId="6335"/>
+<stop tag="6858" title="Crescent Road At Cluny Drive" lat="43.6775299" lon="-79.3861099" stopId="6330"/>
+<stop tag="14269_ar" title="Rosedale Station" lat="43.6768399" lon="-79.38887"/>
+<stop tag="14269" title="Rosedale Station" lat="43.6768399" lon="-79.38887" stopId="14750"/>
+<stop tag="4284" title="Crescent Road At Cluny Drive" lat="43.67752" lon="-79.38663" stopId="6329"/>
+<stop tag="3529" title="Crescent Road At Rosedale Road Farside" lat="43.67778" lon="-79.3845199" stopId="6334"/>
+<stop tag="687" title="Crescent Place At South Drive West Side" lat="43.67836" lon="-79.38277" stopId="6338"/>
+<stop tag="9179" title="Crescent Road At Mount Pleasant Road Farside" lat="43.67816" lon="-79.38013" stopId="6332"/>
+<stop tag="3033" title="Crescent Place At South Drive East Side" lat="43.67751" lon="-79.37775" stopId="6336"/>
+<stop tag="7481" title="South Drive At Glen Road" lat="43.67763" lon="-79.3756799" stopId="7336"/>
+<stop tag="4515" title="Glen Road At Highland Avenue" lat="43.6807799" lon="-79.37388" stopId="6402"/>
+<stop tag="1928" title="Glen Road At Whitney Avenue" lat="43.6830199" lon="-79.37302" stopId="6403"/>
+<stop tag="1786" title="Glen Road At Douglas Drive" lat="43.68527" lon="-79.37259" stopId="6399"/>
+<stop tag="6746" title="Douglas Avenue At Glen Road" lat="43.6869499" lon="-79.37096" stopId="6351"/>
+<stop tag="4047" title="Summerhill Avenue At Jean Street" lat="43.68656" lon="-79.3737699" stopId="7377"/>
+<stop tag="1518_ar" title="Summerhill Avenue At Maclennan Avenue" lat="43.6857199" lon="-79.37768"/>
+<direction tag="82_0_82" title="West - 82 Rosedale towards Rosedale Station" name="West" useForUI="true">
+  <stop tag="1518" />
+  <stop tag="1525" />
+  <stop tag="4526" />
+  <stop tag="4136" />
+  <stop tag="5588" />
+  <stop tag="3747" />
+  <stop tag="9194" />
+  <stop tag="2772" />
+  <stop tag="8906" />
+  <stop tag="1728" />
+  <stop tag="6858" />
+  <stop tag="14269_ar" />
+</direction>
+<direction tag="82_1_82" title="East - 82 Rosedale towards Summerhill" name="East" useForUI="true">
+  <stop tag="14269" />
+  <stop tag="4284" />
+  <stop tag="3529" />
+  <stop tag="687" />
+  <stop tag="9179" />
+  <stop tag="3033" />
+  <stop tag="7481" />
+  <stop tag="4515" />
+  <stop tag="1928" />
+  <stop tag="1786" />
+  <stop tag="6746" />
+  <stop tag="4047" />
+  <stop tag="1518_ar" />
+</direction>
+<path>
+<point lat="43.67684" lon="-79.38887"/>
+<point lat="43.67691" lon="-79.38896"/>
+<point lat="43.67736" lon="-79.38763"/>
+<point lat="43.67754" lon="-79.38673"/>
+<point lat="43.67752" lon="-79.38663"/>
+<point lat="43.67754" lon="-79.3864"/>
+<point lat="43.67747" lon="-79.38605"/>
+<point lat="43.67754" lon="-79.38564"/>
+<point lat="43.6776399" lon="-79.38534"/>
+<point lat="43.67778" lon="-79.38472"/>
+<point lat="43.67778" lon="-79.38452"/>
+<point lat="43.67781" lon="-79.38433"/>
+<point lat="43.67786" lon="-79.38401"/>
+<point lat="43.678" lon="-79.38358"/>
+<point lat="43.67836" lon="-79.38294"/>
+<point lat="43.67836" lon="-79.3827699"/>
+<point lat="43.67847" lon="-79.3826"/>
+<point lat="43.67854" lon="-79.38221"/>
+<point lat="43.6785799" lon="-79.3817399"/>
+<point lat="43.6785799" lon="-79.38141"/>
+<point lat="43.67848" lon="-79.38106"/>
+<point lat="43.67832" lon="-79.38069"/>
+<point lat="43.67821" lon="-79.38025"/>
+<point lat="43.67816" lon="-79.38013"/>
+<point lat="43.67797" lon="-79.37841"/>
+<point lat="43.67784" lon="-79.37806"/>
+<point lat="43.67766" lon="-79.37782"/>
+<point lat="43.67751" lon="-79.37775"/>
+<point lat="43.6774" lon="-79.37766"/>
+<point lat="43.67741" lon="-79.37722"/>
+<point lat="43.67767" lon="-79.37586"/>
+<point lat="43.67763" lon="-79.37568"/>
+<point lat="43.67765" lon="-79.37534"/>
+<point lat="43.67835" lon="-79.37488"/>
+<point lat="43.68078" lon="-79.37388"/>
+</path>
+<path>
+<point lat="43.67771" lon="-79.37585"/>
+<point lat="43.67766" lon="-79.376"/>
+<point lat="43.67741" lon="-79.37722"/>
+<point lat="43.6773499" lon="-79.37763"/>
+<point lat="43.67761" lon="-79.37776"/>
+<point lat="43.67779" lon="-79.37795"/>
+<point lat="43.67792" lon="-79.37822"/>
+<point lat="43.67794" lon="-79.37831"/>
+<point lat="43.67822" lon="-79.38013"/>
+<point lat="43.67821" lon="-79.38025"/>
+<point lat="43.67832" lon="-79.38069"/>
+<point lat="43.67848" lon="-79.38106"/>
+<point lat="43.6785799" lon="-79.38141"/>
+<point lat="43.6785799" lon="-79.3817399"/>
+<point lat="43.67854" lon="-79.38221"/>
+<point lat="43.67854" lon="-79.38251"/>
+<point lat="43.67847" lon="-79.3826"/>
+<point lat="43.67836" lon="-79.38294"/>
+<point lat="43.678" lon="-79.38358"/>
+<point lat="43.67786" lon="-79.38401"/>
+<point lat="43.67781" lon="-79.38433"/>
+<point lat="43.67778" lon="-79.38466"/>
+<point lat="43.67777" lon="-79.38488"/>
+<point lat="43.67772" lon="-79.38502"/>
+<point lat="43.6776399" lon="-79.38534"/>
+<point lat="43.67754" lon="-79.38564"/>
+<point lat="43.67747" lon="-79.38594"/>
+<point lat="43.67753" lon="-79.38611"/>
+<point lat="43.67754" lon="-79.38656"/>
+<point lat="43.67707" lon="-79.38898"/>
+<point lat="43.67634" lon="-79.38905"/>
+<point lat="43.6762" lon="-79.38878"/>
+<point lat="43.67645" lon="-79.3887699"/>
+<point lat="43.67684" lon="-79.38887"/>
+</path>
+<path>
+<point lat="43.68078" lon="-79.37388"/>
+<point lat="43.68296" lon="-79.37309"/>
+<point lat="43.68302" lon="-79.37302"/>
+<point lat="43.68321" lon="-79.37296"/>
+<point lat="43.68412" lon="-79.37267"/>
+<point lat="43.68435" lon="-79.37253"/>
+<point lat="43.68462" lon="-79.37248"/>
+<point lat="43.68498" lon="-79.3725"/>
+<point lat="43.68527" lon="-79.37259"/>
+<point lat="43.68533" lon="-79.37263"/>
+<point lat="43.68557" lon="-79.37197"/>
+<point lat="43.68577" lon="-79.37121"/>
+<point lat="43.68601" lon="-79.37108"/>
+<point lat="43.68643" lon="-79.3710399"/>
+<point lat="43.68694" lon="-79.37102"/>
+<point lat="43.68695" lon="-79.37096"/>
+<point lat="43.68699" lon="-79.37147"/>
+<point lat="43.68656" lon="-79.3737699"/>
+<point lat="43.68572" lon="-79.37768"/>
+</path>
+<path>
+<point lat="43.68572" lon="-79.37768"/>
+<point lat="43.68472" lon="-79.37777"/>
+<point lat="43.68338" lon="-79.37714"/>
+<point lat="43.68326" lon="-79.37751"/>
+<point lat="43.68328" lon="-79.37766"/>
+<point lat="43.68296" lon="-79.3776199"/>
+<point lat="43.68216" lon="-79.37728"/>
+<point lat="43.68198" lon="-79.37709"/>
+<point lat="43.68189" lon="-79.37678"/>
+<point lat="43.68184" lon="-79.37649"/>
+<point lat="43.68187" lon="-79.3764"/>
+<point lat="43.68179" lon="-79.37606"/>
+<point lat="43.68103" lon="-79.37403"/>
+<point lat="43.68098" lon="-79.37385"/>
+<point lat="43.67762" lon="-79.3751599"/>
+<point lat="43.67766" lon="-79.37561"/>
+<point lat="43.67771" lon="-79.37585"/>
+</path>
+</route>
+</body>

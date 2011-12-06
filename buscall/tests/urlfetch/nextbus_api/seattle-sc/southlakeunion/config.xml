@@ -1,0 +1,179 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:00:06 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1227
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Seattle Streetcar 2011.">
+<route tag="southlakeunion" title="South Lake Union Line" shortTitle="Streetcar" color="99cc00" oppositeColor="000000" latMin="47.6128877" latMax="47.6283699" lonMin="-122.33853" lonMax="-122.3312904">
+<stop tag="westoliv_d" title="Westlake &amp; Olive" lat="47.6128877" lon="-122.3373436"/>
+<stop tag="7thwest" title="Westlake &amp; 7th" lat="47.6149464" lon="-122.3377312"/>
+<stop tag="westdenn" title="Westlake &amp; Denny" lat="47.6181615" lon="-122.33837"/>
+<stop tag="terrthom" title="Terry &amp; Thomas" lat="47.621248" lon="-122.33717"/>
+<stop tag="terrmerc" title="Terry &amp; Mercer" lat="47.6239035" lon="-122.33718"/>
+<stop tag="lakeunio" title="Lake Union Park" lat="47.6258403" lon="-122.3365488"/>
+<stop tag="fairward" title="Fairview &amp; Campus Drive" lat="47.62753" lon="-122.33236"/>
+<stop tag="wardfair" title="Fairview &amp; Campus Drive" lat="47.6275807" lon="-122.3324389"/>
+<stop tag="uniolake" title="Lake Union Park" lat="47.6259" lon="-122.3365534"/>
+<stop tag="westmerc" title="Westlake &amp; Mercer" lat="47.62435" lon="-122.33853"/>
+<stop tag="westthom" title="Westlake &amp; Thomas" lat="47.6212802" lon="-122.33852"/>
+<stop tag="west9th" title="Westlake &amp; 9th" lat="47.6177951" lon="-122.3384607"/>
+<stop tag="west7th" title="Westlake &amp; 7th" lat="47.61541" lon="-122.33796"/>
+<direction tag="2westlake" title="To Westlake Hub" name="" useForUI="true">
+  <stop tag="wardfair" />
+  <stop tag="uniolake" />
+  <stop tag="westmerc" />
+  <stop tag="westthom" />
+  <stop tag="west9th" />
+  <stop tag="west7th" />
+</direction>
+<direction tag="2lakeunion" title="To Lake Union" name="" useForUI="true">
+  <stop tag="westoliv_d" />
+  <stop tag="7thwest" />
+  <stop tag="westdenn" />
+  <stop tag="terrthom" />
+  <stop tag="terrmerc" />
+  <stop tag="lakeunio" />
+  <stop tag="fairward" />
+</direction>
+<path>
+<point lat="47.62831" lon="-122.33135"/>
+<point lat="47.62836" lon="-122.33129"/>
+</path>
+<path>
+<point lat="47.62836" lon="-122.33129"/>
+<point lat="47.6284" lon="-122.33127"/>
+<point lat="47.62842" lon="-122.3313"/>
+<point lat="47.62839" lon="-122.33137"/>
+<point lat="47.6283699" lon="-122.3314"/>
+</path>
+<path>
+<point lat="47.62112" lon="-122.33717"/>
+<point lat="47.62125" lon="-122.33717"/>
+</path>
+<path>
+<point lat="47.6283699" lon="-122.3314"/>
+<point lat="47.62761" lon="-122.3324"/>
+</path>
+<path>
+<point lat="47.62761" lon="-122.3324"/>
+<point lat="47.62758" lon="-122.33244"/>
+</path>
+<path>
+<point lat="47.62746" lon="-122.33245"/>
+<point lat="47.62753" lon="-122.33236"/>
+</path>
+<path>
+<point lat="47.61541" lon="-122.33796"/>
+<point lat="47.61442" lon="-122.33778"/>
+</path>
+<path>
+<point lat="47.61442" lon="-122.33778"/>
+<point lat="47.61413" lon="-122.33773"/>
+<point lat="47.6138199" lon="-122.33765"/>
+<point lat="47.6131" lon="-122.3375"/>
+<point lat="47.61294" lon="-122.33748"/>
+<point lat="47.6129" lon="-122.33745"/>
+<point lat="47.6128799" lon="-122.33739"/>
+<point lat="47.61289" lon="-122.33733"/>
+</path>
+<path>
+<point lat="47.62128" lon="-122.33852"/>
+<point lat="47.62037" lon="-122.33853"/>
+<point lat="47.6188999" lon="-122.33854"/>
+<point lat="47.61855" lon="-122.33854"/>
+<point lat="47.6181399" lon="-122.33851"/>
+<point lat="47.61779" lon="-122.33846"/>
+<point lat="47.6167" lon="-122.33824"/>
+<point lat="47.61541" lon="-122.33796"/>
+</path>
+<path>
+<point lat="47.61289" lon="-122.33733"/>
+<point lat="47.61294" lon="-122.33731"/>
+<point lat="47.61299" lon="-122.33729"/>
+<point lat="47.61307" lon="-122.3373"/>
+<point lat="47.61314" lon="-122.33731"/>
+<point lat="47.61322" lon="-122.33733"/>
+<point lat="47.6134" lon="-122.33738"/>
+<point lat="47.61374" lon="-122.33746"/>
+<point lat="47.61414" lon="-122.33756"/>
+<point lat="47.61494" lon="-122.33773"/>
+<point lat="47.6155" lon="-122.33784"/>
+<point lat="47.61603" lon="-122.33795"/>
+<point lat="47.61671" lon="-122.33808"/>
+<point lat="47.61797" lon="-122.33835"/>
+<point lat="47.61816" lon="-122.33837"/>
+<point lat="47.61847" lon="-122.33837"/>
+<point lat="47.62054" lon="-122.33839"/>
+<point lat="47.62064" lon="-122.33838"/>
+<point lat="47.62076" lon="-122.33834"/>
+<point lat="47.62082" lon="-122.33826"/>
+<point lat="47.62086" lon="-122.33816"/>
+<point lat="47.62086" lon="-122.33807"/>
+<point lat="47.62085" lon="-122.33739"/>
+<point lat="47.6208699" lon="-122.33728"/>
+<point lat="47.62092" lon="-122.33721"/>
+<point lat="47.62101" lon="-122.33718"/>
+<point lat="47.62112" lon="-122.33717"/>
+</path>
+<path>
+<point lat="47.62125" lon="-122.33717"/>
+<point lat="47.6239" lon="-122.33718"/>
+<point lat="47.62412" lon="-122.33718"/>
+<point lat="47.62446" lon="-122.33716"/>
+<point lat="47.62462" lon="-122.33712"/>
+<point lat="47.62479" lon="-122.33711"/>
+<point lat="47.6255499" lon="-122.33711"/>
+<point lat="47.62566" lon="-122.3371"/>
+<point lat="47.62572" lon="-122.33705"/>
+<point lat="47.62577" lon="-122.337"/>
+<point lat="47.62582" lon="-122.33694"/>
+<point lat="47.62585" lon="-122.33683"/>
+<point lat="47.6258399" lon="-122.33654"/>
+<point lat="47.6258399" lon="-122.33603"/>
+<point lat="47.62583" lon="-122.33518"/>
+<point lat="47.62585" lon="-122.33471"/>
+<point lat="47.6258399" lon="-122.33457"/>
+<point lat="47.62585" lon="-122.33449"/>
+<point lat="47.6259" lon="-122.33442"/>
+<point lat="47.62595" lon="-122.33435"/>
+<point lat="47.62661" lon="-122.3335"/>
+<point lat="47.62712" lon="-122.33286"/>
+<point lat="47.62746" lon="-122.33245"/>
+</path>
+<path>
+<point lat="47.62758" lon="-122.33244"/>
+<point lat="47.6268699" lon="-122.33332"/>
+<point lat="47.62599" lon="-122.33441"/>
+<point lat="47.6259299" lon="-122.33454"/>
+<point lat="47.62591" lon="-122.33469"/>
+<point lat="47.6259" lon="-122.33538"/>
+<point lat="47.6259" lon="-122.33655"/>
+<point lat="47.62591" lon="-122.33834"/>
+<point lat="47.62591" lon="-122.33843"/>
+<point lat="47.62588" lon="-122.33851"/>
+<point lat="47.6258" lon="-122.33858"/>
+<point lat="47.62569" lon="-122.33861"/>
+<point lat="47.62557" lon="-122.3386"/>
+<point lat="47.6254599" lon="-122.33858"/>
+<point lat="47.62531" lon="-122.33855"/>
+<point lat="47.62435" lon="-122.33853"/>
+<point lat="47.62253" lon="-122.33854"/>
+<point lat="47.62149" lon="-122.33853"/>
+</path>
+<path>
+<point lat="47.62149" lon="-122.33853"/>
+<point lat="47.62128" lon="-122.33852"/>
+</path>
+<path>
+<point lat="47.62753" lon="-122.33236"/>
+<point lat="47.62794" lon="-122.33183"/>
+<point lat="47.62831" lon="-122.33135"/>
+</path>
+</route>
+</body>

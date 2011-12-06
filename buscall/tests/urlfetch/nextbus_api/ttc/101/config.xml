@@ -1,0 +1,163 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:02:03 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1461
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="101" title="101-Downsview Park" color="ff0000" oppositeColor="ffffff" latMin="43.7470999" latMax="43.7555999" lonMin="-79.4827599" lonMax="-79.46229">
+<stop tag="14340" title="Park Road At The Hangar" lat="43.7478199" lon="-79.47495" stopId="14821"/>
+<stop tag="12914" title="Park Road At Area 51 Paintball" lat="43.7470999" lon="-79.47554" stopId="14370"/>
+<stop tag="12917" title="Opposite 35 Carl Hall Drive (Toronto Aerospace Museum)" lat="43.74735" lon="-79.4778899" stopId="14368"/>
+<stop tag="6065" title="Sheppard Avenue West At Tuscan Gate" lat="43.7525199" lon="-79.48269" stopId="6089"/>
+<stop tag="2042" title="Sheppard Avenue West At Chesswood Drive" lat="43.75542" lon="-79.47446" stopId="7271"/>
+<stop tag="3355" title="Sheppard Avenue West At Yukon Lane" lat="43.75194" lon="-79.46745" stopId="3109"/>
+<stop tag="14179_ar" title="Downsview Station" lat="43.7488299" lon="-79.46229"/>
+<stop tag="14179" title="Downsview Station" lat="43.7488299" lon="-79.46229" stopId="14658"/>
+<stop tag="2365" title="Sheppard Avenue West At Allen Road" lat="43.7505399" lon="-79.4626" stopId="7275"/>
+<stop tag="1632" title="Sheppard Avenue West At Kodiak Crescent South" lat="43.7518599" lon="-79.4669499" stopId="4596"/>
+<stop tag="3554" title="Sheppard Avenue West At Kodiak Crescent North" lat="43.75397" lon="-79.46938" stopId="6076"/>
+<stop tag="6042" title="Sheppard Avenue West At Chesswood Drive" lat="43.7555999" lon="-79.4738" stopId="3108"/>
+<stop tag="9504" title="Sheppard Avenue West At Bakersfield Street Farside" lat="43.7543399" lon="-79.48058" stopId="3106"/>
+<stop tag="6125" title="Sheppard Avenue West At Tuscan Gate" lat="43.75299" lon="-79.4827599" stopId="3113"/>
+<stop tag="12926" title="John Drury Drive At Sheppard Avenue West Farside" lat="43.74725" lon="-79.4777899" stopId="14367"/>
+<stop tag="12864" title="65 Carl Hall Drive" lat="43.74755" lon="-79.4763899" stopId="14369"/>
+<stop tag="14340_ar" title="Park Road At The Hangar" lat="43.7478199" lon="-79.47495"/>
+<direction tag="101_0_101" title="East - 101 Downsview Park towards Downsview Station" name="East" useForUI="true">
+  <stop tag="14340" />
+  <stop tag="12914" />
+  <stop tag="12917" />
+  <stop tag="6065" />
+  <stop tag="2042" />
+  <stop tag="3355" />
+  <stop tag="14179_ar" />
+</direction>
+<direction tag="101_1_101" title="West - 101 Downsview Park towards Parc Downsview Park" name="West" useForUI="true">
+  <stop tag="14179" />
+  <stop tag="2365" />
+  <stop tag="1632" />
+  <stop tag="3554" />
+  <stop tag="6042" />
+  <stop tag="9504" />
+  <stop tag="6125" />
+  <stop tag="12926" />
+  <stop tag="12864" />
+  <stop tag="14340_ar" />
+</direction>
+<path>
+<point lat="43.74782" lon="-79.47495"/>
+<point lat="43.74715" lon="-79.4746399"/>
+<point lat="43.7471" lon="-79.47554"/>
+<point lat="43.74675" lon="-79.4765"/>
+<point lat="43.74742" lon="-79.47675"/>
+<point lat="43.74747" lon="-79.47712"/>
+<point lat="43.74735" lon="-79.47789"/>
+<point lat="43.74638" lon="-79.48203"/>
+<point lat="43.7468" lon="-79.48222"/>
+<point lat="43.74705" lon="-79.48221"/>
+<point lat="43.74754" lon="-79.48209"/>
+<point lat="43.7480199" lon="-79.48203"/>
+<point lat="43.74822" lon="-79.4822"/>
+<point lat="43.74828" lon="-79.48277"/>
+<point lat="43.7522" lon="-79.4829"/>
+<point lat="43.75251" lon="-79.48285"/>
+<point lat="43.7525199" lon="-79.48269"/>
+<point lat="43.75284" lon="-79.48272"/>
+<point lat="43.75305" lon="-79.48259"/>
+<point lat="43.75329" lon="-79.48238"/>
+<point lat="43.75355" lon="-79.48209"/>
+<point lat="43.75383" lon="-79.48169"/>
+<point lat="43.75404" lon="-79.48128"/>
+<point lat="43.75415" lon="-79.48096"/>
+<point lat="43.75547" lon="-79.47517"/>
+<point lat="43.75553" lon="-79.4747"/>
+<point lat="43.75542" lon="-79.4744599"/>
+<point lat="43.75551" lon="-79.47376"/>
+<point lat="43.75544" lon="-79.47327"/>
+<point lat="43.75537" lon="-79.47295"/>
+<point lat="43.75417" lon="-79.46989"/>
+<point lat="43.75372" lon="-79.46918"/>
+<point lat="43.75347" lon="-79.46885"/>
+<point lat="43.7531899" lon="-79.46853"/>
+<point lat="43.75194" lon="-79.46745"/>
+<point lat="43.7505" lon="-79.4657"/>
+<point lat="43.75034" lon="-79.46536"/>
+<point lat="43.7502" lon="-79.4649699"/>
+<point lat="43.75014" lon="-79.4645199"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.7503699" lon="-79.46276"/>
+<point lat="43.75045" lon="-79.46239"/>
+<point lat="43.75002" lon="-79.46224"/>
+<point lat="43.74989" lon="-79.4622"/>
+<point lat="43.74925" lon="-79.46199"/>
+<point lat="43.74883" lon="-79.46229"/>
+</path>
+<path>
+<point lat="43.74883" lon="-79.46229"/>
+<point lat="43.74971" lon="-79.46268"/>
+<point lat="43.74976" lon="-79.46267"/>
+<point lat="43.74979" lon="-79.46265"/>
+<point lat="43.7498099" lon="-79.46262"/>
+<point lat="43.74986" lon="-79.46233"/>
+<point lat="43.74989" lon="-79.4622"/>
+<point lat="43.74925" lon="-79.46199"/>
+<point lat="43.74875" lon="-79.46182"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74857" lon="-79.46159"/>
+<point lat="43.74845" lon="-79.46139"/>
+<point lat="43.74838" lon="-79.46119"/>
+<point lat="43.74841" lon="-79.46081"/>
+<point lat="43.74853" lon="-79.46024"/>
+<point lat="43.74865" lon="-79.45998"/>
+<point lat="43.74877" lon="-79.45992"/>
+<point lat="43.75081" lon="-79.46073"/>
+<point lat="43.75045" lon="-79.46239"/>
+<point lat="43.75054" lon="-79.4626"/>
+<point lat="43.7503699" lon="-79.46276"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.75013" lon="-79.46395"/>
+<point lat="43.75011" lon="-79.46428"/>
+<point lat="43.75017" lon="-79.46481"/>
+<point lat="43.75025" lon="-79.46512"/>
+<point lat="43.75039" lon="-79.46549"/>
+<point lat="43.75118" lon="-79.46643"/>
+<point lat="43.75186" lon="-79.46695"/>
+<point lat="43.7531899" lon="-79.46853"/>
+<point lat="43.75347" lon="-79.46885"/>
+<point lat="43.75372" lon="-79.46918"/>
+<point lat="43.75397" lon="-79.46938"/>
+<point lat="43.75417" lon="-79.46989"/>
+<point lat="43.75537" lon="-79.47295"/>
+<point lat="43.75544" lon="-79.47327"/>
+<point lat="43.75551" lon="-79.47376"/>
+<point lat="43.7556" lon="-79.4738"/>
+<point lat="43.75553" lon="-79.4747"/>
+<point lat="43.75547" lon="-79.47517"/>
+<point lat="43.75434" lon="-79.48058"/>
+<point lat="43.75415" lon="-79.48096"/>
+<point lat="43.75404" lon="-79.48128"/>
+<point lat="43.75368" lon="-79.48192"/>
+<point lat="43.75344" lon="-79.48224"/>
+<point lat="43.75301" lon="-79.48263"/>
+<point lat="43.7529899" lon="-79.48276"/>
+<point lat="43.7527199" lon="-79.48279"/>
+<point lat="43.75239" lon="-79.48289"/>
+<point lat="43.74828" lon="-79.48277"/>
+<point lat="43.74825" lon="-79.48227"/>
+<point lat="43.74806" lon="-79.48203"/>
+<point lat="43.74783" lon="-79.48204"/>
+<point lat="43.74713" lon="-79.4822"/>
+<point lat="43.74689" lon="-79.48223"/>
+<point lat="43.74638" lon="-79.48203"/>
+<point lat="43.74725" lon="-79.47779"/>
+<point lat="43.7475499" lon="-79.47639"/>
+<point lat="43.74795" lon="-79.47489"/>
+<point lat="43.74782" lon="-79.47495"/>
+</path>
+</route>
+</body>

@@ -1,0 +1,230 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:13 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1913
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="28" title="28-Davisville" color="ff0000" oppositeColor="ffffff" latMin="43.6832599" latMax="43.70497" lonMin="-79.39687" lonMax="-79.3659599">
+<stop tag="14170" title="Davisville Station" lat="43.6976299" lon="-79.39687" stopId="14648"/>
+<stop tag="1149" title="Davisville Avenue At Yonge Street Farside" lat="43.6983399" lon="-79.39619" stopId="1882"/>
+<stop tag="730" title="Davisville Avenue At Pailton Crescent" lat="43.69921" lon="-79.3920099" stopId="1867"/>
+<stop tag="7559" title="Davisville Avenue At Acacia Avenue" lat="43.69963" lon="-79.3898299" stopId="1866"/>
+<stop tag="2073" title="Davisville Avenue At Mount Pleasant Avenue West Side" lat="43.7002" lon="-79.3871499" stopId="1878"/>
+<stop tag="6239" title="Davisville Avenue At Mount Pleasant Avenue East Side Farside" lat="43.7003399" lon="-79.38648" stopId="1877"/>
+<stop tag="737" title="Davisville Avenue At Belle Ayre Boulevard" lat="43.7010099" lon="-79.38344" stopId="1875"/>
+<stop tag="7466" title="Davisville Avenue At Forman Avenue" lat="43.70155" lon="-79.3807599" stopId="1873"/>
+<stop tag="414" title="Cleveland Street At Davisville Avenue Farside" lat="43.7025" lon="-79.3779999" stopId="1772"/>
+<stop tag="10312" title="Cleveland Street At Millwood Road" lat="43.70347" lon="-79.37793" stopId="1775"/>
+<stop tag="3914_ar" title="Cleveland Street At Belsize Road" lat="43.7041499" lon="-79.3782"/>
+<stop tag="265" title="Davisville Avenue At Cleveland Street" lat="43.7021" lon="-79.3781499" stopId="1871"/>
+<stop tag="10375" title="Davisville Avenue At Bayview Avenue" lat="43.7028399" lon="-79.3747" stopId="1869"/>
+<stop tag="12871" title="Bayview Avenue At Merton Street" lat="43.7010099" lon="-79.37342" stopId="14491"/>
+<stop tag="2020" title="Bayview Avenue At Moore Avenue" lat="43.69699" lon="-79.37192" stopId="7526"/>
+<stop tag="12875_ar" title="Evergreen Brick Works Park" lat="43.6832599" lon="-79.36604"/>
+<stop tag="3914" title="Cleveland Street At Belsize Road" lat="43.7041499" lon="-79.3782" stopId="1771"/>
+<stop tag="9533" title="Belsize Road At Bayview Avenue" lat="43.70497" lon="-79.3753199" stopId="10723"/>
+<stop tag="3463" title="Bayview Avenue At Millwood Road" lat="43.7043599" lon="-79.3747099" stopId="1708"/>
+<stop tag="8013" title="Davisville Avenue At Bayview Avenue Farside" lat="43.7029499" lon="-79.37455" stopId="1868"/>
+<stop tag="5177" title="Davisville Avenue At Clevland Street" lat="43.7022399" lon="-79.37788" stopId="1872"/>
+<stop tag="4995" title="Davisville Avenue At Forman Avenue" lat="43.7017099" lon="-79.38047" stopId="1874"/>
+<stop tag="3264" title="Davisville Avenue At Belle Ayre Boulevard" lat="43.7011599" lon="-79.38313" stopId="1870"/>
+<stop tag="767" title="Davisville Avenue At Mount Pleasant Avenue East Side" lat="43.70045" lon="-79.3866799" stopId="1876"/>
+<stop tag="6569" title="Davisville Avenue At Mount Pleasant Avenue Farside" lat="43.7002799" lon="-79.38748" stopId="11581"/>
+<stop tag="8365" title="Davisville Avenue At Acacia Avenue" lat="43.6998599" lon="-79.38947" stopId="1865"/>
+<stop tag="7484" title="Davisville Avenue At Salvation Army" lat="43.6991099" lon="-79.39309" stopId="1879"/>
+<stop tag="9693" title="Davisville Avenue At Yonge Street" lat="43.69852" lon="-79.3959299" stopId="1883"/>
+<stop tag="14170_ar" title="Davisville Station" lat="43.6976299" lon="-79.39687"/>
+<stop tag="12875" title="Evergreen Brick Works Park" lat="43.6832599" lon="-79.36604" stopId="14494"/>
+<stop tag="12873" title="Bayview Avenue At Nesbitt Drive" lat="43.6941299" lon="-79.3659599" stopId="14493"/>
+<stop tag="5116" title="Bayview Avenue At Moore Avenue Farside" lat="43.69724" lon="-79.37178" stopId="7525"/>
+<stop tag="12872" title="Bayview Avenue At McRae Drive" lat="43.7008699" lon="-79.3731699" stopId="14492"/>
+<direction tag="28_1_28A" title="West - 28 Davisville towards Davisville Station" name="West" useForUI="true">
+  <stop tag="12875" />
+  <stop tag="12873" />
+  <stop tag="5116" />
+  <stop tag="12872" />
+  <stop tag="8013" />
+  <stop tag="5177" />
+  <stop tag="4995" />
+  <stop tag="3264" />
+  <stop tag="767" />
+  <stop tag="6569" />
+  <stop tag="8365" />
+  <stop tag="7484" />
+  <stop tag="9693" />
+  <stop tag="14170_ar" />
+</direction>
+<direction tag="28_0_28A" title="East - 28a Davisville towards Brick Works via Bayview" name="East" useForUI="true">
+  <stop tag="14170" />
+  <stop tag="1149" />
+  <stop tag="730" />
+  <stop tag="7559" />
+  <stop tag="2073" />
+  <stop tag="6239" />
+  <stop tag="737" />
+  <stop tag="7466" />
+  <stop tag="265" />
+  <stop tag="10375" />
+  <stop tag="12871" />
+  <stop tag="2020" />
+  <stop tag="12875_ar" />
+</direction>
+<path>
+<point lat="43.70028" lon="-79.38748"/>
+<point lat="43.69986" lon="-79.38947"/>
+<point lat="43.69911" lon="-79.39309"/>
+<point lat="43.69852" lon="-79.39593"/>
+<point lat="43.6982" lon="-79.39707"/>
+<point lat="43.69798" lon="-79.39702"/>
+<point lat="43.6976299" lon="-79.39687"/>
+</path>
+<path>
+<point lat="43.70295" lon="-79.37455"/>
+<point lat="43.70224" lon="-79.37788"/>
+<point lat="43.70171" lon="-79.38047"/>
+<point lat="43.70116" lon="-79.38313"/>
+<point lat="43.7004499" lon="-79.38668"/>
+<point lat="43.70028" lon="-79.38748"/>
+</path>
+<path>
+<point lat="43.70034" lon="-79.38648"/>
+<point lat="43.7010099" lon="-79.3834399"/>
+<point lat="43.70155" lon="-79.38076"/>
+<point lat="43.7021" lon="-79.37815"/>
+<point lat="43.70284" lon="-79.3747"/>
+<point lat="43.70299" lon="-79.37412"/>
+<point lat="43.7010099" lon="-79.37342"/>
+</path>
+<path>
+<point lat="43.70034" lon="-79.38648"/>
+<point lat="43.7010099" lon="-79.3834399"/>
+<point lat="43.70155" lon="-79.38076"/>
+<point lat="43.70219" lon="-79.37804"/>
+<point lat="43.7024199" lon="-79.3781"/>
+<point lat="43.7025" lon="-79.378"/>
+<point lat="43.7027" lon="-79.37799"/>
+<point lat="43.70296" lon="-79.37786"/>
+<point lat="43.70347" lon="-79.37793"/>
+<point lat="43.70415" lon="-79.3782"/>
+</path>
+<path>
+<point lat="43.70415" lon="-79.3782"/>
+<point lat="43.7044" lon="-79.37836"/>
+<point lat="43.7051" lon="-79.37492"/>
+<point lat="43.70497" lon="-79.37532"/>
+<point lat="43.70436" lon="-79.3747099"/>
+<point lat="43.70299" lon="-79.37412"/>
+<point lat="43.70295" lon="-79.37455"/>
+</path>
+<path>
+<point lat="43.7010099" lon="-79.37342"/>
+<point lat="43.69699" lon="-79.37192"/>
+<point lat="43.69618" lon="-79.37149"/>
+<point lat="43.69599" lon="-79.37123"/>
+<point lat="43.69602" lon="-79.37078"/>
+<point lat="43.6961" lon="-79.37036"/>
+<point lat="43.69614" lon="-79.36995"/>
+<point lat="43.69603" lon="-79.36958"/>
+<point lat="43.69456" lon="-79.36724"/>
+<point lat="43.69419" lon="-79.36653"/>
+<point lat="43.69397" lon="-79.36568"/>
+<point lat="43.69383" lon="-79.36489"/>
+<point lat="43.69376" lon="-79.36452"/>
+<point lat="43.69356" lon="-79.36373"/>
+<point lat="43.69338" lon="-79.36322"/>
+<point lat="43.69314" lon="-79.36279"/>
+<point lat="43.6928399" lon="-79.36242"/>
+<point lat="43.69255" lon="-79.36218"/>
+<point lat="43.69223" lon="-79.3620399"/>
+<point lat="43.69193" lon="-79.36196"/>
+<point lat="43.69149" lon="-79.36194"/>
+<point lat="43.69124" lon="-79.36197"/>
+<point lat="43.69068" lon="-79.36229"/>
+<point lat="43.69043" lon="-79.36251"/>
+<point lat="43.68992" lon="-79.36312"/>
+<point lat="43.68944" lon="-79.36352"/>
+<point lat="43.6892" lon="-79.36366"/>
+<point lat="43.68892" lon="-79.36375"/>
+<point lat="43.68866" lon="-79.36377"/>
+<point lat="43.68842" lon="-79.36375"/>
+<point lat="43.6881" lon="-79.36364"/>
+<point lat="43.68764" lon="-79.3634299"/>
+<point lat="43.68707" lon="-79.3631"/>
+<point lat="43.68645" lon="-79.36274"/>
+<point lat="43.6860799" lon="-79.36259"/>
+<point lat="43.68577" lon="-79.3625"/>
+<point lat="43.68554" lon="-79.3625"/>
+<point lat="43.68517" lon="-79.36257"/>
+<point lat="43.68485" lon="-79.36272"/>
+<point lat="43.68459" lon="-79.36291"/>
+<point lat="43.68433" lon="-79.36317"/>
+<point lat="43.68415" lon="-79.36345"/>
+<point lat="43.6830799" lon="-79.36568"/>
+<point lat="43.68291" lon="-79.36595"/>
+<point lat="43.68326" lon="-79.36604"/>
+</path>
+<path>
+<point lat="43.6976299" lon="-79.39687"/>
+<point lat="43.69746" lon="-79.39678"/>
+<point lat="43.69737" lon="-79.39646"/>
+<point lat="43.6983" lon="-79.39663"/>
+<point lat="43.69834" lon="-79.39619"/>
+<point lat="43.69921" lon="-79.39201"/>
+<point lat="43.69963" lon="-79.38983"/>
+<point lat="43.7002" lon="-79.38715"/>
+<point lat="43.70034" lon="-79.38648"/>
+</path>
+<path>
+<point lat="43.68326" lon="-79.36604"/>
+<point lat="43.68291" lon="-79.36595"/>
+<point lat="43.6830799" lon="-79.36568"/>
+<point lat="43.68415" lon="-79.36345"/>
+<point lat="43.68433" lon="-79.36317"/>
+<point lat="43.68459" lon="-79.36291"/>
+<point lat="43.68485" lon="-79.36272"/>
+<point lat="43.68517" lon="-79.36257"/>
+<point lat="43.68554" lon="-79.3625"/>
+<point lat="43.68577" lon="-79.3625"/>
+<point lat="43.6860799" lon="-79.36259"/>
+<point lat="43.68645" lon="-79.36274"/>
+<point lat="43.68791" lon="-79.36357"/>
+<point lat="43.6885199" lon="-79.36377"/>
+<point lat="43.6888" lon="-79.36376"/>
+<point lat="43.68906" lon="-79.3637"/>
+<point lat="43.68934" lon="-79.36359"/>
+<point lat="43.68992" lon="-79.36312"/>
+<point lat="43.69043" lon="-79.36251"/>
+<point lat="43.69068" lon="-79.36229"/>
+<point lat="43.69124" lon="-79.36197"/>
+<point lat="43.69174" lon="-79.36193"/>
+<point lat="43.69206" lon="-79.36199"/>
+<point lat="43.69243" lon="-79.3621"/>
+<point lat="43.69299" lon="-79.36256"/>
+<point lat="43.69328" lon="-79.363"/>
+<point lat="43.69348" lon="-79.36345"/>
+<point lat="43.6938" lon="-79.36472"/>
+<point lat="43.6939" lon="-79.36534"/>
+<point lat="43.69413" lon="-79.36596"/>
+<point lat="43.69408" lon="-79.36627"/>
+<point lat="43.69427" lon="-79.3667"/>
+<point lat="43.69456" lon="-79.36724"/>
+<point lat="43.69592" lon="-79.36937"/>
+<point lat="43.69606" lon="-79.36966"/>
+<point lat="43.69614" lon="-79.37007"/>
+<point lat="43.69607" lon="-79.37054"/>
+<point lat="43.69598" lon="-79.37096"/>
+<point lat="43.69602" lon="-79.37129"/>
+<point lat="43.69674" lon="-79.37172"/>
+<point lat="43.69724" lon="-79.37178"/>
+<point lat="43.70087" lon="-79.37317"/>
+<point lat="43.70299" lon="-79.37412"/>
+<point lat="43.70295" lon="-79.37455"/>
+</path>
+</route>
+</body>

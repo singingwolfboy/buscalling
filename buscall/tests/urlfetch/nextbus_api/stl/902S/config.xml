@@ -1,0 +1,160 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:00:53 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1634
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Societe de transport de Laval 2011.">
+<route tag="902S" title="902 Direction M&#233;tro C&#244;te-Vertu" color="993366" oppositeColor="ffffff" latMin="45.5135099" latMax="45.5686599" lonMin="-73.7575699" lonMax="-73.68354">
+<stop tag="CP44902" title="Terminus Le Carrefour Quai:8 [44902]" lat="45.5686599" lon="-73.74849" stopId="44902"/>
+<stop tag="43295" title="Le Carrefour / Face Au Sears [43295]" lat="45.56761" lon="-73.7510099" stopId="43295"/>
+<stop tag="43929" title="Le Carrefour / Daniel-Johnson [43929]" lat="45.56526" lon="-73.7542099" stopId="43929"/>
+<stop tag="43930" title="Le Carrefour / Face Au 3500 [43930]" lat="45.5641599" lon="-73.75572" stopId="43930"/>
+<stop tag="43931" title="Le Carrefour / Chomedey [43931]" lat="45.5632099" lon="-73.75703" stopId="43931"/>
+<stop tag="46428" title="Chomedey / Face Au 2350 [46428]" lat="45.5614699" lon="-73.7575699" stopId="46428"/>
+<stop tag="41294" title="Chomedey / Saint-Martin [41294]" lat="45.5562399" lon="-73.7517999" stopId="41294"/>
+<stop tag="41290" title="Chomedey / Des Ch&#226;teaux [41290]" lat="45.55365" lon="-73.74895" stopId="41290"/>
+<stop tag="CP41288" title="Chomedey / Du Souvenir [41288]" lat="45.5508899" lon="-73.74557" stopId="41288"/>
+<stop tag="41286" title="Chomedey / Cardinal [41286]" lat="45.5491599" lon="-73.7436499" stopId="41286"/>
+<stop tag="41284" title="Chomedey / Monod [41284]" lat="45.54717" lon="-73.74167" stopId="41284"/>
+<stop tag="CP41302" title="Chomedey / Notre-Dame [41302]" lat="45.5446499" lon="-73.7398" stopId="41302"/>
+<stop tag="41300" title="Chomedey / Perron [41300]" lat="45.5430099" lon="-73.7381999" stopId="41300"/>
+<stop tag="41298" title="Chomedey / Face Au 573 [41298]" lat="45.5418299" lon="-73.7369799" stopId="41298"/>
+<stop tag="41293" title="Chomedey / Cur&#233;-Labelle [41293]" lat="45.5391399" lon="-73.7343399" stopId="41293"/>
+<stop tag="CP41442" title="Chomedey / L&#233;vesque [41442]" lat="45.5371999" lon="-73.7326" stopId="41442"/>
+<stop tag="41419" title="Chomedey / Face Au 41 (avant Pont Lachapelle) [41419]" lat="45.5343299" lon="-73.7300199" stopId="41419"/>
+<stop tag="41894" title="Laurentien / Gouin Ouest [41894]" lat="45.5297199" lon="-73.7235099" stopId="41894"/>
+<stop tag="CP41896" title="Gare Bois-Franc [41896]" lat="45.5226599" lon="-73.70859" stopId="41896"/>
+<stop tag="41898" title="Marcel-Laurin / Poirier [41898]" lat="45.51786" lon="-73.70082" stopId="41898"/>
+<stop tag="CP49902" title="M&#233;tro C&#244;te-Vertu [49902]" lat="45.5135099" lon="-73.68354" stopId="49902"/>
+<direction tag="902S_0_var0" title="Sud" name="Sud" useForUI="true">
+  <stop tag="CP44902" />
+  <stop tag="43295" />
+  <stop tag="43929" />
+  <stop tag="43930" />
+  <stop tag="43931" />
+  <stop tag="46428" />
+  <stop tag="41294" />
+  <stop tag="41290" />
+  <stop tag="CP41288" />
+  <stop tag="41286" />
+  <stop tag="41284" />
+  <stop tag="CP41302" />
+  <stop tag="41300" />
+  <stop tag="41298" />
+  <stop tag="41293" />
+  <stop tag="CP41442" />
+  <stop tag="41419" />
+  <stop tag="41894" />
+  <stop tag="CP41896" />
+  <stop tag="41898" />
+  <stop tag="CP49902" />
+</direction>
+<path>
+<point lat="45.55089" lon="-73.74557"/>
+<point lat="45.54988" lon="-73.74431"/>
+<point lat="45.54921" lon="-73.74356"/>
+<point lat="45.54916" lon="-73.74365"/>
+<point lat="45.54717" lon="-73.74167"/>
+<point lat="45.54712" lon="-73.74151"/>
+<point lat="45.5466" lon="-73.7410699"/>
+<point lat="45.54575" lon="-73.74051"/>
+<point lat="45.54548" lon="-73.74035"/>
+<point lat="45.54505" lon="-73.74003"/>
+<point lat="45.54465" lon="-73.7398"/>
+</path>
+<path>
+<point lat="45.56866" lon="-73.74849"/>
+<point lat="45.56856" lon="-73.74884"/>
+<point lat="45.56855" lon="-73.7489"/>
+<point lat="45.56852" lon="-73.74894"/>
+<point lat="45.56847" lon="-73.74901"/>
+<point lat="45.56841" lon="-73.74901"/>
+<point lat="45.56833" lon="-73.74896"/>
+<point lat="45.56826" lon="-73.74884"/>
+<point lat="45.56823" lon="-73.74874"/>
+<point lat="45.56818" lon="-73.74863"/>
+<point lat="45.56812" lon="-73.74854"/>
+<point lat="45.56806" lon="-73.74848"/>
+<point lat="45.56802" lon="-73.74847"/>
+<point lat="45.56799" lon="-73.74847"/>
+<point lat="45.56796" lon="-73.74847"/>
+<point lat="45.5679" lon="-73.74855"/>
+<point lat="45.56788" lon="-73.74858"/>
+<point lat="45.56787" lon="-73.74869"/>
+<point lat="45.56789" lon="-73.74882"/>
+<point lat="45.56797" lon="-73.74894"/>
+<point lat="45.56815" lon="-73.74918"/>
+<point lat="45.5683099" lon="-73.74941"/>
+<point lat="45.56844" lon="-73.7495299"/>
+<point lat="45.56852" lon="-73.74965"/>
+<point lat="45.56761" lon="-73.7510099"/>
+<point lat="45.56526" lon="-73.75421"/>
+<point lat="45.56416" lon="-73.75572"/>
+<point lat="45.56321" lon="-73.75703"/>
+<point lat="45.56223" lon="-73.75826"/>
+<point lat="45.56215" lon="-73.75818"/>
+<point lat="45.56147" lon="-73.75757"/>
+<point lat="45.55712" lon="-73.75257"/>
+<point lat="45.55682" lon="-73.75228"/>
+<point lat="45.55624" lon="-73.7518"/>
+<point lat="45.55569" lon="-73.75106"/>
+<point lat="45.55561" lon="-73.75097"/>
+<point lat="45.5554" lon="-73.75076"/>
+<point lat="45.55365" lon="-73.7489499"/>
+<point lat="45.55301" lon="-73.74809"/>
+<point lat="45.55223" lon="-73.74697"/>
+<point lat="45.55167" lon="-73.74628"/>
+<point lat="45.5515" lon="-73.74611"/>
+<point lat="45.55089" lon="-73.74557"/>
+</path>
+<path>
+<point lat="45.54465" lon="-73.7398"/>
+<point lat="45.54301" lon="-73.7382"/>
+<point lat="45.54192" lon="-73.73697"/>
+<point lat="45.54183" lon="-73.73698"/>
+<point lat="45.54173" lon="-73.73673"/>
+<point lat="45.53991" lon="-73.73492"/>
+<point lat="45.53952" lon="-73.7345799"/>
+<point lat="45.53914" lon="-73.73434"/>
+<point lat="45.53726" lon="-73.73247"/>
+<point lat="45.5372" lon="-73.7326"/>
+</path>
+<path>
+<point lat="45.52266" lon="-73.70859"/>
+<point lat="45.52167" lon="-73.70688"/>
+<point lat="45.52143" lon="-73.70648"/>
+<point lat="45.52096" lon="-73.70558"/>
+<point lat="45.51786" lon="-73.7008199"/>
+<point lat="45.50999" lon="-73.68804"/>
+<point lat="45.51353" lon="-73.68357"/>
+<point lat="45.5135099" lon="-73.6835399"/>
+</path>
+<path>
+<point lat="45.5372" lon="-73.7326"/>
+<point lat="45.53438" lon="-73.72991"/>
+<point lat="45.53433" lon="-73.73002"/>
+<point lat="45.53193" lon="-73.72717"/>
+<point lat="45.53173" lon="-73.72689"/>
+<point lat="45.5315299" lon="-73.72654"/>
+<point lat="45.53143" lon="-73.72632"/>
+<point lat="45.5313299" lon="-73.72605"/>
+<point lat="45.53127" lon="-73.72585"/>
+<point lat="45.53119" lon="-73.72568"/>
+<point lat="45.52992" lon="-73.72373"/>
+<point lat="45.52979" lon="-73.72348"/>
+<point lat="45.52972" lon="-73.72351"/>
+<point lat="45.52971" lon="-73.7232499"/>
+<point lat="45.52892" lon="-73.7221"/>
+<point lat="45.5281499" lon="-73.72069"/>
+<point lat="45.52475" lon="-73.7118799"/>
+<point lat="45.52446" lon="-73.71134"/>
+<point lat="45.52266" lon="-73.70859"/>
+</path>
+</route>
+</body>

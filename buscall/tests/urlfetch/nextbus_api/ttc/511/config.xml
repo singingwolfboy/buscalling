@@ -1,0 +1,222 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:03:05 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1975
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="511" title="511-Bathurst" color="ff0000" oppositeColor="ffffff" latMin="43.63589" latMax="43.6665299" lonMin="-79.41559" lonMax="-79.3998799">
+<stop tag="14142" title="Bathurst Station" lat="43.6665299" lon="-79.41129" stopId="14619"/>
+<stop tag="1534" title="Bathurst Street At Bloor Street West Farside" lat="43.66446" lon="-79.41098" stopId="0097"/>
+<stop tag="8105" title="Bathurst Street At Harbord Street" lat="43.66164" lon="-79.40987" stopId="0149"/>
+<stop tag="6594" title="Bathurst Street At Ulster Street" lat="43.65989" lon="-79.40917" stopId="0213"/>
+<stop tag="10342" title="Bathurst Street At College Street" lat="43.6566399" lon="-79.40786" stopId="0111"/>
+<stop tag="4389" title="Bathurst Street At Nassau Street" lat="43.6545299" lon="-79.4069999" stopId="0178"/>
+<stop tag="2181" title="Bathurst Street At Dundas Street West" lat="43.65241" lon="-79.40615" stopId="0127"/>
+<stop tag="4963" title="276 Bathurst Street" lat="43.6502399" lon="-79.4052699" stopId="0084"/>
+<stop tag="9662" title="Bathurst Street At Robinson Avenue" lat="43.64911" lon="-79.40482" stopId="0193"/>
+<stop tag="1068" title="Bathurst Street At Queen Street West" lat="43.6473799" lon="-79.40412" stopId="0187"/>
+<stop tag="7975" title="Bathurst Street At Adelaide Street West" lat="43.6452999" lon="-79.4033499" stopId="0079"/>
+<stop tag="5469" title="Bathurst Street At King Street West" lat="43.6440799" lon="-79.40286" stopId="0162"/>
+<stop tag="14563" title="Bathurst Street At Wellington Street West Farside" lat="43.64231" lon="-79.4021" stopId="14890"/>
+<stop tag="7228" title="Bathurst Street At Front Street West" lat="43.64086" lon="-79.40157" stopId="0142"/>
+<stop tag="7478" title="Bathurst Street At Fort York Boulevard" lat="43.6389599" lon="-79.4007699" stopId="0100"/>
+<stop tag="4439" title="Fleet Street At Bathurst Street Farside" lat="43.6365199" lon="-79.4003199" stopId="13362"/>
+<stop tag="12891" title="Fleet Street At Lighthouse Farside" lat="43.6360099" lon="-79.4036099" stopId="14511"/>
+<stop tag="12919" title="Fleet Street At Fort York Boulevard Farside" lat="43.6364699" lon="-79.40734" stopId="14509"/>
+<stop tag="10399" title="Loop Roadway At Strachan Avenue Farside" lat="43.63627" lon="-79.41032" stopId="1063"/>
+<stop tag="463_ar" title="Manitoba Street At Exhibition Loop" lat="43.6362499" lon="-79.41559"/>
+<stop tag="463" title="Manitoba Street At Exhibition Loop" lat="43.6362499" lon="-79.41559" stopId="12584"/>
+<stop tag="7734" title="Fleet Street At Strachan Avenue" lat="43.63619" lon="-79.4102399" stopId="1062"/>
+<stop tag="12913" title="Fleet Street At Fort York Boulevard Farside" lat="43.63624" lon="-79.4062499" stopId="14508"/>
+<stop tag="12898" title="Fleet Street At Lighthouse" lat="43.63589" lon="-79.40427" stopId="14512"/>
+<stop tag="632" title="Bathurst Street At Fleet Street" lat="43.63654" lon="-79.3998799" stopId="10210"/>
+<stop tag="2380" title="Bathurst Street At Fort York Boulevard" lat="43.6386799" lon="-79.4004599" stopId="13672"/>
+<stop tag="4212" title="Bathurst Street At Front Street West Farside" lat="43.6411199" lon="-79.4014299" stopId="11952"/>
+<stop tag="10014" title="Bathurst Street At Wellington Street West" lat="43.6425799" lon="-79.4020499" stopId="0217"/>
+<stop tag="7197" title="Bathurst Street At King Street West" lat="43.6437899" lon="-79.40251" stopId="0161"/>
+<stop tag="3000" title="Bathurst Street At Adelaide Street West" lat="43.645" lon="-79.40301" stopId="0078"/>
+<stop tag="5399" title="Bathurst Street At Queen Street West" lat="43.6470999" lon="-79.40384" stopId="0186"/>
+<stop tag="4029" title="Bathurst Street At Carr Street Farside" lat="43.64934" lon="-79.40472" stopId="0103"/>
+<stop tag="4322" title="Bathurst Street At Dundas Street West" lat="43.6521799" lon="-79.4058699" stopId="0126"/>
+<stop tag="6072" title="Bathurst Street At Nassau Street" lat="43.6541999" lon="-79.4066999" stopId="0177"/>
+<stop tag="3455" title="Bathurst Street At College Street" lat="43.6562599" lon="-79.40753" stopId="0110"/>
+<stop tag="8508" title="Bathurst Street At Ulster Street" lat="43.6597299" lon="-79.4089399" stopId="0212"/>
+<stop tag="7317" title="Bathurst Street At Harbord Street" lat="43.6614199" lon="-79.4096199" stopId="0148"/>
+<stop tag="9659" title="Bathurst Street At Lennox Avenue" lat="43.66372" lon="-79.41052" stopId="0167"/>
+<stop tag="5953" title="Bathurst Street At Bloor Street West" lat="43.6650299" lon="-79.4110699" stopId="0096"/>
+<stop tag="14142_ar" title="Bathurst Station" lat="43.6665299" lon="-79.41129"/>
+<stop tag="387" title="Opposite 276 Bathurst Street" lat="43.6502599" lon="-79.4051099" stopId="10281"/>
+<direction tag="511_0_511" title="South - 511 Bathurst towards Exhibition" name="South" useForUI="true">
+  <stop tag="14142" />
+  <stop tag="1534" />
+  <stop tag="8105" />
+  <stop tag="6594" />
+  <stop tag="10342" />
+  <stop tag="4389" />
+  <stop tag="2181" />
+  <stop tag="4963" />
+  <stop tag="9662" />
+  <stop tag="1068" />
+  <stop tag="7975" />
+  <stop tag="5469" />
+  <stop tag="14563" />
+  <stop tag="7228" />
+  <stop tag="7478" />
+  <stop tag="4439" />
+  <stop tag="12891" />
+  <stop tag="12919" />
+  <stop tag="10399" />
+  <stop tag="463_ar" />
+</direction>
+<direction tag="511_1_511Sun" title="North - 511 Bathurst towards Bathurst Station" name="North" useForUI="true">
+  <stop tag="463" />
+  <stop tag="7734" />
+  <stop tag="12913" />
+  <stop tag="12898" />
+  <stop tag="632" />
+  <stop tag="2380" />
+  <stop tag="4212" />
+  <stop tag="10014" />
+  <stop tag="7197" />
+  <stop tag="3000" />
+  <stop tag="5399" />
+  <stop tag="4029" />
+  <stop tag="387" />
+  <stop tag="4322" />
+  <stop tag="6072" />
+  <stop tag="3455" />
+  <stop tag="8508" />
+  <stop tag="7317" />
+  <stop tag="9659" />
+  <stop tag="5953" />
+  <stop tag="14142_ar" />
+</direction>
+<path>
+<point lat="43.65664" lon="-79.40786"/>
+<point lat="43.65453" lon="-79.407"/>
+<point lat="43.65241" lon="-79.40615"/>
+<point lat="43.6502399" lon="-79.40527"/>
+<point lat="43.64911" lon="-79.40482"/>
+<point lat="43.64738" lon="-79.40412"/>
+</path>
+<path>
+<point lat="43.6362499" lon="-79.41559"/>
+<point lat="43.63702" lon="-79.4129899"/>
+<point lat="43.63702" lon="-79.41264"/>
+<point lat="43.637" lon="-79.41249"/>
+<point lat="43.63698" lon="-79.4123199"/>
+<point lat="43.63693" lon="-79.41219"/>
+<point lat="43.63686" lon="-79.41207"/>
+<point lat="43.63669" lon="-79.41184"/>
+<point lat="43.63649" lon="-79.41146"/>
+<point lat="43.63638" lon="-79.4110199"/>
+<point lat="43.6363" lon="-79.41072"/>
+<point lat="43.63619" lon="-79.41024"/>
+<point lat="43.63623" lon="-79.4098099"/>
+<point lat="43.63641" lon="-79.40736"/>
+<point lat="43.63639" lon="-79.40688"/>
+<point lat="43.63624" lon="-79.40625"/>
+<point lat="43.6363" lon="-79.40598"/>
+<point lat="43.63594" lon="-79.40428"/>
+<point lat="43.63589" lon="-79.40427"/>
+<point lat="43.63589" lon="-79.40372"/>
+<point lat="43.63603" lon="-79.40208"/>
+<point lat="43.63603" lon="-79.40201"/>
+<point lat="43.63612" lon="-79.40142"/>
+<point lat="43.6362" lon="-79.40104"/>
+<point lat="43.6365399" lon="-79.39988"/>
+<point lat="43.63662" lon="-79.39971"/>
+<point lat="43.63868" lon="-79.40046"/>
+<point lat="43.64112" lon="-79.40143"/>
+<point lat="43.64258" lon="-79.40205"/>
+<point lat="43.64379" lon="-79.40251"/>
+</path>
+<path>
+<point lat="43.6471" lon="-79.40384"/>
+<point lat="43.64934" lon="-79.40472"/>
+<point lat="43.65026" lon="-79.4051099"/>
+<point lat="43.65218" lon="-79.4058699"/>
+<point lat="43.6542" lon="-79.4067"/>
+<point lat="43.65626" lon="-79.40753"/>
+</path>
+<path>
+<point lat="43.65626" lon="-79.40753"/>
+<point lat="43.65973" lon="-79.40894"/>
+<point lat="43.66142" lon="-79.40962"/>
+<point lat="43.66372" lon="-79.41052"/>
+<point lat="43.66503" lon="-79.41107"/>
+<point lat="43.66588" lon="-79.41142"/>
+<point lat="43.66602" lon="-79.41137"/>
+<point lat="43.66628" lon="-79.41133"/>
+<point lat="43.66653" lon="-79.4112899"/>
+</path>
+<path>
+<point lat="43.64408" lon="-79.40286"/>
+<point lat="43.64231" lon="-79.4021"/>
+<point lat="43.64086" lon="-79.40157"/>
+<point lat="43.63896" lon="-79.40077"/>
+<point lat="43.63682" lon="-79.3998"/>
+<point lat="43.63652" lon="-79.4003199"/>
+<point lat="43.63644" lon="-79.40025"/>
+<point lat="43.63627" lon="-79.40076"/>
+<point lat="43.63603" lon="-79.40201"/>
+<point lat="43.63603" lon="-79.40208"/>
+<point lat="43.63591" lon="-79.40354"/>
+<point lat="43.63601" lon="-79.40361"/>
+<point lat="43.63593" lon="-79.40422"/>
+<point lat="43.6363" lon="-79.40598"/>
+<point lat="43.6364" lon="-79.40711"/>
+<point lat="43.63647" lon="-79.40734"/>
+<point lat="43.63624" lon="-79.40963"/>
+<point lat="43.63627" lon="-79.41032"/>
+<point lat="43.63627" lon="-79.41057"/>
+<point lat="43.6365399" lon="-79.41162"/>
+<point lat="43.6368099" lon="-79.41199"/>
+<point lat="43.63686" lon="-79.41207"/>
+<point lat="43.63693" lon="-79.41219"/>
+<point lat="43.63698" lon="-79.4123199"/>
+<point lat="43.637" lon="-79.41249"/>
+<point lat="43.63714" lon="-79.41279"/>
+<point lat="43.63725" lon="-79.41319"/>
+<point lat="43.6371899" lon="-79.4136599"/>
+<point lat="43.6358" lon="-79.41856"/>
+<point lat="43.63557" lon="-79.41855"/>
+<point lat="43.6362499" lon="-79.41559"/>
+</path>
+<path>
+<point lat="43.6471" lon="-79.40384"/>
+<point lat="43.64934" lon="-79.40472"/>
+<point lat="43.65218" lon="-79.4058699"/>
+<point lat="43.6542" lon="-79.4067"/>
+<point lat="43.65626" lon="-79.40753"/>
+</path>
+<path>
+<point lat="43.64379" lon="-79.40251"/>
+<point lat="43.645" lon="-79.40301"/>
+<point lat="43.6471" lon="-79.40384"/>
+</path>
+<path>
+<point lat="43.66653" lon="-79.4112899"/>
+<point lat="43.6667599" lon="-79.41131"/>
+<point lat="43.66681" lon="-79.41134"/>
+<point lat="43.66687" lon="-79.41145"/>
+<point lat="43.66678" lon="-79.41184"/>
+<point lat="43.66661" lon="-79.4117799"/>
+<point lat="43.66446" lon="-79.41098"/>
+<point lat="43.66164" lon="-79.40987"/>
+<point lat="43.65989" lon="-79.40917"/>
+<point lat="43.65664" lon="-79.40786"/>
+</path>
+<path>
+<point lat="43.64738" lon="-79.40412"/>
+<point lat="43.6453" lon="-79.40335"/>
+<point lat="43.64408" lon="-79.40286"/>
+</path>
+</route>
+</body>

@@ -1,0 +1,106 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:58:58 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 946
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2011.">
+<route tag="746" title="Silver Line" color="555555" oppositeColor="ffffff" latMin="42.3470599" latMax="42.3526816" lonMin="-71.05524" lonMax="-71.03881">
+<stop tag="74611" title="So Station Silver Line (outbound)" lat="42.3522699" lon="-71.05524" stopId="74611"/>
+<stop tag="74612" title="Court House Station (outbound)" lat="42.35257" lon="-71.04739" stopId="74612"/>
+<stop tag="74613" title="World Trade Center Station - Outbound" lat="42.3482199" lon="-71.0426599" stopId="74613"/>
+<stop tag="74624_ar" title="Silver Line Way after Manulife Building" lat="42.3470599" lon="-71.03881"/>
+<stop tag="74614" title="Silver Line Way before Manulife  Building" lat="42.3471899" lon="-71.03885" stopId="74614"/>
+<stop tag="74615" title="World Trade Center Station - Inbound" lat="42.3483499" lon="-71.04257" stopId="74615"/>
+<stop tag="74616" title="Court House Station (inbound)" lat="42.3526816" lon="-71.0473539" stopId="74616"/>
+<stop tag="74617_ar" title="So Station Silver Line (inbound)" lat="42.3522699" lon="-71.05524"/>
+<direction tag="746_0_var0" title="Silver Line Way" name="Outbound" useForUI="true">
+  <stop tag="74611" />
+  <stop tag="74612" />
+  <stop tag="74613" />
+  <stop tag="74624_ar" />
+</direction>
+<direction tag="746_1_var0" title="South Station" name="Inbound" useForUI="true">
+  <stop tag="74614" />
+  <stop tag="74615" />
+  <stop tag="74616" />
+  <stop tag="74617_ar" />
+</direction>
+<path>
+<point lat="42.34719" lon="-71.03885"/>
+<point lat="42.3471199" lon="-71.03912"/>
+<point lat="42.34716" lon="-71.03952"/>
+<point lat="42.3472" lon="-71.03984"/>
+<point lat="42.34753" lon="-71.04068"/>
+<point lat="42.34831" lon="-71.04259"/>
+<point lat="42.34835" lon="-71.04257"/>
+<point lat="42.34852" lon="-71.04303"/>
+<point lat="42.34867" lon="-71.04323"/>
+<point lat="42.34908" lon="-71.04366"/>
+<point lat="42.34932" lon="-71.0438"/>
+<point lat="42.35062" lon="-71.04397"/>
+<point lat="42.35092" lon="-71.04419"/>
+<point lat="42.3511499" lon="-71.0444"/>
+<point lat="42.35134" lon="-71.04462"/>
+<point lat="42.35148" lon="-71.04486"/>
+<point lat="42.35244" lon="-71.0468099"/>
+<point lat="42.35268" lon="-71.04735"/>
+<point lat="42.35289" lon="-71.04786"/>
+<point lat="42.35298" lon="-71.04819"/>
+<point lat="42.35306" lon="-71.04863"/>
+<point lat="42.35311" lon="-71.04905"/>
+<point lat="42.35351" lon="-71.05185"/>
+<point lat="42.35352" lon="-71.05257"/>
+<point lat="42.35349" lon="-71.05301"/>
+<point lat="42.35344" lon="-71.05347"/>
+<point lat="42.35324" lon="-71.05412"/>
+<point lat="42.35316" lon="-71.0543299"/>
+<point lat="42.35292" lon="-71.05489"/>
+<point lat="42.35279" lon="-71.05512"/>
+<point lat="42.35227" lon="-71.05524"/>
+</path>
+<path>
+<point lat="42.35227" lon="-71.05524"/>
+<point lat="42.35261" lon="-71.05526"/>
+<point lat="42.35274" lon="-71.05502"/>
+<point lat="42.35286" lon="-71.05475"/>
+<point lat="42.35297" lon="-71.05449"/>
+<point lat="42.35314" lon="-71.05411"/>
+<point lat="42.35326" lon="-71.05374"/>
+<point lat="42.35333" lon="-71.05349"/>
+<point lat="42.35339" lon="-71.05308"/>
+<point lat="42.35342" lon="-71.05259"/>
+<point lat="42.35342" lon="-71.05184"/>
+<point lat="42.35333" lon="-71.0513299"/>
+<point lat="42.35295" lon="-71.0486899"/>
+<point lat="42.35284" lon="-71.04805"/>
+<point lat="42.3526" lon="-71.04741"/>
+<point lat="42.35257" lon="-71.0473899"/>
+<point lat="42.35237" lon="-71.04689"/>
+<point lat="42.35148" lon="-71.04497"/>
+<point lat="42.35131" lon="-71.0447"/>
+<point lat="42.35121" lon="-71.0445699"/>
+<point lat="42.3510599" lon="-71.04442"/>
+<point lat="42.35065" lon="-71.0441"/>
+<point lat="42.3493" lon="-71.0438999"/>
+<point lat="42.34904" lon="-71.04374"/>
+<point lat="42.34883" lon="-71.04351"/>
+<point lat="42.34864" lon="-71.04332"/>
+<point lat="42.34846" lon="-71.04309"/>
+<point lat="42.34828" lon="-71.04274"/>
+<point lat="42.34822" lon="-71.04266"/>
+<point lat="42.3474999" lon="-71.0407199"/>
+<point lat="42.34723" lon="-71.04011"/>
+<point lat="42.34715" lon="-71.03988"/>
+<point lat="42.34711" lon="-71.03963"/>
+<point lat="42.3471199" lon="-71.03936"/>
+<point lat="42.3471199" lon="-71.03912"/>
+<point lat="42.34706" lon="-71.03881"/>
+</path>
+</route>
+</body>

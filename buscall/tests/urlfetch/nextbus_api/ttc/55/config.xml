@@ -1,0 +1,222 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:33 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1877
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="55" title="55-Warren Park" color="ff0000" oppositeColor="ffffff" latMin="43.6499399" latMax="43.66575" lonMin="-79.50347" lonMax="-79.48409">
+<stop tag="6305" title="Underwood Avenue At Varsity Road" lat="43.6599199" lon="-79.49519" stopId="11058"/>
+<stop tag="10273" title="Varsity Road At Van Stassen Boulevard" lat="43.6607299" lon="-79.4971299" stopId="11059"/>
+<stop tag="2263" title="Varsity Road At Doran Avenue" lat="43.66197" lon="-79.49916" stopId="9961"/>
+<stop tag="7649" title="Crosby Avenue At Warren Crescent" lat="43.66173" lon="-79.5000399" stopId="9962"/>
+<stop tag="10309" title="Lundy Avenue At Warren Crescent Farside" lat="43.6627199" lon="-79.5026099" stopId="9963"/>
+<stop tag="4431" title="Dundas Street West At Scarlett Road" lat="43.6653799" lon="-79.49936" stopId="5027"/>
+<stop tag="10383" title="Dundas Street West At Brookside Avenue" lat="43.6656399" lon="-79.4945599" stopId="5009"/>
+<stop tag="9381" title="Dundas Street West At Jane Street" lat="43.66561" lon="-79.49139" stopId="5018"/>
+<stop tag="4369" title="Jane Street At Bradley Avenue" lat="43.6633899" lon="-79.49029" stopId="3869"/>
+<stop tag="9751" title="Jane Street At St Johns Road" lat="43.66207" lon="-79.48975" stopId="3929"/>
+<stop tag="9642" title="Jane Street At St Marks Road" lat="43.6605199" lon="-79.4890999" stopId="3925"/>
+<stop tag="6557" title="Jane Street At Baby Point Road Farside" lat="43.65797" lon="-79.48808" stopId="13623"/>
+<stop tag="14044" title="Jane Street At Ardagh Street" lat="43.6558599" lon="-79.4872399" stopId="14547"/>
+<stop tag="8578" title="Jane Street At Colbeck Street" lat="43.65334" lon="-79.4862" stopId="1171"/>
+<stop tag="1184" title="Jane Street At Weatherell Street Farside" lat="43.6513799" lon="-79.4853899" stopId="1174"/>
+<stop tag="14220_ar" title="Jane Station" lat="43.6499399" lon="-79.48409"/>
+<stop tag="14220" title="Jane Station" lat="43.6499399" lon="-79.48409" stopId="14700"/>
+<stop tag="5905" title="Jane Street At Bloor Street West Farside" lat="43.65002" lon="-79.48464" stopId="1169"/>
+<stop tag="6884" title="Jane Street At Weatherell Street" lat="43.6514" lon="-79.48524" stopId="1175"/>
+<stop tag="9969" title="Jane Street At Colbeck Street Farside" lat="43.6533499" lon="-79.4860399" stopId="1170"/>
+<stop tag="7797" title="Jane Street At Ardagh Street" lat="43.6556499" lon="-79.4869599" stopId="1168"/>
+<stop tag="660" title="Jane Street At Annette Street" lat="43.65816" lon="-79.48801" stopId="3863"/>
+<stop tag="6228" title="Jane Street At Hanley Street" lat="43.65987" lon="-79.48872" stopId="9144"/>
+<stop tag="6522" title="Jane Street At St Johns Road" lat="43.6619" lon="-79.48955" stopId="3928"/>
+<stop tag="2153" title="Jane Street At Page Avenue" lat="43.66399" lon="-79.49039" stopId="3913"/>
+<stop tag="297" title="Dundas Street West At Jane Street Farside" lat="43.6657499" lon="-79.49217" stopId="9943"/>
+<stop tag="9508" title="Dundas Street West At Brookside Avenue Farside" lat="43.66575" lon="-79.49442" stopId="3487"/>
+<stop tag="8917" title="Dundas Street West At Scarlett Road" lat="43.66561" lon="-79.4990599" stopId="3522"/>
+<stop tag="14644" title="Old Dudnas Street West At Lundy Avenue" lat="43.6629899" lon="-79.50347" stopId="14869"/>
+<stop tag="8773" title="Lundy Avenue At Warren Crescent" lat="43.66262" lon="-79.50274" stopId="11053"/>
+<stop tag="2412" title="Crosby Avenue At Varsity Road" lat="43.66202" lon="-79.4996499" stopId="11054"/>
+<stop tag="10153" title="Varsity Road At Bralorne Crescent" lat="43.66129" lon="-79.49819" stopId="11055"/>
+<stop tag="6201" title="Van Stassen Boulevard At Skylark Road" lat="43.6619999" lon="-79.49625" stopId="11056"/>
+<stop tag="6610" title="Gooch Avenue At Magwood Court" lat="43.6620699" lon="-79.4946099" stopId="11057"/>
+<stop tag="6305_ar" title="Underwood Avenue At Varsity Road" lat="43.6599199" lon="-79.49519"/>
+<direction tag="55_0_55" title="South - 55 Warren Park towards Jane Station" name="South" useForUI="true">
+  <stop tag="6305" />
+  <stop tag="10273" />
+  <stop tag="2263" />
+  <stop tag="7649" />
+  <stop tag="10309" />
+  <stop tag="4431" />
+  <stop tag="10383" />
+  <stop tag="9381" />
+  <stop tag="4369" />
+  <stop tag="9751" />
+  <stop tag="9642" />
+  <stop tag="6557" />
+  <stop tag="14044" />
+  <stop tag="8578" />
+  <stop tag="1184" />
+  <stop tag="14220_ar" />
+</direction>
+<direction tag="55_1_55" title="North - 55 Warren Park towards Warren Park" name="North" useForUI="true">
+  <stop tag="14220" />
+  <stop tag="5905" />
+  <stop tag="6884" />
+  <stop tag="9969" />
+  <stop tag="7797" />
+  <stop tag="660" />
+  <stop tag="6228" />
+  <stop tag="6522" />
+  <stop tag="2153" />
+  <stop tag="297" />
+  <stop tag="9508" />
+  <stop tag="8917" />
+  <stop tag="14644" />
+  <stop tag="8773" />
+  <stop tag="2412" />
+  <stop tag="10153" />
+  <stop tag="6201" />
+  <stop tag="6610" />
+  <stop tag="6305_ar" />
+</direction>
+<path>
+<point lat="43.66538" lon="-79.49936"/>
+<point lat="43.66552" lon="-79.4992"/>
+<point lat="43.66567" lon="-79.49812"/>
+<point lat="43.66572" lon="-79.4977"/>
+<point lat="43.66573" lon="-79.49745"/>
+<point lat="43.66575" lon="-79.4972"/>
+<point lat="43.66576" lon="-79.4969799"/>
+<point lat="43.66575" lon="-79.49655"/>
+<point lat="43.66564" lon="-79.49456"/>
+<point lat="43.66561" lon="-79.49139"/>
+<point lat="43.66573" lon="-79.49118"/>
+<point lat="43.66339" lon="-79.49029"/>
+</path>
+<path>
+<point lat="43.66299" lon="-79.5034699"/>
+<point lat="43.66293" lon="-79.50349"/>
+<point lat="43.66276" lon="-79.50319"/>
+<point lat="43.6626199" lon="-79.50274"/>
+<point lat="43.66271" lon="-79.50227"/>
+<point lat="43.66268" lon="-79.50225"/>
+<point lat="43.66158" lon="-79.5001599"/>
+<point lat="43.66202" lon="-79.49965"/>
+<point lat="43.6621499" lon="-79.49954"/>
+<point lat="43.66129" lon="-79.4981899"/>
+<point lat="43.66097" lon="-79.4976499"/>
+<point lat="43.662" lon="-79.49625"/>
+<point lat="43.66302" lon="-79.49498"/>
+<point lat="43.66278" lon="-79.49473"/>
+<point lat="43.66255" lon="-79.49462"/>
+<point lat="43.66207" lon="-79.49461"/>
+<point lat="43.66198" lon="-79.49455"/>
+<point lat="43.66165" lon="-79.49447"/>
+<point lat="43.66142" lon="-79.49431"/>
+<point lat="43.66111" lon="-79.49421"/>
+<point lat="43.66082" lon="-79.49424"/>
+<point lat="43.66053" lon="-79.49437"/>
+<point lat="43.66026" lon="-79.49461"/>
+<point lat="43.65992" lon="-79.4951899"/>
+</path>
+<path>
+<point lat="43.66339" lon="-79.49029"/>
+<point lat="43.66207" lon="-79.48975"/>
+<point lat="43.66052" lon="-79.4890999"/>
+<point lat="43.66001" lon="-79.48884"/>
+<point lat="43.65979" lon="-79.48877"/>
+<point lat="43.65797" lon="-79.48808"/>
+<point lat="43.6558599" lon="-79.48724"/>
+<point lat="43.65334" lon="-79.4862"/>
+<point lat="43.65138" lon="-79.48539"/>
+<point lat="43.64982" lon="-79.48467"/>
+<point lat="43.64989" lon="-79.48444"/>
+<point lat="43.64994" lon="-79.48409"/>
+</path>
+<path>
+<point lat="43.65992" lon="-79.4951899"/>
+<point lat="43.65977" lon="-79.49537"/>
+<point lat="43.66013" lon="-79.49626"/>
+<point lat="43.66073" lon="-79.49713"/>
+<point lat="43.6619699" lon="-79.49916"/>
+<point lat="43.6621499" lon="-79.49954"/>
+<point lat="43.66173" lon="-79.50004"/>
+<point lat="43.66158" lon="-79.5001599"/>
+<point lat="43.6624399" lon="-79.50196"/>
+<point lat="43.66268" lon="-79.50225"/>
+<point lat="43.66271" lon="-79.50227"/>
+<point lat="43.66268" lon="-79.50259"/>
+<point lat="43.66272" lon="-79.50261"/>
+</path>
+<path>
+<point lat="43.64994" lon="-79.48409"/>
+<point lat="43.65018" lon="-79.48317"/>
+<point lat="43.6496799" lon="-79.48296"/>
+<point lat="43.64932" lon="-79.48447"/>
+<point lat="43.64982" lon="-79.48467"/>
+<point lat="43.65002" lon="-79.48464"/>
+<point lat="43.6514" lon="-79.48524"/>
+<point lat="43.65335" lon="-79.48604"/>
+<point lat="43.65565" lon="-79.48696"/>
+<point lat="43.65816" lon="-79.48801"/>
+<point lat="43.65979" lon="-79.48877"/>
+<point lat="43.65987" lon="-79.48872"/>
+<point lat="43.66001" lon="-79.48884"/>
+<point lat="43.6619" lon="-79.48955"/>
+<point lat="43.66399" lon="-79.49039"/>
+<point lat="43.66573" lon="-79.49118"/>
+<point lat="43.66575" lon="-79.49217"/>
+</path>
+<path>
+<point lat="43.66575" lon="-79.49217"/>
+<point lat="43.66575" lon="-79.49442"/>
+<point lat="43.66575" lon="-79.49655"/>
+<point lat="43.66576" lon="-79.4969799"/>
+<point lat="43.66575" lon="-79.4972"/>
+<point lat="43.66573" lon="-79.49745"/>
+<point lat="43.66572" lon="-79.4977"/>
+<point lat="43.66567" lon="-79.49812"/>
+<point lat="43.66561" lon="-79.49906"/>
+<point lat="43.66552" lon="-79.4992"/>
+<point lat="43.66545" lon="-79.49955"/>
+<point lat="43.66525" lon="-79.50035"/>
+<point lat="43.6648799" lon="-79.50149"/>
+<point lat="43.66461" lon="-79.50137"/>
+<point lat="43.66445" lon="-79.5019499"/>
+<point lat="43.66428" lon="-79.50218"/>
+<point lat="43.66299" lon="-79.5034699"/>
+</path>
+<path>
+<point lat="43.65992" lon="-79.4951899"/>
+<point lat="43.65977" lon="-79.49537"/>
+<point lat="43.66013" lon="-79.49626"/>
+<point lat="43.66073" lon="-79.49713"/>
+<point lat="43.6619699" lon="-79.49916"/>
+<point lat="43.6621499" lon="-79.49954"/>
+<point lat="43.66173" lon="-79.50004"/>
+<point lat="43.66158" lon="-79.5001599"/>
+<point lat="43.6624399" lon="-79.50196"/>
+<point lat="43.66268" lon="-79.50225"/>
+<point lat="43.66271" lon="-79.50227"/>
+<point lat="43.66268" lon="-79.50259"/>
+<point lat="43.66272" lon="-79.50261"/>
+<point lat="43.66269" lon="-79.50297"/>
+<point lat="43.66279" lon="-79.50325"/>
+<point lat="43.66352" lon="-79.50292"/>
+<point lat="43.66428" lon="-79.50218"/>
+<point lat="43.66445" lon="-79.5019499"/>
+<point lat="43.66461" lon="-79.50137"/>
+<point lat="43.6648799" lon="-79.50149"/>
+<point lat="43.66525" lon="-79.50035"/>
+<point lat="43.66536" lon="-79.4998899"/>
+<point lat="43.66545" lon="-79.49955"/>
+<point lat="43.66538" lon="-79.49936"/>
+</path>
+</route>
+</body>

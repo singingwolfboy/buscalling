@@ -1,0 +1,251 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:53:08 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1714
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Gold Coast Transit 2011.">
+<route tag="18a" title="18a Northside Tripper Via Doris" shortTitle="Route 18a" color="ff6699" oppositeColor="000000" latMin="34.17555" latMax="34.21938" lonMin="-119.2139961" lonMax="-119.1767301">
+<stop tag="155cstte" title="C St Terminal" lat="34.17555" lon="-119.18119" stopId="31000"/>
+<stop tag="214cstat" title="C St at Hemlock" lat="34.1811986" lon="-119.1812423" stopId="31001"/>
+<stop tag="213cstat" title="C St at Elm" lat="34.1838311" lon="-119.181245" stopId="31002"/>
+<stop tag="204cstat" title="C St at Hill" lat="34.1867131" lon="-119.181248" stopId="31003"/>
+<stop tag="203cstat" title="C St at Wooley" lat="34.1905771" lon="-119.1811674" stopId="31004"/>
+<stop tag="208cstat" title="C St at Ninth" lat="34.1925448" lon="-119.181124" stopId="31005"/>
+<stop tag="209cstat" title="C St at Seventh" lat="34.1951473" lon="-119.18111" stopId="31006"/>
+<stop tag="268cstat" title="C St at Fifth" lat="34.1981261" lon="-119.1810494" stopId="31007"/>
+<stop tag="12oxnar" title="Oxnard Transit Center" lat="34.1994282" lon="-119.1767301" stopId="31100"/>
+<stop tag="136cstat" title="C St at Third" lat="34.2007227" lon="-119.1810675" stopId="31101"/>
+<stop tag="135cstat" title="C St at First" lat="34.2033338" lon="-119.1810443" stopId="31102"/>
+<stop tag="134cstat" title="C St at Palm" lat="34.2055738" lon="-119.1810132" stopId="31103"/>
+<stop tag="142doris" title="Doris Ave at F" lat="34.2079467" lon="-119.1854338" stopId="31104"/>
+<stop tag="143doris" title="Doris Ave at H" lat="34.2079736" lon="-119.1876978" stopId="31105"/>
+<stop tag="144doris" title="Doris Ave at M" lat="34.2080399" lon="-119.1916867" stopId="31106"/>
+<stop tag="259doris" title="Doris Ave at Oxford" lat="34.2084" lon="-119.1973834" stopId="31107"/>
+<stop tag="260doris" title="Doris Ave at Daffodil" lat="34.2084702" lon="-119.2059674" stopId="31108"/>
+<stop tag="261oxnar" title="Oxnard High School" lat="34.21938" lon="-119.2139961" stopId="31109"/>
+<stop tag="oxhigh_pm" title="Oxnard High School" lat="34.21938" lon="-119.2139946" stopId="31200"/>
+<stop tag="269patte" title="Patterson Rd at Lions Gate" lat="34.210422" lon="-119.2079467" stopId="31201"/>
+<stop tag="oxtran_pm" title="Oxnard Transit Center - Arrival" lat="34.1994282" lon="-119.1767301" stopId="31300"/>
+<stop tag="79cstat" title="C St at Fourth" lat="34.198473" lon="-119.1811172" stopId="31301"/>
+<stop tag="200cstat" title="C St at Sixth" lat="34.1960544" lon="-119.1811895" stopId="31302"/>
+<stop tag="201cstat" title="C St at Eighth" lat="34.1938345" lon="-119.18121" stopId="31303"/>
+<stop tag="202cstat" title="C St at Ninth - Driffel School" lat="34.1920325" lon="-119.1812237" stopId="31304"/>
+<stop tag="235cstat" title="C St at Cedar" lat="34.1841614" lon="-119.1813083" stopId="31305"/>
+<stop tag="234cstat" title="C St at Fir" lat="34.1826087" lon="-119.1812969" stopId="31306"/>
+<stop tag="177cstat" title="C St at Kamala" lat="34.1784622" lon="-119.1813932" stopId="31307"/>
+<stop tag="2cstte" title="C St Terminal - Center Point Mall" lat="34.1758" lon="-119.18132" stopId="31308"/>
+<direction tag="hs" title="To Oxnard High School" name="" useForUI="true">
+  <stop tag="12oxnar" />
+  <stop tag="136cstat" />
+  <stop tag="135cstat" />
+  <stop tag="134cstat" />
+  <stop tag="142doris" />
+  <stop tag="143doris" />
+  <stop tag="144doris" />
+  <stop tag="259doris" />
+  <stop tag="260doris" />
+  <stop tag="261oxnar" />
+</direction>
+<direction tag="otc" title="To Oxnard Transit Center" name="" useForUI="true">
+  <stop tag="155cstte" />
+  <stop tag="214cstat" />
+  <stop tag="213cstat" />
+  <stop tag="204cstat" />
+  <stop tag="203cstat" />
+  <stop tag="208cstat" />
+  <stop tag="209cstat" />
+  <stop tag="268cstat" />
+  <stop tag="oxhigh_pm" />
+  <stop tag="269patte" />
+  <stop tag="259doris" />
+  <stop tag="144doris" />
+  <stop tag="143doris" />
+  <stop tag="142doris" />
+  <stop tag="134cstat" />
+  <stop tag="135cstat" />
+  <stop tag="136cstat" />
+</direction>
+<direction tag="cst" title="To C St Terminal" name="" useForUI="true">
+  <stop tag="oxtran_pm" />
+  <stop tag="79cstat" />
+  <stop tag="200cstat" />
+  <stop tag="201cstat" />
+  <stop tag="202cstat" />
+  <stop tag="203cstat" />
+  <stop tag="204cstat" />
+  <stop tag="235cstat" />
+  <stop tag="234cstat" />
+  <stop tag="214cstat" />
+  <stop tag="177cstat" />
+  <stop tag="2cstte" />
+</direction>
+<path>
+<point lat="34.208" lon="-119.19233"/>
+<point lat="34.20798" lon="-119.18994"/>
+<point lat="34.2079499" lon="-119.18665"/>
+<point lat="34.2079499" lon="-119.18522"/>
+<point lat="34.20788" lon="-119.18113"/>
+</path>
+<path>
+<point lat="34.21938" lon="-119.21398"/>
+<point lat="34.21934" lon="-119.20877"/>
+<point lat="34.21934" lon="-119.20725"/>
+</path>
+<path>
+<point lat="34.19906" lon="-119.1811"/>
+<point lat="34.20041" lon="-119.18107"/>
+</path>
+<path>
+<point lat="34.20789" lon="-119.18098"/>
+<point lat="34.2079499" lon="-119.18569"/>
+</path>
+<path>
+<point lat="34.2079499" lon="-119.18569"/>
+<point lat="34.20798" lon="-119.18824"/>
+<point lat="34.2080399" lon="-119.19169"/>
+</path>
+<path>
+<point lat="34.19906" lon="-119.1811"/>
+<point lat="34.1977" lon="-119.18114"/>
+</path>
+<path>
+<point lat="34.21938" lon="-119.21402"/>
+<point lat="34.21938" lon="-119.21394"/>
+</path>
+<path>
+<point lat="34.17555" lon="-119.18119"/>
+<point lat="34.17729" lon="-119.18124"/>
+</path>
+<path>
+<point lat="34.199" lon="-119.18103"/>
+<point lat="34.19899" lon="-119.1799"/>
+</path>
+<path>
+<point lat="34.1990399" lon="-119.17985"/>
+<point lat="34.19906" lon="-119.1811"/>
+</path>
+<path>
+<point lat="34.19898" lon="-119.17676"/>
+<point lat="34.19943" lon="-119.17673"/>
+</path>
+<path>
+<point lat="34.17526" lon="-119.18121"/>
+<point lat="34.17555" lon="-119.18119"/>
+</path>
+<path>
+<point lat="34.19905" lon="-119.17654"/>
+<point lat="34.19903" lon="-119.17744"/>
+</path>
+<path>
+<point lat="34.19943" lon="-119.17673"/>
+<point lat="34.20011" lon="-119.17673"/>
+<point lat="34.20012" lon="-119.17656"/>
+<point lat="34.1990399" lon="-119.17654"/>
+</path>
+<path>
+<point lat="34.19013" lon="-119.18118"/>
+<point lat="34.1912" lon="-119.18115"/>
+<point lat="34.19327" lon="-119.18111"/>
+<point lat="34.19587" lon="-119.18111"/>
+<point lat="34.19765" lon="-119.18106"/>
+</path>
+<path>
+<point lat="34.17729" lon="-119.18124"/>
+<point lat="34.1796" lon="-119.18129"/>
+<point lat="34.18195" lon="-119.18122"/>
+<point lat="34.1842" lon="-119.18125"/>
+<point lat="34.18656" lon="-119.18125"/>
+<point lat="34.18888" lon="-119.18122"/>
+<point lat="34.19013" lon="-119.18118"/>
+</path>
+<path>
+<point lat="34.19771" lon="-119.18114"/>
+<point lat="34.1953699" lon="-119.18121"/>
+<point lat="34.19303" lon="-119.18121"/>
+<point lat="34.19013" lon="-119.18125"/>
+</path>
+<path>
+<point lat="34.19899" lon="-119.1799"/>
+<point lat="34.19898" lon="-119.17675"/>
+</path>
+<path>
+<point lat="34.2080399" lon="-119.19169"/>
+<point lat="34.20802" lon="-119.19224"/>
+</path>
+<path>
+<point lat="34.19013" lon="-119.18125"/>
+<point lat="34.19009" lon="-119.18125"/>
+<point lat="34.18755" lon="-119.18129"/>
+<point lat="34.18501" lon="-119.18132"/>
+<point lat="34.18283" lon="-119.18129"/>
+<point lat="34.1806" lon="-119.18136"/>
+<point lat="34.17866" lon="-119.18139"/>
+</path>
+<path>
+<point lat="34.20788" lon="-119.18113"/>
+<point lat="34.20517" lon="-119.18111"/>
+<point lat="34.20285" lon="-119.18115"/>
+<point lat="34.20049" lon="-119.18116"/>
+<point lat="34.19901" lon="-119.18111"/>
+<point lat="34.199" lon="-119.18103"/>
+</path>
+<path>
+<point lat="34.20844" lon="-119.20793"/>
+<point lat="34.20835" lon="-119.20111"/>
+<point lat="34.20826" lon="-119.1945"/>
+<point lat="34.20801" lon="-119.19233"/>
+</path>
+<path>
+<point lat="34.19903" lon="-119.17744"/>
+<point lat="34.19905" lon="-119.17986"/>
+</path>
+<path>
+<point lat="34.19765" lon="-119.18106"/>
+<point lat="34.199" lon="-119.18103"/>
+</path>
+<path>
+<point lat="34.21934" lon="-119.20725"/>
+<point lat="34.2165899" lon="-119.20727"/>
+<point lat="34.21552" lon="-119.20799"/>
+<point lat="34.20844" lon="-119.20793"/>
+</path>
+<path>
+<point lat="34.17866" lon="-119.18139"/>
+<point lat="34.17743" lon="-119.18141"/>
+</path>
+<path>
+<point lat="34.20829" lon="-119.19455"/>
+<point lat="34.20828" lon="-119.19455"/>
+<point lat="34.2084" lon="-119.19688"/>
+<point lat="34.2084" lon="-119.2012"/>
+<point lat="34.20848" lon="-119.20663"/>
+<point lat="34.20848" lon="-119.21112"/>
+<point lat="34.20848" lon="-119.21582"/>
+<point lat="34.20857" lon="-119.22088"/>
+<point lat="34.21552" lon="-119.22101"/>
+<point lat="34.21942" lon="-119.22114"/>
+<point lat="34.21937" lon="-119.21397"/>
+</path>
+<path>
+<point lat="34.17743" lon="-119.1814"/>
+<point lat="34.1758" lon="-119.18132"/>
+</path>
+<path>
+<point lat="34.20802" lon="-119.19221"/>
+<point lat="34.20826" lon="-119.19455"/>
+</path>
+<path>
+<point lat="34.20041" lon="-119.18107"/>
+<point lat="34.20297" lon="-119.18105"/>
+<point lat="34.20491" lon="-119.18102"/>
+<point lat="34.20688" lon="-119.181"/>
+<point lat="34.20791" lon="-119.18096"/>
+</path>
+</route>
+</body>

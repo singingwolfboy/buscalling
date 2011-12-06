@@ -1,0 +1,164 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:47 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1549
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="77" title="77-Swansea" color="ff0000" oppositeColor="ffffff" latMin="43.63672" latMax="43.6517999" lonMin="-79.4781999" lonMax="-79.4685299">
+<stop tag="14275" title="Runnymede Station" lat="43.6517999" lon="-79.47569" stopId="14756"/>
+<stop tag="2796" title="Runnymede Road At Bloor Street West Farside" lat="43.6508799" lon="-79.47625" stopId="7049"/>
+<stop tag="6501" title="Runnymede Roat Deforest Road" lat="43.6488799" lon="-79.4754099" stopId="7056"/>
+<stop tag="7891" title="Runnymede Road At Morningside Avenue" lat="43.6459599" lon="-79.4742599" stopId="7067"/>
+<stop tag="2553" title="Morningside Avenue At Windermere Avenue" lat="43.6450099" lon="-79.47815" stopId="6608"/>
+<stop tag="1877" title="Windermere Avenue At St Olaves Road" lat="43.6424" lon="-79.47594" stopId="7448"/>
+<stop tag="1922" title="Coe Hill Drive At Windermere Avenue Farside" lat="43.64137" lon="-79.47414" stopId="6305"/>
+<stop tag="8128" title="80 Coe Hill Drive" lat="43.6405099" lon="-79.4719899" stopId="6303"/>
+<stop tag="7634" title="44 Coe Hill Drive" lat="43.6392399" lon="-79.4695499" stopId="6302"/>
+<stop tag="4033" title="Coe Hill Drive At The Queensway" lat="43.6377299" lon="-79.4685299" stopId="6304"/>
+<stop tag="498" title="The Queensway At Windermere Avenue Farside" lat="43.6372899" lon="-79.47039" stopId="6923"/>
+<stop tag="9863" title="South Kingsway At Ripley Avenue" lat="43.63672" lon="-79.47504" stopId="10661"/>
+<stop tag="9545" title="South Kingsway At Ormskirk Avenue" lat="43.6386799" lon="-79.4765699" stopId="10662"/>
+<stop tag="1499" title="Ormskirk Avenue At Ripley Avenue Farside" lat="43.6392499" lon="-79.47584" stopId="10673"/>
+<stop tag="5584" title="60 Southport Street" lat="43.63937" lon="-79.4736" stopId="10675"/>
+<stop tag="8501" title="Southport Street At Windermere Place" lat="43.6382" lon="-79.47227" stopId="10995"/>
+<stop tag="1685_ar" title="Windermere Place At Windermere Avenue" lat="43.6381899" lon="-79.47111"/>
+<stop tag="1685" title="Windermere Place At Windermere Avenue" lat="43.6381899" lon="-79.47111" stopId="7453"/>
+<stop tag="9447" title="89 Windermere Avenue" lat="43.6399499" lon="-79.4726699" stopId="7450"/>
+<stop tag="1359" title="Windermere Avenue At Coe Hill Drive" lat="43.6413599" lon="-79.4744999" stopId="7451"/>
+<stop tag="10374" title="199 Windermere Avenue" lat="43.6424899" lon="-79.47593" stopId="7449"/>
+<stop tag="14572" title="Windermere Avenue At Morningside Avenue" lat="43.6447999" lon="-79.4781999" stopId="7452"/>
+<stop tag="2944" title="Morningside Avenue At Lavinia Avenue Farside" lat="43.64527" lon="-79.4766299" stopId="6605"/>
+<stop tag="5142" title="Runnymede Road At Morningside Avenue Farside" lat="43.64622" lon="-79.47424" stopId="7066"/>
+<stop tag="7715" title="Runnymede Roat Deforest Road" lat="43.6486599" lon="-79.4751899" stopId="7055"/>
+<stop tag="4668" title="Runnymede Road At Bloor Street West" lat="43.6509699" lon="-79.47616" stopId="7050"/>
+<stop tag="14275_ar" title="Runnymede Station" lat="43.6517999" lon="-79.47569"/>
+<direction tag="77_0_77" title="South - 77 Swansea towards Queensway" name="South" useForUI="true">
+  <stop tag="14275" />
+  <stop tag="2796" />
+  <stop tag="6501" />
+  <stop tag="7891" />
+  <stop tag="2553" />
+  <stop tag="1877" />
+  <stop tag="1922" />
+  <stop tag="8128" />
+  <stop tag="7634" />
+  <stop tag="4033" />
+  <stop tag="498" />
+  <stop tag="9863" />
+  <stop tag="9545" />
+  <stop tag="1499" />
+  <stop tag="5584" />
+  <stop tag="8501" />
+  <stop tag="1685_ar" />
+</direction>
+<direction tag="77_1_77" title="North - 77 Swansea towards Runnymede Station" name="North" useForUI="true">
+  <stop tag="1685" />
+  <stop tag="9447" />
+  <stop tag="1359" />
+  <stop tag="10374" />
+  <stop tag="14572" />
+  <stop tag="2944" />
+  <stop tag="5142" />
+  <stop tag="7715" />
+  <stop tag="4668" />
+  <stop tag="14275_ar" />
+</direction>
+<path>
+<point lat="43.63729" lon="-79.47039"/>
+<point lat="43.6370999" lon="-79.47051"/>
+<point lat="43.6370099" lon="-79.47084"/>
+<point lat="43.63679" lon="-79.47148"/>
+<point lat="43.63636" lon="-79.47236"/>
+<point lat="43.63618" lon="-79.47264"/>
+<point lat="43.63581" lon="-79.47312"/>
+<point lat="43.63562" lon="-79.47335"/>
+<point lat="43.63577" lon="-79.47402"/>
+<point lat="43.63595" lon="-79.47429"/>
+<point lat="43.63615" lon="-79.47453"/>
+<point lat="43.6367199" lon="-79.47504"/>
+<point lat="43.63731" lon="-79.47595"/>
+<point lat="43.63756" lon="-79.47617"/>
+<point lat="43.63794" lon="-79.47641"/>
+<point lat="43.63868" lon="-79.47657"/>
+<point lat="43.63882" lon="-79.47674"/>
+<point lat="43.63913" lon="-79.47617"/>
+<point lat="43.6392499" lon="-79.47584"/>
+<point lat="43.63988" lon="-79.47498"/>
+<point lat="43.63997" lon="-79.47467"/>
+<point lat="43.63993" lon="-79.47432"/>
+<point lat="43.63937" lon="-79.4736"/>
+<point lat="43.6382" lon="-79.47227"/>
+<point lat="43.6379499" lon="-79.47196"/>
+<point lat="43.63819" lon="-79.47111"/>
+</path>
+<path>
+<point lat="43.65088" lon="-79.4762499"/>
+<point lat="43.64888" lon="-79.47541"/>
+<point lat="43.64596" lon="-79.47426"/>
+<point lat="43.64586" lon="-79.4742"/>
+<point lat="43.64501" lon="-79.47815"/>
+<point lat="43.64493" lon="-79.47838"/>
+<point lat="43.6438599" lon="-79.4779"/>
+<point lat="43.64361" lon="-79.47772"/>
+<point lat="43.64246" lon="-79.47601"/>
+<point lat="43.6424" lon="-79.47594"/>
+<point lat="43.64184" lon="-79.47505"/>
+<point lat="43.6414" lon="-79.47477"/>
+<point lat="43.64146" lon="-79.4742799"/>
+<point lat="43.64137" lon="-79.47414"/>
+<point lat="43.6409" lon="-79.47277"/>
+<point lat="43.64051" lon="-79.47199"/>
+<point lat="43.64011" lon="-79.47113"/>
+<point lat="43.63998" lon="-79.47073"/>
+<point lat="43.63988" lon="-79.47032"/>
+<point lat="43.63962" lon="-79.46995"/>
+<point lat="43.63924" lon="-79.46955"/>
+<point lat="43.6387" lon="-79.469"/>
+<point lat="43.63842" lon="-79.46881"/>
+<point lat="43.63773" lon="-79.46853"/>
+<point lat="43.6374" lon="-79.46839"/>
+<point lat="43.63729" lon="-79.47039"/>
+</path>
+<path>
+<point lat="43.65097" lon="-79.4761599"/>
+<point lat="43.65167" lon="-79.4765199"/>
+<point lat="43.6518" lon="-79.47569"/>
+</path>
+<path>
+<point lat="43.6518" lon="-79.47569"/>
+<point lat="43.6519199" lon="-79.47548"/>
+<point lat="43.6513599" lon="-79.47517"/>
+<point lat="43.65113" lon="-79.47629"/>
+<point lat="43.65088" lon="-79.4762499"/>
+</path>
+<path>
+<point lat="43.63819" lon="-79.47111"/>
+<point lat="43.63825" lon="-79.47104"/>
+<point lat="43.63995" lon="-79.4726699"/>
+<point lat="43.6403" lon="-79.47317"/>
+<point lat="43.64088" lon="-79.47406"/>
+<point lat="43.64112" lon="-79.47431"/>
+<point lat="43.64136" lon="-79.4745"/>
+<point lat="43.6414199" lon="-79.47454"/>
+<point lat="43.64166" lon="-79.47459"/>
+<point lat="43.64184" lon="-79.47505"/>
+<point lat="43.64249" lon="-79.47593"/>
+<point lat="43.64246" lon="-79.47601"/>
+<point lat="43.64361" lon="-79.47772"/>
+<point lat="43.6438599" lon="-79.4779"/>
+<point lat="43.6447999" lon="-79.4782"/>
+<point lat="43.64493" lon="-79.47838"/>
+<point lat="43.6452699" lon="-79.47663"/>
+<point lat="43.64586" lon="-79.4742"/>
+<point lat="43.64622" lon="-79.47424"/>
+<point lat="43.64866" lon="-79.47519"/>
+<point lat="43.65097" lon="-79.4761599"/>
+</path>
+</route>
+</body>

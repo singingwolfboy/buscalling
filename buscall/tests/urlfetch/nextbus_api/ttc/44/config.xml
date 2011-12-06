@@ -1,0 +1,214 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:25 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1935
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="44" title="44-Kipling South" color="ff0000" oppositeColor="ffffff" latMin="43.5942799" latMax="43.63934" lonMin="-79.53536" lonMax="-79.51584">
+<stop tag="14240" title="Kipling Station" lat="43.6378399" lon="-79.53536" stopId="14721"/>
+<stop tag="2834" title="West Service Road At St Albans Road Farside" lat="43.63934" lon="-79.53474" stopId="4618"/>
+<stop tag="3108" title="Kipling Avenue At Olivewood Road" lat="43.63564" lon="-79.53292" stopId="4351"/>
+<stop tag="10192" title="Kipling Avenue At Advance Road" lat="43.6332699" lon="-79.5318999" stopId="4274"/>
+<stop tag="4254" title="Kipling Avenue At Norseman Street" lat="43.6315999" lon="-79.5311999" stopId="4344"/>
+<stop tag="10070" title="Opposite 777 Kipling Avenue" lat="43.6292499" lon="-79.5301899" stopId="4352"/>
+<stop tag="714" title="Opposite 741 Kipling Avenue" lat="43.62706" lon="-79.52927" stopId="4353"/>
+<stop tag="3145" title="Kipling Avenue At North Queen Street" lat="43.62536" lon="-79.5286499" stopId="4348"/>
+<stop tag="5558" title="Kipling Avenue At Warnica Avenue" lat="43.62282" lon="-79.52768" stopId="4385"/>
+<stop tag="9170" title="Kipling Avenue At The Queensway" lat="43.6211499" lon="-79.5270099" stopId="4360"/>
+<stop tag="2881" title="Kipling Avenue At The Queensway Farside" lat="43.6204499" lon="-79.52669" stopId="4362"/>
+<stop tag="6709" title="Kipling Avenue At Torlake Crescent North Side" lat="43.6141999" lon="-79.52379" stopId="4379"/>
+<stop tag="9283" title="Kipling Avenue At Torlake Crescent South Side" lat="43.6116399" lon="-79.5227099" stopId="4381"/>
+<stop tag="2282" title="Kipling Avenue At Horner Avenue" lat="43.60733" lon="-79.52089" stopId="4327"/>
+<stop tag="2102" title="Kipling Avenue At New Toronto Street Farside" lat="43.60363" lon="-79.51932" stopId="4341"/>
+<stop tag="8435" title="Kipling Avenue At Birmingham Street" lat="43.6008199" lon="-79.5181699" stopId="4290"/>
+<stop tag="4241" title="Kipling Avenue At Lake Shore Boulevard West" lat="43.5983599" lon="-79.5171299" stopId="12124"/>
+<stop tag="4243" title="Colonel Samuel Park At Lake Shore Boulevard West Farside" lat="43.5977499" lon="-79.5168599" stopId="12125"/>
+<stop tag="7870" title="Colonel Samuel Park At Humber College Building" lat="43.59571" lon="-79.51593" stopId="12126"/>
+<stop tag="3690_ar" title="Kipling Loop" lat="43.5942799" lon="-79.5168"/>
+<stop tag="3690" title="Kipling Loop" lat="43.5942799" lon="-79.5168" stopId="12120"/>
+<stop tag="10379" title="Colonel Samuel Park At Humber College Building" lat="43.59587" lon="-79.51584" stopId="12121"/>
+<stop tag="1060" title="Kipling Avenue At Lake Shore Boulevard West" lat="43.59804" lon="-79.51677" stopId="12122"/>
+<stop tag="3866" title="Kipling Avenue At Birmingham Street" lat="43.6005599" lon="-79.51786" stopId="4289"/>
+<stop tag="3764" title="Kipling Avenue At New Toronto Street" lat="43.6038199" lon="-79.5191799" stopId="4342"/>
+<stop tag="3095" title="Kipling Avenue At Horner Avenue" lat="43.6070199" lon="-79.5205199" stopId="4326"/>
+<stop tag="2721" title="Kipling Avenue At Torlake Crescent South Side" lat="43.6114899" lon="-79.5223599" stopId="4380"/>
+<stop tag="3599" title="Kipling Avenue At Torlake Crescent North Side" lat="43.6140099" lon="-79.5234299" stopId="4378"/>
+<stop tag="1426" title="Kipling Avenue At Evans Avenue Farside" lat="43.6163399" lon="-79.52476" stopId="4307"/>
+<stop tag="2477" title="Kipling Avenue At The Queensway" lat="43.6205699" lon="-79.5263999" stopId="4363"/>
+<stop tag="9759" title="Kipling Avenue At The Queensway Farside" lat="43.6213599" lon="-79.52679" stopId="4361"/>
+<stop tag="4947" title="Kipling Avenue At Warnica Avenue" lat="43.62267" lon="-79.52739" stopId="4384"/>
+<stop tag="3048" title="Kipling Avenue At North Queen Street" lat="43.6248699" lon="-79.5282599" stopId="4347"/>
+<stop tag="10001" title="741 Kipling Avenue" lat="43.62714" lon="-79.52904" stopId="4280"/>
+<stop tag="2089" title="777 Kipling Avenue" lat="43.62927" lon="-79.52994" stopId="4301"/>
+<stop tag="1954" title="Kipling Avenue At Norseman Street" lat="43.63129" lon="-79.5308" stopId="4343"/>
+<stop tag="4656" title="Kipling Avenue At Advance Road Farside" lat="43.6340099" lon="-79.5319499" stopId="4273"/>
+<stop tag="3001" title="Kipling Avenue At Olivewood Road" lat="43.6354" lon="-79.53255" stopId="4350"/>
+<stop tag="3560" title="St Albans Road At West Service Road" lat="43.63905" lon="-79.5344399" stopId="4699"/>
+<stop tag="14240_ar" title="Kipling Station" lat="43.6378399" lon="-79.53536"/>
+<direction tag="44_1_44" title="North - 44 Kipling South towards Kipling Station" name="North" useForUI="true">
+  <stop tag="3690" />
+  <stop tag="10379" />
+  <stop tag="1060" />
+  <stop tag="3866" />
+  <stop tag="3764" />
+  <stop tag="3095" />
+  <stop tag="2721" />
+  <stop tag="3599" />
+  <stop tag="1426" />
+  <stop tag="2477" />
+  <stop tag="9759" />
+  <stop tag="4947" />
+  <stop tag="3048" />
+  <stop tag="10001" />
+  <stop tag="2089" />
+  <stop tag="1954" />
+  <stop tag="4656" />
+  <stop tag="3001" />
+  <stop tag="3560" />
+  <stop tag="14240_ar" />
+</direction>
+<direction tag="44_0_44" title="South - 44 Kipling South towards Lake Shore" name="South" useForUI="true">
+  <stop tag="14240" />
+  <stop tag="2834" />
+  <stop tag="3108" />
+  <stop tag="10192" />
+  <stop tag="4254" />
+  <stop tag="10070" />
+  <stop tag="714" />
+  <stop tag="3145" />
+  <stop tag="5558" />
+  <stop tag="9170" />
+  <stop tag="2881" />
+  <stop tag="6709" />
+  <stop tag="9283" />
+  <stop tag="2282" />
+  <stop tag="2102" />
+  <stop tag="8435" />
+  <stop tag="4241" />
+  <stop tag="4243" />
+  <stop tag="7870" />
+  <stop tag="3690_ar" />
+</direction>
+<path>
+<point lat="43.61634" lon="-79.52476"/>
+<point lat="43.61656" lon="-79.52512"/>
+<point lat="43.61716" lon="-79.5254999"/>
+<point lat="43.61739" lon="-79.5256"/>
+<point lat="43.61906" lon="-79.52597"/>
+<point lat="43.6195499" lon="-79.52611"/>
+<point lat="43.62057" lon="-79.5264"/>
+<point lat="43.62136" lon="-79.52679"/>
+</path>
+<path>
+<point lat="43.6141999" lon="-79.52379"/>
+<point lat="43.61164" lon="-79.52271"/>
+<point lat="43.60733" lon="-79.52089"/>
+<point lat="43.60476" lon="-79.51965"/>
+<point lat="43.60363" lon="-79.5193199"/>
+<point lat="43.60082" lon="-79.51817"/>
+<point lat="43.59836" lon="-79.51713"/>
+<point lat="43.59775" lon="-79.51686"/>
+<point lat="43.5957099" lon="-79.51593"/>
+<point lat="43.59488" lon="-79.51552"/>
+<point lat="43.59463" lon="-79.5154699"/>
+<point lat="43.59445" lon="-79.51577"/>
+<point lat="43.59423" lon="-79.51678"/>
+<point lat="43.59428" lon="-79.5168"/>
+</path>
+<path>
+<point lat="43.62136" lon="-79.52679"/>
+<point lat="43.62267" lon="-79.52739"/>
+<point lat="43.62487" lon="-79.52826"/>
+<point lat="43.6252" lon="-79.52854"/>
+<point lat="43.62553" lon="-79.52857"/>
+<point lat="43.62579" lon="-79.52863"/>
+<point lat="43.62714" lon="-79.52904"/>
+<point lat="43.62927" lon="-79.52994"/>
+<point lat="43.63129" lon="-79.5308"/>
+<point lat="43.63401" lon="-79.53195"/>
+<point lat="43.6354" lon="-79.53255"/>
+<point lat="43.63678" lon="-79.5334"/>
+<point lat="43.63908" lon="-79.53426"/>
+<point lat="43.63905" lon="-79.53444"/>
+<point lat="43.63965" lon="-79.53435"/>
+<point lat="43.63989" lon="-79.5343199"/>
+<point lat="43.63981" lon="-79.53401"/>
+<point lat="43.63959" lon="-79.53393"/>
+<point lat="43.63936" lon="-79.53394"/>
+<point lat="43.63908" lon="-79.53426"/>
+<point lat="43.63868" lon="-79.53487"/>
+<point lat="43.63784" lon="-79.53536"/>
+</path>
+<path>
+<point lat="43.60056" lon="-79.51786"/>
+<point lat="43.60382" lon="-79.51918"/>
+<point lat="43.60702" lon="-79.52052"/>
+<point lat="43.61149" lon="-79.52236"/>
+<point lat="43.61401" lon="-79.52343"/>
+<point lat="43.61489" lon="-79.52395"/>
+<point lat="43.61566" lon="-79.52444"/>
+<point lat="43.61634" lon="-79.52476"/>
+</path>
+<path>
+<point lat="43.61634" lon="-79.52476"/>
+<point lat="43.61716" lon="-79.5254999"/>
+<point lat="43.61739" lon="-79.5256"/>
+<point lat="43.61906" lon="-79.52597"/>
+<point lat="43.6195499" lon="-79.52611"/>
+<point lat="43.62057" lon="-79.5264"/>
+<point lat="43.62136" lon="-79.52679"/>
+</path>
+<path>
+<point lat="43.59428" lon="-79.5168"/>
+<point lat="43.5942" lon="-79.5169"/>
+<point lat="43.59396" lon="-79.51688"/>
+<point lat="43.59419" lon="-79.51652"/>
+<point lat="43.59445" lon="-79.51577"/>
+<point lat="43.59463" lon="-79.5154699"/>
+<point lat="43.59488" lon="-79.51552"/>
+<point lat="43.59587" lon="-79.51584"/>
+<point lat="43.59804" lon="-79.5167699"/>
+<point lat="43.60056" lon="-79.51786"/>
+</path>
+<path>
+<point lat="43.63784" lon="-79.53536"/>
+<point lat="43.6385099" lon="-79.53464"/>
+<point lat="43.63871" lon="-79.53445"/>
+<point lat="43.63934" lon="-79.53474"/>
+<point lat="43.63934" lon="-79.53482"/>
+<point lat="43.63961" lon="-79.53507"/>
+<point lat="43.63984" lon="-79.53505"/>
+<point lat="43.63976" lon="-79.5347"/>
+<point lat="43.63951" lon="-79.53449"/>
+<point lat="43.63678" lon="-79.5334"/>
+<point lat="43.63564" lon="-79.53292"/>
+<point lat="43.63449" lon="-79.53231"/>
+<point lat="43.63327" lon="-79.5318999"/>
+<point lat="43.6316" lon="-79.5312"/>
+<point lat="43.62925" lon="-79.53019"/>
+<point lat="43.62706" lon="-79.52927"/>
+<point lat="43.62579" lon="-79.52863"/>
+<point lat="43.62553" lon="-79.52857"/>
+<point lat="43.62536" lon="-79.52865"/>
+<point lat="43.6252" lon="-79.52854"/>
+<point lat="43.62282" lon="-79.52768"/>
+<point lat="43.62115" lon="-79.52701"/>
+<point lat="43.62045" lon="-79.52669"/>
+</path>
+<path>
+<point lat="43.62045" lon="-79.52669"/>
+<point lat="43.6195499" lon="-79.52611"/>
+<point lat="43.61716" lon="-79.5254999"/>
+<point lat="43.61615" lon="-79.52484"/>
+<point lat="43.61543" lon="-79.52428"/>
+<point lat="43.61489" lon="-79.52395"/>
+<point lat="43.6141999" lon="-79.52379"/>
+</path>
+</route>
+</body>

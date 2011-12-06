@@ -1,0 +1,480 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:59:04 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 2742
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Massachusetts Institute of Technology 2011.">
+<route tag="saferidebostonall" title="Saferide Boston All" color="66cc33" oppositeColor="000000" latMin="42.3465563" latMax="42.35952" lonMin="-71.1238599" lonMax="-71.08834">
+<stop tag="mass84_d" title="84 Mass Ave" lat="42.35952" lon="-71.09416" stopId="03"/>
+<stop tag="massbeac" title="Mass Ave at Beacon St" lat="42.35103" lon="-71.08963" stopId="29"/>
+<stop tag="massnewb" title="MBTA Stop at Newbury" lat="42.34831" lon="-71.08834" stopId="58"/>
+<stop tag="comm487" title="487 Commonwealth Ave" lat="42.34915" lon="-71.0946288" stopId="22"/>
+<stop tag="comm478" title="478 Commonwealth Ave" lat="42.3488099" lon="-71.0940128" stopId="21"/>
+<stop tag="beacmass" title="Beacon St at Mass Ave" lat="42.3509166" lon="-71.0894084" stopId="13"/>
+<stop tag="mass77" title="77 Mass Ave" lat="42.35927" lon="-71.09368" stopId="02"/>
+<stop tag="mass84" title="84 Mass Ave" lat="42.3595196" lon="-71.0941611" stopId="03"/>
+<stop tag="massbeac_b" title="Mass Ave at Beacon St" lat="42.35103" lon="-71.08963" stopId="29"/>
+<stop tag="beac528" title="528 Beacon St" lat="42.3505001" lon="-71.0908295" stopId="12"/>
+<stop tag="487comm" title="487 Commonwealth Ave" lat="42.34915" lon="-71.09463" stopId="22"/>
+<stop tag="bays111" title="111 Bay State Rd" lat="42.35014" lon="-71.09797" stopId="08"/>
+<stop tag="bays155" title="155 Bay State Rd" lat="42.3503297" lon="-71.1005867" stopId="09"/>
+<stop tag="manc58" title="58 Manchester St" lat="42.34885" lon="-71.1238599" stopId="28"/>
+<stop tag="stpaul259" title="259 Saint Paul St" lat="42.3465563" lon="-71.1165503" stopId="49"/>
+<stop tag="beacmass_a" title="Mass Ave at Beacon St" lat="42.3507441" lon="-71.1135069" stopId="13"/>
+<direction tag="manc58" title="58 Manchester St" name="" useForUI="true">
+  <stop tag="mass84" />
+  <stop tag="massbeac_b" />
+  <stop tag="beac528" />
+  <stop tag="487comm" />
+  <stop tag="bays111" />
+  <stop tag="bays155" />
+</direction>
+<direction tag="mass84" title="to 84 Mass Ave" name="" useForUI="true">
+  <stop tag="comm487" />
+  <stop tag="comm478" />
+  <stop tag="beacmass" />
+  <stop tag="mass77" />
+  <stop tag="manc58" />
+  <stop tag="stpaul259" />
+  <stop tag="beacmass_a" />
+</direction>
+<direction tag="comm487" title="487 Commonwealth Ave" name="" useForUI="true">
+  <stop tag="mass84_d" />
+  <stop tag="massbeac" />
+  <stop tag="massnewb" />
+</direction>
+<path>
+<tag id="srbosa_487comm_bays111"/>
+<point lat="42.34915" lon="-71.09463"/>
+<point lat="42.34915" lon="-71.0948499"/>
+<point lat="42.34915" lon="-71.09506"/>
+<point lat="42.34915" lon="-71.09546"/>
+<point lat="42.34913" lon="-71.09559"/>
+<point lat="42.34903" lon="-71.09605"/>
+<point lat="42.34899" lon="-71.09688"/>
+<point lat="42.3489999" lon="-71.09702"/>
+<point lat="42.34904" lon="-71.09707"/>
+<point lat="42.3500299" lon="-71.09755"/>
+<point lat="42.35008" lon="-71.09757"/>
+<point lat="42.35011" lon="-71.09763"/>
+<point lat="42.35014" lon="-71.09797"/>
+</path>
+<path>
+<tag id="srbosa_beacmass_mass84"/>
+<point lat="42.35092" lon="-71.08941"/>
+<point lat="42.35094" lon="-71.08944"/>
+<point lat="42.3509699" lon="-71.08947"/>
+<point lat="42.35102" lon="-71.08951"/>
+<point lat="42.35136" lon="-71.08967"/>
+<point lat="42.35173" lon="-71.08983"/>
+<point lat="42.35185" lon="-71.08989"/>
+<point lat="42.35213" lon="-71.09003"/>
+<point lat="42.35316" lon="-71.09056"/>
+<point lat="42.35425" lon="-71.09107"/>
+<point lat="42.35492" lon="-71.0913999"/>
+<point lat="42.35536" lon="-71.09161"/>
+<point lat="42.35621" lon="-71.09203"/>
+<point lat="42.35695" lon="-71.09241"/>
+<point lat="42.35708" lon="-71.09246"/>
+<point lat="42.35716" lon="-71.0925"/>
+<point lat="42.35722" lon="-71.09253"/>
+<point lat="42.35727" lon="-71.09256"/>
+<point lat="42.35732" lon="-71.09258"/>
+<point lat="42.35739" lon="-71.0926099"/>
+<point lat="42.35819" lon="-71.093"/>
+<point lat="42.35851" lon="-71.09315"/>
+<point lat="42.35895" lon="-71.09341"/>
+<point lat="42.35919" lon="-71.09361"/>
+<point lat="42.35929" lon="-71.09369"/>
+<point lat="42.35964" lon="-71.09406"/>
+<point lat="42.3596999" lon="-71.09414"/>
+<point lat="42.35974" lon="-71.09423"/>
+<point lat="42.35975" lon="-71.0943099"/>
+<point lat="42.35975" lon="-71.09435"/>
+<point lat="42.35973" lon="-71.09439"/>
+<point lat="42.35969" lon="-71.09443"/>
+<point lat="42.35964" lon="-71.09446"/>
+<point lat="42.35957" lon="-71.09448"/>
+<point lat="42.35951" lon="-71.09448"/>
+<point lat="42.35948" lon="-71.09445"/>
+<point lat="42.35946" lon="-71.0943999"/>
+<point lat="42.35946" lon="-71.09435"/>
+</path>
+<path>
+<tag id="srbosa_beacmass_mass77"/>
+<point lat="42.35092" lon="-71.08941"/>
+<point lat="42.35094" lon="-71.08944"/>
+<point lat="42.3509699" lon="-71.08947"/>
+<point lat="42.35102" lon="-71.08951"/>
+<point lat="42.35136" lon="-71.08967"/>
+<point lat="42.35173" lon="-71.08983"/>
+<point lat="42.35185" lon="-71.08989"/>
+<point lat="42.35213" lon="-71.09003"/>
+<point lat="42.35316" lon="-71.09056"/>
+<point lat="42.35425" lon="-71.09107"/>
+<point lat="42.35492" lon="-71.0913999"/>
+<point lat="42.35536" lon="-71.09161"/>
+<point lat="42.35621" lon="-71.09203"/>
+<point lat="42.35695" lon="-71.09241"/>
+<point lat="42.35708" lon="-71.09246"/>
+<point lat="42.35716" lon="-71.0925"/>
+<point lat="42.35722" lon="-71.09253"/>
+<point lat="42.35727" lon="-71.09256"/>
+<point lat="42.35732" lon="-71.09258"/>
+<point lat="42.35739" lon="-71.0926099"/>
+<point lat="42.35819" lon="-71.093"/>
+<point lat="42.35851" lon="-71.09315"/>
+<point lat="42.35895" lon="-71.09341"/>
+<point lat="42.35919" lon="-71.09361"/>
+<point lat="42.35927" lon="-71.09368"/>
+</path>
+<path>
+<tag id="srbosa_mass84_massbeac"/>
+<tag id="srbosa_mass84_massbeac_b"/>
+<point lat="42.35952" lon="-71.09416"/>
+<point lat="42.3595" lon="-71.09407"/>
+<point lat="42.35947" lon="-71.09403"/>
+<point lat="42.35928" lon="-71.0938"/>
+<point lat="42.35917" lon="-71.09371"/>
+<point lat="42.35903" lon="-71.09359"/>
+<point lat="42.35893" lon="-71.09351"/>
+<point lat="42.3586699" lon="-71.09336"/>
+<point lat="42.35864" lon="-71.09334"/>
+<point lat="42.35849" lon="-71.09325"/>
+<point lat="42.35817" lon="-71.0931"/>
+<point lat="42.35737" lon="-71.09271"/>
+<point lat="42.3573" lon="-71.09268"/>
+<point lat="42.35725" lon="-71.09266"/>
+<point lat="42.3572" lon="-71.09263"/>
+<point lat="42.35714" lon="-71.0926"/>
+<point lat="42.35706" lon="-71.09256"/>
+<point lat="42.35693" lon="-71.09251"/>
+<point lat="42.35619" lon="-71.09213"/>
+<point lat="42.35534" lon="-71.09171"/>
+<point lat="42.3549" lon="-71.0915"/>
+<point lat="42.35423" lon="-71.09117"/>
+<point lat="42.35314" lon="-71.09066"/>
+<point lat="42.35211" lon="-71.09013"/>
+<point lat="42.35183" lon="-71.08999"/>
+<point lat="42.35171" lon="-71.08993"/>
+<point lat="42.35157" lon="-71.08986"/>
+<point lat="42.35103" lon="-71.08963"/>
+</path>
+<path>
+<tag id="srbosa_mass77_mass84"/>
+<point lat="42.35927" lon="-71.09368"/>
+<point lat="42.35964" lon="-71.09406"/>
+<point lat="42.3596999" lon="-71.09414"/>
+<point lat="42.35974" lon="-71.09423"/>
+<point lat="42.35975" lon="-71.0943099"/>
+<point lat="42.35975" lon="-71.09435"/>
+<point lat="42.35973" lon="-71.09439"/>
+<point lat="42.35969" lon="-71.09443"/>
+<point lat="42.35964" lon="-71.09446"/>
+<point lat="42.35957" lon="-71.09448"/>
+<point lat="42.35951" lon="-71.09448"/>
+<point lat="42.35948" lon="-71.09445"/>
+<point lat="42.35946" lon="-71.0943999"/>
+<point lat="42.35946" lon="-71.09435"/>
+<point lat="42.35952" lon="-71.09416"/>
+</path>
+<path>
+<tag id="srbosa_beac528_487comm"/>
+<point lat="42.3504999" lon="-71.09083"/>
+<point lat="42.35027" lon="-71.09164"/>
+<point lat="42.35026" lon="-71.09168"/>
+<point lat="42.35018" lon="-71.09203"/>
+<point lat="42.35014" lon="-71.0922"/>
+<point lat="42.35011" lon="-71.09228"/>
+<point lat="42.3501" lon="-71.09233"/>
+<point lat="42.35009" lon="-71.09237"/>
+<point lat="42.35008" lon="-71.09242"/>
+<point lat="42.35007" lon="-71.09248"/>
+<point lat="42.35004" lon="-71.09258"/>
+<point lat="42.35" lon="-71.0927899"/>
+<point lat="42.34999" lon="-71.09284"/>
+<point lat="42.34996" lon="-71.09289"/>
+<point lat="42.34991" lon="-71.09291"/>
+<point lat="42.34939" lon="-71.09291"/>
+<point lat="42.34926" lon="-71.09291"/>
+<point lat="42.3491799" lon="-71.09294"/>
+<point lat="42.34915" lon="-71.093"/>
+<point lat="42.34915" lon="-71.09463"/>
+</path>
+<path>
+<tag id="srbosa_massbeac_massnewb"/>
+<point lat="42.35103" lon="-71.08963"/>
+<point lat="42.35094" lon="-71.0896"/>
+<point lat="42.35008" lon="-71.08918"/>
+<point lat="42.34831" lon="-71.08834"/>
+</path>
+<path>
+<tag id="srbosa_manc58_stpaul259"/>
+<point lat="42.34885" lon="-71.1238599"/>
+<point lat="42.34876" lon="-71.12352"/>
+<point lat="42.34846" lon="-71.12245"/>
+<point lat="42.34842" lon="-71.12222"/>
+<point lat="42.34841" lon="-71.1219799"/>
+<point lat="42.34842" lon="-71.12174"/>
+<point lat="42.34846" lon="-71.12124"/>
+<point lat="42.34846" lon="-71.12119"/>
+<point lat="42.34842" lon="-71.12114"/>
+<point lat="42.34801" lon="-71.12108"/>
+<point lat="42.34794" lon="-71.12106"/>
+<point lat="42.34788" lon="-71.12103"/>
+<point lat="42.34784" lon="-71.12099"/>
+<point lat="42.34771" lon="-71.12078"/>
+<point lat="42.3475899" lon="-71.12057"/>
+<point lat="42.34756" lon="-71.12045"/>
+<point lat="42.34754" lon="-71.12032"/>
+<point lat="42.34752" lon="-71.11945"/>
+<point lat="42.34746" lon="-71.11839"/>
+<point lat="42.34743" lon="-71.11834"/>
+<point lat="42.34736" lon="-71.11833"/>
+<point lat="42.34666" lon="-71.11838"/>
+<point lat="42.34587" lon="-71.11847"/>
+<point lat="42.34582" lon="-71.11846"/>
+<point lat="42.34579" lon="-71.11842"/>
+<point lat="42.34576" lon="-71.11835"/>
+<point lat="42.34567" lon="-71.11754"/>
+<point lat="42.34561" lon="-71.11686"/>
+<point lat="42.34561" lon="-71.1168"/>
+<point lat="42.34563" lon="-71.11675"/>
+<point lat="42.34566" lon="-71.11672"/>
+<point lat="42.3457099" lon="-71.11671"/>
+<point lat="42.34645" lon="-71.11656"/>
+<point lat="42.3465599" lon="-71.11655"/>
+</path>
+<path>
+<tag id="srbosa_bays155_manc58"/>
+<point lat="42.35033" lon="-71.10059"/>
+<point lat="42.3505899" lon="-71.10334"/>
+<point lat="42.35058" lon="-71.10341"/>
+<point lat="42.35054" lon="-71.10344"/>
+<point lat="42.35026" lon="-71.10351"/>
+<point lat="42.34985" lon="-71.1036"/>
+<point lat="42.34978" lon="-71.10365"/>
+<point lat="42.34974" lon="-71.10375"/>
+<point lat="42.34977" lon="-71.10404"/>
+<point lat="42.34989" lon="-71.10497"/>
+<point lat="42.3500299" lon="-71.10605"/>
+<point lat="42.35009" lon="-71.10655"/>
+<point lat="42.35023" lon="-71.10776"/>
+<point lat="42.35038" lon="-71.10888"/>
+<point lat="42.35045" lon="-71.10943"/>
+<point lat="42.35049" lon="-71.10967"/>
+<point lat="42.3505899" lon="-71.11056"/>
+<point lat="42.35062" lon="-71.11085"/>
+<point lat="42.35063" lon="-71.1109"/>
+<point lat="42.35064" lon="-71.11094"/>
+<point lat="42.35066" lon="-71.11123"/>
+<point lat="42.3506799" lon="-71.1115"/>
+<point lat="42.35071" lon="-71.11174"/>
+<point lat="42.35072" lon="-71.11183"/>
+<point lat="42.35077" lon="-71.11216"/>
+<point lat="42.35082" lon="-71.11257"/>
+<point lat="42.35093" lon="-71.11354"/>
+<point lat="42.35095" lon="-71.11379"/>
+<point lat="42.3510599" lon="-71.11465"/>
+<point lat="42.35119" lon="-71.11567"/>
+<point lat="42.35184" lon="-71.12115"/>
+<point lat="42.35183" lon="-71.1212199"/>
+<point lat="42.35179" lon="-71.12128"/>
+<point lat="42.35173" lon="-71.12134"/>
+<point lat="42.35167" lon="-71.12137"/>
+<point lat="42.35081" lon="-71.12153"/>
+<point lat="42.35057" lon="-71.12156"/>
+<point lat="42.3504099" lon="-71.12155"/>
+<point lat="42.3491799" lon="-71.12132"/>
+<point lat="42.34913" lon="-71.12132"/>
+<point lat="42.34911" lon="-71.12135"/>
+<point lat="42.3491" lon="-71.1214"/>
+<point lat="42.34906" lon="-71.12181"/>
+<point lat="42.34906" lon="-71.1219799"/>
+<point lat="42.34908" lon="-71.12218"/>
+<point lat="42.34912" lon="-71.12232"/>
+<point lat="42.34952" lon="-71.1238"/>
+<point lat="42.34953" lon="-71.12384"/>
+<point lat="42.3495" lon="-71.1239"/>
+<point lat="42.3494699" lon="-71.12392"/>
+<point lat="42.34903" lon="-71.1241"/>
+<point lat="42.34898" lon="-71.1241"/>
+<point lat="42.34895" lon="-71.12408"/>
+<point lat="42.34892" lon="-71.12405"/>
+<point lat="42.3489" lon="-71.12401"/>
+<point lat="42.34885" lon="-71.1238599"/>
+</path>
+<path>
+<tag id="srbosa_stpaul259_beacmass"/>
+<point lat="42.3465599" lon="-71.11655"/>
+<point lat="42.34676" lon="-71.11653"/>
+<point lat="42.34704" lon="-71.11655"/>
+<point lat="42.34728" lon="-71.11658"/>
+<point lat="42.3476799" lon="-71.1165"/>
+<point lat="42.3485" lon="-71.11632"/>
+<point lat="42.3493" lon="-71.11614"/>
+<point lat="42.35006" lon="-71.1159799"/>
+<point lat="42.35086" lon="-71.1157999"/>
+<point lat="42.35093" lon="-71.11578"/>
+<point lat="42.3509699" lon="-71.11574"/>
+<point lat="42.35099" lon="-71.11566"/>
+<point lat="42.35089" lon="-71.11485"/>
+<point lat="42.35077" lon="-71.11379"/>
+<point lat="42.35076" lon="-71.11364"/>
+<point lat="42.35055" lon="-71.11188"/>
+<point lat="42.35053" lon="-71.11177"/>
+<point lat="42.35052" lon="-71.11168"/>
+<point lat="42.35048" lon="-71.11138"/>
+<point lat="42.35047" lon="-71.11121"/>
+<point lat="42.35044" lon="-71.11098"/>
+<point lat="42.35043" lon="-71.11093"/>
+<point lat="42.35043" lon="-71.11084"/>
+<point lat="42.35037" lon="-71.11042"/>
+<point lat="42.3503" lon="-71.10994"/>
+<point lat="42.35029" lon="-71.10984"/>
+<point lat="42.35028" lon="-71.10971"/>
+<point lat="42.35025" lon="-71.10948"/>
+<point lat="42.35025" lon="-71.10943"/>
+<point lat="42.35019" lon="-71.1089"/>
+<point lat="42.35007" lon="-71.10789"/>
+<point lat="42.3499" lon="-71.1065799"/>
+<point lat="42.34972" lon="-71.105"/>
+<point lat="42.34955" lon="-71.10365"/>
+<point lat="42.34945" lon="-71.10286"/>
+<point lat="42.3491799" lon="-71.1006"/>
+<point lat="42.34907" lon="-71.0997299"/>
+<point lat="42.34887" lon="-71.09805"/>
+<point lat="42.34881" lon="-71.09752"/>
+<point lat="42.34879" lon="-71.09735"/>
+<point lat="42.34875" lon="-71.09703"/>
+<point lat="42.34875" lon="-71.09693"/>
+<point lat="42.34876" lon="-71.09654"/>
+<point lat="42.34876" lon="-71.09632"/>
+<point lat="42.34876" lon="-71.09575"/>
+<point lat="42.34879" lon="-71.09501"/>
+<point lat="42.34881" lon="-71.09401"/>
+<point lat="42.34883" lon="-71.09295"/>
+<point lat="42.34884" lon="-71.09235"/>
+<point lat="42.34888" lon="-71.08883"/>
+<point lat="42.3489" lon="-71.08868"/>
+<point lat="42.34892" lon="-71.0886"/>
+<point lat="42.34894" lon="-71.08855"/>
+<point lat="42.34896" lon="-71.08853"/>
+<point lat="42.3489999" lon="-71.08851"/>
+<point lat="42.34903" lon="-71.08852"/>
+<point lat="42.34935" lon="-71.0886699"/>
+<point lat="42.35009" lon="-71.0890299"/>
+<point lat="42.35092" lon="-71.08941"/>
+</path>
+<path>
+<tag id="srbosa_comm487_comm478"/>
+<point lat="42.34915" lon="-71.09463"/>
+<point lat="42.34915" lon="-71.0948499"/>
+<point lat="42.34915" lon="-71.09506"/>
+<point lat="42.34915" lon="-71.09546"/>
+<point lat="42.34913" lon="-71.09559"/>
+<point lat="42.34886" lon="-71.09684"/>
+<point lat="42.34882" lon="-71.09693"/>
+<point lat="42.34877" lon="-71.09699"/>
+<point lat="42.34854" lon="-71.0972199"/>
+<point lat="42.34834" lon="-71.09737"/>
+<point lat="42.3483" lon="-71.09739"/>
+<point lat="42.34827" lon="-71.09738"/>
+<point lat="42.34823" lon="-71.09736"/>
+<point lat="42.34808" lon="-71.09707"/>
+<point lat="42.34804" lon="-71.09694"/>
+<point lat="42.34802" lon="-71.09681"/>
+<point lat="42.34803" lon="-71.09497"/>
+<point lat="42.3480599" lon="-71.09492"/>
+<point lat="42.34809" lon="-71.0949"/>
+<point lat="42.34812" lon="-71.0949"/>
+<point lat="42.3487099" lon="-71.09493"/>
+<point lat="42.34875" lon="-71.09491"/>
+<point lat="42.34877" lon="-71.0949"/>
+<point lat="42.34879" lon="-71.09482"/>
+<point lat="42.34881" lon="-71.09401"/>
+</path>
+<path>
+<tag id="srbosa_bays111_bays155"/>
+<point lat="42.35013" lon="-71.09797"/>
+<point lat="42.35024" lon="-71.09951"/>
+<point lat="42.35031" lon="-71.10034"/>
+<point lat="42.35033" lon="-71.10059"/>
+</path>
+<path>
+<tag id="srbosa_mass84_d"/>
+<point lat="42.35946" lon="-71.09435"/>
+<point lat="42.35952" lon="-71.09416"/>
+</path>
+<path>
+<tag id="srbosa_massbeac_beac528"/>
+<point lat="42.35103" lon="-71.08963"/>
+<point lat="42.35094" lon="-71.0896"/>
+<point lat="42.35089" lon="-71.0896"/>
+<point lat="42.35086" lon="-71.08962"/>
+<point lat="42.3508" lon="-71.08977"/>
+<point lat="42.3504999" lon="-71.09083"/>
+</path>
+<path>
+<tag id="srbosa_comm478_beacmass"/>
+<point lat="42.34881" lon="-71.09401"/>
+<point lat="42.34883" lon="-71.09295"/>
+<point lat="42.34884" lon="-71.09235"/>
+<point lat="42.34888" lon="-71.08883"/>
+<point lat="42.3489" lon="-71.08868"/>
+<point lat="42.34892" lon="-71.0886"/>
+<point lat="42.34894" lon="-71.08855"/>
+<point lat="42.34896" lon="-71.08853"/>
+<point lat="42.3489999" lon="-71.08851"/>
+<point lat="42.34903" lon="-71.08852"/>
+<point lat="42.34935" lon="-71.0886699"/>
+<point lat="42.35009" lon="-71.0890299"/>
+<point lat="42.35092" lon="-71.08941"/>
+</path>
+<path>
+<tag id="srbosa_massnewb_comm487"/>
+<point lat="42.34831" lon="-71.08834"/>
+<point lat="42.34739" lon="-71.0879"/>
+<point lat="42.34735" lon="-71.08789"/>
+<point lat="42.34731" lon="-71.0879099"/>
+<point lat="42.34728" lon="-71.08796"/>
+<point lat="42.3466499" lon="-71.09025"/>
+<point lat="42.34659" lon="-71.09048"/>
+<point lat="42.3465599" lon="-71.0907"/>
+<point lat="42.3465599" lon="-71.09083"/>
+<point lat="42.3465599" lon="-71.09097"/>
+<point lat="42.3466" lon="-71.09123"/>
+<point lat="42.34667" lon="-71.0915799"/>
+<point lat="42.34678" lon="-71.09191"/>
+<point lat="42.34684" lon="-71.09204"/>
+<point lat="42.3469" lon="-71.09212"/>
+<point lat="42.34697" lon="-71.09219"/>
+<point lat="42.34705" lon="-71.09223"/>
+<point lat="42.3474999" lon="-71.09224"/>
+<point lat="42.34765" lon="-71.09224"/>
+<point lat="42.34782" lon="-71.09224"/>
+<point lat="42.3479" lon="-71.09222"/>
+<point lat="42.3479699" lon="-71.09219"/>
+<point lat="42.3480599" lon="-71.09215"/>
+<point lat="42.34814" lon="-71.09211"/>
+<point lat="42.3482" lon="-71.09207"/>
+<point lat="42.34835" lon="-71.09192"/>
+<point lat="42.34852" lon="-71.09178"/>
+<point lat="42.34869" lon="-71.09168"/>
+<point lat="42.34885" lon="-71.0916"/>
+<point lat="42.34897" lon="-71.09159"/>
+<point lat="42.3491" lon="-71.0916"/>
+<point lat="42.34914" lon="-71.09161"/>
+<point lat="42.34917" lon="-71.09163"/>
+<point lat="42.34919" lon="-71.09169"/>
+<point lat="42.34915" lon="-71.093"/>
+<point lat="42.34915" lon="-71.09463"/>
+</path>
+</route>
+</body>

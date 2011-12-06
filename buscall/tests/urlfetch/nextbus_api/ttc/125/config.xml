@@ -1,0 +1,209 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:02:17 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1773
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="125" title="125-Drewry" color="ff0000" oppositeColor="ffffff" latMin="43.7793799" latMax="43.7870699" lonMin="-79.45176" lonMax="-79.41486">
+<stop tag="1842" title="Antibes Drive South At Torresdale Avenue Farside" lat="43.7793799" lon="-79.45176" stopId="9281"/>
+<stop tag="4181" title="Antibes Drive South At Candle Liteway East" lat="43.77965" lon="-79.4491299" stopId="9282"/>
+<stop tag="1192" title="Opposite 100 Antives Drive" lat="43.7796111" lon="-79.4469939" stopId="9283"/>
+<stop tag="9316" title="Don Lake Gate At Bathurst Street" lat="43.78095" lon="-79.44512" stopId="9284"/>
+<stop tag="7410" title="Drewry Avenue At Marthon Avenue East" lat="43.7818199" lon="-79.44109" stopId="9285"/>
+<stop tag="8590" title="Drewry Avenue At Lister Road" lat="43.78256" lon="-79.4377199" stopId="9286"/>
+<stop tag="8026" title="Drewry Avenue At Grantbrook Street" lat="43.7834" lon="-79.4338999" stopId="9287"/>
+<stop tag="289" title="Drewry Avenue At Gardenia Crescent" lat="43.7838899" lon="-79.43172" stopId="9288"/>
+<stop tag="4617" title="Drewry Avenue At Norwin Street" lat="43.78464" lon="-79.4283599" stopId="9289"/>
+<stop tag="1603" title="Drewry Avenue At Hilda Avenue" lat="43.78555" lon="-79.4242299" stopId="9290"/>
+<stop tag="1279" title="Drewry Avenue At Fairchild Avenue" lat="43.7861" lon="-79.4218299" stopId="9291"/>
+<stop tag="2079" title="43 Drewry Avenue" lat="43.78661" lon="-79.4194899" stopId="9292"/>
+<stop tag="992" title="Drewry Avenue At Yonge Street" lat="43.7869" lon="-79.4180699" stopId="9293"/>
+<stop tag="900" title="5800 Yonge Street" lat="43.7842099" lon="-79.41677" stopId="9013"/>
+<stop tag="14207_ar" title="Finch Station" lat="43.7806199" lon="-79.41486"/>
+<stop tag="14207" title="Finch Station" lat="43.7806199" lon="-79.41486" stopId="14687"/>
+<stop tag="1805" title="Yonge Street At Bishop Avenue Farside" lat="43.78219" lon="-79.41601" stopId="3212"/>
+<stop tag="12888" title="5799 Yonge Street (Hydro Building)" lat="43.78495" lon="-79.41668" stopId="14447"/>
+<stop tag="7676" title="Drewry Avenue At Yonge Street Farside" lat="43.7870699" lon="-79.41778" stopId="9269"/>
+<stop tag="2453" title="30 Drewry Avenue" lat="43.7866799" lon="-79.41949" stopId="9270"/>
+<stop tag="8322" title="Drewry Avenue At Fairchild Avenue" lat="43.7862399" lon="-79.42154" stopId="9271"/>
+<stop tag="8114" title="Drewry Avenue At Hilda Avenue" lat="43.78574" lon="-79.4239499" stopId="9272"/>
+<stop tag="10316" title="Drewry Avenue At Norwin Street" lat="43.7848699" lon="-79.42772" stopId="9273"/>
+<stop tag="4860" title="Drewry Avenue At Cactus Avenue" lat="43.78408" lon="-79.4311999" stopId="9274"/>
+<stop tag="290" title="Drewry Avenue At Grantbrook Street" lat="43.78357" lon="-79.4335999" stopId="9275"/>
+<stop tag="8515" title="Drewry Avenue At Lister Road" lat="43.7827799" lon="-79.4373" stopId="9276"/>
+<stop tag="8076" title="Drewry Avenue At Marathon Avenue East" lat="43.7820599" lon="-79.4404" stopId="9277"/>
+<stop tag="6249" title="Drewry Avenue At Bathurst Street" lat="43.7811399" lon="-79.44453" stopId="9278"/>
+<stop tag="2137" title="Antibes Drive North At Plum Treeway South Farside" lat="43.7818499" lon="-79.44654" stopId="9279"/>
+<stop tag="7025" title="Antibes Drive North At Torresdale Avenue" lat="43.782" lon="-79.4498799" stopId="9280"/>
+<stop tag="1842_ar" title="Antibes Drive South At Torresdale Avenue Farside" lat="43.7793799" lon="-79.45176"/>
+<direction tag="125_1_125" title="West - 125 Drewry towards Bathurst (Torresdale)" name="West" useForUI="true">
+  <stop tag="14207" />
+  <stop tag="1805" />
+  <stop tag="12888" />
+  <stop tag="7676" />
+  <stop tag="2453" />
+  <stop tag="8322" />
+  <stop tag="8114" />
+  <stop tag="10316" />
+  <stop tag="4860" />
+  <stop tag="290" />
+  <stop tag="8515" />
+  <stop tag="8076" />
+  <stop tag="6249" />
+  <stop tag="2137" />
+  <stop tag="7025" />
+  <stop tag="1842_ar" />
+</direction>
+<direction tag="125_0_125" title="East - 125 Drewry towards Finch Station" name="East" useForUI="true">
+  <stop tag="1842" />
+  <stop tag="4181" />
+  <stop tag="1192" />
+  <stop tag="9316" />
+  <stop tag="7410" />
+  <stop tag="8590" />
+  <stop tag="8026" />
+  <stop tag="289" />
+  <stop tag="4617" />
+  <stop tag="1603" />
+  <stop tag="1279" />
+  <stop tag="2079" />
+  <stop tag="992" />
+  <stop tag="900" />
+  <stop tag="14207_ar" />
+</direction>
+<path>
+<point lat="43.77938" lon="-79.4517599"/>
+<point lat="43.77933" lon="-79.45141"/>
+<point lat="43.77931" lon="-79.45102"/>
+<point lat="43.77937" lon="-79.45061"/>
+<point lat="43.77967" lon="-79.44922"/>
+<point lat="43.7796499" lon="-79.44913"/>
+<point lat="43.77973" lon="-79.44882"/>
+<point lat="43.77975" lon="-79.44847"/>
+<point lat="43.77973" lon="-79.44799"/>
+<point lat="43.77969" lon="-79.44768"/>
+<point lat="43.77962" lon="-79.44737"/>
+<point lat="43.77961" lon="-79.447"/>
+<point lat="43.77967" lon="-79.44668"/>
+<point lat="43.77984" lon="-79.44635"/>
+<point lat="43.7801199" lon="-79.44625"/>
+<point lat="43.78074" lon="-79.44632"/>
+<point lat="43.78079" lon="-79.44586"/>
+<point lat="43.78099" lon="-79.44528"/>
+<point lat="43.78095" lon="-79.44512"/>
+<point lat="43.78103" lon="-79.44482"/>
+<point lat="43.78182" lon="-79.44109"/>
+</path>
+<path>
+<point lat="43.78421" lon="-79.41677"/>
+<point lat="43.78163" lon="-79.4159899"/>
+<point lat="43.7817099" lon="-79.41575"/>
+<point lat="43.78178" lon="-79.41547"/>
+<point lat="43.78183" lon="-79.41525"/>
+<point lat="43.78175" lon="-79.41521"/>
+<point lat="43.78173" lon="-79.41531"/>
+<point lat="43.78161" lon="-79.41533"/>
+<point lat="43.78146" lon="-79.41531"/>
+<point lat="43.78128" lon="-79.41524"/>
+<point lat="43.78107" lon="-79.41516"/>
+<point lat="43.78087" lon="-79.41508"/>
+<point lat="43.78062" lon="-79.41497"/>
+<point lat="43.78062" lon="-79.41486"/>
+</path>
+<path>
+<point lat="43.78182" lon="-79.44109"/>
+<point lat="43.7825599" lon="-79.43772"/>
+<point lat="43.7834" lon="-79.4339"/>
+<point lat="43.78389" lon="-79.43172"/>
+<point lat="43.78464" lon="-79.42836"/>
+<point lat="43.78555" lon="-79.42423"/>
+<point lat="43.7861" lon="-79.42183"/>
+<point lat="43.78661" lon="-79.41949"/>
+<point lat="43.7869" lon="-79.41807"/>
+<point lat="43.78699" lon="-79.41795"/>
+<point lat="43.78704" lon="-79.41761"/>
+<point lat="43.78616" lon="-79.4171099"/>
+<point lat="43.78421" lon="-79.41677"/>
+</path>
+<path>
+<point lat="43.78062" lon="-79.41486"/>
+<point lat="43.78038" lon="-79.41485"/>
+<point lat="43.78018" lon="-79.41475"/>
+<point lat="43.78016" lon="-79.41459"/>
+<point lat="43.7802099" lon="-79.41446"/>
+<point lat="43.78035" lon="-79.41445"/>
+<point lat="43.78168" lon="-79.41501"/>
+<point lat="43.78175" lon="-79.41511"/>
+<point lat="43.78175" lon="-79.41521"/>
+<point lat="43.78183" lon="-79.41525"/>
+<point lat="43.78178" lon="-79.41547"/>
+<point lat="43.7817099" lon="-79.41575"/>
+<point lat="43.78163" lon="-79.4159899"/>
+<point lat="43.78219" lon="-79.41601"/>
+<point lat="43.78495" lon="-79.41668"/>
+<point lat="43.7870599" lon="-79.41734"/>
+<point lat="43.78707" lon="-79.4177799"/>
+</path>
+<path>
+<point lat="43.78185" lon="-79.44654"/>
+<point lat="43.78213" lon="-79.44673"/>
+<point lat="43.7823" lon="-79.44699"/>
+<point lat="43.7824" lon="-79.44727"/>
+<point lat="43.78243" lon="-79.4476"/>
+<point lat="43.7819999" lon="-79.4498799"/>
+<point lat="43.78192" lon="-79.4498799"/>
+<point lat="43.7819" lon="-79.45026"/>
+<point lat="43.78177" lon="-79.45058"/>
+<point lat="43.78079" lon="-79.45165"/>
+<point lat="43.78057" lon="-79.45184"/>
+<point lat="43.77959" lon="-79.45241"/>
+<point lat="43.77938" lon="-79.4517599"/>
+</path>
+<path>
+<point lat="43.78707" lon="-79.4177799"/>
+<point lat="43.78702" lon="-79.4177799"/>
+<point lat="43.7866799" lon="-79.41949"/>
+<point lat="43.78624" lon="-79.4215399"/>
+<point lat="43.7857399" lon="-79.42395"/>
+<point lat="43.78487" lon="-79.4277199"/>
+<point lat="43.78408" lon="-79.4312"/>
+<point lat="43.78357" lon="-79.4336"/>
+<point lat="43.78278" lon="-79.4372999"/>
+<point lat="43.78206" lon="-79.4404"/>
+<point lat="43.78114" lon="-79.44453"/>
+<point lat="43.78103" lon="-79.44482"/>
+<point lat="43.78109" lon="-79.44534"/>
+<point lat="43.7812" lon="-79.44562"/>
+<point lat="43.78121" lon="-79.44636"/>
+<point lat="43.78144" lon="-79.44643"/>
+<point lat="43.78185" lon="-79.44654"/>
+</path>
+<path>
+<point lat="43.77938" lon="-79.4517599"/>
+<point lat="43.77933" lon="-79.45141"/>
+<point lat="43.77931" lon="-79.45102"/>
+<point lat="43.77937" lon="-79.45061"/>
+<point lat="43.77967" lon="-79.44922"/>
+<point lat="43.7796499" lon="-79.44913"/>
+<point lat="43.77973" lon="-79.44882"/>
+<point lat="43.77975" lon="-79.44847"/>
+<point lat="43.77973" lon="-79.44799"/>
+<point lat="43.77969" lon="-79.44768"/>
+<point lat="43.77962" lon="-79.44737"/>
+<point lat="43.77961" lon="-79.447"/>
+<point lat="43.77967" lon="-79.44668"/>
+<point lat="43.77984" lon="-79.44635"/>
+<point lat="43.7801199" lon="-79.44625"/>
+<point lat="43.78074" lon="-79.44632"/>
+<point lat="43.78079" lon="-79.44586"/>
+<point lat="43.78099" lon="-79.44528"/>
+<point lat="43.78095" lon="-79.44512"/>
+</path>
+</route>
+</body>

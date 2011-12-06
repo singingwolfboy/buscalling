@@ -1,0 +1,769 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:02:33 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 2723
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="196" title="196-York University Rocket" color="ff0000" oppositeColor="ffffff" latMin="43.7489799" latMax="43.7741499" lonMin="-79.5024" lonMax="-79.41233">
+<stop tag="912" title="York Boulevard North At York Lanes" lat="43.7741499" lon="-79.50084" stopId="11280"/>
+<stop tag="8744" title="Pond Road At Ian Macdonald Boulevard Farside" lat="43.7706399" lon="-79.49979" stopId="12193"/>
+<stop tag="8099" title="Sentinel Road At Pond Road Farside" lat="43.76938" lon="-79.5024" stopId="7992"/>
+<stop tag="6659" title="Sentinel Road At Cook Road Farside" lat="43.76676" lon="-79.50119" stopId="14285"/>
+<stop tag="14371" title="Murray Ross Parkway At Sentinel Road Farside" lat="43.7648899" lon="-79.50026" stopId="14845"/>
+<stop tag="14639" title="Murray Ross Parkway At Haynes Avenue Farside" lat="43.76547" lon="-79.4978699" stopId="14861"/>
+<stop tag="14372" title="Murray Ross Parkway At York Busway (East Of Sentinel Road)" lat="43.76718" lon="-79.4925599" stopId="14846"/>
+<stop tag="5165" title="Dufferin Street At Finch Avenue West South Side" lat="43.7692399" lon="-79.4671499" stopId="0981"/>
+<stop tag="14177_ar" title="Downsview Station" lat="43.7489799" lon="-79.46197"/>
+<stop tag="911" title="York Boulevard North At York Lanes" lat="43.7740599" lon="-79.5013" stopId="11279"/>
+<stop tag="14173" title="Downsview Station" lat="43.74957" lon="-79.46219" stopId="14651"/>
+<stop tag="3525" title="Sheppard Avenue East At Bathurst Street" lat="43.7553299" lon="-79.43894" stopId="7263"/>
+<stop tag="989" title="Sheppard Avenue East At Bathurst Farside" lat="43.75543" lon="-79.4378399" stopId="7264"/>
+<stop tag="14293_ar" title="Sheppard-Yonge Station" lat="43.7615199" lon="-79.41233"/>
+<stop tag="14177" title="Downsview Station" lat="43.7489799" lon="-79.46197" stopId="14656"/>
+<stop tag="14362" title="Dufferin Street At Finch Avenue West Farside" lat="43.76963" lon="-79.46689" stopId="14836"/>
+<stop tag="14373" title="Murray Ross Parkway At York University Busway" lat="43.7669" lon="-79.4935799" stopId="14832"/>
+<stop tag="912_ar" title="York Boulevard North At York Lanes" lat="43.7741499" lon="-79.50084"/>
+<stop tag="14638" title="Murray Ross Parkway At Haynes Avenue" lat="43.7655299" lon="-79.49803" stopId="14860"/>
+<stop tag="14359" title="Murray Ross Parkway At Sentinel Road" lat="43.7650999" lon="-79.50057" stopId="13671"/>
+<stop tag="3566" title="Sentinel Road At Cook Road" lat="43.7670699" lon="-79.5011499" stopId="14284"/>
+<stop tag="527" title="Sentinel Road At The Pond Road" lat="43.76983" lon="-79.5022899" stopId="4498"/>
+<stop tag="6909" title="Pond Road At Ian Macdonald Boulevard" lat="43.7708099" lon="-79.49854" stopId="13439"/>
+<stop tag="14293" title="Sheppard-Yonge Station" lat="43.7615199" lon="-79.41233" stopId="14775"/>
+<stop tag="1094" title="Sheppard Avenue East At Bathurst Street" lat="43.7555699" lon="-79.43805" stopId="7265"/>
+<stop tag="3111" title="Sheppard Avenue East At Bathurst Farside" lat="43.7554899" lon="-79.4393" stopId="7266"/>
+<stop tag="911_ar" title="York Boulevard North At York Lanes" lat="43.7740599" lon="-79.5013"/>
+<direction tag="196_0_196Bam" title="South - 196b York University Rocket Express towards Downsview Station and Sheppard-Yonge Station" name="South" useForUI="true">
+  <stop tag="911" />
+  <stop tag="8744" />
+  <stop tag="8099" />
+  <stop tag="6659" />
+  <stop tag="14371" />
+  <stop tag="14639" />
+  <stop tag="14372" />
+  <stop tag="5165" />
+  <stop tag="14173" />
+  <stop tag="3525" />
+  <stop tag="989" />
+  <stop tag="14293_ar" />
+</direction>
+<direction tag="196_1_196Bpm" title="North - 196 York University Rocket Express towards York University via Downsview Station" name="North" useForUI="true">
+  <stop tag="14293" />
+  <stop tag="1094" />
+  <stop tag="3111" />
+  <stop tag="14177" />
+  <stop tag="14362" />
+  <stop tag="14373" />
+  <stop tag="14638" />
+  <stop tag="14359" />
+  <stop tag="3566" />
+  <stop tag="527" />
+  <stop tag="6909" />
+  <stop tag="911_ar" />
+</direction>
+<path>
+<point lat="43.76718" lon="-79.49256"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77143" lon="-79.47057"/>
+<point lat="43.77143" lon="-79.46992"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77185" lon="-79.46789"/>
+<point lat="43.76939" lon="-79.46705"/>
+<point lat="43.76924" lon="-79.46715"/>
+<point lat="43.76104" lon="-79.4652"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.75941" lon="-79.46494"/>
+<point lat="43.75911" lon="-79.46494"/>
+<point lat="43.75886" lon="-79.4649699"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74898" lon="-79.4619699"/>
+</path>
+<path>
+<point lat="43.77415" lon="-79.50084"/>
+<point lat="43.7736" lon="-79.50299"/>
+<point lat="43.77284" lon="-79.50291"/>
+<point lat="43.77353" lon="-79.49944"/>
+<point lat="43.77287" lon="-79.49916"/>
+<point lat="43.7726" lon="-79.49901"/>
+<point lat="43.77088" lon="-79.4983"/>
+<point lat="43.77064" lon="-79.49979"/>
+<point lat="43.76996" lon="-79.50257"/>
+<point lat="43.76938" lon="-79.5024"/>
+<point lat="43.76921" lon="-79.5021"/>
+<point lat="43.76676" lon="-79.5011899"/>
+<point lat="43.76677" lon="-79.50107"/>
+<point lat="43.76646" lon="-79.50102"/>
+<point lat="43.76619" lon="-79.50108"/>
+<point lat="43.76568" lon="-79.50135"/>
+<point lat="43.76544" lon="-79.50139"/>
+<point lat="43.76481" lon="-79.50132"/>
+<point lat="43.76489" lon="-79.50026"/>
+</path>
+<path>
+<point lat="43.74898" lon="-79.4619699"/>
+<point lat="43.74875" lon="-79.46182"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74842" lon="-79.46173"/>
+<point lat="43.74832" lon="-79.46171"/>
+<point lat="43.74824" lon="-79.46172"/>
+<point lat="43.74818" lon="-79.46178"/>
+<point lat="43.74816" lon="-79.46187"/>
+<point lat="43.74816" lon="-79.4619699"/>
+<point lat="43.7482" lon="-79.46204"/>
+<point lat="43.74825" lon="-79.46208"/>
+<point lat="43.74837" lon="-79.46214"/>
+<point lat="43.74864" lon="-79.46226"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75865" lon="-79.46496"/>
+<point lat="43.75892" lon="-79.4649699"/>
+<point lat="43.75936" lon="-79.46494"/>
+<point lat="43.75969" lon="-79.46495"/>
+<point lat="43.76027" lon="-79.46502"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.76101" lon="-79.46519"/>
+<point lat="43.76963" lon="-79.46689"/>
+<point lat="43.7717699" lon="-79.46763"/>
+<point lat="43.77162" lon="-79.46884"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77119" lon="-79.47229"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.76708" lon="-79.49144"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76714" lon="-79.49301"/>
+<point lat="43.76702" lon="-79.4933"/>
+<point lat="43.7669" lon="-79.49358"/>
+<point lat="43.76668" lon="-79.49384"/>
+<point lat="43.76668" lon="-79.49422"/>
+<point lat="43.76844" lon="-79.49556"/>
+<point lat="43.77107" lon="-79.49676"/>
+<point lat="43.77178" lon="-79.49702"/>
+<point lat="43.77227" lon="-79.49713"/>
+<point lat="43.77318" lon="-79.4972"/>
+<point lat="43.77344" lon="-79.49714"/>
+<point lat="43.77367" lon="-79.497"/>
+<point lat="43.77389" lon="-79.49683"/>
+<point lat="43.77422" lon="-79.4967099"/>
+<point lat="43.77451" lon="-79.49679"/>
+<point lat="43.77442" lon="-79.49791"/>
+<point lat="43.77435" lon="-79.49827"/>
+<point lat="43.7742999" lon="-79.49864"/>
+<point lat="43.7743899" lon="-79.49931"/>
+<point lat="43.77434" lon="-79.49979"/>
+<point lat="43.77415" lon="-79.50084"/>
+</path>
+<path>
+<point lat="43.76152" lon="-79.41233"/>
+<point lat="43.76145" lon="-79.41238"/>
+<point lat="43.76145" lon="-79.41248"/>
+<point lat="43.76148" lon="-79.41257"/>
+<point lat="43.76156" lon="-79.41262"/>
+<point lat="43.7617199" lon="-79.41269"/>
+<point lat="43.76179" lon="-79.41268"/>
+<point lat="43.76183" lon="-79.4126299"/>
+<point lat="43.76189" lon="-79.4125"/>
+<point lat="43.76194" lon="-79.41236"/>
+<point lat="43.76195" lon="-79.41218"/>
+<point lat="43.76194" lon="-79.41204"/>
+<point lat="43.76192" lon="-79.41193"/>
+<point lat="43.76186" lon="-79.4118699"/>
+<point lat="43.76178" lon="-79.41183"/>
+<point lat="43.76171" lon="-79.41182"/>
+<point lat="43.76162" lon="-79.41182"/>
+<point lat="43.76158" lon="-79.41182"/>
+<point lat="43.7615399" lon="-79.41182"/>
+<point lat="43.76152" lon="-79.41185"/>
+<point lat="43.76132" lon="-79.41176"/>
+<point lat="43.7555" lon="-79.4379"/>
+<point lat="43.75557" lon="-79.43805"/>
+<point lat="43.75545" lon="-79.43841"/>
+<point lat="43.75544" lon="-79.43876"/>
+<point lat="43.75541" lon="-79.43907"/>
+<point lat="43.75549" lon="-79.4393"/>
+<point lat="43.75108" lon="-79.4595"/>
+<point lat="43.75081" lon="-79.46073"/>
+<point lat="43.74877" lon="-79.45992"/>
+<point lat="43.74865" lon="-79.45998"/>
+<point lat="43.74853" lon="-79.46024"/>
+<point lat="43.74841" lon="-79.46081"/>
+<point lat="43.74838" lon="-79.46119"/>
+<point lat="43.74845" lon="-79.46139"/>
+<point lat="43.74857" lon="-79.46159"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74898" lon="-79.4619699"/>
+</path>
+<path>
+<point lat="43.77406" lon="-79.5013"/>
+<point lat="43.7736" lon="-79.50299"/>
+<point lat="43.77284" lon="-79.50291"/>
+<point lat="43.77353" lon="-79.49944"/>
+<point lat="43.77287" lon="-79.49916"/>
+<point lat="43.7726" lon="-79.49901"/>
+<point lat="43.77088" lon="-79.4983"/>
+<point lat="43.77064" lon="-79.49979"/>
+<point lat="43.76996" lon="-79.50257"/>
+<point lat="43.76938" lon="-79.5024"/>
+<point lat="43.76921" lon="-79.5021"/>
+<point lat="43.76676" lon="-79.5011899"/>
+<point lat="43.76677" lon="-79.50107"/>
+<point lat="43.76646" lon="-79.50102"/>
+<point lat="43.76619" lon="-79.50108"/>
+<point lat="43.76568" lon="-79.50135"/>
+<point lat="43.76544" lon="-79.50139"/>
+<point lat="43.76481" lon="-79.50132"/>
+<point lat="43.76489" lon="-79.50026"/>
+</path>
+<path>
+<point lat="43.7650999" lon="-79.50057"/>
+<point lat="43.76481" lon="-79.50132"/>
+<point lat="43.76524" lon="-79.5014"/>
+<point lat="43.76551" lon="-79.50138"/>
+<point lat="43.76577" lon="-79.50131"/>
+<point lat="43.76628" lon="-79.50104"/>
+<point lat="43.76657" lon="-79.50102"/>
+<point lat="43.7670699" lon="-79.50115"/>
+<point lat="43.76921" lon="-79.5021"/>
+<point lat="43.76963" lon="-79.50234"/>
+<point lat="43.76985" lon="-79.50251"/>
+<point lat="43.76983" lon="-79.50229"/>
+<point lat="43.77033" lon="-79.50084"/>
+<point lat="43.77081" lon="-79.49854"/>
+<point lat="43.77088" lon="-79.4983"/>
+<point lat="43.7722" lon="-79.4988599"/>
+<point lat="43.77254" lon="-79.49893"/>
+<point lat="43.77287" lon="-79.49916"/>
+<point lat="43.77434" lon="-79.49979"/>
+<point lat="43.77406" lon="-79.5013"/>
+</path>
+<path>
+<point lat="43.77406" lon="-79.5013"/>
+<point lat="43.7736" lon="-79.50299"/>
+<point lat="43.77284" lon="-79.50291"/>
+<point lat="43.77353" lon="-79.49944"/>
+<point lat="43.77371" lon="-79.499"/>
+<point lat="43.774" lon="-79.4985899"/>
+<point lat="43.77413" lon="-79.49828"/>
+<point lat="43.77451" lon="-79.49679"/>
+<point lat="43.77422" lon="-79.4967099"/>
+<point lat="43.77389" lon="-79.49683"/>
+<point lat="43.77367" lon="-79.497"/>
+<point lat="43.77344" lon="-79.49714"/>
+<point lat="43.77318" lon="-79.4972"/>
+<point lat="43.77295" lon="-79.4972"/>
+<point lat="43.77227" lon="-79.49713"/>
+<point lat="43.77192" lon="-79.49705"/>
+<point lat="43.77121" lon="-79.49681"/>
+<point lat="43.7707" lon="-79.49661"/>
+<point lat="43.7699" lon="-79.49621"/>
+<point lat="43.7685699" lon="-79.49564"/>
+<point lat="43.76679" lon="-79.4943399"/>
+<point lat="43.76664" lon="-79.49408"/>
+<point lat="43.76681" lon="-79.4936"/>
+<point lat="43.7669799" lon="-79.49336"/>
+<point lat="43.76712" lon="-79.49308"/>
+<point lat="43.7672" lon="-79.4927699"/>
+<point lat="43.76718" lon="-79.49256"/>
+</path>
+<path>
+<point lat="43.74898" lon="-79.4619699"/>
+<point lat="43.74842" lon="-79.46173"/>
+<point lat="43.74832" lon="-79.46171"/>
+<point lat="43.74824" lon="-79.46172"/>
+<point lat="43.74818" lon="-79.46178"/>
+<point lat="43.74816" lon="-79.46187"/>
+<point lat="43.74816" lon="-79.4619699"/>
+<point lat="43.7482" lon="-79.46204"/>
+<point lat="43.74825" lon="-79.46208"/>
+<point lat="43.74837" lon="-79.46214"/>
+<point lat="43.74864" lon="-79.46226"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74918" lon="-79.46247"/>
+<point lat="43.74936" lon="-79.46253"/>
+<point lat="43.74971" lon="-79.46268"/>
+<point lat="43.74976" lon="-79.46267"/>
+<point lat="43.74979" lon="-79.46265"/>
+<point lat="43.7498099" lon="-79.46262"/>
+<point lat="43.74986" lon="-79.46233"/>
+<point lat="43.74989" lon="-79.4622"/>
+<point lat="43.74925" lon="-79.46199"/>
+<point lat="43.74875" lon="-79.46182"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74842" lon="-79.46173"/>
+<point lat="43.74832" lon="-79.46171"/>
+<point lat="43.74824" lon="-79.46172"/>
+<point lat="43.74818" lon="-79.46178"/>
+<point lat="43.74816" lon="-79.46187"/>
+<point lat="43.74816" lon="-79.4619699"/>
+<point lat="43.7482" lon="-79.46204"/>
+<point lat="43.74825" lon="-79.46208"/>
+<point lat="43.74837" lon="-79.46214"/>
+<point lat="43.74864" lon="-79.46226"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75865" lon="-79.46496"/>
+<point lat="43.75892" lon="-79.4649699"/>
+<point lat="43.75936" lon="-79.46494"/>
+<point lat="43.75969" lon="-79.46495"/>
+<point lat="43.76027" lon="-79.46502"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.76101" lon="-79.46519"/>
+<point lat="43.76963" lon="-79.46689"/>
+<point lat="43.7717699" lon="-79.46763"/>
+<point lat="43.77162" lon="-79.46884"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77119" lon="-79.47229"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.76708" lon="-79.49144"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76714" lon="-79.49301"/>
+<point lat="43.76702" lon="-79.4933"/>
+<point lat="43.7669" lon="-79.49358"/>
+<point lat="43.76686" lon="-79.49354"/>
+<point lat="43.76665" lon="-79.49378"/>
+<point lat="43.76649" lon="-79.494"/>
+<point lat="43.76634" lon="-79.49429"/>
+<point lat="43.76623" lon="-79.49463"/>
+<point lat="43.76553" lon="-79.49803"/>
+<point lat="43.7650999" lon="-79.50057"/>
+</path>
+<path>
+<point lat="43.75533" lon="-79.43894"/>
+<point lat="43.75544" lon="-79.43876"/>
+<point lat="43.75545" lon="-79.43841"/>
+<point lat="43.7555" lon="-79.4379"/>
+<point lat="43.7554299" lon="-79.43784"/>
+<point lat="43.76132" lon="-79.41176"/>
+<point lat="43.76152" lon="-79.41185"/>
+<point lat="43.76151" lon="-79.41192"/>
+<point lat="43.76152" lon="-79.41233"/>
+</path>
+<path>
+<point lat="43.74898" lon="-79.4619699"/>
+<point lat="43.74842" lon="-79.46173"/>
+<point lat="43.74832" lon="-79.46171"/>
+<point lat="43.74824" lon="-79.46172"/>
+<point lat="43.74818" lon="-79.46178"/>
+<point lat="43.74816" lon="-79.46187"/>
+<point lat="43.74816" lon="-79.4619699"/>
+<point lat="43.7482" lon="-79.46204"/>
+<point lat="43.74825" lon="-79.46208"/>
+<point lat="43.74837" lon="-79.46214"/>
+<point lat="43.74864" lon="-79.46226"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74918" lon="-79.46247"/>
+<point lat="43.74936" lon="-79.46253"/>
+<point lat="43.74971" lon="-79.46268"/>
+<point lat="43.74976" lon="-79.46267"/>
+<point lat="43.74979" lon="-79.46265"/>
+<point lat="43.7498099" lon="-79.46262"/>
+<point lat="43.74986" lon="-79.46233"/>
+<point lat="43.74989" lon="-79.4622"/>
+<point lat="43.74925" lon="-79.46199"/>
+<point lat="43.74875" lon="-79.46182"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74842" lon="-79.46173"/>
+<point lat="43.74832" lon="-79.46171"/>
+<point lat="43.74824" lon="-79.46172"/>
+<point lat="43.74818" lon="-79.46178"/>
+<point lat="43.74816" lon="-79.46187"/>
+<point lat="43.74816" lon="-79.4619699"/>
+<point lat="43.7482" lon="-79.46204"/>
+<point lat="43.74825" lon="-79.46208"/>
+<point lat="43.74837" lon="-79.46214"/>
+<point lat="43.74864" lon="-79.46226"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75865" lon="-79.46496"/>
+<point lat="43.75892" lon="-79.4649699"/>
+<point lat="43.75936" lon="-79.46494"/>
+<point lat="43.75969" lon="-79.46495"/>
+<point lat="43.76027" lon="-79.46502"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.76101" lon="-79.46519"/>
+<point lat="43.76963" lon="-79.46689"/>
+<point lat="43.7717699" lon="-79.46763"/>
+<point lat="43.77162" lon="-79.46884"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77119" lon="-79.47229"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.76708" lon="-79.49144"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76714" lon="-79.49301"/>
+<point lat="43.76702" lon="-79.4933"/>
+<point lat="43.7669" lon="-79.49358"/>
+<point lat="43.76668" lon="-79.49384"/>
+<point lat="43.76668" lon="-79.49422"/>
+<point lat="43.76844" lon="-79.49556"/>
+<point lat="43.77107" lon="-79.49676"/>
+<point lat="43.77178" lon="-79.49702"/>
+<point lat="43.77227" lon="-79.49713"/>
+<point lat="43.77318" lon="-79.4972"/>
+<point lat="43.77344" lon="-79.49714"/>
+<point lat="43.77367" lon="-79.497"/>
+<point lat="43.77389" lon="-79.49683"/>
+<point lat="43.77422" lon="-79.4967099"/>
+<point lat="43.77451" lon="-79.49679"/>
+<point lat="43.77442" lon="-79.49791"/>
+<point lat="43.77435" lon="-79.49827"/>
+<point lat="43.7742999" lon="-79.49864"/>
+<point lat="43.7743899" lon="-79.49931"/>
+<point lat="43.77434" lon="-79.49979"/>
+<point lat="43.77406" lon="-79.5013"/>
+</path>
+<path>
+<point lat="43.76489" lon="-79.50026"/>
+<point lat="43.76547" lon="-79.49787"/>
+<point lat="43.76621" lon="-79.49471"/>
+<point lat="43.76632" lon="-79.49438"/>
+<point lat="43.76645" lon="-79.49408"/>
+<point lat="43.76663" lon="-79.49382"/>
+<point lat="43.76681" lon="-79.4936"/>
+<point lat="43.7669799" lon="-79.49336"/>
+<point lat="43.76712" lon="-79.49308"/>
+<point lat="43.7672" lon="-79.4927699"/>
+<point lat="43.76718" lon="-79.49256"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77143" lon="-79.47057"/>
+<point lat="43.77143" lon="-79.46992"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77185" lon="-79.46789"/>
+<point lat="43.76939" lon="-79.46705"/>
+<point lat="43.76924" lon="-79.46715"/>
+<point lat="43.76104" lon="-79.4652"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.75941" lon="-79.46494"/>
+<point lat="43.75911" lon="-79.46494"/>
+<point lat="43.75886" lon="-79.4649699"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74918" lon="-79.46247"/>
+<point lat="43.74936" lon="-79.46253"/>
+<point lat="43.74957" lon="-79.46219"/>
+<point lat="43.74971" lon="-79.46268"/>
+<point lat="43.74976" lon="-79.46267"/>
+<point lat="43.74979" lon="-79.46265"/>
+<point lat="43.7498099" lon="-79.46262"/>
+<point lat="43.74986" lon="-79.46233"/>
+<point lat="43.74989" lon="-79.4622"/>
+<point lat="43.74925" lon="-79.46199"/>
+<point lat="43.74875" lon="-79.46182"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74857" lon="-79.46159"/>
+<point lat="43.74845" lon="-79.46139"/>
+<point lat="43.74838" lon="-79.46119"/>
+<point lat="43.74841" lon="-79.46081"/>
+<point lat="43.74853" lon="-79.46024"/>
+<point lat="43.74865" lon="-79.45998"/>
+<point lat="43.74877" lon="-79.45992"/>
+<point lat="43.75081" lon="-79.46073"/>
+<point lat="43.75541" lon="-79.43907"/>
+<point lat="43.75533" lon="-79.43894"/>
+</path>
+<path>
+<point lat="43.77415" lon="-79.50084"/>
+<point lat="43.7736" lon="-79.50299"/>
+<point lat="43.77284" lon="-79.50291"/>
+<point lat="43.77353" lon="-79.49944"/>
+<point lat="43.77371" lon="-79.499"/>
+<point lat="43.774" lon="-79.4985899"/>
+<point lat="43.77413" lon="-79.49828"/>
+<point lat="43.77451" lon="-79.49679"/>
+<point lat="43.77422" lon="-79.4967099"/>
+<point lat="43.77389" lon="-79.49683"/>
+<point lat="43.77367" lon="-79.497"/>
+<point lat="43.77344" lon="-79.49714"/>
+<point lat="43.77318" lon="-79.4972"/>
+<point lat="43.77295" lon="-79.4972"/>
+<point lat="43.77227" lon="-79.49713"/>
+<point lat="43.77192" lon="-79.49705"/>
+<point lat="43.77121" lon="-79.49681"/>
+<point lat="43.7707" lon="-79.49661"/>
+<point lat="43.7699" lon="-79.49621"/>
+<point lat="43.7685699" lon="-79.49564"/>
+<point lat="43.76679" lon="-79.4943399"/>
+<point lat="43.76664" lon="-79.49408"/>
+<point lat="43.76681" lon="-79.4936"/>
+<point lat="43.7669799" lon="-79.49336"/>
+<point lat="43.76712" lon="-79.49308"/>
+<point lat="43.7672" lon="-79.4927699"/>
+<point lat="43.76718" lon="-79.49256"/>
+</path>
+<path>
+<point lat="43.76718" lon="-79.49256"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77143" lon="-79.47057"/>
+<point lat="43.77143" lon="-79.46992"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77185" lon="-79.46789"/>
+<point lat="43.76939" lon="-79.46705"/>
+<point lat="43.76924" lon="-79.46715"/>
+<point lat="43.76104" lon="-79.4652"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.75941" lon="-79.46494"/>
+<point lat="43.75911" lon="-79.46494"/>
+<point lat="43.75886" lon="-79.4649699"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74918" lon="-79.46247"/>
+<point lat="43.74936" lon="-79.46253"/>
+<point lat="43.74957" lon="-79.46219"/>
+<point lat="43.74971" lon="-79.46268"/>
+<point lat="43.74976" lon="-79.46267"/>
+<point lat="43.74979" lon="-79.46265"/>
+<point lat="43.7498099" lon="-79.46262"/>
+<point lat="43.74986" lon="-79.46233"/>
+<point lat="43.74989" lon="-79.4622"/>
+<point lat="43.74925" lon="-79.46199"/>
+<point lat="43.74875" lon="-79.46182"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74857" lon="-79.46159"/>
+<point lat="43.74845" lon="-79.46139"/>
+<point lat="43.74838" lon="-79.46119"/>
+<point lat="43.74841" lon="-79.46081"/>
+<point lat="43.74853" lon="-79.46024"/>
+<point lat="43.74865" lon="-79.45998"/>
+<point lat="43.74877" lon="-79.45992"/>
+<point lat="43.75081" lon="-79.46073"/>
+<point lat="43.75541" lon="-79.43907"/>
+<point lat="43.75533" lon="-79.43894"/>
+</path>
+<path>
+<point lat="43.74898" lon="-79.4619699"/>
+<point lat="43.74875" lon="-79.46182"/>
+<point lat="43.74865" lon="-79.4618"/>
+<point lat="43.74842" lon="-79.46173"/>
+<point lat="43.74832" lon="-79.46171"/>
+<point lat="43.74824" lon="-79.46172"/>
+<point lat="43.74818" lon="-79.46178"/>
+<point lat="43.74816" lon="-79.46187"/>
+<point lat="43.74816" lon="-79.4619699"/>
+<point lat="43.7482" lon="-79.46204"/>
+<point lat="43.74825" lon="-79.46208"/>
+<point lat="43.74837" lon="-79.46214"/>
+<point lat="43.74864" lon="-79.46226"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75865" lon="-79.46496"/>
+<point lat="43.75892" lon="-79.4649699"/>
+<point lat="43.75936" lon="-79.46494"/>
+<point lat="43.75969" lon="-79.46495"/>
+<point lat="43.76027" lon="-79.46502"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.76101" lon="-79.46519"/>
+<point lat="43.76963" lon="-79.46689"/>
+<point lat="43.7717699" lon="-79.46763"/>
+<point lat="43.77162" lon="-79.46884"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77119" lon="-79.47229"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.76708" lon="-79.49144"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76714" lon="-79.49301"/>
+<point lat="43.76702" lon="-79.4933"/>
+<point lat="43.7669" lon="-79.49358"/>
+<point lat="43.76686" lon="-79.49354"/>
+<point lat="43.76665" lon="-79.49378"/>
+<point lat="43.76649" lon="-79.494"/>
+<point lat="43.76634" lon="-79.49429"/>
+<point lat="43.76623" lon="-79.49463"/>
+<point lat="43.76553" lon="-79.49803"/>
+<point lat="43.7650999" lon="-79.50057"/>
+</path>
+<path>
+<point lat="43.76489" lon="-79.50026"/>
+<point lat="43.76547" lon="-79.49787"/>
+<point lat="43.76621" lon="-79.49471"/>
+<point lat="43.76632" lon="-79.49438"/>
+<point lat="43.76645" lon="-79.49408"/>
+<point lat="43.76663" lon="-79.49382"/>
+<point lat="43.76681" lon="-79.4936"/>
+<point lat="43.7669799" lon="-79.49336"/>
+<point lat="43.76712" lon="-79.49308"/>
+<point lat="43.7672" lon="-79.4927699"/>
+<point lat="43.76718" lon="-79.49256"/>
+<point lat="43.76727" lon="-79.49227"/>
+<point lat="43.76728" lon="-79.49217"/>
+<point lat="43.76731" lon="-79.49204"/>
+<point lat="43.76722" lon="-79.49188"/>
+<point lat="43.76696" lon="-79.49104"/>
+<point lat="43.7669" lon="-79.49067"/>
+<point lat="43.76691" lon="-79.49019"/>
+<point lat="43.7669799" lon="-79.48965"/>
+<point lat="43.77134" lon="-79.47148"/>
+<point lat="43.77141" lon="-79.47095"/>
+<point lat="43.77143" lon="-79.47057"/>
+<point lat="43.77143" lon="-79.46992"/>
+<point lat="43.77145" lon="-79.4696"/>
+<point lat="43.77152" lon="-79.46922"/>
+<point lat="43.77185" lon="-79.46789"/>
+<point lat="43.76939" lon="-79.46705"/>
+<point lat="43.76924" lon="-79.46715"/>
+<point lat="43.76104" lon="-79.4652"/>
+<point lat="43.7607799" lon="-79.46511"/>
+<point lat="43.75941" lon="-79.46494"/>
+<point lat="43.75911" lon="-79.46494"/>
+<point lat="43.75886" lon="-79.4649699"/>
+<point lat="43.75775" lon="-79.46501"/>
+<point lat="43.75024" lon="-79.46338"/>
+<point lat="43.74984" lon="-79.46329"/>
+<point lat="43.74971" lon="-79.46327"/>
+<point lat="43.74951" lon="-79.46322"/>
+<point lat="43.7493399" lon="-79.46318"/>
+<point lat="43.74917" lon="-79.46315"/>
+<point lat="43.74902" lon="-79.46311"/>
+<point lat="43.74882" lon="-79.46303"/>
+<point lat="43.74888" lon="-79.46235"/>
+<point lat="43.74898" lon="-79.4619699"/>
+</path>
+<path>
+<point lat="43.7650999" lon="-79.50057"/>
+<point lat="43.76481" lon="-79.50132"/>
+<point lat="43.76524" lon="-79.5014"/>
+<point lat="43.76551" lon="-79.50138"/>
+<point lat="43.76577" lon="-79.50131"/>
+<point lat="43.76628" lon="-79.50104"/>
+<point lat="43.76657" lon="-79.50102"/>
+<point lat="43.7670699" lon="-79.50115"/>
+<point lat="43.76921" lon="-79.5021"/>
+<point lat="43.76963" lon="-79.50234"/>
+<point lat="43.76985" lon="-79.50251"/>
+<point lat="43.76983" lon="-79.50229"/>
+<point lat="43.77033" lon="-79.50084"/>
+<point lat="43.77081" lon="-79.49854"/>
+<point lat="43.77088" lon="-79.4983"/>
+<point lat="43.7722" lon="-79.4988599"/>
+<point lat="43.77254" lon="-79.49893"/>
+<point lat="43.77287" lon="-79.49916"/>
+<point lat="43.77434" lon="-79.49979"/>
+<point lat="43.77415" lon="-79.50084"/>
+</path>
+</route>
+</body>

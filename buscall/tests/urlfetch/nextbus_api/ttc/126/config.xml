@@ -1,0 +1,153 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:02:17 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1426
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="126" title="126-Christie" color="ff0000" oppositeColor="ffffff" latMin="43.6641199" latMax="43.6841499" lonMin="-79.4256499" lonMax="-79.41533">
+<stop tag="14299" title="St Clair West Station" lat="43.6841499" lon="-79.41533" stopId="14782"/>
+<stop tag="814" title="St Clair Avenue West At Bathurst Street" lat="43.6832699" lon="-79.41796" stopId="8153"/>
+<stop tag="8867" title="St Clair Avenue West At Vaughan Road Farside" lat="43.6827399" lon="-79.42076" stopId="14334"/>
+<stop tag="3247" title="St Clair Avenue West At Wychwood Avenue" lat="43.6823599" lon="-79.42305" stopId="8191"/>
+<stop tag="9063" title="St Clair Avenue West At Christie Street" lat="43.68184" lon="-79.4255399" stopId="8158"/>
+<stop tag="3894" title="Christie Street At St Clair Avenue West Farside" lat="43.6812999" lon="-79.4256499" stopId="9477"/>
+<stop tag="4518" title="Christie Street At Benson Avenue" lat="43.6800999" lon="-79.4251499" stopId="9373"/>
+<stop tag="7011" title="Christie Street At Tyrrel Avenue" lat="43.67844" lon="-79.42447" stopId="9374"/>
+<stop tag="1699" title="Christie Street At Davenport Road" lat="43.67575" lon="-79.42326" stopId="9375"/>
+<stop tag="2922" title="Christie Street At Lambertlodge Farside" lat="43.6734999" lon="-79.42235" stopId="0774"/>
+<stop tag="1286" title="Christie Street At Dupont Street" lat="43.6717699" lon="-79.4217299" stopId="0771"/>
+<stop tag="1249" title="Christie Street At Yarmouth Road Farside" lat="43.6697699" lon="-79.4208699" stopId="0779"/>
+<stop tag="3074" title="Christie Street At Essex Street Farside" lat="43.6681399" lon="-79.4202499" stopId="0772"/>
+<stop tag="8540" title="Christie Street At Barton Avenue Farside" lat="43.66632" lon="-79.41959" stopId="0769"/>
+<stop tag="5675_ar" title="Christie Station Farside" lat="43.6641199" lon="-79.41857"/>
+<stop tag="5675" title="Christie Station Farside" lat="43.6641199" lon="-79.41857" stopId="0776"/>
+<stop tag="8812" title="Christie Street At Barton Avenue" lat="43.66649" lon="-79.41949" stopId="13434"/>
+<stop tag="9333" title="Christie Street At Follis Avenue Farside" lat="43.66861" lon="-79.42031" stopId="0773"/>
+<stop tag="9114" title="Christie Street At Yarmouth Road Farside" lat="43.67028" lon="-79.42096" stopId="0778"/>
+<stop tag="5781" title="Christie Street At Dupont Street" lat="43.67148" lon="-79.4214" stopId="0770"/>
+<stop tag="5773" title="Christie Street At Melita Avenue" lat="43.67342" lon="-79.42214" stopId="0775"/>
+<stop tag="5560" title="Christie Street At Davenport Road" lat="43.67546" lon="-79.42288" stopId="9369"/>
+<stop tag="1740" title="Christie Street At Tyrrel Avenue" lat="43.6781099" lon="-79.42408" stopId="9370"/>
+<stop tag="2821" title="Christie Street At Benson Avenue" lat="43.6799299" lon="-79.4249099" stopId="9371"/>
+<stop tag="5545" title="Christie Street At St Clair Avenue West" lat="43.68154" lon="-79.42558" stopId="9372"/>
+<stop tag="5069" title="St Clair Avenue West At Wychwood Avenue" lat="43.68201" lon="-79.4236599" stopId="8190"/>
+<stop tag="8868" title="St Clair Avenue West At Vaughan Road Farside" lat="43.6828299" lon="-79.41931" stopId="14335"/>
+<stop tag="8869" title="St Clair Avenue West At Bathurst Street Farside" lat="43.6831599" lon="-79.41764" stopId="14336"/>
+<stop tag="14299_ar" title="St Clair West Station" lat="43.6841499" lon="-79.41533"/>
+<direction tag="126_1_126" title="North - 126 Christie towards St Clair West Station" name="North" useForUI="true">
+  <stop tag="5675" />
+  <stop tag="8812" />
+  <stop tag="9333" />
+  <stop tag="9114" />
+  <stop tag="5781" />
+  <stop tag="5773" />
+  <stop tag="5560" />
+  <stop tag="1740" />
+  <stop tag="2821" />
+  <stop tag="5545" />
+  <stop tag="5069" />
+  <stop tag="8868" />
+  <stop tag="8869" />
+  <stop tag="14299_ar" />
+</direction>
+<direction tag="126_0_126" title="South - 126 Christie towards Christie Station" name="South" useForUI="true">
+  <stop tag="14299" />
+  <stop tag="814" />
+  <stop tag="8867" />
+  <stop tag="3247" />
+  <stop tag="9063" />
+  <stop tag="3894" />
+  <stop tag="4518" />
+  <stop tag="7011" />
+  <stop tag="1699" />
+  <stop tag="2922" />
+  <stop tag="1286" />
+  <stop tag="1249" />
+  <stop tag="3074" />
+  <stop tag="8540" />
+  <stop tag="5675_ar" />
+</direction>
+<path>
+<point lat="43.68415" lon="-79.41533"/>
+<point lat="43.68425" lon="-79.41573"/>
+<point lat="43.68454" lon="-79.41583"/>
+<point lat="43.68469" lon="-79.41555"/>
+<point lat="43.68471" lon="-79.4152"/>
+<point lat="43.68447" lon="-79.41507"/>
+<point lat="43.68394" lon="-79.4152299"/>
+<point lat="43.68363" lon="-79.41587"/>
+<point lat="43.68327" lon="-79.4179599"/>
+</path>
+<path>
+<point lat="43.6641199" lon="-79.41857"/>
+<point lat="43.6639399" lon="-79.41885"/>
+<point lat="43.66444" lon="-79.41878"/>
+<point lat="43.66649" lon="-79.41949"/>
+<point lat="43.66861" lon="-79.42031"/>
+<point lat="43.67028" lon="-79.4209599"/>
+<point lat="43.67148" lon="-79.4214"/>
+<point lat="43.67342" lon="-79.42214"/>
+<point lat="43.67478" lon="-79.4227"/>
+<point lat="43.67541" lon="-79.42298"/>
+<point lat="43.67546" lon="-79.42288"/>
+<point lat="43.67571" lon="-79.42317"/>
+<point lat="43.67651" lon="-79.42347"/>
+<point lat="43.67748" lon="-79.42375"/>
+<point lat="43.67778" lon="-79.42392"/>
+<point lat="43.6781099" lon="-79.42408"/>
+</path>
+<path>
+<point lat="43.6735" lon="-79.42235"/>
+<point lat="43.67177" lon="-79.42173"/>
+<point lat="43.66977" lon="-79.4208699"/>
+<point lat="43.66814" lon="-79.42025"/>
+<point lat="43.66632" lon="-79.41959"/>
+<point lat="43.66444" lon="-79.41878"/>
+<point lat="43.6642" lon="-79.4188"/>
+<point lat="43.6641199" lon="-79.41857"/>
+</path>
+<path>
+<point lat="43.68316" lon="-79.41764"/>
+<point lat="43.68377" lon="-79.41522"/>
+<point lat="43.684" lon="-79.41561"/>
+<point lat="43.68415" lon="-79.41533"/>
+</path>
+<path>
+<point lat="43.6781099" lon="-79.42408"/>
+<point lat="43.67821" lon="-79.42427"/>
+<point lat="43.67993" lon="-79.42491"/>
+<point lat="43.68154" lon="-79.42558"/>
+<point lat="43.6817" lon="-79.42571"/>
+<point lat="43.68201" lon="-79.42366"/>
+<point lat="43.68283" lon="-79.41931"/>
+<point lat="43.68316" lon="-79.41764"/>
+</path>
+<path>
+<point lat="43.68327" lon="-79.4179599"/>
+<point lat="43.68274" lon="-79.42076"/>
+<point lat="43.68236" lon="-79.42305"/>
+<point lat="43.68184" lon="-79.42554"/>
+<point lat="43.6817" lon="-79.42571"/>
+<point lat="43.6813" lon="-79.42565"/>
+<point lat="43.6801" lon="-79.42515"/>
+<point lat="43.67844" lon="-79.42447"/>
+<point lat="43.67821" lon="-79.42427"/>
+<point lat="43.67795" lon="-79.42404"/>
+<point lat="43.6776" lon="-79.42381"/>
+<point lat="43.67733" lon="-79.42368"/>
+<point lat="43.67689" lon="-79.42355"/>
+<point lat="43.67663" lon="-79.4235"/>
+<point lat="43.67575" lon="-79.42326"/>
+<point lat="43.67571" lon="-79.42317"/>
+<point lat="43.67541" lon="-79.42298"/>
+<point lat="43.6748" lon="-79.42271"/>
+<point lat="43.6735" lon="-79.42235"/>
+</path>
+</route>
+</body>

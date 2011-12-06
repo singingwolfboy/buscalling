@@ -1,0 +1,162 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:40 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1526
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="65" title="65-Parliament" color="ff0000" oppositeColor="ffffff" latMin="43.6493499" latMax="43.6734499" lonMin="-79.37084" lonMax="-79.3629">
+<stop tag="14163" title="Castle Frank Station" lat="43.6734499" lon="-79.36914" stopId="14641"/>
+<stop tag="5633" title="Parliament Street At Howard Street Farside" lat="43.67112" lon="-79.37084" stopId="6638"/>
+<stop tag="7201" title="650 St James Avenue" lat="43.6696599" lon="-79.3702399" stopId="6649"/>
+<stop tag="1788" title="Parliament Street At Wellesley Street Farside" lat="43.6679299" lon="-79.3695399" stopId="6652"/>
+<stop tag="5020" title="Parliament Street At Winchester Street" lat="43.6659399" lon="-79.3687199" stopId="6654"/>
+<stop tag="1198" title="Parliament Street At Carlton Street" lat="43.6644199" lon="-79.3681199" stopId="6634"/>
+<stop tag="9014" title="Parliament Street At Gerrard Street" lat="43.6624099" lon="-79.36729" stopId="6650"/>
+<stop tag="4204" title="Parliament Street At Oak Street" lat="43.66089" lon="-79.36669" stopId="6641"/>
+<stop tag="5551" title="Parliament Street At Dundas Street" lat="43.6596099" lon="-79.3661499" stopId="6635"/>
+<stop tag="8685" title="Parliament Street At Shuter Street" lat="43.65703" lon="-79.3651" stopId="6647"/>
+<stop tag="6807" title="Parliament Street At Queen Street East" lat="43.65578" lon="-79.3646" stopId="6644"/>
+<stop tag="3261" title="Parliament Street At Richmond Street East" lat="43.6546299" lon="-79.3641" stopId="10229"/>
+<stop tag="1263" title="Parliament Street At Adelaide Street" lat="43.65363" lon="-79.36367" stopId="6632"/>
+<stop tag="6122" title="Parliament Street At King Street East" lat="43.6528" lon="-79.36332" stopId="6640"/>
+<stop tag="4362" title="Parliament Street At Front Street East" lat="43.6518" lon="-79.3629" stopId="9535"/>
+<stop tag="640" title="Front Street East At Berkeley Street" lat="43.6514199" lon="-79.36363" stopId="9536"/>
+<stop tag="2203" title="Princess Street At Front Street East Farside" lat="43.6502899" lon="-79.36657" stopId="14274"/>
+<stop tag="722_ar" title="Princess Street At The Esplanade" lat="43.6493499" lon="-79.36618"/>
+<stop tag="722" title="Princess Street At The Esplanade" lat="43.6493499" lon="-79.36618" stopId="9538"/>
+<stop tag="9153" title="The Esplanade At Berkeley Street" lat="43.64976" lon="-79.3639199" stopId="9539"/>
+<stop tag="6298" title="Berkeley At Front Street East" lat="43.6510299" lon="-79.3638399" stopId="9540"/>
+<stop tag="1221" title="Parliament Street At King Street East" lat="43.6526599" lon="-79.3631" stopId="6639"/>
+<stop tag="7931" title="Parliament Street At Richmond Street East" lat="43.6544599" lon="-79.3638699" stopId="6645"/>
+<stop tag="2501" title="Parliament Street At Queen Street East" lat="43.65544" lon="-79.36428" stopId="6643"/>
+<stop tag="5446" title="Parliament Street At Shuter Street" lat="43.6568399" lon="-79.36489" stopId="6646"/>
+<stop tag="2435" title="Parliament Street At Dundas Street" lat="43.6592999" lon="-79.3658399" stopId="6636"/>
+<stop tag="9500" title="Parliament Street At Oak Street" lat="43.6606" lon="-79.3664" stopId="6642"/>
+<stop tag="2483" title="Parliament Street At Gerrard Street" lat="43.6617599" lon="-79.3668599" stopId="6637"/>
+<stop tag="4015" title="Parliament Street At Carlton Street" lat="43.6639199" lon="-79.3677399" stopId="13463"/>
+<stop tag="2942" title="Parliament Street At Winchester Street" lat="43.6657599" lon="-79.36849" stopId="6653"/>
+<stop tag="2107" title="Parliament Street At Wellesley Street Farside" lat="43.66852" lon="-79.36961" stopId="6651"/>
+<stop tag="9623" title="Opposite 650 St James Avenue" lat="43.66972" lon="-79.37008" stopId="6648"/>
+<stop tag="7608" title="Parliament Street At Bloor Street East" lat="43.6715599" lon="-79.37082" stopId="6633"/>
+<stop tag="14163_ar" title="Castle Frank Station" lat="43.6734499" lon="-79.36914"/>
+<direction tag="65_1_65" title="North - 65 Parliament towards Castle Frank Station" name="North" useForUI="true">
+  <stop tag="722" />
+  <stop tag="9153" />
+  <stop tag="6298" />
+  <stop tag="1221" />
+  <stop tag="7931" />
+  <stop tag="2501" />
+  <stop tag="5446" />
+  <stop tag="2435" />
+  <stop tag="9500" />
+  <stop tag="2483" />
+  <stop tag="4015" />
+  <stop tag="2942" />
+  <stop tag="2107" />
+  <stop tag="9623" />
+  <stop tag="7608" />
+  <stop tag="14163_ar" />
+</direction>
+<direction tag="65_0_65" title="South - 65 Parliament towards Esplanade" name="South" useForUI="true">
+  <stop tag="14163" />
+  <stop tag="5633" />
+  <stop tag="7201" />
+  <stop tag="1788" />
+  <stop tag="5020" />
+  <stop tag="1198" />
+  <stop tag="9014" />
+  <stop tag="4204" />
+  <stop tag="5551" />
+  <stop tag="8685" />
+  <stop tag="6807" />
+  <stop tag="3261" />
+  <stop tag="1263" />
+  <stop tag="6122" />
+  <stop tag="4362" />
+  <stop tag="640" />
+  <stop tag="2203" />
+  <stop tag="722_ar" />
+</direction>
+<path>
+<point lat="43.65684" lon="-79.36489"/>
+<point lat="43.6593" lon="-79.36584"/>
+<point lat="43.6606" lon="-79.3664"/>
+<point lat="43.66176" lon="-79.36686"/>
+<point lat="43.66392" lon="-79.36774"/>
+<point lat="43.66576" lon="-79.36849"/>
+</path>
+<path>
+<point lat="43.65463" lon="-79.3640999"/>
+<point lat="43.65363" lon="-79.36367"/>
+<point lat="43.6528" lon="-79.36332"/>
+<point lat="43.6518" lon="-79.3629"/>
+<point lat="43.65156" lon="-79.36273"/>
+<point lat="43.65142" lon="-79.36363"/>
+<point lat="43.65067" lon="-79.36668"/>
+<point lat="43.65029" lon="-79.36657"/>
+</path>
+<path>
+<point lat="43.64935" lon="-79.36618"/>
+<point lat="43.64979" lon="-79.3640099"/>
+<point lat="43.64976" lon="-79.3639199"/>
+<point lat="43.6501" lon="-79.36353"/>
+<point lat="43.65103" lon="-79.36384"/>
+<point lat="43.6512699" lon="-79.36402"/>
+<point lat="43.65156" lon="-79.36273"/>
+<point lat="43.65266" lon="-79.3631"/>
+</path>
+<path>
+<point lat="43.67345" lon="-79.36914"/>
+<point lat="43.67327" lon="-79.36947"/>
+<point lat="43.6729399" lon="-79.36937"/>
+<point lat="43.672" lon="-79.3706799"/>
+<point lat="43.67178" lon="-79.37085"/>
+<point lat="43.67153" lon="-79.37089"/>
+<point lat="43.67112" lon="-79.37084"/>
+<point lat="43.66966" lon="-79.37024"/>
+<point lat="43.66793" lon="-79.36954"/>
+<point lat="43.66594" lon="-79.36872"/>
+<point lat="43.66442" lon="-79.36812"/>
+<point lat="43.66241" lon="-79.36729"/>
+</path>
+<path>
+<point lat="43.66241" lon="-79.36729"/>
+<point lat="43.66089" lon="-79.36669"/>
+<point lat="43.65961" lon="-79.36615"/>
+<point lat="43.65703" lon="-79.3651"/>
+<point lat="43.65578" lon="-79.3646"/>
+<point lat="43.65463" lon="-79.3640999"/>
+</path>
+<path>
+<point lat="43.65029" lon="-79.36657"/>
+<point lat="43.64935" lon="-79.36618"/>
+</path>
+<path>
+<point lat="43.65266" lon="-79.3631"/>
+<point lat="43.65446" lon="-79.36387"/>
+<point lat="43.65544" lon="-79.3642799"/>
+<point lat="43.65684" lon="-79.36489"/>
+</path>
+<path>
+<point lat="43.66576" lon="-79.36849"/>
+<point lat="43.66852" lon="-79.36961"/>
+<point lat="43.66972" lon="-79.37008"/>
+<point lat="43.6714" lon="-79.3708599"/>
+<point lat="43.67156" lon="-79.37082"/>
+<point lat="43.67163" lon="-79.3709"/>
+<point lat="43.67186" lon="-79.37081"/>
+<point lat="43.6729399" lon="-79.36937"/>
+<point lat="43.67324" lon="-79.36957"/>
+<point lat="43.67348" lon="-79.36966"/>
+<point lat="43.6739" lon="-79.36902"/>
+<point lat="43.67375" lon="-79.36877"/>
+<point lat="43.67345" lon="-79.36914"/>
+</path>
+</route>
+</body>

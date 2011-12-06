@@ -1,14 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 27 Nov 2011 21:27:42 GMT
+Date: Sun, 04 Dec 2011 06:00:59 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
-Content-Length: 7465
 Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 2059
+Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="1S" title="1S-Yonge Subway Replacement Shuttle"/>
+<route tag="1S" title="1S-Yonge Subway Shuttle"/>
 <route tag="5" title="5-Avenue Rd"/>
 <route tag="6" title="6-Bay"/>
 <route tag="7" title="7-Bathurst"/>

@@ -1,0 +1,78 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:00:10 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 846
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Societe de transport de Laval 2011.">
+<route tag="12O" title="12 Direction M&#233;tro Cartier" color="ffcc33" oppositeColor="000000" latMin="45.5583699" latMax="45.5651399" lonMin="-73.6825" lonMax="-73.672">
+<stop tag="CP45054" title="Juge-Desnoyers / Face Au 520 [45054]" lat="45.5651399" lon="-73.672" stopId="45054"/>
+<stop tag="45053" title="Juge-Desnoyers / Face Au 400 [45053]" lat="45.5639899" lon="-73.6724" stopId="45053"/>
+<stop tag="45052" title="Juge-Desnoyers / Face Au 300 [45052]" lat="45.563" lon="-73.6731899" stopId="45052"/>
+<stop tag="45051" title="Juge-Desnoyers / Face Au 180 [45051]" lat="45.56216" lon="-73.6740599" stopId="45051"/>
+<stop tag="45050" title="Juge-Desnoyers / Face Au 160 [45050]" lat="45.5613399" lon="-73.67492" stopId="45050"/>
+<stop tag="41537" title="Juge-Desnoyers / Face Au 100 [41537]" lat="45.5598099" lon="-73.6763" stopId="41537"/>
+<stop tag="41539" title="Sint-Hubert / Juge-Desnoyers  [41539]" lat="45.5583699" lon="-73.67732" stopId="41539"/>
+<stop tag="46418" title="Saint-Hubert / Saint-Eus&#232;be [46418]" lat="45.55938" lon="-73.67828" stopId="46418"/>
+<stop tag="42794" title="Saint-Hubert / De Quimper [42794]" lat="45.5609499" lon="-73.6796799" stopId="42794"/>
+<stop tag="CP47112" title="M&#233;tro Cartier [47112]" lat="45.5599599" lon="-73.6825" stopId="47112"/>
+<direction tag="12O_1_var0" title="Ouest" name="Ouest" useForUI="true">
+  <stop tag="CP45054" />
+  <stop tag="45053" />
+  <stop tag="45052" />
+  <stop tag="45051" />
+  <stop tag="45050" />
+  <stop tag="41537" />
+  <stop tag="41539" />
+  <stop tag="46418" />
+  <stop tag="42794" />
+  <stop tag="CP47112" />
+</direction>
+<path>
+<point lat="45.56514" lon="-73.672"/>
+<point lat="45.56507" lon="-73.67184"/>
+<point lat="45.56472" lon="-73.67195"/>
+<point lat="45.5641" lon="-73.67226"/>
+<point lat="45.564" lon="-73.67232"/>
+<point lat="45.5639899" lon="-73.6724"/>
+<point lat="45.56373" lon="-73.67251"/>
+<point lat="45.56336" lon="-73.67277"/>
+<point lat="45.56302" lon="-73.67307"/>
+<point lat="45.563" lon="-73.67319"/>
+<point lat="45.56216" lon="-73.67406"/>
+<point lat="45.56134" lon="-73.67492"/>
+<point lat="45.56037" lon="-73.6758"/>
+<point lat="45.56013" lon="-73.676"/>
+<point lat="45.55981" lon="-73.6763"/>
+<point lat="45.55841" lon="-73.67721"/>
+<point lat="45.5583699" lon="-73.67732"/>
+<point lat="45.55823" lon="-73.67735"/>
+<point lat="45.55828" lon="-73.67746"/>
+<point lat="45.55852" lon="-73.67776"/>
+<point lat="45.55909" lon="-73.67817"/>
+<point lat="45.55938" lon="-73.67828"/>
+<point lat="45.55956" lon="-73.67846"/>
+<point lat="45.55969" lon="-73.67856"/>
+<point lat="45.55991" lon="-73.6787"/>
+<point lat="45.56003" lon="-73.67879"/>
+<point lat="45.56036" lon="-73.67912"/>
+<point lat="45.56095" lon="-73.67968"/>
+<point lat="45.56168" lon="-73.68065"/>
+<point lat="45.5604299" lon="-73.68313"/>
+<point lat="45.56033" lon="-73.68301"/>
+<point lat="45.56017" lon="-73.68286"/>
+<point lat="45.55982" lon="-73.68356"/>
+<point lat="45.55977" lon="-73.68361"/>
+<point lat="45.55969" lon="-73.68359"/>
+<point lat="45.55963" lon="-73.68355"/>
+<point lat="45.55961" lon="-73.68344"/>
+<point lat="45.55963" lon="-73.6833"/>
+<point lat="45.5599599" lon="-73.6825"/>
+</path>
+</route>
+</body>

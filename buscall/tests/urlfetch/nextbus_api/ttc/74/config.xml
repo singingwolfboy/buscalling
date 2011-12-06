@@ -1,0 +1,141 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:46 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1384
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="74" title="74-Mt Pleasant" color="ff0000" oppositeColor="ffffff" latMin="43.6878199" latMax="43.7090199" lonMin="-79.3918" lonMax="-79.38339">
+<stop tag="464" title="Mount Pleasant Loop" lat="43.7090199" lon="-79.39024" stopId="5512"/>
+<stop tag="7839" title="Mount Pleasant Road At Eglinton Avenue East" lat="43.7085599" lon="-79.3903199" stopId="5815"/>
+<stop tag="2297" title="Mount Pleasant Road At Soudan Avenue" lat="43.70616" lon="-79.38938" stopId="5843"/>
+<stop tag="5226" title="Mount Pleasant Road At Manor Road East" lat="43.70441" lon="-79.38872" stopId="5832"/>
+<stop tag="9385" title="Mount Pleasant Road At Belsize Drive" lat="43.7025499" lon="-79.38793" stopId="5803"/>
+<stop tag="9753" title="Mount Pleasant Road At Davisville Crescent" lat="43.7004399" lon="-79.3871199" stopId="5811"/>
+<stop tag="6440" title="Mount Pleasant Road At Merton Street" lat="43.6983" lon="-79.3865999" stopId="5834"/>
+<stop tag="2046" title="Mount Pleasant Road At Cemetery North Of Moore Avenue" lat="43.6949199" lon="-79.38527" stopId="5809"/>
+<stop tag="10135" title="Mount Pleasant Road At Moore Avenue" lat="43.6936499" lon="-79.3847399" stopId="5836"/>
+<stop tag="1894" title="Mount Pleasant Road At Heath Street" lat="43.69232" lon="-79.38421" stopId="5823"/>
+<stop tag="7695" title="St Clair Avenue East At Mount Pleasant Road Farside" lat="43.6903099" lon="-79.3839" stopId="6119"/>
+<stop tag="7564" title="St Clair Avenue East At Inglewood Drive" lat="43.68972" lon="-79.3866899" stopId="6112"/>
+<stop tag="8402" title="Avoca Avenue At Pleasant Boulevard Farside" lat="43.68855" lon="-79.38935" stopId="7503"/>
+<stop tag="14625_ar" title="St Clair Station" lat="43.6878199" lon="-79.3918"/>
+<stop tag="14625" title="St Clair Station" lat="43.6878199" lon="-79.3918" stopId="14818"/>
+<stop tag="1303" title="Pleasant Boulevard At Avoca Avenue" lat="43.68832" lon="-79.38918" stopId="7504"/>
+<stop tag="2194" title="St Clair Avenue East At Inglewood Drive Farside" lat="43.6895999" lon="-79.38664" stopId="6111"/>
+<stop tag="3912" title="Mount Pleasant Road At St Clair Avenue East Farside" lat="43.69085" lon="-79.38339" stopId="5844"/>
+<stop tag="6725" title="Mount Pleasant Road At Heath Street" lat="43.6921599" lon="-79.3839399" stopId="5822"/>
+<stop tag="2949" title="Mount Pleasant Road At Moore Avenue" lat="43.69347" lon="-79.38448" stopId="5835"/>
+<stop tag="3726" title="Mount Pleasant Road At Cemetery North Of Moore Avenue" lat="43.69574" lon="-79.38538" stopId="5808"/>
+<stop tag="2824" title="Mount Pleasant Road At Merton Street" lat="43.6980499" lon="-79.3862999" stopId="5833"/>
+<stop tag="7367" title="Mount Pleasant Road At Davisville Crescent" lat="43.7002099" lon="-79.38678" stopId="5810"/>
+<stop tag="4002" title="Mount Pleasant Road At Belsize Drive" lat="43.70238" lon="-79.38761" stopId="5802"/>
+<stop tag="4922" title="Mount Pleasant Road At Manor Road East" lat="43.7042299" lon="-79.3883799" stopId="5831"/>
+<stop tag="5894" title="Mount Pleasant Road At Soudan Avenue" lat="43.7059599" lon="-79.3891" stopId="5842"/>
+<stop tag="9670" title="Mount Pleasant Road At Eglinton Avenue East" lat="43.7082999" lon="-79.3899999" stopId="5814"/>
+<stop tag="464_ar" title="Mount Pleasant Loop" lat="43.7090199" lon="-79.39024"/>
+<direction tag="74_1_74" title="North - 74 Mount Pleasant towards Eglinton" name="North" useForUI="true">
+  <stop tag="14625" />
+  <stop tag="1303" />
+  <stop tag="2194" />
+  <stop tag="3912" />
+  <stop tag="6725" />
+  <stop tag="2949" />
+  <stop tag="3726" />
+  <stop tag="2824" />
+  <stop tag="7367" />
+  <stop tag="4002" />
+  <stop tag="4922" />
+  <stop tag="5894" />
+  <stop tag="9670" />
+  <stop tag="464_ar" />
+</direction>
+<direction tag="74_0_74" title="South - 74 Mount Pleasant towards St Clair Station" name="South" useForUI="true">
+  <stop tag="464" />
+  <stop tag="7839" />
+  <stop tag="2297" />
+  <stop tag="5226" />
+  <stop tag="9385" />
+  <stop tag="9753" />
+  <stop tag="6440" />
+  <stop tag="2046" />
+  <stop tag="10135" />
+  <stop tag="1894" />
+  <stop tag="7695" />
+  <stop tag="7564" />
+  <stop tag="8402" />
+  <stop tag="14625_ar" />
+</direction>
+<path>
+<point lat="43.69492" lon="-79.38527"/>
+<point lat="43.69365" lon="-79.3847399"/>
+<point lat="43.69232" lon="-79.38421"/>
+<point lat="43.69037" lon="-79.38331"/>
+<point lat="43.6903099" lon="-79.3839"/>
+<point lat="43.68972" lon="-79.38669"/>
+<point lat="43.6889899" lon="-79.38987"/>
+<point lat="43.68855" lon="-79.3893499"/>
+<point lat="43.68846" lon="-79.38908"/>
+<point lat="43.68822" lon="-79.38943"/>
+<point lat="43.6880499" lon="-79.38978"/>
+<point lat="43.6873999" lon="-79.39248"/>
+<point lat="43.6875" lon="-79.39282"/>
+<point lat="43.68782" lon="-79.3918"/>
+</path>
+<path>
+<point lat="43.70902" lon="-79.39024"/>
+<point lat="43.70869" lon="-79.39006"/>
+<point lat="43.70856" lon="-79.39032"/>
+<point lat="43.7084" lon="-79.39018"/>
+<point lat="43.7061599" lon="-79.38938"/>
+<point lat="43.70441" lon="-79.38872"/>
+<point lat="43.70255" lon="-79.38793"/>
+</path>
+<path>
+<point lat="43.70021" lon="-79.38678"/>
+<point lat="43.70238" lon="-79.38761"/>
+<point lat="43.70246" lon="-79.38782"/>
+<point lat="43.70423" lon="-79.38838"/>
+<point lat="43.70596" lon="-79.3891"/>
+</path>
+<path>
+<point lat="43.70596" lon="-79.3891"/>
+<point lat="43.7083" lon="-79.39"/>
+<point lat="43.70902" lon="-79.39024"/>
+</path>
+<path>
+<point lat="43.70255" lon="-79.38793"/>
+<point lat="43.7005" lon="-79.38702"/>
+<point lat="43.70044" lon="-79.38712"/>
+<point lat="43.69983" lon="-79.38682"/>
+<point lat="43.69832" lon="-79.38652"/>
+<point lat="43.6983" lon="-79.3866"/>
+<point lat="43.69492" lon="-79.38527"/>
+</path>
+<path>
+<point lat="43.68782" lon="-79.3918"/>
+<point lat="43.68792" lon="-79.39136"/>
+<point lat="43.68772" lon="-79.39106"/>
+<point lat="43.6879599" lon="-79.39002"/>
+<point lat="43.68809" lon="-79.38968"/>
+<point lat="43.68831" lon="-79.38931"/>
+<point lat="43.68832" lon="-79.38918"/>
+<point lat="43.6889899" lon="-79.38987"/>
+<point lat="43.6896" lon="-79.38664"/>
+<point lat="43.69037" lon="-79.38331"/>
+<point lat="43.69085" lon="-79.38339"/>
+<point lat="43.69216" lon="-79.38394"/>
+<point lat="43.69347" lon="-79.38448"/>
+<point lat="43.69574" lon="-79.38538"/>
+<point lat="43.69805" lon="-79.3863"/>
+<point lat="43.69817" lon="-79.38647"/>
+<point lat="43.69983" lon="-79.38682"/>
+<point lat="43.70021" lon="-79.38678"/>
+</path>
+</route>
+</body>

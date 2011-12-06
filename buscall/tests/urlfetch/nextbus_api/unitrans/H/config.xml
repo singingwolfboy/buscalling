@@ -1,0 +1,74 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:03:09 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 723
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Unitrans ASUCD/City of Davis 2011.">
+<route tag="H" title="H" color="efd072" oppositeColor="000000" latMin="38.5351899" latMax="38.5393299" lonMin="-121.76448" lonMax="-121.75368">
+<stop tag="22258" title="Silo Terminal &amp; North Boarding Area (WB)" lat="38.5393299" lon="-121.75368" stopId="258"/>
+<stop tag="22239" title="Hutchison Dr &amp; Ext Center (WB)" lat="38.5388399" lon="-121.7622799" stopId="239"/>
+<stop tag="22360_ar" title="Health Sciences Dist Lot 56 &amp;  (SB)" lat="38.5351899" lon="-121.76448"/>
+<stop tag="22360" title="Health Sciences Dist Lot 56 &amp;  (SB)" lat="38.5351899" lon="-121.76448" stopId="360"/>
+<stop tag="22240" title="Hutchison Dr &amp; Health Sci Drive (EB)" lat="38.5373699" lon="-121.76423" stopId="240"/>
+<stop tag="22173" title="Hutchison Dr &amp; Bioletti Way (EB)" lat="38.53903" lon="-121.75577" stopId="173"/>
+<stop tag="22258_ar" title="Silo Terminal &amp; North Boarding Area (WB)" lat="38.5393299" lon="-121.75368"/>
+<direction tag="H_0_var0" title="to Health Sciences District" name="to Health Sciences District" useForUI="true">
+  <stop tag="22258" />
+  <stop tag="22239" />
+  <stop tag="22360_ar" />
+</direction>
+<direction tag="H_1_var0" title="to Silo" name="to Silo" useForUI="true">
+  <stop tag="22360" />
+  <stop tag="22240" />
+  <stop tag="22173" />
+  <stop tag="22258_ar" />
+</direction>
+<path>
+<point lat="38.53519" lon="-121.76448"/>
+<point lat="38.5351" lon="-121.76437"/>
+<point lat="38.53503" lon="-121.76429"/>
+<point lat="38.53512" lon="-121.76416"/>
+<point lat="38.53534" lon="-121.76419"/>
+<point lat="38.53541" lon="-121.76431"/>
+<point lat="38.53645" lon="-121.76437"/>
+<point lat="38.53677" lon="-121.76443"/>
+<point lat="38.53695" lon="-121.7645"/>
+<point lat="38.5371" lon="-121.76476"/>
+<point lat="38.53737" lon="-121.76423"/>
+<point lat="38.53836" lon="-121.76276"/>
+<point lat="38.53878" lon="-121.76223"/>
+<point lat="38.53908" lon="-121.76177"/>
+<point lat="38.53917" lon="-121.76083"/>
+<point lat="38.5390299" lon="-121.75577"/>
+<point lat="38.53907" lon="-121.75385"/>
+<point lat="38.53907" lon="-121.75284"/>
+<point lat="38.5392" lon="-121.75296"/>
+<point lat="38.53926" lon="-121.75325"/>
+<point lat="38.53926" lon="-121.75357"/>
+<point lat="38.53933" lon="-121.75368"/>
+</path>
+<path>
+<point lat="38.53933" lon="-121.75368"/>
+<point lat="38.5392" lon="-121.75372"/>
+<point lat="38.53907" lon="-121.75385"/>
+<point lat="38.53909" lon="-121.75503"/>
+<point lat="38.53917" lon="-121.76083"/>
+<point lat="38.53908" lon="-121.76177"/>
+<point lat="38.53884" lon="-121.76228"/>
+<point lat="38.53878" lon="-121.76223"/>
+<point lat="38.53836" lon="-121.76276"/>
+<point lat="38.5371" lon="-121.76476"/>
+<point lat="38.53695" lon="-121.7645"/>
+<point lat="38.53677" lon="-121.76443"/>
+<point lat="38.53645" lon="-121.76437"/>
+<point lat="38.53541" lon="-121.76431"/>
+<point lat="38.53519" lon="-121.76448"/>
+</path>
+</route>
+</body>

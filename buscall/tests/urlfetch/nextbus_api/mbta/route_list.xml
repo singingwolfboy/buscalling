@@ -1,9 +1,11 @@
 HTTP/1.1 200 OK
-Date: Sat, 09 Jul 2011 12:29:39 GMT
+Date: Sun, 04 Dec 2011 05:55:45 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
-Content-Length: 6032
 Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1178
+Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
@@ -192,13 +194,20 @@ Content-Type: text/xml
 <route tag="555" title="555"/>
 <route tag="556" title="556"/>
 <route tag="558" title="558"/>
-<route tag="701" title="CT1"/>
-<route tag="747" title="CT2"/>
-<route tag="708" title="CT3"/>
+<route tag="701" title="Ct1"/>
+<route tag="747" title="Ct2"/>
+<route tag="708" title="Ct3"/>
 <route tag="746" title="Silver Line"/>
 <route tag="741" title="Silver Line SL1"/>
 <route tag="742" title="Silver Line SL2"/>
 <route tag="751" title="Silver Line SL4"/>
 <route tag="749" title="Silver Line SL5"/>
-<route tag="602" title="Green Line Shuttle"/>
+<route tag="9109" title="9109"/>
+<route tag="9111" title="9111"/>
+<route tag="9501" title="9501"/>
+<route tag="9507" title="9507"/>
+<route tag="9701" title="9701"/>
+<route tag="9702" title="9702"/>
+<route tag="9703" title="9703"/>
+<route tag="222P" title="222P"/>
 </body>

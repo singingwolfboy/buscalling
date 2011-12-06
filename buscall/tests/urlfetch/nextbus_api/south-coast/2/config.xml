@@ -1,0 +1,164 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:53:02 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1366
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Gold Coast Transit 2011.">
+<route tag="2" title="2 Colonia" shortTitle="Route 2" color="ff0066" oppositeColor="ffffff" latMin="34.1995809" latMax="34.2067497" lonMin="-119.1794971" lonMax="-119.15423">
+<stop tag="12oxnar" title="Oxnard Transit Center" lat="34.1995895" lon="-119.17673" stopId="31100"/>
+<stop tag="178third" title="Third St at B - City Hall" lat="34.2003868" lon="-119.1794971" stopId="32600"/>
+<stop tag="196garfi" title="Garfield Ave at Second" lat="34.2014947" lon="-119.1738101" stopId="32601"/>
+<stop tag="197garfi" title="Garfield Ave at Cooper" lat="34.2044" lon="-119.17378" stopId="32602"/>
+<stop tag="179colon" title="Colonia Rd at Mckinley" lat="34.206372" lon="-119.1714169" stopId="32604"/>
+<stop tag="180colon" title="Colonia Rd at Juanita" lat="34.2063599" lon="-119.1680483" stopId="32605"/>
+<stop tag="181colon" title="Colonia Rd at Marquita" lat="34.2063599" lon="-119.1658482" stopId="32606"/>
+<stop tag="182multi" title="Multi Service Center - Fire Station" lat="34.2067497" lon="-119.1626084" stopId="32607"/>
+<stop tag="111rosea" title="Rose Ave at Camino Del Sol" lat="34.2059005" lon="-119.1598147" stopId="31703"/>
+<stop tag="183sango" title="San Gorgonio St at Rose" lat="34.2047875" lon="-119.1590815" stopId="32608"/>
+<stop tag="184sango" title="San Gorgonio St at Driskill" lat="34.20481" lon="-119.1564993" stopId="32609"/>
+<stop tag="185sango" title="San Gorgonio St at Gibraltar" lat="34.20481" lon="-119.1544791" stopId="32610"/>
+<stop tag="186gibra" title="Gibralter St at Santa Lucia" lat="34.2023154" lon="-119.15423" stopId="32700"/>
+<stop tag="187santa" title="Santa Lucia Ave at Driskill" lat="34.2020722" lon="-119.1568317" stopId="32701"/>
+<stop tag="199santa" title="Santa Lucia Ave at Rose" lat="34.20203" lon="-119.15942" stopId="32702"/>
+<stop tag="189first" title="First St at Carmelita" lat="34.20266" lon="-119.1632984" stopId="32704"/>
+<stop tag="190first" title="First St at Marquita" lat="34.2026562" lon="-119.1661179" stopId="32705"/>
+<stop tag="191first" title="First St at Juanita" lat="34.2026404" lon="-119.1681792" stopId="32706"/>
+<stop tag="192first" title="First St at Bonita" lat="34.2028963" lon="-119.1702793" stopId="32707"/>
+<stop tag="193first" title="First St at Roosevelt" lat="34.2029102" lon="-119.1723707" stopId="32708"/>
+<stop tag="194garfi" title="Garfield Ave at First" lat="34.2025304" lon="-119.1738333" stopId="32709"/>
+<stop tag="195garfi" title="Garfield Ave at Third" lat="34.2006704" lon="-119.1738494" stopId="32710"/>
+<stop tag="151third" title="Third St at A - City Hall And Library" lat="34.2004231" lon="-119.1791498" stopId="31708"/>
+<direction tag="wes" title="Westbound" name="" useForUI="true">
+  <stop tag="186gibra" />
+  <stop tag="187santa" />
+  <stop tag="199santa" />
+  <stop tag="189first" />
+  <stop tag="190first" />
+  <stop tag="191first" />
+  <stop tag="192first" />
+  <stop tag="193first" />
+  <stop tag="194garfi" />
+  <stop tag="195garfi" />
+  <stop tag="151third" />
+</direction>
+<direction tag="eas" title="Eastbound" name="" useForUI="true">
+  <stop tag="12oxnar" />
+  <stop tag="178third" />
+  <stop tag="196garfi" />
+  <stop tag="197garfi" />
+  <stop tag="179colon" />
+  <stop tag="180colon" />
+  <stop tag="181colon" />
+  <stop tag="182multi" />
+  <stop tag="111rosea" />
+  <stop tag="183sango" />
+  <stop tag="184sango" />
+  <stop tag="185sango" />
+</direction>
+<path>
+<point lat="34.19905" lon="-119.17654"/>
+<point lat="34.19903" lon="-119.17744"/>
+</path>
+<path>
+<point lat="34.19957" lon="-119.17673"/>
+<point lat="34.20011" lon="-119.17673"/>
+<point lat="34.20012" lon="-119.17656"/>
+<point lat="34.19905" lon="-119.17654"/>
+</path>
+<path>
+<point lat="34.20203" lon="-119.15967"/>
+<point lat="34.20262" lon="-119.15967"/>
+</path>
+<path>
+<point lat="34.20064" lon="-119.17384"/>
+<point lat="34.20047" lon="-119.17679"/>
+<point lat="34.20041" lon="-119.17981"/>
+</path>
+<path>
+<point lat="34.20262" lon="-119.15967"/>
+<point lat="34.20266" lon="-119.16238"/>
+<point lat="34.20266" lon="-119.16563"/>
+<point lat="34.20264" lon="-119.16824"/>
+<point lat="34.2028899" lon="-119.16933"/>
+<point lat="34.20292" lon="-119.17384"/>
+</path>
+<path>
+<point lat="34.19899" lon="-119.1799"/>
+<point lat="34.19898" lon="-119.17675"/>
+</path>
+<path>
+<point lat="34.19898" lon="-119.17676"/>
+<point lat="34.19959" lon="-119.17673"/>
+</path>
+<path>
+<point lat="34.20152" lon="-119.17381"/>
+<point lat="34.20426" lon="-119.17378"/>
+</path>
+<path>
+<point lat="34.20674" lon="-119.16259"/>
+<point lat="34.20639" lon="-119.16127"/>
+<point lat="34.2063" lon="-119.15983"/>
+</path>
+<path>
+<point lat="34.20292" lon="-119.17383"/>
+<point lat="34.20061" lon="-119.17385"/>
+</path>
+<path>
+<point lat="34.19903" lon="-119.17744"/>
+<point lat="34.19905" lon="-119.17986"/>
+</path>
+<path>
+<point lat="34.20639" lon="-119.17376"/>
+<point lat="34.20637" lon="-119.17115"/>
+<point lat="34.2063599" lon="-119.16881"/>
+<point lat="34.2063599" lon="-119.16617"/>
+<point lat="34.2063599" lon="-119.16422"/>
+<point lat="34.20712" lon="-119.16331"/>
+<point lat="34.20674" lon="-119.16259"/>
+</path>
+<path>
+<point lat="34.20478" lon="-119.1598"/>
+<point lat="34.20481" lon="-119.15695"/>
+<point lat="34.20481" lon="-119.15423"/>
+<point lat="34.20211" lon="-119.15423"/>
+<point lat="34.20207" lon="-119.15699"/>
+<point lat="34.20203" lon="-119.15942"/>
+</path>
+<path>
+<point lat="34.20041" lon="-119.17981"/>
+<point lat="34.199" lon="-119.1799"/>
+</path>
+<path>
+<point lat="34.2044" lon="-119.17378"/>
+<point lat="34.20639" lon="-119.17376"/>
+</path>
+<path>
+<point lat="34.20059" lon="-119.17382"/>
+<point lat="34.20151" lon="-119.17381"/>
+</path>
+<path>
+<point lat="34.19906" lon="-119.17985"/>
+<point lat="34.20038" lon="-119.1798"/>
+<point lat="34.2004499" lon="-119.17671"/>
+<point lat="34.20058" lon="-119.17383"/>
+</path>
+<path>
+<point lat="34.2063" lon="-119.15982"/>
+<point lat="34.20477" lon="-119.1598"/>
+</path>
+<path>
+<point lat="34.20426" lon="-119.17378"/>
+<point lat="34.2044" lon="-119.17378"/>
+</path>
+<path>
+<point lat="34.20203" lon="-119.15942"/>
+<point lat="34.20203" lon="-119.15968"/>
+</path>
+</route>
+</body>

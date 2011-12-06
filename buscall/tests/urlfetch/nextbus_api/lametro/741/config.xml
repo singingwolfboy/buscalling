@@ -1,0 +1,144 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:55:38 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1182
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Los Angeles Metro 2011.">
+<route tag="741" title="741 Northridge - Tarzana Via Reseda Bl" color="990000" oppositeColor="ffffff" latMin="34.1690799" latMax="34.2565699" lonMin="-118.54176" lonMax="-118.53587">
+<stop tag="506" title="Burbank / Yolanda" lat="34.1724099" lon="-118.54176" stopId="506"/>
+<stop tag="4482" title="Reseda / Ventura" lat="34.1690799" lon="-118.53588" stopId="4482"/>
+<stop tag="12915_ar" title="Reseda / Devonshire" lat="34.2565699" lon="-118.53624"/>
+<stop tag="12917" title="Reseda / Nordhoff" lat="34.2357599" lon="-118.53595" stopId="12917"/>
+<stop tag="12918" title="Reseda / Sherman Way" lat="34.2013999" lon="-118.53589" stopId="12918"/>
+<stop tag="12928" title="Reseda / Orange Line" lat="34.18024" lon="-118.53587" stopId="12928"/>
+<stop tag="12933" title="Reseda / Roscoe" lat="34.2209999" lon="-118.5359399" stopId="12933"/>
+<stop tag="12934" title="Reseda / Saticoy" lat="34.20819" lon="-118.5359" stopId="12934"/>
+<stop tag="12938" title="Reseda / Vanowen" lat="34.19412" lon="-118.5359" stopId="12938"/>
+<stop tag="12940" title="Reseda / Victory" lat="34.1868699" lon="-118.53589" stopId="12940"/>
+<stop tag="506_ar" title="Burbank / Yolanda" lat="34.1724099" lon="-118.54176"/>
+<stop tag="4460" title="Reseda / Nordhoff" lat="34.2352099" lon="-118.53625" stopId="4460"/>
+<stop tag="4461" title="Reseda / Sherman Way" lat="34.2013299" lon="-118.5362" stopId="4461"/>
+<stop tag="4476" title="Reseda / Roscoe" lat="34.22044" lon="-118.5362399" stopId="4476"/>
+<stop tag="4477" title="Reseda / Saticoy" lat="34.2081199" lon="-118.5362099" stopId="4477"/>
+<stop tag="4481" title="Reseda / Vanowen" lat="34.1935699" lon="-118.5362099" stopId="4481"/>
+<stop tag="4484" title="Reseda / Victory" lat="34.1863199" lon="-118.5361899" stopId="4484"/>
+<stop tag="12915" title="Reseda / Devonshire" lat="34.2565699" lon="-118.53624" stopId="12915"/>
+<stop tag="15413" title="Ventura / Reseda" lat="34.1691199" lon="-118.53647" stopId="15413"/>
+<stop tag="24471" title="Reseda / Orange Line" lat="34.18051" lon="-118.53617" stopId="24471"/>
+<direction tag="741_5_0" title="North to Reseda-Devonshire" name="North" useForUI="true">
+  <stop tag="506" />
+  <stop tag="4482" />
+  <stop tag="12928" />
+  <stop tag="12940" />
+  <stop tag="12938" />
+  <stop tag="12918" />
+  <stop tag="12934" />
+  <stop tag="12933" />
+  <stop tag="12917" />
+  <stop tag="12915_ar" />
+</direction>
+<direction tag="741_6_1" title="South to Ventura-Reseda" name="South" useForUI="true">
+  <stop tag="12915" />
+  <stop tag="4460" />
+  <stop tag="4476" />
+  <stop tag="4477" />
+  <stop tag="4461" />
+  <stop tag="4481" />
+  <stop tag="4484" />
+  <stop tag="24471" />
+  <stop tag="15413" />
+  <stop tag="506_ar" />
+</direction>
+<path>
+<point lat="34.16912" lon="-118.53647"/>
+<point lat="34.16911" lon="-118.53686"/>
+<point lat="34.17067" lon="-118.54076"/>
+<point lat="34.17147" lon="-118.54071"/>
+<point lat="34.17235" lon="-118.54075"/>
+<point lat="34.17235" lon="-118.54144"/>
+<point lat="34.17241" lon="-118.54176"/>
+</path>
+<path>
+<point lat="34.2014" lon="-118.53589"/>
+<point lat="34.20819" lon="-118.5359"/>
+<point lat="34.2209999" lon="-118.53594"/>
+<point lat="34.2264399" lon="-118.53609"/>
+<point lat="34.23576" lon="-118.53595"/>
+</path>
+<path>
+<point lat="34.16908" lon="-118.53588"/>
+<point lat="34.17707" lon="-118.53601"/>
+<point lat="34.18024" lon="-118.53587"/>
+<point lat="34.1866" lon="-118.53604"/>
+<point lat="34.18687" lon="-118.53589"/>
+<point lat="34.19412" lon="-118.5359"/>
+<point lat="34.19748" lon="-118.53605"/>
+<point lat="34.2014" lon="-118.53589"/>
+</path>
+<path>
+<point lat="34.23521" lon="-118.53625"/>
+<point lat="34.2283" lon="-118.53611"/>
+<point lat="34.22645" lon="-118.5361"/>
+<point lat="34.22044" lon="-118.53624"/>
+<point lat="34.20812" lon="-118.53621"/>
+<point lat="34.20133" lon="-118.5362"/>
+</path>
+<path>
+<point lat="34.17241" lon="-118.54176"/>
+<point lat="34.17217" lon="-118.5422"/>
+<point lat="34.17209" lon="-118.54235"/>
+<point lat="34.17203" lon="-118.54243"/>
+<point lat="34.17192" lon="-118.54254"/>
+<point lat="34.17176" lon="-118.54269"/>
+<point lat="34.17152" lon="-118.54283"/>
+<point lat="34.17118" lon="-118.54198"/>
+<point lat="34.17067" lon="-118.54076"/>
+<point lat="34.16911" lon="-118.53686"/>
+<point lat="34.16888" lon="-118.53621"/>
+<point lat="34.1688199" lon="-118.53609"/>
+<point lat="34.16908" lon="-118.53588"/>
+</path>
+<path>
+<point lat="34.23576" lon="-118.53595"/>
+<point lat="34.25002" lon="-118.5361"/>
+<point lat="34.25001" lon="-118.5306"/>
+<point lat="34.25001" lon="-118.52734"/>
+<point lat="34.25082" lon="-118.52732"/>
+<point lat="34.25275" lon="-118.52736"/>
+<point lat="34.25386" lon="-118.52735"/>
+<point lat="34.25589" lon="-118.52738"/>
+<point lat="34.25727" lon="-118.52735"/>
+<point lat="34.25726" lon="-118.5361"/>
+<point lat="34.25657" lon="-118.53624"/>
+</path>
+<path>
+<point lat="34.25657" lon="-118.53624"/>
+<point lat="34.23521" lon="-118.53625"/>
+</path>
+<path>
+<point lat="34.20133" lon="-118.5362"/>
+<point lat="34.19766" lon="-118.53606"/>
+<point lat="34.19748" lon="-118.53605"/>
+<point lat="34.19357" lon="-118.53621"/>
+<point lat="34.1866" lon="-118.53604"/>
+<point lat="34.18632" lon="-118.53619"/>
+<point lat="34.18051" lon="-118.53617"/>
+<point lat="34.17368" lon="-118.53601"/>
+<point lat="34.17134" lon="-118.536"/>
+<point lat="34.17038" lon="-118.53602"/>
+<point lat="34.16979" lon="-118.53601"/>
+<point lat="34.1691999" lon="-118.53602"/>
+<point lat="34.16908" lon="-118.53603"/>
+<point lat="34.1689099" lon="-118.53606"/>
+<point lat="34.1688199" lon="-118.53609"/>
+<point lat="34.16888" lon="-118.53621"/>
+<point lat="34.16912" lon="-118.53647"/>
+</path>
+</route>
+</body>

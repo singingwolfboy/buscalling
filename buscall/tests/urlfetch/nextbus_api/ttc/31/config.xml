@@ -1,0 +1,163 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:15 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1549
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="31" title="31-Greenwood" color="ff0000" oppositeColor="ffffff" latMin="43.6616999" latMax="43.6825799" lonMin="-79.3323299" lonMax="-79.3196399">
+<stop tag="14214" title="Greenwood Station" lat="43.6825799" lon="-79.33042" stopId="14694"/>
+<stop tag="7322" title="Greenwood Avenue At Danforth Avenue Farside" lat="43.6811799" lon="-79.3323299" stopId="3670"/>
+<stop tag="6923" title="Greenwood Avenue At Oakvale Avenue Farside" lat="43.6794099" lon="-79.3316099" stopId="3683"/>
+<stop tag="3569" title="Greenwood Avenue At Felstead Avenue" lat="43.67812" lon="-79.33107" stopId="3676"/>
+<stop tag="8772" title="Greenwood Avenue At Torbrick Road Farside" lat="43.6758699" lon="-79.3301399" stopId="3687"/>
+<stop tag="9573" title="Greenwood Avenue At Ivy Avenue" lat="43.6735399" lon="-79.3291799" stopId="3680"/>
+<stop tag="8962" title="Greenwood Avenue At Gerrard Street East" lat="43.6710199" lon="-79.3281299" stopId="3678"/>
+<stop tag="2866" title="Greenwood Avenue At Athletic Avenue" lat="43.6696299" lon="-79.32755" stopId="3669"/>
+<stop tag="796" title="Greenwood Avenue At Dundas Street East" lat="43.6678099" lon="-79.3268099" stopId="3674"/>
+<stop tag="3228" title="Greenwood Avenue At Dorothy Street" lat="43.6661799" lon="-79.3261199" stopId="3672"/>
+<stop tag="5985_ar" title="Greenwood Avenue At Queen Street East" lat="43.6645399" lon="-79.32546"/>
+<stop tag="5985" title="Greenwood Avenue At Queen Street East" lat="43.6645399" lon="-79.32546" stopId="3685"/>
+<stop tag="3385" title="Queen Street East At Alton Avenue" lat="43.6638699" lon="-79.32775" stopId="3029"/>
+<stop tag="459" title="Leslie Street At Queen Street East Farside" lat="43.6627899" lon="-79.3300799" stopId="11377"/>
+<stop tag="4148" title="Eastern Avenue At Leslie Street Farside" lat="43.6616999" lon="-79.32857" stopId="13926"/>
+<stop tag="10030" title="Eastern Avenue At Knox Avenue" lat="43.6624299" lon="-79.32536" stopId="13483"/>
+<stop tag="2266_ar" title="Eastern Avenue At Minto Street (Post Office) Farside" lat="43.6629199" lon="-79.32322"/>
+<stop tag="5985_IB" title="Greenwood Avenue At Queen Street East" lat="43.6645399" lon="-79.32546" stopId="3685"/>
+<stop tag="5546" title="Dorothy Street At Greenwood Avenue" lat="43.66596" lon="-79.3263199" stopId="3485"/>
+<stop tag="9005" title="Greenwood Avenue At Dundas Street East" lat="43.66746" lon="-79.32648" stopId="3673"/>
+<stop tag="7609" title="Greenwood Avenue At Athletic Avenue" lat="43.66934" lon="-79.32726" stopId="3668"/>
+<stop tag="1292" title="Greenwood Avenue At Gerrard Street East" lat="43.6708" lon="-79.32786" stopId="3677"/>
+<stop tag="14570" title="Greenwood Avenue At Ivy Avenue" lat="43.6732499" lon="-79.32888" stopId="3679"/>
+<stop tag="9768" title="Greenwood Avenue At Torbrick Road" lat="43.67624" lon="-79.3301" stopId="3688"/>
+<stop tag="8841" title="Greenwood Avenue At Felstead Avenue" lat="43.6777199" lon="-79.3307099" stopId="3675"/>
+<stop tag="4678" title="Greenwood Avenue At Mountnoel Avenue" lat="43.6793499" lon="-79.3313999" stopId="3682"/>
+<stop tag="2912" title="Greenwood Avenue At Danforth Avenue" lat="43.6813399" lon="-79.3321899" stopId="3671"/>
+<stop tag="14214_ar" title="Greenwood Station" lat="43.6825799" lon="-79.33042"/>
+<stop tag="2266" title="Eastern Avenue At Minto Street (Post Office) Farside" lat="43.6629199" lon="-79.32322" stopId="3536"/>
+<stop tag="1741" title="Woodward Avenue At Queen Street East" lat="43.6654999" lon="-79.3196399" stopId="4715"/>
+<stop tag="6156" title="Queen Street East At Connaught Avenue" lat="43.6651199" lon="-79.32221" stopId="3043"/>
+<stop tag="1229" title="Greenwood Avenue At Queen Street East Farside" lat="43.66472" lon="-79.32535" stopId="3684"/>
+<stop tag="2930" title="Greenwood Avenue At Kerr Road" lat="43.6662" lon="-79.32596" stopId="3681"/>
+<direction tag="31_1_31B" title="North - 31 Greenwood towards Greenwood Station" name="North" useForUI="true">
+  <stop tag="2266" />
+  <stop tag="1741" />
+  <stop tag="6156" />
+  <stop tag="1229" />
+  <stop tag="2930" />
+  <stop tag="9005" />
+  <stop tag="7609" />
+  <stop tag="1292" />
+  <stop tag="14570" />
+  <stop tag="9768" />
+  <stop tag="8841" />
+  <stop tag="4678" />
+  <stop tag="2912" />
+  <stop tag="14214_ar" />
+</direction>
+<direction tag="31_0_31B" title="South - 31b Greenwood towards Eastern" name="South" useForUI="true">
+  <stop tag="14214" />
+  <stop tag="7322" />
+  <stop tag="6923" />
+  <stop tag="3569" />
+  <stop tag="8772" />
+  <stop tag="9573" />
+  <stop tag="8962" />
+  <stop tag="2866" />
+  <stop tag="796" />
+  <stop tag="3228" />
+  <stop tag="5985" />
+  <stop tag="3385" />
+  <stop tag="459" />
+  <stop tag="4148" />
+  <stop tag="10030" />
+  <stop tag="2266_ar" />
+</direction>
+<path>
+<point lat="43.68258" lon="-79.33042"/>
+<point lat="43.68268" lon="-79.33049"/>
+<point lat="43.68276" lon="-79.33051"/>
+<point lat="43.68284" lon="-79.3301"/>
+<point lat="43.68242" lon="-79.32992"/>
+<point lat="43.6820499" lon="-79.32977"/>
+<point lat="43.68202" lon="-79.32993"/>
+<point lat="43.68148" lon="-79.33237"/>
+<point lat="43.68118" lon="-79.33233"/>
+<point lat="43.67941" lon="-79.33161"/>
+<point lat="43.67812" lon="-79.33107"/>
+<point lat="43.67587" lon="-79.33014"/>
+<point lat="43.67354" lon="-79.3291799"/>
+<point lat="43.67102" lon="-79.32813"/>
+<point lat="43.66963" lon="-79.32755"/>
+</path>
+<path>
+<point lat="43.66963" lon="-79.32755"/>
+<point lat="43.66781" lon="-79.32681"/>
+<point lat="43.66618" lon="-79.32612"/>
+<point lat="43.66454" lon="-79.32546"/>
+</path>
+<path>
+<point lat="43.67325" lon="-79.32888"/>
+<point lat="43.67624" lon="-79.3301"/>
+<point lat="43.67772" lon="-79.33071"/>
+<point lat="43.67935" lon="-79.3314"/>
+<point lat="43.68134" lon="-79.33219"/>
+<point lat="43.68148" lon="-79.33237"/>
+<point lat="43.68202" lon="-79.32993"/>
+<point lat="43.6820499" lon="-79.32977"/>
+<point lat="43.68242" lon="-79.32992"/>
+<point lat="43.68242" lon="-79.33002"/>
+<point lat="43.68241" lon="-79.33013"/>
+<point lat="43.6824" lon="-79.33026"/>
+<point lat="43.6824" lon="-79.33032"/>
+<point lat="43.68241" lon="-79.33036"/>
+<point lat="43.68244" lon="-79.3304"/>
+<point lat="43.68249" lon="-79.33042"/>
+<point lat="43.68258" lon="-79.33042"/>
+</path>
+<path>
+<point lat="43.66454" lon="-79.32546"/>
+<point lat="43.66422" lon="-79.32597"/>
+<point lat="43.66589" lon="-79.32691"/>
+<point lat="43.66596" lon="-79.32632"/>
+<point lat="43.6660899" lon="-79.32601"/>
+<point lat="43.66746" lon="-79.32648"/>
+<point lat="43.66934" lon="-79.32726"/>
+<point lat="43.6708" lon="-79.32786"/>
+<point lat="43.67325" lon="-79.32888"/>
+</path>
+<path>
+<point lat="43.66292" lon="-79.32322"/>
+<point lat="43.66373" lon="-79.31984"/>
+<point lat="43.66397" lon="-79.31938"/>
+<point lat="43.66424" lon="-79.3190599"/>
+<point lat="43.6655" lon="-79.31964"/>
+<point lat="43.6656199" lon="-79.31974"/>
+<point lat="43.66512" lon="-79.32221"/>
+<point lat="43.66439" lon="-79.32529"/>
+<point lat="43.66472" lon="-79.32535"/>
+<point lat="43.6662" lon="-79.32596"/>
+<point lat="43.66746" lon="-79.32648"/>
+<point lat="43.66934" lon="-79.32726"/>
+<point lat="43.6708" lon="-79.32786"/>
+<point lat="43.67325" lon="-79.32888"/>
+</path>
+<path>
+<point lat="43.66454" lon="-79.32546"/>
+<point lat="43.66439" lon="-79.32529"/>
+<point lat="43.66387" lon="-79.32775"/>
+<point lat="43.6638" lon="-79.32787"/>
+<point lat="43.66323" lon="-79.3302099"/>
+<point lat="43.66279" lon="-79.33008"/>
+<point lat="43.66154" lon="-79.32946"/>
+<point lat="43.6617" lon="-79.32857"/>
+<point lat="43.66243" lon="-79.32536"/>
+<point lat="43.66292" lon="-79.32322"/>
+</path>
+</route>
+</body>

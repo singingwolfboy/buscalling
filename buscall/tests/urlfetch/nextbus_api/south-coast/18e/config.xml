@@ -1,0 +1,206 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:53:09 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1450
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Gold Coast Transit 2011.">
+<route tag="18e" title="18e Pacifica High Tripper via Rose and Gonzales" shortTitle="Route 18e" color="006666" oppositeColor="ffffff" latMin="34.1993342" latMax="34.2191499" lonMin="-119.1795493" lonMax="-119.1562872">
+<stop tag="12oxnar" title="Oxnard Transit Center" lat="34.1993342" lon="-119.17654" stopId="31100"/>
+<stop tag="106third" title="Third St at B" lat="34.2003856" lon="-119.1795493" stopId="31800"/>
+<stop tag="107third" title="Third St at Garfield" lat="34.2005" lon="-119.17312" stopId="31707"/>
+<stop tag="108third" title="Third St at Wilson" lat="34.2004652" lon="-119.1693654" stopId="31706"/>
+<stop tag="109third" title="Third St at Campton" lat="34.2004032" lon="-119.1643564" stopId="31705"/>
+<stop tag="110rosea" title="Rose Ave at Santa Lucia" lat="34.2020965" lon="-119.15967" stopId="31704"/>
+<stop tag="111rosea" title="Rose Ave at Camino Del Sol" lat="34.2057488" lon="-119.1596436" stopId="31703"/>
+<stop tag="112rosea" title="Rose Ave at Socorro" lat="34.2143536" lon="-119.159333" stopId="31801"/>
+<stop tag="114rosea" title="Rose Ave at Saint John&apos;s Parking Lot" lat="34.21703" lon="-119.1565923" stopId="31802"/>
+<stop tag="113rosea" title="Rose Ave at Gonzales" lat="34.21898" lon="-119.1562872" stopId="31803"/>
+<stop tag="115gonza" title="Rose at Gonzales Rd" lat="34.21909" lon="-119.1614728" stopId="30616"/>
+<stop tag="116gonza" title="Gonzales Rd at Snow" lat="34.21909" lon="-119.1649531" stopId="31701"/>
+<stop tag="117gonza" title="Gonzales Rd at Entrada" lat="34.2191499" lon="-119.172037" stopId="31622"/>
+<stop tag="pachigh_pm" title="Gonzales Rd at Entrada" lat="34.21896" lon="-119.17192" stopId="31700"/>
+<stop tag="154rosea" title="Rose Ave at Socorro Way" lat="34.2139598" lon="-119.1597007" stopId="31702"/>
+<stop tag="151third" title="Third St at A - City Hall And Library" lat="34.2004283" lon="-119.1788848" stopId="31708"/>
+<direction tag="otc" title="To Oxnard Transit Center" name="" useForUI="true">
+  <stop tag="pachigh_pm" />
+  <stop tag="116gonza" />
+  <stop tag="115gonza" />
+  <stop tag="154rosea" />
+  <stop tag="111rosea" />
+  <stop tag="110rosea" />
+  <stop tag="109third" />
+  <stop tag="108third" />
+  <stop tag="107third" />
+  <stop tag="151third" />
+</direction>
+<direction tag="phs" title="To Pacifica High School" name="" useForUI="true">
+  <stop tag="12oxnar" />
+  <stop tag="106third" />
+  <stop tag="107third" />
+  <stop tag="108third" />
+  <stop tag="109third" />
+  <stop tag="110rosea" />
+  <stop tag="111rosea" />
+  <stop tag="112rosea" />
+  <stop tag="114rosea" />
+  <stop tag="113rosea" />
+  <stop tag="115gonza" />
+  <stop tag="116gonza" />
+  <stop tag="117gonza" />
+</direction>
+<path>
+<point lat="34.21899" lon="-119.17272"/>
+<point lat="34.21896" lon="-119.17192"/>
+</path>
+<path>
+<point lat="34.19905" lon="-119.17654"/>
+<point lat="34.19903" lon="-119.17744"/>
+</path>
+<path>
+<point lat="34.20203" lon="-119.15967"/>
+<point lat="34.20262" lon="-119.15967"/>
+</path>
+<path>
+<point lat="34.20064" lon="-119.17384"/>
+<point lat="34.20047" lon="-119.17679"/>
+<point lat="34.20041" lon="-119.17981"/>
+</path>
+<path>
+<point lat="34.219" lon="-119.15897"/>
+<point lat="34.21909" lon="-119.1606"/>
+<point lat="34.21909" lon="-119.16395"/>
+<point lat="34.21909" lon="-119.16691"/>
+<point lat="34.21909" lon="-119.16995"/>
+<point lat="34.21915" lon="-119.17204"/>
+</path>
+<path>
+<point lat="34.21844" lon="-119.15835"/>
+<point lat="34.21657" lon="-119.15848"/>
+<point lat="34.21394" lon="-119.15971"/>
+<point lat="34.21163" lon="-119.15986"/>
+<point lat="34.20814" lon="-119.15986"/>
+<point lat="34.2063" lon="-119.15982"/>
+</path>
+<path>
+<point lat="34.20262" lon="-119.15967"/>
+<point lat="34.20488" lon="-119.15963"/>
+<point lat="34.20742" lon="-119.15967"/>
+<point lat="34.21002" lon="-119.15967"/>
+<point lat="34.2122" lon="-119.15967"/>
+<point lat="34.21381" lon="-119.1596"/>
+<point lat="34.21548" lon="-119.15878"/>
+<point lat="34.21693" lon="-119.15818"/>
+<point lat="34.21699" lon="-119.15814"/>
+<point lat="34.21703" lon="-119.15807"/>
+<point lat="34.21705" lon="-119.15798"/>
+<point lat="34.21703" lon="-119.15659"/>
+</path>
+<path>
+<point lat="34.19898" lon="-119.17676"/>
+<point lat="34.19979" lon="-119.17673"/>
+</path>
+<path>
+<point lat="34.19899" lon="-119.1799"/>
+<point lat="34.19898" lon="-119.17675"/>
+</path>
+<path>
+<point lat="34.19903" lon="-119.17744"/>
+<point lat="34.19905" lon="-119.17986"/>
+</path>
+<path>
+<point lat="34.20058" lon="-119.17383"/>
+<point lat="34.2005" lon="-119.17312"/>
+</path>
+<path>
+<point lat="34.20477" lon="-119.1598"/>
+<point lat="34.20265" lon="-119.15984"/>
+<point lat="34.20051" lon="-119.15991"/>
+<point lat="34.20051" lon="-119.16258"/>
+<point lat="34.2005399" lon="-119.16573"/>
+<point lat="34.2005399" lon="-119.16872"/>
+<point lat="34.20058" lon="-119.17126"/>
+<point lat="34.20058" lon="-119.17351"/>
+</path>
+<path>
+<point lat="34.20041" lon="-119.17981"/>
+<point lat="34.199" lon="-119.1799"/>
+</path>
+<path>
+<point lat="34.21703" lon="-119.15659"/>
+<point lat="34.21702" lon="-119.15646"/>
+<point lat="34.21702" lon="-119.15635"/>
+<point lat="34.21705" lon="-119.15627"/>
+<point lat="34.21709" lon="-119.15622"/>
+<point lat="34.21714" lon="-119.15617"/>
+<point lat="34.21721" lon="-119.15615"/>
+<point lat="34.21732" lon="-119.15615"/>
+<point lat="34.21743" lon="-119.15615"/>
+<point lat="34.21755" lon="-119.15615"/>
+<point lat="34.21772" lon="-119.15616"/>
+<point lat="34.21782" lon="-119.15615"/>
+<point lat="34.21788" lon="-119.1561"/>
+<point lat="34.21788" lon="-119.15601"/>
+<point lat="34.21788" lon="-119.15529"/>
+<point lat="34.21788" lon="-119.15467"/>
+<point lat="34.21788" lon="-119.15433"/>
+<point lat="34.2179" lon="-119.15421"/>
+<point lat="34.21793" lon="-119.15415"/>
+<point lat="34.218" lon="-119.15412"/>
+<point lat="34.21807" lon="-119.15408"/>
+<point lat="34.2182" lon="-119.15407"/>
+<point lat="34.2185599" lon="-119.15399"/>
+<point lat="34.21871" lon="-119.15397"/>
+<point lat="34.2188" lon="-119.15399"/>
+<point lat="34.2189" lon="-119.15405"/>
+<point lat="34.21896" lon="-119.15411"/>
+<point lat="34.21898" lon="-119.1542"/>
+<point lat="34.21898" lon="-119.15433"/>
+<point lat="34.21898" lon="-119.15465"/>
+<point lat="34.21898" lon="-119.15703"/>
+<point lat="34.21899" lon="-119.15764"/>
+<point lat="34.219" lon="-119.15897"/>
+</path>
+<path>
+<point lat="34.19935" lon="-119.17654"/>
+<point lat="34.19905" lon="-119.17654"/>
+</path>
+<path>
+<point lat="34.19906" lon="-119.17985"/>
+<point lat="34.20038" lon="-119.1798"/>
+<point lat="34.2004499" lon="-119.17671"/>
+<point lat="34.20058" lon="-119.17383"/>
+</path>
+<path>
+<point lat="34.2005" lon="-119.17312"/>
+<point lat="34.20048" lon="-119.17055"/>
+<point lat="34.20044" lon="-119.16733"/>
+<point lat="34.2004" lon="-119.16456"/>
+<point lat="34.20044" lon="-119.16205"/>
+<point lat="34.20046" lon="-119.1597"/>
+<point lat="34.2020399" lon="-119.15967"/>
+</path>
+<path>
+<point lat="34.2063" lon="-119.15982"/>
+<point lat="34.20477" lon="-119.1598"/>
+</path>
+<path>
+<point lat="34.21896" lon="-119.17192"/>
+<point lat="34.21894" lon="-119.16849"/>
+<point lat="34.21888" lon="-119.16587"/>
+<point lat="34.21891" lon="-119.1627"/>
+<point lat="34.21886" lon="-119.16055"/>
+<point lat="34.21881" lon="-119.1585"/>
+<point lat="34.21844" lon="-119.15835"/>
+</path>
+<path>
+<point lat="34.20058" lon="-119.17351"/>
+<point lat="34.20064" lon="-119.17383"/>
+</path>
+</route>
+</body>

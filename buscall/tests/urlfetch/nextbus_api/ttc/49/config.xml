@@ -1,0 +1,214 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:29 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1820
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="49" title="49-Bloor West" color="ff0000" oppositeColor="ffffff" latMin="43.6296499" latMax="43.6404" lonMin="-79.58267" lonMax="-79.53551">
+<stop tag="1523" title="Markland Drive At Bloor Street West Farside" lat="43.6296499" lon="-79.58023" stopId="1269"/>
+<stop tag="6979" title="Markland Drive At Cherry Post Crescent North" lat="43.6331299" lon="-79.58267" stopId="1271"/>
+<stop tag="5076" title="Markland Drive At Silverthorne Bush Drive" lat="43.63469" lon="-79.58146" stopId="1274"/>
+<stop tag="4898" title="Markland Drive At Mill Road" lat="43.6362199" lon="-79.58031" stopId="1272"/>
+<stop tag="9098" title="Mill Road At Toledo Road" lat="43.63407" lon="-79.57706" stopId="1348"/>
+<stop tag="4070" title="Bloor Street West At Mill Road Farside" lat="43.6321799" lon="-79.57458" stopId="0550"/>
+<stop tag="10037" title="Bloor Street West At Forestview Road Farside" lat="43.63286" lon="-79.57297" stopId="0513"/>
+<stop tag="696" title="Bloor Street West At Markland Drive East Farside" lat="43.63361" lon="-79.5702599" stopId="0546"/>
+<stop tag="5705" title="Bloor Street West At Koos Road" lat="43.63464" lon="-79.5660799" stopId="0534"/>
+<stop tag="3928" title="Bloor Street West At The West Mall" lat="43.63548" lon="-79.5625599" stopId="0595"/>
+<stop tag="1291" title="Bloor Street East At The East Mall" lat="43.63675" lon="-79.5567999" stopId="0510"/>
+<stop tag="9471" title="Bloor Street West At Tremont Road Farside" lat="43.6378999" lon="-79.5521" stopId="0594"/>
+<stop tag="8952" title="Bloor Street West At Shaver Avenue South Farside" lat="43.6389699" lon="-79.54742" stopId="0581"/>
+<stop tag="924" title="Bloor Street West At Wilmar Road" lat="43.63964" lon="-79.54454" stopId="0597"/>
+<stop tag="2668" title="Bloor Street West At Acorn Avenue" lat="43.64023" lon="-79.5419399" stopId="0488"/>
+<stop tag="8480" title="Aukland Street At Bloor Street West Farside" lat="43.64016" lon="-79.5404199" stopId="1200"/>
+<stop tag="7001" title="Aukland Street At Dundas Street West" lat="43.63859" lon="-79.53835" stopId="1203"/>
+<stop tag="14239_ar" title="Kipling Station" lat="43.6377199" lon="-79.53551"/>
+<stop tag="14239" title="Kipling Station" lat="43.6377199" lon="-79.53551" stopId="14720"/>
+<stop tag="3426" title="Aukland Street At Dundas Street West Farside" lat="43.63877" lon="-79.53854" stopId="5128"/>
+<stop tag="9444" title="Bloor Street West At Ashbourne Drive" lat="43.6404" lon="-79.5420199" stopId="0489"/>
+<stop tag="3331" title="Bloor Street West At Martin Grove Road" lat="43.63975" lon="-79.5448799" stopId="0548"/>
+<stop tag="6419" title="Bloor Street West At Shaver Avenue North" lat="43.6391599" lon="-79.54747" stopId="0582"/>
+<stop tag="2467" title="Bloor Street West At Laurel Avenue" lat="43.6382699" lon="-79.55129" stopId="0537"/>
+<stop tag="4710" title="Bloor Street West At The East Mall" lat="43.63709" lon="-79.5564999" stopId="0511"/>
+<stop tag="6438" title="Bloor Street West At The West Mall" lat="43.6357799" lon="-79.56206" stopId="0596"/>
+<stop tag="5655" title="Bloor Street West At Peacock Avenue" lat="43.63492" lon="-79.5655999" stopId="0568"/>
+<stop tag="2589" title="Bloor Street West At Markland Drive East" lat="43.63369" lon="-79.5704399" stopId="0547"/>
+<stop tag="1441" title="Bloor Street West At Mapledawn Road" lat="43.63287" lon="-79.5732499" stopId="0541"/>
+<stop tag="5574" title="Bloor Street West At Mill Road" lat="43.6322999" lon="-79.5747" stopId="0552"/>
+<stop tag="8326" title="Opposite 4345 Bloor Street West" lat="43.6310999" lon="-79.5773" stopId="0560"/>
+<stop tag="1523_ar" title="Markland Drive At Bloor Street West Farside" lat="43.6296499" lon="-79.58023"/>
+<direction tag="49_1_49" title="West - 49 Bloor towards Markland Wood" name="West" useForUI="true">
+  <stop tag="14239" />
+  <stop tag="3426" />
+  <stop tag="9444" />
+  <stop tag="3331" />
+  <stop tag="6419" />
+  <stop tag="2467" />
+  <stop tag="4710" />
+  <stop tag="6438" />
+  <stop tag="5655" />
+  <stop tag="2589" />
+  <stop tag="1441" />
+  <stop tag="5574" />
+  <stop tag="8326" />
+  <stop tag="1523_ar" />
+</direction>
+<direction tag="49_0_49" title="East - 49 Bloor West towards Kipling Station" name="East" useForUI="true">
+  <stop tag="1523" />
+  <stop tag="6979" />
+  <stop tag="5076" />
+  <stop tag="4898" />
+  <stop tag="9098" />
+  <stop tag="4070" />
+  <stop tag="10037" />
+  <stop tag="696" />
+  <stop tag="5705" />
+  <stop tag="3928" />
+  <stop tag="1291" />
+  <stop tag="9471" />
+  <stop tag="8952" />
+  <stop tag="924" />
+  <stop tag="2668" />
+  <stop tag="8480" />
+  <stop tag="7001" />
+  <stop tag="14239_ar" />
+</direction>
+<path>
+<point lat="43.6311" lon="-79.5772999"/>
+<point lat="43.63095" lon="-79.57747"/>
+<point lat="43.62928" lon="-79.57982"/>
+<point lat="43.62947" lon="-79.58006"/>
+<point lat="43.62965" lon="-79.58023"/>
+</path>
+<path>
+<point lat="43.6379" lon="-79.5521"/>
+<point lat="43.63897" lon="-79.54742"/>
+<point lat="43.63967" lon="-79.54504"/>
+<point lat="43.63964" lon="-79.54454"/>
+<point lat="43.64023" lon="-79.54194"/>
+<point lat="43.64064" lon="-79.54062"/>
+<point lat="43.64043" lon="-79.54045"/>
+<point lat="43.6402" lon="-79.54036"/>
+<point lat="43.64016" lon="-79.54042"/>
+<point lat="43.63961" lon="-79.53972"/>
+<point lat="43.63895" lon="-79.53914"/>
+<point lat="43.63859" lon="-79.53835"/>
+<point lat="43.63852" lon="-79.538"/>
+<point lat="43.63838" lon="-79.53773"/>
+<point lat="43.63821" lon="-79.53747"/>
+<point lat="43.63794" lon="-79.53721"/>
+<point lat="43.63768" lon="-79.5370499"/>
+<point lat="43.63737" lon="-79.5367799"/>
+<point lat="43.63713" lon="-79.53663"/>
+<point lat="43.63716" lon="-79.53626"/>
+<point lat="43.63772" lon="-79.53551"/>
+</path>
+<path>
+<point lat="43.63772" lon="-79.53551"/>
+<point lat="43.6385099" lon="-79.53464"/>
+<point lat="43.63868" lon="-79.53487"/>
+<point lat="43.63741" lon="-79.53631"/>
+<point lat="43.6373" lon="-79.53661"/>
+<point lat="43.63754" lon="-79.53693"/>
+<point lat="43.63786" lon="-79.5371399"/>
+<point lat="43.6381299" lon="-79.53738"/>
+<point lat="43.63831" lon="-79.53759"/>
+<point lat="43.63852" lon="-79.538"/>
+<point lat="43.63877" lon="-79.53854"/>
+<point lat="43.63882" lon="-79.53891"/>
+<point lat="43.63903" lon="-79.53923"/>
+<point lat="43.63961" lon="-79.53972"/>
+<point lat="43.64004" lon="-79.54025"/>
+<point lat="43.64036" lon="-79.54043"/>
+<point lat="43.64064" lon="-79.54062"/>
+<point lat="43.64055" lon="-79.54097"/>
+<point lat="43.6404" lon="-79.5420199"/>
+<point lat="43.63975" lon="-79.54488"/>
+<point lat="43.63967" lon="-79.54504"/>
+<point lat="43.6391599" lon="-79.54747"/>
+<point lat="43.63827" lon="-79.55129"/>
+<point lat="43.63709" lon="-79.5565"/>
+<point lat="43.6362" lon="-79.55979"/>
+<point lat="43.6357799" lon="-79.56206"/>
+</path>
+<path>
+<point lat="43.62965" lon="-79.58023"/>
+<point lat="43.62985" lon="-79.58094"/>
+<point lat="43.63012" lon="-79.5815"/>
+<point lat="43.6303399" lon="-79.5818199"/>
+<point lat="43.63059" lon="-79.58205"/>
+<point lat="43.63144" lon="-79.58252"/>
+<point lat="43.63168" lon="-79.58261"/>
+<point lat="43.63279" lon="-79.58278"/>
+<point lat="43.63313" lon="-79.5826699"/>
+<point lat="43.63315" lon="-79.58277"/>
+<point lat="43.63337" lon="-79.5827"/>
+<point lat="43.63361" lon="-79.5825799"/>
+<point lat="43.63383" lon="-79.58242"/>
+<point lat="43.63469" lon="-79.58146"/>
+<point lat="43.63482" lon="-79.58146"/>
+<point lat="43.63506" lon="-79.58127"/>
+<point lat="43.63595" lon="-79.58073"/>
+<point lat="43.63619" lon="-79.58045"/>
+<point lat="43.63622" lon="-79.58031"/>
+<point lat="43.63541" lon="-79.5789099"/>
+<point lat="43.63407" lon="-79.57706"/>
+</path>
+<path>
+<point lat="43.63218" lon="-79.57458"/>
+<point lat="43.63293" lon="-79.57303"/>
+<point lat="43.63286" lon="-79.57297"/>
+<point lat="43.63361" lon="-79.57026"/>
+<point lat="43.6339" lon="-79.5696"/>
+<point lat="43.63464" lon="-79.56608"/>
+<point lat="43.63548" lon="-79.56256"/>
+<point lat="43.63675" lon="-79.5568"/>
+<point lat="43.6379" lon="-79.5521"/>
+</path>
+<path>
+<point lat="43.6357799" lon="-79.56206"/>
+<point lat="43.63492" lon="-79.5656"/>
+<point lat="43.6339" lon="-79.5696"/>
+<point lat="43.63369" lon="-79.57044"/>
+<point lat="43.63293" lon="-79.57303"/>
+<point lat="43.6328699" lon="-79.57325"/>
+<point lat="43.6323" lon="-79.5747"/>
+<point lat="43.63125" lon="-79.57689"/>
+<point lat="43.6311" lon="-79.5772999"/>
+</path>
+<path>
+<point lat="43.62965" lon="-79.58023"/>
+<point lat="43.62966" lon="-79.58044"/>
+<point lat="43.62985" lon="-79.58094"/>
+<point lat="43.63012" lon="-79.5815"/>
+<point lat="43.6303399" lon="-79.5818199"/>
+<point lat="43.63059" lon="-79.58205"/>
+<point lat="43.63144" lon="-79.58252"/>
+<point lat="43.63168" lon="-79.58261"/>
+<point lat="43.63279" lon="-79.58278"/>
+<point lat="43.63313" lon="-79.5826699"/>
+<point lat="43.63315" lon="-79.58277"/>
+<point lat="43.63337" lon="-79.5827"/>
+<point lat="43.63361" lon="-79.5825799"/>
+<point lat="43.63383" lon="-79.58242"/>
+<point lat="43.63469" lon="-79.58146"/>
+<point lat="43.63482" lon="-79.58146"/>
+<point lat="43.63506" lon="-79.58127"/>
+<point lat="43.63595" lon="-79.58073"/>
+<point lat="43.63619" lon="-79.58045"/>
+<point lat="43.63622" lon="-79.58031"/>
+<point lat="43.63541" lon="-79.5789099"/>
+<point lat="43.63407" lon="-79.57706"/>
+<point lat="43.63397" lon="-79.5769"/>
+<point lat="43.63356" lon="-79.57642"/>
+<point lat="43.63203" lon="-79.5751499"/>
+<point lat="43.63218" lon="-79.57458"/>
+</path>
+</route>
+</body>

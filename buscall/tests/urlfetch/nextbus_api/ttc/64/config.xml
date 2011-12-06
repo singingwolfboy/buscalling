@@ -1,0 +1,236 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:40 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1780
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="64" title="64-Main" color="ff0000" oppositeColor="ffffff" latMin="43.67096" latMax="43.6951699" lonMin="-79.3046" lonMax="-79.29589">
+<stop tag="5150" title="Eastdale Avenue At Goodwood Park Crescent" lat="43.6945299" lon="-79.30073" stopId="5056"/>
+<stop tag="2725" title="Eastdale Avenue At Secord Avenue" lat="43.6933699" lon="-79.3002399" stopId="5057"/>
+<stop tag="2813" title="Secord Avenue At Barrington Avenue" lat="43.69278" lon="-79.3019599" stopId="6049"/>
+<stop tag="286" title="Doncaster Avenue At Main Street" lat="43.6918199" lon="-79.30311" stopId="5008"/>
+<stop tag="14256" title="Main Street Station" lat="43.6890999" lon="-79.30171" stopId="14737"/>
+<stop tag="4811" title="Main Street At Danforth Avenue Farside" lat="43.6878899" lon="-79.3018599" stopId="5532"/>
+<stop tag="552" title="Main Street At Gerrard Street East" lat="43.68406" lon="-79.3002799" stopId="1264"/>
+<stop tag="3508" title="Main Street At Swanwick Avenue" lat="43.68246" lon="-79.29964" stopId="5539"/>
+<stop tag="2075" title="Main Street At Benlamond Avenue" lat="43.68114" lon="-79.29909" stopId="5529"/>
+<stop tag="8330" title="Main Street At Kingston Road" lat="43.6792599" lon="-79.2981799" stopId="5534"/>
+<stop tag="4286" title="Southwood Drive At Cavendish Street" lat="43.6777199" lon="-79.29753" stopId="6097"/>
+<stop tag="6696" title="Southwood Drive At Glen Ames Avenue" lat="43.6761" lon="-79.2968899" stopId="6095"/>
+<stop tag="1546" title="Southwood Drive At Williamson Road" lat="43.67455" lon="-79.2964" stopId="6100"/>
+<stop tag="1086" title="Wineva Avenue At Williamson Road Farside" lat="43.6736399" lon="-79.2969299" stopId="6214"/>
+<stop tag="10028_ar" title="Wineva Avenue At Queen Street East" lat="43.6711499" lon="-79.29589"/>
+<stop tag="10028" title="Wineva Avenue At Queen Street East" lat="43.6711499" lon="-79.29589" stopId="6213"/>
+<stop tag="8148" title="Hambly Avenue At Queen Street East Farside" lat="43.67096" lon="-79.29689" stopId="5115"/>
+<stop tag="9055" title="Hambly Avenue At Williamson Road" lat="43.6736899" lon="-79.2980799" stopId="5116"/>
+<stop tag="2041" title="Williamson Road At Southwood Drive" lat="43.6741199" lon="-79.29643" stopId="6211"/>
+<stop tag="10329" title="Southwood Drive At Glen Ames Avenue" lat="43.67574" lon="-79.29673" stopId="6098"/>
+<stop tag="3531" title="Southwood Drive At Kingston Road" lat="43.67868" lon="-79.29779" stopId="6099"/>
+<stop tag="2227" title="Main Street At Lyall Avenue Farside" lat="43.6806599" lon="-79.29854" stopId="5535"/>
+<stop tag="1587" title="Main Street At Swanwick Avenue" lat="43.6820799" lon="-79.2993299" stopId="5538"/>
+<stop tag="9850" title="Main Street At Gerrard Street" lat="43.68378" lon="-79.30006" stopId="5533"/>
+<stop tag="550" title="Main Street At Danforth Avenue" lat="43.6877899" lon="-79.3015499" stopId="11826"/>
+<stop tag="14258" title="Main Street Station" lat="43.6892199" lon="-79.30127" stopId="14739"/>
+<stop tag="551" title="Main Street At Doncaster Avenue" lat="43.6915599" lon="-79.3032699" stopId="2855"/>
+<stop tag="3898" title="Main Street At Lumsden Avenue" lat="43.69464" lon="-79.3046" stopId="2857"/>
+<stop tag="4673" title="Lumsden Avenue At Barrington Avenue Farside" lat="43.6951699" lon="-79.30301" stopId="5521"/>
+<stop tag="5150_ar" title="Eastdale Avenue At Goodwood Park Crescent" lat="43.6945299" lon="-79.30073"/>
+<direction tag="64_0_64" title="South - 64 Main towards Queen" name="South" useForUI="true">
+  <stop tag="5150" />
+  <stop tag="2725" />
+  <stop tag="2813" />
+  <stop tag="286" />
+  <stop tag="14256" />
+  <stop tag="4811" />
+  <stop tag="552" />
+  <stop tag="3508" />
+  <stop tag="2075" />
+  <stop tag="8330" />
+  <stop tag="4286" />
+  <stop tag="6696" />
+  <stop tag="1546" />
+  <stop tag="1086" />
+  <stop tag="10028_ar" />
+</direction>
+<direction tag="64_1_64" title="North - 64 Main towards Eastdale" name="North" useForUI="true">
+  <stop tag="10028" />
+  <stop tag="8148" />
+  <stop tag="9055" />
+  <stop tag="2041" />
+  <stop tag="10329" />
+  <stop tag="3531" />
+  <stop tag="2227" />
+  <stop tag="1587" />
+  <stop tag="9850" />
+  <stop tag="550" />
+  <stop tag="14258" />
+  <stop tag="551" />
+  <stop tag="3898" />
+  <stop tag="4673" />
+  <stop tag="5150_ar" />
+</direction>
+<path>
+<point lat="43.68922" lon="-79.30127"/>
+<point lat="43.68932" lon="-79.30129"/>
+<point lat="43.68932" lon="-79.30122"/>
+<point lat="43.68931" lon="-79.30117"/>
+<point lat="43.6892799" lon="-79.30111"/>
+<point lat="43.68925" lon="-79.30107"/>
+<point lat="43.68921" lon="-79.30104"/>
+<point lat="43.68916" lon="-79.30101"/>
+<point lat="43.68911" lon="-79.30101"/>
+<point lat="43.68906" lon="-79.30103"/>
+<point lat="43.68902" lon="-79.30106"/>
+<point lat="43.68898" lon="-79.30113"/>
+<point lat="43.6888" lon="-79.30182"/>
+<point lat="43.68878" lon="-79.30188"/>
+<point lat="43.68875" lon="-79.30194"/>
+<point lat="43.6887" lon="-79.302"/>
+<point lat="43.68866" lon="-79.30202"/>
+<point lat="43.68859" lon="-79.30203"/>
+<point lat="43.6888999" lon="-79.30218"/>
+<point lat="43.68918" lon="-79.30229"/>
+<point lat="43.69156" lon="-79.30327"/>
+<point lat="43.69464" lon="-79.3045999"/>
+<point lat="43.69483" lon="-79.30476"/>
+<point lat="43.69517" lon="-79.30301"/>
+</path>
+<path>
+<point lat="43.67772" lon="-79.29753"/>
+<point lat="43.67618" lon="-79.29683"/>
+<point lat="43.6761" lon="-79.29689"/>
+<point lat="43.67591" lon="-79.2968099"/>
+<point lat="43.67455" lon="-79.2964"/>
+<point lat="43.6742" lon="-79.29621"/>
+<point lat="43.67402" lon="-79.29702"/>
+<point lat="43.67364" lon="-79.29693"/>
+<point lat="43.67115" lon="-79.29589"/>
+</path>
+<path>
+<point lat="43.6891" lon="-79.30171"/>
+<point lat="43.68932" lon="-79.30129"/>
+<point lat="43.68932" lon="-79.30122"/>
+<point lat="43.68931" lon="-79.30117"/>
+<point lat="43.6892799" lon="-79.30111"/>
+<point lat="43.68925" lon="-79.30107"/>
+<point lat="43.68921" lon="-79.30104"/>
+<point lat="43.68916" lon="-79.30101"/>
+<point lat="43.68911" lon="-79.30101"/>
+<point lat="43.68906" lon="-79.30103"/>
+<point lat="43.68902" lon="-79.30106"/>
+<point lat="43.68898" lon="-79.30113"/>
+<point lat="43.6888" lon="-79.30182"/>
+<point lat="43.68878" lon="-79.30188"/>
+<point lat="43.68875" lon="-79.30194"/>
+<point lat="43.6887" lon="-79.302"/>
+<point lat="43.68866" lon="-79.30202"/>
+<point lat="43.68859" lon="-79.30203"/>
+<point lat="43.68789" lon="-79.30186"/>
+<point lat="43.68443" lon="-79.30026"/>
+<point lat="43.68406" lon="-79.30028"/>
+<point lat="43.68406" lon="-79.30013"/>
+<point lat="43.68382" lon="-79.30014"/>
+<point lat="43.68246" lon="-79.29964"/>
+<point lat="43.68114" lon="-79.29909"/>
+<point lat="43.68074" lon="-79.29884"/>
+<point lat="43.68042" lon="-79.29836"/>
+<point lat="43.68016" lon="-79.29812"/>
+<point lat="43.67989" lon="-79.29805"/>
+<point lat="43.67926" lon="-79.29818"/>
+<point lat="43.67918" lon="-79.2981"/>
+<point lat="43.67891" lon="-79.29805"/>
+<point lat="43.67851" lon="-79.29779"/>
+<point lat="43.67772" lon="-79.29753"/>
+</path>
+<path>
+<point lat="43.69453" lon="-79.30073"/>
+<point lat="43.69337" lon="-79.30024"/>
+<point lat="43.69314" lon="-79.30007"/>
+<point lat="43.69278" lon="-79.3019599"/>
+<point lat="43.69261" lon="-79.3023599"/>
+<point lat="43.6919899" lon="-79.3021"/>
+<point lat="43.69182" lon="-79.30311"/>
+<point lat="43.69169" lon="-79.3033899"/>
+<point lat="43.68918" lon="-79.30229"/>
+<point lat="43.68915" lon="-79.30222"/>
+<point lat="43.68914" lon="-79.30215"/>
+<point lat="43.68914" lon="-79.30206"/>
+<point lat="43.68915" lon="-79.30195"/>
+<point lat="43.6891" lon="-79.30171"/>
+</path>
+<path>
+<point lat="43.68066" lon="-79.29854"/>
+<point lat="43.68074" lon="-79.29884"/>
+<point lat="43.68208" lon="-79.29933"/>
+<point lat="43.68378" lon="-79.30006"/>
+<point lat="43.68382" lon="-79.30014"/>
+<point lat="43.68406" lon="-79.30013"/>
+<point lat="43.68779" lon="-79.30155"/>
+<point lat="43.68859" lon="-79.30203"/>
+<point lat="43.6888999" lon="-79.30218"/>
+<point lat="43.68918" lon="-79.30229"/>
+<point lat="43.68915" lon="-79.30222"/>
+<point lat="43.68914" lon="-79.30215"/>
+<point lat="43.68914" lon="-79.30206"/>
+<point lat="43.68915" lon="-79.30195"/>
+<point lat="43.68922" lon="-79.30127"/>
+</path>
+<path>
+<point lat="43.69453" lon="-79.30073"/>
+<point lat="43.69337" lon="-79.30024"/>
+<point lat="43.69314" lon="-79.30007"/>
+<point lat="43.69278" lon="-79.3019599"/>
+<point lat="43.69261" lon="-79.3023599"/>
+<point lat="43.6919899" lon="-79.3021"/>
+<point lat="43.69182" lon="-79.30311"/>
+<point lat="43.69169" lon="-79.3033899"/>
+<point lat="43.68918" lon="-79.30229"/>
+<point lat="43.6888999" lon="-79.30218"/>
+<point lat="43.68859" lon="-79.30203"/>
+<point lat="43.68866" lon="-79.30202"/>
+<point lat="43.6887" lon="-79.302"/>
+<point lat="43.68875" lon="-79.30194"/>
+<point lat="43.68878" lon="-79.30188"/>
+<point lat="43.6888" lon="-79.30182"/>
+<point lat="43.6891" lon="-79.30171"/>
+</path>
+<path>
+<point lat="43.69517" lon="-79.30301"/>
+<point lat="43.69556" lon="-79.30153"/>
+<point lat="43.6956" lon="-79.30135"/>
+<point lat="43.69561" lon="-79.30129"/>
+<point lat="43.69561" lon="-79.30125"/>
+<point lat="43.6956" lon="-79.30116"/>
+<point lat="43.69555" lon="-79.30113"/>
+<point lat="43.69551" lon="-79.30109"/>
+<point lat="43.69453" lon="-79.30073"/>
+</path>
+<path>
+<point lat="43.67115" lon="-79.29589"/>
+<point lat="43.67093" lon="-79.29574"/>
+<point lat="43.67075" lon="-79.29658"/>
+<point lat="43.67096" lon="-79.29689"/>
+<point lat="43.67232" lon="-79.29754"/>
+<point lat="43.67369" lon="-79.29808"/>
+<point lat="43.67377" lon="-79.29816"/>
+<point lat="43.67412" lon="-79.29643"/>
+<point lat="43.6742" lon="-79.29621"/>
+<point lat="43.67574" lon="-79.29673"/>
+<point lat="43.67579" lon="-79.29682"/>
+<point lat="43.67606" lon="-79.2968099"/>
+<point lat="43.67868" lon="-79.29779"/>
+<point lat="43.6788" lon="-79.29791"/>
+<point lat="43.67904" lon="-79.2981"/>
+<point lat="43.67978" lon="-79.29805"/>
+<point lat="43.68003" lon="-79.29806"/>
+<point lat="43.68027" lon="-79.29819"/>
+<point lat="43.68066" lon="-79.29854"/>
+</path>
+</route>
+</body>

@@ -1,0 +1,129 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:58:37 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1145
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2011.">
+<route tag="431" title="431" color="39c1d6" oppositeColor="000000" latMin="42.459053" latMax="42.4638999" lonMin="-70.9594323" lonMax="-70.94595">
+<stop tag="14748" title="Lynn Commuter Rail Busway" lat="42.4618599" lon="-70.94595" stopId="14748"/>
+<stop tag="66721" title="Oxford St @ Washington St" lat="42.4638999" lon="-70.94663" stopId="66721"/>
+<stop tag="66731" title="Oxford St @ Market St" lat="42.4625799" lon="-70.94808" stopId="66731"/>
+<stop tag="94322" title="Pleasant @ Tremont St" lat="42.4619599" lon="-70.9513499" stopId="94322"/>
+<stop tag="94321" title="Neptune Blvd @ Blossom St" lat="42.4607999" lon="-70.9543199" stopId="94321"/>
+<stop tag="94325" title="Neptune Blvd @ Commercial St" lat="42.459053" lon="-70.9594323" stopId="94325"/>
+<stop tag="94320_ar" title="Neptune Blvd.  @ Blossom St" lat="42.4606299" lon="-70.95409"/>
+<stop tag="94320" title="Neptune Blvd.  @ Blossom St" lat="42.4606299" lon="-70.95409" stopId="94320"/>
+<stop tag="94322_1" title="Pleasant @ Tremont St" lat="42.4619599" lon="-70.9513499"/>
+<stop tag="94323" title="Tremont St opp St Mary&apos;s High School" lat="42.46286" lon="-70.95014" stopId="94323"/>
+<stop tag="6773" title="Market St @ Andrew St" lat="42.4628899" lon="-70.9489599" stopId="06773"/>
+<stop tag="6774" title="Market St @ Munroe St" lat="42.46225" lon="-70.9477999" stopId="06774"/>
+<stop tag="14748_ar" title="Lynn Commuter Rail Busway" lat="42.4618599" lon="-70.94595"/>
+<direction tag="431_1_var0" title="Central Square via Neptune St." name="Inbound" useForUI="true">
+  <stop tag="94320" />
+  <stop tag="94322_1" />
+  <stop tag="94323" />
+  <stop tag="6773" />
+  <stop tag="6774" />
+  <stop tag="14748_ar" />
+</direction>
+<direction tag="431_0_var0" title="Neptune Towers via Summer St." name="Outbound" useForUI="true">
+  <stop tag="14748" />
+  <stop tag="66721" />
+  <stop tag="66731" />
+  <stop tag="94322" />
+  <stop tag="94321" />
+  <stop tag="94325" />
+  <stop tag="94320_ar" />
+</direction>
+<path>
+<point lat="42.46063" lon="-70.9540899"/>
+<point lat="42.46083" lon="-70.95363"/>
+<point lat="42.46087" lon="-70.95327"/>
+<point lat="42.46087" lon="-70.95296"/>
+<point lat="42.46083" lon="-70.9526"/>
+<point lat="42.4608" lon="-70.95218"/>
+<point lat="42.4608" lon="-70.95186"/>
+<point lat="42.46081" lon="-70.9516699"/>
+<point lat="42.46087" lon="-70.9513"/>
+<point lat="42.46094" lon="-70.95094"/>
+<point lat="42.46105" lon="-70.95056"/>
+<point lat="42.46118" lon="-70.95025"/>
+<point lat="42.46196" lon="-70.95135"/>
+<point lat="42.46193" lon="-70.95139"/>
+<point lat="42.46199" lon="-70.95149"/>
+<point lat="42.46263" lon="-70.9505"/>
+<point lat="42.46289" lon="-70.9502"/>
+<point lat="42.46286" lon="-70.95014"/>
+<point lat="42.46334" lon="-70.94969"/>
+<point lat="42.46293" lon="-70.94892"/>
+<point lat="42.46289" lon="-70.94896"/>
+<point lat="42.46287" lon="-70.94882"/>
+<point lat="42.46247" lon="-70.94811"/>
+<point lat="42.46229" lon="-70.94776"/>
+<point lat="42.46225" lon="-70.9478"/>
+<point lat="42.46208" lon="-70.9474"/>
+<point lat="42.46161" lon="-70.94662"/>
+<point lat="42.46186" lon="-70.94595"/>
+</path>
+<path>
+<point lat="42.46186" lon="-70.94595"/>
+<point lat="42.46208" lon="-70.94562"/>
+<point lat="42.46169" lon="-70.94511"/>
+<point lat="42.46207" lon="-70.94496"/>
+<point lat="42.46241" lon="-70.94472"/>
+<point lat="42.46294" lon="-70.94434"/>
+<point lat="42.46358" lon="-70.94392"/>
+<point lat="42.46389" lon="-70.94461"/>
+<point lat="42.46402" lon="-70.94515"/>
+<point lat="42.46403" lon="-70.94532"/>
+<point lat="42.46414" lon="-70.94627"/>
+<point lat="42.46398" lon="-70.94646"/>
+<point lat="42.4639" lon="-70.94663"/>
+<point lat="42.46359" lon="-70.94691"/>
+<point lat="42.46312" lon="-70.94741"/>
+<point lat="42.46255" lon="-70.94803"/>
+<point lat="42.46258" lon="-70.94808"/>
+<point lat="42.46247" lon="-70.94811"/>
+<point lat="42.46196" lon="-70.94866"/>
+<point lat="42.46177" lon="-70.949"/>
+<point lat="42.46118" lon="-70.95025"/>
+<point lat="42.46196" lon="-70.95135"/>
+<point lat="42.46193" lon="-70.95139"/>
+<point lat="42.46199" lon="-70.95149"/>
+<point lat="42.46176" lon="-70.95183"/>
+<point lat="42.46155" lon="-70.95219"/>
+<point lat="42.46134" lon="-70.95253"/>
+<point lat="42.46125" lon="-70.95277"/>
+<point lat="42.46117" lon="-70.95293"/>
+<point lat="42.46097" lon="-70.95354"/>
+<point lat="42.4608" lon="-70.95411"/>
+<point lat="42.46075" lon="-70.9543"/>
+<point lat="42.4608" lon="-70.95432"/>
+<point lat="42.46049" lon="-70.95532"/>
+<point lat="42.46028" lon="-70.9559699"/>
+<point lat="42.4600099" lon="-70.9569"/>
+<point lat="42.45977" lon="-70.95769"/>
+<point lat="42.45967" lon="-70.95804"/>
+<point lat="42.45933" lon="-70.9591499"/>
+<point lat="42.45904" lon="-70.95998"/>
+<point lat="42.4588899" lon="-70.95988"/>
+<point lat="42.45905" lon="-70.95944"/>
+<point lat="42.45915" lon="-70.95919"/>
+<point lat="42.45934" lon="-70.9586"/>
+<point lat="42.4595399" lon="-70.9579399"/>
+<point lat="42.45973" lon="-70.95731"/>
+<point lat="42.45987" lon="-70.95681"/>
+<point lat="42.46018" lon="-70.9558"/>
+<point lat="42.46031" lon="-70.95532"/>
+<point lat="42.46038" lon="-70.95509"/>
+<point lat="42.46059" lon="-70.95446"/>
+<point lat="42.46063" lon="-70.9540899"/>
+</path>
+</route>
+</body>

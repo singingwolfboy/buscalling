@@ -1,0 +1,153 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:03:08 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1306
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Unitrans ASUCD/City of Davis 2011.">
+<route tag="E" title="E" color="60bb46" oppositeColor="000000" latMin="38.5437499" latMax="38.5602299" lonMin="-121.74982" lonMax="-121.73881">
+<stop tag="22273" title="Memorial Union (E Line) &amp; Howard Way (NB)" lat="38.5437599" lon="-121.74963" stopId="273"/>
+<stop tag="22014" title="B St &amp; 4th St  (SB)" lat="38.5450499" lon="-121.7451299" stopId="014"/>
+<stop tag="22016" title="3rd St &amp; C St (EB)" lat="38.5441299" lon="-121.74322" stopId="016"/>
+<stop tag="22018" title="3rd St &amp; E St (EB)" lat="38.5445099" lon="-121.74114" stopId="018"/>
+<stop tag="22020" title="F St &amp; 4th St  (NB)" lat="38.5462999" lon="-121.7406799" stopId="020"/>
+<stop tag="22027" title="F St &amp; 5th Street  (NB)" lat="38.5475799" lon="-121.7410499" stopId="027"/>
+<stop tag="22117" title="F St &amp; 8th St (NB)" lat="38.5516099" lon="-121.74199" stopId="117"/>
+<stop tag="22116" title="F St &amp; 12th St (NB)" lat="38.5552599" lon="-121.7426" stopId="116"/>
+<stop tag="22115" title="F St &amp; 14th St (NB)" lat="38.5571899" lon="-121.7433" stopId="115"/>
+<stop tag="22112" title="F St &amp; Covell Blvd (NB)" lat="38.5602299" lon="-121.74466" stopId="112"/>
+<stop tag="22099" title="J St &amp; Menlo Dr (SB)" lat="38.5591699" lon="-121.73908" stopId="099"/>
+<stop tag="22100" title="J St &amp; Drexel Dr (SB)" lat="38.55698" lon="-121.7407699" stopId="100"/>
+<stop tag="22101" title="J St &amp; Alice St (SB)" lat="38.55437" lon="-121.73991" stopId="101"/>
+<stop tag="22233" title="J St &amp; 8th St (SB)" lat="38.5520399" lon="-121.73881" stopId="233"/>
+<stop tag="22118" title="8th St &amp; G St (WB)" lat="38.5515899" lon="-121.74127" stopId="118"/>
+<stop tag="22122" title="F St &amp; 8th St  (SB)" lat="38.55092" lon="-121.7421499" stopId="122"/>
+<stop tag="22019" title="F St &amp; 4th St  (SB)" lat="38.54569" lon="-121.7407" stopId="019"/>
+<stop tag="22017" title="3rd St &amp; E St (WB)" lat="38.5445499" lon="-121.74169" stopId="017"/>
+<stop tag="22015" title="3rd St &amp; C St (WB)" lat="38.5442099" lon="-121.74391" stopId="015"/>
+<stop tag="22013" title="B St &amp; 4th St (NB)" lat="38.5452799" lon="-121.7449299" stopId="013"/>
+<stop tag="22167_ar" title="Memorial Union Terminal Arrival &amp; Howard Way (NB)" lat="38.5437499" lon="-121.74982"/>
+<direction tag="E_0_var0" title="to/from Memorial Union" name="to/from Memorial Union" useForUI="true">
+  <stop tag="22273" />
+  <stop tag="22014" />
+  <stop tag="22016" />
+  <stop tag="22018" />
+  <stop tag="22020" />
+  <stop tag="22027" />
+  <stop tag="22117" />
+  <stop tag="22116" />
+  <stop tag="22115" />
+  <stop tag="22112" />
+  <stop tag="22099" />
+  <stop tag="22100" />
+  <stop tag="22101" />
+  <stop tag="22233" />
+  <stop tag="22118" />
+  <stop tag="22122" />
+  <stop tag="22019" />
+  <stop tag="22017" />
+  <stop tag="22015" />
+  <stop tag="22013" />
+  <stop tag="22167_ar" />
+</direction>
+<path>
+<point lat="38.54455" lon="-121.74169"/>
+<point lat="38.54421" lon="-121.74391"/>
+<point lat="38.54395" lon="-121.74471"/>
+<point lat="38.54528" lon="-121.74493"/>
+<point lat="38.54634" lon="-121.74538"/>
+<point lat="38.54629" lon="-121.74551"/>
+<point lat="38.54624" lon="-121.74568"/>
+<point lat="38.54623" lon="-121.75083"/>
+<point lat="38.54395" lon="-121.75012"/>
+<point lat="38.54342" lon="-121.74997"/>
+<point lat="38.5435" lon="-121.74958"/>
+<point lat="38.54375" lon="-121.74982"/>
+</path>
+<path>
+<point lat="38.5516099" lon="-121.74199"/>
+<point lat="38.5550799" lon="-121.74271"/>
+<point lat="38.5552599" lon="-121.7426"/>
+<point lat="38.55708" lon="-121.74338"/>
+<point lat="38.55719" lon="-121.7433"/>
+<point lat="38.55798" lon="-121.74379"/>
+<point lat="38.55866" lon="-121.74432"/>
+<point lat="38.55909" lon="-121.7446"/>
+<point lat="38.55939" lon="-121.74472"/>
+<point lat="38.55964" lon="-121.74479"/>
+<point lat="38.55981" lon="-121.74479"/>
+<point lat="38.5601" lon="-121.74482"/>
+<point lat="38.56023" lon="-121.74466"/>
+</path>
+<path>
+<point lat="38.54451" lon="-121.74114"/>
+<point lat="38.5447" lon="-121.74037"/>
+<point lat="38.5463" lon="-121.74068"/>
+<point lat="38.54758" lon="-121.74105"/>
+<point lat="38.55013" lon="-121.74188"/>
+<point lat="38.5516099" lon="-121.74199"/>
+</path>
+<path>
+<point lat="38.56023" lon="-121.74466"/>
+<point lat="38.56075" lon="-121.74479"/>
+<point lat="38.5606099" lon="-121.7386"/>
+<point lat="38.56022" lon="-121.7386"/>
+<point lat="38.5598" lon="-121.73863"/>
+<point lat="38.5595799" lon="-121.7387"/>
+<point lat="38.55918" lon="-121.73896"/>
+<point lat="38.55917" lon="-121.73908"/>
+</path>
+<path>
+<point lat="38.55204" lon="-121.73881"/>
+<point lat="38.5518" lon="-121.73871"/>
+<point lat="38.55183" lon="-121.73936"/>
+<point lat="38.5518" lon="-121.73971"/>
+<point lat="38.55159" lon="-121.74127"/>
+<point lat="38.55139" lon="-121.74208"/>
+<point lat="38.55092" lon="-121.74215"/>
+<point lat="38.55013" lon="-121.74188"/>
+<point lat="38.54569" lon="-121.7407"/>
+<point lat="38.5447" lon="-121.74037"/>
+<point lat="38.54455" lon="-121.74169"/>
+</path>
+<path>
+<point lat="38.54376" lon="-121.74963"/>
+<point lat="38.5439999" lon="-121.74974"/>
+<point lat="38.54395" lon="-121.75012"/>
+<point lat="38.54623" lon="-121.75083"/>
+<point lat="38.54624" lon="-121.74568"/>
+<point lat="38.54629" lon="-121.74551"/>
+<point lat="38.54634" lon="-121.74538"/>
+<point lat="38.54505" lon="-121.74513"/>
+<point lat="38.54395" lon="-121.74471"/>
+<point lat="38.54413" lon="-121.74322"/>
+<point lat="38.54451" lon="-121.74114"/>
+</path>
+<path>
+<point lat="38.55917" lon="-121.73908"/>
+<point lat="38.5589299" lon="-121.73923"/>
+<point lat="38.55834" lon="-121.74015"/>
+<point lat="38.55821" lon="-121.7403"/>
+<point lat="38.55794" lon="-121.74046"/>
+<point lat="38.55785" lon="-121.74052"/>
+<point lat="38.5576" lon="-121.74061"/>
+<point lat="38.55736" lon="-121.74065"/>
+<point lat="38.55703" lon="-121.74064"/>
+<point lat="38.55698" lon="-121.74077"/>
+<point lat="38.55437" lon="-121.73991"/>
+<point lat="38.55317" lon="-121.73954"/>
+<point lat="38.553" lon="-121.73947"/>
+<point lat="38.55287" lon="-121.73939"/>
+<point lat="38.55267" lon="-121.73918"/>
+<point lat="38.5525499" lon="-121.73902"/>
+<point lat="38.55247" lon="-121.73893"/>
+<point lat="38.5522599" lon="-121.7388"/>
+<point lat="38.55204" lon="-121.73881"/>
+</path>
+</route>
+</body>

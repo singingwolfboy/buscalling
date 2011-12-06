@@ -1,0 +1,232 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:55:40 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1903
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Los Angeles Metro 2011.">
+<route tag="757" title="757 Hollywood - Crenshaw Station Via Western Av" color="990000" oppositeColor="ffffff" latMin="33.9253499" latMax="34.1018499" lonMin="-118.32635" lonMax="-118.30876">
+<stop tag="5712" title="Western / Venice" lat="34.0438299" lon="-118.3088699" stopId="5712"/>
+<stop tag="5760" title="Western / Florence" lat="33.97493" lon="-118.30882" stopId="5760"/>
+<stop tag="5775" title="Western / Wilshire" lat="34.0620499" lon="-118.30893" stopId="5775"/>
+<stop tag="15581" title="Western / Imperial" lat="33.9318799" lon="-118.30886" stopId="15581"/>
+<stop tag="19147" title="Western / Adams" lat="34.03284" lon="-118.30881" stopId="19147"/>
+<stop tag="141000" title="Hollywood / Western" lat="34.1018499" lon="-118.3096" stopId="141000"/>
+<stop tag="20400012_ar" title="Selma / Argyle" lat="34.0997199" lon="-118.32484"/>
+<stop tag="25400150" title="Crenshaw / Green Line Station" lat="33.9253499" lon="-118.32635" stopId="25400150"/>
+<stop tag="65300045" title="Western / Century" lat="33.9457399" lon="-118.30884" stopId="65300045"/>
+<stop tag="65300046" title="Western / Manchester" lat="33.9598199" lon="-118.30883" stopId="65300046"/>
+<stop tag="65300049" title="Western / Vernon" lat="34.00412" lon="-118.30877" stopId="65300049"/>
+<stop tag="65300050" title="Western / Martin Luther King Jr" lat="34.0112599" lon="-118.30876" stopId="65300050"/>
+<stop tag="65300051" title="Western / Jefferson" lat="34.0257699" lon="-118.30876" stopId="65300051"/>
+<stop tag="65300052" title="Western / Washington" lat="34.0403499" lon="-118.30885" stopId="65300052"/>
+<stop tag="65300053" title="Western / Pico" lat="34.0476099" lon="-118.3088799" stopId="65300053"/>
+<stop tag="65300055" title="Western / 3rd" lat="34.0687699" lon="-118.3089599" stopId="65300055"/>
+<stop tag="65300056" title="Western / Beverly" lat="34.07666" lon="-118.3089999" stopId="65300056"/>
+<stop tag="65300057" title="Western / Melrose" lat="34.0837999" lon="-118.30898" stopId="65300057"/>
+<stop tag="65300058" title="Western / Santa Monica" lat="34.09107" lon="-118.30902" stopId="65300058"/>
+<stop tag="65300059" title="Western / Sunset" lat="34.09851" lon="-118.3091" stopId="65300059"/>
+<stop tag="65300079" title="Western / Slauson" lat="33.9894099" lon="-118.30879" stopId="65300079"/>
+<stop tag="65300081" title="Western / Olympic" lat="34.0530499" lon="-118.3089099" stopId="65300081"/>
+<stop tag="12471" title="Western / Melrose" lat="34.0832799" lon="-118.3093" stopId="12471"/>
+<stop tag="14141" title="Western / Century" lat="33.9455999" lon="-118.3091499" stopId="14141"/>
+<stop tag="14143" title="Western / Florence" lat="33.9741499" lon="-118.3091299" stopId="14143"/>
+<stop tag="14145" title="Imperial / Western" lat="33.9310899" lon="-118.3093799" stopId="14145"/>
+<stop tag="15321" title="Western / Venice" lat="34.04315" lon="-118.30917" stopId="15321"/>
+<stop tag="19148" title="Western / Adams" lat="34.03256" lon="-118.3091199" stopId="19148"/>
+<stop tag="20400012" title="Selma / Argyle" lat="34.0997199" lon="-118.32484" stopId="20400012"/>
+<stop tag="25400150_ar" title="Crenshaw / Green Line Station" lat="33.9253499" lon="-118.32635"/>
+<stop tag="65300062" title="Western / Hollywood" lat="34.1014699" lon="-118.3094399" stopId="65300062"/>
+<stop tag="65300063" title="Western / Sunset" lat="34.09769" lon="-118.3093899" stopId="65300063"/>
+<stop tag="65300064" title="Western / Santa Monica" lat="34.09055" lon="-118.3093299" stopId="65300064"/>
+<stop tag="65300065" title="Western / Beverly" lat="34.07603" lon="-118.3093" stopId="65300065"/>
+<stop tag="65300066" title="Western / 3rd" lat="34.0685599" lon="-118.3092699" stopId="65300066"/>
+<stop tag="65300067" title="Western / Wilshire" lat="34.0618999" lon="-118.30924" stopId="65300067"/>
+<stop tag="65300068" title="Western / Olympic" lat="34.05241" lon="-118.3092099" stopId="65300068"/>
+<stop tag="65300069" title="Western / Pico" lat="34.0467899" lon="-118.3091799" stopId="65300069"/>
+<stop tag="65300070" title="Western / Washington" lat="34.0395299" lon="-118.30915" stopId="65300070"/>
+<stop tag="65300071" title="Western / Jefferson" lat="34.0259899" lon="-118.3090699" stopId="65300071"/>
+<stop tag="65300072" title="Western / Martin Luther King Jr" lat="34.01044" lon="-118.3090699" stopId="65300072"/>
+<stop tag="65300073" title="Western / Vernon" lat="34.0034699" lon="-118.3090699" stopId="65300073"/>
+<stop tag="65300075" title="Western / Slauson" lat="33.9887199" lon="-118.30909" stopId="65300075"/>
+<stop tag="65300076" title="Western / Manchester" lat="33.9597399" lon="-118.30912" stopId="65300076"/>
+<direction tag="757_55_0" title="North to Hollywood/Western Sta" name="North" useForUI="true">
+  <stop tag="25400150" />
+  <stop tag="15581" />
+  <stop tag="65300045" />
+  <stop tag="65300046" />
+  <stop tag="5760" />
+  <stop tag="65300079" />
+  <stop tag="65300049" />
+  <stop tag="65300050" />
+  <stop tag="65300051" />
+  <stop tag="19147" />
+  <stop tag="65300052" />
+  <stop tag="5712" />
+  <stop tag="65300053" />
+  <stop tag="65300081" />
+  <stop tag="5775" />
+  <stop tag="65300055" />
+  <stop tag="65300056" />
+  <stop tag="65300057" />
+  <stop tag="65300058" />
+  <stop tag="65300059" />
+  <stop tag="141000" />
+  <stop tag="20400012_ar" />
+</direction>
+<direction tag="757_56_1" title="South to Crenshaw Station" name="South" useForUI="true">
+  <stop tag="20400012" />
+  <stop tag="65300062" />
+  <stop tag="65300063" />
+  <stop tag="65300064" />
+  <stop tag="12471" />
+  <stop tag="65300065" />
+  <stop tag="65300066" />
+  <stop tag="65300067" />
+  <stop tag="65300068" />
+  <stop tag="65300069" />
+  <stop tag="15321" />
+  <stop tag="65300070" />
+  <stop tag="19148" />
+  <stop tag="65300071" />
+  <stop tag="65300072" />
+  <stop tag="65300073" />
+  <stop tag="65300075" />
+  <stop tag="14143" />
+  <stop tag="65300076" />
+  <stop tag="14141" />
+  <stop tag="14145" />
+  <stop tag="25400150_ar" />
+</direction>
+<path>
+<point lat="34.03953" lon="-118.30915"/>
+<point lat="34.0370599" lon="-118.30899"/>
+<point lat="34.0325599" lon="-118.30912"/>
+<point lat="34.02599" lon="-118.30907"/>
+<point lat="34.01844" lon="-118.30891"/>
+<point lat="34.01833" lon="-118.3089"/>
+<point lat="34.01085" lon="-118.30891"/>
+<point lat="34.01044" lon="-118.30907"/>
+<point lat="34.00347" lon="-118.30907"/>
+<point lat="33.9968999" lon="-118.30894"/>
+<point lat="33.99645" lon="-118.30893"/>
+<point lat="33.98872" lon="-118.30909"/>
+</path>
+<path>
+<point lat="33.9597399" lon="-118.30912"/>
+<point lat="33.94867" lon="-118.30901"/>
+<point lat="33.9456" lon="-118.30915"/>
+<point lat="33.93097" lon="-118.30905"/>
+<point lat="33.93109" lon="-118.30938"/>
+<point lat="33.93097" lon="-118.31121"/>
+<point lat="33.93096" lon="-118.31778"/>
+<point lat="33.9236999" lon="-118.3178"/>
+<point lat="33.92372" lon="-118.32571"/>
+<point lat="33.92371" lon="-118.32603"/>
+<point lat="33.92371" lon="-118.3265"/>
+<point lat="33.92535" lon="-118.32635"/>
+</path>
+<path>
+<point lat="33.98941" lon="-118.30879"/>
+<point lat="33.99645" lon="-118.30893"/>
+<point lat="34.00412" lon="-118.30877"/>
+<point lat="34.01085" lon="-118.30891"/>
+<point lat="34.01126" lon="-118.30876"/>
+<point lat="34.01833" lon="-118.3089"/>
+<point lat="34.02577" lon="-118.30876"/>
+<point lat="34.03284" lon="-118.30881"/>
+<point lat="34.0370599" lon="-118.30899"/>
+<point lat="34.0403499" lon="-118.30885"/>
+</path>
+<path>
+<point lat="34.09972" lon="-118.32484"/>
+<point lat="34.0998" lon="-118.32374"/>
+<point lat="34.10164" lon="-118.32375"/>
+<point lat="34.10168" lon="-118.31742"/>
+<point lat="34.10169" lon="-118.3171"/>
+<point lat="34.10169" lon="-118.31652"/>
+<point lat="34.10168" lon="-118.31624"/>
+<point lat="34.10169" lon="-118.31616"/>
+<point lat="34.10173" lon="-118.30927"/>
+<point lat="34.10147" lon="-118.30944"/>
+<point lat="34.10052" lon="-118.30927"/>
+<point lat="34.09769" lon="-118.30939"/>
+<point lat="34.0939" lon="-118.30922"/>
+<point lat="34.0938" lon="-118.30921"/>
+<point lat="34.09078" lon="-118.30917"/>
+<point lat="34.09055" lon="-118.30933"/>
+<point lat="34.08622" lon="-118.30916"/>
+<point lat="34.08328" lon="-118.3093"/>
+<point lat="34.07603" lon="-118.3093"/>
+<point lat="34.06856" lon="-118.30927"/>
+<point lat="34.0619" lon="-118.30924"/>
+</path>
+<path>
+<point lat="33.92535" lon="-118.32635"/>
+<point lat="33.92646" lon="-118.3265"/>
+<point lat="33.93097" lon="-118.3265"/>
+<point lat="33.93097" lon="-118.3113"/>
+<point lat="33.93097" lon="-118.30905"/>
+<point lat="33.93188" lon="-118.30886"/>
+<point lat="33.94574" lon="-118.30884"/>
+<point lat="33.95982" lon="-118.30883"/>
+</path>
+<path>
+<point lat="34.0403499" lon="-118.30885"/>
+<point lat="34.04383" lon="-118.30887"/>
+<point lat="34.04761" lon="-118.30888"/>
+<point lat="34.05305" lon="-118.30891"/>
+<point lat="34.0617" lon="-118.30908"/>
+<point lat="34.06205" lon="-118.30893"/>
+</path>
+<path>
+<point lat="34.06205" lon="-118.30893"/>
+<point lat="34.06877" lon="-118.30896"/>
+<point lat="34.0766599" lon="-118.309"/>
+<point lat="34.0837999" lon="-118.30898"/>
+<point lat="34.09078" lon="-118.30917"/>
+<point lat="34.09107" lon="-118.30902"/>
+<point lat="34.0938" lon="-118.30921"/>
+<point lat="34.09851" lon="-118.3091"/>
+<point lat="34.10173" lon="-118.30927"/>
+<point lat="34.10185" lon="-118.3096"/>
+<point lat="34.1017" lon="-118.31364"/>
+<point lat="34.10169" lon="-118.31616"/>
+<point lat="34.10168" lon="-118.31624"/>
+<point lat="34.10169" lon="-118.31652"/>
+<point lat="34.10169" lon="-118.3171"/>
+<point lat="34.10168" lon="-118.31742"/>
+<point lat="34.10163" lon="-118.3252"/>
+<point lat="34.1002" lon="-118.32516"/>
+<point lat="34.0998" lon="-118.32517"/>
+<point lat="34.09972" lon="-118.32484"/>
+</path>
+<path>
+<point lat="34.0619" lon="-118.30924"/>
+<point lat="34.0617" lon="-118.30908"/>
+<point lat="34.05241" lon="-118.30921"/>
+<point lat="34.04817" lon="-118.30904"/>
+<point lat="34.04679" lon="-118.30918"/>
+<point lat="34.04315" lon="-118.30917"/>
+<point lat="34.03953" lon="-118.30915"/>
+</path>
+<path>
+<point lat="33.95982" lon="-118.30883"/>
+<point lat="33.97493" lon="-118.30882"/>
+<point lat="33.98233" lon="-118.30895"/>
+<point lat="33.98941" lon="-118.30879"/>
+</path>
+<path>
+<point lat="33.98872" lon="-118.30909"/>
+<point lat="33.98237" lon="-118.30896"/>
+<point lat="33.98233" lon="-118.30895"/>
+<point lat="33.97415" lon="-118.30913"/>
+<point lat="33.9597399" lon="-118.30912"/>
+</path>
+</route>
+</body>

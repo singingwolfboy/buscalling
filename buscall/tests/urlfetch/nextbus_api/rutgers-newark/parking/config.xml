@@ -1,0 +1,149 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:59:10 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1074
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Rutgers Univ. Newark College Town Shuttle 2011.">
+<route tag="parking" title="Intercampus Shuttle" shortTitle="IntCamp Shuttle" color="50a6c2" oppositeColor="000000" latMin="40.7385906" latMax="40.7469145" lonMin="-74.1751417" lonMax="-74.1710696">
+<stop tag="eaglpklt" title="Eagle Street Parking Lot" lat="40.74616" lon="-74.17256"/>
+<stop tag="univ85" title="85 University Ave - to Boyden Hall" lat="40.7446931" lon="-74.172433"/>
+<stop tag="boyd" title="Boyden Hall" lat="40.74094" lon="-74.17427"/>
+<stop tag="subray" title="Subway @ Raymond Blvd" lat="40.7385906" lon="-74.1751417"/>
+<stop tag="clj" title="CLJ" lat="40.7407092" lon="-74.1725004"/>
+<stop tag="washpark" title="1 Washington Park" lat="40.74525" lon="-74.17126"/>
+<stop tag="broastat2" title="Broad Street Station 2" lat="40.7469145" lon="-74.1710696"/>
+<stop tag="univ85_b" title="85 University Ave - to Eagle St Prk Lot" lat="40.7447033" lon="-74.1724283"/>
+<direction tag="loop" title="Loop" name="" useForUI="true">
+  <stop tag="eaglpklt" />
+  <stop tag="univ85" />
+  <stop tag="boyd" />
+  <stop tag="subray" />
+  <stop tag="clj" />
+  <stop tag="washpark" />
+  <stop tag="broastat2" />
+  <stop tag="univ85_b" />
+</direction>
+<path>
+<point lat="40.74525" lon="-74.17126"/>
+<point lat="40.74573" lon="-74.1709599"/>
+<point lat="40.74581" lon="-74.17093"/>
+<point lat="40.7458699" lon="-74.17093"/>
+<point lat="40.7459" lon="-74.1709599"/>
+<point lat="40.74593" lon="-74.171"/>
+<point lat="40.74622" lon="-74.17161"/>
+<point lat="40.74622" lon="-74.17166"/>
+<point lat="40.7447" lon="-74.17243"/>
+<point lat="40.74445" lon="-74.17254"/>
+<point lat="40.74442" lon="-74.17258"/>
+<point lat="40.74442" lon="-74.17263"/>
+<point lat="40.74442" lon="-74.17268"/>
+<point lat="40.74469" lon="-74.17336"/>
+<point lat="40.74474" lon="-74.1734"/>
+<point lat="40.74478" lon="-74.1734199"/>
+<point lat="40.74484" lon="-74.17341"/>
+<point lat="40.7460499" lon="-74.17263"/>
+</path>
+<path>
+<point lat="40.74094" lon="-74.17427"/>
+<point lat="40.74037" lon="-74.1745399"/>
+<point lat="40.7398499" lon="-74.17479"/>
+<point lat="40.73907" lon="-74.17524"/>
+<point lat="40.73887" lon="-74.17536"/>
+<point lat="40.73881" lon="-74.17537"/>
+<point lat="40.73877" lon="-74.17538"/>
+<point lat="40.7387299" lon="-74.17537"/>
+<point lat="40.73868" lon="-74.17534"/>
+<point lat="40.7386399" lon="-74.17528"/>
+<point lat="40.73859" lon="-74.17514"/>
+<point lat="40.73823" lon="-74.174"/>
+<point lat="40.73823" lon="-74.17391"/>
+<point lat="40.73827" lon="-74.17383"/>
+<point lat="40.73833" lon="-74.17377"/>
+<point lat="40.73841" lon="-74.17371"/>
+<point lat="40.73934" lon="-74.17323"/>
+<point lat="40.73987" lon="-74.17296"/>
+<point lat="40.74071" lon="-74.1725"/>
+<point lat="40.74131" lon="-74.17216"/>
+<point lat="40.74143" lon="-74.1720799"/>
+<point lat="40.74152" lon="-74.1719899"/>
+<point lat="40.74194" lon="-74.17175"/>
+<point lat="40.74222" lon="-74.17158"/>
+<point lat="40.74279" lon="-74.17123"/>
+<point lat="40.74353" lon="-74.17074"/>
+<point lat="40.74358" lon="-74.17073"/>
+<point lat="40.74363" lon="-74.17073"/>
+<point lat="40.74368" lon="-74.17075"/>
+<point lat="40.74371" lon="-74.17079"/>
+<point lat="40.74375" lon="-74.17086"/>
+<point lat="40.74406" lon="-74.17173"/>
+<point lat="40.7441" lon="-74.1718099"/>
+<point lat="40.74413" lon="-74.17185"/>
+<point lat="40.74418" lon="-74.17187"/>
+<point lat="40.74422" lon="-74.17187"/>
+<point lat="40.74428" lon="-74.17186"/>
+<point lat="40.74513" lon="-74.17133"/>
+</path>
+<path>
+<point lat="40.74124" lon="-74.17412"/>
+<point lat="40.74094" lon="-74.17427"/>
+</path>
+<path>
+<point lat="40.74616" lon="-74.17256"/>
+<point lat="40.74651" lon="-74.17232"/>
+<point lat="40.7465199" lon="-74.17228"/>
+<point lat="40.74651" lon="-74.17222"/>
+<point lat="40.74628" lon="-74.1717"/>
+<point lat="40.74625" lon="-74.17167"/>
+<point lat="40.74622" lon="-74.17166"/>
+<point lat="40.7447" lon="-74.17243"/>
+<point lat="40.74439" lon="-74.1725699"/>
+<point lat="40.74304" lon="-74.17324"/>
+<point lat="40.74271" lon="-74.1734"/>
+<point lat="40.74196" lon="-74.17377"/>
+<point lat="40.74124" lon="-74.17412"/>
+</path>
+<path>
+<point lat="40.74513" lon="-74.17133"/>
+<point lat="40.74525" lon="-74.17126"/>
+</path>
+<path>
+<point lat="40.74525" lon="-74.17126"/>
+<point lat="40.74573" lon="-74.1709599"/>
+<point lat="40.74581" lon="-74.17089"/>
+<point lat="40.7458" lon="-74.17081"/>
+<point lat="40.74555" lon="-74.17028"/>
+<point lat="40.74555" lon="-74.17013"/>
+<point lat="40.74557" lon="-74.17003"/>
+<point lat="40.7456" lon="-74.17"/>
+<point lat="40.74644" lon="-74.17022"/>
+<point lat="40.74651" lon="-74.17025"/>
+<point lat="40.74653" lon="-74.1703"/>
+<point lat="40.74656" lon="-74.1704"/>
+<point lat="40.74692" lon="-74.17108"/>
+<point lat="40.74696" lon="-74.1712"/>
+<point lat="40.74696" lon="-74.17126"/>
+<point lat="40.74693" lon="-74.17131"/>
+<point lat="40.74622" lon="-74.17166"/>
+<point lat="40.7447" lon="-74.17243"/>
+<point lat="40.74445" lon="-74.17254"/>
+<point lat="40.74442" lon="-74.17258"/>
+<point lat="40.74442" lon="-74.17263"/>
+<point lat="40.74442" lon="-74.17268"/>
+<point lat="40.74469" lon="-74.17336"/>
+<point lat="40.74474" lon="-74.1734"/>
+<point lat="40.74478" lon="-74.1734199"/>
+<point lat="40.74484" lon="-74.17341"/>
+<point lat="40.7460499" lon="-74.17263"/>
+</path>
+<path>
+<point lat="40.7460499" lon="-74.17263"/>
+<point lat="40.74616" lon="-74.17256"/>
+</path>
+</route>
+</body>

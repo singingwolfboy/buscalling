@@ -1,0 +1,159 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:53:05 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1512
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Gold Coast Transit 2011.">
+<route tag="9" title="9 Lemonwood/Gisler" color="ff00ff" oppositeColor="ffffff" latMin="34.1732" latMax="34.1863852" lonMin="-119.1813402" lonMax="-119.14905">
+<stop tag="39cente" title="Center Point Mall - C St Terminal - Linden" lat="34.17582" lon="-119.18117" stopId="33100"/>
+<stop tag="savlaur" title="Saviers Rd at Laurel" lat="34.17728" lon="-119.1775352" stopId="34600"/>
+<stop tag="savguav" title="Saviers Rd at Guava" lat="34.1809906" lon="-119.17753" stopId="34601"/>
+<stop tag="savelm" title="Saviers Rd at Elm" lat="34.1827149" lon="-119.17753" stopId="34602"/>
+<stop tag="savash" title="Saviers Rd at Ash" lat="34.1860491" lon="-119.1773701" stopId="34603"/>
+<stop tag="ashox" title="Ash St at Oxnard" lat="34.1863852" lon="-119.1735425" stopId="34604"/>
+<stop tag="oxndate" title="Oxnard at Date" lat="34.1841083" lon="-119.1706588" stopId="34605"/>
+<stop tag="giselm" title="Gisler at Elm" lat="34.1826703" lon="-119.17141" stopId="30839"/>
+<stop tag="gisguav" title="Gisler at Guava" lat="34.1809681" lon="-119.1715943" stopId="34606"/>
+<stop tag="gisisis" title="Gisler at Isis" lat="34.1794182" lon="-119.1723105" stopId="34607"/>
+<stop tag="gislaur" title="Gisler at Laurel" lat="34.1772536" lon="-119.1722604" stopId="34608"/>
+<stop tag="lausan" title="Laurel St at San Marino" lat="34.1773342" lon="-119.1765965" stopId="34609"/>
+<stop tag="changis_e" title="Channel Islands Blvd at Gisler-Cloyne" lat="34.17331" lon="-119.172324" stopId="30848"/>
+<stop tag="chanalb_e" title="Channel Islands Blvd at Albany" lat="34.1732699" lon="-119.167897" stopId="34711"/>
+<stop tag="chancon_e" title="Channel Islands Blvd at Concord" lat="34.1732399" lon="-119.1647348" stopId="34712"/>
+<stop tag="rosechan" title="Rose at Channel Islands Blvd" lat="34.1732" lon="-119.16047" stopId="33107"/>
+<stop tag="iveschur" title="Ives Ave at Churchill" lat="34.1794334" lon="-119.1573548" stopId="34700"/>
+<stop tag="22sanma" title="San Mateo Pl at Beaufort" lat="34.17786" lon="-119.1562148" stopId="34410"/>
+<stop tag="23sanma" title="San Mateo Pl at Farragut - Lemonwood School" lat="34.1778501" lon="-119.1526673" stopId="34411"/>
+<stop tag="24sanma" title="San Mateo Pl at Kepler" lat="34.177839" lon="-119.1506214" stopId="34412"/>
+<stop tag="25eldor" title="El Dorado Ave at Marin" lat="34.1770122" lon="-119.14905" stopId="34413"/>
+<stop tag="26eldor" title="El Dorado Ave at Channel Islands" lat="34.1735934" lon="-119.1490795" stopId="34414"/>
+<stop tag="27chann" title="Channel Islands Blvd at Eden" lat="34.1732108" lon="-119.152869" stopId="34415"/>
+<stop tag="chanrose" title="Channel Islands Blvd at Rose" lat="34.17331" lon="-119.1604689" stopId="34701"/>
+<stop tag="chanstra" title="Channel Islands Blvd at Stratham" lat="34.1733445" lon="-119.1659555" stopId="34702"/>
+<stop tag="changis" title="Channel Islands Blvd at Gisler" lat="34.1734007" lon="-119.1728958" stopId="34703"/>
+<stop tag="chansan" title="Channel Islands Blvd at San Marino" lat="34.1734308" lon="-119.1764959" stopId="34704"/>
+<direction tag="agl" title="To Ash/Gisler Loop" name="" useForUI="true">
+  <stop tag="39cente" />
+  <stop tag="savlaur" />
+  <stop tag="savguav" />
+  <stop tag="savelm" />
+  <stop tag="savash" />
+  <stop tag="ashox" />
+  <stop tag="oxndate" />
+  <stop tag="giselm" />
+  <stop tag="gisguav" />
+  <stop tag="gisisis" />
+  <stop tag="gislaur" />
+  <stop tag="lausan" />
+</direction>
+<direction tag="lem" title="Lemonwood Loop" name="" useForUI="true">
+  <stop tag="39cente" />
+  <stop tag="changis_e" />
+  <stop tag="chanalb_e" />
+  <stop tag="chancon_e" />
+  <stop tag="rosechan" />
+  <stop tag="iveschur" />
+  <stop tag="22sanma" />
+  <stop tag="23sanma" />
+  <stop tag="24sanma" />
+  <stop tag="25eldor" />
+  <stop tag="26eldor" />
+  <stop tag="27chann" />
+  <stop tag="chanrose" />
+  <stop tag="chanstra" />
+  <stop tag="changis" />
+  <stop tag="chansan" />
+</direction>
+<path>
+<point lat="34.17943" lon="-119.15704"/>
+<point lat="34.17943" lon="-119.1568"/>
+<point lat="34.17786" lon="-119.15679"/>
+<point lat="34.17786" lon="-119.15449"/>
+<point lat="34.17783" lon="-119.14896"/>
+<point lat="34.17702" lon="-119.14905"/>
+<point lat="34.17354" lon="-119.14908"/>
+<point lat="34.17347" lon="-119.14907"/>
+</path>
+<path>
+<point lat="34.1732" lon="-119.16047"/>
+<point lat="34.1732" lon="-119.16017"/>
+<point lat="34.17416" lon="-119.15992"/>
+<point lat="34.17945" lon="-119.15967"/>
+<point lat="34.17944" lon="-119.15796"/>
+</path>
+<path>
+<point lat="34.17582" lon="-119.18117"/>
+<point lat="34.17733" lon="-119.18129"/>
+<point lat="34.17728" lon="-119.17753"/>
+<point lat="34.18605" lon="-119.17753"/>
+<point lat="34.18603" lon="-119.17396"/>
+<point lat="34.18643" lon="-119.17349"/>
+<point lat="34.18413" lon="-119.17063"/>
+<point lat="34.18407" lon="-119.17071"/>
+</path>
+<path>
+<point lat="34.17573" lon="-119.18134"/>
+<point lat="34.17537" lon="-119.18131"/>
+</path>
+<path>
+<point lat="34.17331" lon="-119.16055"/>
+<point lat="34.1733199" lon="-119.16203"/>
+<point lat="34.17335" lon="-119.16683"/>
+<point lat="34.17344" lon="-119.17759"/>
+<point lat="34.17345" lon="-119.17916"/>
+<point lat="34.1738" lon="-119.181"/>
+<point lat="34.1739" lon="-119.18107"/>
+<point lat="34.17539" lon="-119.18113"/>
+</path>
+<path>
+<point lat="34.17347" lon="-119.14907"/>
+<point lat="34.17324" lon="-119.14906"/>
+<point lat="34.1732" lon="-119.15429"/>
+<point lat="34.17282" lon="-119.1547"/>
+<point lat="34.17239" lon="-119.15836"/>
+<point lat="34.17329" lon="-119.15893"/>
+<point lat="34.17331" lon="-119.16016"/>
+<point lat="34.17331" lon="-119.16055"/>
+</path>
+<path>
+<point lat="34.17944" lon="-119.15796"/>
+<point lat="34.17943" lon="-119.15704"/>
+</path>
+<path>
+<point lat="34.17537" lon="-119.18131"/>
+<point lat="34.17488" lon="-119.18126"/>
+<point lat="34.1738" lon="-119.18117"/>
+<point lat="34.17359" lon="-119.18015"/>
+<point lat="34.17337" lon="-119.17917"/>
+<point lat="34.17331" lon="-119.17232"/>
+<point lat="34.17327" lon="-119.1679"/>
+<point lat="34.17324" lon="-119.16474"/>
+<point lat="34.1732" lon="-119.16047"/>
+</path>
+<path>
+<point lat="34.17539" lon="-119.18113"/>
+<point lat="34.17582" lon="-119.18117"/>
+</path>
+<path>
+<point lat="34.18407" lon="-119.17071"/>
+<point lat="34.1834599" lon="-119.17145"/>
+<point lat="34.18267" lon="-119.17141"/>
+<point lat="34.18151" lon="-119.17134"/>
+<point lat="34.18103" lon="-119.17154"/>
+<point lat="34.18037" lon="-119.17212"/>
+<point lat="34.17991" lon="-119.1723"/>
+<point lat="34.17898" lon="-119.17232"/>
+<point lat="34.17724" lon="-119.17226"/>
+<point lat="34.17727" lon="-119.17384"/>
+<point lat="34.17736" lon="-119.1777"/>
+<point lat="34.17741" lon="-119.18147"/>
+<point lat="34.17573" lon="-119.18134"/>
+</path>
+</route>
+</body>

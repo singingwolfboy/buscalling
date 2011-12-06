@@ -1,0 +1,151 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:00:09 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1518
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Societe de transport de Laval 2011.">
+<route tag="2O" title="2 Direction M&#233;tro Montmorency" color="ff9900" oppositeColor="000000" latMin="45.5561299" latMax="45.5701499" lonMin="-73.72039" lonMax="-73.6697">
+<stop tag="CP40002" title="Terminus Henri-Bourassa Quai:6 [40002]" lat="45.5561299" lon="-73.6697" stopId="40002"/>
+<stop tag="42794" title="Saint-Hubert / De Quimper [42794]" lat="45.56095" lon="-73.67968" stopId="42794"/>
+<stop tag="CP47002" title="M&#233;tro Cartier Quai:2 [47002]" lat="45.5599599" lon="-73.6825" stopId="47002"/>
+<stop tag="41842" title="Des Laurentides / L&#233;vesque [41842]" lat="45.56156" lon="-73.68204" stopId="41842"/>
+<stop tag="41865" title="Des Laurentides / Grenon [41865]" lat="45.56356" lon="-73.68434" stopId="41865"/>
+<stop tag="41887" title="Des Laurentides / Tourangeau [41887]" lat="45.56477" lon="-73.68566" stopId="41887"/>
+<stop tag="41796" title="Des Laurentides / Meunier [41796]" lat="45.5669699" lon="-73.6881299" stopId="41796"/>
+<stop tag="41798" title="Des Laurentides / Proulx [41798]" lat="45.5686399" lon="-73.6899799" stopId="41798"/>
+<stop tag="41340" title="De La Concorde / Des Laurentides [41340]" lat="45.5701499" lon="-73.69287" stopId="41340"/>
+<stop tag="41337" title="De La Concorde / De L&apos;&#233;toile [41337]" lat="45.56893" lon="-73.6951299" stopId="41337"/>
+<stop tag="41335" title="De La Concorde / 6e Avenue [41335]" lat="45.5679699" lon="-73.69686" stopId="41335"/>
+<stop tag="41333" title="De La Concorde / 15e Rue [41333]" lat="45.56723" lon="-73.6981499" stopId="41333"/>
+<stop tag="41330" title="De La Concorde / 10e Avenue [41330]" lat="45.5661899" lon="-73.70002" stopId="41330"/>
+<stop tag="41328" title="De La Concorde / 12e Avenue [41328]" lat="45.5655" lon="-73.7013599" stopId="41328"/>
+<stop tag="41326" title="De La Concorde / De Cluny [41326]" lat="45.5639299" lon="-73.70447" stopId="41326"/>
+<stop tag="41324" title="De La Concorde / De Roanne [41324]" lat="45.56289" lon="-73.7065499" stopId="41324"/>
+<stop tag="CP41322" title="De La Concorde / Amp&#232;re [41322]" lat="45.5618799" lon="-73.70857" stopId="41322"/>
+<stop tag="41391" title="De La Concorde / Laval [41391]" lat="45.5597999" lon="-73.71266" stopId="41391"/>
+<stop tag="41370" title="De La Concorde / Deauville [41370]" lat="45.5587099" lon="-73.71476" stopId="41370"/>
+<stop tag="41351" title="De La Concorde / Face &#224; La Maison Des Arts [41351]" lat="45.55787" lon="-73.7163199" stopId="41351"/>
+<stop tag="CP48102" title="M&#233;tro Montmorency [48102]" lat="45.5582899" lon="-73.72039" stopId="48102"/>
+<direction tag="2O_1_var0" title="Ouest" name="Ouest" useForUI="true">
+  <stop tag="CP40002" />
+  <stop tag="42794" />
+  <stop tag="CP47002" />
+  <stop tag="41842" />
+  <stop tag="41865" />
+  <stop tag="41887" />
+  <stop tag="41796" />
+  <stop tag="41798" />
+  <stop tag="41340" />
+  <stop tag="41337" />
+  <stop tag="41335" />
+  <stop tag="41333" />
+  <stop tag="41330" />
+  <stop tag="41328" />
+  <stop tag="41326" />
+  <stop tag="41324" />
+  <stop tag="CP41322" />
+  <stop tag="41391" />
+  <stop tag="41370" />
+  <stop tag="41351" />
+  <stop tag="CP48102" />
+</direction>
+<path>
+<point lat="45.55613" lon="-73.6697"/>
+<point lat="45.55597" lon="-73.6696"/>
+<point lat="45.55577" lon="-73.6688999"/>
+<point lat="45.55615" lon="-73.66865"/>
+<point lat="45.55662" lon="-73.67029"/>
+<point lat="45.5565" lon="-73.67059"/>
+<point lat="45.55639" lon="-73.67082"/>
+<point lat="45.55623" lon="-73.6717199"/>
+<point lat="45.5564899" lon="-73.6725699"/>
+<point lat="45.55656" lon="-73.67277"/>
+<point lat="45.55664" lon="-73.67296"/>
+<point lat="45.55795" lon="-73.67753"/>
+<point lat="45.55801" lon="-73.6777"/>
+<point lat="45.55812" lon="-73.6781"/>
+<point lat="45.55823" lon="-73.6784"/>
+<point lat="45.55844" lon="-73.6788"/>
+<point lat="45.5585499" lon="-73.67894"/>
+<point lat="45.55872" lon="-73.67913"/>
+<point lat="45.55909" lon="-73.67948"/>
+<point lat="45.55954" lon="-73.67996"/>
+<point lat="45.55963" lon="-73.67998"/>
+<point lat="45.55977" lon="-73.67997"/>
+<point lat="45.55988" lon="-73.67992"/>
+<point lat="45.56001" lon="-73.67975"/>
+<point lat="45.56022" lon="-73.67929"/>
+<point lat="45.56033" lon="-73.67921"/>
+<point lat="45.5604299" lon="-73.6792"/>
+<point lat="45.56095" lon="-73.67968"/>
+<point lat="45.56168" lon="-73.68065"/>
+<point lat="45.5604299" lon="-73.68313"/>
+<point lat="45.56033" lon="-73.68301"/>
+<point lat="45.56017" lon="-73.68286"/>
+<point lat="45.55982" lon="-73.68356"/>
+<point lat="45.55977" lon="-73.68361"/>
+<point lat="45.55969" lon="-73.68359"/>
+<point lat="45.55963" lon="-73.68355"/>
+<point lat="45.55961" lon="-73.68344"/>
+<point lat="45.55963" lon="-73.6833"/>
+<point lat="45.56001" lon="-73.68256"/>
+<point lat="45.5599599" lon="-73.6825"/>
+</path>
+<path>
+<point lat="45.56188" lon="-73.70857"/>
+<point lat="45.5598" lon="-73.71266"/>
+<point lat="45.55963" lon="-73.7128199"/>
+<point lat="45.55957" lon="-73.71296"/>
+<point lat="45.55871" lon="-73.71476"/>
+<point lat="45.55787" lon="-73.71632"/>
+<point lat="45.55695" lon="-73.71787"/>
+<point lat="45.55726" lon="-73.71813"/>
+<point lat="45.55737" lon="-73.71824"/>
+<point lat="45.55748" lon="-73.7183699"/>
+<point lat="45.55872" lon="-73.71957"/>
+<point lat="45.55854" lon="-73.71997"/>
+<point lat="45.55856" lon="-73.72012"/>
+<point lat="45.55829" lon="-73.72039"/>
+</path>
+<path>
+<point lat="45.5599599" lon="-73.6825"/>
+<point lat="45.56011" lon="-73.6825"/>
+<point lat="45.56018" lon="-73.68255"/>
+<point lat="45.56023" lon="-73.68264"/>
+<point lat="45.56021" lon="-73.68275"/>
+<point lat="45.56017" lon="-73.68286"/>
+<point lat="45.56033" lon="-73.68301"/>
+<point lat="45.56068" lon="-73.68234"/>
+<point lat="45.56073" lon="-73.68223"/>
+<point lat="45.56106" lon="-73.68159"/>
+<point lat="45.56115" lon="-73.68171"/>
+<point lat="45.56156" lon="-73.68204"/>
+<point lat="45.56172" lon="-73.68236"/>
+<point lat="45.5618" lon="-73.6825"/>
+<point lat="45.56351" lon="-73.68443"/>
+<point lat="45.56356" lon="-73.68434"/>
+<point lat="45.56477" lon="-73.68566"/>
+<point lat="45.56697" lon="-73.68813"/>
+<point lat="45.56864" lon="-73.68998"/>
+<point lat="45.57047" lon="-73.69215"/>
+<point lat="45.57015" lon="-73.69287"/>
+<point lat="45.56893" lon="-73.69513"/>
+<point lat="45.56797" lon="-73.69686"/>
+<point lat="45.56723" lon="-73.69815"/>
+<point lat="45.56619" lon="-73.70002"/>
+<point lat="45.56608" lon="-73.70005"/>
+<point lat="45.5655" lon="-73.7013599"/>
+<point lat="45.56388" lon="-73.70441"/>
+<point lat="45.56393" lon="-73.70447"/>
+<point lat="45.56377" lon="-73.7046"/>
+<point lat="45.56289" lon="-73.7065499"/>
+<point lat="45.56188" lon="-73.70857"/>
+</path>
+</route>
+</body>

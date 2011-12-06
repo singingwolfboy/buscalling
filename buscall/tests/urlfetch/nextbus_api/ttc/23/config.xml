@@ -1,0 +1,231 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:09 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 2006
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="23" title="23-Dawes" color="ff0000" oppositeColor="ffffff" latMin="43.68823" latMax="43.70875" lonMin="-79.307" lonMax="-79.29544">
+<stop tag="7805" title="Rexleigh Drive At St Clair Avenue East" lat="43.7064799" lon="-79.307" stopId="3094"/>
+<stop tag="7512" title="St Clair Avenue East At Glen Eden Crescent" lat="43.7068699" lon="-79.30596" stopId="3118"/>
+<stop tag="9711" title="St Clair Avenue East At Plaxton Drive" lat="43.70755" lon="-79.3027799" stopId="3120"/>
+<stop tag="5884" title="St Clair Avenue East At Squires Avenue" lat="43.70799" lon="-79.3008799" stopId="3121"/>
+<stop tag="6867" title="St Clair Avenue East At Glenburn Avenue" lat="43.7085399" lon="-79.29845" stopId="3119"/>
+<stop tag="813" title="St Clair Avenue East At Victoria Park Avenue" lat="43.70875" lon="-79.2964299" stopId="3122"/>
+<stop tag="2945" title="Dawes Road At Ferris Road Farside" lat="43.7058899" lon="-79.29566" stopId="1892"/>
+<stop tag="5986" title="Dawes Road At Beth Street" lat="43.7044399" lon="-79.2965" stopId="1885"/>
+<stop tag="9192" title="Dawes Road At Gower Street" lat="43.7023899" lon="-79.2970299" stopId="1897"/>
+<stop tag="7251" title="Dawes Road At Donora Drive Farside" lat="43.7002099" lon="-79.29706" stopId="1891"/>
+<stop tag="6648" title="Dawes Road At Park Vista Farside" lat="43.698" lon="-79.2971699" stopId="13346"/>
+<stop tag="7128" title="Dawes Road At Crescent Town Road" lat="43.6967199" lon="-79.29733" stopId="11256"/>
+<stop tag="2292" title="Dawes Road At Goodwood Park Court" lat="43.69526" lon="-79.2974899" stopId="1895"/>
+<stop tag="2622" title="Dawes Road At Secord Avenue" lat="43.69366" lon="-79.29731" stopId="1901"/>
+<stop tag="1406" title="Dawes Road At Dentonia Park Avenue" lat="43.69225" lon="-79.29714" stopId="1889"/>
+<stop tag="4476" title="Dawes Road At Danforth Avenue" lat="43.68968" lon="-79.29688" stopId="1887"/>
+<stop tag="7627" title="2662 Danforth Avenue" lat="43.6887999" lon="-79.29932" stopId="13464"/>
+<stop tag="14255_ar" title="Main Street Station" lat="43.6890399" lon="-79.30193"/>
+<stop tag="14255" title="Main Street Station" lat="43.6890399" lon="-79.30193" stopId="14736"/>
+<stop tag="9308" title="Danforth Avenue At Main Street Farside" lat="43.68823" lon="-79.3011099" stopId="0901"/>
+<stop tag="4377" title="2681 Danforth Avenue" lat="43.68873" lon="-79.2989699" stopId="0875"/>
+<stop tag="3851" title="Dawes Road At Danforth Avenue Farside" lat="43.6897199" lon="-79.29675" stopId="1886"/>
+<stop tag="1769" title="Dawes Road At Dentonia Park Avenue" lat="43.6919" lon="-79.29698" stopId="1888"/>
+<stop tag="3481" title="Dawes Road At Secord Avenue" lat="43.6934699" lon="-79.2971399" stopId="1900"/>
+<stop tag="4117" title="Dawes Road At Goodwood Park Court" lat="43.6948099" lon="-79.29725" stopId="1894"/>
+<stop tag="9566" title="Dawes Road At Crescent Town Road Farside" lat="43.6968899" lon="-79.29713" stopId="11255"/>
+<stop tag="1145" title="Dawes Road At Park Vista" lat="43.69788" lon="-79.29696" stopId="1898"/>
+<stop tag="9458" title="Dawes Road At Brenton Street" lat="43.70124" lon="-79.29686" stopId="13621"/>
+<stop tag="2069" title="Dawes Road At Gower Street Farside" lat="43.7026099" lon="-79.29686" stopId="1896"/>
+<stop tag="3010" title="Dawes Road At Beth Street" lat="43.7042499" lon="-79.29644" stopId="1884"/>
+<stop tag="3080" title="Dawes Road At Ferris Road" lat="43.70596" lon="-79.29544" stopId="1893"/>
+<stop tag="8386" title="Ferris Road At Dawes Road Farside" lat="43.7063199" lon="-79.29602" stopId="2476"/>
+<stop tag="1666" title="Ferris Road At Squires Avenue" lat="43.70494" lon="-79.2986899" stopId="2478"/>
+<stop tag="4971" title="Ferris Road At Plaxton Drive" lat="43.7040499" lon="-79.30065" stopId="2477"/>
+<stop tag="5337" title="Ferris Road At Curran Drive" lat="43.7035999" lon="-79.30161" stopId="2475"/>
+<stop tag="9431" title="Ferris Road At Ferris Crescent" lat="43.7029899" lon="-79.30343" stopId="11455"/>
+<stop tag="7261" title="Rexleigh Drive At Ferris Road Farside" lat="43.70304" lon="-79.30481" stopId="3093"/>
+<stop tag="8570" title="195 Rexleigh Drive" lat="43.70461" lon="-79.30555" stopId="3092"/>
+<stop tag="7805_ar" title="Rexleigh Drive At St Clair Avenue East" lat="43.7064799" lon="-79.307"/>
+<direction tag="23_1_23" title="North - 23 Dawes towards St Clair" name="North" useForUI="true">
+  <stop tag="14255" />
+  <stop tag="9308" />
+  <stop tag="4377" />
+  <stop tag="3851" />
+  <stop tag="1769" />
+  <stop tag="3481" />
+  <stop tag="4117" />
+  <stop tag="9566" />
+  <stop tag="1145" />
+  <stop tag="9458" />
+  <stop tag="2069" />
+  <stop tag="3010" />
+  <stop tag="3080" />
+  <stop tag="8386" />
+  <stop tag="1666" />
+  <stop tag="4971" />
+  <stop tag="5337" />
+  <stop tag="9431" />
+  <stop tag="7261" />
+  <stop tag="8570" />
+  <stop tag="7805_ar" />
+</direction>
+<direction tag="23_0_23" title="South - 23 Dawes towards Main Street Station" name="South" useForUI="true">
+  <stop tag="7805" />
+  <stop tag="7512" />
+  <stop tag="9711" />
+  <stop tag="5884" />
+  <stop tag="6867" />
+  <stop tag="813" />
+  <stop tag="2945" />
+  <stop tag="5986" />
+  <stop tag="9192" />
+  <stop tag="7251" />
+  <stop tag="6648" />
+  <stop tag="7128" />
+  <stop tag="2292" />
+  <stop tag="2622" />
+  <stop tag="1406" />
+  <stop tag="4476" />
+  <stop tag="7627" />
+  <stop tag="14255_ar" />
+</direction>
+<path>
+<point lat="43.70648" lon="-79.307"/>
+<point lat="43.70665" lon="-79.30712"/>
+<point lat="43.70687" lon="-79.30596"/>
+<point lat="43.70724" lon="-79.3045"/>
+<point lat="43.70733" lon="-79.30418"/>
+<point lat="43.70755" lon="-79.30278"/>
+<point lat="43.70799" lon="-79.30088"/>
+<point lat="43.70854" lon="-79.29845"/>
+<point lat="43.7087999" lon="-79.29759"/>
+<point lat="43.70886" lon="-79.29722"/>
+<point lat="43.70875" lon="-79.29643"/>
+<point lat="43.70883" lon="-79.29634"/>
+<point lat="43.70877" lon="-79.29597"/>
+<point lat="43.70722" lon="-79.29527"/>
+<point lat="43.70604" lon="-79.29547"/>
+<point lat="43.7058899" lon="-79.29566"/>
+</path>
+<path>
+<point lat="43.68904" lon="-79.30193"/>
+<point lat="43.68932" lon="-79.30129"/>
+<point lat="43.68932" lon="-79.30122"/>
+<point lat="43.68931" lon="-79.30117"/>
+<point lat="43.6892799" lon="-79.30111"/>
+<point lat="43.68925" lon="-79.30107"/>
+<point lat="43.68921" lon="-79.30104"/>
+<point lat="43.68916" lon="-79.30101"/>
+<point lat="43.68911" lon="-79.30101"/>
+<point lat="43.68906" lon="-79.30103"/>
+<point lat="43.68902" lon="-79.30106"/>
+<point lat="43.68898" lon="-79.30113"/>
+<point lat="43.6888" lon="-79.30182"/>
+<point lat="43.68878" lon="-79.30188"/>
+<point lat="43.68875" lon="-79.30194"/>
+<point lat="43.6887" lon="-79.302"/>
+<point lat="43.68866" lon="-79.30202"/>
+<point lat="43.68859" lon="-79.30203"/>
+<point lat="43.68814" lon="-79.30182"/>
+<point lat="43.68823" lon="-79.30111"/>
+<point lat="43.68873" lon="-79.29897"/>
+<point lat="43.6893" lon="-79.29676"/>
+<point lat="43.68972" lon="-79.29675"/>
+<point lat="43.6918999" lon="-79.29698"/>
+<point lat="43.69347" lon="-79.29714"/>
+<point lat="43.69457" lon="-79.29732"/>
+<point lat="43.6948099" lon="-79.29725"/>
+<point lat="43.69491" lon="-79.29732"/>
+<point lat="43.6956599" lon="-79.29744"/>
+<point lat="43.6961299" lon="-79.2974"/>
+<point lat="43.69689" lon="-79.29713"/>
+<point lat="43.69779" lon="-79.29705"/>
+<point lat="43.69788" lon="-79.29696"/>
+<point lat="43.7004499" lon="-79.29697"/>
+<point lat="43.70089" lon="-79.2968999"/>
+<point lat="43.70124" lon="-79.29686"/>
+<point lat="43.70261" lon="-79.29686"/>
+</path>
+<path>
+<point lat="43.70021" lon="-79.29706"/>
+<point lat="43.698" lon="-79.29717"/>
+<point lat="43.69779" lon="-79.29705"/>
+<point lat="43.69741" lon="-79.29709"/>
+<point lat="43.69672" lon="-79.29733"/>
+<point lat="43.6961299" lon="-79.2974"/>
+<point lat="43.6956599" lon="-79.29744"/>
+<point lat="43.69526" lon="-79.29749"/>
+<point lat="43.69491" lon="-79.29732"/>
+<point lat="43.69457" lon="-79.29732"/>
+<point lat="43.69366" lon="-79.29731"/>
+<point lat="43.69225" lon="-79.29714"/>
+<point lat="43.68968" lon="-79.29688"/>
+<point lat="43.68944" lon="-79.29675"/>
+<point lat="43.68903" lon="-79.29789"/>
+<point lat="43.6888" lon="-79.29932"/>
+<point lat="43.68814" lon="-79.30182"/>
+<point lat="43.68859" lon="-79.30203"/>
+<point lat="43.6888999" lon="-79.30218"/>
+<point lat="43.68918" lon="-79.30229"/>
+<point lat="43.68915" lon="-79.30222"/>
+<point lat="43.68914" lon="-79.30215"/>
+<point lat="43.68914" lon="-79.30206"/>
+<point lat="43.68915" lon="-79.30195"/>
+<point lat="43.68904" lon="-79.30193"/>
+</path>
+<path>
+<point lat="43.70632" lon="-79.29602"/>
+<point lat="43.70611" lon="-79.29667"/>
+<point lat="43.70593" lon="-79.29707"/>
+<point lat="43.70568" lon="-79.2974"/>
+<point lat="43.70494" lon="-79.2986899"/>
+<point lat="43.70438" lon="-79.29942"/>
+<point lat="43.70417" lon="-79.2998"/>
+<point lat="43.70405" lon="-79.30025"/>
+<point lat="43.70405" lon="-79.30065"/>
+<point lat="43.704" lon="-79.30076"/>
+<point lat="43.70361" lon="-79.30145"/>
+<point lat="43.7036" lon="-79.30161"/>
+<point lat="43.70332" lon="-79.3018699"/>
+<point lat="43.70318" lon="-79.30229"/>
+<point lat="43.70299" lon="-79.30343"/>
+<point lat="43.70264" lon="-79.3047"/>
+<point lat="43.70304" lon="-79.30481"/>
+<point lat="43.70427" lon="-79.30539"/>
+<point lat="43.70451" lon="-79.30553"/>
+<point lat="43.70461" lon="-79.30555"/>
+<point lat="43.70473" lon="-79.30574"/>
+<point lat="43.70491" lon="-79.30596"/>
+<point lat="43.70522" lon="-79.30645"/>
+<point lat="43.70531" lon="-79.30654"/>
+<point lat="43.70544" lon="-79.3066"/>
+<point lat="43.70648" lon="-79.307"/>
+</path>
+<path>
+<point lat="43.70261" lon="-79.29686"/>
+<point lat="43.70349" lon="-79.29683"/>
+<point lat="43.70391" lon="-79.29669"/>
+<point lat="43.70425" lon="-79.29644"/>
+<point lat="43.70585" lon="-79.29557"/>
+<point lat="43.70596" lon="-79.29544"/>
+<point lat="43.7061599" lon="-79.29544"/>
+<point lat="43.70634" lon="-79.29566"/>
+<point lat="43.70632" lon="-79.29602"/>
+</path>
+<path>
+<point lat="43.7058899" lon="-79.29566"/>
+<point lat="43.70444" lon="-79.2965"/>
+<point lat="43.70391" lon="-79.29669"/>
+<point lat="43.70349" lon="-79.29683"/>
+<point lat="43.70239" lon="-79.29703"/>
+<point lat="43.70178" lon="-79.29692"/>
+<point lat="43.70089" lon="-79.2968999"/>
+<point lat="43.7004499" lon="-79.29697"/>
+<point lat="43.70021" lon="-79.29706"/>
+</path>
+</route>
+</body>

@@ -1,0 +1,234 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:22 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1614
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="40" title="40-Junction" color="ff0000" oppositeColor="ffffff" latMin="43.6569999" latMax="43.6659499" lonMin="-79.48259" lonMax="-79.45287">
+<stop tag="5619" title="Runnymede Loop" lat="43.6659499" lon="-79.48259" stopId="4450"/>
+<stop tag="9786" title="Dundas Street West At Gilmour Avenue" lat="43.6654999" lon="-79.4793499" stopId="3495"/>
+<stop tag="4444" title="Dundas Street West At St Johns Place Farside" lat="43.66547" lon="-79.47517" stopId="3524"/>
+<stop tag="9734" title="Dundas Street West At Quebec Avenue" lat="43.6654399" lon="-79.4722999" stopId="3516"/>
+<stop tag="5548" title="Dundas Street West At Pacific Avenue" lat="43.66539" lon="-79.46871" stopId="3513"/>
+<stop tag="4543" title="Dundas Street West At Keele Street" lat="43.66536" lon="-79.46476" stopId="3508"/>
+<stop tag="3694" title="Dundas Street West At Indian Road Crescent" lat="43.6651699" lon="-79.46129" stopId="3503"/>
+<stop tag="3175" title="Dundas Street West At Annette Street" lat="43.6645199" lon="-79.4590999" stopId="3486"/>
+<stop tag="6791" title="Dundas Street West At Humberside Avenue" lat="43.6633199" lon="-79.45695" stopId="3501"/>
+<stop tag="4869" title="Dundas Street West At Jerome Street" lat="43.66159" lon="-79.45514" stopId="3507"/>
+<stop tag="9961" title="Dundas Street West At Glenlake Avenue" lat="43.6600499" lon="-79.4537799" stopId="14050"/>
+<stop tag="6941" title="Dundas Street West At Chelsea Avenue" lat="43.65824" lon="-79.45303" stopId="3491"/>
+<stop tag="14184_ar" title="Dundas West Station" lat="43.6569999" lon="-79.45307"/>
+<stop tag="9163" title="Dundas Street West At 3226 St Pauls" lat="43.66549" lon="-79.47786" stopId="10233"/>
+<stop tag="14184" title="Dundas West Station" lat="43.6569999" lon="-79.45307" stopId="14663"/>
+<stop tag="6840" title="Dundas Street West At Chelsea Avenue Farside" lat="43.65823" lon="-79.45287" stopId="3490"/>
+<stop tag="6213" title="Dundas Street West At Glenlake Avenue Farside" lat="43.6600799" lon="-79.4536499" stopId="3497"/>
+<stop tag="7231" title="Dundas Street West At Jerome Street" lat="43.6614" lon="-79.45478" stopId="3506"/>
+<stop tag="5535" title="Dundas Street West At Humberside Avenue" lat="43.66295" lon="-79.45629" stopId="3500"/>
+<stop tag="3835" title="Dundas Street West At Dupont Street" lat="43.66436" lon="-79.4585" stopId="3493"/>
+<stop tag="2112" title="Dundas Street West At Indian Grove" lat="43.6654299" lon="-79.46216" stopId="3502"/>
+<stop tag="4904" title="Dundas Street West At Keele Street" lat="43.66547" lon="-79.46432" stopId="3509"/>
+<stop tag="9338" title="Dundas Street West At Pacific Avenue" lat="43.6655099" lon="-79.46845" stopId="3514"/>
+<stop tag="2026" title="Dundas Street West At Quebec Avenue" lat="43.66554" lon="-79.47188" stopId="3517"/>
+<stop tag="4744" title="Dundas Street West At St Johns Place" lat="43.6655899" lon="-79.4754499" stopId="3525"/>
+<stop tag="5078" title="Dundas Street West At Gilmour Avenue" lat="43.66562" lon="-79.47875" stopId="3496"/>
+<stop tag="2449" title="Dundas Street West At Runnymede Street East Side" lat="43.6656299" lon="-79.48194" stopId="3521"/>
+<stop tag="5619_ar" title="Runnymede Loop" lat="43.6659499" lon="-79.48259"/>
+<stop tag="4893" title="Edna Avenue At Dundas Street West" lat="43.6572199" lon="-79.4529" stopId="9900"/>
+<stop tag="4403" title="Dundas Street West At St Pauls 3226" lat="43.6656199" lon="-79.47766" stopId="10232"/>
+<direction tag="40_0_40Sun" title="East - 40 Junction towards Dundas West Station" name="East" useForUI="true">
+  <stop tag="5619" />
+  <stop tag="9786" />
+  <stop tag="9163" />
+  <stop tag="4444" />
+  <stop tag="9734" />
+  <stop tag="5548" />
+  <stop tag="4543" />
+  <stop tag="3694" />
+  <stop tag="3175" />
+  <stop tag="6791" />
+  <stop tag="4869" />
+  <stop tag="9961" />
+  <stop tag="6941" />
+  <stop tag="14184_ar" />
+</direction>
+<direction tag="40_1_40ednaSun" title="West - 40 Junction towards Runnymede" name="West" useForUI="true">
+  <stop tag="4893" />
+  <stop tag="6840" />
+  <stop tag="6213" />
+  <stop tag="7231" />
+  <stop tag="5535" />
+  <stop tag="3835" />
+  <stop tag="2112" />
+  <stop tag="4904" />
+  <stop tag="9338" />
+  <stop tag="2026" />
+  <stop tag="4744" />
+  <stop tag="4403" />
+  <stop tag="5078" />
+  <stop tag="2449" />
+  <stop tag="5619_ar" />
+</direction>
+<path>
+<point lat="43.66332" lon="-79.45695"/>
+<point lat="43.66304" lon="-79.45642"/>
+<point lat="43.6615899" lon="-79.45514"/>
+<point lat="43.66041" lon="-79.45394"/>
+<point lat="43.66031" lon="-79.45386"/>
+<point lat="43.66025" lon="-79.45381"/>
+<point lat="43.66005" lon="-79.45378"/>
+<point lat="43.65824" lon="-79.45303"/>
+<point lat="43.65728" lon="-79.4526999"/>
+<point lat="43.6569999" lon="-79.45262"/>
+<point lat="43.6569" lon="-79.4526999"/>
+<point lat="43.65686" lon="-79.45278"/>
+<point lat="43.6569999" lon="-79.45307"/>
+</path>
+<path>
+<point lat="43.66543" lon="-79.46216"/>
+<point lat="43.66539" lon="-79.46228"/>
+<point lat="43.66547" lon="-79.46432"/>
+<point lat="43.66551" lon="-79.46845"/>
+</path>
+<path>
+<point lat="43.6569999" lon="-79.45307"/>
+<point lat="43.65704" lon="-79.45305"/>
+<point lat="43.65707" lon="-79.45299"/>
+<point lat="43.6571" lon="-79.45283"/>
+<point lat="43.65708" lon="-79.45275"/>
+<point lat="43.6569999" lon="-79.45262"/>
+<point lat="43.65728" lon="-79.4526999"/>
+<point lat="43.6582" lon="-79.45294"/>
+<point lat="43.65823" lon="-79.45287"/>
+<point lat="43.66008" lon="-79.45365"/>
+<point lat="43.66025" lon="-79.45381"/>
+<point lat="43.66031" lon="-79.45386"/>
+<point lat="43.66041" lon="-79.45394"/>
+<point lat="43.6614" lon="-79.45478"/>
+<point lat="43.66295" lon="-79.45629"/>
+<point lat="43.66304" lon="-79.45642"/>
+<point lat="43.66409" lon="-79.45819"/>
+<point lat="43.66436" lon="-79.4585"/>
+<point lat="43.66448" lon="-79.45877"/>
+<point lat="43.66467" lon="-79.4592"/>
+<point lat="43.66533" lon="-79.46174"/>
+<point lat="43.66543" lon="-79.46216"/>
+</path>
+<path>
+<point lat="43.66517" lon="-79.46129"/>
+<point lat="43.66467" lon="-79.4592"/>
+<point lat="43.66452" lon="-79.4591"/>
+<point lat="43.66448" lon="-79.45877"/>
+<point lat="43.66414" lon="-79.45826"/>
+<point lat="43.66332" lon="-79.45695"/>
+</path>
+<path>
+<point lat="43.66595" lon="-79.48259"/>
+<point lat="43.66589" lon="-79.4826099"/>
+<point lat="43.66586" lon="-79.48268"/>
+<point lat="43.6658199" lon="-79.48273"/>
+<point lat="43.66576" lon="-79.48275"/>
+<point lat="43.66569" lon="-79.48274"/>
+<point lat="43.6656199" lon="-79.48271"/>
+<point lat="43.66558" lon="-79.48268"/>
+<point lat="43.66558" lon="-79.48226"/>
+<point lat="43.6655" lon="-79.47935"/>
+<point lat="43.66549" lon="-79.47786"/>
+<point lat="43.66547" lon="-79.47517"/>
+<point lat="43.6654399" lon="-79.4723"/>
+<point lat="43.66539" lon="-79.46871"/>
+<point lat="43.66536" lon="-79.46476"/>
+<point lat="43.66533" lon="-79.46174"/>
+<point lat="43.66517" lon="-79.46129"/>
+</path>
+<path>
+<point lat="43.66595" lon="-79.48259"/>
+<point lat="43.66589" lon="-79.4826099"/>
+<point lat="43.66586" lon="-79.48268"/>
+<point lat="43.6658199" lon="-79.48273"/>
+<point lat="43.66576" lon="-79.48275"/>
+<point lat="43.66569" lon="-79.48274"/>
+<point lat="43.6656199" lon="-79.48271"/>
+<point lat="43.66558" lon="-79.48268"/>
+<point lat="43.66558" lon="-79.48226"/>
+<point lat="43.6655" lon="-79.47935"/>
+<point lat="43.66547" lon="-79.47517"/>
+<point lat="43.6654399" lon="-79.4723"/>
+<point lat="43.66539" lon="-79.46871"/>
+<point lat="43.66536" lon="-79.46476"/>
+<point lat="43.66533" lon="-79.46174"/>
+<point lat="43.66517" lon="-79.46129"/>
+</path>
+<path>
+<point lat="43.66551" lon="-79.46845"/>
+<point lat="43.66554" lon="-79.47188"/>
+<point lat="43.66559" lon="-79.47545"/>
+<point lat="43.6656199" lon="-79.47875"/>
+<point lat="43.66563" lon="-79.48194"/>
+<point lat="43.66558" lon="-79.48226"/>
+<point lat="43.66566" lon="-79.48231"/>
+<point lat="43.66572" lon="-79.4823399"/>
+<point lat="43.66577" lon="-79.48236"/>
+<point lat="43.66583" lon="-79.48239"/>
+<point lat="43.66587" lon="-79.48244"/>
+<point lat="43.66589" lon="-79.48248"/>
+<point lat="43.6659" lon="-79.4825199"/>
+<point lat="43.6659" lon="-79.48256"/>
+<point lat="43.66595" lon="-79.48259"/>
+</path>
+<path>
+<point lat="43.65722" lon="-79.4529"/>
+<point lat="43.6571" lon="-79.45283"/>
+<point lat="43.65708" lon="-79.45275"/>
+<point lat="43.6569999" lon="-79.45262"/>
+<point lat="43.6569" lon="-79.4526999"/>
+<point lat="43.65686" lon="-79.45278"/>
+<point lat="43.6567999" lon="-79.45314"/>
+<point lat="43.65675" lon="-79.45367"/>
+<point lat="43.65676" lon="-79.45374"/>
+<point lat="43.65678" lon="-79.45379"/>
+<point lat="43.65683" lon="-79.4538"/>
+<point lat="43.65705" lon="-79.45385"/>
+<point lat="43.6571799" lon="-79.4532"/>
+<point lat="43.65728" lon="-79.4526999"/>
+<point lat="43.6582" lon="-79.45294"/>
+<point lat="43.65823" lon="-79.45287"/>
+<point lat="43.66008" lon="-79.45365"/>
+<point lat="43.66025" lon="-79.45381"/>
+<point lat="43.66031" lon="-79.45386"/>
+<point lat="43.66041" lon="-79.45394"/>
+<point lat="43.6614" lon="-79.45478"/>
+<point lat="43.66295" lon="-79.45629"/>
+<point lat="43.66304" lon="-79.45642"/>
+<point lat="43.66409" lon="-79.45819"/>
+<point lat="43.66436" lon="-79.4585"/>
+<point lat="43.66448" lon="-79.45877"/>
+<point lat="43.66467" lon="-79.4592"/>
+<point lat="43.66533" lon="-79.46174"/>
+<point lat="43.66543" lon="-79.46216"/>
+</path>
+<path>
+<point lat="43.66551" lon="-79.46845"/>
+<point lat="43.66554" lon="-79.47188"/>
+<point lat="43.66559" lon="-79.47545"/>
+<point lat="43.6656199" lon="-79.47766"/>
+<point lat="43.6656199" lon="-79.47875"/>
+<point lat="43.66563" lon="-79.48194"/>
+<point lat="43.66558" lon="-79.48226"/>
+<point lat="43.66566" lon="-79.48231"/>
+<point lat="43.66572" lon="-79.4823399"/>
+<point lat="43.66577" lon="-79.48236"/>
+<point lat="43.66583" lon="-79.48239"/>
+<point lat="43.66587" lon="-79.48244"/>
+<point lat="43.66589" lon="-79.48248"/>
+<point lat="43.6659" lon="-79.4825199"/>
+<point lat="43.6659" lon="-79.48256"/>
+<point lat="43.66595" lon="-79.48259"/>
+</path>
+</route>
+</body>

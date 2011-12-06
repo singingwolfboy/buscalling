@@ -1,0 +1,198 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:02:32 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1462
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="190" title="190-Scarborough Centre Rocket" color="ff0000" oppositeColor="ffffff" latMin="43.7745799" latMax="43.7834299" lonMin="-79.34638" lonMax="-79.25763">
+<stop tag="14153" title="Don Mills Station" lat="43.7755699" lon="-79.34638" stopId="14631"/>
+<stop tag="535" title="Sheppard Avenue East At Victoria Park Avenue Farside" lat="43.7753399" lon="-79.32228" stopId="13918"/>
+<stop tag="4133" title="Sheppard Avenue East At Pharmacy Avenue" lat="43.77637" lon="-79.3178799" stopId="7228"/>
+<stop tag="2614" title="Sheppard Avenue East At Warden Avenue" lat="43.77859" lon="-79.3081299" stopId="7254"/>
+<stop tag="1364" title="Sheppard Avenue East At Birchmount Road" lat="43.7808999" lon="-79.29832" stopId="7154"/>
+<stop tag="7912" title="Sheppard Avenue At Allanford Road Farside" lat="43.7821199" lon="-79.2929" stopId="7141"/>
+<stop tag="8489" title="Sheppard Avenue East At Kennedy Road" lat="43.78307" lon="-79.2887199" stopId="7196"/>
+<stop tag="14283_ar" title="Scarborough Centre Station" lat="43.7745799" lon="-79.25763"/>
+<stop tag="14283" title="Scarborough Centre Station" lat="43.7745799" lon="-79.25763" stopId="14764"/>
+<stop tag="8171" title="Sheppard Avenue East At Kennedy Road" lat="43.7834299" lon="-79.28806" stopId="7197"/>
+<stop tag="7463" title="Sheppard Avenue At Allanford Road Farside" lat="43.7821499" lon="-79.29381" stopId="7142"/>
+<stop tag="5946" title="Sheppard Avenue East At Birchmount Road" lat="43.78123" lon="-79.2978799" stopId="7155"/>
+<stop tag="8959" title="Sheppard Avenue East At Warden Avenue" lat="43.7789299" lon="-79.3076" stopId="7255"/>
+<stop tag="4870" title="Sheppard Avenue East At Pharmacy Avenue" lat="43.7766699" lon="-79.31755" stopId="7229"/>
+<stop tag="9120" title="Sheppard Avenue East At Victoria Park Avenue Farside" lat="43.7753299" lon="-79.32361" stopId="9513"/>
+<stop tag="14153_ar" title="Don Mills Station" lat="43.7755699" lon="-79.34638"/>
+<direction tag="190_1_190" title="West - 190 Rocket towards Don Mills Station" name="West" useForUI="true">
+  <stop tag="14283" />
+  <stop tag="8171" />
+  <stop tag="7463" />
+  <stop tag="5946" />
+  <stop tag="8959" />
+  <stop tag="4870" />
+  <stop tag="9120" />
+  <stop tag="14153_ar" />
+</direction>
+<direction tag="190_0_190" title="East - 190 Rocket towards Scarborough Centre" name="East" useForUI="true">
+  <stop tag="14153" />
+  <stop tag="535" />
+  <stop tag="4133" />
+  <stop tag="2614" />
+  <stop tag="1364" />
+  <stop tag="7912" />
+  <stop tag="8489" />
+  <stop tag="14283_ar" />
+</direction>
+<path>
+<point lat="43.77893" lon="-79.3075999"/>
+<point lat="43.77708" lon="-79.31516"/>
+<point lat="43.77702" lon="-79.31554"/>
+<point lat="43.77667" lon="-79.31755"/>
+</path>
+<path>
+<point lat="43.77458" lon="-79.25763"/>
+<point lat="43.77474" lon="-79.25728"/>
+<point lat="43.77454" lon="-79.25708"/>
+<point lat="43.77437" lon="-79.25754"/>
+<point lat="43.77411" lon="-79.2587099"/>
+<point lat="43.77428" lon="-79.2589799"/>
+<point lat="43.77367" lon="-79.26092"/>
+<point lat="43.77391" lon="-79.26116"/>
+<point lat="43.7742" lon="-79.26114"/>
+<point lat="43.7744799" lon="-79.26105"/>
+<point lat="43.77479" lon="-79.26103"/>
+<point lat="43.77506" lon="-79.2611"/>
+<point lat="43.77532" lon="-79.26125"/>
+<point lat="43.7755" lon="-79.2614399"/>
+<point lat="43.7757" lon="-79.26175"/>
+<point lat="43.77562" lon="-79.26206"/>
+<point lat="43.7755" lon="-79.26233"/>
+<point lat="43.7754" lon="-79.26264"/>
+<point lat="43.77466" lon="-79.266"/>
+<point lat="43.77423" lon="-79.26718"/>
+<point lat="43.7741" lon="-79.26763"/>
+<point lat="43.77296" lon="-79.27297"/>
+<point lat="43.77694" lon="-79.27464"/>
+<point lat="43.7826499" lon="-79.27696"/>
+<point lat="43.78324" lon="-79.27728"/>
+<point lat="43.78435" lon="-79.2781"/>
+<point lat="43.7846" lon="-79.27825"/>
+<point lat="43.78534" lon="-79.27856"/>
+<point lat="43.78343" lon="-79.28806"/>
+<point lat="43.78215" lon="-79.2938099"/>
+</path>
+<path>
+<point lat="43.7809" lon="-79.29832"/>
+<point lat="43.78212" lon="-79.2929"/>
+</path>
+<path>
+<point lat="43.77667" lon="-79.31755"/>
+<point lat="43.7753299" lon="-79.32361"/>
+</path>
+<path>
+<point lat="43.77534" lon="-79.32228"/>
+<point lat="43.77558" lon="-79.32164"/>
+<point lat="43.77637" lon="-79.31788"/>
+<point lat="43.77702" lon="-79.31554"/>
+<point lat="43.77708" lon="-79.31516"/>
+<point lat="43.77859" lon="-79.30813"/>
+<point lat="43.7809" lon="-79.29832"/>
+</path>
+<path>
+<point lat="43.7753299" lon="-79.32361"/>
+<point lat="43.77476" lon="-79.3253"/>
+<point lat="43.7746799" lon="-79.32605"/>
+<point lat="43.77466" lon="-79.32669"/>
+<point lat="43.7747" lon="-79.32771"/>
+<point lat="43.77605" lon="-79.3399"/>
+<point lat="43.77615" lon="-79.3405"/>
+<point lat="43.7762" lon="-79.3409999"/>
+<point lat="43.77621" lon="-79.34141"/>
+<point lat="43.77619" lon="-79.34188"/>
+<point lat="43.77583" lon="-79.34371"/>
+<point lat="43.77563" lon="-79.3445799"/>
+<point lat="43.77546" lon="-79.34535"/>
+<point lat="43.77558" lon="-79.3456099"/>
+<point lat="43.77559" lon="-79.34568"/>
+<point lat="43.7756" lon="-79.34575"/>
+<point lat="43.77559" lon="-79.34585"/>
+<point lat="43.77556" lon="-79.346"/>
+<point lat="43.77552" lon="-79.34623"/>
+<point lat="43.77552" lon="-79.34629"/>
+<point lat="43.77554" lon="-79.34636"/>
+<point lat="43.77557" lon="-79.34638"/>
+</path>
+<path>
+<point lat="43.78212" lon="-79.2929"/>
+<point lat="43.78307" lon="-79.28872"/>
+<point lat="43.78534" lon="-79.27856"/>
+<point lat="43.78448" lon="-79.27818"/>
+<point lat="43.78308" lon="-79.27716"/>
+<point lat="43.77296" lon="-79.27297"/>
+<point lat="43.7741" lon="-79.26763"/>
+<point lat="43.77423" lon="-79.26718"/>
+<point lat="43.77465" lon="-79.26603"/>
+<point lat="43.7747699" lon="-79.26559"/>
+<point lat="43.77509" lon="-79.2641"/>
+<point lat="43.7754" lon="-79.26264"/>
+<point lat="43.7755" lon="-79.26233"/>
+<point lat="43.77562" lon="-79.26206"/>
+<point lat="43.7757" lon="-79.26175"/>
+<point lat="43.7755" lon="-79.2614399"/>
+<point lat="43.77532" lon="-79.26125"/>
+<point lat="43.77506" lon="-79.2611"/>
+<point lat="43.77479" lon="-79.26103"/>
+<point lat="43.7744799" lon="-79.26105"/>
+<point lat="43.7742" lon="-79.26114"/>
+<point lat="43.77391" lon="-79.26116"/>
+<point lat="43.77365" lon="-79.26114"/>
+<point lat="43.77375" lon="-79.26067"/>
+<point lat="43.77444" lon="-79.25854"/>
+<point lat="43.77458" lon="-79.25763"/>
+</path>
+<path>
+<point lat="43.78215" lon="-79.2938099"/>
+<point lat="43.78123" lon="-79.29788"/>
+<point lat="43.77893" lon="-79.3075999"/>
+</path>
+<path>
+<point lat="43.77557" lon="-79.34638"/>
+<point lat="43.77552" lon="-79.34645"/>
+<point lat="43.77552" lon="-79.34657"/>
+<point lat="43.77554" lon="-79.3467"/>
+<point lat="43.77556" lon="-79.34676"/>
+<point lat="43.77559" lon="-79.3468"/>
+<point lat="43.77563" lon="-79.34684"/>
+<point lat="43.77592" lon="-79.34697"/>
+<point lat="43.77603" lon="-79.34699"/>
+<point lat="43.77612" lon="-79.34696"/>
+<point lat="43.77616" lon="-79.34692"/>
+<point lat="43.7762" lon="-79.34686"/>
+<point lat="43.77621" lon="-79.3468199"/>
+<point lat="43.77623" lon="-79.3467299"/>
+<point lat="43.77623" lon="-79.34667"/>
+<point lat="43.77622" lon="-79.34659"/>
+<point lat="43.77609" lon="-79.34613"/>
+<point lat="43.77606" lon="-79.34591"/>
+<point lat="43.77608" lon="-79.34563"/>
+<point lat="43.77621" lon="-79.34492"/>
+<point lat="43.7757" lon="-79.3446"/>
+<point lat="43.77583" lon="-79.34371"/>
+<point lat="43.77619" lon="-79.34188"/>
+<point lat="43.77621" lon="-79.34141"/>
+<point lat="43.7762" lon="-79.34102"/>
+<point lat="43.77615" lon="-79.3405"/>
+<point lat="43.77605" lon="-79.3399"/>
+<point lat="43.77509" lon="-79.33122"/>
+<point lat="43.7747" lon="-79.32771"/>
+<point lat="43.77466" lon="-79.32669"/>
+<point lat="43.7746799" lon="-79.32605"/>
+<point lat="43.77476" lon="-79.3253"/>
+<point lat="43.77534" lon="-79.32228"/>
+</path>
+</route>
+</body>

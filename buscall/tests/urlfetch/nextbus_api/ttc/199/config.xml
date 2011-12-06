@@ -1,0 +1,268 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:02:34 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 2008
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="199" title="199-Finch Rocket" color="ff0000" oppositeColor="ffffff" latMin="43.7743699" latMax="43.8078899" lonMin="-79.41506" lonMax="-79.25849">
+<stop tag="14210" title="Finch Station" lat="43.7811099" lon="-79.41506" stopId="14690"/>
+<stop tag="5464" title="Finch Avenue East At Bayview Avenue" lat="43.7847499" lon="-79.39262" stopId="2488"/>
+<stop tag="9220" title="Finch Avenue East At Leslie Street Farside" lat="43.78991" lon="-79.3671399" stopId="2518"/>
+<stop tag="9175" title="Finch Avenue East At Don Mills Road Farside" lat="43.7926499" lon="-79.35418" stopId="2506"/>
+<stop tag="7082" title="Finch Avenue East At Seneca Hill Drive (Seneca College)" lat="43.79347" lon="-79.3506299" stopId="2550"/>
+<stop tag="3598" title="Finch Avenue East At Victoria Park Avenue" lat="43.7929199" lon="-79.3317" stopId="2565"/>
+<stop tag="4329" title="Finch Avenue East At Pharmacy Avenue" lat="43.79418" lon="-79.3262299" stopId="2538"/>
+<stop tag="5950" title="Finch Avenue East At Warden Avenue" lat="43.7966099" lon="-79.31603" stopId="2569"/>
+<stop tag="4149" title="Finch Avenue East At Birchmount Road" lat="43.7988299" lon="-79.30619" stopId="2490"/>
+<stop tag="3236" title="Finch Avenue East At Kennedy Road" lat="43.80109" lon="-79.2967499" stopId="2514"/>
+<stop tag="5893" title="Finch Avenue East At Midland Avenue" lat="43.8035899" lon="-79.28654" stopId="2534"/>
+<stop tag="5913" title="Finch Avenue East At Brimley Road" lat="43.8055199" lon="-79.27762" stopId="2497"/>
+<stop tag="1612" title="Finch Avenue East At McCowan Road" lat="43.8078899" lon="-79.26675" stopId="1055"/>
+<stop tag="1082" title="McCowan Road At Sheppard Avenue East" lat="43.7898399" lon="-79.25904" stopId="1318"/>
+<stop tag="14280_ar" title="Scarborough Centre Station" lat="43.7743699" lon="-79.25849"/>
+<stop tag="14280" title="Scarborough Centre Station" lat="43.7743699" lon="-79.25849" stopId="14761"/>
+<stop tag="9391" title="McCowan Road At Sheppard Avenue East" lat="43.7894699" lon="-79.25859" stopId="1317"/>
+<stop tag="6326" title="Finch Avenue East At Brimley Road" lat="43.8058499" lon="-79.27713" stopId="2498"/>
+<stop tag="5709" title="Finch Avenue East At Midland Avenue" lat="43.8039099" lon="-79.28605" stopId="2535"/>
+<stop tag="8503" title="Finch Avenue East At Kennedy Road" lat="43.80146" lon="-79.2961299" stopId="2515"/>
+<stop tag="1548" title="Finch Avenue East At Birchmount Road" lat="43.7991599" lon="-79.30573" stopId="2491"/>
+<stop tag="2822" title="Finch Avenue East At Warden Avenue" lat="43.7969499" lon="-79.31544" stopId="2570"/>
+<stop tag="3071" title="Finch Avenue East At Pharmacy Avenue" lat="43.7944999" lon="-79.32576" stopId="2539"/>
+<stop tag="9968" title="Finch Avenue East At Victoria Park Avenue" lat="43.7933099" lon="-79.3311" stopId="2566"/>
+<stop tag="2791" title="Seneca College Opposite Seneca Hill Drive" lat="43.7940999" lon="-79.34902" stopId="2549"/>
+<stop tag="4303" title="Finch Avenue East At Don Mills Road West Side Farside" lat="43.7926999" lon="-79.35528" stopId="9617"/>
+<stop tag="6792" title="Finch Avenue East At Leslie Street Farside" lat="43.7901499" lon="-79.36916" stopId="2519"/>
+<stop tag="4729" title="Finch Avenue East At Bayview Avenue Farside" lat="43.7848999" lon="-79.39279" stopId="2489"/>
+<stop tag="14210_ar" title="Finch Station" lat="43.7811099" lon="-79.41506"/>
+<direction tag="199_1_199" title="West - 199 Finch Rocket towards Finch Station" name="West" useForUI="true">
+  <stop tag="14280" />
+  <stop tag="9391" />
+  <stop tag="6326" />
+  <stop tag="5709" />
+  <stop tag="8503" />
+  <stop tag="1548" />
+  <stop tag="2822" />
+  <stop tag="3071" />
+  <stop tag="9968" />
+  <stop tag="2791" />
+  <stop tag="4303" />
+  <stop tag="6792" />
+  <stop tag="4729" />
+  <stop tag="14210_ar" />
+</direction>
+<direction tag="199_0_199" title="East - 199 Finch Rocket towards Scarborough Centre Station" name="East" useForUI="true">
+  <stop tag="14210" />
+  <stop tag="5464" />
+  <stop tag="9220" />
+  <stop tag="9175" />
+  <stop tag="7082" />
+  <stop tag="3598" />
+  <stop tag="4329" />
+  <stop tag="5950" />
+  <stop tag="4149" />
+  <stop tag="3236" />
+  <stop tag="5893" />
+  <stop tag="5913" />
+  <stop tag="1612" />
+  <stop tag="1082" />
+  <stop tag="14280_ar" />
+</direction>
+<path>
+<point lat="43.80391" lon="-79.28605"/>
+<point lat="43.80146" lon="-79.29613"/>
+<point lat="43.79916" lon="-79.30573"/>
+</path>
+<path>
+<point lat="43.79265" lon="-79.35418"/>
+<point lat="43.79347" lon="-79.35063"/>
+<point lat="43.79501" lon="-79.3443999"/>
+<point lat="43.79516" lon="-79.34344"/>
+<point lat="43.7952" lon="-79.34274"/>
+<point lat="43.7952" lon="-79.34198"/>
+<point lat="43.79518" lon="-79.3416"/>
+<point lat="43.79514" lon="-79.34125"/>
+<point lat="43.79479" lon="-79.33968"/>
+<point lat="43.79446" lon="-79.33881"/>
+<point lat="43.79409" lon="-79.33802"/>
+<point lat="43.79333" lon="-79.33658"/>
+<point lat="43.79303" lon="-79.33596"/>
+<point lat="43.79292" lon="-79.33561"/>
+<point lat="43.7928" lon="-79.33522"/>
+<point lat="43.79273" lon="-79.33477"/>
+<point lat="43.7927" lon="-79.33424"/>
+<point lat="43.79273" lon="-79.33335"/>
+<point lat="43.79295" lon="-79.33196"/>
+<point lat="43.79292" lon="-79.3317"/>
+</path>
+<path>
+<point lat="43.7849" lon="-79.39279"/>
+<point lat="43.78465" lon="-79.39327"/>
+<point lat="43.77998" lon="-79.41454"/>
+<point lat="43.78016" lon="-79.41459"/>
+<point lat="43.78018" lon="-79.41475"/>
+<point lat="43.78038" lon="-79.41485"/>
+<point lat="43.78062" lon="-79.41497"/>
+<point lat="43.78087" lon="-79.41508"/>
+<point lat="43.78091" lon="-79.41509"/>
+<point lat="43.78107" lon="-79.41516"/>
+<point lat="43.78111" lon="-79.41506"/>
+</path>
+<path>
+<point lat="43.79695" lon="-79.31544"/>
+<point lat="43.79677" lon="-79.31575"/>
+<point lat="43.79649" lon="-79.31684"/>
+<point lat="43.79605" lon="-79.31842"/>
+<point lat="43.7945" lon="-79.32576"/>
+<point lat="43.79331" lon="-79.3311"/>
+</path>
+<path>
+<point lat="43.77437" lon="-79.25849"/>
+<point lat="43.7746799" lon="-79.25752"/>
+<point lat="43.77488" lon="-79.25658"/>
+<point lat="43.7749499" lon="-79.25518"/>
+<point lat="43.77543" lon="-79.25257"/>
+<point lat="43.78029" lon="-79.25456"/>
+<point lat="43.78074" lon="-79.25478"/>
+<point lat="43.78738" lon="-79.25727"/>
+<point lat="43.78767" lon="-79.25744"/>
+<point lat="43.78797" lon="-79.25767"/>
+<point lat="43.78877" lon="-79.25839"/>
+<point lat="43.78947" lon="-79.25859"/>
+</path>
+<path>
+<point lat="43.78984" lon="-79.25904"/>
+<point lat="43.78961" lon="-79.25883"/>
+<point lat="43.78877" lon="-79.25839"/>
+<point lat="43.78797" lon="-79.25767"/>
+<point lat="43.78767" lon="-79.25744"/>
+<point lat="43.78738" lon="-79.25727"/>
+<point lat="43.78226" lon="-79.2553"/>
+<point lat="43.78037" lon="-79.2546"/>
+<point lat="43.7796" lon="-79.25421"/>
+<point lat="43.77543" lon="-79.25257"/>
+<point lat="43.7749499" lon="-79.25518"/>
+<point lat="43.7749" lon="-79.2564699"/>
+<point lat="43.77475" lon="-79.25726"/>
+<point lat="43.77454" lon="-79.25708"/>
+<point lat="43.77437" lon="-79.25754"/>
+<point lat="43.77411" lon="-79.2587099"/>
+<point lat="43.77428" lon="-79.2589799"/>
+<point lat="43.77444" lon="-79.25854"/>
+<point lat="43.77437" lon="-79.25849"/>
+</path>
+<path>
+<point lat="43.80585" lon="-79.27713"/>
+<point lat="43.8057" lon="-79.27739"/>
+<point lat="43.80391" lon="-79.28605"/>
+</path>
+<path>
+<point lat="43.7927" lon="-79.3552799"/>
+<point lat="43.79013" lon="-79.3662499"/>
+<point lat="43.79003" lon="-79.36704"/>
+<point lat="43.79001" lon="-79.36747"/>
+<point lat="43.79003" lon="-79.36837"/>
+<point lat="43.79005" lon="-79.36895"/>
+<point lat="43.79015" lon="-79.3691599"/>
+<point lat="43.78998" lon="-79.36951"/>
+<point lat="43.7849999" lon="-79.39214"/>
+<point lat="43.78484" lon="-79.39257"/>
+<point lat="43.7849" lon="-79.39279"/>
+</path>
+<path>
+<point lat="43.79883" lon="-79.30619"/>
+<point lat="43.80109" lon="-79.29675"/>
+<point lat="43.80359" lon="-79.28654"/>
+</path>
+<path>
+<point lat="43.80359" lon="-79.28654"/>
+<point lat="43.80552" lon="-79.27762"/>
+<point lat="43.8057" lon="-79.27739"/>
+<point lat="43.80789" lon="-79.26675"/>
+</path>
+<path>
+<point lat="43.79661" lon="-79.31603"/>
+<point lat="43.79677" lon="-79.31575"/>
+<point lat="43.79883" lon="-79.30619"/>
+</path>
+<path>
+<point lat="43.79331" lon="-79.3311"/>
+<point lat="43.79295" lon="-79.33196"/>
+<point lat="43.79271" lon="-79.33359"/>
+<point lat="43.79271" lon="-79.33456"/>
+<point lat="43.79275" lon="-79.3349999"/>
+<point lat="43.7929699" lon="-79.3358"/>
+<point lat="43.79333" lon="-79.33658"/>
+<point lat="43.79398" lon="-79.3378199"/>
+<point lat="43.79446" lon="-79.33881"/>
+<point lat="43.79479" lon="-79.33968"/>
+<point lat="43.79514" lon="-79.34125"/>
+<point lat="43.79518" lon="-79.3416"/>
+<point lat="43.7952" lon="-79.34198"/>
+<point lat="43.7952" lon="-79.34274"/>
+<point lat="43.79516" lon="-79.34344"/>
+<point lat="43.79501" lon="-79.3443999"/>
+<point lat="43.7941" lon="-79.34902"/>
+<point lat="43.7927" lon="-79.3552799"/>
+</path>
+<path>
+<point lat="43.80789" lon="-79.26675"/>
+<point lat="43.80802" lon="-79.26649"/>
+<point lat="43.78984" lon="-79.25904"/>
+</path>
+<path>
+<point lat="43.79292" lon="-79.3317"/>
+<point lat="43.79345" lon="-79.3298"/>
+<point lat="43.79418" lon="-79.32623"/>
+<point lat="43.79636" lon="-79.3172699"/>
+<point lat="43.79649" lon="-79.31684"/>
+<point lat="43.79661" lon="-79.31603"/>
+</path>
+<path>
+<point lat="43.79916" lon="-79.30573"/>
+<point lat="43.79695" lon="-79.31544"/>
+</path>
+<path>
+<point lat="43.78475" lon="-79.3926199"/>
+<point lat="43.78484" lon="-79.39257"/>
+<point lat="43.7849999" lon="-79.39214"/>
+<point lat="43.78998" lon="-79.36951"/>
+<point lat="43.79005" lon="-79.36895"/>
+<point lat="43.79003" lon="-79.36837"/>
+<point lat="43.79" lon="-79.36805"/>
+<point lat="43.79001" lon="-79.3672799"/>
+<point lat="43.78991" lon="-79.36714"/>
+<point lat="43.79005" lon="-79.3668"/>
+<point lat="43.79013" lon="-79.3662499"/>
+<point lat="43.79265" lon="-79.35418"/>
+</path>
+<path>
+<point lat="43.78111" lon="-79.41506"/>
+<point lat="43.78128" lon="-79.41524"/>
+<point lat="43.78146" lon="-79.41531"/>
+<point lat="43.78161" lon="-79.41533"/>
+<point lat="43.78173" lon="-79.41531"/>
+<point lat="43.78175" lon="-79.41521"/>
+<point lat="43.78175" lon="-79.41511"/>
+<point lat="43.78168" lon="-79.41501"/>
+<point lat="43.78035" lon="-79.41445"/>
+<point lat="43.7802099" lon="-79.41446"/>
+<point lat="43.78016" lon="-79.41459"/>
+<point lat="43.77998" lon="-79.41454"/>
+<point lat="43.78465" lon="-79.39327"/>
+<point lat="43.78475" lon="-79.3926199"/>
+</path>
+<path>
+<point lat="43.78947" lon="-79.25859"/>
+<point lat="43.78961" lon="-79.25883"/>
+<point lat="43.79337" lon="-79.26037"/>
+<point lat="43.80802" lon="-79.26649"/>
+<point lat="43.80585" lon="-79.27713"/>
+</path>
+</route>
+</body>

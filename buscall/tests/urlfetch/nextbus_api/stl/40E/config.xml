@@ -1,0 +1,195 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:00:24 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1905
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Societe de transport de Laval 2011.">
+<route tag="40E" title="40 Direction M&#233;tro Montmorency" color="009999" oppositeColor="ffffff" latMin="45.5325999" latMax="45.5616299" lonMin="-73.78099" lonMax="-73.72039">
+<stop tag="CP45001" title="Montgolfier / Notre-Dame [45001]" lat="45.5325999" lon="-73.78099" stopId="45001"/>
+<stop tag="41312" title="Clarendon / Du Souvenir [41312]" lat="45.53274" lon="-73.77845" stopId="41312"/>
+<stop tag="43127" title="Du Souvenir / Face &#224; L&apos;&#233;cole Internationale [43127]" lat="45.5342" lon="-73.77656" stopId="43127"/>
+<stop tag="43150" title="Du Souvenir / Ch&#226;telaine [43150]" lat="45.5354899" lon="-73.77508" stopId="43150"/>
+<stop tag="43157" title="Du Souvenir / Melville [43157]" lat="45.53687" lon="-73.7722599" stopId="43157"/>
+<stop tag="43159" title="Du Souvenir / D&apos;effingham [43159]" lat="45.5379" lon="-73.7704799" stopId="43159"/>
+<stop tag="43108" title="Du Souvenir / Emerson [43108]" lat="45.53875" lon="-73.7693599" stopId="43108"/>
+<stop tag="43110" title="Du Souvenir / 100e Avenue [43110]" lat="45.5400399" lon="-73.76771" stopId="43110"/>
+<stop tag="43112" title="Du Souvenir / Webb [43112]" lat="45.5413299" lon="-73.76616" stopId="43112"/>
+<stop tag="43114" title="Du Souvenir / L&#233;o [43114]" lat="45.5430099" lon="-73.76446" stopId="43114"/>
+<stop tag="43116" title="Du Souvenir / &#233;lisabeth [43116]" lat="45.54495" lon="-73.7623799" stopId="43116"/>
+<stop tag="43118" title="Place Du Souvenir [43118]" lat="45.5466699" lon="-73.76084" stopId="43118"/>
+<stop tag="43120" title="Du Souvenir / Du Couvent [43120]" lat="45.5475299" lon="-73.75999" stopId="43120"/>
+<stop tag="CP43122" title="Du Souvenir / Cur&#233;-Labelle [43122]" lat="45.5488299" lon="-73.75752" stopId="43122"/>
+<stop tag="43124" title="Du Souvenir / H&#233;bert [43124]" lat="45.54968" lon="-73.75469" stopId="43124"/>
+<stop tag="43126" title="Du Souvenir / Joliet [43126]" lat="45.5498" lon="-73.7525999" stopId="43126"/>
+<stop tag="43129" title="Du Souvenir / Lapalme [43129]" lat="45.5502399" lon="-73.75071" stopId="43129"/>
+<stop tag="43131" title="Du Souvenir / Pie-X [43131]" lat="45.5505999" lon="-73.74963" stopId="43131"/>
+<stop tag="43133" title="Du Souvenir / Chomedey [43133]" lat="45.55112" lon="-73.7465" stopId="43133"/>
+<stop tag="43135" title="Du Souvenir / Chomedey [43135]" lat="45.55184" lon="-73.7450299" stopId="43135"/>
+<stop tag="43137" title="Du Souvenir / Face &#224; L&apos;&#233;cole Liberty [43137]" lat="45.5531399" lon="-73.74309" stopId="43137"/>
+<stop tag="43140" title="Du Souvenir / Daniel-Johnson [43140]" lat="45.55458" lon="-73.74127" stopId="43140"/>
+<stop tag="43142" title="Du Souvenir / Armand-Frappier [43142]" lat="45.55568" lon="-73.7361599" stopId="43142"/>
+<stop tag="43144" title="Du Souvenir / Centre Laval [43144]" lat="45.5595" lon="-73.7288299" stopId="43144"/>
+<stop tag="43147" title="Du Souvenir / Lucien-Paiement [43147]" lat="45.56093" lon="-73.7252199" stopId="43147"/>
+<stop tag="43148" title="Du Souvenir / De L&apos;avenir [43148]" lat="45.5616299" lon="-73.72297" stopId="43148"/>
+<stop tag="46443" title="De L&apos;avenir / Jacques-T&#233;treault [46443]" lat="45.5595899" lon="-73.7208099" stopId="46443"/>
+<stop tag="CP48140" title="M&#233;tro Montmorency Quai:5 [48140]" lat="45.5582899" lon="-73.72039" stopId="48140"/>
+<direction tag="40E_0_var0" title="Est" name="Est" useForUI="true">
+  <stop tag="CP45001" />
+  <stop tag="41312" />
+  <stop tag="43127" />
+  <stop tag="43150" />
+  <stop tag="43157" />
+  <stop tag="43159" />
+  <stop tag="43108" />
+  <stop tag="43110" />
+  <stop tag="43112" />
+  <stop tag="43114" />
+  <stop tag="43116" />
+  <stop tag="43118" />
+  <stop tag="43120" />
+  <stop tag="CP43122" />
+  <stop tag="43124" />
+  <stop tag="43126" />
+  <stop tag="43129" />
+  <stop tag="43131" />
+  <stop tag="43133" />
+  <stop tag="43135" />
+  <stop tag="43137" />
+  <stop tag="43140" />
+  <stop tag="43142" />
+  <stop tag="43144" />
+  <stop tag="43147" />
+  <stop tag="43148" />
+  <stop tag="46443" />
+  <stop tag="CP48140" />
+</direction>
+<path>
+<point lat="45.5326" lon="-73.78099"/>
+<point lat="45.53207" lon="-73.78079"/>
+<point lat="45.53188" lon="-73.78074"/>
+<point lat="45.53178" lon="-73.78069"/>
+<point lat="45.5322" lon="-73.77835"/>
+<point lat="45.5323" lon="-73.77839"/>
+<point lat="45.5327399" lon="-73.77845"/>
+<point lat="45.53299" lon="-73.77864"/>
+<point lat="45.53309" lon="-73.77866"/>
+<point lat="45.53311" lon="-73.7784999"/>
+<point lat="45.53317" lon="-73.77828"/>
+<point lat="45.53327" lon="-73.77806"/>
+<point lat="45.5337699" lon="-73.77728"/>
+<point lat="45.5339699" lon="-73.777"/>
+<point lat="45.53416" lon="-73.77676"/>
+<point lat="45.5342" lon="-73.77656"/>
+<point lat="45.53426" lon="-73.77667"/>
+<point lat="45.53533" lon="-73.7756"/>
+<point lat="45.53542" lon="-73.77547"/>
+<point lat="45.53549" lon="-73.77508"/>
+<point lat="45.5355599" lon="-73.77513"/>
+<point lat="45.53561" lon="-73.77498"/>
+<point lat="45.53601" lon="-73.77399"/>
+<point lat="45.53687" lon="-73.77226"/>
+<point lat="45.53775" lon="-73.7708"/>
+<point lat="45.53784" lon="-73.77067"/>
+<point lat="45.5379" lon="-73.77048"/>
+<point lat="45.53808" lon="-73.77039"/>
+<point lat="45.53858" lon="-73.76973"/>
+<point lat="45.53875" lon="-73.76936"/>
+<point lat="45.53887" lon="-73.76933"/>
+<point lat="45.53972" lon="-73.76821"/>
+<point lat="45.54004" lon="-73.7677099"/>
+<point lat="45.54023" lon="-73.76763"/>
+<point lat="45.54033" lon="-73.76751"/>
+<point lat="45.54133" lon="-73.76616"/>
+<point lat="45.54205" lon="-73.7654"/>
+<point lat="45.54301" lon="-73.76446"/>
+<point lat="45.54367" lon="-73.764"/>
+<point lat="45.54461" lon="-73.76291"/>
+<point lat="45.54495" lon="-73.7623799"/>
+<point lat="45.54586" lon="-73.76147"/>
+<point lat="45.54596" lon="-73.76137"/>
+<point lat="45.54621" lon="-73.7612"/>
+<point lat="45.54667" lon="-73.76084"/>
+<point lat="45.54692" lon="-73.7608"/>
+<point lat="45.54704" lon="-73.76072"/>
+<point lat="45.54713" lon="-73.76063"/>
+<point lat="45.54723" lon="-73.76051"/>
+<point lat="45.54744" lon="-73.76021"/>
+<point lat="45.54753" lon="-73.75999"/>
+<point lat="45.54763" lon="-73.75995"/>
+<point lat="45.54817" lon="-73.75916"/>
+<point lat="45.5482299" lon="-73.75905"/>
+<point lat="45.54883" lon="-73.75775"/>
+<point lat="45.54883" lon="-73.75752"/>
+</path>
+<path>
+<point lat="45.54883" lon="-73.75752"/>
+<point lat="45.54897" lon="-73.75738"/>
+<point lat="45.54904" lon="-73.75722"/>
+<point lat="45.54959" lon="-73.75558"/>
+<point lat="45.54971" lon="-73.75515"/>
+<point lat="45.5497299" lon="-73.75502"/>
+<point lat="45.54968" lon="-73.75469"/>
+<point lat="45.54974" lon="-73.75457"/>
+<point lat="45.5498" lon="-73.75287"/>
+<point lat="45.5498" lon="-73.7526"/>
+<point lat="45.55024" lon="-73.75071"/>
+<point lat="45.55042" lon="-73.7501599"/>
+<point lat="45.5506" lon="-73.74963"/>
+<point lat="45.55081" lon="-73.74925"/>
+<point lat="45.55087" lon="-73.74907"/>
+<point lat="45.55095" lon="-73.74874"/>
+<point lat="45.55099" lon="-73.74852"/>
+<point lat="45.55101" lon="-73.74833"/>
+<point lat="45.55098" lon="-73.74817"/>
+<point lat="45.55098" lon="-73.74797"/>
+<point lat="45.55102" lon="-73.74729"/>
+<point lat="45.55104" lon="-73.74712"/>
+<point lat="45.55108" lon="-73.74691"/>
+<point lat="45.55118" lon="-73.74654"/>
+<point lat="45.55112" lon="-73.7465"/>
+<point lat="45.55127" lon="-73.74628"/>
+<point lat="45.55141" lon="-73.74602"/>
+<point lat="45.55148" lon="-73.7458599"/>
+<point lat="45.55184" lon="-73.74503"/>
+<point lat="45.5526399" lon="-73.74392"/>
+<point lat="45.55314" lon="-73.74309"/>
+<point lat="45.55438" lon="-73.7417"/>
+<point lat="45.55463" lon="-73.7413399"/>
+<point lat="45.55458" lon="-73.74127"/>
+<point lat="45.55477" lon="-73.74109"/>
+<point lat="45.55491" lon="-73.7407999"/>
+<point lat="45.555" lon="-73.74058"/>
+<point lat="45.55509" lon="-73.74033"/>
+<point lat="45.5551699" lon="-73.74007"/>
+<point lat="45.55525" lon="-73.73971"/>
+<point lat="45.5553" lon="-73.73943"/>
+<point lat="45.55561" lon="-73.73679"/>
+<point lat="45.55572" lon="-73.73629"/>
+<point lat="45.55568" lon="-73.73616"/>
+<point lat="45.5558" lon="-73.73605"/>
+<point lat="45.55585" lon="-73.7359199"/>
+<point lat="45.5559299" lon="-73.73574"/>
+<point lat="45.55608" lon="-73.73544"/>
+<point lat="45.5595" lon="-73.72883"/>
+<point lat="45.5599" lon="-73.72821"/>
+<point lat="45.56044" lon="-73.72693"/>
+<point lat="45.56077" lon="-73.72601"/>
+<point lat="45.56093" lon="-73.7252199"/>
+<point lat="45.56144" lon="-73.72385"/>
+<point lat="45.56163" lon="-73.72297"/>
+<point lat="45.56177" lon="-73.72277"/>
+<point lat="45.56089" lon="-73.72192"/>
+<point lat="45.55959" lon="-73.72081"/>
+<point lat="45.5586399" lon="-73.71974"/>
+<point lat="45.55854" lon="-73.71997"/>
+<point lat="45.55856" lon="-73.72012"/>
+<point lat="45.55829" lon="-73.72039"/>
+</path>
+</route>
+</body>

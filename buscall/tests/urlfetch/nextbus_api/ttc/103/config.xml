@@ -1,0 +1,207 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:02:05 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1865
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="103" title="103-Mt Pleasant North" color="ff0000" oppositeColor="ffffff" latMin="43.7043099" latMax="43.7346799" lonMin="-79.40029" lonMax="-79.3902">
+<stop tag="3831" title="Doncliffe Loop" lat="43.7346799" lon="-79.40029" stopId="5518"/>
+<stop tag="7184" title="Mount Pleasant Road At Golfdale Road" lat="43.7330599" lon="-79.3994499" stopId="5821"/>
+<stop tag="5321" title="Mount Pleasant Road At Glen Forest Road" lat="43.73141" lon="-79.39881" stopId="5818"/>
+<stop tag="3119" title="Mount Pleasant Road At Bowood Avenue" lat="43.7297399" lon="-79.3981599" stopId="5805"/>
+<stop tag="6204" title="Mount Pleasant Road At Wanless Avenue" lat="43.72773" lon="-79.39739" stopId="5848"/>
+<stop tag="8995" title="Mount Pleasant Road At Lawrence Avenue East" lat="43.72672" lon="-79.3966" stopId="5828"/>
+<stop tag="7096" title="Mount Pleasant Road At Lawrence Avenue East Farside" lat="43.7257499" lon="-79.39715" stopId="5827"/>
+<stop tag="1491" title="Mount Pleasant Road At Lawrence Crescent South" lat="43.72406" lon="-79.39646" stopId="5829"/>
+<stop tag="3514" title="Mount Pleasant Road At St Leonards Avenue" lat="43.72243" lon="-79.39582" stopId="5845"/>
+<stop tag="6447" title="Mount Pleasant Road At Glengowan Road" lat="43.72072" lon="-79.39512" stopId="5820"/>
+<stop tag="4331" title="Mount Pleasant Road At Stibbard Avenue" lat="43.7170499" lon="-79.3937899" stopId="5846"/>
+<stop tag="3151" title="Mount Pleasant Road At Sherwood Avenue" lat="43.7151699" lon="-79.3927899" stopId="5840"/>
+<stop tag="1776" title="Mount Pleasant Road At Erskine Avenue" lat="43.7126899" lon="-79.3918499" stopId="5817"/>
+<stop tag="10253" title="Mount Pleasant Road At Broadway Avenue" lat="43.7112699" lon="-79.3913199" stopId="5807"/>
+<stop tag="7839" title="Mount Pleasant Road At Eglinton Avenue East" lat="43.7085599" lon="-79.39032" stopId="5815"/>
+<stop tag="4697" title="Eglinton Avenue East At Redpath Avenue" lat="43.7079599" lon="-79.39266" stopId="2305"/>
+<stop tag="9633" title="Eglinton Avenue East At Dunfield Avenue" lat="43.7074599" lon="-79.39525" stopId="2268"/>
+<stop tag="14676" title="2190 Yonge St" lat="43.70566" lon="-79.39821" stopId="14950"/>
+<stop tag="4646" title="Yonge Street At Berwick Avenue" lat="43.70442" lon="-79.39797" stopId="8958"/>
+<stop tag="14188_ar" title="Eglinton Station" lat="43.7043099" lon="-79.39831"/>
+<stop tag="14188" title="Eglinton Station" lat="43.7043099" lon="-79.39831" stopId="14667"/>
+<stop tag="303" title="Duplex Avenue At Eglinton Avenue West" lat="43.70623" lon="-79.40011" stopId="13898"/>
+<stop tag="319" title="Eglinton Avenue East At Holly Street Farside" lat="43.7069199" lon="-79.39707" stopId="3538"/>
+<stop tag="6665" title="Eglinton Avenue East At Redpath Avenue" lat="43.70775" lon="-79.3929299" stopId="2304"/>
+<stop tag="591" title="Mount Pleasant Road At Eglinton Avenue East Farside" lat="43.7089099" lon="-79.3902" stopId="5813"/>
+<stop tag="7122" title="Mount Pleasant Road At Broadway Avenue" lat="43.71102" lon="-79.39104" stopId="5806"/>
+<stop tag="8506" title="Mount Pleasant Road At Erskine Avenue" lat="43.7124999" lon="-79.3915999" stopId="5816"/>
+<stop tag="8321" title="Mount Pleasant Road At Sherwood Avenue" lat="43.71487" lon="-79.3925" stopId="11995"/>
+<stop tag="4348" title="Mount Pleasant Road At Blythwood Road" lat="43.7177799" lon="-79.394" stopId="5804"/>
+<stop tag="770" title="Mount Pleasant Road At Glengowan Road" lat="43.7202599" lon="-79.3947799" stopId="5819"/>
+<stop tag="3325" title="Mount Pleasant Road At Dinnick Crescent" lat="43.7228899" lon="-79.3958499" stopId="5812"/>
+<stop tag="6036" title="Mount Pleasant Road At Lawrence Crescent North" lat="43.7247499" lon="-79.3965899" stopId="5830"/>
+<stop tag="4256" title="Mount Pleasant Road At Lawrence Avenue" lat="43.7257899" lon="-79.39701" stopId="5825"/>
+<stop tag="9422" title="Mount Pleasant Road At Lawrence Avenue East Farside" lat="43.7267399" lon="-79.39645" stopId="5826"/>
+<stop tag="9743" title="Mount Pleasant Road At Ranleigh Avenue Farside" lat="43.7289899" lon="-79.3977299" stopId="5837"/>
+<stop tag="1427" title="Mount Pleasant Road At Roslin Avenue" lat="43.73032" lon="-79.39823" stopId="5838"/>
+<stop tag="5267" title="Mount Pleasant Road At Snowdon Avenue" lat="43.7319799" lon="-79.3988899" stopId="5841"/>
+<stop tag="2049" title="Mount Pleasant Road At Teddington Park Avenue" lat="43.7338699" lon="-79.3996" stopId="5847"/>
+<direction tag="103_1_103" title="North - 103 Mount Pleasant North towards Doncliffe" name="North" useForUI="true">
+  <stop tag="14188" />
+  <stop tag="303" />
+  <stop tag="319" />
+  <stop tag="6665" />
+  <stop tag="591" />
+  <stop tag="7122" />
+  <stop tag="8506" />
+  <stop tag="8321" />
+  <stop tag="4348" />
+  <stop tag="770" />
+  <stop tag="3325" />
+  <stop tag="6036" />
+  <stop tag="4256" />
+  <stop tag="9422" />
+  <stop tag="9743" />
+  <stop tag="1427" />
+  <stop tag="5267" />
+  <stop tag="2049" />
+</direction>
+<direction tag="103_0_103" title="South - 103 Mount Pleasant North towards Eglinton Station" name="South" useForUI="true">
+  <stop tag="3831" />
+  <stop tag="7184" />
+  <stop tag="5321" />
+  <stop tag="3119" />
+  <stop tag="6204" />
+  <stop tag="8995" />
+  <stop tag="7096" />
+  <stop tag="1491" />
+  <stop tag="3514" />
+  <stop tag="6447" />
+  <stop tag="4331" />
+  <stop tag="3151" />
+  <stop tag="1776" />
+  <stop tag="10253" />
+  <stop tag="7839" />
+  <stop tag="4697" />
+  <stop tag="9633" />
+  <stop tag="14676" />
+  <stop tag="4646" />
+  <stop tag="14188_ar" />
+</direction>
+<path>
+<point lat="43.70856" lon="-79.39032"/>
+<point lat="43.7084" lon="-79.39018"/>
+<point lat="43.70796" lon="-79.39266"/>
+<point lat="43.70746" lon="-79.39525"/>
+<point lat="43.70673" lon="-79.3983499"/>
+<point lat="43.70614" lon="-79.39823"/>
+<point lat="43.70566" lon="-79.39821"/>
+<point lat="43.70442" lon="-79.39797"/>
+<point lat="43.70435" lon="-79.39784"/>
+<point lat="43.70431" lon="-79.39831"/>
+</path>
+<path>
+<point lat="43.70431" lon="-79.39831"/>
+<point lat="43.70428" lon="-79.39894"/>
+<point lat="43.70441" lon="-79.39927"/>
+<point lat="43.70479" lon="-79.3993799"/>
+<point lat="43.70521" lon="-79.39945"/>
+<point lat="43.70548" lon="-79.39946"/>
+<point lat="43.70568" lon="-79.40007"/>
+<point lat="43.70623" lon="-79.40011"/>
+<point lat="43.70635" lon="-79.40027"/>
+<point lat="43.7069199" lon="-79.39707"/>
+<point lat="43.70775" lon="-79.39293"/>
+<point lat="43.7084" lon="-79.39018"/>
+<point lat="43.70891" lon="-79.3901999"/>
+</path>
+<path>
+<point lat="43.70891" lon="-79.3901999"/>
+<point lat="43.71102" lon="-79.39104"/>
+<point lat="43.7125" lon="-79.3916"/>
+<point lat="43.71487" lon="-79.3925"/>
+<point lat="43.7166" lon="-79.39328"/>
+<point lat="43.71681" lon="-79.39342"/>
+<point lat="43.717" lon="-79.3937"/>
+<point lat="43.7172" lon="-79.39387"/>
+<point lat="43.71748" lon="-79.39401"/>
+<point lat="43.71778" lon="-79.394"/>
+<point lat="43.71799" lon="-79.39418"/>
+<point lat="43.71915" lon="-79.39443"/>
+<point lat="43.72026" lon="-79.39478"/>
+<point lat="43.72289" lon="-79.39585"/>
+<point lat="43.72475" lon="-79.39659"/>
+<point lat="43.72579" lon="-79.39701"/>
+</path>
+<path>
+<point lat="43.72575" lon="-79.39715"/>
+<point lat="43.72406" lon="-79.39646"/>
+<point lat="43.72243" lon="-79.39582"/>
+<point lat="43.72072" lon="-79.39512"/>
+<point lat="43.71915" lon="-79.39443"/>
+<point lat="43.71799" lon="-79.39418"/>
+<point lat="43.71748" lon="-79.39401"/>
+<point lat="43.7172" lon="-79.39387"/>
+<point lat="43.71705" lon="-79.39379"/>
+<point lat="43.717" lon="-79.3937"/>
+<point lat="43.71684" lon="-79.39346"/>
+<point lat="43.7166" lon="-79.39328"/>
+<point lat="43.71517" lon="-79.39279"/>
+<point lat="43.71269" lon="-79.39185"/>
+<point lat="43.71127" lon="-79.3913199"/>
+<point lat="43.70856" lon="-79.39032"/>
+</path>
+<path>
+<point lat="43.72579" lon="-79.39701"/>
+<point lat="43.72614" lon="-79.3972299"/>
+<point lat="43.72634" lon="-79.39639"/>
+<point lat="43.72657" lon="-79.39649"/>
+<point lat="43.72674" lon="-79.39645"/>
+<point lat="43.7268199" lon="-79.39654"/>
+<point lat="43.72708" lon="-79.39669"/>
+<point lat="43.72742" lon="-79.39716"/>
+<point lat="43.72899" lon="-79.39773"/>
+<point lat="43.73032" lon="-79.39823"/>
+<point lat="43.73198" lon="-79.39889"/>
+<point lat="43.73387" lon="-79.3996"/>
+</path>
+<path>
+<point lat="43.72406" lon="-79.39646"/>
+<point lat="43.72243" lon="-79.39582"/>
+<point lat="43.72072" lon="-79.39512"/>
+<point lat="43.71915" lon="-79.39443"/>
+<point lat="43.71799" lon="-79.39418"/>
+<point lat="43.71748" lon="-79.39401"/>
+<point lat="43.7172" lon="-79.39387"/>
+<point lat="43.71705" lon="-79.39379"/>
+<point lat="43.717" lon="-79.3937"/>
+<point lat="43.71684" lon="-79.39346"/>
+<point lat="43.7166" lon="-79.39328"/>
+<point lat="43.71517" lon="-79.39279"/>
+<point lat="43.71269" lon="-79.39185"/>
+<point lat="43.71127" lon="-79.3913199"/>
+<point lat="43.70856" lon="-79.39032"/>
+</path>
+<path>
+<point lat="43.73468" lon="-79.40029"/>
+<point lat="43.73461" lon="-79.40001"/>
+<point lat="43.7343199" lon="-79.39983"/>
+<point lat="43.73306" lon="-79.39945"/>
+<point lat="43.7314099" lon="-79.39881"/>
+<point lat="43.72974" lon="-79.39816"/>
+<point lat="43.72773" lon="-79.39739"/>
+<point lat="43.72758" lon="-79.39726"/>
+<point lat="43.72737" lon="-79.39711"/>
+<point lat="43.72719" lon="-79.39684"/>
+<point lat="43.7269999" lon="-79.39663"/>
+<point lat="43.72672" lon="-79.3966"/>
+<point lat="43.72673" lon="-79.39651"/>
+<point lat="43.7265" lon="-79.3964699"/>
+<point lat="43.72614" lon="-79.3972299"/>
+<point lat="43.72575" lon="-79.39715"/>
+</path>
+</route>
+</body>

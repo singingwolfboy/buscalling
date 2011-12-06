@@ -1,0 +1,64 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:58:23 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 536
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2011.">
+<route tag="274" title="274" color="d088ba" oppositeColor="000000" latMin="42.3243299" latMax="42.3282399" lonMin="-70.96339" lonMax="-70.95799">
+<stop tag="1003" title="Firehouse @ Long Island" lat="42.3243299" lon="-70.96339" stopId="01003"/>
+<stop tag="27610_ar" title="Long Island Shelter" lat="42.3282399" lon="-70.95799"/>
+<stop tag="27610" title="Long Island Shelter" lat="42.3282399" lon="-70.95799" stopId="27610"/>
+<stop tag="1003_ar" title="Firehouse @ Long Island" lat="42.3243299" lon="-70.96339"/>
+<direction tag="274_1_var0" title="Long Island" name="Inbound" useForUI="true">
+  <stop tag="27610" />
+  <stop tag="1003_ar" />
+</direction>
+<direction tag="274_0_var0" title="Long Island" name="Outbound" useForUI="true">
+  <stop tag="1003" />
+  <stop tag="27610_ar" />
+</direction>
+<path>
+<point lat="42.32433" lon="-70.96339"/>
+<point lat="42.32455" lon="-70.96317"/>
+<point lat="42.32488" lon="-70.96281"/>
+<point lat="42.32519" lon="-70.96247"/>
+<point lat="42.32543" lon="-70.96222"/>
+<point lat="42.32557" lon="-70.96205"/>
+<point lat="42.32566" lon="-70.96191"/>
+<point lat="42.32567" lon="-70.96177"/>
+<point lat="42.32564" lon="-70.96163"/>
+<point lat="42.32551" lon="-70.96142"/>
+<point lat="42.32527" lon="-70.96099"/>
+<point lat="42.32557" lon="-70.96069"/>
+<point lat="42.32582" lon="-70.96042"/>
+<point lat="42.32652" lon="-70.95971"/>
+<point lat="42.32684" lon="-70.95942"/>
+<point lat="42.32738" lon="-70.95887"/>
+<point lat="42.32824" lon="-70.95799"/>
+</path>
+<path>
+<point lat="42.32824" lon="-70.95799"/>
+<point lat="42.32684" lon="-70.95942"/>
+<point lat="42.32652" lon="-70.95971"/>
+<point lat="42.32582" lon="-70.96042"/>
+<point lat="42.32557" lon="-70.96069"/>
+<point lat="42.32527" lon="-70.96099"/>
+<point lat="42.32551" lon="-70.96142"/>
+<point lat="42.32564" lon="-70.96163"/>
+<point lat="42.32567" lon="-70.96177"/>
+<point lat="42.32566" lon="-70.96191"/>
+<point lat="42.32557" lon="-70.96205"/>
+<point lat="42.32543" lon="-70.96222"/>
+<point lat="42.32519" lon="-70.96247"/>
+<point lat="42.32488" lon="-70.96281"/>
+<point lat="42.32455" lon="-70.96317"/>
+<point lat="42.32433" lon="-70.96339"/>
+</path>
+</route>
+</body>

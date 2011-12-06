@@ -1,0 +1,146 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:16 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1515
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="33" title="33-Forest Hill" color="ff0000" oppositeColor="ffffff" latMin="43.6839899" latMax="43.7053799" lonMin="-79.4260099" lonMax="-79.41131">
+<stop tag="7640" title="Chaplin Crescent At Roselawn Avenue" lat="43.7053799" lon="-79.42372" stopId="3419"/>
+<stop tag="3485" title="Bathurst Street At Ridge Hill Drive" lat="43.7034599" lon="-79.4260099" stopId="0192"/>
+<stop tag="1242" title="Eglinton Avenue West At Old Forest Hill Road Farside" lat="43.70152" lon="-79.4226299" stopId="2390"/>
+<stop tag="9665" title="Eglinton Avenue West At Gardiner Road" lat="43.7021" lon="-79.4199699" stopId="2351"/>
+<stop tag="9951" title="Spadina Road At Eglinton Avenue West Farside" lat="43.7020199" lon="-79.41883" stopId="4604"/>
+<stop tag="8199" title="Spadina Road At Old Forest Hill Road" lat="43.6991299" lon="-79.4171299" stopId="4605"/>
+<stop tag="6352" title="Spadina Road At Elderwood Drive" lat="43.6967799" lon="-79.4161199" stopId="14062"/>
+<stop tag="950" title="Spadina Road At Ardmore Road" lat="43.69533" lon="-79.4155" stopId="4607"/>
+<stop tag="2894" title="Spadina Road At Burton Road" lat="43.6929899" lon="-79.4145299" stopId="4608"/>
+<stop tag="7890" title="Spadina Road At Strathearn Boulevard Farside" lat="43.69072" lon="-79.41359" stopId="4616"/>
+<stop tag="8909" title="Spadina Road At Lonsdale Road" lat="43.6887199" lon="-79.4127799" stopId="4614"/>
+<stop tag="6814" title="Spadina Road At Heath Street" lat="43.6868499" lon="-79.4121299" stopId="4611"/>
+<stop tag="9552" title="Spadina Road At St Clair Avenue West" lat="43.68483" lon="-79.41131" stopId="4615"/>
+<stop tag="5735" title="St Clair Avenue West At Tweedsmuir Avenue Farside" lat="43.68413" lon="-79.4136099" stopId="4632"/>
+<stop tag="14300_ar" title="St Clair West Station" lat="43.6839899" lon="-79.41538"/>
+<stop tag="14300" title="St Clair West Station" lat="43.6839899" lon="-79.41538" stopId="14783"/>
+<stop tag="8875" title="St Clair Avenue West At Tweedsmuir Avenue" lat="43.6841099" lon="-79.41346" stopId="14343"/>
+<stop tag="10432" title="Spadina Road At St Clair Avenue West Farside" lat="43.6851799" lon="-79.4113299" stopId="14364"/>
+<stop tag="1600" title="Spadina Road At Heath Street" lat="43.68671" lon="-79.41189" stopId="4610"/>
+<stop tag="7328" title="Spadina Road At Lonsdale Road" lat="43.68858" lon="-79.41256" stopId="4613"/>
+<stop tag="2929" title="Spadina Road At Strathearn Boulevard" lat="43.6908899" lon="-79.4135199" stopId="4617"/>
+<stop tag="8756" title="Spadina Road At Kilbarry Road" lat="43.69261" lon="-79.41426" stopId="4612"/>
+<stop tag="6019" title="Spadina Road At Hawarden Crescent Farside" lat="43.6944899" lon="-79.4150299" stopId="4609"/>
+<stop tag="2810" title="Spadina Road At Archer Road" lat="43.696" lon="-79.41569" stopId="4606"/>
+<stop tag="3128" title="Spadina Road At Old Forest Hill Road" lat="43.69887" lon="-79.41688" stopId="14321"/>
+<stop tag="4394" title="Spadina Road At Eglinton Avenue West" lat="43.70225" lon="-79.41883" stopId="12795"/>
+<stop tag="3822" title="Chaplin Crescent At Eglinton Avenue West Farside" lat="43.7030299" lon="-79.4179" stopId="3413"/>
+<stop tag="4048" title="75 Chaplin Crescent At Midblock North Of Eglinton" lat="43.7041899" lon="-79.42124" stopId="3415"/>
+<stop tag="4764" title="Chaplin Crescent At Walkway South Of Roselawn" lat="43.70468" lon="-79.42293" stopId="11060"/>
+<stop tag="7640_ar" title="Chaplin Crescent At Roselawn Avenue" lat="43.7053799" lon="-79.42372"/>
+<direction tag="33_0_33" title="South - 33 Forest Hill towards St Clair West Station" name="South" useForUI="true">
+  <stop tag="7640" />
+  <stop tag="3485" />
+  <stop tag="1242" />
+  <stop tag="9665" />
+  <stop tag="9951" />
+  <stop tag="8199" />
+  <stop tag="6352" />
+  <stop tag="950" />
+  <stop tag="2894" />
+  <stop tag="7890" />
+  <stop tag="8909" />
+  <stop tag="6814" />
+  <stop tag="9552" />
+  <stop tag="5735" />
+  <stop tag="14300_ar" />
+</direction>
+<direction tag="33_1_33" title="North - 33 Forest Hill towards Eglinton (Roselawn)" name="North" useForUI="true">
+  <stop tag="14300" />
+  <stop tag="8875" />
+  <stop tag="10432" />
+  <stop tag="1600" />
+  <stop tag="7328" />
+  <stop tag="2929" />
+  <stop tag="8756" />
+  <stop tag="6019" />
+  <stop tag="2810" />
+  <stop tag="3128" />
+  <stop tag="4394" />
+  <stop tag="3822" />
+  <stop tag="4048" />
+  <stop tag="4764" />
+  <stop tag="7640_ar" />
+</direction>
+<path>
+<point lat="43.70303" lon="-79.4179"/>
+<point lat="43.70344" lon="-79.41886"/>
+<point lat="43.70358" lon="-79.41917"/>
+<point lat="43.70376" lon="-79.42022"/>
+<point lat="43.70412" lon="-79.42128"/>
+<point lat="43.7041899" lon="-79.42124"/>
+<point lat="43.70447" lon="-79.42246"/>
+<point lat="43.70468" lon="-79.4229299"/>
+<point lat="43.7047" lon="-79.42311"/>
+<point lat="43.7049" lon="-79.4235"/>
+<point lat="43.70509" lon="-79.42368"/>
+<point lat="43.70538" lon="-79.42372"/>
+</path>
+<path>
+<point lat="43.70202" lon="-79.41883"/>
+<point lat="43.70138" lon="-79.41808"/>
+<point lat="43.70113" lon="-79.41791"/>
+<point lat="43.6991299" lon="-79.41713"/>
+<point lat="43.6967799" lon="-79.41612"/>
+<point lat="43.69533" lon="-79.4155"/>
+<point lat="43.69299" lon="-79.41453"/>
+<point lat="43.69072" lon="-79.41359"/>
+<point lat="43.68872" lon="-79.41278"/>
+<point lat="43.68866" lon="-79.41266"/>
+<point lat="43.6882" lon="-79.41259"/>
+<point lat="43.68685" lon="-79.41213"/>
+<point lat="43.68483" lon="-79.41131"/>
+<point lat="43.68462" lon="-79.41116"/>
+<point lat="43.68413" lon="-79.41361"/>
+<point lat="43.68369" lon="-79.41559"/>
+<point lat="43.68399" lon="-79.41538"/>
+</path>
+<path>
+<point lat="43.70538" lon="-79.42372"/>
+<point lat="43.70519" lon="-79.42636"/>
+<point lat="43.70514" lon="-79.42635"/>
+<point lat="43.70346" lon="-79.42601"/>
+<point lat="43.70264" lon="-79.42574"/>
+<point lat="43.70099" lon="-79.42555"/>
+<point lat="43.70152" lon="-79.42263"/>
+<point lat="43.7021" lon="-79.41997"/>
+<point lat="43.70235" lon="-79.4191"/>
+<point lat="43.70202" lon="-79.41883"/>
+</path>
+<path>
+<point lat="43.68399" lon="-79.41538"/>
+<point lat="43.68377" lon="-79.41528"/>
+<point lat="43.6841099" lon="-79.41346"/>
+<point lat="43.68462" lon="-79.41116"/>
+<point lat="43.68518" lon="-79.41133"/>
+<point lat="43.68671" lon="-79.41189"/>
+<point lat="43.6881" lon="-79.41256"/>
+<point lat="43.68858" lon="-79.41256"/>
+<point lat="43.68866" lon="-79.41266"/>
+<point lat="43.69089" lon="-79.41352"/>
+<point lat="43.69261" lon="-79.41426"/>
+<point lat="43.69449" lon="-79.41503"/>
+<point lat="43.696" lon="-79.41569"/>
+<point lat="43.69887" lon="-79.41688"/>
+<point lat="43.70113" lon="-79.41791"/>
+<point lat="43.70138" lon="-79.41808"/>
+<point lat="43.70225" lon="-79.41883"/>
+<point lat="43.70235" lon="-79.4191"/>
+<point lat="43.70271" lon="-79.41737"/>
+<point lat="43.70303" lon="-79.4179"/>
+</path>
+</route>
+</body>

@@ -1,0 +1,126 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:57 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1225
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="92" title="92-Woodbine South" color="ff0000" oppositeColor="ffffff" latMin="43.6633899" latMax="43.6864599" lonMin="-79.3129199" lonMax="-79.30481">
+<stop tag="14322" title="Woodbine Station" lat="43.6864599" lon="-79.31223" stopId="14805"/>
+<stop tag="7995" title="Woodbine Avenue At Danforth Avenue" lat="43.6857999" lon="-79.3129199" stopId="8914"/>
+<stop tag="2816" title="Woodbine Avenue At Merrill Avenue" lat="43.6834899" lon="-79.3119499" stopId="8925"/>
+<stop tag="5327" title="Woodbine Avenue At Gerrard Street" lat="43.68097" lon="-79.31091" stopId="8919"/>
+<stop tag="9424" title="Woodbine Avenue At Cassels Avenue Farside" lat="43.67867" lon="-79.30994" stopId="8909"/>
+<stop tag="1461" title="Woodbine Avenue At Eastwood Road" lat="43.6765899" lon="-79.3090699" stopId="8917"/>
+<stop tag="8517" title="Woodbine Avenue At Kingston Road" lat="43.6740399" lon="-79.3080499" stopId="8923"/>
+<stop tag="7200" title="Woodbine Avenue At Columbine Avenue" lat="43.6718599" lon="-79.30715" stopId="8911"/>
+<stop tag="8456" title="Woodbine Avenue At Queen Street" lat="43.66884" lon="-79.30589" stopId="14144"/>
+<stop tag="5960" title="1816 Lake Shore Boulevard East" lat="43.6644999" lon="-79.30617" stopId="14145"/>
+<stop tag="9757_ar" title="Woodbine Beach Loop" lat="43.6633899" lon="-79.30905"/>
+<stop tag="9757" title="Woodbine Beach Loop" lat="43.6633899" lon="-79.30905" stopId="14146"/>
+<stop tag="5456" title="1816 Lake Shore Boulevard East" lat="43.66468" lon="-79.3055899" stopId="14273"/>
+<stop tag="2975" title="Woodbine Avenue At Kew Beach Avenue" lat="43.6655099" lon="-79.30481" stopId="8921"/>
+<stop tag="2871" title="Woodbine Avenue At Queen Street Farside" lat="43.6690999" lon="-79.30583" stopId="8930"/>
+<stop tag="5114" title="Woodbine Avenue At Norway Anenue Farside" lat="43.67239" lon="-79.30719" stopId="8926"/>
+<stop tag="9852" title="Woodbine Avenue At Kingston Road" lat="43.67379" lon="-79.30776" stopId="8922"/>
+<stop tag="10167" title="Woodbine Avenue At Corley Avenue" lat="43.6763799" lon="-79.30884" stopId="8912"/>
+<stop tag="2307" title="Woodbine Avenue At Cassels Avenue" lat="43.67875" lon="-79.30983" stopId="8910"/>
+<stop tag="1350" title="Woodbine Avenue At Gerrard Street" lat="43.68071" lon="-79.31068" stopId="8918"/>
+<stop tag="777" title="Woodbine Avenue At Merrill Avenue Farside" lat="43.68354" lon="-79.31179" stopId="8924"/>
+<stop tag="4293" title="Woodbine Avenue At Danforth Avenue" lat="43.6855299" lon="-79.3126399" stopId="8915"/>
+<stop tag="14322_ar" title="Woodbine Station" lat="43.6864599" lon="-79.31223"/>
+<direction tag="92_0_92" title="South - 92 Woodbine South towards Lakeshore" name="South" useForUI="true">
+  <stop tag="14322" />
+  <stop tag="7995" />
+  <stop tag="2816" />
+  <stop tag="5327" />
+  <stop tag="9424" />
+  <stop tag="1461" />
+  <stop tag="8517" />
+  <stop tag="7200" />
+  <stop tag="8456" />
+  <stop tag="5960" />
+  <stop tag="9757_ar" />
+</direction>
+<direction tag="92_1_92" title="North - 92 Woodbine South towards Woodbine Station" name="North" useForUI="true">
+  <stop tag="9757" />
+  <stop tag="5456" />
+  <stop tag="2975" />
+  <stop tag="2871" />
+  <stop tag="5114" />
+  <stop tag="9852" />
+  <stop tag="10167" />
+  <stop tag="2307" />
+  <stop tag="1350" />
+  <stop tag="777" />
+  <stop tag="4293" />
+  <stop tag="14322_ar" />
+</direction>
+<path>
+<point lat="43.6644999" lon="-79.30617"/>
+<point lat="43.66429" lon="-79.3062999"/>
+<point lat="43.66396" lon="-79.30723"/>
+<point lat="43.66339" lon="-79.30974"/>
+<point lat="43.66316" lon="-79.30959"/>
+<point lat="43.66339" lon="-79.30905"/>
+</path>
+<path>
+<point lat="43.67638" lon="-79.30884"/>
+<point lat="43.67875" lon="-79.30983"/>
+<point lat="43.68071" lon="-79.31068"/>
+<point lat="43.68354" lon="-79.31179"/>
+<point lat="43.68553" lon="-79.31264"/>
+<point lat="43.68639" lon="-79.31308"/>
+<point lat="43.68647" lon="-79.31256"/>
+<point lat="43.6864599" lon="-79.31223"/>
+</path>
+<path>
+<point lat="43.67186" lon="-79.3071499"/>
+<point lat="43.66884" lon="-79.30589"/>
+<point lat="43.66621" lon="-79.30473"/>
+<point lat="43.66565" lon="-79.30488"/>
+<point lat="43.66513" lon="-79.30524"/>
+<point lat="43.66492" lon="-79.3054499"/>
+<point lat="43.66473" lon="-79.30567"/>
+<point lat="43.6644999" lon="-79.30617"/>
+</path>
+<path>
+<point lat="43.6691" lon="-79.30583"/>
+<point lat="43.67239" lon="-79.30719"/>
+<point lat="43.6737899" lon="-79.30776"/>
+<point lat="43.67638" lon="-79.30884"/>
+</path>
+<path>
+<point lat="43.6864599" lon="-79.31223"/>
+<point lat="43.68657" lon="-79.31291"/>
+<point lat="43.68609" lon="-79.31295"/>
+<point lat="43.6858" lon="-79.31292"/>
+<point lat="43.68349" lon="-79.31195"/>
+<point lat="43.68097" lon="-79.31091"/>
+<point lat="43.6786699" lon="-79.30994"/>
+<point lat="43.67659" lon="-79.30907"/>
+<point lat="43.67404" lon="-79.30805"/>
+<point lat="43.67186" lon="-79.3071499"/>
+</path>
+<path>
+<point lat="43.66339" lon="-79.30905"/>
+<point lat="43.6636" lon="-79.30882"/>
+<point lat="43.66396" lon="-79.30723"/>
+<point lat="43.66426" lon="-79.3063899"/>
+<point lat="43.66452" lon="-79.30596"/>
+<point lat="43.66473" lon="-79.30567"/>
+<point lat="43.66468" lon="-79.30559"/>
+<point lat="43.66492" lon="-79.3054499"/>
+<point lat="43.66513" lon="-79.30524"/>
+<point lat="43.66551" lon="-79.30481"/>
+<point lat="43.66565" lon="-79.30488"/>
+<point lat="43.66621" lon="-79.30473"/>
+<point lat="43.6691" lon="-79.30583"/>
+</path>
+</route>
+</body>

@@ -1,0 +1,258 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 05:52:48 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 2318
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Charm City Circulator 2011.">
+<route tag="orange" title="Orange" color="ee8833" oppositeColor="000000" latMin="39.2829818" latMax="39.2896357" lonMin="-76.63527" lonMax="-76.599169">
+<stop tag="lombcomm_h" title="202 Commerce St" lat="39.2878602" lon="-76.6099414" stopId="0202"/>
+<stop tag="lombligh_h" title="203 Light St" lat="39.2878" lon="-76.6133862" stopId="0203"/>
+<stop tag="lombhano_h" title="204 Hanover St" lat="39.28774" lon="-76.6161995" stopId="0204"/>
+<stop tag="lombhowa_h" title="205 Howard St" lat="39.2876298" lon="-76.619133" stopId="0205"/>
+<stop tag="lombgree_h" title="206 Museum of Dentistry" lat="39.2874498" lon="-76.6233733" stopId="0206"/>
+<stop tag="lombpenn_h" title="207 Penn St" lat="39.28735" lon="-76.6260488" stopId="0207"/>
+<stop tag="lombmlk_h" title="208 Martin Luther King Jr Blvd" lat="39.28728" lon="-76.6278039" stopId="0208"/>
+<stop tag="baltfremave_h" title="209 Fremont Ave - Univ of MD BioPark" lat="39.2890198" lon="-76.6287528" stopId="0209"/>
+<stop tag="poppfair_h" title="210 Univ of MD BioPark Garage" lat="39.2888798" lon="-76.6319725" stopId="0210"/>
+<stop tag="arli24_e" title="211 Hollins Market" lat="39.2878" lon="-76.63527" stopId="0211"/>
+<stop tag="pratschr_e" title="212 B&amp;O RR Museum" lat="39.2857301" lon="-76.6336975" stopId="0212"/>
+<stop tag="poppbalt_e" title="213 Baltimore St" lat="39.2885623" lon="-76.6321101" stopId="0213"/>
+<stop tag="baltfremst_e" title="214 Fremont Ave - Univ of MD BioPark" lat="39.28894" lon="-76.6289591" stopId="0214"/>
+<stop tag="baltpine_e" title="215 Pine St" lat="39.2890599" lon="-76.6266602" stopId="0215"/>
+<stop tag="baltgree_e" title="216 Univ of MD Medical Center" lat="39.2892092" lon="-76.6238433" stopId="0216"/>
+<stop tag="greelomb_e" title="217 Univ of MD Medical Center" lat="39.2875586" lon="-76.6235699" stopId="0217"/>
+<stop tag="prateuta_e" title="218 Eutaw St - Camden Yards" lat="39.2862599" lon="-76.62083" stopId="0218"/>
+<stop tag="prathow" title="219 Pratt and Howard St" lat="39.2863025" lon="-76.6194092" stopId="0219"/>
+<stop tag="pratshar_e" title="220 Convention Center" lat="39.2863699" lon="-76.61736" stopId="0220"/>
+<stop tag="pratcalv_e" title="221 Inner Harbor" lat="39.2865501" lon="-76.6123531" stopId="0221"/>
+<stop tag="prat501_e" title="222 National Aquarium" lat="39.2866604" lon="-76.6086216" stopId="0222"/>
+<stop tag="east717_e" title="223 Market Place" lat="39.2867699" lon="-76.6062504" stopId="0223"/>
+<stop tag="littital_e" title="224 Little Italy" lat="39.2852312" lon="-76.6030508" stopId="0224"/>
+<stop tag="alic720b_h" title="225 Harbor East" lat="39.2829818" lon="-76.601724" stopId="0225"/>
+<stop tag="centalic_h" title="226 Central Ave" lat="39.2832499" lon="-76.5992717" stopId="0226"/>
+<stop tag="centbank_h" title="227 Bank St" lat="39.2862156" lon="-76.599169" stopId="0227"/>
+<stop tag="lomblloy_h" title="228 Jewish Museum Of Maryland" lat="39.2896357" lon="-76.6013055" stopId="0228"/>
+<stop tag="lomb897_h" title="229 Albemarle Square" lat="39.2888034" lon="-76.6035353" stopId="0229"/>
+<stop tag="lombpres_h" title="201 President St - Reginald F. Lewis Museum" lat="39.2881311" lon="-76.6053856" stopId="0201"/>
+<direction tag="hol" title="Hollins Market" name="" useForUI="true">
+  <stop tag="lombcomm_h" />
+  <stop tag="lombligh_h" />
+  <stop tag="lombhano_h" />
+  <stop tag="lombhowa_h" />
+  <stop tag="lombgree_h" />
+  <stop tag="lombpenn_h" />
+  <stop tag="lombmlk_h" />
+  <stop tag="baltfremave_h" />
+  <stop tag="poppfair_h" />
+  <stop tag="alic720b_h" />
+  <stop tag="centalic_h" />
+  <stop tag="centbank_h" />
+  <stop tag="lomblloy_h" />
+  <stop tag="lomb897_h" />
+  <stop tag="lombpres_h" />
+</direction>
+<direction tag="east" title="Harbor East" name="" useForUI="true">
+  <stop tag="arli24_e" />
+  <stop tag="pratschr_e" />
+  <stop tag="poppbalt_e" />
+  <stop tag="baltfremst_e" />
+  <stop tag="baltpine_e" />
+  <stop tag="baltgree_e" />
+  <stop tag="greelomb_e" />
+  <stop tag="prateuta_e" />
+  <stop tag="prathow" />
+  <stop tag="pratshar_e" />
+  <stop tag="pratcalv_e" />
+  <stop tag="prat501_e" />
+  <stop tag="east717_e" />
+  <stop tag="littital_e" />
+</direction>
+<path>
+<point lat="39.28676" lon="-76.60664"/>
+<point lat="39.28677" lon="-76.60625"/>
+</path>
+<path>
+<point lat="39.28832" lon="-76.60694"/>
+<point lat="39.28804" lon="-76.60692"/>
+<point lat="39.28799" lon="-76.60694"/>
+<point lat="39.28795" lon="-76.60699"/>
+<point lat="39.28795" lon="-76.60706"/>
+<point lat="39.2879099" lon="-76.6080099"/>
+<point lat="39.28789" lon="-76.60851"/>
+<point lat="39.28785" lon="-76.60867"/>
+<point lat="39.28778" lon="-76.6088"/>
+<point lat="39.28775" lon="-76.60896"/>
+<point lat="39.28773" lon="-76.60946"/>
+<point lat="39.28777" lon="-76.60971"/>
+<point lat="39.28786" lon="-76.60994"/>
+<point lat="39.28793" lon="-76.61033"/>
+<point lat="39.28794" lon="-76.61064"/>
+<point lat="39.28787" lon="-76.61118"/>
+<point lat="39.28782" lon="-76.61217"/>
+<point lat="39.2878" lon="-76.61339"/>
+<point lat="39.28776" lon="-76.615"/>
+<point lat="39.28774" lon="-76.6162"/>
+<point lat="39.28768" lon="-76.6177"/>
+<point lat="39.28763" lon="-76.61913"/>
+<point lat="39.28755" lon="-76.62082"/>
+<point lat="39.2875" lon="-76.62219"/>
+<point lat="39.28745" lon="-76.62337"/>
+<point lat="39.28735" lon="-76.62605"/>
+<point lat="39.28729" lon="-76.62767"/>
+<point lat="39.28728" lon="-76.6277999"/>
+<point lat="39.28728" lon="-76.6279"/>
+<point lat="39.2873" lon="-76.628"/>
+<point lat="39.28733" lon="-76.6280699"/>
+<point lat="39.28738" lon="-76.62811"/>
+<point lat="39.28747" lon="-76.62813"/>
+<point lat="39.28768" lon="-76.62814"/>
+<point lat="39.28787" lon="-76.62813"/>
+<point lat="39.28805" lon="-76.6281"/>
+<point lat="39.28822" lon="-76.62809"/>
+<point lat="39.2883799" lon="-76.62806"/>
+<point lat="39.2887" lon="-76.62795"/>
+<point lat="39.28889" lon="-76.62791"/>
+<point lat="39.289" lon="-76.62792"/>
+<point lat="39.28904" lon="-76.62799"/>
+<point lat="39.28905" lon="-76.62809"/>
+<point lat="39.28902" lon="-76.62875"/>
+<point lat="39.28898" lon="-76.62979"/>
+<point lat="39.28893" lon="-76.6309799"/>
+<point lat="39.28888" lon="-76.63197"/>
+<point lat="39.28886" lon="-76.63245"/>
+<point lat="39.28883" lon="-76.63308"/>
+<point lat="39.28871" lon="-76.63515"/>
+<point lat="39.28868" lon="-76.63525"/>
+<point lat="39.28862" lon="-76.6353"/>
+<point lat="39.28853" lon="-76.6353199"/>
+<point lat="39.2878" lon="-76.63527"/>
+</path>
+<path>
+<point lat="39.28677" lon="-76.60625"/>
+<point lat="39.28686" lon="-76.60435"/>
+<point lat="39.28686" lon="-76.60427"/>
+<point lat="39.28685" lon="-76.60419"/>
+<point lat="39.28682" lon="-76.60414"/>
+<point lat="39.28674" lon="-76.60406"/>
+<point lat="39.28523" lon="-76.60305"/>
+<point lat="39.2850899" lon="-76.60294"/>
+<point lat="39.28472" lon="-76.60272"/>
+<point lat="39.28412" lon="-76.60224"/>
+<point lat="39.28351" lon="-76.60179"/>
+<point lat="39.28343" lon="-76.60177"/>
+<point lat="39.28336" lon="-76.60178"/>
+<point lat="39.28329" lon="-76.60181"/>
+<point lat="39.28322" lon="-76.60184"/>
+<point lat="39.28316" lon="-76.60186"/>
+<point lat="39.2831" lon="-76.60185"/>
+<point lat="39.28302" lon="-76.60181"/>
+<point lat="39.28298" lon="-76.60172"/>
+<point lat="39.28297" lon="-76.6016099"/>
+<point lat="39.28299" lon="-76.60151"/>
+<point lat="39.28304" lon="-76.60144"/>
+<point lat="39.2831" lon="-76.60139"/>
+<point lat="39.28315" lon="-76.6013399"/>
+<point lat="39.28318" lon="-76.60127"/>
+<point lat="39.28325" lon="-76.59927"/>
+<point lat="39.28328" lon="-76.59917"/>
+<point lat="39.2832999" lon="-76.59908"/>
+<point lat="39.28339" lon="-76.599"/>
+<point lat="39.28351" lon="-76.59898"/>
+<point lat="39.28367" lon="-76.59898"/>
+<point lat="39.28421" lon="-76.59903"/>
+<point lat="39.28623" lon="-76.59917"/>
+<point lat="39.2874" lon="-76.59932"/>
+<point lat="39.28874" lon="-76.59941"/>
+<point lat="39.28958" lon="-76.59943"/>
+<point lat="39.29001" lon="-76.59947"/>
+<point lat="39.29011" lon="-76.5995"/>
+<point lat="39.2902" lon="-76.59956"/>
+<point lat="39.29023" lon="-76.59968"/>
+<point lat="39.29022" lon="-76.59983"/>
+<point lat="39.28963" lon="-76.60132"/>
+<point lat="39.28888" lon="-76.60317"/>
+<point lat="39.28884" lon="-76.60338"/>
+<point lat="39.2888" lon="-76.60355"/>
+<point lat="39.28866" lon="-76.6038"/>
+<point lat="39.28845" lon="-76.60432"/>
+<point lat="39.28824" lon="-76.60497"/>
+<point lat="39.28813" lon="-76.60539"/>
+<point lat="39.28798" lon="-76.60592"/>
+<point lat="39.28794" lon="-76.60654"/>
+<point lat="39.28796" lon="-76.60664"/>
+<point lat="39.2879999" lon="-76.6067"/>
+<point lat="39.2881" lon="-76.60675"/>
+<point lat="39.28817" lon="-76.60675"/>
+</path>
+<path>
+<point lat="39.2878" lon="-76.63527"/>
+<point lat="39.28776" lon="-76.63527"/>
+<point lat="39.2859" lon="-76.63516"/>
+<point lat="39.28581" lon="-76.63516"/>
+<point lat="39.28573" lon="-76.63511"/>
+<point lat="39.2857" lon="-76.63504"/>
+<point lat="39.28568" lon="-76.63496"/>
+<point lat="39.28573" lon="-76.6337"/>
+<point lat="39.28578" lon="-76.63282"/>
+<point lat="39.28583" lon="-76.63208"/>
+<point lat="39.28588" lon="-76.632"/>
+<point lat="39.28592" lon="-76.63197"/>
+<point lat="39.28598" lon="-76.63196"/>
+<point lat="39.2885599" lon="-76.63211"/>
+<point lat="39.28873" lon="-76.63212"/>
+<point lat="39.28878" lon="-76.63211"/>
+<point lat="39.28882" lon="-76.63209"/>
+<point lat="39.28884" lon="-76.63204"/>
+<point lat="39.28886" lon="-76.6318"/>
+<point lat="39.2889399" lon="-76.62896"/>
+<point lat="39.28898" lon="-76.62821"/>
+<point lat="39.2890299" lon="-76.62729"/>
+<point lat="39.28906" lon="-76.62666"/>
+<point lat="39.28911" lon="-76.62579"/>
+<point lat="39.28921" lon="-76.62385"/>
+<point lat="39.2892" lon="-76.62376"/>
+<point lat="39.28917" lon="-76.6237"/>
+<point lat="39.2891199" lon="-76.62366"/>
+<point lat="39.28901" lon="-76.62364"/>
+<point lat="39.28756" lon="-76.62357"/>
+<point lat="39.28633" lon="-76.6235"/>
+<point lat="39.28627" lon="-76.62349"/>
+<point lat="39.28623" lon="-76.62347"/>
+<point lat="39.2862" lon="-76.62343"/>
+<point lat="39.28619" lon="-76.62336"/>
+<point lat="39.28623" lon="-76.62208"/>
+<point lat="39.28626" lon="-76.62083"/>
+<point lat="39.28631" lon="-76.6191599"/>
+<point lat="39.28637" lon="-76.61736"/>
+<point lat="39.28642" lon="-76.61606"/>
+<point lat="39.28649" lon="-76.6148"/>
+<point lat="39.28653" lon="-76.61356"/>
+<point lat="39.28655" lon="-76.61236"/>
+<point lat="39.28657" lon="-76.61147"/>
+<point lat="39.2866" lon="-76.61067"/>
+<point lat="39.28662" lon="-76.61"/>
+<point lat="39.28666" lon="-76.60863"/>
+<point lat="39.28675" lon="-76.60678"/>
+<point lat="39.28676" lon="-76.60664"/>
+</path>
+<path>
+<point lat="39.28817" lon="-76.60675"/>
+<point lat="39.28826" lon="-76.60676"/>
+<point lat="39.28833" lon="-76.60676"/>
+<point lat="39.28839" lon="-76.60674"/>
+<point lat="39.28846" lon="-76.60675"/>
+<point lat="39.28852" lon="-76.6068"/>
+<point lat="39.28853" lon="-76.60688"/>
+<point lat="39.28851" lon="-76.60693"/>
+<point lat="39.28846" lon="-76.60697"/>
+<point lat="39.2883799" lon="-76.60696"/>
+<point lat="39.28832" lon="-76.60694"/>
+</path>
+</route>
+</body>

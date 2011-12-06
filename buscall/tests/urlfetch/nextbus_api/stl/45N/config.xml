@@ -1,0 +1,158 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:00:28 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1571
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Societe de transport de Laval 2011.">
+<route tag="45N" title="45 Direction Vimont" color="0033ff" oppositeColor="ffffff" latMin="45.5582899" latMax="45.6039899" lonMin="-73.7501999" lonMax="-73.72039">
+<stop tag="CP48045" title="M&#233;tro Montmorency Quai:9 [48045]" lat="45.5582899" lon="-73.72039" stopId="48045"/>
+<stop tag="43249" title="De L&apos;avenir / Du Souvenir [43249]" lat="45.5624899" lon="-73.7231199" stopId="43249"/>
+<stop tag="43374" title="De L&apos;avenir / Du Trait-Carr&#233; [43374]" lat="45.5641399" lon="-73.72409" stopId="43374"/>
+<stop tag="43439" title="De L&apos;avenir / Face Au Top&apos;s [43439]" lat="45.5660699" lon="-73.7265599" stopId="43439"/>
+<stop tag="45028" title="De L&apos;avenir / Face Au 1695 [45028]" lat="45.56688" lon="-73.72814" stopId="45028"/>
+<stop tag="45030" title="Saint-Martin / Tessier [45030]" lat="45.5676199" lon="-73.72791" stopId="45030"/>
+<stop tag="42836" title="Saint-Martin / Face Au 1454 [42836]" lat="45.56956" lon="-73.7243799" stopId="42836"/>
+<stop tag="CP41738" title="Industriel / Saint-Martin [41738]" lat="45.5726499" lon="-73.72185" stopId="41738"/>
+<stop tag="41742" title="Industrtiel / Salaberry [41742]" lat="45.57465" lon="-73.72384" stopId="41742"/>
+<stop tag="41744" title="Industriel / Lippmann [41744]" lat="45.57725" lon="-73.72685" stopId="41744"/>
+<stop tag="41746" title="Industriel / Munck [41746]" lat="45.5793199" lon="-73.7292099" stopId="41746"/>
+<stop tag="46099" title="Industriel / Cunard [46099]" lat="45.58197" lon="-73.73229" stopId="46099"/>
+<stop tag="CP46100" title="Industriel / Berlier [46100]" lat="45.5879799" lon="-73.73931" stopId="46100"/>
+<stop tag="46101" title="Industriel / Saint-Elz&#233;ar [46101]" lat="45.58965" lon="-73.74126" stopId="46101"/>
+<stop tag="46102" title="Industriel / Michelin [46102]" lat="45.5918999" lon="-73.7437699" stopId="46102"/>
+<stop tag="46103" title="Industriel / Bergar [46103]" lat="45.59358" lon="-73.74565" stopId="46103"/>
+<stop tag="46104" title="Industriel / Face Au 3885 [46104]" lat="45.5956399" lon="-73.7479299" stopId="46104"/>
+<stop tag="46105" title="Industriel / Face Au 4001 [46105]" lat="45.59727" lon="-73.74972" stopId="46105"/>
+<stop tag="46388" title="Industriel / Bellerose [46388]" lat="45.59861" lon="-73.7501999" stopId="46388"/>
+<stop tag="46426" title="Dagenais / Face Au 1240 [46426]" lat="45.60034" lon="-73.74712" stopId="46426"/>
+<stop tag="CP49045" title="Gare Vimont [49045]" lat="45.6039899" lon="-73.74247" stopId="49045"/>
+<direction tag="45N_1_var0" title="Nord" name="Nord" useForUI="true">
+  <stop tag="CP48045" />
+  <stop tag="43249" />
+  <stop tag="43374" />
+  <stop tag="43439" />
+  <stop tag="45028" />
+  <stop tag="45030" />
+  <stop tag="42836" />
+  <stop tag="CP41738" />
+  <stop tag="41742" />
+  <stop tag="41744" />
+  <stop tag="41746" />
+  <stop tag="46099" />
+  <stop tag="CP46100" />
+  <stop tag="46101" />
+  <stop tag="46102" />
+  <stop tag="46103" />
+  <stop tag="46104" />
+  <stop tag="46105" />
+  <stop tag="46388" />
+  <stop tag="46426" />
+  <stop tag="CP49045" />
+</direction>
+<path>
+<point lat="45.55829" lon="-73.72039"/>
+<point lat="45.55819" lon="-73.7209"/>
+<point lat="45.5579899" lon="-73.72069"/>
+<point lat="45.55836" lon="-73.71992"/>
+<point lat="45.55854" lon="-73.71997"/>
+<point lat="45.55872" lon="-73.71957"/>
+<point lat="45.5608999" lon="-73.7217"/>
+<point lat="45.5610799" lon="-73.72189"/>
+<point lat="45.56135" lon="-73.72218"/>
+<point lat="45.56182" lon="-73.72262"/>
+<point lat="45.5624899" lon="-73.72312"/>
+<point lat="45.56279" lon="-73.72354"/>
+<point lat="45.56291" lon="-73.72363"/>
+<point lat="45.56303" lon="-73.7236999"/>
+<point lat="45.5632499" lon="-73.72378"/>
+<point lat="45.5636" lon="-73.72387"/>
+<point lat="45.5638" lon="-73.72396"/>
+<point lat="45.56408" lon="-73.72415"/>
+<point lat="45.56414" lon="-73.72409"/>
+<point lat="45.5642" lon="-73.72425"/>
+<point lat="45.56429" lon="-73.72434"/>
+<point lat="45.56576" lon="-73.72615"/>
+<point lat="45.56586" lon="-73.7263"/>
+<point lat="45.5659599" lon="-73.72647"/>
+<point lat="45.56607" lon="-73.72656"/>
+<point lat="45.56615" lon="-73.72694"/>
+<point lat="45.56624" lon="-73.72717"/>
+<point lat="45.56628" lon="-73.7273"/>
+<point lat="45.56635" lon="-73.72748"/>
+<point lat="45.56641" lon="-73.72761"/>
+<point lat="45.5665" lon="-73.72777"/>
+<point lat="45.56659" lon="-73.7279"/>
+<point lat="45.56688" lon="-73.72814"/>
+<point lat="45.56727" lon="-73.72879"/>
+<point lat="45.56762" lon="-73.72791"/>
+<point lat="45.56802" lon="-73.7273699"/>
+<point lat="45.56907" lon="-73.7255"/>
+<point lat="45.56956" lon="-73.72438"/>
+<point lat="45.5715999" lon="-73.72095"/>
+<point lat="45.5725" lon="-73.72195"/>
+<point lat="45.57265" lon="-73.72185"/>
+</path>
+<path>
+<point lat="45.57265" lon="-73.72185"/>
+<point lat="45.57307" lon="-73.7224899"/>
+<point lat="45.57408" lon="-73.72364"/>
+<point lat="45.57419" lon="-73.72373"/>
+<point lat="45.57429" lon="-73.7238"/>
+<point lat="45.57439" lon="-73.72384"/>
+<point lat="45.57461" lon="-73.72396"/>
+<point lat="45.57465" lon="-73.72384"/>
+<point lat="45.57491" lon="-73.72426"/>
+<point lat="45.57541" lon="-73.72484"/>
+<point lat="45.57725" lon="-73.72685"/>
+<point lat="45.57932" lon="-73.72921"/>
+<point lat="45.58197" lon="-73.73229"/>
+<point lat="45.58798" lon="-73.73931"/>
+</path>
+<path>
+<point lat="45.58798" lon="-73.73931"/>
+<point lat="45.58965" lon="-73.74126"/>
+<point lat="45.5919" lon="-73.74377"/>
+<point lat="45.59358" lon="-73.74565"/>
+<point lat="45.59564" lon="-73.74793"/>
+<point lat="45.59727" lon="-73.74972"/>
+<point lat="45.59817" lon="-73.7508299"/>
+<point lat="45.59826" lon="-73.75097"/>
+<point lat="45.59837" lon="-73.75081"/>
+<point lat="45.59861" lon="-73.7502"/>
+<point lat="45.59959" lon="-73.7488"/>
+<point lat="45.59964" lon="-73.74865"/>
+<point lat="45.59983" lon="-73.74824"/>
+<point lat="45.60047" lon="-73.74731"/>
+<point lat="45.60034" lon="-73.74712"/>
+<point lat="45.60094" lon="-73.7465"/>
+<point lat="45.60118" lon="-73.74677"/>
+<point lat="45.6016" lon="-73.7471599"/>
+<point lat="45.6017" lon="-73.7472"/>
+<point lat="45.60188" lon="-73.74709"/>
+<point lat="45.60196" lon="-73.74702"/>
+<point lat="45.60208" lon="-73.74685"/>
+<point lat="45.60216" lon="-73.7467099"/>
+<point lat="45.60331" lon="-73.74451"/>
+<point lat="45.60343" lon="-73.7443"/>
+<point lat="45.60354" lon="-73.74414"/>
+<point lat="45.60368" lon="-73.74396"/>
+<point lat="45.60415" lon="-73.74346"/>
+<point lat="45.60439" lon="-73.74325"/>
+<point lat="45.60495" lon="-73.74291"/>
+<point lat="45.6048" lon="-73.74278"/>
+<point lat="45.6047" lon="-73.74265"/>
+<point lat="45.6045299" lon="-73.74272"/>
+<point lat="45.6044" lon="-73.74282"/>
+<point lat="45.60425" lon="-73.74274"/>
+<point lat="45.60416" lon="-73.74266"/>
+<point lat="45.60408" lon="-73.74258"/>
+<point lat="45.60399" lon="-73.74247"/>
+</path>
+</route>
+</body>

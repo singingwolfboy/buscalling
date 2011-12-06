@@ -1,0 +1,171 @@
+HTTP/1.1 200 OK
+Date: Sun, 04 Dec 2011 06:01:50 GMT
+Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1557
+Connection: close
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2011.">
+<route tag="83" title="83-Jones" color="ff0000" oppositeColor="ffffff" latMin="43.6545899" latMax="43.6810699" lonMin="-79.34003" lonMax="-79.3266699">
+<stop tag="14172" title="Donlands Station" lat="43.6810699" lon="-79.33792" stopId="14650"/>
+<stop tag="5395" title="Jones Avenue At Danforth Avenue Farside" lat="43.6793899" lon="-79.34003" stopId="1183"/>
+<stop tag="5629" title="Jones Avenue At Strathcona Avenue" lat="43.67715" lon="-79.33906" stopId="1199"/>
+<stop tag="1766" title="Jones Avenue At Shudell Avenue" lat="43.67528" lon="-79.33827" stopId="1196"/>
+<stop tag="2070" title="Jones Avenue At Boultbee Avenue" lat="43.6727499" lon="-79.3371799" stopId="1182"/>
+<stop tag="5643" title="Jones Avenue At Myrtle Avenue Farside" lat="43.6712199" lon="-79.3365399" stopId="1190"/>
+<stop tag="5153" title="Jones Avenue At Gerrard Street East" lat="43.6693199" lon="-79.3357199" stopId="1188"/>
+<stop tag="1799" title="Jones Avenue At Sproat Avenue Farside" lat="43.6677699" lon="-79.33505" stopId="1197"/>
+<stop tag="10052" title="Jones Avenue At Dundas Street East" lat="43.6663499" lon="-79.3344399" stopId="1186"/>
+<stop tag="939" title="Jones Avenue At Queen Street East" lat="43.6631299" lon="-79.3330999" stopId="1193"/>
+<stop tag="459" title="Leslie Street At Queen Street East Farside" lat="43.6627899" lon="-79.33008" stopId="11377"/>
+<stop tag="456" title="Leslie Street At Eastern Avenue" lat="43.66169" lon="-79.32962" stopId="11145"/>
+<stop tag="8821" title="Leslie Street At Mosely Street Farside" lat="43.6602499" lon="-79.3289899" stopId="11146"/>
+<stop tag="9880" title="Leslie Street At Lake Shore Boulevard East Farside" lat="43.65859" lon="-79.32813" stopId="1240"/>
+<stop tag="747" title="Leslie Street At Commissioners Street" lat="43.6567899" lon="-79.3266699" stopId="1238"/>
+<stop tag="3464" title="600 Commissioners Street" lat="43.6556099" lon="-79.32871" stopId="0849"/>
+<stop tag="4326_ar" title="Commissioners Street At Wheel Trans Garage" lat="43.6545899" lon="-79.33066"/>
+<stop tag="4326" title="Commissioners Street At Wheel Trans Garage" lat="43.6545899" lon="-79.33066" stopId="0851"/>
+<stop tag="889" title="Wheeltrans Exit At Commissioners Street" lat="43.6549699" lon="-79.33033" stopId="13536"/>
+<stop tag="4527" title="Opposite 545 Commissioners Street Farside" lat="43.65525" lon="-79.3291299" stopId="0853"/>
+<stop tag="8805" title="595 Commissioners Street" lat="43.6559499" lon="-79.3275" stopId="0850"/>
+<stop tag="7516" title="Leslie Street At Commissioners Street Farside" lat="43.6572299" lon="-79.3267799" stopId="1237"/>
+<stop tag="3058" title="Leslie Street At Mosely Street Farside" lat="43.66055" lon="-79.32894" stopId="1241"/>
+<stop tag="9270" title="Leslie Street At Eastern Avenue Farside" lat="43.6620099" lon="-79.3295799" stopId="13421"/>
+<stop tag="794" title="Jones Avenue At Queen Street East Farside" lat="43.6629099" lon="-79.33282" stopId="1192"/>
+<stop tag="3049" title="Jones Avenue At Dundas Street East" lat="43.6660699" lon="-79.3341499" stopId="1185"/>
+<stop tag="5063" title="Jones Avenue At Sproat Avenue" lat="43.6677999" lon="-79.3349199" stopId="1198"/>
+<stop tag="7871" title="Jones Avenue At Gerrard Street East Farside" lat="43.6695999" lon="-79.33566" stopId="1187"/>
+<stop tag="5511" title="Jones Avenue At Myrtle Avenue" lat="43.6713499" lon="-79.3364299" stopId="1191"/>
+<stop tag="5444" title="Jones Avenue At Boultbee Avenue" lat="43.67281" lon="-79.33705" stopId="1181"/>
+<stop tag="8837" title="Jones Avenue At Shudell Avenue" lat="43.67503" lon="-79.33798" stopId="1195"/>
+<stop tag="7431" title="Jones Avenue At Baird Avenue" lat="43.6766599" lon="-79.3386799" stopId="1180"/>
+<stop tag="4366" title="Jones Avenue At Danforth Avenue" lat="43.6796599" lon="-79.3399699" stopId="1184"/>
+<stop tag="14172_ar" title="Donlands Station" lat="43.6810699" lon="-79.33792"/>
+<direction tag="83_1_83" title="North - 83 Jones towards Donlands Station" name="North" useForUI="true">
+  <stop tag="4326" />
+  <stop tag="889" />
+  <stop tag="4527" />
+  <stop tag="8805" />
+  <stop tag="7516" />
+  <stop tag="3058" />
+  <stop tag="9270" />
+  <stop tag="794" />
+  <stop tag="3049" />
+  <stop tag="5063" />
+  <stop tag="7871" />
+  <stop tag="5511" />
+  <stop tag="5444" />
+  <stop tag="8837" />
+  <stop tag="7431" />
+  <stop tag="4366" />
+  <stop tag="14172_ar" />
+</direction>
+<direction tag="83_0_83" title="South - 83 Jones towards Commissioners" name="South" useForUI="true">
+  <stop tag="14172" />
+  <stop tag="5395" />
+  <stop tag="5629" />
+  <stop tag="1766" />
+  <stop tag="2070" />
+  <stop tag="5643" />
+  <stop tag="5153" />
+  <stop tag="1799" />
+  <stop tag="10052" />
+  <stop tag="939" />
+  <stop tag="459" />
+  <stop tag="456" />
+  <stop tag="8821" />
+  <stop tag="9880" />
+  <stop tag="747" />
+  <stop tag="3464" />
+  <stop tag="4326_ar" />
+</direction>
+<path>
+<point lat="43.67939" lon="-79.34003"/>
+<point lat="43.67917" lon="-79.33985"/>
+<point lat="43.67715" lon="-79.33906"/>
+<point lat="43.67528" lon="-79.33827"/>
+<point lat="43.67275" lon="-79.33718"/>
+<point lat="43.67122" lon="-79.33654"/>
+<point lat="43.66932" lon="-79.33572"/>
+<point lat="43.66777" lon="-79.33505"/>
+</path>
+<path>
+<point lat="43.66279" lon="-79.33008"/>
+<point lat="43.66169" lon="-79.32962"/>
+<point lat="43.66025" lon="-79.32899"/>
+<point lat="43.6595" lon="-79.32858"/>
+<point lat="43.65898" lon="-79.32829"/>
+<point lat="43.6585899" lon="-79.32813"/>
+<point lat="43.65679" lon="-79.3266699"/>
+<point lat="43.65651" lon="-79.32632"/>
+<point lat="43.65561" lon="-79.32871"/>
+<point lat="43.65459" lon="-79.33066"/>
+</path>
+<path>
+<point lat="43.6629099" lon="-79.33282"/>
+<point lat="43.66607" lon="-79.3341499"/>
+<point lat="43.6678" lon="-79.33492"/>
+<point lat="43.6696" lon="-79.33566"/>
+</path>
+<path>
+<point lat="43.6696" lon="-79.33566"/>
+<point lat="43.6713499" lon="-79.3364299"/>
+<point lat="43.67281" lon="-79.33705"/>
+<point lat="43.67503" lon="-79.33798"/>
+<point lat="43.67666" lon="-79.33868"/>
+<point lat="43.67966" lon="-79.3399699"/>
+<point lat="43.67988" lon="-79.3401"/>
+<point lat="43.68042" lon="-79.3373"/>
+<point lat="43.68079" lon="-79.33745"/>
+<point lat="43.68082" lon="-79.3378199"/>
+<point lat="43.68107" lon="-79.33792"/>
+</path>
+<path>
+<point lat="43.68107" lon="-79.33792"/>
+<point lat="43.6811" lon="-79.33801"/>
+<point lat="43.68124" lon="-79.3376399"/>
+<point lat="43.68042" lon="-79.3373"/>
+<point lat="43.67988" lon="-79.3401"/>
+<point lat="43.67939" lon="-79.34003"/>
+</path>
+<path>
+<point lat="43.66777" lon="-79.33505"/>
+<point lat="43.66635" lon="-79.33444"/>
+<point lat="43.66313" lon="-79.3331"/>
+<point lat="43.66266" lon="-79.3328"/>
+<point lat="43.66323" lon="-79.3302099"/>
+<point lat="43.66279" lon="-79.33008"/>
+</path>
+<path>
+<point lat="43.65459" lon="-79.33066"/>
+<point lat="43.65497" lon="-79.33033"/>
+<point lat="43.65525" lon="-79.32913"/>
+<point lat="43.65595" lon="-79.3275"/>
+<point lat="43.65651" lon="-79.32632"/>
+<point lat="43.65723" lon="-79.32678"/>
+<point lat="43.6592" lon="-79.32841"/>
+<point lat="43.6595" lon="-79.32858"/>
+<point lat="43.66055" lon="-79.32894"/>
+<point lat="43.66201" lon="-79.32958"/>
+<point lat="43.66323" lon="-79.3302099"/>
+<point lat="43.66266" lon="-79.3328"/>
+<point lat="43.6629099" lon="-79.33282"/>
+</path>
+<path>
+<point lat="43.6696" lon="-79.33566"/>
+<point lat="43.6713499" lon="-79.3364299"/>
+<point lat="43.67281" lon="-79.33705"/>
+<point lat="43.67503" lon="-79.33798"/>
+<point lat="43.67666" lon="-79.33868"/>
+<point lat="43.67966" lon="-79.3399699"/>
+<point lat="43.67988" lon="-79.3401"/>
+<point lat="43.68042" lon="-79.3373"/>
+<point lat="43.68124" lon="-79.3376399"/>
+<point lat="43.68107" lon="-79.33792"/>
+</path>
+</route>
+</body>
