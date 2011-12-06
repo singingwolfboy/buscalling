@@ -25,9 +25,19 @@ To compile the static resources, you'll need:
 I recommend using [LiveReload][livereload] to manage
 these files during development.
 
+To use the `cache_nextbus.py` script to load XML files from Nextbus
+for testing, you'll also need:
+
+* [requests][requests]
+* [gevent][gevent]
+* [eventlet][eventlet]
+
 [lxml]: http://lxml.de
 [jinja2]: http://jinja.pocoo.org
 [fixture]: http://farmdev.com/projects/fixture/
 [compass]: http://compass-style.org
 [coffee]: http://coffeescript.org
 [livereload]: http://livereload.com
+[requests]: python-requests.org
+[gevent]: http://www.gevent.org
+[eventlet]: http://www.eventlet.net
