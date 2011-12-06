@@ -31,7 +31,6 @@ class SmokeTestCase(CustomTestCase):
         rv2 = self.app.get('/agencies/mbta', headers={"Accept": "application/json"})
         self.assertEqual(rv.data, rv2.data)
 
-    @unittest.skip("need to get a lot of test files for this")
     def test_api_routes(self):
         rv = self.app.get('/agencies/mbta/routes?format=json')
         assert rv.status.startswith("200"), rv.status

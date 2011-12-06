@@ -51,7 +51,7 @@ class BusListenerData(DataSet):
         userprofile = UserProfileData.with_phone
         agency_id = "mbta"
         route_id = "70"
-        direction_id = "70_0_var1"
+        direction_id = "70_1_var0"
         stop_id = "88333"
         recur = True
         mon = True
