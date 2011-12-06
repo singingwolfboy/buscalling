@@ -20,14 +20,14 @@ def render_json(obj, count=None):
 
 @app.route('/agencies')
 def agency_list():
-    agencies = get_agencies()
     if g.request_format == "json":
         if g.limit:
-            page = agencies[g.offset:g.offset+g.limit]
+            agencies = get_agencies(g.offset, g.offset+g.limit)
         else:
-            page = agencies[g.offset:]
-        return render_json(page)
+            agencies = get_agencies(g.offset)
+        return render_json(agencies)
     else:
+        agencies = get_agencies()
         return render_template('agencies/index.html', agencies=agencies)
 
 @app.route('/agencies/<agency_id>')
