@@ -67,24 +67,6 @@ def update_userprofile_last_login():
 def set_request_format():
     g.request_format = get_request_format()
 
-@app.before_request
-def pagination():
-    try:
-        limit = int(request.args.get('limit', 20))
-    except ValueError:
-        limit = 20
-    if limit < 0:
-        limit = 0
-    g.limit = limit
-
-    try:
-        offset = int(request.args.get('offset', 0))
-    except ValueError:
-        offset = 0
-    if offset < 0:
-        offset = 0
-    g.offset = offset
-
 @app.template_filter('timeformat')
 def time_format(time):
     return time.strftime("%-I:%M%p")

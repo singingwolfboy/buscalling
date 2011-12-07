@@ -1,30 +1,52 @@
 from buscall import app
-from flask import render_template, Response, g
+from flask import render_template, request, Response, g
 from buscall.models import nextbus
 from buscall.models.twilio import get_twiml
 import simplejson as json
 from buscall.models.nextbus import get_agencies, get_agency, get_route, get_direction, get_stop
+from functools import wraps
 
 __all__ = ['agency_list', 'agency_detail', 'route_list', 'route_detail',
         'direction_list', 'direction_detail', 'stop_list', 'stop_detail',
         'prediction_list']
 
-def render_json(obj, count=None):
+def api_list(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if not 'limit' in kwargs:
+            try:
+                kwargs['limit'] = int(request.args.get('limit', 20))
+            except ValueError:
+                kwargs['limit'] = 20
+        if kwargs['limit'] < 0:
+            kwargs['limit'] = 0
+
+        if not 'offset' in kwargs:
+            try:
+                kwargs['offset'] = int(request.args.get('offset', 0))
+            except ValueError:
+                kwargs['offset'] = 0
+        if kwargs['offset'] < 0:
+            kwargs['offset'] = 0
+
+        return func(*args, **kwargs)
+    return wrapper
+
+def render_json(obj, limit=None, offset=None, count=None):
     resp = Response(json.dumps(obj, use_decimal=True), mimetype="application/json")
+    if limit is not None:
+        resp.headers.add("X-Limit", limit)
+    if offset is not None:
+        resp.headers.add("X-Offset", offset)
     if count is not None:
-        if g.limit:
-            resp.headers.add("X-Limit", g.limit)
-        resp.headers.add("X-Offset", g.offset)
         resp.headers.add("X-TotalCount", count)
     return resp
 
 @app.route('/agencies')
-def agency_list():
+@api_list
+def agency_list(limit, offset):
     if g.request_format == "json":
-        if g.limit:
-            agencies = get_agencies(g.offset, g.offset+g.limit)
-        else:
-            agencies = get_agencies(g.offset)
+        agencies = get_agencies(limit, offset)
         return render_json(agencies)
     else:
         agencies = get_agencies()
@@ -39,14 +61,15 @@ def agency_detail(agency_id):
         return render_template('agencies/show.html', agency=agency)
 
 @app.route('/agencies/<agency_id>/routes')
-def route_list(agency_id):
+@api_list
+def route_list(agency_id, limit, offset):
     agency = get_agency(agency_id)
     count = len(agency.route_ids)
     if g.request_format == "json":
-        if g.limit:
-            page = agency.route_ids[g.offset:g.offset+g.limit]
+        if limit:
+            page = agency.route_ids[offset:offset+limit]
         else:
-            page = agency.route_ids[g.offset:]
+            page = agency.route_ids[offset:]
         routes = [get_route(agency_id, route_id) for route_id in page]
         return render_json(routes, count)
     else:
@@ -68,14 +91,15 @@ def route_detail(agency_id, route_id):
         return render_template('routes/show.html', **context)
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions')
-def direction_list(agency_id, route_id):
+@api_list
+def direction_list(agency_id, route_id, limit, offset):
     route = get_route(agency_id, route_id)
     count = len(route.direction_ids)
     if g.request_format == "json":
-        if g.limit:
-            page = route.direction_ids[g.offset:g.offset+g.limit]
+        if limit:
+            page = route.direction_ids[offset:offset+limit]
         else:
-            page = route.direction_ids[g.offset:]
+            page = route.direction_ids[offset:]
         directions = [get_direction(agency_id, route_id, direction_id) for direction_id in page]
         return render_json(directions, count)
     else:
@@ -99,12 +123,13 @@ def direction_detail(agency_id, route_id, direction_id):
         return render_template('directions/show.html', **context)
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops')
-def stop_list(agency_id, route_id, direction_id, stop_id):
+@api_list
+def stop_list(agency_id, route_id, direction_id, stop_id, limit, offset):
     direction = get_direction(agency_id, route_id, direction_id)
     count = len(direction.stop_ids)
     if g.request_format == "json":
-        if g.limit:
-            page = direction.stop_ids[g.offset:g.offset+g.limit]
+        if limit:
+            page = direction.stop_ids[offset:offset+limit]
         else:
             page = direction.stop_ids[g.offset:]
         stops = [get_stop(agency_id, route_id, direction_id, stop_id) for stop_id in page]
