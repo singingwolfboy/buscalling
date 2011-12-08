@@ -73,6 +73,7 @@ def get_request_format():
     mimetype = mimetype.lower()
     choices = {
         'application/json': 'json',
+        'text/javascript': 'json',
         'application/twiml': 'twiml',
         'text/html': 'html',
         'text/plain': 'text',
