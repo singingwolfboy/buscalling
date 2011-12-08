@@ -19,9 +19,12 @@ class BusListenerTestCase(CustomTestCase):
         self.assertEqual(BusListener.all().count() - num_listeners, 1)
         self.assertTrue(listener.recur)
         self.assertEqual(listener.userprofile, profile)
-        self.assertEqual(listener.stop.id, "77378")
         self.assertEqual(listener.seen, False)
         self.assertEqual(listener.start, datetime.time(3,0))
+        with app.test_request_context('/poll'):
+            self.assertEqual(listener.agency.id, "mbta")
+            self.assertEqual(listener.route.id, "556")
+            self.assertEqual(listener.stop.id, "77378")
     
     def test_create_one_time_bus_listener(self):
         num_listeners = BusListener.all().count()

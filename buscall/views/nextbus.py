@@ -3,7 +3,8 @@ from flask import render_template, request, Response, g
 from buscall.models import nextbus
 from buscall.models.twilio import get_twiml
 import simplejson as json
-from buscall.models.nextbus import get_agencies, get_agency, get_route, get_direction, get_stop
+from buscall.models.nextbus import get_agencies, get_agencies_count, \
+        get_agency, get_route, get_direction, get_stop
 from functools import wraps
 
 __all__ = ['agency_list', 'agency_detail', 'route_list', 'route_detail',
@@ -47,7 +48,7 @@ def render_json(obj, limit=None, offset=None, count=None):
 def agency_list(limit, offset):
     if g.request_format == "json":
         agencies = get_agencies(limit, offset)
-        return render_json(agencies)
+        return render_json(agencies, limit, offset, get_agencies_count())
     else:
         agencies = get_agencies()
         return render_template('agencies/index.html', agencies=agencies)
@@ -71,7 +72,7 @@ def route_list(agency_id, limit, offset):
         else:
             page = agency.route_ids[offset:]
         routes = [get_route(agency_id, route_id) for route_id in page]
-        return render_json(routes, count)
+        return render_json(routes, limit, offset, count)
     else:
         routes = [get_route(agency_id, route_id) for route_id in agency.route_ids]
         return render_template('routes/index.html',
@@ -101,7 +102,7 @@ def direction_list(agency_id, route_id, limit, offset):
         else:
             page = route.direction_ids[offset:]
         directions = [get_direction(agency_id, route_id, direction_id) for direction_id in page]
-        return render_json(directions, count)
+        return render_json(directions, limit, offset, count)
     else:
         agency = get_agency(agency_id)
         directions = [get_direction(agency_id, route_id, direction_id) for direction_id in route.direction_ids]
@@ -133,7 +134,7 @@ def stop_list(agency_id, route_id, direction_id, stop_id, limit, offset):
         else:
             page = direction.stop_ids[g.offset:]
         stops = [get_stop(agency_id, route_id, direction_id, stop_id) for stop_id in page]
-        return render_json(stops, count)
+        return render_json(stops, limit, offset, count)
     else:
         agency = get_agency(agency_id)
         route = get_route(agency_id, route_id)
@@ -158,11 +159,17 @@ def stop_detail(agency_id, route_id, direction_id, stop_id):
 
 @app.route('/predictions/<agency_id>/<route_id>/<direction_id>/<stop_id>')
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predictions')
-def prediction_list(agency_id, route_id, direction_id, stop_id):
+@api_list
+def prediction_list(agency_id, route_id, direction_id, stop_id, limit, offset):
     predictions = nextbus.get_predictions(agency_id, route_id, direction_id, stop_id)
     if g.request_format == "twiml":
         twiml = get_twiml(predictions)
         return Response(twiml, mimetype="text/xml")
     else:
-        return render_json(predictions)
+        count = len(predictions)
+        if limit:
+            predictions = predictions[offset:offset+limit]
+        else:
+            predictions = predictions[offset:]
+        return render_json(predictions, limit, offset, count)
 

@@ -1,5 +1,5 @@
 from buscall import app
-from flask import g, Response
+from flask import g, Response, url_for
 from google.appengine.api import urlfetch
 import logging
 import re
@@ -12,12 +12,12 @@ import simplejson as json
 from lxml import etree
 
 Agency = recordtype("Agency", ['id', 'title', 'region', 
-    ('short_title', None), ('route_ids', [])])
+    ('short_title', None), ('route_ids', []), ('url', None)])
 Route = recordtype("Route", ['id', 'agency_id', 'title', 'paths', ('direction_ids', []),
-    ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None)])
-Direction = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', [])])
+    ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None), ('url', None)])
+Direction = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', []), ('url', None)])
 Stop = recordtype("Stop", ['id', 'direction_id', 'route_id', 'agency_id', 'title', 
-    ('lat', None), ('lng', None)])
+    ('lat', None), ('lng', None), ('url', None)])
 Point = recordtype("Point", ['lat', 'lng'])
 PredictedBus = recordtype("PredictedBus", ['minutes', 'vehicle', 
     ('seconds', None), ('trip_id', None), ('block', None),  ('departure', None), 
@@ -124,11 +124,12 @@ def get_agencies(limit=None, offset=0):
     else:
         agency_els = agency_els[offset:]
     for agency_el in agency_els:
-        id = agency_el.get("id") or agency_el.get("tag")
-        agency = Agency(id = id, 
-            title=agency_el.get("title"),
+        agency_id = agency_el.get("id") or agency_el.get("tag")
+        agency = Agency(id = agency_id, 
+            title = agency_el.get("title"),
             short_title = agency_el.get("shortTitle"),
-            region=agency_el.get("regionTitle"),
+            region = agency_el.get("regionTitle"),
+            url = url_for('agency_detail', agency_id=agency_id),
         )
         routelist_tree = etree.fromstring(get_routelist_xml(id))
         route_ids = []
@@ -137,6 +138,10 @@ def get_agencies(limit=None, offset=0):
         agency.route_ids = route_ids
         agencies.append(agency)
     return agencies
+
+def get_agencies_count():
+    agencies_tree = etree.fromstring(get_agencylist_xml())
+    return len(agencies_tree.findall('agency'))
 
 @cache.memoize(get_agencies.cache_timeout)
 def get_agency(agency_id):
@@ -151,9 +156,10 @@ def get_agency(agency_id):
     except IndexError:
         raise NextbusError("Invalid agency", retry=False)
     agency = Agency(id = agency_id,
-        title=agency_el.get("title"),
+        title = agency_el.get("title"),
         short_title = agency_el.get("shortTitle"),
-        region=agency_el.get("regionTitle"),
+        region = agency_el.get("regionTitle"),
+        url = url_for('agency_detail', agency_id=agency_id),
     )
     routelist_tree = etree.fromstring(get_routelist_xml(agency_id))
     route_ids = []
@@ -187,6 +193,7 @@ def get_route(agency_id, route_id):
         
     attrs = filter_keys(attrs, Route._fields)
     attrs['agency_id'] = agency_id
+    attrs['url'] = url_for('route_detail', agency_id=agency_id, route_id=route_id)
     return Route(**attrs)
 
 @cache.memoize(get_route_xml.cache_timeout)
@@ -207,6 +214,8 @@ def get_direction(agency_id, route_id, direction_id):
     attrs["agency_id"] = agency_id
     attrs["route_id"] = route_id
     attrs["id"] = direction_id
+    attrs["url"] = url_for('direction_detail', agency_id=agency_id, route_id=route_id,
+        direction_id=direction_id)
     return Direction(**attrs)
 
 @cache.memoize(get_route_xml.cache_timeout)
@@ -224,6 +233,8 @@ def get_stop(agency_id, route_id, direction_id, stop_id):
     attrs["route_id"] = route_id
     attrs["direction_id"] = direction_id
     attrs["id"] = stop_id
+    attrs["url"] = url_for('stop_detail', agency_id=agency_id, route_id=route_id,
+        direction_id=direction_id, stop_id=stop_id)
     return Stop(**attrs)
 
 @cache.memoize(get_predictions_xml.cache_timeout)

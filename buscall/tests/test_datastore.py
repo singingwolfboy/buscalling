@@ -87,8 +87,9 @@ class DatastoreTestCase(CustomTestCase, DataTestCase):
         # get a listener that has notifications
         listener = BusListener.gql("WHERE seen = False").fetch(1)[0]
         assert not listener.seen
-        for notification in listener.notifications:
-            notification.execute()
+        with app.test_request_context('/poll'):
+            for notification in listener.notifications:
+                notification.execute()
         # refresh from db
         key = listener.key()
         del listener
