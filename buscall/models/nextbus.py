@@ -10,6 +10,7 @@ from buscall.util import clean_booleans, filter_keys
 from recordtype import recordtype
 import simplejson as json
 from lxml import etree
+from lxml.etree import ParseError
 
 Agency = recordtype("Agency", ['id', 'title', 'region', 
     ('short_title', None), ('route_ids', []), ('url', None)])
@@ -72,7 +73,11 @@ def get_nextbus_xml(params):
         logging.error("Download error: " + url)
         return None
 
-    tree = etree.fromstring(result.content)
+    try:
+        tree = etree.fromstring(result.content)
+    except ParseError, e:
+        app.logger.error(result.content)
+        raise e
     error = tree.find('Error')
     if error is not None:
         raise NextbusError(error.text.strip(), error.attrib['shouldRetry'])
@@ -114,7 +119,12 @@ def get_predictions_xml(agency_id, route_id, direction_id, stop_id):
 @cache.memoize(get_agencylist_xml.cache_timeout)
 def get_agencies(limit=None, offset=0):
     agencies = []
-    agencies_tree = etree.fromstring(get_agencylist_xml())
+    xml = get_agencylist_xml()
+    try:
+        agencies_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     if agencies_tree is None:
         # FIXME: handle the case where nextbus is unreachable
         return None
@@ -131,7 +141,12 @@ def get_agencies(limit=None, offset=0):
             region = agency_el.get("regionTitle"),
             url = url_for('agency_detail', agency_id=agency_id),
         )
-        routelist_tree = etree.fromstring(get_routelist_xml(id))
+        xml = get_routelist_xml(agency_id)
+        try:
+            routelist_tree = etree.fromstring(xml)
+        except ParseError, e:
+            app.logger.error(xml)
+            raise e
         route_ids = []
         for route in routelist_tree.findall('route'):
             route_ids.append(route.get("id") or route.get("tag"))
@@ -140,12 +155,22 @@ def get_agencies(limit=None, offset=0):
     return agencies
 
 def get_agencies_count():
-    agencies_tree = etree.fromstring(get_agencylist_xml())
+    xml = get_agencylist_xml()
+    try:
+        agencies_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     return len(agencies_tree.findall('agency'))
 
 @cache.memoize(get_agencies.cache_timeout)
 def get_agency(agency_id):
-    agencies_tree = etree.fromstring(get_agencylist_xml())
+    xml = get_agencylist_xml()
+    try:
+        agencies_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     if agencies_tree is None:
         # FIXME: handle the case where nextbus is unreachable
         pass
@@ -161,7 +186,12 @@ def get_agency(agency_id):
         region = agency_el.get("regionTitle"),
         url = url_for('agency_detail', agency_id=agency_id),
     )
-    routelist_tree = etree.fromstring(get_routelist_xml(agency_id))
+    xml = get_routelist_xml(agency_id)
+    try:
+        routelist_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     route_ids = []
     for route in routelist_tree.findall('route'):
         route_ids.append(route.get("id") or route.get("tag"))
@@ -170,7 +200,12 @@ def get_agency(agency_id):
 
 @cache.memoize(get_route_xml.cache_timeout)
 def get_route(agency_id, route_id):
-    route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
+    xml = get_route_xml(agency_id, route_id)
+    try:
+        route_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     route_el = route_tree.find('route')
     attrs = dict(route_el.attrib)
     attrs = clean_booleans(attrs)
@@ -198,7 +233,12 @@ def get_route(agency_id, route_id):
 
 @cache.memoize(get_route_xml.cache_timeout)
 def get_direction(agency_id, route_id, direction_id):
-    route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
+    xml = get_route_xml(agency_id, route_id)
+    try:
+        route_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     expr = '//route/direction[@id="{id}" or @tag="{id}"][1]'.format(id=direction_id)
     direction_els = route_tree.xpath(expr)
     try:
@@ -220,7 +260,12 @@ def get_direction(agency_id, route_id, direction_id):
 
 @cache.memoize(get_route_xml.cache_timeout)
 def get_stop(agency_id, route_id, direction_id, stop_id):
-    route_tree = etree.fromstring(get_route_xml(agency_id, route_id))
+    xml = get_route_xml(agency_id, route_id)
+    try:
+        route_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     expr = '//route/stop[@id="{id}" or @tag="{id}"]'.format(id=stop_id)
     stop_els = route_tree.xpath(expr)
     try:
@@ -245,7 +290,12 @@ def get_stop(agency_id, route_id, direction_id, stop_id):
 
 @cache.memoize(get_predictions_xml.cache_timeout)
 def get_predictions(agency_id, route_id, direction_id, stop_id):
-    predictions_tree = etree.fromstring(get_predictions_xml(agency_id, route_id, direction_id, stop_id))
+    xml = get_predictions_xml(agency_id, route_id, direction_id, stop_id)
+    try:
+        predictions_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
     buses = []
     for prediction_el in predictions_tree.xpath('/body/predictions/direction/prediction'):
         buses.append(PredictedBus(
