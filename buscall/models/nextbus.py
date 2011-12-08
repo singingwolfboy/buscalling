@@ -228,6 +228,12 @@ def get_stop(agency_id, route_id, direction_id, stop_id):
     except IndexError:
         raise NextbusError("Invalid stop", retry=False)
     attrs = dict(stop_el.attrib)
+    if "lat" in attrs:
+        attrs["lat"] = Decimal(attrs["lat"])
+    if "lon" in attrs:
+        attrs["lng"] = Decimal(attrs["lon"])
+    if "lng" in attrs:
+        attrs["lng"] = Decimal(attrs["lng"])
     attrs = filter_keys(attrs, Stop._fields)
     attrs["agency_id"] = agency_id
     attrs["route_id"] = route_id
