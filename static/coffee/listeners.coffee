@@ -1,56 +1,68 @@
 $().ready ->
+  $.ajaxSetup
+    headers:
+      "X-Limit": 0
+
   window.App = {} # instances
   
   ### Models  ###
-  class window.Stop             extends Backbone.Model
+  class window.Stop             extends Backbone.RelationalModel
+    url: -> @get('url')
 
-  class window.Direction        extends Backbone.Model
-    initialize: (options) ->
-      @stops = options.stops or new StopList
+  class window.Direction        extends Backbone.RelationalModel
+    url: -> @get('url')
+    relations: [{
+      type: Backbone.HasMany
+      key: 'stops'
+      relatedModel: 'Stop'
+      collectionType: 'StopList'
+      reverseRelation: {
+        key: 'direction'
+      }
+    }]
 
-  class window.Route            extends Backbone.Model
-    initialize: (options) ->
-      @directions = options.direcions or new DirectionList
+  class window.Route            extends Backbone.RelationalModel
+    url: -> @get('url')
+    relations: [{
+      type: Backbone.HasMany
+      key: 'directions'
+      relatedModel: Direction
+      collectionType: 'DirectionList'
+      reverseRelation: {
+        key: 'route'
+      }
+    }]
 
-  class window.Agency           extends Backbone.Model
-    initialize: (options) ->
-      @routes = options.routes or new RouteList
+  class window.Agency           extends Backbone.RelationalModel
+    url: -> @get('url')
+    relations: [{
+      type: Backbone.HasMany
+      key: 'routes'
+      relatedModel: Route
+      collectionType: 'RouteList'
+      reverseRelation: {
+        key: 'agency'
+      }
+    }]
 
+  ### Collections ###
   class window.StopList         extends Backbone.Collection
     model: Stop
-  App.stops = new StopList
+    url: -> "#{@direction.url()}/stops"
   
   class window.DirectionList    extends Backbone.Collection
     model: Direction
-  App.directions = new DirectionList
+    url: -> "#{@route.url()}/directions"
 
   class window.RouteList        extends Backbone.Collection
     model: Route
-    fetchDirections: ->
-      agency = App.agencies.active
-      route = @active
-      $.getJSON "/#{agency}/routes/#{route}.json", (data) ->
-        $(".form_field.agency img").remove()
-        model[agency].routes = data
-        update_routes(agency) 
-
-  App.routes = new RouteList
+    url: -> "#{@agency.url()}/routes"
 
   class window.AgencyList       extends Backbone.Collection
     model: Agency
-    initialize: (options) ->
-      # @bind()
-    fetchRoutes: ->
-      agency = @active
-      $.getJSON "/#{agency}/routes.json", (data) ->
-        $(".form_field.agency img").remove()
-        model[agency].routes = data
-        update_routes(agency)
-      
-  App.agencies = new AgencyList [
-    id: "mbta"
-    name: "MBTA"
-  ]
+    url: "/agencies"
+
+  App.agencies = new AgencyList
 
   ### Templates and Views ###
   fieldTemplate = _.template("""
@@ -110,9 +122,10 @@ $().ready ->
     setStop: -> @
   
   # kick off the app
-  App.router = new Router;
+  App.router = new Router
 
   
+###
 
   
   model = window.app.model
@@ -326,4 +339,4 @@ $().ready ->
     if _.all( $(".notifications-medium"), (select) -> select.value != "txt" )
       $("#sms-warning").hide "fast"
 
-
+###
