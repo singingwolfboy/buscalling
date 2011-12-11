@@ -123,6 +123,11 @@ class Cache(object):
                         amount of time. Unit of time is in seconds.
         :param key_prefix: Default 'view/%(request.path)s'. Beginning key to .
                            use for the cache key.
+                           
+                           .. versionadded:: 0.3.4                           
+                               Can optionally be a callable which takes no arguments
+                               but returns a string that will be used as the cache_key.
+                               
         :param unless: Default None. Cache will *always* execute the caching
                        facilities unless this callable is true.
                        This will bypass the caching entirely.
@@ -133,23 +138,47 @@ class Cache(object):
             def decorated_function(*args, **kwargs):
                 #: Bypass the cache entirely.
                 if callable(unless) and unless() is True:
-                    return f(*args, **kwargs)
+                    return decorated_function.uncached(*args, **kwargs)
 
                 rv = self.cache.get(decorated_function.cache_key)
                 if rv is None:
-                    rv = f(*args, **kwargs)
+                    rv = decorated_function.uncached(*args, **kwargs)
                     self.cache.set(decorated_function.cache_key, rv, timeout=decorated_function.cache_timeout)
                 return rv
 
             decorated_function.uncached = f
             decorated_function.cache_timeout = timeout
+
             if '%s' in key_prefix:
-                decorated_function.cache_key = key_prefix % request.path
+                cache_key = key_prefix % request.path
+            elif callable(key_prefix):
+                cache_key = key_prefix()
             else:
-                decorated_function.cache_key = key_prefix
+                cache_key = key_prefix
+            cache_key = cache_key.encode('utf-8')
+            decorated_function.cache_key = cache_key
 
             return decorated_function
         return decorator
+        
+    def get_memoize_names(self):
+        """
+        Returns all function names used for memoized functions.
+        
+        This *will* include multiple function names when the memoized function
+        has been called with differing arguments.
+        
+        :return: set of function names
+        """
+        return set([item[0] for item in self._memoized])
+        
+    def get_memoize_keys(self):
+        """
+        Returns all cache_keys used for memoized functions.
+        
+        :return: list generator of cache_keys
+        """    
+        return [item[1] for item in self._memoized]
 
     def memoize(self, timeout=None):
         """
@@ -181,22 +210,25 @@ class Cache(object):
         def memoize(f):
             @wraps(f)
             def decorated_function(*args, **kwargs):
-                cache_key = decorated_function.make_cache_key(f.__name__, args, kwargs)
+                cache_key = decorated_function.make_cache_key(*args, **kwargs)
+
                 rv = self.cache.get(cache_key)
                 if rv is None:
-                    rv = f(*args, **kwargs)
+                    rv = decorated_function.uncached(*args, **kwargs)
                     self.cache.set(cache_key, rv, timeout=decorated_function.cache_timeout)
-                    self._memoized.append((f.__name__, cache_key))
+                    self._memoized.append((decorated_function.uncached.__name__, cache_key))
                 return rv
 
-            def make_cache_key(name, args, kwargs):
+            def make_cache_key(*args, **kwargs):
                 cache_key = hashlib.md5()
+
                 try:
-                    updated = "{0}{1}{2}".format(name, args, kwargs)
+                    updated = "{0}{1}{2}".format(decorated_function.uncached.__name__, args, kwargs)
                 except AttributeError:
-                    updated = "%s%s%s" % (name, args, kwargs)
+                    updated = "%s%s%s" % (decorated_function.uncached.__name__, args, kwargs)
+
                 cache_key.update(updated)
-                cache_key = cache_key.hexdigest()
+                cache_key = cache_key.digest().encode('base64')[:22]
                 return cache_key
 
             decorated_function.uncached = f
@@ -206,15 +238,21 @@ class Cache(object):
             return decorated_function
         return memoize
     
-    def delete_memoized(self, *keys):
+    def delete_memoized(self, fname, *args, **kwargs):
         """
-        Deletes all of the cached functions that used Memoize for caching.
+        Deletes the specified functions caches, based by given parameters.
+        If parameters are given, only the functions that were memoized with them
+        will be erased. Otherwise all the versions of the caches will be deleted.
         
         Example::
         
             @cache.memoize(50)
             def random_func():
                 return random.randrange(1, 50)
+
+            @cache.memoize()
+            def param_func(a, b):
+                return a+b+random.randrange(1, 50)
             
         .. code-block:: pycon
         
@@ -225,11 +263,42 @@ class Cache(object):
             >>> cache.delete_memoized('random_func')
             >>> random_func()
             16
+            >>> param_func(1, 2)
+            32
+            >>> param_func(1, 2)
+            32
+            >>> param_func(2, 2)
+            47
+            >>> cache.delete_memoized('param_func', 1, 2)
+            >>> param_func(1, 2)
+            13
+            >>> param_func(2, 2)
+            47
+
             
-        :param \*keys: A list of function names to clear from cache.
+        :param fname: Name of the memoized function.
+        :param \*args: A list of positional parameters used with memoized function.
+        :param \**kwargs: A dict of named parameters used with memoized function.
         """
         def deletes(item):
-            if item[0] in keys:
+
+            # If no parameters given, delete all memoized versions of the function
+            if not args and not kwargs:
+              if item[0] == fname:
+                self.cache.delete(item[1])
+                return True
+              return False
+
+            # Construct the cache key as in memoized function
+            cache_key = hashlib.md5()
+            try:
+                updated = "{0}{1}{2}".format(fname, args, kwargs)
+            except AttributeError:
+                updated = "%s%s%s" % (fname, args, kwargs)
+            cache_key.update(updated)
+            cache_key = cache_key.digest().encode('base64')[:22]
+
+            if item[1] == cache_key:
                 self.cache.delete(item[1])
                 return True
             return False
