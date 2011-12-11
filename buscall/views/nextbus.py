@@ -15,17 +15,19 @@ def api_list(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         if not 'limit' in kwargs:
+            limit = request.args.get('limit') or request.headers.get('X-Limit')
             try:
-                kwargs['limit'] = int(request.args.get('limit', 20))
-            except ValueError:
+                kwargs['limit'] = int(limit)
+            except (ValueError, TypeError):
                 kwargs['limit'] = 20
         if kwargs['limit'] < 0:
             kwargs['limit'] = 0
 
         if not 'offset' in kwargs:
+            offset = request.args.get('offset') or request.headers.get('X-Offset')
             try:
-                kwargs['offset'] = int(request.args.get('offset', 0))
-            except ValueError:
+                kwargs['offset'] = int(offset)
+            except (ValueError, TypeError):
                 kwargs['offset'] = 0
         if kwargs['offset'] < 0:
             kwargs['offset'] = 0
