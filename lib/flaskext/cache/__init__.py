@@ -90,7 +90,7 @@ class Cache(object):
     def delete(self, *args, **kwargs):
         "Proxy function for internal cache object."
         self.cache.delete(*args, **kwargs)
-
+        
     def cached(self, timeout=None, key_prefix='view/%s', unless=None):
         """
         Decorator. Use this to cache a function. By default the cache key
@@ -110,14 +110,26 @@ class Cache(object):
             def get_list():
                 return [random.randrange(0, 1) for i in range(50000)]
 
-        .. code-block:: pycon
-
-            >>> my_list = get_list()
+            my_list = get_list()
             
         .. note::
         
             You MUST have a request context to actually called any functions
             that are cached.
+            
+        .. versionadded:: 0.4
+            The returned decorated function now has three function attributes
+            assigned to it. These attributes are readable/writable.
+            
+                **uncached**
+                    The original undecorated function
+                
+                **cache_timeout**
+                    The cache timeout value for this function. For a custom value
+                    to take affect, this must be set before the function is called.
+                    
+                **make_cache_key**
+                    A function used in generating the cache_key used.
 
         :param timeout: Default None. If set to an integer, will cache for that
                         amount of time. Unit of time is in seconds.
@@ -138,25 +150,32 @@ class Cache(object):
             def decorated_function(*args, **kwargs):
                 #: Bypass the cache entirely.
                 if callable(unless) and unless() is True:
-                    return decorated_function.uncached(*args, **kwargs)
+                    return f(*args, **kwargs)
+                    
+                cache_key = decorated_function.make_cache_key(*args, **kwargs)
 
-                rv = self.cache.get(decorated_function.cache_key)
+                rv = self.cache.get(cache_key)
                 if rv is None:
-                    rv = decorated_function.uncached(*args, **kwargs)
-                    self.cache.set(decorated_function.cache_key, rv, timeout=decorated_function.cache_timeout)
+                    rv = f(*args, **kwargs)
+                    self.cache.set(cache_key, rv, 
+                                   timeout=decorated_function.cache_timeout)
                 return rv
 
+            def make_cache_key(*args, **kwargs):
+                if '%s' in key_prefix:
+                    cache_key = key_prefix % request.path
+                elif callable(key_prefix):
+                    cache_key = key_prefix()
+                else:
+                    cache_key = key_prefix
+                    
+                cache_key = cache_key.encode('utf-8')
+                
+                return cache_key
+            
             decorated_function.uncached = f
             decorated_function.cache_timeout = timeout
-
-            if '%s' in key_prefix:
-                cache_key = key_prefix % request.path
-            elif callable(key_prefix):
-                cache_key = key_prefix()
-            else:
-                cache_key = key_prefix
-            cache_key = cache_key.encode('utf-8')
-            decorated_function.cache_key = cache_key
+            decorated_function.make_cache_key = make_cache_key
 
             return decorated_function
         return decorator
@@ -202,6 +221,20 @@ class Cache(object):
             234
             >>> big_foo(5, 2)
             753
+            
+        .. versionadded:: 0.4
+            The returned decorated function now has three function attributes
+            assigned to it. These attributes are readable/writable.
+            
+                **uncached**
+                    The original undecorated function
+                
+                **cache_timeout**
+                    The cache timeout value for this function. For a custom value
+                    to take affect, this must be set before the function is called.
+                    
+                **make_cache_key**
+                    A function used in generating the cache_key used.
 
         :param timeout: Default None. If set to an integer, will cache for that
                         amount of time. Unit of time is in seconds.
@@ -214,21 +247,23 @@ class Cache(object):
 
                 rv = self.cache.get(cache_key)
                 if rv is None:
-                    rv = decorated_function.uncached(*args, **kwargs)
-                    self.cache.set(cache_key, rv, timeout=decorated_function.cache_timeout)
-                    self._memoized.append((decorated_function.uncached.__name__, cache_key))
+                    rv = f(*args, **kwargs)
+                    self.cache.set(cache_key, rv, 
+                                   timeout=decorated_function.cache_timeout)
+                    self._memoized.append((f.__name__, cache_key))
                 return rv
 
             def make_cache_key(*args, **kwargs):
                 cache_key = hashlib.md5()
 
                 try:
-                    updated = "{0}{1}{2}".format(decorated_function.uncached.__name__, args, kwargs)
+                    updated = "{0}{1}{2}".format(f.__name__, args, kwargs)
                 except AttributeError:
-                    updated = "%s%s%s" % (decorated_function.uncached.__name__, args, kwargs)
+                    updated = "%s%s%s" % (f.__name__, args, kwargs)
 
                 cache_key.update(updated)
                 cache_key = cache_key.digest().encode('base64')[:22]
+                
                 return cache_key
 
             decorated_function.uncached = f
