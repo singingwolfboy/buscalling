@@ -9,7 +9,7 @@ from functools import wraps
 
 __all__ = ['agency_list', 'agency_detail', 'route_list', 'route_detail',
         'direction_list', 'direction_detail', 'stop_list', 'stop_detail',
-        'prediction_list']
+        'prediction_list', 'prediction_detail']
 
 def api_list(func):
     @wraps(func)
@@ -36,7 +36,15 @@ def api_list(func):
     return wrapper
 
 def render_json(obj, limit=None, offset=None, count=None):
-    resp = Response(json.dumps(obj, use_decimal=True), mimetype="application/json")
+    try:
+        d = obj._as_url_dict()
+    except AttributeError:
+        try:
+            d = [o._as_url_dict() for o in obj]
+            count = count or len(obj)
+        except (TypeError, AttributeError):
+            d = obj
+    resp = Response(json.dumps(d, use_decimal=True), mimetype="application/json")
     if limit is not None:
         resp.headers.add("X-Limit", limit)
     if offset is not None:
@@ -174,4 +182,13 @@ def prediction_list(agency_id, route_id, direction_id, stop_id, limit, offset):
         else:
             predictions = predictions[offset:]
         return render_json(predictions, limit, offset, count)
+
+@app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predictions/<trip_id>')
+def prediction_detail(agency_id, route_id, direction_id, stop_id, trip_id):
+    prediction = nextbus.get_prediction(agency_id, route_id, direction_id, stop_id, trip_id)
+    if g.request_format == "twiml":
+        twiml = get_twiml(prediction)
+        return Response(twiml, mimetype="text/xml")
+    else:
+        return render_json(prediction)
 

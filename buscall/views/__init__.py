@@ -19,6 +19,9 @@ from google.appengine.api.capabilities import CapabilitySet
 from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
 import os
 import datetime
+import simplejson as json
+from jinja2.tests import test_defined
+from markupsafe import Markup
 
 @app.context_processor
 def inject_base_vars():
@@ -70,6 +73,22 @@ def set_request_format():
 @app.template_filter('timeformat')
 def time_format(time):
     return time.strftime("%-I:%M%p")
+
+@app.template_filter('url_dict')
+def url_dict(obj):
+    try:
+        return obj._as_url_dict()
+    except AttributeError:
+        if test_defined(obj):
+            return obj
+        else:
+            return None
+
+@app.template_filter('json')
+def to_json(obj):
+    if test_defined(obj):
+        return json.dumps(obj, use_decimal=True)
+    return Markup("null")
 
 @app.route('/')
 def page_root():

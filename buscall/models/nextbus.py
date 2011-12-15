@@ -12,17 +12,113 @@ import simplejson as json
 from lxml import etree
 from lxml.etree import ParseError
 
-Agency = recordtype("Agency", ['id', 'title', 'region', 
-    ('short_title', None), ('route_ids', []), ('url', None)])
-Route = recordtype("Route", ['id', 'agency_id', 'title', 'paths', ('direction_ids', []),
-    ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None), ('url', None)])
-Direction = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', []), ('url', None)])
-Stop = recordtype("Stop", ['id', 'direction_id', 'route_id', 'agency_id', 'title', 
-    ('lat', None), ('lng', None), ('url', None)])
+resource_uri = "resource_uri"
+
 Point = recordtype("Point", ['lat', 'lng'])
-PredictedBus = recordtype("PredictedBus", ['minutes', 'vehicle', 
-    ('seconds', None), ('trip_id', None), ('block', None),  ('departure', None), 
+
+AgencyRecord = recordtype("Agency", ['id', 'title', 'region',
+    ('short_title', None), ('route_ids', [])])
+class Agency(AgencyRecord):
+    @property
+    def url(self):
+        return url_for('agency_detail', agency_id=self.id)
+
+    def _as_url_dict(self):
+        d = self._asdict()
+        d[resource_uri] = self.url
+        del d['route_ids']
+        d['routes'] = [url_for('route_detail',
+            agency_id=self.id, route_id=route_id)
+            for route_id in self.route_ids]
+        return d
+
+RouteRecord = recordtype("Route", ['id', 'agency_id', 'title', 'paths', ('direction_ids', []),
+    ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None)])
+class Route(RouteRecord):
+    @property
+    def url(self):
+        return url_for('route_detail', agency_id=self.agency_id, route_id=self.id)
+
+    def _as_url_dict(self):
+        d = self._asdict()
+        d[resource_uri] = self.url
+        del d['agency_id']
+        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
+        del d['direction_ids']
+        d['directions'] = [url_for('direction_detail',
+            agency_id=self.agency_id, route_id=self.id, direction_id=direction_id)
+            for direction_id in self.direction_ids]
+        return d
+
+DirectionRecord = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', [])])
+class Direction(DirectionRecord):
+    @property
+    def url(self):
+        return url_for('direction_detail', agency_id=self.agency_id, route_id=self.route_id,
+                direction_id=self.id)
+
+    def _as_url_dict(self):
+        d = self._asdict()
+        d[resource_uri] = self.url
+        del d['agency_id']
+        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
+        del d['route_id']
+        d['route'] = url_for('route_detail', agency_id=self.agency_id, route_id=self.route_id)
+        del d['stop_ids']
+        d['stops'] = [url_for('stop_detail',
+            agency_id=self.agency_id, route_id=self.route_id, direction_id=self.id, stop_id=stop_id)
+            for stop_id in self.stop_ids]
+        return d
+
+StopRecord = recordtype("Stop", ['id', 'direction_id', 'route_id', 'agency_id', 'title',
+    ('lat', None), ('lng', None)])
+class Stop(StopRecord):
+    @property
+    def url(self):
+        return url_for('stop_detail', agency_id=self.agency_id, route_id=self.route_id,
+                direction_id=self.direction_id, stop_id=self.id)
+
+    def _as_url_dict(self):
+        d = self._asdict()
+        d[resource_uri] = self.url
+        del d['agency_id']
+        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
+        del d['route_id']
+        d['route'] = url_for('route_detail', agency_id=self.agency_id, route_id=self.route_id)
+        del d['direction_id']
+        d['direction'] = url_for('direction_detail', agency_id=self.agency_id,
+                route_id=self.route_id, direction_id=self.direction_id)
+        d['predictions'] = url_for('prediction_list', agency_id=self.agency_id,
+                route_id=self.route_id, direction_id=self.direction_id, stop_id=self.id)
+        return d
+
+PredictedBusRecord = recordtype("PredictedBus", ['agency_id', 'route_id',
+    'direction_id', 'stop_id', 'trip_id', 'minutes', 'vehicle',
+    ('seconds', None), ('block', None),  ('departure', None),
     ('affected_by_layover', None), ('delayed', None), ('slowness', None)])
+class PredictedBus(PredictedBusRecord):
+    @property
+    def url(self):
+        return url_for('prediction_detail', agency_id=self.agency_id, route_id=self.route_id,
+                direction_id=self.direction_id, stop_id=self.stop_id, trip_id=self.trip_id)
+    @property
+    def id(self):
+        return self.trip_id
+
+    def _as_url_dict(self):
+        d = self._asdict()
+        d[resource_uri] = self.url
+        del d['agency_id']
+        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
+        del d['route_id']
+        d['route'] = url_for('route_detail', agency_id=self.agency_id, route_id=self.route_id)
+        del d['direction_id']
+        d['direction'] = url_for('direction_detail', agency_id=self.agency_id,
+                route_id=self.route_id, direction_id=self.direction_id)
+        del d['stop_id']
+        d['stop'] = url_for('stop_detail', agency_id=self.agency_id,
+                route_id=self.route_id, direction_id=self.direction_id, stop_id=self.stop_id)
+        return d
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
 # cache durations
@@ -81,7 +177,6 @@ def get_nextbus_xml(params):
     error = tree.find('Error')
     if error is not None:
         raise NextbusError(error.text.strip(), error.attrib['shouldRetry'])
-    # return tree # FIXME: cache cannot handle lxml parsed objects
     return etree.tostring(tree)
 
 @cache.memoize(timeout=DAY)
@@ -139,7 +234,6 @@ def get_agencies(limit=None, offset=0):
             title = agency_el.get("title"),
             short_title = agency_el.get("shortTitle"),
             region = agency_el.get("regionTitle"),
-            url = url_for('agency_detail', agency_id=agency_id),
         )
         xml = get_routelist_xml(agency_id)
         try:
@@ -184,7 +278,6 @@ def get_agency(agency_id):
         title = agency_el.get("title"),
         short_title = agency_el.get("shortTitle"),
         region = agency_el.get("regionTitle"),
-        url = url_for('agency_detail', agency_id=agency_id),
     )
     xml = get_routelist_xml(agency_id)
     try:
@@ -228,7 +321,6 @@ def get_route(agency_id, route_id):
         
     attrs = filter_keys(attrs, Route._fields)
     attrs['agency_id'] = agency_id
-    attrs['url'] = url_for('route_detail', agency_id=agency_id, route_id=route_id)
     return Route(**attrs)
 
 @cache.memoize(get_route_xml.cache_timeout)
@@ -254,8 +346,6 @@ def get_direction(agency_id, route_id, direction_id):
     attrs["agency_id"] = agency_id
     attrs["route_id"] = route_id
     attrs["id"] = direction_id
-    attrs["url"] = url_for('direction_detail', agency_id=agency_id, route_id=route_id,
-        direction_id=direction_id)
     return Direction(**attrs)
 
 @cache.memoize(get_route_xml.cache_timeout)
@@ -284,8 +374,6 @@ def get_stop(agency_id, route_id, direction_id, stop_id):
     attrs["route_id"] = route_id
     attrs["direction_id"] = direction_id
     attrs["id"] = stop_id
-    attrs["url"] = url_for('stop_detail', agency_id=agency_id, route_id=route_id,
-        direction_id=direction_id, stop_id=stop_id)
     return Stop(**attrs)
 
 @cache.memoize(get_predictions_xml.cache_timeout)
@@ -299,10 +387,14 @@ def get_predictions(agency_id, route_id, direction_id, stop_id):
     buses = []
     for prediction_el in predictions_tree.xpath('/body/predictions/direction/prediction'):
         buses.append(PredictedBus(
+            agency_id = agency_id,
+            route_id = route_id,
+            direction_id = direction_id,
+            stop_id = stop_id,
+            trip_id = prediction_el.get("tripTag"),
             minutes = int(prediction_el.get("minutes", 0)),
             seconds = int(prediction_el.get("seconds", 0)),
             vehicle = prediction_el.get("vehicle"),
-            trip_id = prediction_el.get("tripTag"),
             block = prediction_el.get("block"),
             departure = prediction_el.get("isDeparture", "").lower() == "true",
             affected_by_layover = prediction_el.get("affectedByLayover", "").lower() == "true",
@@ -310,4 +402,34 @@ def get_predictions(agency_id, route_id, direction_id, stop_id):
             slowness = int(prediction_el.get("slowness", 0)),
         ))
     return buses
+
+@cache.memoize(get_predictions_xml.cache_timeout)
+def get_prediction(agency_id, route_id, direction_id, stop_id, trip_id):
+    xml = get_predictions_xml(agency_id, route_id, direction_id, stop_id)
+    try:
+        predictions_tree = etree.fromstring(xml)
+    except ParseError, e:
+        app.logger.error(xml)
+        raise e
+    expr = '//predictions/direction/prediction[@tripId="{id}" or @tripTag="{id}"]'.format(id=trip_id)
+    prediction_els = predictions_tree.xpath(expr)
+    try:
+        prediction_el = prediction_els[0]
+    except IndexError:
+        raise NextbusError("Invalid prediction", retry=False)
+    return PredictedBus(
+        agency_id = agency_id,
+        route_id = route_id,
+        direction_id = direction_id,
+        stop_id = stop_id,
+        trip_id = trip_id,
+        minutes = int(prediction_el.get("minutes", 0)),
+        seconds = int(prediction_el.get("seconds", 0)),
+        vehicle = prediction_el.get("vehicle"),
+        block = prediction_el.get("block"),
+        departure = prediction_el.get("isDeparture", "").lower() == "true",
+        affected_by_layover = prediction_el.get("affectedByLayover", "").lower() == "true",
+        delayed = prediction_el.get("delayed", "").lower() == "true",
+        slowness = int(prediction_el.get("slowness", 0)),
+    )
 
