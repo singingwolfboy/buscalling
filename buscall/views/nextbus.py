@@ -37,7 +37,7 @@ def api_list(func):
 
 def render_json(obj, limit=None, offset=None, count=None):
     # get exclusion list
-    exclude = request.args.get('exclude') or request.handlers.get('X-Exclude')
+    exclude = request.args.get('exclude') or request.headers.get('X-Exclude')
     if exclude:
         exclusions = [e.strip() for e in exclude.split(",")]
     else:
