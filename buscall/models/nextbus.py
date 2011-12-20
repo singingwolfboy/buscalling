@@ -51,10 +51,16 @@ class Route(RouteRecord):
         d[resource_uri] = self.url
         del d['agency_id']
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
+        detail_uri_template = url_for('direction_detail', agency_id=self.agency_id,
+                route_id=self.id, direction_id=template_id)
+        # unescape mustaches
+        detail_uri_template = detail_uri_template.replace("%7B", "{").replace("%7D", "}")
+        d['directions'] = dict(
+            list_uri = url_for('direction_list', agency_id=self.agency_id, route_id=self.id),
+            detail_uri_template = detail_uri_template,
+            ids = self.direction_ids,
+        )
         del d['direction_ids']
-        d['directions'] = [url_for('direction_detail',
-            agency_id=self.agency_id, route_id=self.id, direction_id=direction_id)
-            for direction_id in self.direction_ids]
         return d
 
 DirectionRecord = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', [])])
@@ -71,10 +77,16 @@ class Direction(DirectionRecord):
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
         del d['route_id']
         d['route'] = url_for('route_detail', agency_id=self.agency_id, route_id=self.route_id)
+        detail_uri_template = url_for('stop_detail', agency_id=self.agency_id,
+                route_id=self.route_id, direction_id=self.id, stop_id=template_id)
+        # unescape mustaches
+        detail_uri_template = detail_uri_template.replace("%7B", "{").replace("%7D", "}")
+        d['stops'] = dict(
+            list_uri = url_for('stop_list', agency_id=self.agency_id, route_id=self.route_id, direction_id=self.id),
+            detail_uri_template = detail_uri_template,
+            ids = self.stop_ids,
+        )
         del d['stop_ids']
-        d['stops'] = [url_for('stop_detail',
-            agency_id=self.agency_id, route_id=self.route_id, direction_id=self.id, stop_id=stop_id)
-            for stop_id in self.stop_ids]
         return d
 
 StopRecord = recordtype("Stop", ['id', 'direction_id', 'route_id', 'agency_id', 'title',
@@ -95,8 +107,10 @@ class Stop(StopRecord):
         del d['direction_id']
         d['direction'] = url_for('direction_detail', agency_id=self.agency_id,
                 route_id=self.route_id, direction_id=self.direction_id)
-        d['predictions'] = url_for('prediction_list', agency_id=self.agency_id,
-                route_id=self.route_id, direction_id=self.direction_id, stop_id=self.id)
+        d['predictions'] = dict(
+            list_uri = url_for('prediction_list', agency_id=self.agency_id,
+                route_id=self.route_id, direction_id=self.direction_id, stop_id=self.id),
+        )
         return d
 
 PredictedBusRecord = recordtype("PredictedBus", ['agency_id', 'route_id',
