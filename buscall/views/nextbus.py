@@ -36,21 +36,39 @@ def api_list(func):
     return wrapper
 
 def render_json(obj, limit=None, offset=None, count=None):
-    try:
-        d = obj._as_url_dict()
-    except AttributeError:
+    # get exclusion list
+    exclude = request.args.get('exclude') or request.handlers.get('X-Exclude')
+    if exclude:
+        exclusions = [e.strip() for e in exclude.split(",")]
+    else:
+        exclusions = []
+    # get dictionar(ies)
+    def process(model):
         try:
-            d = [o._as_url_dict() for o in obj]
-            count = count or len(obj)
-        except (TypeError, AttributeError):
-            d = obj
-    resp = Response(json.dumps(d, use_decimal=True), mimetype="application/json")
+            ret = model._as_url_dict()
+        except AttributeError:
+            ret = model
+        # remove exclusions
+        for exclusion in exclusions:
+            if exclusion in ret:
+                del ret[exclusion]
+        return ret
+    if isinstance(obj, (list, tuple)):
+        view_obj = [process(o) for o in obj]
+        count = count or len(view_obj)
+    else:
+        view_obj = process(obj)
+    # make response
+    resp = Response(json.dumps(view_obj, use_decimal=True), mimetype="application/json")
+    # include headers
     if limit is not None:
         resp.headers.add("X-Limit", limit)
     if offset is not None:
         resp.headers.add("X-Offset", offset)
     if count is not None:
         resp.headers.add("X-TotalCount", count)
+    if exclusions:
+        resp.headers.add("X-Excluding", ",".join(exclusions))
     return resp
 
 @app.route('/agencies')
