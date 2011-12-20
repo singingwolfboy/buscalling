@@ -1,16 +1,35 @@
+window.App = {} # hold instances
+
 $().ready ->
   $.ajaxSetup
     headers:
       "X-Limit": 0
+  _.templateSettings = {
+    interpolate : /\{\{(.+?)\}\}/g,
+    evaluate : /\{\%(.+?)\%\}/g
+  }
 
-  window.App = {} # instances
+  class window.AbstractModel    extends Backbone.RelationalModel
+    defaults:
+      id: ""
+      title: ""
+    url: -> @get('resource_uri')
+    sync: Backbone.memoized_sync || Backbone.sync
+    initialize: ->
+      @bind('focus', @onFocus, @)
+      @bind('blur', @onBlur, @)
+
+    onFocus: ->
+      @collection.focused = this
+
+    onBlur: ->
+      if(@collection.focused == this)
+        @collection.focused = null
   
   ### Models  ###
-  class window.Stop             extends Backbone.RelationalModel
-    url: -> @get('url')
+  class window.Stop             extends AbstractModel
 
-  class window.Direction        extends Backbone.RelationalModel
-    url: -> @get('url')
+  class window.Direction        extends AbstractModel
     relations: [{
       type: Backbone.HasMany
       key: 'stops'
@@ -21,8 +40,7 @@ $().ready ->
       }
     }]
 
-  class window.Route            extends Backbone.RelationalModel
-    url: -> @get('url')
+  class window.Route            extends AbstractModel
     relations: [{
       type: Backbone.HasMany
       key: 'directions'
@@ -33,8 +51,7 @@ $().ready ->
       }
     }]
 
-  class window.Agency           extends Backbone.RelationalModel
-    url: -> @get('url')
+  class window.Agency           extends AbstractModel
     relations: [{
       type: Backbone.HasMany
       key: 'routes'
@@ -46,83 +63,173 @@ $().ready ->
     }]
 
   ### Collections ###
-  class window.StopList         extends Backbone.Collection
-    model: Stop
-    url: -> "#{@direction.url()}/stops"
-  
-  class window.DirectionList    extends Backbone.Collection
-    model: Direction
-    url: -> "#{@route.url()}/directions"
+  class window.AbstractCollection   extends Backbone.Collection
+    sync: Backbone.memoized_sync || Backbone.sync
+    initialize: ->
+      @onBlur()
+      @bind('reset', @onBlur, @)
 
-  class window.RouteList        extends Backbone.Collection
-    model: Route
-    url: -> "#{@agency.url()}/routes"
+    onBlur: ->
+      @focused = null
 
-  class window.AgencyList       extends Backbone.Collection
+  class window.AgencyList           extends AbstractCollection
     model: Agency
     url: "/agencies"
 
+  class window.RouteList            extends AbstractCollection
+    model: Route
+    url: ->
+      @agency.url() + "/routes"
+
+  class window.DirectionList        extends AbstractCollection
+    model: Direction
+    url: ->
+      @route.url() + "/directions"
+
+  class window.StopList             extends AbstractCollection
+    model: Stop
+    url: ->
+      @direction.url() + "/stops"
+
   App.agencies = new AgencyList
+  App.routes = new RouteList
+  App.directions = new DirectionList
+  App.stops = new StopList
 
   ### Templates and Views ###
   fieldTemplate = _.template("""
     <label for="{{id}}">{{name}}</label>
-    <select id="{{id}}" name="{{id}}_id" required>{{options}}</select>
+    <select id="{{id}}" name="{{id}}_id" required>
+      <option value=""></option> 
+      {{options}}
+    </select>
   """)
   optionTemplate = _.template("""
-    <option value="{{value}}">{{title}}</option>
+    <option value="{{id}}"{% if(focused) { %} selected="selected"{% } %}>{{title}}</option>
   """)
   class SelectorView            extends Backbone.View
     # type is required: agency, route, direction, or stop
-    name: -> @type.capitalize()
     className: "form_field"
     id: -> "#{@type}_id"
     render: ->
-      options = this.models.map (model) ->
-        optionTemplate(model.toJSON())
+      if @collection
+        focused = @collection.focused
+        options = @collection.map (model) ->
+          json = model.toJSON()
+          json.focused = (model == focused)
+          optionTemplate(json)
+      else
+        options = []
       $(this.el).html(fieldTemplate(
         id: @type
         name: @name
         options: options.join("")
       ))
       return this
+
+    initialize: ->
+      @name = @type.capitalize()
+      if @collection
+        @collection.bind('reset', @render, @)
+        @collection.bind('focus', @onFocus, @)
+      @render()
+
+    setCollection: (collection) ->
+      return if @collection == collection
+      if @collection
+        @collection.unbind('reset', @render)
+        @collection.unbind('focus', @onFocus)
+      @collection = collection
+      if @collection
+        @collection.bind('reset', @render, @)
+        @collection.bind('focus', @onFocus, @)
+      @render()
     
     events:
       "change select": "changeSelect"
     
     changeSelect: ->
       id = this.$("select").val()
-      this.models.get(id).trigger("activate")
+      if id
+        @collection.get(id).trigger("focus")
   
-  class StopSelectorView        extends SelectorView
-    type: "stop"
-    models: App.stops
-  class DirectionSelectorView   extends SelectorView
-    type: "direction"
-    models: App.directions
-  class RouteSelectorView       extends SelectorView
-    type: "route"
-    models: App.routes
   class AgencySelectorView      extends SelectorView
     type: "agency"
+    el: "#bus-info .form_field.agency"
     models: App.agencies
+
+    onFocus: ->
+      routes = @collection.focused.get('routes')
+      App.routesView.setCollection(routes)
+      routes.fetch() if routes
+      App.directionsView.setCollection(null)
+      App.stopsView.setCollection(null)
+      @render()
+
+  class RouteSelectorView       extends SelectorView
+    type: "route"
+    el: "#bus-info .form_field.route"
+
+    onFocus: ->
+      directions = @collection.focused.get('directions')
+      App.directionsView.setCollection(directions)
+      directions.fetch() if directions
+      App.stopsView.setCollection(null)
+      @render()
+
+  class DirectionSelectorView   extends SelectorView
+    type: "direction"
+    el: "#bus-info .form_field.direction"
+
+    onFocus: ->
+      stops = @collection.focused.get('stops')
+      App.stopsView.setCollection(stops)
+      stops.fetch() if stops
+      @render()
+
+  class StopSelectorView        extends SelectorView
+    type: "stop"
+    el: "#bus-info .form_field.stop"
+
+    onFocus: ->
+      @render()
+      # do google maps stuff
+      @
   
   ### Router ###
-  class Router                  extends Backbone.Router
+  class window.Router           extends Backbone.Router
     routes:
-      ":agency" :                       "setAgency"
-      ":agency/:route" :                "setRoute"
-      ":agency/:route/:direction":      "setDirection"
-      ":agency/:route/:direction/:stop":"setStop"
+      ":agency_id" :                                "setAgency"
+      ":agency_id/:route_id" :                      "setRoute"
+      ":agency_id/:route_id/:direction_id" :        "setDirection"
+      ":agency_id/:route_id/:direction_id/:stop_id":"setStop"
     
-    # stubs
-    setAgency: -> @
-    setRoute: -> @
-    setDirection: -> @
-    setStop: -> @
+    setAgency: (agency_id) ->
+      App.agenciesView.collection.get(agency_id)?.trigger('focus')
+    setRoute: (agency_id, route_id) ->
+      App.agenciesView.collection.get(agency_id)?.trigger('focus')
+      App.routesView.collection.get(route_id)?.trigger('focus')
+    setDirection: (agency_id, route_id, direction_id) ->
+      App.agenciesView.collection.get(agency_id)?.trigger('focus')
+      App.routesView.collection.get(route_id)?.trigger('focus')
+      App.directionsView.collection.get(direction_id)?.trigger('focus')
+    setStop: (agency_id, route_id, direction_id, stop_id) ->
+      App.agenciesView.collection.get(agency_id)?.trigger('focus')
+      App.routesView.collection.get(route_id)?.trigger('focus')
+      App.directionsView.collection.get(direction_id)?.trigger('focus')
+      App.stopsView.collection.get(stop_id)?.trigger('focus')
+
+    initialize: ->
+      App.agenciesView = new AgencySelectorView(collection: App.agencies)
+      App.routesView = new RouteSelectorView(collection: App.routes)
+      App.directionsView = new DirectionSelectorView(collection: App.directions)
+      App.stopsView = new StopSelectorView(collection: App.stops)
   
+  ###
   # kick off the app
   App.router = new Router
+  Backbone.history.start()
+  ###
 
   
 ###

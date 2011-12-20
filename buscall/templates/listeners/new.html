@@ -5,6 +5,16 @@
     <link href="/static/standard.css" rel="stylesheet" type="text/css" />
     <link href="/static/new-listener.css" rel="stylesheet" type="text/css" />
 {% endblock %}
+{% block local_js %}
+{{super()}}
+<script type="text/javascript">
+$(function() {
+  App.agencies.reset({{agencies|url_dict|json}});
+  new Router();
+  Backbone.history.start();
+});
+</script>
+{% endblock %}
 {% block main %}
 <form method="POST" action="{{ url_for('new_listener') }}">
     {{form.hidden_tag()}}

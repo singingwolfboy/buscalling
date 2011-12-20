@@ -79,15 +79,18 @@ def url_dict(obj):
     try:
         return obj._as_url_dict()
     except AttributeError:
-        if test_defined(obj):
-            return obj
-        else:
-            return None
+        try:
+            return [o._as_url_dict() for o in obj]
+        except (TypeError, AttributeError):
+            if test_defined(obj):
+                return obj
+            else:
+                return None
 
 @app.template_filter('json')
 def to_json(obj):
     if test_defined(obj):
-        return json.dumps(obj, use_decimal=True)
+        return Markup(json.dumps(obj, use_decimal=True))
     return Markup("null")
 
 @app.route('/')

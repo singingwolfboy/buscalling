@@ -4,6 +4,7 @@ from ..decorators import login_required
 from google.appengine.api import users
 from buscall.models.listener import BusListener, BusNotification
 from buscall.models.profile import UserProfile
+from buscall.models.nextbus import get_agencies
 from buscall.forms import BusListenerForm
 from buscall.util import GqlQuery, DAYS_OF_WEEK, READONLY_ERR_MSG
 import simplejson as json
@@ -28,6 +29,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         "direction_id": direction_id or request.args.get('direction', None),
         "stop_id":      stop_id      or request.args.get('stop', None),
     }
+    agencies = get_agencies()
     form = get_listener_form_with_defaults(BusListenerForm(request.form), **kwargs)
     if form.validate_on_submit():
         if g.readonly:
@@ -66,7 +68,7 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     context = {
         "form": form,
         "js_file": "listeners",
-        # "js_model": make_js_model(**kwargs),
+        "agencies": agencies,
         "DAYS_OF_WEEK": DAYS_OF_WEEK,
     }
     return render_template("listeners/new.html", **context)

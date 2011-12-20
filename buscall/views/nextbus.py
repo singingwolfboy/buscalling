@@ -135,7 +135,7 @@ def direction_detail(agency_id, route_id, direction_id):
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops')
 @api_list
-def stop_list(agency_id, route_id, direction_id, stop_id, limit, offset):
+def stop_list(agency_id, route_id, direction_id, limit, offset):
     direction = get_direction(agency_id, route_id, direction_id)
     count = len(direction.stop_ids)
     if g.request_format == "json":

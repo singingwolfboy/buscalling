@@ -11,8 +11,10 @@ from recordtype import recordtype
 import simplejson as json
 from lxml import etree
 from lxml.etree import ParseError
+from markupsafe import Markup
 
-resource_uri = "resource_uri"
+resource_uri = Markup("resource_uri")
+template_id = Markup("{{id}}")
 
 Point = recordtype("Point", ['lat', 'lng'])
 
@@ -26,10 +28,15 @@ class Agency(AgencyRecord):
     def _as_url_dict(self):
         d = self._asdict()
         d[resource_uri] = self.url
+        detail_uri_template = url_for('route_detail', agency_id=self.id, route_id=template_id)
+        # unescape mustaches
+        detail_uri_template = detail_uri_template.replace("%7B", "{").replace("%7D", "}")
+        d['routes'] = dict(
+            list_uri = url_for('route_list', agency_id=self.id),
+            detail_uri_template = detail_uri_template,
+            ids = self.route_ids,
+        )
         del d['route_ids']
-        d['routes'] = [url_for('route_detail',
-            agency_id=self.id, route_id=route_id)
-            for route_id in self.route_ids]
         return d
 
 RouteRecord = recordtype("Route", ['id', 'agency_id', 'title', 'paths', ('direction_ids', []),
@@ -314,7 +321,7 @@ def get_route(agency_id, route_id):
             del attrs[lon]
     paths = []
     for path_el in route_el.findall('path'):
-        paths.append([Point(Decimal(p.get("lat")), Decimal(p.get("lon"))) for p in path_el])
+        paths.append([Point(Decimal(p.get("lat")), Decimal(p.get("lon"))) for p in path_el.findall('point')])
     attrs["paths"] = paths
     direction_ids = [d.get("id") or d.get("tag") for d in route_el.findall('direction')]
     attrs["direction_ids"] = direction_ids
