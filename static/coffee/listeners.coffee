@@ -4,6 +4,7 @@ $().ready ->
   $.ajaxSetup
     headers:
       "X-Limit": 0
+      "X-Exclude": "paths"
   _.templateSettings = {
     interpolate : /\{\{(.+?)\}\}/g,
     evaluate : /\{\%(.+?)\%\}/g
@@ -13,6 +14,7 @@ $().ready ->
     defaults:
       id: ""
       title: ""
+      focused: false
     url: -> @get('resource_uri')
     sync: Backbone.memoized_sync || Backbone.sync
     initialize: ->
@@ -20,11 +22,14 @@ $().ready ->
       @bind('blur', @onBlur, @)
 
     onFocus: ->
+      @collection.focused?.set("focused", false)
       @collection.focused = this
+      @set(focused: true)
 
     onBlur: ->
       if(@collection.focused == this)
         @collection.focused = null
+      @set(focused: false)
   
   ### Models  ###
   class window.Stop             extends AbstractModel
@@ -113,11 +118,8 @@ $().ready ->
     id: -> "#{@type}_id"
     render: ->
       if @collection
-        focused = @collection.focused
         options = @collection.map (model) ->
-          json = model.toJSON()
-          json.focused = (model == focused)
-          optionTemplate(json)
+          optionTemplate(model.toJSON())
       else
         options = []
       $(this.el).html(fieldTemplate(
