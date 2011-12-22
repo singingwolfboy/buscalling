@@ -31,7 +31,27 @@ $().ready ->
       @set(focused: false)
   
   ### Models  ###
-  class window.Stop             extends AbstractModel
+  class window.Agency           extends AbstractModel
+    relations: [{
+      type: Backbone.HasMany
+      key: 'routes'
+      relatedModel: 'Route'
+      collectionType: 'RouteList'
+      reverseRelation: {
+        key: 'agency'
+      }
+    }]
+
+  class window.Route            extends AbstractModel
+    relations: [{
+      type: Backbone.HasMany
+      key: 'directions'
+      relatedModel: 'Direction'
+      collectionType: 'DirectionList'
+      reverseRelation: {
+        key: 'route'
+      }
+    }]
 
   class window.Direction        extends AbstractModel
     relations: [{
@@ -44,27 +64,7 @@ $().ready ->
       }
     }]
 
-  class window.Route            extends AbstractModel
-    relations: [{
-      type: Backbone.HasMany
-      key: 'directions'
-      relatedModel: Direction
-      collectionType: 'DirectionList'
-      reverseRelation: {
-        key: 'route'
-      }
-    }]
-
-  class window.Agency           extends AbstractModel
-    relations: [{
-      type: Backbone.HasMany
-      key: 'routes'
-      relatedModel: Route
-      collectionType: 'RouteList'
-      reverseRelation: {
-        key: 'agency'
-      }
-    }]
+  class window.Stop             extends AbstractModel
 
   ### Collections ###
   class window.AbstractCollection   extends Backbone.Collection
@@ -94,11 +94,6 @@ $().ready ->
     model: Stop
     url: ->
       @direction.url() + "/stops"
-
-  App.agencies = new AgencyList
-  App.routes = new RouteList
-  App.directions = new DirectionList
-  App.stops = new StopList
 
   ### Templates and Views ###
   fieldTemplate = _.template("""
@@ -233,6 +228,13 @@ $().ready ->
       App.routesView = new RouteSelectorView(collection: App.routes)
       App.directionsView = new DirectionSelectorView(collection: App.directions)
       App.stopsView = new StopSelectorView(collection: App.stops)
+
+  # Create these outside of the Router initialize function, so that 
+  # they are created *first*
+  App.agencies = new AgencyList
+  App.routes = new RouteList
+  App.directions = new DirectionList
+  App.stops = new StopList
   
   ###
   # kick off the app
