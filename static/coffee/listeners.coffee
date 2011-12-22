@@ -22,7 +22,7 @@ $().ready ->
       @bind('blur', @onBlur, @)
 
     onFocus: ->
-      @collection.focused?.set("focused", false)
+      @collection.focused?.set("focused": false)
       @collection.focused = this
       @set(focused: true)
 
