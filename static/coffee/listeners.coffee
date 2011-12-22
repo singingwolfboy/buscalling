@@ -4,7 +4,6 @@ $().ready ->
   $.ajaxSetup
     headers:
       "X-Limit": 0
-      "X-Exclude": "paths"
   _.templateSettings = {
     interpolate : /\{\{(.+?)\}\}/g,
     evaluate : /\{\%(.+?)\%\}/g
@@ -16,7 +15,7 @@ $().ready ->
       title: ""
       focused: false
     url: -> @get('resource_uri')
-    sync: Backbone.memoized_sync || Backbone.sync
+    sync: Backbone.memoized_sync
     initialize: ->
       @bind('focus', @onFocus, @)
       @bind('blur', @onBlur, @)
@@ -69,7 +68,7 @@ $().ready ->
 
   ### Collections ###
   class window.AbstractCollection   extends Backbone.Collection
-    sync: Backbone.memoized_sync || Backbone.sync
+    sync: Backbone.memoized_sync
     initialize: ->
       @onBlur()
       @bind('reset', @onBlur, @)
@@ -158,12 +157,19 @@ $().ready ->
   class AgencySelectorView      extends SelectorView
     type: "agency"
     el: "#bus-info .form_field.agency"
-    models: App.agencies
+    collection: App.agencies
 
     onFocus: ->
       routes = @collection.focused.get('routes')
       App.routesView.setCollection(routes)
-      routes.fetch() if routes
+      if routes
+        # Don't fetch paths for the collection: it's too much information.
+        # We'll fetch the "paths" attribute when a route is selected.
+        routes.fetch(
+          headers:
+            "X-Limit": 0
+            "X-Exclude": "paths"
+        )
       App.directionsView.setCollection(null)
       App.stopsView.setCollection(null)
       @render()
@@ -173,6 +179,7 @@ $().ready ->
     el: "#bus-info .form_field.route"
 
     onFocus: ->
+      @collection.focused.fetch() # get "paths" attribute
       directions = @collection.focused.get('directions')
       App.directionsView.setCollection(directions)
       directions.fetch() if directions
