@@ -160,7 +160,7 @@ def stop_list(agency_id, route_id, direction_id, limit, offset):
         if limit:
             page = direction.stop_ids[offset:offset+limit]
         else:
-            page = direction.stop_ids[g.offset:]
+            page = direction.stop_ids[offset:]
         stops = [get_stop(agency_id, route_id, direction_id, stop_id) for stop_id in page]
         return render_json(stops, limit, offset, count)
     else:
