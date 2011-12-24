@@ -1,4 +1,4 @@
-window.App = {} # hold instances
+window.App = window.App || {} # hold instances
 
 $().ready ->
   $.ajaxSetup
@@ -58,14 +58,23 @@ $().ready ->
       @bind('change:stop', changeFnFactory("stop"), @)
 
   class window.AbstractModel    extends Backbone.RelationalModel
+    # name required
     defaults:
       id: ""
       title: ""
       focused: false
     url: -> @get('resource_uri')
     sync: Backbone.memoized_sync
+    initialize: ->
+      @bind('change:focused', @focusChange, @)
+    focusChange: (model, focused) ->
+      if focused
+        o = {}
+        o[@name.toLowerCase()] = model
+        App.listener.set(o)
   
   class window.Agency           extends AbstractModel
+    name: "Agency"
     relations: [{
       type: Backbone.HasMany
       key: 'routes'
@@ -77,6 +86,7 @@ $().ready ->
     }]
 
   class window.Route            extends AbstractModel
+    name: "Route"
     relations: [{
       type: Backbone.HasMany
       key: 'directions'
@@ -88,6 +98,7 @@ $().ready ->
     }]
 
   class window.Direction        extends AbstractModel
+    name: "Direction"
     relations: [{
       type: Backbone.HasMany
       key: 'stops'
@@ -98,40 +109,36 @@ $().ready ->
       }
     }]
 
-
   class window.Stop             extends AbstractModel
+    name: "Stop"
 
   class window.AbstractCollection   extends Backbone.Collection
     sync: Backbone.memoized_sync
     initialize: ->
       @bind('reset', @onReset, @)
+    onReset: ->
+      o = {}
+      o[@model.name.toLowerCase()] = null
+      App.listener.set(o)
 
   class window.AgencyList           extends AbstractCollection
     model: Agency
     url: "/agencies"
-    onReset: ->
-      App.listener.agency?.set("focused": false)
 
   class window.RouteList            extends AbstractCollection
     model: Route
     url: ->
       @agency.url() + "/routes"
-    onReset: ->
-      App.listener.route?.set("focused": false)
 
   class window.DirectionList        extends AbstractCollection
     model: Direction
     url: ->
       @route.url() + "/directions"
-    onReset: ->
-      App.listener.direction?.set("focused": false)
 
   class window.StopList             extends AbstractCollection
     model: Stop
     url: ->
       @direction.url() + "/stops"
-    onReset: ->
-      App.listener.stop?.set("focused": false)
 
   ### Templates and Views ###
   fieldTemplate = _.template("""
@@ -145,9 +152,8 @@ $().ready ->
     <option value="{{id}}"{% if(focused) { %} selected="selected"{% } %}>{{title}}</option>
   """)
   class SelectorView            extends Backbone.View
-    # type is required: agency, route, direction, or stop
     className: "form_field"
-    id: -> "#{@type}_id"
+    id: -> @collection.model.name.toLowerCase() + "_id"
     render: ->
       if @collection
         options = @collection.map (model) ->
@@ -155,14 +161,13 @@ $().ready ->
       else
         options = []
       $(this.el).html(fieldTemplate(
-        id: @type
-        name: @name
+        id: @collection.model.name.toLowerCase()
+        name: @collection.model.name
         options: options.join("")
       ))
       return this
 
     initialize: ->
-      @name = @type.capitalize()
       if @collection
         @collection.bind('reset', @render, @)
         @collection.bind('change:focused', @onFocus, @)
@@ -184,8 +189,9 @@ $().ready ->
     
     changeSelect: ->
       id = this.$("select").val()
-      if id
-        @collection.get(id).set("focused": true)
+      o = {}
+      o[@collection.model.name.toLowerCase()] = @collection.get(id)
+      App.listener.set(o)
   
   class AgencySelectorView      extends SelectorView
     type: "agency"
@@ -204,6 +210,10 @@ $().ready ->
               "X-Limit": 0
               "X-Exclude": "paths"
           )
+      else
+        App.routesView.collection.reset()
+      App.directionsView.collection.reset()
+      App.stopsView.collection.reset()
       @render()
 
   class RouteSelectorView       extends SelectorView
@@ -216,6 +226,9 @@ $().ready ->
         directions = route.get('directions')
         App.directionsView.setCollection(directions)
         directions.fetch() if directions
+      else
+        App.directionsView.collection.reset()
+      App.stopsView.collection.reset()
       @render()
 
   class DirectionSelectorView   extends SelectorView
@@ -227,6 +240,8 @@ $().ready ->
         stops = direction.get('stops')
         App.stopsView.setCollection(stops)
         stops.fetch() if stops
+      else
+        App.stopsView.collection.reset()
       @render()
 
   class StopSelectorView        extends SelectorView
@@ -247,19 +262,16 @@ $().ready ->
       ":agency_id/:route_id/:direction_id/:stop_id":"setStop"
     
     setAgency: (agency_id) ->
-      App.agenciesView.collection.get(agency_id)?.trigger('focus')
+      App.listener.set("agency": App.agencies.get(agency_id))
     setRoute: (agency_id, route_id) ->
-      App.agenciesView.collection.get(agency_id)?.trigger('focus')
-      App.routesView.collection.get(route_id)?.trigger('focus')
+      @setAgency(agency_id)
+      App.listener.set("route": App.routes.get(route_id))
     setDirection: (agency_id, route_id, direction_id) ->
-      App.agenciesView.collection.get(agency_id)?.trigger('focus')
-      App.routesView.collection.get(route_id)?.trigger('focus')
-      App.directionsView.collection.get(direction_id)?.trigger('focus')
+      @setRoute(agency_id, route_id)
+      App.listener.set("direction": App.directions.get(direction_id))
     setStop: (agency_id, route_id, direction_id, stop_id) ->
-      App.agenciesView.collection.get(agency_id)?.trigger('focus')
-      App.routesView.collection.get(route_id)?.trigger('focus')
-      App.directionsView.collection.get(direction_id)?.trigger('focus')
-      App.stopsView.collection.get(stop_id)?.trigger('focus')
+      @setDirection(agency_id, route_id, direction_id)
+      App.listener.set("stop", App.stops.get(stop_id))
 
     initialize: ->
       App.agenciesView = new AgencySelectorView(collection: App.agencies)
