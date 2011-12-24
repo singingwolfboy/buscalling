@@ -37,10 +37,8 @@ $().ready ->
       changeFnFactory = (property) ->
         return (listener, model) ->
           prevModel = listener.previous(property)
-          if prevModel and prevModel.get("focused")
-            prevModel.set("focused": false)
-          if model and not model.get("focused")
-            model.set("focused": true)
+          prevModel?.set("focused": false)
+          model?.set("focused": true)
           # set children null 
           if property == "agency"
             listener.set("route": null)
@@ -141,6 +139,28 @@ $().ready ->
       @direction.url() + "/stops"
 
   ### Templates and Views ###
+  class MapView                 extends Backbone.View
+    el: "#map_canvas"
+    initialize: ->
+      @m = google.maps
+      @model.bind('change:stop', @onStopChange, @)
+      @render()
+    render: ->
+      @map = new @m.Map(@el,
+        zoom: 10
+        center: new @m.LatLng(42.373, -71.111) # cambridge
+        mapTypeId: @m.MapTypeId.ROADMAP
+        disableDefaultUI: true
+      )
+
+    onStopChange: (listener, stop) ->
+      marker = new @m.Marker
+        position: new @m.LatLng stop.get("lat"), stop.get("lng")
+        title: stop.get("title")
+        map: @map
+      @map.panTo(marker.getPosition())
+      @map.setZoom(16)
+
   fieldTemplate = _.template("""
     <label for="{{id}}">{{name}}</label>
     <select id="{{id}}" name="{{id}}_id" required>
@@ -250,8 +270,6 @@ $().ready ->
 
     onFocus: ->
       @render()
-      # do google maps stuff
-      @
   
   ### Router ###
   class window.Router           extends Backbone.Router
@@ -274,6 +292,7 @@ $().ready ->
       App.listener.set("stop", App.stops.get(stop_id))
 
     initialize: ->
+      App.mapView = new MapView(model: App.listener)
       App.agenciesView = new AgencySelectorView(collection: App.agencies)
       App.routesView = new RouteSelectorView(collection: App.routes)
       App.directionsView = new DirectionSelectorView(collection: App.directions)
