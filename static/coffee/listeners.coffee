@@ -15,6 +15,7 @@ $().ready ->
       route: null
       direction: null
       stop: null
+    ###
     relations: [{
       type: Backbone.HasOne
       key: 'agency'
@@ -32,28 +33,36 @@ $().ready ->
       key: 'stop'
       relatedModel: 'Stop'
     }]
+    ###
 
     initialize: ->
-      changeFnFactory = (property) ->
-        return (listener, model) ->
-          prevModel = listener.previous(property)
-          prevModel?.set("focused": false)
-          model?.set("focused": true)
-          # set children null 
-          if property == "agency"
-            listener.set("route": null)
-            listener.set("direction": null)
-            listener.set("stop": null)
-          if property == "route"
-            listener.set("direction": null)
-            listener.set("stop": null)
-          if property == "direction"
-            listener.set("stop": null)
+      @bind('change:agency', @changeAgency, @)
+      @bind('change:route', @changeRoute, @)
+      @bind('change:direction', @changeDirection, @)
+      @bind('change:stop', @changeStop, @)
 
-      @bind('change:agency', changeFnFactory("agency"), @)
-      @bind('change:route', changeFnFactory("route"), @)
-      @bind('change:direction', changeFnFactory("direction"), @)
-      @bind('change:stop', changeFnFactory("stop"), @)
+    changeAgency: (listener, agency) ->
+      prevAgency = listener.previous("agency")
+      prevAgency?.set("focused": false)
+      agency?.set("focused": true)
+      listener.set("route": null).set("direction": null).set("stop": null)
+
+    changeRoute: (listener, route) ->
+      prevRoute = listener.previous("route")
+      prevRoute?.set("focused": false)
+      route?.set("focused": true)
+      listener.set("direction": null).set("stop": null)
+
+    changeDirection: (listener, direction) ->
+      prevDirection = listener.previous("direction")
+      prevDirection?.set("focused": false)
+      direction?.set("focused": true)
+      listener.set("stop": null)
+
+    changeStop: (listener, stop) ->
+      prevStop = listener.previous("stop")
+      prevStop?.set("focused": false)
+      stop?.set("focused": true)
 
   class window.AbstractModel    extends Backbone.RelationalModel
     # name required
@@ -127,6 +136,9 @@ $().ready ->
     model: Route
     url: ->
       @agency.url() + "/routes"
+    # initialize: ->
+      # super
+      # @bind('remove', (-> debugger), @)
 
   class window.DirectionList        extends AbstractCollection
     model: Direction
@@ -143,6 +155,7 @@ $().ready ->
     el: "#map_canvas"
     initialize: ->
       @m = google.maps
+      @model.bind('change:route', @onRouteChange, @)
       @model.bind('change:stop', @onStopChange, @)
       @render()
     render: ->
@@ -153,13 +166,32 @@ $().ready ->
         disableDefaultUI: true
       )
 
+    onRouteChange: (listener, route) ->
+      if route
+        bounds = new @m.LatLngBounds(
+          new @m.LatLng(route.get("latMin"), route.get("lngMin")),
+          new @m.LatLng(route.get("latMax"), route.get("lngMax"))
+        )
+        @map.fitBounds(bounds)
+        paths = route.get("paths")
+        if paths
+          for subpath in paths
+            latlngs = [new @m.LatLng(point.lat, point.lng) for point in subpath]
+            new @m.Polyline(
+              path: latlngs
+              map: @map
+            )
+      @map
+
     onStopChange: (listener, stop) ->
-      marker = new @m.Marker
-        position: new @m.LatLng stop.get("lat"), stop.get("lng")
-        title: stop.get("title")
-        map: @map
-      @map.panTo(marker.getPosition())
-      @map.setZoom(16)
+      if stop
+        marker = new @m.Marker
+          position: new @m.LatLng stop.get("lat"), stop.get("lng")
+          title: stop.get("title")
+          map: @map
+        @map.panTo(marker.getPosition())
+        @map.setZoom(16)
+      @map
 
   fieldTemplate = _.template("""
     <label for="{{id}}">{{name}}</label>
@@ -242,7 +274,7 @@ $().ready ->
 
     onFocus: (route, focused) ->
       if focused
-        route.fetch() # get "paths" attribute
+        # route.fetch() # get "paths" attribute
         directions = route.get('directions')
         App.directionsView.setCollection(directions)
         directions.fetch() if directions
