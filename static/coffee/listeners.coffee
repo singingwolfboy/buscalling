@@ -121,9 +121,23 @@ $().ready ->
 
   class window.AbstractCollection   extends Backbone.Collection
     sync: Backbone.memoized_sync
+    order: []
+    comparator: (model) =>
+      id = model.get("id")
+      return unless id
+      index = @order.indexOf(id)
+      if index < 0
+        index = @order.length
+        @order.push(id)
+      return index
+
     initialize: ->
       @bind('reset', @onReset, @)
-    onReset: ->
+
+    onReset: (models) ->
+      @order = models.pluck("id")
+      if @xhr and @xhr.state() == "pending"
+        @xhr.abort()
       o = {}
       o[@model.name.toLowerCase()] = null
       App.listener.set(o)
@@ -235,7 +249,7 @@ $().ready ->
         @collection.bind('reset', @render, @)
         @collection.bind('change:focused', @onFocus, @)
       @render()
-    
+
     events:
       "change select": "changeSelect"
     
@@ -257,7 +271,7 @@ $().ready ->
         if routes
           # Don't fetch paths for the collection: it's too much information.
           # We'll fetch the "paths" attribute when a route is selected.
-          routes.fetch(
+          routes.xhr = routes.fetch(
             headers:
               "X-Limit": 0
               "X-Exclude": "paths"
@@ -274,10 +288,14 @@ $().ready ->
 
     onFocus: (route, focused) ->
       if focused
-        # route.fetch() # get "paths" attribute
+        collection = route.collection
+        route.xhr = route.fetch( # get "paths" attribute
+          success: ->
+            collection.add(route)
+        )
         directions = route.get('directions')
         App.directionsView.setCollection(directions)
-        directions.fetch() if directions
+        directions.xhr = directions.fetch() if directions
       else
         App.directionsView.collection.reset()
       App.stopsView.collection.reset()
@@ -291,7 +309,7 @@ $().ready ->
       if focused
         stops = direction.get('stops')
         App.stopsView.setCollection(stops)
-        stops.fetch() if stops
+        stops.xhr = stops.fetch() if stops
       else
         App.stopsView.collection.reset()
       @render()
