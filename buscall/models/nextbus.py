@@ -8,10 +8,17 @@ from urllib import urlencode
 from buscall import cache
 from buscall.util import clean_booleans, filter_keys
 from recordtype import recordtype
+from .util import GeoRange
 import simplejson as json
 from lxml import etree
 from lxml.etree import ParseError
 from markupsafe import Markup
+
+RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
+# cache durations
+SHORT = 20
+HOUR = 3600
+DAY = 86400
 
 resource_uri = Markup("resource_uri")
 template_id = Markup("{{id}}")
@@ -37,10 +44,43 @@ class Agency(AgencyRecord):
             ids = self.route_ids,
         )
         del d['route_ids']
+        # geo range to toplevel
+        if self.geo_range:
+            d['latMin'] = self.geo_range.lat_min
+            d['latMax'] = self.geo_range.lat_max
+            d['lngMin'] = self.geo_range.lng_min
+            d['lngMax'] = self.geo_range.lng_max
+            if 'geo_range' in d:
+                del d['geo_range']
         return d
 
-RouteRecord = recordtype("Route", ['id', 'agency_id', 'title', 'paths', ('direction_ids', []),
-    ('latMin', None), ('latMax', None), ('lngMin', None), ('lngMax', None)])
+    @property
+    def routes(self):
+        return [get_route(self.id, route_id) for route_id in self.route_ids]
+
+    @property
+    @cache.cached(timeout=DAY, key_prefix="agency_geo")
+    def geo_range(self):
+        # calculate the extreme values from all routes
+        geo = dict(
+            lat_min = 90,
+            lat_max = -90,
+            lng_min = 180,
+            lng_max = -180,
+        )
+        for route in self.routes:
+            if route.lat_min < geo['lat_min']:
+                geo['lat_min'] = route.lat_min
+            if route.lat_max > geo['lat_max']:
+                geo['lat_max'] = route.lat_max
+            if route.lng_min < geo['lng_min']:
+                geo['lng_min'] = route.lng_min
+            if route.lng_max > geo['lng_max']:
+                geo['lng_max'] = route.lng_max
+        return GeoRange(**geo)
+
+RouteRecord = recordtype("Route", ['id', 'agency_id', 'title', 'paths',
+    ('geo_range', None), ('direction_ids', [])])
 class Route(RouteRecord):
     @property
     def url(self):
@@ -61,7 +101,29 @@ class Route(RouteRecord):
             ids = self.direction_ids,
         )
         del d['direction_ids']
+        # geo range to toplevel
+        if self.geo_range:
+            d['latMin'] = self.lat_min
+            d['latMax'] = self.lat_max
+            d['lngMin'] = self.lng_min
+            d['lngMax'] = self.lng_max
+            if 'geo_range' in d:
+                del d['geo_range']
         return d
+
+    # proxy to internal geo_range
+    @property
+    def lat_min(self):
+        return self.geo_range.lat_min
+    @property
+    def lat_max(self):
+        return self.geo_range.lat_max
+    @property
+    def lng_min(self):
+        return self.geo_range.lng_min
+    @property
+    def lng_max(self):
+        return self.geo_range.lng_max
 
 DirectionRecord = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', [])])
 class Direction(DirectionRecord):
@@ -141,12 +203,6 @@ class PredictedBus(PredictedBusRecord):
                 route_id=self.route_id, direction_id=self.direction_id, stop_id=self.stop_id)
         return d
 
-RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
-# cache durations
-SHORT = 20
-HOUR = 3600
-DAY = 86400
-
 class NextbusError(Exception):
     def __init__(self, message, retry):
         self.message = message
@@ -197,7 +253,12 @@ def get_nextbus_xml(params):
         raise e
     error = tree.find('Error')
     if error is not None:
-        raise NextbusError(error.text.strip(), error.attrib['shouldRetry'])
+        retry = error.attrib.get('shouldRetry')
+        if retry is None:
+            retry = False
+        if not isinstance(retry, bool):
+            retry = retry.lower() == "true"
+        raise NextbusError(error.text.strip(), retry)
     return etree.tostring(tree)
 
 @cache.memoize(timeout=DAY)
@@ -326,20 +387,22 @@ def get_route(agency_id, route_id):
     if "tag" in attrs and not "id" in attrs:
         attrs["id"] = attrs["tag"]
         del attrs["tag"]
-    for lat in ("latMin", "latMax"):
-        if lat in attrs:
-            attrs[lat] = Decimal(attrs[lat])
-    for lon in ("lonMin", "lonMax"):
-        if lon in attrs:
-            attrs[lon.replace("lon", "lng")] = Decimal(attrs[lon])
-            del attrs[lon]
+
+    geo = dict(
+        lat_min = Decimal(attrs.get("latMin")),
+        lat_max = Decimal(attrs.get("latMax")),
+        lng_min = Decimal(attrs.get("lngMin") or attrs.get("lonMin")),
+        lng_max = Decimal(attrs.get("lngMax") or attrs.get("lonMax")),
+    )
+    attrs["geo_range"] = GeoRange(**geo)
+
     paths = []
     for path_el in route_el.findall('path'):
         paths.append([Point(Decimal(p.get("lat")), Decimal(p.get("lon"))) for p in path_el.findall('point')])
     attrs["paths"] = paths
     direction_ids = [d.get("id") or d.get("tag") for d in route_el.findall('direction')]
     attrs["direction_ids"] = direction_ids
-        
+
     attrs = filter_keys(attrs, Route._fields)
     attrs['agency_id'] = agency_id
     return Route(**attrs)

@@ -44,9 +44,9 @@ def render_json(obj, limit=None, offset=None, count=None):
         exclusions = []
     # get dictionar(ies)
     def process(model):
-        try:
+        if hasattr(model, "_as_url_dict"):
             ret = model._as_url_dict()
-        except AttributeError:
+        else:
             ret = model
         # remove exclusions
         for exclusion in exclusions:
