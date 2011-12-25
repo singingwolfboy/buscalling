@@ -49,9 +49,17 @@ $().ready ->
 
     changeRoute: (listener, route) ->
       prevRoute = listener.previous("route")
-      prevRoute?.set("focused": false)
-      route?.set("focused": true)
-      listener.set("direction": null).set("stop": null)
+      if prevRoute != route
+        if prevRoute
+          prevRoute.set("focused": false)
+          prevRoute.unbind("change", @triggerRouteChange)
+        if route
+          route.set("focused": true)
+          route.bind("change", @triggerRouteChange, @)
+        listener.set("direction": null).set("stop": null)
+
+    triggerRouteChange: =>
+      @trigger("change:route", @, @get("route"))
 
     changeDirection: (listener, direction) ->
       prevDirection = listener.previous("direction")
@@ -179,8 +187,13 @@ $().ready ->
         mapTypeId: @m.MapTypeId.ROADMAP
         disableDefaultUI: true
       )
+      @onRouteChange(App.listener, App.listener.get('route'))
+      @onStopChange(App.listener, App.listener.get('stop'))
 
     onRouteChange: (listener, route) ->
+      if @map.route
+        for polyline in @map.route
+          polyline.setMap(null)
       if route
         bounds = new @m.LatLngBounds(
           new @m.LatLng(route.get("latMin"), route.get("lngMin")),
@@ -189,22 +202,30 @@ $().ready ->
         @map.fitBounds(bounds)
         paths = route.get("paths")
         if paths
+          route = []
           for subpath in paths
             latlngs = [new @m.LatLng(point.lat, point.lng) for point in subpath]
-            new @m.Polyline(
+            route.push(new @m.Polyline(
               path: latlngs
               map: @map
-            )
+            ))
+          @map.route = route
+      else
+        @map.route = []
       @map
 
     onStopChange: (listener, stop) ->
+      if @map.stop
+        @map.stop.setMap(null)
       if stop
-        marker = new @m.Marker
+        @map.stop = new @m.Marker
           position: new @m.LatLng stop.get("lat"), stop.get("lng")
           title: stop.get("title")
           map: @map
         @map.panTo(marker.getPosition())
         @map.setZoom(16)
+      else
+        @map.stop = null
       @map
 
   fieldTemplate = _.template("""
