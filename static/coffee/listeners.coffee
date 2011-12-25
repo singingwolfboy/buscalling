@@ -43,9 +43,10 @@ $().ready ->
 
     changeAgency: (listener, agency) ->
       prevAgency = listener.previous("agency")
-      prevAgency?.set("focused": false)
-      agency?.set("focused": true)
-      listener.set("route": null).set("direction": null).set("stop": null)
+      if prevAgency != agency
+        prevAgency?.set("focused": false)
+        agency?.set("focused": true)
+        listener.set("route": null).set("direction": null).set("stop": null)
 
     changeRoute: (listener, route) ->
       prevRoute = listener.previous("route")
@@ -59,18 +60,28 @@ $().ready ->
         listener.set("direction": null).set("stop": null)
 
     triggerRouteChange: =>
-      @trigger("change:route", @, @get("route"))
+      prevRoute = @previous("route")
+      route = @get("route")
+      if route
+        prevDirections = prevRoute.get('directions')
+        if prevDirections?.length
+          route.set('directions', prevDirections)
+        else
+          route.get('directions').fetch()
+        @trigger("change:route", @, route)
 
     changeDirection: (listener, direction) ->
       prevDirection = listener.previous("direction")
-      prevDirection?.set("focused": false)
-      direction?.set("focused": true)
-      listener.set("stop": null)
+      if prevDirection != direction
+        prevDirection?.set("focused": false)
+        direction?.set("focused": true)
+        listener.set("stop": null)
 
     changeStop: (listener, stop) ->
       prevStop = listener.previous("stop")
-      prevStop?.set("focused": false)
-      stop?.set("focused": true)
+      if prevStop != stop
+        prevStop?.set("focused": false)
+        stop?.set("focused": true)
 
   class window.AbstractModel    extends Backbone.RelationalModel
     # name required
@@ -222,10 +233,11 @@ $().ready ->
           position: new @m.LatLng stop.get("lat"), stop.get("lng")
           title: stop.get("title")
           map: @map
-        @map.panTo(marker.getPosition())
-        @map.setZoom(16)
       else
         @map.stop = null
+      if @map.stop
+        @map.panTo(@map.stop.getPosition())
+        @map.setZoom(16)
       @map
 
   fieldTemplate = _.template("""
