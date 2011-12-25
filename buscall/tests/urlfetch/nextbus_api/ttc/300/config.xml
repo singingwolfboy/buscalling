@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:35 GMT
+Date: Sun, 25 Dec 2011 20:01:11 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 12007
+Content-Length: 11977
 Connection: close
 Content-Type: text/xml
 
@@ -63,8 +63,8 @@ Content-Type: text/xml
 <stop tag="8736" title="Bloor Street West At Bedford Road" lat="43.66791" lon="-79.3975599" stopId="0495"/>
 <stop tag="1627" title="Bloor Street West At Queens Park" lat="43.6686" lon="-79.3942899" stopId="0573"/>
 <stop tag="2632" title="Bloor Street West At Bay Street" lat="43.6695899" lon="-79.38971" stopId="0493"/>
-<stop tag="4418" title="Bloor Street At Yonge Street (West Side Stop)" lat="43.6700899" lon="-79.38698" stopId="0600"/>
-<stop tag="9126" title="Bloor Street East At East Side Stop Yonge Street Farside" lat="43.6703" lon="-79.3861299" stopId="11116"/>
+<stop tag="4418" title="Bloor Street West At Yonge Street" lat="43.6700899" lon="-79.38698" stopId="0600"/>
+<stop tag="9126" title="Bloor Street East At Yonge Street Farside" lat="43.6703" lon="-79.3861299" stopId="11116"/>
 <stop tag="2837" title="Bloor Street East At Church Street" lat="43.67078" lon="-79.3836299" stopId="0478"/>
 <stop tag="9091" title="Bloor Street East At Jarvis Street" lat="43.6714799" lon="-79.3808" stopId="0481"/>
 <stop tag="7450" title="Bloor Street East At Sherbourne Street" lat="43.6722299" lon="-79.37707" stopId="0484"/>
@@ -146,8 +146,8 @@ Content-Type: text/xml
 <stop tag="5503" title="Bloor Street East At Sherbourne Street" lat="43.6724999" lon="-79.3766499" stopId="0485"/>
 <stop tag="8629" title="Bloor Street East At Jarvis Street" lat="43.67171" lon="-79.3803999" stopId="0480"/>
 <stop tag="1773" title="Bloor Street East At Church Street" lat="43.67119" lon="-79.3829899" stopId="0479"/>
-<stop tag="6984" title="Bloor Street East At Yonge Street (East Side Stop)" lat="43.6703299" lon="-79.38661" stopId="0486"/>
-<stop tag="6907" title="Bloor Street West At West Side Stop Yonge Street Farside" lat="43.6702099" lon="-79.38732" stopId="11117"/>
+<stop tag="6984" title="Bloor Street East At Yonge Street" lat="43.6703299" lon="-79.38661" stopId="0486"/>
+<stop tag="6907" title="Bloor Street West At Yonge Street Farside" lat="43.6702099" lon="-79.38732" stopId="11117"/>
 <stop tag="14403" title="Bloor Street West At Bay Street" lat="43.66986" lon="-79.3892999" stopId="0494"/>
 <stop tag="6961" title="Bloor Street West At Avenue Road" lat="43.6688199" lon="-79.39395" stopId="0490"/>
 <stop tag="7065" title="Bloor Street West At Bedford Road" lat="43.6681599" lon="-79.39724" stopId="0496"/>
@@ -571,6 +571,14 @@ Content-Type: text/xml
 <point lat="43.66522" lon="-79.41104"/>
 </path>
 <path>
+<point lat="43.6790499" lon="-79.34474"/>
+<point lat="43.67856" lon="-79.34716"/>
+<point lat="43.6781099" lon="-79.3494599"/>
+<point lat="43.67765" lon="-79.35183"/>
+<point lat="43.67704" lon="-79.35498"/>
+<point lat="43.67635" lon="-79.35854"/>
+</path>
+<path>
 <point lat="43.68348" lon="-79.3234499"/>
 <point lat="43.68269" lon="-79.32708"/>
 <point lat="43.68213" lon="-79.3296699"/>
@@ -582,14 +590,6 @@ Content-Type: text/xml
 <point lat="43.67996" lon="-79.33999"/>
 <point lat="43.67963" lon="-79.34166"/>
 <point lat="43.6790499" lon="-79.34474"/>
-</path>
-<path>
-<point lat="43.6790499" lon="-79.34474"/>
-<point lat="43.67856" lon="-79.34716"/>
-<point lat="43.6781099" lon="-79.3494599"/>
-<point lat="43.67765" lon="-79.35183"/>
-<point lat="43.67704" lon="-79.35498"/>
-<point lat="43.67635" lon="-79.35854"/>
 </path>
 <path>
 <point lat="43.68826" lon="-79.30167"/>

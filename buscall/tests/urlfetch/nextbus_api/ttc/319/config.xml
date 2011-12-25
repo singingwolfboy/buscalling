@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:48 GMT
+Date: Sun, 25 Dec 2011 20:01:26 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 6026
+Content-Length: 6013
 Connection: close
 Content-Type: text/xml
 
@@ -42,7 +42,7 @@ Content-Type: text/xml
 <stop tag="10410" title="Albion Road At Golfdown Drive Farside" lat="43.72347" lon="-79.54875" stopId="6224"/>
 <stop tag="4277" title="Albion Road At Shendale Drive Farside" lat="43.7223099" lon="-79.5473699" stopId="6230"/>
 <stop tag="5761" title="Albion Road At Armel Court" lat="43.72132" lon="-79.54594" stopId="6216"/>
-<stop tag="4758" title="Albion Road At Weston Road (West Side)" lat="43.71723" lon="-79.5382" stopId="7481"/>
+<stop tag="4758" title="Albion Road At Weston Road" lat="43.71723" lon="-79.5382" stopId="7481"/>
 <stop tag="1188" title="Walsh Avenue At Weston Road Farside" lat="43.71674" lon="-79.53676" stopId="8525"/>
 <stop tag="9357" title="Walsh Avenue At Wilson Avenue" lat="43.71565" lon="-79.53253" stopId="8526"/>
 <stop tag="957" title="Wilson Avenue At Wendell Avenue" lat="43.71666" lon="-79.5272199" stopId="8886"/>
@@ -380,6 +380,14 @@ Content-Type: text/xml
 <point lat="43.73733" lon="-79.43322"/>
 </path>
 <path>
+<point lat="43.72634" lon="-79.58671"/>
+<point lat="43.73066" lon="-79.58861"/>
+<point lat="43.7319" lon="-79.58916"/>
+<point lat="43.73392" lon="-79.59013"/>
+<point lat="43.73665" lon="-79.59138"/>
+<point lat="43.73875" lon="-79.59249"/>
+</path>
+<path>
 <point lat="43.72875" lon="-79.57248"/>
 <point lat="43.72889" lon="-79.57246"/>
 <point lat="43.72786" lon="-79.56944"/>
@@ -408,14 +416,6 @@ Content-Type: text/xml
 <point lat="43.72284" lon="-79.55993"/>
 <point lat="43.72299" lon="-79.5591"/>
 <point lat="43.72426" lon="-79.55371"/>
-</path>
-<path>
-<point lat="43.72634" lon="-79.58671"/>
-<point lat="43.73066" lon="-79.58861"/>
-<point lat="43.7319" lon="-79.58916"/>
-<point lat="43.73392" lon="-79.59013"/>
-<point lat="43.73665" lon="-79.59138"/>
-<point lat="43.73875" lon="-79.59249"/>
 </path>
 <path>
 <point lat="43.73875" lon="-79.59249"/>

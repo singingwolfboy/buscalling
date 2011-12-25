@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:59:55 GMT
+Date: Sun, 25 Dec 2011 19:57:43 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 3883
+Content-Length: 3882
 Connection: close
 Content-Type: text/xml
 
@@ -127,7 +127,7 @@ Content-Type: text/xml
 <stop tag="5638" title="Market St &amp; 1st St" lat="37.7908999" lon="-122.39914" stopId="15638"/>
 <stop tag="3089" title="Beale St &amp; Mission St" lat="37.79175" lon="-122.3967" stopId="13089"/>
 <stop tag="7619" title="Bealemst &amp; Howard St" lat="37.7896899" lon="-122.39404" stopId="17619"/>
-<direction tag="71_IB1" title="Inbound to Downtownl" name="Inbound" useForUI="true">
+<direction tag="71_IB1" title="Inbound to Downtown" name="Inbound" useForUI="true">
   <stop tag="5828" />
   <stop tag="3605" />
   <stop tag="5762" />
@@ -318,15 +318,6 @@ Content-Type: text/xml
 <point lat="37.76833" lon="-122.45346"/>
 </path>
 <path>
-<point lat="37.78586" lon="-122.40574"/>
-<point lat="37.78408" lon="-122.40799"/>
-<point lat="37.78232" lon="-122.41023"/>
-<point lat="37.78057" lon="-122.41244"/>
-<point lat="37.77911" lon="-122.41438"/>
-<point lat="37.7775899" lon="-122.41621"/>
-<point lat="37.7752399" lon="-122.41918"/>
-</path>
-<path>
 <point lat="37.79055" lon="-122.3933"/>
 <point lat="37.79184" lon="-122.39494"/>
 <point lat="37.79114" lon="-122.39592"/>
@@ -337,6 +328,15 @@ Content-Type: text/xml
 <point lat="37.78935" lon="-122.40131"/>
 <point lat="37.78773" lon="-122.40337"/>
 <point lat="37.78586" lon="-122.40574"/>
+</path>
+<path>
+<point lat="37.78586" lon="-122.40574"/>
+<point lat="37.78408" lon="-122.40799"/>
+<point lat="37.78232" lon="-122.41023"/>
+<point lat="37.78057" lon="-122.41244"/>
+<point lat="37.77911" lon="-122.41438"/>
+<point lat="37.7775899" lon="-122.41621"/>
+<point lat="37.7752399" lon="-122.41918"/>
 </path>
 <path>
 <point lat="37.76553" lon="-122.47761"/>

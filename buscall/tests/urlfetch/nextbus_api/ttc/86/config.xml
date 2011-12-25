@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:53 GMT
+Date: Sun, 25 Dec 2011 20:00:09 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 6802
+Content-Length: 6401
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="86" title="86-Scarborough" color="ff0000" oppositeColor="ffffff" latMin="43.7159199" latMax="43.8198199" lonMin="-79.26712" lonMax="-79.15839">
+<route tag="86" title="86-Scarborough" color="ff0000" oppositeColor="ffffff" latMin="43.7322899" latMax="43.8198199" lonMin="-79.26712" lonMax="-79.15839">
 <stop tag="14234" title="Kennedy Station" lat="43.7326599" lon="-79.26348" stopId="14715"/>
 <stop tag="311" title="2495 Eglinton Avenue East" lat="43.73404" lon="-79.2597999" stopId="1031"/>
 <stop tag="8890" title="Eglinton Avenue East At Midland Avenue" lat="43.73432" lon="-79.2584699" stopId="1037"/>
@@ -22,8 +22,8 @@ Content-Type: text/xml
 <stop tag="6371" title="Eglinton Avenue East At Barbados Boulevard" lat="43.73797" lon="-79.2417399" stopId="2236"/>
 <stop tag="9553" title="Eglinton Avenue East At McCowan Road" lat="43.7386599" lon="-79.23864" stopId="2292"/>
 <stop tag="4960" title="Eglinton Avenue East At Torrance Road" lat="43.73937" lon="-79.2354399" stopId="1039"/>
-<stop tag="5029" title="Eglinton Avenue East At Bellamy Road North Side" lat="43.7400699" lon="-79.23217" stopId="2244"/>
-<stop tag="3679" title="Eglinton Avenue East At Bellamy Road South Side" lat="43.74117" lon="-79.2274099" stopId="2245"/>
+<stop tag="5029" title="Eglinton Avenue East At Bellamy Road" lat="43.7400699" lon="-79.23217" stopId="2244"/>
+<stop tag="3679" title="Eglinton Avenue East At Bellamy Road" lat="43.74117" lon="-79.2274099" stopId="2245"/>
 <stop tag="10142" title="Eglinton Avenue East At Mason Road" lat="43.7416" lon="-79.2254899" stopId="2290"/>
 <stop tag="7424" title="Eglinton Avenue East At Beachell Street" lat="43.74234" lon="-79.2221599" stopId="2241"/>
 <stop tag="3490" title="Eglinton Avenue East At Markham Road" lat="43.7429899" lon="-79.21919" stopId="2289"/>
@@ -68,22 +68,13 @@ Content-Type: text/xml
 <stop tag="8275" title="Lawrence Avenue East At Manse Road Farside" lat="43.7706399" lon="-79.17593" stopId="5284"/>
 <stop tag="5194" title="Lawrence Avenue East At Valia Road" lat="43.7714" lon="-79.1727399" stopId="4425"/>
 <stop tag="2448" title="Lawrence Avenue East At Megan Avenue" lat="43.7718499" lon="-79.1707" stopId="4422"/>
-<stop tag="7603" title="Lawrence Avenue E At Morning Dew Road" lat="43.7722299" lon="-79.16906" stopId="11185"/>
+<stop tag="7603" title="Lawrence Avenue East At Morning Dew Road" lat="43.7722299" lon="-79.16906" stopId="11185"/>
 <stop tag="3661" title="Lawrence Avenue East At Bennett Road" lat="43.7727599" lon="-79.16669" stopId="4414"/>
 <stop tag="3816" title="Lawrence Avenue At Beechgrove Drive" lat="43.7737499" lon="-79.16202" stopId="4413"/>
 <stop tag="7699" title="Beechgrove Drive At Dunstall Crescent" lat="43.7725599" lon="-79.1608799" stopId="3319"/>
 <stop tag="2531" title="Beechgrove Drive At Janellen Terrace" lat="43.77028" lon="-79.15987" stopId="3320"/>
 <stop tag="10108" title="Beechgrove Drive At Bethley Drive Farside" lat="43.7684499" lon="-79.1590699" stopId="3314"/>
 <stop tag="4666_ar" title="Beechgrove Drive At Coronation Drive" lat="43.7669699" lon="-79.15839"/>
-<stop tag="4158" title="2665 Kingston Road Farside" lat="43.7159199" lon="-79.24279" stopId="4199"/>
-<stop tag="6498" title="Kingston Road At Neilson Avenue" lat="43.7233999" lon="-79.23423" stopId="4247"/>
-<stop tag="5147" title="Kingston Road At Cathedral Bluffs Drive Farside" lat="43.72487" lon="-79.2325099" stopId="4211"/>
-<stop tag="8563" title="Kingston Road At Fenwood Heights" lat="43.72729" lon="-79.2297299" stopId="4223"/>
-<stop tag="711" title="Kingston Road At McNab Boulevard Farside" lat="43.7289099" lon="-79.22787" stopId="4241"/>
-<stop tag="5786" title="Kingston Road At Pine Ridge Drive" lat="43.7301199" lon="-79.22648" stopId="4253"/>
-<stop tag="6510" title="Kingston Road At Ravine Crescent" lat="43.73165" lon="-79.2248099" stopId="4258"/>
-<stop tag="2703" title="Kingston Road At Whitecap Boulevard Farside" lat="43.7343299" lon="-79.22183" stopId="4269"/>
-<stop tag="8035" title="Kingston Road At Parkcrest Drive" lat="43.73567" lon="-79.2203299" stopId="4250"/>
 <stop tag="320" title="Eglinton Avenue East At Kennedy Station" lat="43.7322899" lon="-79.26712" stopId="3539"/>
 <stop tag="4343" title="Meadowvale Loop" lat="43.8091799" lon="-79.17073" stopId="9343"/>
 <stop tag="574" title="Meadowvale Road At Sheppard Avenue East" lat="43.8085999" lon="-79.1710099" stopId="6575"/>
@@ -119,7 +110,7 @@ Content-Type: text/xml
 <stop tag="715" title="Eglinton Avenue East At Markham Road" lat="43.7433599" lon="-79.21857" stopId="11282"/>
 <stop tag="1933" title="Eglinton Avenue East At Beachell Street" lat="43.74263" lon="-79.2218899" stopId="2242"/>
 <stop tag="10176" title="Eglinton Avenue East At Mason Road" lat="43.74194" lon="-79.2249499" stopId="2291"/>
-<stop tag="2440" title="Eglinton Avenue East At Bellamy Road North Side" lat="43.74042" lon="-79.2318699" stopId="2243"/>
+<stop tag="2440" title="Eglinton Avenue East At Bellamy Road" lat="43.74042" lon="-79.2318699" stopId="2243"/>
 <stop tag="7941" title="Eglinton Avenue East At Torrance Road Farside" lat="43.73952" lon="-79.2357699" stopId="1040"/>
 <stop tag="3042" title="Eglinton Avenue East At McCowan Road" lat="43.7389799" lon="-79.23819" stopId="2293"/>
 <stop tag="4553" title="Eglinton Avenue East At Barbados Boulevard" lat="43.73833" lon="-79.2411099" stopId="2237"/>
@@ -232,27 +223,6 @@ Content-Type: text/xml
   <stop tag="2531" />
   <stop tag="10108" />
   <stop tag="4666_ar" />
-</direction>
-<direction tag="86_0_CNKG" title="East - 86 Scarborough towards Sheppard" name="East" useForUI="true">
-  <stop tag="4158" />
-  <stop tag="6498" />
-  <stop tag="5147" />
-  <stop tag="8563" />
-  <stop tag="711" />
-  <stop tag="5786" />
-  <stop tag="6510" />
-  <stop tag="2703" />
-  <stop tag="8035" />
-  <stop tag="2309" />
-  <stop tag="4882" />
-  <stop tag="7220" />
-  <stop tag="9755" />
-  <stop tag="5246" />
-  <stop tag="3521" />
-  <stop tag="6110" />
-  <stop tag="1989" />
-  <stop tag="2648" />
-  <stop tag="8177" />
 </direction>
 <direction tag="86_1_86A" title="West - 86 Scarborough towards Kennedy Station" name="West" useForUI="true">
   <stop tag="465" />
@@ -523,6 +493,15 @@ Content-Type: text/xml
 <point lat="43.73652" lon="-79.24828"/>
 </path>
 <path>
+<point lat="43.76856" lon="-79.18579"/>
+<point lat="43.76765" lon="-79.1896"/>
+<point lat="43.7674" lon="-79.18979"/>
+<point lat="43.76621" lon="-79.1910599"/>
+<point lat="43.7651899" lon="-79.19183"/>
+<point lat="43.76429" lon="-79.19281"/>
+<point lat="43.76244" lon="-79.1945099"/>
+</path>
+<path>
 <point lat="43.78445" lon="-79.1685"/>
 <point lat="43.78495" lon="-79.16809"/>
 <point lat="43.78595" lon="-79.16641"/>
@@ -551,15 +530,6 @@ Content-Type: text/xml
 <point lat="43.80912" lon="-79.1708699"/>
 <point lat="43.80916" lon="-79.17084"/>
 <point lat="43.80918" lon="-79.17073"/>
-</path>
-<path>
-<point lat="43.76856" lon="-79.18579"/>
-<point lat="43.76765" lon="-79.1896"/>
-<point lat="43.7674" lon="-79.18979"/>
-<point lat="43.76621" lon="-79.1910599"/>
-<point lat="43.7651899" lon="-79.19183"/>
-<point lat="43.76429" lon="-79.19281"/>
-<point lat="43.76244" lon="-79.1945099"/>
 </path>
 <path>
 <point lat="43.74299" lon="-79.21919"/>
@@ -600,31 +570,6 @@ Content-Type: text/xml
 <point lat="43.7651899" lon="-79.19183"/>
 <point lat="43.76429" lon="-79.19281"/>
 <point lat="43.76244" lon="-79.1945099"/>
-</path>
-<path>
-<point lat="43.7159199" lon="-79.24279"/>
-<point lat="43.72185" lon="-79.23618"/>
-<point lat="43.7220299" lon="-79.2360099"/>
-<point lat="43.7234" lon="-79.23423"/>
-<point lat="43.72487" lon="-79.23251"/>
-<point lat="43.72729" lon="-79.22973"/>
-<point lat="43.72891" lon="-79.22787"/>
-<point lat="43.73012" lon="-79.22648"/>
-<point lat="43.73165" lon="-79.22481"/>
-<point lat="43.73433" lon="-79.22183"/>
-<point lat="43.73567" lon="-79.22033"/>
-<point lat="43.74459" lon="-79.2107"/>
-<point lat="43.7455" lon="-79.2096"/>
-<point lat="43.74757" lon="-79.20766"/>
-<point lat="43.74987" lon="-79.2055"/>
-<point lat="43.7517" lon="-79.2039099"/>
-<point lat="43.75329" lon="-79.20275"/>
-<point lat="43.7568399" lon="-79.19923"/>
-<point lat="43.75923" lon="-79.1971"/>
-<point lat="43.76156" lon="-79.19492"/>
-<point lat="43.76321" lon="-79.19343"/>
-<point lat="43.7656599" lon="-79.19118"/>
-<point lat="43.7673599" lon="-79.1896"/>
 </path>
 <path>
 <point lat="43.76156" lon="-79.19492"/>

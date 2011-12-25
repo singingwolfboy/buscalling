@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:12 GMT
+Date: Sun, 25 Dec 2011 20:01:55 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2377
+Content-Length: 2524
 Connection: close
 Content-Type: text/xml
 
@@ -16,29 +16,29 @@ Content-Type: text/xml
 <stop tag="22344" title="Glide Dr &amp; Schmeiser Ave (EB)" lat="38.55221" lon="-121.6841999" stopId="344"/>
 <stop tag="22343" title="Cowell Blvd &amp; Schmeiser Ave (WB)" lat="38.5498299" lon="-121.68376" stopId="343"/>
 <stop tag="22063" title="Cowell Blvd &amp; El Cemonte Ave (WB)" lat="38.5489599" lon="-121.6900899" stopId="063"/>
-<stop tag="22064" title="Cowell Blvd &amp; Mace Blvd (WB)" lat="38.5488399" lon="-121.69258" stopId="064"/>
+<stop tag="22064" title="Cowell Blvd &amp; Mace Blvd (WB)" lat="38.5488399" lon="-121.6925799" stopId="064"/>
 <stop tag="22499" title="Mace Blvd &amp; El Macero Dr (SB)" lat="38.54687" lon="-121.6946399" stopId="499"/>
 <stop tag="22251" title="Mace Blvd &amp; S El Macero Dr (SB)" lat="38.5410499" lon="-121.6946399" stopId="251"/>
 <stop tag="22501" title="Rosario St &amp; Montgomery Ave (NB)" lat="38.5387999" lon="-121.699" stopId="501"/>
-<stop tag="22502" title="Rosario St &amp; Almond Ln (NB)" lat="38.5414899" lon="-121.6993899" stopId="502"/>
+<stop tag="22502" title="Rosario St &amp; Almond Ln (NB)" lat="38.54149" lon="-121.69939" stopId="502"/>
 <stop tag="22350" title="Almond Ln &amp; Deodara St (WB)" lat="38.5420299" lon="-121.7012999" stopId="350"/>
 <stop tag="22248" title="Almond Ln &amp; Meadowbrook Dr (WB)" lat="38.5415699" lon="-121.70395" stopId="248"/>
 <stop tag="22351" title="Almond Ln &amp; Willowbank Rd (WB)" lat="38.5415599" lon="-121.7063699" stopId="351"/>
 <stop tag="22507" title="Willowbank Rd &amp; Montgomery Ave (SB)" lat="38.53883" lon="-121.7067099" stopId="507"/>
 <stop tag="22509" title="Montgomery Ave &amp; Oakside  Dr (WB)" lat="38.5388999" lon="-121.7085399" stopId="509"/>
-<stop tag="22247" title="Danbury St &amp; Drummond Ave (NB)" lat="38.54012" lon="-121.71368" stopId="247"/>
+<stop tag="22247" title="Danbury St &amp; Drummond Ave (NB)" lat="38.5401199" lon="-121.7136799" stopId="247"/>
 <stop tag="22252" title="Danbury St &amp; Lillard Dr (NB)" lat="38.5424999" lon="-121.71609" stopId="252"/>
 <stop tag="22043" title="Lillard Dr &amp; Evans Ct (WB)" lat="38.5417799" lon="-121.71758" stopId="043"/>
 <stop tag="22042" title="Lillard Dr &amp; Farragut Cir (WB)" lat="38.54136" lon="-121.7207199" stopId="042"/>
 <stop tag="22038" title="Cowell Blvd &amp; Valdora St (WB)" lat="38.5401199" lon="-121.7250899" stopId="038"/>
-<stop tag="22036" title="Cowell Blvd &amp; Drew Ave (WB)" lat="38.5400399" lon="-121.7275399" stopId="036"/>
-<stop tag="22034" title="Cowell Blvd &amp; Research Park S Dr (WB)" lat="38.5401199" lon="-121.7302099" stopId="034"/>
+<stop tag="22036" title="Cowell Blvd &amp; Drew Ave (WB)" lat="38.5400399" lon="-121.72754" stopId="036"/>
+<stop tag="22034" title="Cowell Blvd &amp; Research Park S Dr (WB)" lat="38.5401199" lon="-121.73021" stopId="034"/>
 <stop tag="22242" title="Richards Blvd &amp; Olive Dr (NB)" lat="38.5407999" lon="-121.73832" stopId="242"/>
 <stop tag="22341" title="Drexel Dr &amp; Hemlock Ln (EB)" lat="38.5572499" lon="-121.73629" stopId="341"/>
 <stop tag="22245_ar" title="Covell Blvd &amp; Mace Blvd (EB)" lat="38.5647999" lon="-121.70003"/>
 <stop tag="22125" title="14th St &amp; Davis HS (WB)" lat="38.5559599" lon="-121.75058" stopId="125"/>
 <stop tag="22245" title="Covell Blvd &amp; Mace Blvd (EB)" lat="38.5647999" lon="-121.70003" stopId="245"/>
-<stop tag="22243" title="Mace Blvd &amp; 2nd St (SB)" lat="38.5577499" lon="-121.6943" stopId="243"/>
+<stop tag="22243" title="Mace Blvd &amp; 2nd St (SB)" lat="38.55775" lon="-121.6942999" stopId="243"/>
 <stop tag="22242_ar" title="Richards Blvd &amp; Olive Dr (NB)" lat="38.5407999" lon="-121.73832"/>
 <direction tag="S_0_var1" title="AM to Holmes/Harper via DHS" name="AM to Holmes/Harper via Dhs" useForUI="true">
   <stop tag="22061" />
@@ -107,6 +107,7 @@ Content-Type: text/xml
 <point lat="38.54149" lon="-121.70655"/>
 <point lat="38.53883" lon="-121.70671"/>
 <point lat="38.53875" lon="-121.70664"/>
+<point lat="38.53881" lon="-121.70812"/>
 <point lat="38.5389" lon="-121.70854"/>
 <point lat="38.53907" lon="-121.71347"/>
 <point lat="38.53937" lon="-121.71345"/>
@@ -133,24 +134,33 @@ Content-Type: text/xml
 <point lat="38.56383" lon="-121.69563"/>
 <point lat="38.56342" lon="-121.69518"/>
 <point lat="38.56293" lon="-121.69474"/>
+<point lat="38.56281" lon="-121.69467"/>
+<point lat="38.5625" lon="-121.69453"/>
 <point lat="38.56154" lon="-121.69415"/>
 <point lat="38.56123" lon="-121.69408"/>
 <point lat="38.56039" lon="-121.69402"/>
 <point lat="38.55883" lon="-121.69419"/>
 <point lat="38.55775" lon="-121.6943"/>
+<point lat="38.55651" lon="-121.69421"/>
+<point lat="38.55477" lon="-121.69432"/>
 <point lat="38.55317" lon="-121.69445"/>
 <point lat="38.55046" lon="-121.69442"/>
 <point lat="38.55048" lon="-121.69426"/>
+<point lat="38.55054" lon="-121.69413"/>
+<point lat="38.55079" lon="-121.69367"/>
 <point lat="38.55077" lon="-121.69348"/>
 </path>
 <path>
 <point lat="38.55725" lon="-121.73629"/>
 <point lat="38.55737" lon="-121.73531"/>
 <point lat="38.55736" lon="-121.73518"/>
+<point lat="38.55971" lon="-121.73517"/>
 <point lat="38.56077" lon="-121.73515"/>
 <point lat="38.56104" lon="-121.73533"/>
 <point lat="38.56221" lon="-121.73244"/>
 <point lat="38.56238" lon="-121.73181"/>
+<point lat="38.56253" lon="-121.72973"/>
+<point lat="38.5627799" lon="-121.72517"/>
 <point lat="38.5648" lon="-121.70003"/>
 </path>
 <path>
@@ -162,6 +172,7 @@ Content-Type: text/xml
 <point lat="38.54178" lon="-121.71758"/>
 <point lat="38.54155" lon="-121.71788"/>
 <point lat="38.54143" lon="-121.71869"/>
+<point lat="38.54141" lon="-121.71905"/>
 <point lat="38.54136" lon="-121.72072"/>
 <point lat="38.54125" lon="-121.72113"/>
 <point lat="38.54122" lon="-121.72137"/>
@@ -170,17 +181,23 @@ Content-Type: text/xml
 <point lat="38.54137" lon="-121.72287"/>
 <point lat="38.54115" lon="-121.72302"/>
 <point lat="38.54073" lon="-121.72351"/>
+<point lat="38.54057" lon="-121.72374"/>
 <point lat="38.54003" lon="-121.72453"/>
 <point lat="38.54001" lon="-121.72477"/>
 <point lat="38.54012" lon="-121.72509"/>
 <point lat="38.53994" lon="-121.72503"/>
 <point lat="38.5398799" lon="-121.72532"/>
+<point lat="38.53985" lon="-121.72626"/>
+<point lat="38.53987" lon="-121.72713"/>
 <point lat="38.54004" lon="-121.72754"/>
 <point lat="38.54002" lon="-121.72995"/>
 <point lat="38.54012" lon="-121.73021"/>
+<point lat="38.53991" lon="-121.73137"/>
+<point lat="38.53981" lon="-121.73374"/>
 <point lat="38.53983" lon="-121.73417"/>
 <point lat="38.53989" lon="-121.73466"/>
 <point lat="38.54021" lon="-121.73649"/>
+<point lat="38.54051" lon="-121.73772"/>
 <point lat="38.54057" lon="-121.73795"/>
 <point lat="38.5408" lon="-121.73832"/>
 </path>
@@ -191,6 +208,7 @@ Content-Type: text/xml
 <point lat="38.54956" lon="-121.68807"/>
 <point lat="38.54952" lon="-121.68835"/>
 <point lat="38.54942" lon="-121.68874"/>
+<point lat="38.54914" lon="-121.68944"/>
 <point lat="38.54892" lon="-121.69005"/>
 <point lat="38.54896" lon="-121.69009"/>
 <point lat="38.54886" lon="-121.69018"/>
@@ -201,13 +219,16 @@ Content-Type: text/xml
 <point lat="38.5486999" lon="-121.69215"/>
 <point lat="38.54884" lon="-121.69258"/>
 <point lat="38.54878" lon="-121.69433"/>
+<point lat="38.54799" lon="-121.69437"/>
 <point lat="38.54687" lon="-121.69464"/>
 <point lat="38.54669" lon="-121.69446"/>
 <point lat="38.54601" lon="-121.69442"/>
+<point lat="38.54459" lon="-121.69447"/>
 <point lat="38.54105" lon="-121.69464"/>
 <point lat="38.5386" lon="-121.69455"/>
 <point lat="38.53867" lon="-121.69918"/>
 <point lat="38.5388" lon="-121.699"/>
+<point lat="38.5393" lon="-121.69914"/>
 <point lat="38.54017" lon="-121.69903"/>
 <point lat="38.54037" lon="-121.69904"/>
 <point lat="38.54071" lon="-121.69914"/>
@@ -292,6 +313,7 @@ Content-Type: text/xml
 <point lat="38.55589" lon="-121.74846"/>
 <point lat="38.55584" lon="-121.74882"/>
 <point lat="38.55582" lon="-121.7493"/>
+<point lat="38.55583" lon="-121.74981"/>
 <point lat="38.55596" lon="-121.75058"/>
 </path>
 <path>
@@ -313,6 +335,7 @@ Content-Type: text/xml
 <point lat="38.5576" lon="-121.74061"/>
 <point lat="38.55736" lon="-121.74065"/>
 <point lat="38.5572" lon="-121.74065"/>
+<point lat="38.55721" lon="-121.73972"/>
 <point lat="38.55725" lon="-121.73629"/>
 </path>
 </route>

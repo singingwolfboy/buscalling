@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:01 GMT
+Date: Sun, 25 Dec 2011 19:59:06 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 4856
+Content-Length: 4837
 Connection: close
 Content-Type: text/xml
 
@@ -38,7 +38,7 @@ Content-Type: text/xml
 <stop tag="1239" title="Bathurst Street At Lyonsgate Drive" lat="43.74291" lon="-79.43547" stopId="0170"/>
 <stop tag="7167" title="Bathurst Street At Invermay Avenue" lat="43.74163" lon="-79.43516" stopId="0157"/>
 <stop tag="1143" title="Bathurst Street At Allingham Gardens Farside" lat="43.7399099" lon="-79.4347399" stopId="0081"/>
-<stop tag="2371" title="Bathurst Street At Wilson Avenue North Side" lat="43.73762" lon="-79.43423" stopId="0223"/>
+<stop tag="2371" title="Bathurst Street At Wilson Avenue" lat="43.73762" lon="-79.43423" stopId="0223"/>
 <stop tag="9234" title="Bathurst Street At Wilson Avenue Farside" lat="43.7368199" lon="-79.43401" stopId="0222"/>
 <stop tag="7920" title="Bathurst Street At Marquette Avenue" lat="43.73424" lon="-79.43335" stopId="0172"/>
 <stop tag="3050" title="Bathurst Street At Neptune Drive" lat="43.7316" lon="-79.4327" stopId="0179"/>
@@ -108,7 +108,7 @@ Content-Type: text/xml
 <stop tag="9721" title="Bathurst Street At Baycrest Avenue" lat="43.7295199" lon="-79.4320399" stopId="0094"/>
 <stop tag="4496" title="Bathurst Street At Bannockburn Avenue" lat="43.7311999" lon="-79.4324399" stopId="0091"/>
 <stop tag="3942" title="Bathurst Street At Joicey Boulevard" lat="43.7338399" lon="-79.4330699" stopId="0158"/>
-<stop tag="7994" title="Bathurst Street At Wilson Avenue South Side" lat="43.7371899" lon="-79.4338299" stopId="0221"/>
+<stop tag="7994" title="Bathurst Street At Wilson Avenue" lat="43.7371899" lon="-79.4338299" stopId="0221"/>
 <stop tag="1164" title="Bathurst Street At Wilson Avenue Farside" lat="43.7382699" lon="-79.43412" stopId="0220"/>
 <stop tag="6374" title="Bathurst Street At Southgate Avenue" lat="43.7406399" lon="-79.4347199" stopId="0201"/>
 <stop tag="8582" title="Bathurst Street At Lyonsgate Drive" lat="43.74256" lon="-79.43518" stopId="9138"/>
@@ -131,7 +131,7 @@ Content-Type: text/xml
 <stop tag="1891" title="Bathurst Street At Patricia Avenue Farside" lat="43.7841999" lon="-79.44544" stopId="0184"/>
 <stop tag="8137" title="Bathurst Street At Dewlane Drive" lat="43.7858299" lon="-79.4458499" stopId="0122"/>
 <stop tag="10065" title="Opposite 6030 Bathurst Street" lat="43.7873999" lon="-79.4462999" stopId="0183"/>
-<stop tag="6034" title="Fishville Road At Bathurst Street Farside" lat="43.7902199" lon="-79.44619" stopId="1056"/>
+<stop tag="6034" title="Fisherville Road At Bathurst Street Farside" lat="43.7902199" lon="-79.44619" stopId="1056"/>
 <stop tag="9765" title="Carpenter Court At Steeles Avenue West" lat="43.79187" lon="-79.44748" stopId="0761"/>
 <stop tag="6533" title="Steeles Avenue West At Bathurst Street" lat="43.79224" lon="-79.4461099" stopId="1587"/>
 <stop tag="836" title="Steeles Avenue West At Bathurst Street Farside" lat="43.7924999" lon="-79.44504" stopId="13948"/>
@@ -478,6 +478,17 @@ Content-Type: text/xml
 <point lat="43.73827" lon="-79.4341199"/>
 </path>
 <path>
+<point lat="43.79022" lon="-79.44619"/>
+<point lat="43.79023" lon="-79.44641"/>
+<point lat="43.79024" lon="-79.44681"/>
+<point lat="43.79187" lon="-79.44748"/>
+<point lat="43.79201" lon="-79.44758"/>
+<point lat="43.79224" lon="-79.44611"/>
+<point lat="43.7924999" lon="-79.44504"/>
+<point lat="43.79345" lon="-79.44104"/>
+<point lat="43.7925899" lon="-79.44068"/>
+</path>
+<path>
 <point lat="43.7925899" lon="-79.44068"/>
 <point lat="43.79247" lon="-79.44062"/>
 <point lat="43.79242" lon="-79.44075"/>
@@ -493,17 +504,6 @@ Content-Type: text/xml
 <point lat="43.79085" lon="-79.44385"/>
 <point lat="43.79081" lon="-79.44429"/>
 <point lat="43.79083" lon="-79.44461"/>
-</path>
-<path>
-<point lat="43.79022" lon="-79.44619"/>
-<point lat="43.79023" lon="-79.44641"/>
-<point lat="43.79024" lon="-79.44681"/>
-<point lat="43.79187" lon="-79.44748"/>
-<point lat="43.79201" lon="-79.44758"/>
-<point lat="43.79224" lon="-79.44611"/>
-<point lat="43.7924999" lon="-79.44504"/>
-<point lat="43.79345" lon="-79.44104"/>
-<point lat="43.7925899" lon="-79.44068"/>
 </path>
 <path>
 <point lat="43.75839" lon="-79.43904"/>

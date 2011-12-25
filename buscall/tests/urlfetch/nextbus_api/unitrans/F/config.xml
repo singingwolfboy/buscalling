@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:08 GMT
+Date: Sun, 25 Dec 2011 20:01:51 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1558
+Content-Length: 1593
 Connection: close
 Content-Type: text/xml
 
@@ -12,9 +12,9 @@ Content-Type: text/xml
 <body copyright="All data copyright Unitrans ASUCD/City of Davis 2011.">
 <route tag="F" title="F" color="5e2e91" oppositeColor="ffffff" latMin="38.5436299" latMax="38.5681999" lonMin="-121.75856" lonMax="-121.74958">
 <stop tag="22274" title="Memorial Union (F Line) &amp; Howard Way (NB)" lat="38.5436299" lon="-121.74958" stopId="274"/>
-<stop tag="22165" title="Oak Ave &amp; Russell Blvd (NB)" lat="38.54664" lon="-121.7526499" stopId="165"/>
-<stop tag="22163" title="Oak Ave &amp; 8th St (NB)" lat="38.55103" lon="-121.75261" stopId="163"/>
-<stop tag="22161" title="Oak Ave &amp; Antioch Dr (NB)" lat="38.55334" lon="-121.75257" stopId="161"/>
+<stop tag="22165" title="Oak Ave &amp; Russell Blvd (NB)" lat="38.5466399" lon="-121.75265" stopId="165"/>
+<stop tag="22163" title="Oak Ave &amp; 8th St (NB)" lat="38.5510299" lon="-121.75261" stopId="163"/>
+<stop tag="22161" title="Oak Ave &amp; Antioch Dr (NB)" lat="38.5533399" lon="-121.75257" stopId="161"/>
 <stop tag="22147" title="14th St &amp; Oak St (WB)" lat="38.5559499" lon="-121.75252" stopId="147"/>
 <stop tag="22149" title="Villanova Dr &amp; Reed Dr (WB)" lat="38.5564099" lon="-121.7565599" stopId="149"/>
 <stop tag="22153" title="Anderson Rd &amp; Villanova Dr (NB)" lat="38.5565699" lon="-121.75842" stopId="153"/>
@@ -23,13 +23,13 @@ Content-Type: text/xml
 <stop tag="22133" title="Alvarado Ave &amp; Del Rey Ct (EB)" lat="38.5616" lon="-121.75289" stopId="133"/>
 <stop tag="22126" title="Catalina Dr &amp; Alvarado Ave (NB)" lat="38.5621499" lon="-121.75029" stopId="126"/>
 <stop tag="22128" title="Catalina Dr &amp; Cabrillo Ave (NB)" lat="38.5647099" lon="-121.7527299" stopId="128"/>
-<stop tag="22127" title="Catalina Dr &amp; Grande Ave (NB)" lat="38.5669399" lon="-121.7541299" stopId="127"/>
-<stop tag="22129" title="Catalina Dr &amp; Corona Dr (WB)" lat="38.5681999" lon="-121.7571199" stopId="129"/>
-<stop tag="22130" title="Anderson Rd &amp; Valencia Ave (SB)" lat="38.5668099" lon="-121.75854" stopId="130"/>
+<stop tag="22127" title="Catalina Dr &amp; Grande Ave (NB)" lat="38.56694" lon="-121.75413" stopId="127"/>
+<stop tag="22129" title="Catalina Dr &amp; Corona Dr (WB)" lat="38.5681999" lon="-121.75712" stopId="129"/>
+<stop tag="22130" title="Anderson Rd &amp; Valencia Ave (SB)" lat="38.56681" lon="-121.7585399" stopId="130"/>
 <stop tag="22131" title="Anderson Rd &amp; Alvarado Ave (SB)" lat="38.5625999" lon="-121.75856" stopId="131"/>
 <stop tag="22152" title="Hanover Dr &amp; Anderson Rd (EB)" lat="38.55906" lon="-121.7579199" stopId="152"/>
 <stop tag="22151" title="Hanover Dr &amp; Scripps (NB)" lat="38.5595499" lon="-121.75617" stopId="151"/>
-<stop tag="22145" title="Oak Ave &amp; Scripps  (SB)" lat="38.5576999" lon="-121.75235" stopId="145"/>
+<stop tag="22145" title="Oak Ave &amp; Scripps  (SB)" lat="38.5576999" lon="-121.7523499" stopId="145"/>
 <stop tag="22148" title="Oak Ave &amp; 14th St (SB)" lat="38.5555599" lon="-121.75242" stopId="148"/>
 <stop tag="22162" title="Oak Ave &amp; Antioch Dr (SB)" lat="38.55272" lon="-121.7527799" stopId="162"/>
 <stop tag="22164" title="Oak Ave &amp; 8th St (SB)" lat="38.5504399" lon="-121.75285" stopId="164"/>
@@ -65,6 +65,7 @@ Content-Type: text/xml
 <point lat="38.55556" lon="-121.75242"/>
 <point lat="38.55523" lon="-121.7523"/>
 <point lat="38.55483" lon="-121.75237"/>
+<point lat="38.5539599" lon="-121.75263"/>
 <point lat="38.5537" lon="-121.75269"/>
 <point lat="38.55339" lon="-121.7527"/>
 <point lat="38.55307" lon="-121.75267"/>
@@ -74,15 +75,16 @@ Content-Type: text/xml
 <point lat="38.54649" lon="-121.75291"/>
 <point lat="38.54622" lon="-121.75281"/>
 <point lat="38.54623" lon="-121.75083"/>
-<point lat="38.54395" lon="-121.75014"/>
-<point lat="38.54343" lon="-121.74997"/>
-<point lat="38.5435" lon="-121.74959"/>
+<point lat="38.54375" lon="-121.75006"/>
+<point lat="38.54364" lon="-121.75003"/>
+<point lat="38.54367" lon="-121.74983"/>
 <point lat="38.54375" lon="-121.74982"/>
 </path>
 <path>
 <point lat="38.54363" lon="-121.74958"/>
-<point lat="38.5439999" lon="-121.74974"/>
-<point lat="38.54395" lon="-121.75014"/>
+<point lat="38.54367" lon="-121.74983"/>
+<point lat="38.54378" lon="-121.74987"/>
+<point lat="38.54375" lon="-121.75006"/>
 <point lat="38.54623" lon="-121.75083"/>
 <point lat="38.54622" lon="-121.75281"/>
 <point lat="38.5466399" lon="-121.75265"/>
@@ -100,6 +102,7 @@ Content-Type: text/xml
 <path>
 <point lat="38.5626" lon="-121.75856"/>
 <point lat="38.55912" lon="-121.75852"/>
+<point lat="38.55912" lon="-121.75832"/>
 <point lat="38.55906" lon="-121.75792"/>
 <point lat="38.5591099" lon="-121.75786"/>
 <point lat="38.55909" lon="-121.75772"/>
@@ -112,11 +115,13 @@ Content-Type: text/xml
 <point lat="38.559" lon="-121.7565"/>
 <point lat="38.55926" lon="-121.75632"/>
 <point lat="38.55955" lon="-121.75617"/>
+<point lat="38.5598699" lon="-121.75627"/>
 <point lat="38.5608" lon="-121.75626"/>
 <point lat="38.56079" lon="-121.75225"/>
 <point lat="38.55831" lon="-121.75225"/>
 <point lat="38.55821" lon="-121.75226"/>
 <point lat="38.5576999" lon="-121.75235"/>
+<point lat="38.55698" lon="-121.75227"/>
 <point lat="38.55556" lon="-121.75242"/>
 </path>
 <path>
@@ -143,6 +148,7 @@ Content-Type: text/xml
 <point lat="38.56311" lon="-121.75066"/>
 <point lat="38.56329" lon="-121.75082"/>
 <point lat="38.56354" lon="-121.75118"/>
+<point lat="38.56363" lon="-121.75143"/>
 <point lat="38.56385" lon="-121.75202"/>
 <point lat="38.56393" lon="-121.75217"/>
 <point lat="38.56402" lon="-121.7523"/>
@@ -150,6 +156,7 @@ Content-Type: text/xml
 <point lat="38.5643" lon="-121.7526"/>
 <point lat="38.56444" lon="-121.75266"/>
 <point lat="38.56471" lon="-121.75273"/>
+<point lat="38.56506" lon="-121.75308"/>
 <point lat="38.56694" lon="-121.75413"/>
 <point lat="38.56705" lon="-121.75432"/>
 <point lat="38.5676" lon="-121.75472"/>
@@ -177,6 +184,7 @@ Content-Type: text/xml
 <point lat="38.55619" lon="-121.75819"/>
 <point lat="38.55619" lon="-121.7586"/>
 <point lat="38.55657" lon="-121.75842"/>
+<point lat="38.55717" lon="-121.75857"/>
 <point lat="38.55945" lon="-121.7584"/>
 </path>
 <path>

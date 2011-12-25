@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:49 GMT
+Date: Sun, 25 Dec 2011 20:00:04 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 4120
+Content-Length: 4137
 Connection: close
 Content-Type: text/xml
 
@@ -14,7 +14,7 @@ Content-Type: text/xml
 <stop tag="541" title="Sherway Gardens Farside" lat="43.6099899" lon="-79.55842" stopId="9108"/>
 <stop tag="4305" title="The West Mall At Hospital South (Trillium Centre) Farside" lat="43.6097499" lon="-79.5606" stopId="1632"/>
 <stop tag="9397" title="The West Mall At The Queensway" lat="43.6118" lon="-79.56201" stopId="1638"/>
-<stop tag="4901" title="The Queensway At Opp Jack Astors" lat="43.61369" lon="-79.55974" stopId="12194"/>
+<stop tag="4901" title="The Queensway Opposite Jack Astors" lat="43.61369" lon="-79.55974" stopId="12194"/>
 <stop tag="3137" title="The Queensway At North Queen Street Farside" lat="43.6142" lon="-79.55556" stopId="6903"/>
 <stop tag="1404" title="The Queensway At The East Mall" lat="43.61626" lon="-79.5465299" stopId="6884"/>
 <stop tag="7224" title="1611 The Queensway" lat="43.6168999" lon="-79.54388" stopId="6901"/>
@@ -36,7 +36,7 @@ Content-Type: text/xml
 <stop tag="8048" title="The Queensway At Park Lawn Road Farside" lat="43.6291599" lon="-79.48919" stopId="6905"/>
 <stop tag="8818" title="The Queensway At Aldgate Avenue" lat="43.6296799" lon="-79.48686" stopId="6867"/>
 <stop tag="9420" title="The Queensway At Stephen Drive" lat="43.6302199" lon="-79.48438" stopId="6919"/>
-<stop tag="7804" title="The Queensway At Plaza (East Of Stephen Drive)" lat="43.63034" lon="-79.4840699" stopId="13943"/>
+<stop tag="7804" title="The Queensway At Plaza East Of Stephen Drive" lat="43.63078" lon="-79.4820599" stopId="13943"/>
 <stop tag="5383" title="The Queensway At Windermere Avenue" lat="43.6371599" lon="-79.46996" stopId="14279"/>
 <stop tag="3655" title="The Queensway At Ellis Avenue" lat="43.6376199" lon="-79.46663" stopId="11770"/>
 <stop tag="8807" title="Ellis At Lake Shore Boulevard West" lat="43.63675" lon="-79.46573" stopId="12162"/>
@@ -63,11 +63,11 @@ Content-Type: text/xml
 <stop tag="9305" title="Ellis At Lake Shore Boulevard West Farside" lat="43.63681" lon="-79.46556" stopId="12165"/>
 <stop tag="8826" title="The Queensway At Ellis Avenue Farside" lat="43.6377999" lon="-79.46695" stopId="11789"/>
 <stop tag="498" title="The Queensway At Windermere Avenue Farside" lat="43.6372899" lon="-79.47039" stopId="6923"/>
-<stop tag="2605" title="The Queensway At Plaza (East Of Stephen Drive)" lat="43.6309799" lon="-79.4818599" stopId="13944"/>
+<stop tag="2605" title="The Queensway At Plaza East Of Stephen Drive" lat="43.6309799" lon="-79.48186" stopId="13944"/>
 <stop tag="497" title="The Queensway At Stephen Drive" lat="43.6305" lon="-79.4839599" stopId="6920"/>
-<stop tag="7392" title="The Queensway At Aldgate Avenue" lat="43.62993" lon="-79.4865399" stopId="6870"/>
+<stop tag="7392" title="The Queensway At Aldgate Avenue" lat="43.6299299" lon="-79.48654" stopId="6870"/>
 <stop tag="3708" title="The Queensway At Park Lawn Road" lat="43.6292099" lon="-79.49004" stopId="6907"/>
-<stop tag="4259" title="The Queensway At Burma Drive" lat="43.6281" lon="-79.4950099" stopId="6875"/>
+<stop tag="4259" title="The Queensway At Burma Drive" lat="43.6280999" lon="-79.49501" stopId="6875"/>
 <stop tag="3265" title="The Queensway At Berl Avenue" lat="43.6276199" lon="-79.49725" stopId="6873"/>
 <stop tag="2710" title="The Queensway At Holbrooke Avenue" lat="43.62697" lon="-79.5001499" stopId="6893"/>
 <stop tag="2478" title="The Queensway At Royal York Road" lat="43.6264599" lon="-79.50244" stopId="6914"/>
@@ -184,7 +184,7 @@ Content-Type: text/xml
 <point lat="43.62916" lon="-79.4891899"/>
 <point lat="43.62968" lon="-79.4868599"/>
 <point lat="43.63022" lon="-79.48438"/>
-<point lat="43.6303399" lon="-79.48407"/>
+<point lat="43.63078" lon="-79.48206"/>
 <point lat="43.63123" lon="-79.48005"/>
 <point lat="43.63162" lon="-79.4777"/>
 <point lat="43.6317499" lon="-79.4772"/>
@@ -197,6 +197,7 @@ Content-Type: text/xml
 <point lat="43.63576" lon="-79.47318"/>
 <point lat="43.63629" lon="-79.47247"/>
 <point lat="43.6366" lon="-79.4719"/>
+<point lat="43.63673" lon="-79.4716"/>
 <point lat="43.63686" lon="-79.47129"/>
 <point lat="43.63707" lon="-79.47065"/>
 <point lat="43.6371899" lon="-79.47001"/>
@@ -274,6 +275,7 @@ Content-Type: text/xml
 <point lat="43.63729" lon="-79.47039"/>
 <point lat="43.63707" lon="-79.47065"/>
 <point lat="43.63686" lon="-79.47129"/>
+<point lat="43.63673" lon="-79.4716"/>
 <point lat="43.6366" lon="-79.4719"/>
 <point lat="43.63629" lon="-79.47247"/>
 <point lat="43.63577" lon="-79.47318"/>
@@ -494,7 +496,7 @@ Content-Type: text/xml
 <point lat="43.62916" lon="-79.4891899"/>
 <point lat="43.62968" lon="-79.4868599"/>
 <point lat="43.63022" lon="-79.48438"/>
-<point lat="43.6303399" lon="-79.48407"/>
+<point lat="43.63078" lon="-79.48206"/>
 <point lat="43.63116" lon="-79.48048"/>
 <point lat="43.63115" lon="-79.47993"/>
 <point lat="43.63117" lon="-79.47912"/>

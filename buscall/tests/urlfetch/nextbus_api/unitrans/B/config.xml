@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:07 GMT
+Date: Sun, 25 Dec 2011 20:01:48 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1173
+Content-Length: 1207
 Connection: close
 Content-Type: text/xml
 
@@ -14,8 +14,8 @@ Content-Type: text/xml
 <stop tag="22272" title="Memorial Union (B Line) &amp; Howard Way (NB)" lat="38.5436099" lon="-121.74972" stopId="272"/>
 <stop tag="22230" title="Sycamore Ln &amp; University Mall (NB)" lat="38.5475099" lon="-121.76167" stopId="230"/>
 <stop tag="22185" title="Sycamore Ln &amp; 8th St (NB)" lat="38.55096" lon="-121.7644" stopId="185"/>
-<stop tag="22189" title="Sycamore Ln &amp; Cornell Dr (NB)" lat="38.55348" lon="-121.7648899" stopId="189"/>
-<stop tag="22188" title="Sycamore Ln &amp; Bucknell Dr (NB)" lat="38.55491" lon="-121.76484" stopId="188"/>
+<stop tag="22189" title="Sycamore Ln &amp; Cornell Dr (NB)" lat="38.55348" lon="-121.76489" stopId="189"/>
+<stop tag="22188" title="Sycamore Ln &amp; Bucknell Dr (NB)" lat="38.5549099" lon="-121.76484" stopId="188"/>
 <stop tag="22186" title="Sycamore Ln &amp; Villanova Dr (NB)" lat="38.5564799" lon="-121.76481" stopId="186"/>
 <stop tag="22191" title="Sycamore Ln &amp; Radcliffe Dr (NB)" lat="38.5582399" lon="-121.76472" stopId="191"/>
 <stop tag="22193" title="Radcliffe Dr &amp; Apple Ln (NB)" lat="38.5592999" lon="-121.76048" stopId="193"/>
@@ -23,8 +23,8 @@ Content-Type: text/xml
 <stop tag="22195" title="Sycamore Ln &amp; Drake Dr (SB)" lat="38.5597799" lon="-121.7639899" stopId="195"/>
 <stop tag="22192" title="Sycamore Ln &amp; Notre Dame Dr (SB)" lat="38.55849" lon="-121.7648199" stopId="192"/>
 <stop tag="22187" title="Sycamore Ln &amp; Villanova Dr (SB)" lat="38.5558399" lon="-121.76501" stopId="187"/>
-<stop tag="22190" title="Sycamore Ln &amp; Cornell Dr (SB)" lat="38.5529399" lon="-121.7650999" stopId="190"/>
-<stop tag="22292" title="Sycamore &amp; 8th (SB)" lat="38.55061" lon="-121.76422" stopId="292"/>
+<stop tag="22190" title="Sycamore Ln &amp; Cornell Dr (SB)" lat="38.55294" lon="-121.7650999" stopId="190"/>
+<stop tag="22292" title="Sycamore &amp; 8th (SB)" lat="38.5506099" lon="-121.7642199" stopId="292"/>
 <stop tag="22179" title="Sycamore Ln &amp; Wake Forest Dr (SB)" lat="38.5473799" lon="-121.76198" stopId="179"/>
 <stop tag="22167_ar" title="Memorial Union Terminal Arrival &amp; Howard Way (NB)" lat="38.5437499" lon="-121.74982"/>
 <direction tag="B_0_var0" title="to/from Memorial Union" name="to/from Memorial Union" useForUI="true">
@@ -47,15 +47,17 @@ Content-Type: text/xml
 </direction>
 <path>
 <point lat="38.5473799" lon="-121.76198"/>
+<point lat="38.54701" lon="-121.76179"/>
 <point lat="38.54636" lon="-121.7618"/>
 <point lat="38.54623" lon="-121.75083"/>
-<point lat="38.54395" lon="-121.75014"/>
-<point lat="38.54342" lon="-121.74997"/>
-<point lat="38.54349" lon="-121.74958"/>
+<point lat="38.54374" lon="-121.75006"/>
+<point lat="38.54357" lon="-121.75002"/>
+<point lat="38.54361" lon="-121.74982"/>
 <point lat="38.54375" lon="-121.74982"/>
 </path>
 <path>
 <point lat="38.55584" lon="-121.76501"/>
+<point lat="38.55551" lon="-121.76492"/>
 <point lat="38.55294" lon="-121.7651"/>
 <point lat="38.5529" lon="-121.765"/>
 <point lat="38.55204" lon="-121.765"/>
@@ -70,6 +72,7 @@ Content-Type: text/xml
 <point lat="38.54831" lon="-121.7622"/>
 <point lat="38.54805" lon="-121.76203"/>
 <point lat="38.54769" lon="-121.76186"/>
+<point lat="38.54759" lon="-121.76183"/>
 <point lat="38.5474" lon="-121.76179"/>
 <point lat="38.5473799" lon="-121.76198"/>
 </path>
@@ -89,8 +92,9 @@ Content-Type: text/xml
 </path>
 <path>
 <point lat="38.54361" lon="-121.74972"/>
-<point lat="38.54401" lon="-121.74975"/>
-<point lat="38.54395" lon="-121.75014"/>
+<point lat="38.54361" lon="-121.74982"/>
+<point lat="38.54379" lon="-121.74988"/>
+<point lat="38.54374" lon="-121.75006"/>
 <point lat="38.54623" lon="-121.75083"/>
 <point lat="38.54636" lon="-121.7618"/>
 <point lat="38.54711" lon="-121.76178"/>
@@ -113,6 +117,7 @@ Content-Type: text/xml
 <point lat="38.55181" lon="-121.76502"/>
 <point lat="38.5529" lon="-121.765"/>
 <point lat="38.55348" lon="-121.76489"/>
+<point lat="38.5547899" lon="-121.76494"/>
 <point lat="38.55491" lon="-121.76484"/>
 <point lat="38.55629" lon="-121.76488"/>
 <point lat="38.55648" lon="-121.76481"/>
@@ -132,6 +137,7 @@ Content-Type: text/xml
 <point lat="38.55844" lon="-121.7607"/>
 <point lat="38.55894" lon="-121.76056"/>
 <point lat="38.5593" lon="-121.76048"/>
+<point lat="38.55971" lon="-121.76054"/>
 <point lat="38.55988" lon="-121.76052"/>
 <point lat="38.55999" lon="-121.76058"/>
 <point lat="38.56001" lon="-121.7607"/>

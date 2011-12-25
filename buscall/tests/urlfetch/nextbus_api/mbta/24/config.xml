@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:55:56 GMT
+Date: Sun, 25 Dec 2011 19:54:28 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5449
+Content-Length: 5423
 Connection: close
 Content-Type: text/xml
 
@@ -49,14 +49,6 @@ Content-Type: text/xml
 <stop tag="6409" title="Washington St @ Faraday St" lat="42.2440599" lon="-71.1236" stopId="06409"/>
 <stop tag="6410" title="Washington St @ Needham Rd" lat="42.2436699" lon="-71.1243099" stopId="06410"/>
 <stop tag="6411_ar" title="Truman Hwy @ Wakefield Ave" lat="42.2428099" lon="-71.12614"/>
-<stop tag="6390_ar" title="River St @ Fairmount Ave" lat="42.2557299" lon="-71.12122"/>
-<stop tag="6411" title="Truman Hwy @ Wakefield Ave" lat="42.2428099" lon="-71.12614" stopId="06411"/>
-<stop tag="6413" title="Truman Hwy @ Tyler St" lat="42.24697" lon="-71.12527" stopId="06413"/>
-<stop tag="6415" title="Truman Hwy @ Chittick Rd" lat="42.2483944" lon="-71.1240152" stopId="06415"/>
-<stop tag="6417" title="Truman Hwy @ Dana Ave" lat="42.2499" lon="-71.12244" stopId="06417"/>
-<stop tag="64171" title="Truman Hwy @ Mountfair Terr" lat="42.25106" lon="-71.1204299" stopId="64171"/>
-<stop tag="6418" title="Truman Hwy @ Williams Ave" lat="42.25158" lon="-71.1195299" stopId="06418"/>
-<stop tag="6419" title="Fairmont Ave @ Truman Hwy" lat="42.2527299" lon="-71.11841" stopId="06419"/>
 <stop tag="6420" title="Fairmont Ave @ Pierce St" lat="42.2546499" lon="-71.11998" stopId="06420"/>
 <stop tag="6357" title="River St @ McGrath Way" lat="42.25624" lon="-71.1205799" stopId="06357"/>
 <stop tag="16358" title="River St @ Walter St" lat="42.25751" lon="-71.1194799" stopId="16358"/>
@@ -72,7 +64,6 @@ Content-Type: text/xml
 <stop tag="16365" title="River St @ Tesla St" lat="42.26644" lon="-71.0971899" stopId="16365"/>
 <stop tag="6366" title="River St @ Blue Hill Ave" lat="42.2673799" lon="-71.09418" stopId="06366"/>
 <stop tag="1721" title="Blue Hill Ave @ River St" lat="42.2671499" lon="-71.09362" stopId="01721"/>
-<stop tag="185_ar" title="Mattapan Station" lat="42.2677599" lon="-71.09224"/>
 <stop tag="185_1" title="Mattapan Station" lat="42.26776" lon="-71.09224"/>
 <stop tag="10582" title="River St opp Fremont St" lat="42.26998" lon="-71.0898699" stopId="10582"/>
 <stop tag="583" title="River St opp Gladeside Ave" lat="42.27025" lon="-71.08741" stopId="00583"/>
@@ -92,6 +83,75 @@ Content-Type: text/xml
 <stop tag="534" title="Dorchester Ave @ Van Winkle St" lat="42.28194" lon="-71.06528" stopId="00534"/>
 <stop tag="397" title="Dorchester Ave @ Ashmont Busway" lat="42.2846499" lon="-71.0644899" stopId="00397"/>
 <stop tag="334_ar" title="Ashmont Station" lat="42.2846499" lon="-71.06449"/>
+<stop tag="6411" title="Truman Hwy @ Wakefield Ave" lat="42.2428099" lon="-71.12614" stopId="06411"/>
+<stop tag="6413" title="Truman Hwy @ Tyler St" lat="42.24697" lon="-71.12527" stopId="06413"/>
+<stop tag="6415" title="Truman Hwy @ Chittick Rd" lat="42.2483944" lon="-71.1240152" stopId="06415"/>
+<stop tag="6417" title="Truman Hwy @ Dana Ave" lat="42.2499" lon="-71.12244" stopId="06417"/>
+<stop tag="64171" title="Truman Hwy @ Mountfair Terr" lat="42.25106" lon="-71.1204299" stopId="64171"/>
+<stop tag="6418" title="Truman Hwy @ Williams Ave" lat="42.25158" lon="-71.1195299" stopId="06418"/>
+<stop tag="6419" title="Fairmont Ave @ Truman Hwy" lat="42.2527299" lon="-71.11841" stopId="06419"/>
+<stop tag="185_ar" title="Mattapan Station" lat="42.2677599" lon="-71.09224"/>
+<direction tag="24_1_var1" title="Mattapan Station via River St." name="Inbound" useForUI="true">
+  <stop tag="6411" />
+  <stop tag="6413" />
+  <stop tag="6415" />
+  <stop tag="6417" />
+  <stop tag="64171" />
+  <stop tag="6418" />
+  <stop tag="6419" />
+  <stop tag="6420" />
+  <stop tag="6357" />
+  <stop tag="16358" />
+  <stop tag="6359" />
+  <stop tag="6360" />
+  <stop tag="16360" />
+  <stop tag="6361" />
+  <stop tag="6362" />
+  <stop tag="63621" />
+  <stop tag="6364" />
+  <stop tag="16364" />
+  <stop tag="6365" />
+  <stop tag="16365" />
+  <stop tag="6366" />
+  <stop tag="1721" />
+  <stop tag="185_ar" />
+</direction>
+<direction tag="24_1_var0" title="Ashmont Station via River St. &amp; Mattapan Station" name="Inbound" useForUI="true">
+  <stop tag="6420" />
+  <stop tag="6357" />
+  <stop tag="16358" />
+  <stop tag="6359" />
+  <stop tag="6360" />
+  <stop tag="16360" />
+  <stop tag="6361" />
+  <stop tag="6362" />
+  <stop tag="63621" />
+  <stop tag="6364" />
+  <stop tag="16364" />
+  <stop tag="6365" />
+  <stop tag="16365" />
+  <stop tag="6366" />
+  <stop tag="1721" />
+  <stop tag="185_1" />
+  <stop tag="10582" />
+  <stop tag="583" />
+  <stop tag="584" />
+  <stop tag="585" />
+  <stop tag="586" />
+  <stop tag="587" />
+  <stop tag="588" />
+  <stop tag="589" />
+  <stop tag="590" />
+  <stop tag="591" />
+  <stop tag="882" />
+  <stop tag="593" />
+  <stop tag="594" />
+  <stop tag="595" />
+  <stop tag="533" />
+  <stop tag="534" />
+  <stop tag="397" />
+  <stop tag="334_ar" />
+</direction>
 <direction tag="24_0_var0" title="Wakefield Ave. via River St." name="Outbound" useForUI="true">
   <stop tag="185" />
   <stop tag="6368" />
@@ -131,67 +191,6 @@ Content-Type: text/xml
   <stop tag="6409" />
   <stop tag="6410" />
   <stop tag="6411_ar" />
-</direction>
-<direction tag="24_1_var2" title="Ashmont Station via River St. &amp; Mattapan Station" name="Inbound" useForUI="true">
-  <stop tag="6420" />
-  <stop tag="6357" />
-  <stop tag="16358" />
-  <stop tag="6359" />
-  <stop tag="6360" />
-  <stop tag="16360" />
-  <stop tag="6361" />
-  <stop tag="6362" />
-  <stop tag="63621" />
-  <stop tag="6364" />
-  <stop tag="16364" />
-  <stop tag="6365" />
-  <stop tag="16365" />
-  <stop tag="6366" />
-  <stop tag="1721" />
-  <stop tag="185_1" />
-  <stop tag="10582" />
-  <stop tag="583" />
-  <stop tag="584" />
-  <stop tag="585" />
-  <stop tag="586" />
-  <stop tag="587" />
-  <stop tag="588" />
-  <stop tag="589" />
-  <stop tag="590" />
-  <stop tag="591" />
-  <stop tag="882" />
-  <stop tag="593" />
-  <stop tag="594" />
-  <stop tag="595" />
-  <stop tag="533" />
-  <stop tag="534" />
-  <stop tag="397" />
-  <stop tag="334_ar" />
-</direction>
-<direction tag="24_1_var0" title="Mattapan Station via River St." name="Inbound" useForUI="true">
-  <stop tag="6411" />
-  <stop tag="6413" />
-  <stop tag="6415" />
-  <stop tag="6417" />
-  <stop tag="64171" />
-  <stop tag="6418" />
-  <stop tag="6419" />
-  <stop tag="6420" />
-  <stop tag="6357" />
-  <stop tag="16358" />
-  <stop tag="6359" />
-  <stop tag="6360" />
-  <stop tag="16360" />
-  <stop tag="6361" />
-  <stop tag="6362" />
-  <stop tag="63621" />
-  <stop tag="6364" />
-  <stop tag="16364" />
-  <stop tag="6365" />
-  <stop tag="16365" />
-  <stop tag="6366" />
-  <stop tag="1721" />
-  <stop tag="185_ar" />
 </direction>
 <path>
 <point lat="42.25465" lon="-71.11998"/>
@@ -379,101 +378,6 @@ Content-Type: text/xml
 <point lat="42.25465" lon="-71.11998"/>
 </path>
 <path>
-<point lat="42.26049" lon="-71.1156"/>
-<point lat="42.26018" lon="-71.11615"/>
-<point lat="42.25997" lon="-71.11651"/>
-<point lat="42.25973" lon="-71.11689"/>
-<point lat="42.25936" lon="-71.11736"/>
-<point lat="42.25907" lon="-71.11769"/>
-<point lat="42.2589" lon="-71.11785"/>
-<point lat="42.2588" lon="-71.11793"/>
-<point lat="42.25882" lon="-71.11798"/>
-<point lat="42.25871" lon="-71.118"/>
-<point lat="42.25836" lon="-71.1182"/>
-<point lat="42.25824" lon="-71.11829"/>
-<point lat="42.25814" lon="-71.11838"/>
-<point lat="42.2580699" lon="-71.11849"/>
-<point lat="42.25794" lon="-71.11872"/>
-<point lat="42.25754" lon="-71.11952"/>
-<point lat="42.25755" lon="-71.11961"/>
-<point lat="42.25747" lon="-71.11968"/>
-<point lat="42.25738" lon="-71.11981"/>
-<point lat="42.25724" lon="-71.11997"/>
-<point lat="42.2571299" lon="-71.12006"/>
-<point lat="42.25698" lon="-71.12014"/>
-<point lat="42.2569" lon="-71.1202"/>
-<point lat="42.25692" lon="-71.12026"/>
-<point lat="42.25681" lon="-71.12026"/>
-<point lat="42.25653" lon="-71.12046"/>
-<point lat="42.25633" lon="-71.12058"/>
-<point lat="42.25617" lon="-71.12071"/>
-<point lat="42.25607" lon="-71.12085"/>
-<point lat="42.25601" lon="-71.12137"/>
-<point lat="42.25599" lon="-71.12158"/>
-<point lat="42.25593" lon="-71.12139"/>
-<point lat="42.25573" lon="-71.1212199"/>
-</path>
-<path>
-<point lat="42.27129" lon="-71.07481"/>
-<point lat="42.27126" lon="-71.07429"/>
-<point lat="42.27125" lon="-71.07409"/>
-<point lat="42.27125" lon="-71.0739399"/>
-<point lat="42.27127" lon="-71.07381"/>
-<point lat="42.27134" lon="-71.07362"/>
-<point lat="42.27153" lon="-71.07332"/>
-<point lat="42.27167" lon="-71.07311"/>
-<point lat="42.27178" lon="-71.07292"/>
-<point lat="42.27182" lon="-71.07277"/>
-<point lat="42.27184" lon="-71.07208"/>
-<point lat="42.27185" lon="-71.07193"/>
-<point lat="42.27181" lon="-71.07192"/>
-<point lat="42.27187" lon="-71.07175"/>
-<point lat="42.27188" lon="-71.07151"/>
-<point lat="42.27192" lon="-71.07123"/>
-<point lat="42.27199" lon="-71.07069"/>
-<point lat="42.27207" lon="-71.07043"/>
-<point lat="42.2722399" lon="-71.07002"/>
-<point lat="42.27235" lon="-71.06967"/>
-<point lat="42.27244" lon="-71.06947"/>
-<point lat="42.2724" lon="-71.06943"/>
-<point lat="42.27249" lon="-71.06936"/>
-<point lat="42.27239" lon="-71.06901"/>
-<point lat="42.27227" lon="-71.0685"/>
-<point lat="42.27221" lon="-71.06818"/>
-<point lat="42.2722" lon="-71.06802"/>
-<point lat="42.27245" lon="-71.068"/>
-<point lat="42.27291" lon="-71.06789"/>
-<point lat="42.27324" lon="-71.0678"/>
-<point lat="42.2732699" lon="-71.06772"/>
-<point lat="42.2735399" lon="-71.06771"/>
-<point lat="42.27388" lon="-71.06762"/>
-<point lat="42.27403" lon="-71.06752"/>
-<point lat="42.2754" lon="-71.06715"/>
-<point lat="42.27633" lon="-71.06689"/>
-<point lat="42.27677" lon="-71.06682"/>
-<point lat="42.27789" lon="-71.0665"/>
-<point lat="42.27794" lon="-71.06641"/>
-<point lat="42.27882" lon="-71.06623"/>
-<point lat="42.2795" lon="-71.06605"/>
-<point lat="42.27991" lon="-71.06592"/>
-<point lat="42.2802999" lon="-71.06582"/>
-<point lat="42.28029" lon="-71.06576"/>
-<point lat="42.2808599" lon="-71.06566"/>
-<point lat="42.28195" lon="-71.06535"/>
-<point lat="42.28194" lon="-71.06528"/>
-<point lat="42.28204" lon="-71.06532"/>
-<point lat="42.28222" lon="-71.06528"/>
-<point lat="42.28299" lon="-71.06507"/>
-<point lat="42.28357" lon="-71.06489"/>
-<point lat="42.28362" lon="-71.06442"/>
-<point lat="42.28362" lon="-71.06425"/>
-<point lat="42.28363" lon="-71.0641"/>
-<point lat="42.28369" lon="-71.06392"/>
-<point lat="42.28383" lon="-71.06384"/>
-<point lat="42.28401" lon="-71.06386"/>
-<point lat="42.28465" lon="-71.06449"/>
-</path>
-<path>
 <point lat="42.26738" lon="-71.09418"/>
 <point lat="42.26735" lon="-71.09407"/>
 <point lat="42.26726" lon="-71.09398"/>
@@ -649,6 +553,66 @@ Content-Type: text/xml
 <point lat="42.26067" lon="-71.1151299"/>
 <point lat="42.26046" lon="-71.11557"/>
 <point lat="42.26049" lon="-71.1156"/>
+</path>
+<path>
+<point lat="42.27129" lon="-71.07481"/>
+<point lat="42.27126" lon="-71.07429"/>
+<point lat="42.27125" lon="-71.07409"/>
+<point lat="42.27125" lon="-71.0739399"/>
+<point lat="42.27127" lon="-71.07381"/>
+<point lat="42.27134" lon="-71.07362"/>
+<point lat="42.27153" lon="-71.07332"/>
+<point lat="42.27167" lon="-71.07311"/>
+<point lat="42.27178" lon="-71.07292"/>
+<point lat="42.27182" lon="-71.07277"/>
+<point lat="42.27184" lon="-71.07208"/>
+<point lat="42.27185" lon="-71.07193"/>
+<point lat="42.27181" lon="-71.07192"/>
+<point lat="42.27187" lon="-71.07175"/>
+<point lat="42.27188" lon="-71.07151"/>
+<point lat="42.27192" lon="-71.07123"/>
+<point lat="42.27199" lon="-71.07069"/>
+<point lat="42.27207" lon="-71.07043"/>
+<point lat="42.2722399" lon="-71.07002"/>
+<point lat="42.27235" lon="-71.06967"/>
+<point lat="42.27244" lon="-71.06947"/>
+<point lat="42.2724" lon="-71.06943"/>
+<point lat="42.27249" lon="-71.06936"/>
+<point lat="42.27239" lon="-71.06901"/>
+<point lat="42.27227" lon="-71.0685"/>
+<point lat="42.27221" lon="-71.06818"/>
+<point lat="42.2722" lon="-71.06802"/>
+<point lat="42.27245" lon="-71.068"/>
+<point lat="42.27291" lon="-71.06789"/>
+<point lat="42.27324" lon="-71.0678"/>
+<point lat="42.2732699" lon="-71.06772"/>
+<point lat="42.2735399" lon="-71.06771"/>
+<point lat="42.27388" lon="-71.06762"/>
+<point lat="42.27403" lon="-71.06752"/>
+<point lat="42.2754" lon="-71.06715"/>
+<point lat="42.27633" lon="-71.06689"/>
+<point lat="42.27677" lon="-71.06682"/>
+<point lat="42.27789" lon="-71.0665"/>
+<point lat="42.27794" lon="-71.06641"/>
+<point lat="42.27882" lon="-71.06623"/>
+<point lat="42.2795" lon="-71.06605"/>
+<point lat="42.27991" lon="-71.06592"/>
+<point lat="42.2802999" lon="-71.06582"/>
+<point lat="42.28029" lon="-71.06576"/>
+<point lat="42.2808599" lon="-71.06566"/>
+<point lat="42.28195" lon="-71.06535"/>
+<point lat="42.28194" lon="-71.06528"/>
+<point lat="42.28204" lon="-71.06532"/>
+<point lat="42.28222" lon="-71.06528"/>
+<point lat="42.28299" lon="-71.06507"/>
+<point lat="42.28357" lon="-71.06489"/>
+<point lat="42.28362" lon="-71.06442"/>
+<point lat="42.28362" lon="-71.06425"/>
+<point lat="42.28363" lon="-71.0641"/>
+<point lat="42.28369" lon="-71.06392"/>
+<point lat="42.28383" lon="-71.06384"/>
+<point lat="42.28401" lon="-71.06386"/>
+<point lat="42.28465" lon="-71.06449"/>
 </path>
 <path>
 <point lat="42.25573" lon="-71.1212199"/>

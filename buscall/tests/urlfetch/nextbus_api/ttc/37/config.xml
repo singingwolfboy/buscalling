@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:20 GMT
+Date: Sun, 25 Dec 2011 19:59:27 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 8575
+Content-Length: 8513
 Connection: close
 Content-Type: text/xml
 
@@ -12,7 +12,7 @@ Content-Type: text/xml
 <body copyright="All data copyright Toronto Transit Commission 2011.">
 <route tag="37" title="37-Islington" color="ff0000" oppositeColor="ffffff" latMin="43.6446699" latMax="43.78705" lonMin="-79.62116" lonMax="-79.52418">
 <stop tag="6796" title="Islington Loop" lat="43.7640799" lon="-79.57659" stopId="9170"/>
-<stop tag="3549" title="Steeles Avenue West At Islington Avenue (Westside)" lat="43.76414" lon="-79.5749899" stopId="4643"/>
+<stop tag="3549" title="Steeles Avenue West At Islington Avenue" lat="43.76414" lon="-79.5749899" stopId="4643"/>
 <stop tag="1976" title="Islington Avenue At Humber Summit Lane" lat="43.7618799" lon="-79.5731799" stopId="3803"/>
 <stop tag="3973" title="Islington Avenue At Muir Avenue" lat="43.76012" lon="-79.57197" stopId="3819"/>
 <stop tag="2067" title="Islington Avenue At Van Hill" lat="43.75736" lon="-79.57" stopId="3850"/>
@@ -132,7 +132,7 @@ Content-Type: text/xml
 <stop tag="3437" title="Islington Avenue At Leduc Drive Farside" lat="43.71868" lon="-79.55662" stopId="3813"/>
 <stop tag="8649" title="Islington Avenue At Golfdown Drive" lat="43.7207799" lon="-79.5576099" stopId="3797"/>
 <stop tag="3719" title="Islington Avenue At Elmhurst Drive" lat="43.7230199" lon="-79.55862" stopId="3785"/>
-<stop tag="3862" title="Islington Ave At Gosfield Gate" lat="43.72572" lon="-79.55993" stopId="3750"/>
+<stop tag="3862" title="Islington Avenue At Gosfield Gate" lat="43.72572" lon="-79.55993" stopId="3750"/>
 <stop tag="5707" title="Islington Avenue At Fordwich Crescent" lat="43.7269299" lon="-79.5604899" stopId="3795"/>
 <stop tag="9835" title="Islington Avenue At Barker Avenue" lat="43.7317499" lon="-79.5627199" stopId="3762"/>
 <stop tag="3950" title="Islington Avenue At Sandhill Drive Farside" lat="43.73449" lon="-79.56391" stopId="3836"/>
@@ -650,15 +650,6 @@ Content-Type: text/xml
 <point lat="43.67995" lon="-79.53919"/>
 </path>
 <path>
-<point lat="43.72302" lon="-79.55862"/>
-<point lat="43.72572" lon="-79.55993"/>
-<point lat="43.72693" lon="-79.56049"/>
-<point lat="43.73175" lon="-79.56272"/>
-<point lat="43.73449" lon="-79.56391"/>
-<point lat="43.73665" lon="-79.56489"/>
-<point lat="43.73807" lon="-79.56556"/>
-</path>
-<path>
 <point lat="43.66223" lon="-79.5309599"/>
 <point lat="43.66386" lon="-79.5317"/>
 <point lat="43.66626" lon="-79.53274"/>
@@ -672,26 +663,11 @@ Content-Type: text/xml
 <point lat="43.74107" lon="-79.56698"/>
 </path>
 <path>
-<point lat="43.69235" lon="-79.54437"/>
-<point lat="43.69671" lon="-79.54635"/>
-<point lat="43.6995999" lon="-79.54772"/>
-<point lat="43.70123" lon="-79.54849"/>
-<point lat="43.7032" lon="-79.5494499"/>
-<point lat="43.70444" lon="-79.55007"/>
-<point lat="43.70478" lon="-79.55012"/>
-<point lat="43.70487" lon="-79.55033"/>
-<point lat="43.70844" lon="-79.55173"/>
-<point lat="43.71127" lon="-79.55306"/>
-<point lat="43.71139" lon="-79.55337"/>
-<point lat="43.71303" lon="-79.5543299"/>
-<point lat="43.71326" lon="-79.5545"/>
-<point lat="43.71347" lon="-79.55471"/>
-<point lat="43.71365" lon="-79.55496"/>
-<point lat="43.71389" lon="-79.55498"/>
-<point lat="43.71438" lon="-79.55494"/>
-<point lat="43.71461" lon="-79.55496"/>
-<point lat="43.7151" lon="-79.55511"/>
 <point lat="43.71534" lon="-79.55508"/>
+<point lat="43.71675" lon="-79.55573"/>
+<point lat="43.71868" lon="-79.55662"/>
+<point lat="43.72078" lon="-79.55761"/>
+<point lat="43.72302" lon="-79.55862"/>
 </path>
 <path>
 <point lat="43.74584" lon="-79.56837"/>
@@ -713,13 +689,6 @@ Content-Type: text/xml
 <point lat="43.76294" lon="-79.57365"/>
 <point lat="43.76434" lon="-79.57486"/>
 <point lat="43.76434" lon="-79.57411"/>
-</path>
-<path>
-<point lat="43.71534" lon="-79.55508"/>
-<point lat="43.71675" lon="-79.55573"/>
-<point lat="43.71868" lon="-79.55662"/>
-<point lat="43.72078" lon="-79.55761"/>
-<point lat="43.72302" lon="-79.55862"/>
 </path>
 <path>
 <point lat="43.76408" lon="-79.57659"/>
@@ -747,13 +716,6 @@ Content-Type: text/xml
 <point lat="43.75999" lon="-79.59013"/>
 </path>
 <path>
-<point lat="43.72284" lon="-79.5589"/>
-<point lat="43.72159" lon="-79.55824"/>
-<point lat="43.71816" lon="-79.55668"/>
-<point lat="43.71711" lon="-79.55616"/>
-<point lat="43.71511" lon="-79.55524"/>
-</path>
-<path>
 <point lat="43.66212" lon="-79.53111"/>
 <point lat="43.66089" lon="-79.53059"/>
 <point lat="43.65927" lon="-79.52988"/>
@@ -765,6 +727,22 @@ Content-Type: text/xml
 <point lat="43.64808" lon="-79.52502"/>
 <point lat="43.64464" lon="-79.52343"/>
 <point lat="43.64467" lon="-79.52418"/>
+</path>
+<path>
+<point lat="43.72284" lon="-79.5589"/>
+<point lat="43.72159" lon="-79.55824"/>
+<point lat="43.71816" lon="-79.55668"/>
+<point lat="43.71711" lon="-79.55616"/>
+<point lat="43.71511" lon="-79.55524"/>
+</path>
+<path>
+<point lat="43.72302" lon="-79.55862"/>
+<point lat="43.72572" lon="-79.55993"/>
+<point lat="43.72693" lon="-79.56049"/>
+<point lat="43.73175" lon="-79.56272"/>
+<point lat="43.73449" lon="-79.56391"/>
+<point lat="43.73665" lon="-79.56489"/>
+<point lat="43.73807" lon="-79.56556"/>
 </path>
 <path>
 <point lat="43.7244699" lon="-79.62116"/>
@@ -847,29 +825,6 @@ Content-Type: text/xml
 <point lat="43.69235" lon="-79.54437"/>
 </path>
 <path>
-<point lat="43.74584" lon="-79.56837"/>
-<point lat="43.74692" lon="-79.5686"/>
-<point lat="43.74803" lon="-79.56844"/>
-<point lat="43.74837" lon="-79.5683899"/>
-<point lat="43.74892" lon="-79.56818"/>
-<point lat="43.74892" lon="-79.56801"/>
-<point lat="43.74957" lon="-79.56804"/>
-<point lat="43.7498999" lon="-79.56799"/>
-<point lat="43.75103" lon="-79.56809"/>
-<point lat="43.75215" lon="-79.56811"/>
-<point lat="43.75499" lon="-79.56872"/>
-<point lat="43.75571" lon="-79.56903"/>
-<point lat="43.75638" lon="-79.56927"/>
-<point lat="43.75668" lon="-79.56943"/>
-<point lat="43.75714" lon="-79.56959"/>
-<point lat="43.75993" lon="-79.57154"/>
-<point lat="43.76294" lon="-79.57365"/>
-<point lat="43.76434" lon="-79.57486"/>
-<point lat="43.7640699" lon="-79.57597"/>
-<point lat="43.76427" lon="-79.57624"/>
-<point lat="43.76408" lon="-79.57659"/>
-</path>
-<path>
 <point lat="43.64516" lon="-79.52484"/>
 <point lat="43.64528" lon="-79.5241999"/>
 <point lat="43.64508" lon="-79.52392"/>
@@ -899,6 +854,29 @@ Content-Type: text/xml
 <point lat="43.74852" lon="-79.56842"/>
 <point lat="43.74692" lon="-79.5686"/>
 <point lat="43.74639" lon="-79.56873"/>
+</path>
+<path>
+<point lat="43.74584" lon="-79.56837"/>
+<point lat="43.74692" lon="-79.5686"/>
+<point lat="43.74803" lon="-79.56844"/>
+<point lat="43.74837" lon="-79.5683899"/>
+<point lat="43.74892" lon="-79.56818"/>
+<point lat="43.74892" lon="-79.56801"/>
+<point lat="43.74957" lon="-79.56804"/>
+<point lat="43.7498999" lon="-79.56799"/>
+<point lat="43.75103" lon="-79.56809"/>
+<point lat="43.75215" lon="-79.56811"/>
+<point lat="43.75499" lon="-79.56872"/>
+<point lat="43.75571" lon="-79.56903"/>
+<point lat="43.75638" lon="-79.56927"/>
+<point lat="43.75668" lon="-79.56943"/>
+<point lat="43.75714" lon="-79.56959"/>
+<point lat="43.75993" lon="-79.57154"/>
+<point lat="43.76294" lon="-79.57365"/>
+<point lat="43.76434" lon="-79.57486"/>
+<point lat="43.7640699" lon="-79.57597"/>
+<point lat="43.76427" lon="-79.57624"/>
+<point lat="43.76408" lon="-79.57659"/>
 </path>
 <path>
 <point lat="43.74584" lon="-79.56837"/>

@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:59:53 GMT
+Date: Sun, 25 Dec 2011 19:57:41 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2067
+Content-Length: 2061
 Connection: close
 Content-Type: text/xml
 
@@ -58,7 +58,7 @@ Content-Type: text/xml
 <stop tag="7332" title="Raymond Ave &amp; Sawyer St" lat="37.7150299" lon="-122.41347" stopId="17332"/>
 <stop tag="7333" title="Sawyer St &amp; Visitacion Ave" lat="37.71335" lon="-122.41444" stopId="17333"/>
 <stop tag="37057" title="Visitacion Valley Middle Sch" lat="37.7161199" lon="-122.41374" stopId="137057"/>
-<direction tag="56_OB2" title="Outbound to Visitation Valley" name="Outbound" useForUI="true">
+<direction tag="56_OB2" title="Outbound to Visitacion Valley" name="Outbound" useForUI="true">
   <stop tag="7057" />
   <stop tag="7026" />
   <stop tag="4938" />
@@ -109,6 +109,30 @@ Content-Type: text/xml
   <stop tag="37057" />
 </direction>
 <path>
+<point lat="37.71534" lon="-122.40619"/>
+<point lat="37.71385" lon="-122.40672"/>
+<point lat="37.71323" lon="-122.40706"/>
+<point lat="37.71334" lon="-122.40715"/>
+<point lat="37.71384" lon="-122.40905"/>
+<point lat="37.7144199" lon="-122.41121"/>
+<point lat="37.71503" lon="-122.41347"/>
+<point lat="37.71499" lon="-122.4136"/>
+<point lat="37.71325" lon="-122.41437"/>
+<point lat="37.71335" lon="-122.41444"/>
+<point lat="37.7136" lon="-122.41562"/>
+<point lat="37.71383" lon="-122.41595"/>
+<point lat="37.71427" lon="-122.41619"/>
+<point lat="37.71453" lon="-122.41622"/>
+<point lat="37.7147999" lon="-122.41616"/>
+<point lat="37.71528" lon="-122.41587"/>
+<point lat="37.7155" lon="-122.41567"/>
+<point lat="37.71568" lon="-122.41543"/>
+<point lat="37.7162099" lon="-122.41422"/>
+<point lat="37.71579" lon="-122.41414"/>
+<point lat="37.71569" lon="-122.41371"/>
+<point lat="37.7161199" lon="-122.41374"/>
+</path>
+<path>
 <point lat="37.7161199" lon="-122.41374"/>
 <point lat="37.7162099" lon="-122.41422"/>
 <point lat="37.71568" lon="-122.41543"/>
@@ -138,30 +162,6 @@ Content-Type: text/xml
 <point lat="37.71114" lon="-122.40379"/>
 <point lat="37.71197" lon="-122.40301"/>
 <point lat="37.71223" lon="-122.40218"/>
-</path>
-<path>
-<point lat="37.71534" lon="-122.40619"/>
-<point lat="37.71385" lon="-122.40672"/>
-<point lat="37.71323" lon="-122.40706"/>
-<point lat="37.71334" lon="-122.40715"/>
-<point lat="37.71384" lon="-122.40905"/>
-<point lat="37.7144199" lon="-122.41121"/>
-<point lat="37.71503" lon="-122.41347"/>
-<point lat="37.71499" lon="-122.4136"/>
-<point lat="37.71325" lon="-122.41437"/>
-<point lat="37.71335" lon="-122.41444"/>
-<point lat="37.7136" lon="-122.41562"/>
-<point lat="37.71383" lon="-122.41595"/>
-<point lat="37.71427" lon="-122.41619"/>
-<point lat="37.71453" lon="-122.41622"/>
-<point lat="37.7147999" lon="-122.41616"/>
-<point lat="37.71528" lon="-122.41587"/>
-<point lat="37.7155" lon="-122.41567"/>
-<point lat="37.71568" lon="-122.41543"/>
-<point lat="37.7162099" lon="-122.41422"/>
-<point lat="37.71579" lon="-122.41414"/>
-<point lat="37.71569" lon="-122.41371"/>
-<point lat="37.7161199" lon="-122.41374"/>
 </path>
 <path>
 <point lat="37.71229" lon="-122.40242"/>

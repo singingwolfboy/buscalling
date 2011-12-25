@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:59:56 GMT
+Date: Sun, 25 Dec 2011 19:57:46 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 4680
+Content-Length: 4683
 Connection: close
 Content-Type: text/xml
 
@@ -42,17 +42,17 @@ Content-Type: text/xml
 <stop tag="6182" title="Richardson Ave &amp; Francisco St" lat="37.8003299" lon="-122.4469499" stopId="16182"/>
 <stop tag="4778" title="Golden Gate Bridge Toll Plaza" lat="37.8072299" lon="-122.47524" stopId="14778"/>
 <stop tag="5819" title="Us101 Offramp Alexander Drive" lat="37.8359199" lon="-122.48383" stopId="15819"/>
-<stop tag="4136" title="Conzelman Rd &amp; Ggnra Sign" lat="37.8328399" lon="-122.48329" stopId="14136"/>
+<stop tag="7646" title="Alexander Dr &amp; Conzelman Rd" lat="37.83315" lon="-122.48338" stopId="17646"/>
 <stop tag="4133" title="Conzelman Rd &amp; Kirby Cove" lat="37.8295199" lon="-122.48402" stopId="14133"/>
-<stop tag="5498" title="McCullough Rd &amp; Conzelman Rd" lat="37.83388" lon="-122.49402" stopId="15498"/>
+<stop tag="7645" title="Conzelman Rd &amp; McCullough Rd" lat="37.8336999" lon="-122.4938099" stopId="17645"/>
 <stop tag="5496" title="McCullough Rd &amp; Bunker Rd" lat="37.8364399" lon="-122.50214" stopId="15496"/>
 <stop tag="3807" title="Bunker Rd &amp; Rifle Range" lat="37.83302" lon="-122.5088199" stopId="13807"/>
-<stop tag="3809" title="Bunker Rd &amp; Stables" lat="37.8317999" lon="-122.5149499" stopId="13809"/>
+<stop tag="3809" title="Bunker Rd &amp; Stables" lat="37.8318" lon="-122.51495" stopId="13809"/>
 <stop tag="3805" title="Bunker Rd &amp; Miwok Trail" lat="37.8332799" lon="-122.52061" stopId="13805"/>
 <stop tag="4602" title="Field Rd &amp; Youth Hostel" lat="37.8316599" lon="-122.5234499" stopId="14602"/>
 <stop tag="4599" title="Field Rd &amp; Bodsworth Rd" lat="37.83047" lon="-122.52467" stopId="14599"/>
 <stop tag="4601" title="Field Rd &amp; Nike Site" lat="37.82906" lon="-122.52767" stopId="14601"/>
-<stop tag="7234" title="Battery Alexander &amp; Field Rd" lat="37.8250299" lon="-122.5302699" stopId="17234"/>
+<stop tag="7234" title="Battery Alexander &amp; Field Rd" lat="37.8250299" lon="-122.53027" stopId="17234"/>
 <stop tag="4600" title="Field Rd &amp; Bunker Rd" lat="37.8313387" lon="-122.5232597" stopId="14600"/>
 <stop tag="5720" title="Mitchell Rd &amp; Bunker Rd" lat="37.83183" lon="-122.5323799" stopId="15720"/>
 <stop tag="34728" title="Fort Cronkhite Parking Lot" lat="37.8323799" lon="-122.53867" stopId="134728"/>
@@ -64,7 +64,7 @@ Content-Type: text/xml
 <stop tag="3810" title="Bunker Rd &amp; Stables" lat="37.8317499" lon="-122.5153799" stopId="13810"/>
 <stop tag="3808" title="Bunker Rd &amp; Rifle Range" lat="37.83296" lon="-122.5087199" stopId="13808"/>
 <stop tag="5497" title="McCullough Rd &amp; Bunker Rd" lat="37.8361199" lon="-122.5024099" stopId="15497"/>
-<stop tag="5499" title="McCullough Rd &amp; Conzelman Rd" lat="37.83361" lon="-122.4940099" stopId="15499"/>
+<stop tag="7647" title="Conzelman Rd &amp; McCullough Rd" lat="37.83361" lon="-122.4939" stopId="17647"/>
 <stop tag="4134" title="Conzelman Rd &amp; Kirby Cove" lat="37.82944" lon="-122.48354" stopId="14134"/>
 <stop tag="4135" title="Conzelman Rd &amp; Ggnra Sign" lat="37.83309" lon="-122.4835499" stopId="14135"/>
 <stop tag="4777" title="Golden Gate Bridge Toll Plaza" lat="37.8065699" lon="-122.47505" stopId="14777"/>
@@ -107,7 +107,7 @@ Content-Type: text/xml
   <stop tag="3810" />
   <stop tag="3808" />
   <stop tag="5497" />
-  <stop tag="5499" />
+  <stop tag="7647" />
   <stop tag="4134" />
   <stop tag="4135" />
   <stop tag="4777" />
@@ -174,9 +174,9 @@ Content-Type: text/xml
   <stop tag="6182" />
   <stop tag="4778" />
   <stop tag="5819" />
-  <stop tag="4136" />
+  <stop tag="7646" />
   <stop tag="4133" />
-  <stop tag="5498" />
+  <stop tag="7645" />
   <stop tag="5496" />
   <stop tag="3807" />
   <stop tag="3809" />
@@ -252,7 +252,7 @@ Content-Type: text/xml
 <point lat="37.83537" lon="-122.49514"/>
 <point lat="37.8346" lon="-122.49434"/>
 <point lat="37.83369" lon="-122.49397"/>
-<point lat="37.83361" lon="-122.49401"/>
+<point lat="37.83361" lon="-122.4939"/>
 <point lat="37.83356" lon="-122.49355"/>
 <point lat="37.8334" lon="-122.49225"/>
 <point lat="37.83259" lon="-122.49168"/>
@@ -321,9 +321,9 @@ Content-Type: text/xml
 <point lat="37.83502" lon="-122.48498"/>
 <point lat="37.83459" lon="-122.48483"/>
 <point lat="37.83386" lon="-122.48385"/>
+<point lat="37.83315" lon="-122.48338"/>
 <point lat="37.83312" lon="-122.48328"/>
 <point lat="37.83285" lon="-122.48318"/>
-<point lat="37.83284" lon="-122.48329"/>
 <point lat="37.83244" lon="-122.48336"/>
 <point lat="37.8314499" lon="-122.48397"/>
 <point lat="37.83067" lon="-122.48407"/>
@@ -352,8 +352,8 @@ Content-Type: text/xml
 <point lat="37.83259" lon="-122.49168"/>
 <point lat="37.8334" lon="-122.49225"/>
 <point lat="37.83356" lon="-122.49355"/>
+<point lat="37.8337" lon="-122.49381"/>
 <point lat="37.83369" lon="-122.49397"/>
-<point lat="37.83388" lon="-122.49402"/>
 <point lat="37.8346" lon="-122.49434"/>
 <point lat="37.83559" lon="-122.49541"/>
 <point lat="37.83612" lon="-122.49615"/>

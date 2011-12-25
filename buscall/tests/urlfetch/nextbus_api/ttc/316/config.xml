@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:47 GMT
+Date: Sun, 25 Dec 2011 20:01:26 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2968
+Content-Length: 2966
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="316" title="316-Ossington Bluenight" color="ff0000" oppositeColor="ffffff" latMin="43.6362499" latMax="43.6988499" lonMin="-79.4427" lonMax="-79.40972">
+<route tag="316" title="316-Ossington" color="ff0000" oppositeColor="ffffff" latMin="43.6362499" latMax="43.6988499" lonMin="-79.4427" lonMax="-79.40972">
 <stop tag="335" title="Eglinton Avenue West At Everden Road" lat="43.6988499" lon="-79.43595" stopId="9895"/>
 <stop tag="338" title="Eglinton Avenue West At Marlee Avenue" lat="43.69813" lon="-79.4391999" stopId="2380"/>
 <stop tag="597" title="Oakwood Avenue At Eglinton Avenue Farside" lat="43.6969399" lon="-79.4427" stopId="5904"/>
@@ -226,17 +226,17 @@ Content-Type: text/xml
 <point lat="43.67195" lon="-79.42971"/>
 </path>
 <path>
+<point lat="43.64146" lon="-79.41454"/>
+<point lat="43.64167" lon="-79.41378"/>
+<point lat="43.64203" lon="-79.4119599"/>
+<point lat="43.6366" lon="-79.40988"/>
+</path>
+<path>
 <point lat="43.6445099" lon="-79.41686"/>
 <point lat="43.64472" lon="-79.41629"/>
 <point lat="43.64272" lon="-79.41555"/>
 <point lat="43.64143" lon="-79.41501"/>
 <point lat="43.64146" lon="-79.41454"/>
-</path>
-<path>
-<point lat="43.64146" lon="-79.41454"/>
-<point lat="43.64167" lon="-79.41378"/>
-<point lat="43.64203" lon="-79.4119599"/>
-<point lat="43.6366" lon="-79.40988"/>
 </path>
 <path>
 <point lat="43.6521199" lon="-79.42187"/>

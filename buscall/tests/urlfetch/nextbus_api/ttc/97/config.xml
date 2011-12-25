@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:00 GMT
+Date: Sun, 25 Dec 2011 20:00:18 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 7623
+Content-Length: 7637
 Connection: close
 Content-Type: text/xml
 
@@ -103,7 +103,7 @@ Content-Type: text/xml
 <stop tag="6897" title="Yonge Street At Front Street West" lat="43.6467899" lon="-79.37716" stopId="1671"/>
 <stop tag="7104" title="Yonge Street At Lake Shore Boulevard" lat="43.64429" lon="-79.37612" stopId="9017"/>
 <stop tag="5526_ar" title="Yonge Street At Queens Quay" lat="43.6420399" lon="-79.37485"/>
-<stop tag="5573_ar" title="St Clair Station" lat="43.6877499" lon="-79.39259"/>
+<stop tag="5573" title="St Clair Station" lat="43.6877499" lon="-79.39259" stopId="8135"/>
 <stop tag="14167" title="Davisville Station" lat="43.6976099" lon="-79.39691" stopId="14645"/>
 <stop tag="6782" title="Yonge Street At Davisville Avenue Farside" lat="43.6986599" lon="-79.39659" stopId="1670"/>
 <stop tag="1696" title="Yonge Street At Belsize Drive" lat="43.7001799" lon="-79.3968699" stopId="1667"/>
@@ -194,7 +194,7 @@ Content-Type: text/xml
 <stop tag="732" title="Yonge Street At Glen Elm Avenue" lat="43.6911699" lon="-79.3950099" stopId="8994"/>
 <stop tag="1220" title="Yonge Street At Merton Street Farside" lat="43.6964799" lon="-79.3961299" stopId="10797"/>
 <stop tag="7363" title="Yonge Street At Queens Quay Farside" lat="43.6427799" lon="-79.37508" stopId="11902"/>
-<stop tag="5573" title="St Clair Station" lat="43.6877499" lon="-79.39259" stopId="8135"/>
+<stop tag="14826" title="St Clair Station" lat="43.6877199" lon="-79.3924" stopId="15054"/>
 <direction tag="97_0_97Sun" title="South - 97 Yonge towards Davisville Station" name="South" useForUI="true">
   <stop tag="8718" />
   <stop tag="4765" />
@@ -248,7 +248,7 @@ Content-Type: text/xml
   <stop tag="14169" />
 </direction>
 <direction tag="97_1_97D" title="North - 97a Yonge towards York Mills Station via Yonge Blvd" name="North" useForUI="true">
-  <stop tag="5573" />
+  <stop tag="14826" />
   <stop tag="1381" />
   <stop tag="904" />
   <stop tag="732" />
@@ -344,7 +344,7 @@ Content-Type: text/xml
   <stop tag="4550" />
   <stop tag="4111" />
   <stop tag="8942" />
-  <stop tag="5573_ar" />
+  <stop tag="5573" />
 </direction>
 <direction tag="97_1_97B" title="North - 97 Yonge towards Steeles" name="North" useForUI="true">
   <stop tag="5526" />
@@ -661,20 +661,6 @@ Content-Type: text/xml
 <point lat="43.69779" lon="-79.39695"/>
 </path>
 <path>
-<point lat="43.69779" lon="-79.39695"/>
-<point lat="43.69746" lon="-79.39678"/>
-<point lat="43.69737" lon="-79.39646"/>
-<point lat="43.6962199" lon="-79.39627"/>
-<point lat="43.69026" lon="-79.395"/>
-<point lat="43.68973" lon="-79.39481"/>
-<point lat="43.68835" lon="-79.3943"/>
-<point lat="43.68808" lon="-79.39413"/>
-<point lat="43.68818" lon="-79.39358"/>
-<point lat="43.68818" lon="-79.39314"/>
-<point lat="43.6878" lon="-79.39282"/>
-<point lat="43.68775" lon="-79.39259"/>
-</path>
-<path>
 <point lat="43.79139" lon="-79.41857"/>
 <point lat="43.78946" lon="-79.41808"/>
 <point lat="43.78719" lon="-79.41752"/>
@@ -933,6 +919,20 @@ Content-Type: text/xml
 <point lat="43.73994" lon="-79.40568"/>
 </path>
 <path>
+<point lat="43.69779" lon="-79.39695"/>
+<point lat="43.69746" lon="-79.39678"/>
+<point lat="43.69737" lon="-79.39646"/>
+<point lat="43.6962199" lon="-79.39627"/>
+<point lat="43.69026" lon="-79.395"/>
+<point lat="43.68973" lon="-79.39481"/>
+<point lat="43.68835" lon="-79.3943"/>
+<point lat="43.68808" lon="-79.39413"/>
+<point lat="43.68818" lon="-79.39358"/>
+<point lat="43.68818" lon="-79.39314"/>
+<point lat="43.6878" lon="-79.39282"/>
+<point lat="43.68775" lon="-79.39259"/>
+</path>
+<path>
 <point lat="43.64603" lon="-79.37853"/>
 <point lat="43.64609" lon="-79.37846"/>
 <point lat="43.64618" lon="-79.37817"/>
@@ -1013,6 +1013,20 @@ Content-Type: text/xml
 <point lat="43.72325" lon="-79.4019"/>
 </path>
 <path>
+<point lat="43.68772" lon="-79.3924"/>
+<point lat="43.68776" lon="-79.39263"/>
+<point lat="43.68818" lon="-79.39314"/>
+<point lat="43.68818" lon="-79.39358"/>
+<point lat="43.68791" lon="-79.39393"/>
+<point lat="43.68808" lon="-79.39413"/>
+<point lat="43.68973" lon="-79.39481"/>
+<point lat="43.6899" lon="-79.39475"/>
+<point lat="43.69117" lon="-79.39501"/>
+<point lat="43.69648" lon="-79.39613"/>
+<point lat="43.69746" lon="-79.39678"/>
+<point lat="43.69761" lon="-79.39691"/>
+</path>
+<path>
 <point lat="43.66886" lon="-79.3862599"/>
 <point lat="43.6667599" lon="-79.38539"/>
 <point lat="43.66493" lon="-79.38466"/>
@@ -1043,20 +1057,6 @@ Content-Type: text/xml
 <point lat="43.72329" lon="-79.40175"/>
 <point lat="43.72345" lon="-79.40183"/>
 <point lat="43.72538" lon="-79.4021099"/>
-</path>
-<path>
-<point lat="43.68775" lon="-79.39259"/>
-<point lat="43.68776" lon="-79.39263"/>
-<point lat="43.68818" lon="-79.39314"/>
-<point lat="43.68818" lon="-79.39358"/>
-<point lat="43.68791" lon="-79.39393"/>
-<point lat="43.68808" lon="-79.39413"/>
-<point lat="43.68973" lon="-79.39481"/>
-<point lat="43.6899" lon="-79.39475"/>
-<point lat="43.69117" lon="-79.39501"/>
-<point lat="43.69648" lon="-79.39613"/>
-<point lat="43.69746" lon="-79.39678"/>
-<point lat="43.69761" lon="-79.39691"/>
 </path>
 <path>
 <point lat="43.79557" lon="-79.42904"/>

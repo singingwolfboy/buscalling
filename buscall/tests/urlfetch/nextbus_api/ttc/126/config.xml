@@ -1,17 +1,17 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:17 GMT
+Date: Sun, 25 Dec 2011 20:00:43 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1426
+Content-Length: 1428
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="126" title="126-Christie" color="ff0000" oppositeColor="ffffff" latMin="43.6641199" latMax="43.6841499" lonMin="-79.4256499" lonMax="-79.41533">
-<stop tag="14299" title="St Clair West Station" lat="43.6841499" lon="-79.41533" stopId="14782"/>
+<route tag="126" title="126-Christie" color="ff0000" oppositeColor="ffffff" latMin="43.6641199" latMax="43.6841499" lonMin="-79.4256499" lonMax="-79.41558">
+<stop tag="14296" title="St Clair West Station" lat="43.6841499" lon="-79.41558" stopId="14779"/>
 <stop tag="814" title="St Clair Avenue West At Bathurst Street" lat="43.6832699" lon="-79.41796" stopId="8153"/>
 <stop tag="8867" title="St Clair Avenue West At Vaughan Road Farside" lat="43.6827399" lon="-79.42076" stopId="14334"/>
 <stop tag="3247" title="St Clair Avenue West At Wychwood Avenue" lat="43.6823599" lon="-79.42305" stopId="8191"/>
@@ -39,7 +39,7 @@ Content-Type: text/xml
 <stop tag="5069" title="St Clair Avenue West At Wychwood Avenue" lat="43.68201" lon="-79.4236599" stopId="8190"/>
 <stop tag="8868" title="St Clair Avenue West At Vaughan Road Farside" lat="43.6828299" lon="-79.41931" stopId="14335"/>
 <stop tag="8869" title="St Clair Avenue West At Bathurst Street Farside" lat="43.6831599" lon="-79.41764" stopId="14336"/>
-<stop tag="14299_ar" title="St Clair West Station" lat="43.6841499" lon="-79.41533"/>
+<stop tag="14296_ar" title="St Clair West Station" lat="43.6841499" lon="-79.41558"/>
 <direction tag="126_1_126" title="North - 126 Christie towards St Clair West Station" name="North" useForUI="true">
   <stop tag="5675" />
   <stop tag="8812" />
@@ -54,10 +54,10 @@ Content-Type: text/xml
   <stop tag="5069" />
   <stop tag="8868" />
   <stop tag="8869" />
-  <stop tag="14299_ar" />
+  <stop tag="14296_ar" />
 </direction>
 <direction tag="126_0_126" title="South - 126 Christie towards Christie Station" name="South" useForUI="true">
-  <stop tag="14299" />
+  <stop tag="14296" />
   <stop tag="814" />
   <stop tag="8867" />
   <stop tag="3247" />
@@ -73,17 +73,6 @@ Content-Type: text/xml
   <stop tag="8540" />
   <stop tag="5675_ar" />
 </direction>
-<path>
-<point lat="43.68415" lon="-79.41533"/>
-<point lat="43.68425" lon="-79.41573"/>
-<point lat="43.68454" lon="-79.41583"/>
-<point lat="43.68469" lon="-79.41555"/>
-<point lat="43.68471" lon="-79.4152"/>
-<point lat="43.68447" lon="-79.41507"/>
-<point lat="43.68394" lon="-79.4152299"/>
-<point lat="43.68363" lon="-79.41587"/>
-<point lat="43.68327" lon="-79.4179599"/>
-</path>
 <path>
 <point lat="43.6641199" lon="-79.41857"/>
 <point lat="43.6639399" lon="-79.41885"/>
@@ -103,6 +92,12 @@ Content-Type: text/xml
 <point lat="43.6781099" lon="-79.42408"/>
 </path>
 <path>
+<point lat="43.68316" lon="-79.41764"/>
+<point lat="43.68377" lon="-79.41522"/>
+<point lat="43.684" lon="-79.41561"/>
+<point lat="43.68415" lon="-79.41558"/>
+</path>
+<path>
 <point lat="43.6735" lon="-79.42235"/>
 <point lat="43.67177" lon="-79.42173"/>
 <point lat="43.66977" lon="-79.4208699"/>
@@ -113,12 +108,6 @@ Content-Type: text/xml
 <point lat="43.6641199" lon="-79.41857"/>
 </path>
 <path>
-<point lat="43.68316" lon="-79.41764"/>
-<point lat="43.68377" lon="-79.41522"/>
-<point lat="43.684" lon="-79.41561"/>
-<point lat="43.68415" lon="-79.41533"/>
-</path>
-<path>
 <point lat="43.6781099" lon="-79.42408"/>
 <point lat="43.67821" lon="-79.42427"/>
 <point lat="43.67993" lon="-79.42491"/>
@@ -127,6 +116,17 @@ Content-Type: text/xml
 <point lat="43.68201" lon="-79.42366"/>
 <point lat="43.68283" lon="-79.41931"/>
 <point lat="43.68316" lon="-79.41764"/>
+</path>
+<path>
+<point lat="43.68415" lon="-79.41558"/>
+<point lat="43.68425" lon="-79.41573"/>
+<point lat="43.68454" lon="-79.41583"/>
+<point lat="43.68469" lon="-79.41555"/>
+<point lat="43.68471" lon="-79.4152"/>
+<point lat="43.68447" lon="-79.41507"/>
+<point lat="43.68394" lon="-79.4152299"/>
+<point lat="43.68363" lon="-79.41587"/>
+<point lat="43.68327" lon="-79.4179599"/>
 </path>
 <path>
 <point lat="43.68327" lon="-79.4179599"/>

@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:04 GMT
+Date: Sun, 25 Dec 2011 20:01:46 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2206
+Content-Length: 2412
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="510" title="510-Spadina" color="ff0000" oppositeColor="ffffff" latMin="43.6377899" latMax="43.6672199" lonMin="-79.40392" lonMax="-79.3770899">
+<route tag="510" title="510-Spadina" color="ff0000" oppositeColor="ffffff" latMin="43.6377899" latMax="43.6672199" lonMin="-79.40392" lonMax="-79.37709">
 <stop tag="14339" title="Spadina Station" lat="43.6672199" lon="-79.40392" stopId="14816"/>
 <stop tag="7162" title="Spadina Avenue At Sussex Avenue Farside" lat="43.6642599" lon="-79.4027499" stopId="8132"/>
 <stop tag="5136" title="Spadina Avenue At Harbord Street Farside" lat="43.6627599" lon="-79.4021499" stopId="8124"/>
@@ -20,17 +20,25 @@ Content-Type: text/xml
 <stop tag="10093" title="Spadina Avenue At Dundas Street West Farside" lat="43.6525099" lon="-79.398" stopId="8121"/>
 <stop tag="2097" title="Spadina Avenue At Sullivan Street" lat="43.6510299" lon="-79.3974199" stopId="8131"/>
 <stop tag="9203" title="Spadina Avenue At Queen Street West Farside" lat="43.6483199" lon="-79.39635" stopId="8129"/>
-<stop tag="10089_ar" title="Charlotte Street At Oxley Street" lat="43.6465799" lon="-79.39401"/>
 <stop tag="10138" title="Spadina Avenue At King Street Farside" lat="43.6457699" lon="-79.39535" stopId="8126"/>
 <stop tag="6953" title="Spadina Avenue At Front Street West" lat="43.6429499" lon="-79.3942099" stopId="8123"/>
-<stop tag="6639" title="Spadina Avenue At Bremner Boulevard" lat="43.6407999" lon="-79.39329" stopId="10929"/>
+<stop tag="6639" title="Spadina Avenue At Bremner Boulevard" lat="43.6407999" lon="-79.3932899" stopId="10929"/>
 <stop tag="2125" title="Queens Quay At Spadina Avenue Farside" lat="43.6377899" lon="-79.39122" stopId="13131"/>
 <stop tag="9575" title="Queens Quay At Rees Street Farside" lat="43.63886" lon="-79.3860899" stopId="10932"/>
 <stop tag="7045" title="Queens Quay At Lower Simcoe Street Farside" lat="43.6395299" lon="-79.38222" stopId="8039"/>
 <stop tag="8021" title="Queens Quay At York Street Farside" lat="43.64011" lon="-79.3794699" stopId="10933"/>
 <stop tag="1551" title="Queens Quay Terminal Northbound" lat="43.6420499" lon="-79.3773899" stopId="10945"/>
 <stop tag="9227_ar" title="Union Station" lat="43.6456599" lon="-79.37922"/>
-<stop tag="10089" title="Charlotte Street At Oxley Street" lat="43.6465799" lon="-79.39401" stopId="12158"/>
+<stop tag="10089_ar" title="Charlotte Street At Oxley Street" lat="43.6465799" lon="-79.39401"/>
+<stop tag="478_ar" title="Queens Quay Loop At Spadina" lat="43.6384599" lon="-79.39166"/>
+<stop tag="9227" title="Union Station" lat="43.6456599" lon="-79.37922" stopId="10935"/>
+<stop tag="10390" title="Queens Quay Terminal Southbound" lat="43.64145" lon="-79.37709" stopId="10946"/>
+<stop tag="7033" title="Queens Quay At York Street Farside" lat="43.6399299" lon="-79.38066" stopId="10925"/>
+<stop tag="9694" title="Queens Quay At Lower Simcoe Street Farside" lat="43.6394999" lon="-79.38313" stopId="10936"/>
+<stop tag="7412" title="Queens Quay West At Rees Street Farside" lat="43.6388099" lon="-79.38707" stopId="6864"/>
+<stop tag="6075" title="Spadina Avenue At Queens Quay Farside" lat="43.6378499" lon="-79.39189" stopId="12085"/>
+<stop tag="9243" title="Spadina Avenue At Bremner Boulevard Farside" lat="43.6409399" lon="-79.3929299" stopId="10777"/>
+<stop tag="8068" title="Spadina Avenue At Front Street West Farside" lat="43.64307" lon="-79.39397" stopId="7346"/>
 <stop tag="5275" title="Spadina Avenue At King Street West Farside" lat="43.6460299" lon="-79.39516" stopId="7353"/>
 <stop tag="8346" title="Spadina Avenue At Richmond Street West" lat="43.64762" lon="-79.39583" stopId="11985"/>
 <stop tag="7582" title="Spadina Avenue At Queen Street Farside" lat="43.6491599" lon="-79.39647" stopId="7355"/>
@@ -38,19 +46,13 @@ Content-Type: text/xml
 <stop tag="1138" title="Spadina Avenue At Dundas Street West Farside" lat="43.6534199" lon="-79.39802" stopId="7349"/>
 <stop tag="6577" title="Spadina Avenue At Nassau Street" lat="43.65567" lon="-79.39889" stopId="11986"/>
 <stop tag="6730" title="Spadina Avenue At College Street Farside" lat="43.6584299" lon="-79.40019" stopId="7347"/>
-<stop tag="6145" title="Spadina Avenue At Willcocks Street" lat="43.6611299" lon="-79.4012799" stopId="7358"/>
+<stop tag="6145" title="Spadina Avenue At Willcocks Street" lat="43.66113" lon="-79.40128" stopId="7358"/>
 <stop tag="2291" title="Spadina Avenue At Hardbord Street Farside" lat="43.66347" lon="-79.40219" stopId="7351"/>
-<stop tag="5927" title="Spadina Avenue At Sussex Avenue" lat="43.66446" lon="-79.4026" stopId="7357"/>
+<stop tag="5927" title="Spadina Avenue At Sussex Avenue" lat="43.6644599" lon="-79.4025999" stopId="7357"/>
 <stop tag="14339_ar" title="Spadina Station" lat="43.6672199" lon="-79.40392"/>
-<stop tag="9227" title="Union Station" lat="43.6456599" lon="-79.37922" stopId="10935"/>
-<stop tag="10390" title="Queens Quay Terminal Southbound" lat="43.6414499" lon="-79.3770899" stopId="10946"/>
-<stop tag="7033" title="Queens Quay At York Street Farside" lat="43.63993" lon="-79.3806599" stopId="10925"/>
-<stop tag="9694" title="Queens Quay At Lower Simcoe Street Farside" lat="43.6395" lon="-79.3831299" stopId="10936"/>
-<stop tag="7412" title="Queens Quay West At Rees Street Farside" lat="43.63881" lon="-79.3870699" stopId="6864"/>
-<stop tag="6075" title="Spadina Avenue At Queens Quay Farside" lat="43.6378499" lon="-79.39189" stopId="12085"/>
-<stop tag="9243" title="Spadina Avenue At Bremner Boulevard Farside" lat="43.6409399" lon="-79.3929299" stopId="10777"/>
-<stop tag="8068" title="Spadina Avenue At Front Street West Farside" lat="43.6430699" lon="-79.39397" stopId="7346"/>
-<direction tag="510_0_510con" title="South - 510 Spadina towards Union Station" name="South" useForUI="true">
+<stop tag="10089" title="Charlotte Street At Oxley Street" lat="43.6465799" lon="-79.39401" stopId="12158"/>
+<stop tag="478" title="Queens Quay Loop At Spadina" lat="43.6384599" lon="-79.39166" stopId="10927"/>
+<direction tag="510_0_510" title="South - 510 Spadina towards Union Station" name="South" useForUI="true">
   <stop tag="14339" />
   <stop tag="7162" />
   <stop tag="5136" />
@@ -93,27 +95,7 @@ Content-Type: text/xml
 </direction>
 <path>
 <point lat="43.64832" lon="-79.39635"/>
-<point lat="43.6467" lon="-79.39574"/>
-<point lat="43.6470399" lon="-79.39413"/>
-<point lat="43.64658" lon="-79.39401"/>
-</path>
-<path>
-<point lat="43.65843" lon="-79.40019"/>
-<point lat="43.65887" lon="-79.40031"/>
-<point lat="43.65922" lon="-79.40019"/>
-<point lat="43.65942" lon="-79.39999"/>
-<point lat="43.65968" lon="-79.3999"/>
-<point lat="43.65996" lon="-79.39999"/>
-<point lat="43.66017" lon="-79.4002299"/>
-<point lat="43.66029" lon="-79.4005899"/>
-<point lat="43.66055" lon="-79.40091"/>
-<point lat="43.66113" lon="-79.40128"/>
-<point lat="43.6634699" lon="-79.40219"/>
-<point lat="43.66446" lon="-79.4026"/>
-<point lat="43.66554" lon="-79.40295"/>
-<point lat="43.66618" lon="-79.40335"/>
-<point lat="43.6663799" lon="-79.40368"/>
-<point lat="43.66722" lon="-79.40392"/>
+<point lat="43.64577" lon="-79.3953499"/>
 </path>
 <path>
 <point lat="43.6408" lon="-79.3932899"/>
@@ -122,24 +104,43 @@ Content-Type: text/xml
 <point lat="43.63779" lon="-79.39122"/>
 </path>
 <path>
+<point lat="43.65251" lon="-79.398"/>
+<point lat="43.65103" lon="-79.39742"/>
 <point lat="43.64832" lon="-79.39635"/>
-<point lat="43.64577" lon="-79.3953499"/>
 </path>
 <path>
 <point lat="43.63785" lon="-79.39189"/>
 <point lat="43.63798" lon="-79.39186"/>
 <point lat="43.64094" lon="-79.39293"/>
 <point lat="43.64307" lon="-79.39397"/>
+<point lat="43.64603" lon="-79.39516"/>
 </path>
 <path>
-<point lat="43.65251" lon="-79.398"/>
-<point lat="43.65103" lon="-79.39742"/>
-<point lat="43.64832" lon="-79.39635"/>
-</path>
-<path>
-<point lat="43.64577" lon="-79.3953499"/>
-<point lat="43.64295" lon="-79.39421"/>
-<point lat="43.6408" lon="-79.3932899"/>
+<point lat="43.66722" lon="-79.40392"/>
+<point lat="43.66725" lon="-79.4039899"/>
+<point lat="43.66727" lon="-79.40404"/>
+<point lat="43.66731" lon="-79.40411"/>
+<point lat="43.66725" lon="-79.40409"/>
+<point lat="43.66665" lon="-79.40386"/>
+<point lat="43.6663799" lon="-79.40368"/>
+<point lat="43.66608" lon="-79.40364"/>
+<point lat="43.66522" lon="-79.4031399"/>
+<point lat="43.66426" lon="-79.40275"/>
+<point lat="43.66276" lon="-79.40215"/>
+<point lat="43.66147" lon="-79.40165"/>
+<point lat="43.66049" lon="-79.40123"/>
+<point lat="43.66037" lon="-79.40119"/>
+<point lat="43.6601799" lon="-79.40127"/>
+<point lat="43.66002" lon="-79.40146"/>
+<point lat="43.65981" lon="-79.40158"/>
+<point lat="43.65956" lon="-79.40158"/>
+<point lat="43.65931" lon="-79.40142"/>
+<point lat="43.65909" lon="-79.40102"/>
+<point lat="43.65902" lon="-79.40068"/>
+<point lat="43.65898" lon="-79.4005899"/>
+<point lat="43.65883" lon="-79.40053"/>
+<point lat="43.65796" lon="-79.40021"/>
+<point lat="43.65748" lon="-79.40006"/>
 </path>
 <path>
 <point lat="43.63779" lon="-79.39122"/>
@@ -172,58 +173,20 @@ Content-Type: text/xml
 <point lat="43.64566" lon="-79.37922"/>
 </path>
 <path>
-<point lat="43.66722" lon="-79.40392"/>
-<point lat="43.66725" lon="-79.4039899"/>
-<point lat="43.66727" lon="-79.40404"/>
-<point lat="43.66731" lon="-79.40411"/>
-<point lat="43.66725" lon="-79.40409"/>
-<point lat="43.66665" lon="-79.40386"/>
-<point lat="43.6663799" lon="-79.40368"/>
-<point lat="43.66608" lon="-79.40364"/>
-<point lat="43.66522" lon="-79.4031399"/>
-<point lat="43.66426" lon="-79.40275"/>
-<point lat="43.66276" lon="-79.40215"/>
-<point lat="43.66147" lon="-79.40165"/>
-<point lat="43.66049" lon="-79.40123"/>
-<point lat="43.6601799" lon="-79.40127"/>
-<point lat="43.65989" lon="-79.40155"/>
-<point lat="43.6596199" lon="-79.40158"/>
-<point lat="43.65937" lon="-79.40148"/>
-<point lat="43.65917" lon="-79.40121"/>
-<point lat="43.65796" lon="-79.40021"/>
-<point lat="43.65748" lon="-79.40006"/>
-</path>
-<path>
 <point lat="43.64307" lon="-79.39397"/>
 <point lat="43.64603" lon="-79.39516"/>
 </path>
 <path>
-<point lat="43.6534199" lon="-79.39802"/>
-<point lat="43.65567" lon="-79.39889"/>
-<point lat="43.65796" lon="-79.39989"/>
-<point lat="43.65838" lon="-79.40008"/>
-<point lat="43.65843" lon="-79.40019"/>
+<point lat="43.63779" lon="-79.39122"/>
+<point lat="43.63785" lon="-79.39091"/>
+<point lat="43.63835" lon="-79.3911"/>
+<point lat="43.63854" lon="-79.39131"/>
+<point lat="43.63846" lon="-79.39166"/>
 </path>
 <path>
-<point lat="43.65748" lon="-79.40006"/>
-<point lat="43.65544" lon="-79.39927"/>
-<point lat="43.65319" lon="-79.39827"/>
-<point lat="43.65313" lon="-79.39812"/>
-<point lat="43.65294" lon="-79.39804"/>
-<point lat="43.65278" lon="-79.39798"/>
-<point lat="43.6526" lon="-79.39803"/>
-<point lat="43.65251" lon="-79.398"/>
-</path>
-<path>
-<point lat="43.64603" lon="-79.39516"/>
-<point lat="43.64762" lon="-79.39583"/>
-<point lat="43.64916" lon="-79.3964699"/>
-</path>
-<path>
-<point lat="43.64658" lon="-79.39401"/>
-<point lat="43.64576" lon="-79.39363"/>
-<point lat="43.64549" lon="-79.39494"/>
-<point lat="43.64603" lon="-79.39516"/>
+<point lat="43.64577" lon="-79.3953499"/>
+<point lat="43.64295" lon="-79.39421"/>
+<point lat="43.6408" lon="-79.3932899"/>
 </path>
 <path>
 <point lat="43.64566" lon="-79.37922"/>
@@ -254,14 +217,64 @@ Content-Type: text/xml
 <point lat="43.63785" lon="-79.39189"/>
 </path>
 <path>
+<point lat="43.63785" lon="-79.39189"/>
+<point lat="43.63798" lon="-79.39186"/>
+<point lat="43.64094" lon="-79.39293"/>
+<point lat="43.64307" lon="-79.39397"/>
+</path>
+<path>
+<point lat="43.64603" lon="-79.39516"/>
+<point lat="43.64762" lon="-79.39583"/>
 <point lat="43.64916" lon="-79.3964699"/>
-<point lat="43.65125" lon="-79.3973"/>
-<point lat="43.65264" lon="-79.3978"/>
-<point lat="43.65278" lon="-79.39798"/>
-<point lat="43.65294" lon="-79.39804"/>
-<point lat="43.65313" lon="-79.39812"/>
-<point lat="43.65328" lon="-79.39803"/>
+</path>
+<path>
 <point lat="43.6534199" lon="-79.39802"/>
+<point lat="43.65567" lon="-79.39889"/>
+<point lat="43.65796" lon="-79.39989"/>
+<point lat="43.65838" lon="-79.40008"/>
+<point lat="43.65843" lon="-79.40019"/>
+</path>
+<path>
+<point lat="43.64577" lon="-79.3953499"/>
+<point lat="43.64295" lon="-79.39421"/>
+<point lat="43.6408" lon="-79.3932899"/>
+<point lat="43.63793" lon="-79.39214"/>
+<point lat="43.63767" lon="-79.39189"/>
+<point lat="43.63779" lon="-79.39122"/>
+</path>
+<path>
+<point lat="43.65843" lon="-79.40019"/>
+<point lat="43.65887" lon="-79.40031"/>
+<point lat="43.65901" lon="-79.40037"/>
+<point lat="43.65907" lon="-79.40035"/>
+<point lat="43.65922" lon="-79.40019"/>
+<point lat="43.6593" lon="-79.4001"/>
+<point lat="43.65955" lon="-79.39993"/>
+<point lat="43.65982" lon="-79.39992"/>
+<point lat="43.66007" lon="-79.40009"/>
+<point lat="43.66025" lon="-79.4004"/>
+<point lat="43.66026" lon="-79.40046"/>
+<point lat="43.66029" lon="-79.4005899"/>
+<point lat="43.66029" lon="-79.40066"/>
+<point lat="43.66041" lon="-79.40085"/>
+<point lat="43.66055" lon="-79.40091"/>
+<point lat="43.66113" lon="-79.40128"/>
+<point lat="43.6634699" lon="-79.40219"/>
+<point lat="43.66446" lon="-79.4026"/>
+<point lat="43.66554" lon="-79.40295"/>
+<point lat="43.66618" lon="-79.40335"/>
+<point lat="43.6663799" lon="-79.40368"/>
+<point lat="43.66722" lon="-79.40392"/>
+</path>
+<path>
+<point lat="43.65748" lon="-79.40006"/>
+<point lat="43.65544" lon="-79.39927"/>
+<point lat="43.65319" lon="-79.39827"/>
+<point lat="43.65313" lon="-79.39812"/>
+<point lat="43.65294" lon="-79.39804"/>
+<point lat="43.65278" lon="-79.39798"/>
+<point lat="43.6526" lon="-79.39803"/>
+<point lat="43.65251" lon="-79.398"/>
 </path>
 <path>
 <point lat="43.64566" lon="-79.37922"/>
@@ -298,6 +311,72 @@ Content-Type: text/xml
 <point lat="43.6477999" lon="-79.39595"/>
 <point lat="43.64834" lon="-79.39608"/>
 <point lat="43.64916" lon="-79.3964699"/>
+</path>
+<path>
+<point lat="43.64916" lon="-79.3964699"/>
+<point lat="43.65125" lon="-79.3973"/>
+<point lat="43.65264" lon="-79.3978"/>
+<point lat="43.65278" lon="-79.39798"/>
+<point lat="43.65294" lon="-79.39804"/>
+<point lat="43.65313" lon="-79.39812"/>
+<point lat="43.65328" lon="-79.39803"/>
+<point lat="43.6534199" lon="-79.39802"/>
+</path>
+<path>
+<point lat="43.64832" lon="-79.39635"/>
+<point lat="43.6467" lon="-79.39574"/>
+<point lat="43.6470399" lon="-79.39413"/>
+<point lat="43.64658" lon="-79.39401"/>
+</path>
+<path>
+<point lat="43.63846" lon="-79.39166"/>
+<point lat="43.64094" lon="-79.39293"/>
+<point lat="43.64307" lon="-79.39397"/>
+<point lat="43.64603" lon="-79.39516"/>
+</path>
+<path>
+<point lat="43.64658" lon="-79.39401"/>
+<point lat="43.64576" lon="-79.39363"/>
+<point lat="43.64549" lon="-79.39494"/>
+<point lat="43.64603" lon="-79.39516"/>
+</path>
+<path>
+<point lat="43.63846" lon="-79.39166"/>
+<point lat="43.63848" lon="-79.39176"/>
+<point lat="43.63861" lon="-79.39212"/>
+<point lat="43.64094" lon="-79.39293"/>
+<point lat="43.64275" lon="-79.39382"/>
+<point lat="43.64307" lon="-79.39397"/>
+<point lat="43.64603" lon="-79.39516"/>
+</path>
+<path>
+<point lat="43.64566" lon="-79.37922"/>
+<point lat="43.64563" lon="-79.37906"/>
+<point lat="43.6456" lon="-79.37907"/>
+<point lat="43.64555" lon="-79.37908"/>
+<point lat="43.64552" lon="-79.37908"/>
+<point lat="43.64547" lon="-79.37906"/>
+<point lat="43.64543" lon="-79.37902"/>
+<point lat="43.64541" lon="-79.37898"/>
+<point lat="43.6454" lon="-79.3789199"/>
+<point lat="43.64541" lon="-79.37887"/>
+<point lat="43.64293" lon="-79.37782"/>
+<point lat="43.64264" lon="-79.37767"/>
+<point lat="43.6420699" lon="-79.37745"/>
+<point lat="43.64145" lon="-79.37709"/>
+<point lat="43.64115" lon="-79.37684"/>
+<point lat="43.64067" lon="-79.37849"/>
+<point lat="43.64002" lon="-79.38022"/>
+<point lat="43.63993" lon="-79.38066"/>
+<point lat="43.6395" lon="-79.38313"/>
+<point lat="43.63924" lon="-79.38469"/>
+<point lat="43.63895" lon="-79.3864399"/>
+<point lat="43.63882" lon="-79.38673"/>
+<point lat="43.63881" lon="-79.38707"/>
+<point lat="43.63805" lon="-79.38994"/>
+<point lat="43.63796" lon="-79.39085"/>
+<point lat="43.63767" lon="-79.39189"/>
+<point lat="43.63785" lon="-79.39189"/>
 </path>
 </route>
 </body>

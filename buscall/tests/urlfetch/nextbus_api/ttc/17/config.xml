@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:07 GMT
+Date: Sun, 25 Dec 2011 19:59:12 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5624
+Content-Length: 5310
 Connection: close
 Content-Type: text/xml
 
@@ -64,15 +64,11 @@ Content-Type: text/xml
 <stop tag="4830" title="Royal Crest Court At Birchmount Road" lat="43.84205" lon="-79.3215399" stopId="11708"/>
 <stop tag="3116" title="Birchmount Road At Fourteenth Avenue Farside" lat="43.83914" lon="-79.32018" stopId="0415"/>
 <stop tag="1368" title="Birchmount Road At Denison Avenue" lat="43.8329499" lon="-79.31894" stopId="0401"/>
-<stop tag="6467" title="Birchmount Road At Denison Road (Walkway South Of Denison)" lat="43.83107" lon="-79.31828" stopId="9390"/>
+<stop tag="6467" title="Birchmount Road At Walkway South Of Denison" lat="43.83107" lon="-79.31828" stopId="9390"/>
 <stop tag="1043" title="Birchmount Road At Ferguson Gate" lat="43.82992" lon="-79.31786" stopId="0410"/>
 <stop tag="9044" title="Birchmount Road At Riseborough Avenue North" lat="43.8267899" lon="-79.31767" stopId="9172"/>
 <stop tag="7599" title="Birchmount Road At Riseborough Avenue South" lat="43.8242099" lon="-79.3181799" stopId="9173"/>
 <stop tag="4053" title="Birchmount Road At Steeles Avenue East" lat="43.8217099" lon="-79.3171399" stopId="0456"/>
-<stop tag="8866" title="Kennedy Road Loop At McNicoll Avenue" lat="43.8135499" lon="-79.29789" stopId="14332"/>
-<stop tag="2851" title="McNicoll Avenue At Kennedy Road" lat="43.81228" lon="-79.3016899" stopId="12034"/>
-<stop tag="572" title="McNicoll Avenue At Silver Springs Boulevard" lat="43.81017" lon="-79.3062099" stopId="12035"/>
-<stop tag="2417" title="McNicoll Avenue At Morbank Drive" lat="43.80932" lon="-79.3086099" stopId="11073"/>
 <stop tag="1103" title="Mountcastle Gate At Steeles Avenue East" lat="43.8202899" lon="-79.32026" stopId="9894"/>
 <stop tag="14306" title="Warden Station" lat="43.7109699" lon="-79.27943" stopId="14789"/>
 <stop tag="7405" title="St Clair Avenue East At Santamonica Boulevard" lat="43.71294" lon="-79.2766999" stopId="4629"/>
@@ -138,11 +134,23 @@ Content-Type: text/xml
 <stop tag="6606" title="Wintermute Boulevard At Rivergrove Drive South" lat="43.8180199" lon="-79.31759" stopId="9893"/>
 <stop tag="1103_ar" title="Mountcastle Gate At Steeles Avenue East" lat="43.8202899" lon="-79.32026"/>
 <stop tag="10165" title="Warden Avenue At St Clair Avenue East" lat="43.7115499" lon="-79.2806499" stopId="11982"/>
-<direction tag="17_0_17C" title="South - 17 Birchmount towards Warden Station" name="South" useForUI="true">
-  <stop tag="8866" />
-  <stop tag="2851" />
-  <stop tag="572" />
-  <stop tag="2417" />
+<direction tag="17_0_17A" title="South - 17a Birchmount towards Warden Station Extra Fare Required North of Steeles" name="South" useForUI="true">
+  <stop tag="778" />
+  <stop tag="4929" />
+  <stop tag="4830" />
+  <stop tag="3116" />
+  <stop tag="1368" />
+  <stop tag="6467" />
+  <stop tag="1043" />
+  <stop tag="9044" />
+  <stop tag="7599" />
+  <stop tag="4053" />
+  <stop tag="401" />
+  <stop tag="1072" />
+  <stop tag="4626" />
+  <stop tag="1638" />
+  <stop tag="4763" />
+  <stop tag="3996" />
   <stop tag="4565" />
   <stop tag="2602" />
   <stop tag="5615" />
@@ -242,69 +250,6 @@ Content-Type: text/xml
   <stop tag="1710" />
   <stop tag="778_ar" />
 </direction>
-<direction tag="17_0_17A" title="South - 17a Birchmount towards Warden Station Extra Fare Required North of Steeles" name="South" useForUI="true">
-  <stop tag="778" />
-  <stop tag="4929" />
-  <stop tag="4830" />
-  <stop tag="3116" />
-  <stop tag="1368" />
-  <stop tag="6467" />
-  <stop tag="1043" />
-  <stop tag="9044" />
-  <stop tag="7599" />
-  <stop tag="4053" />
-  <stop tag="401" />
-  <stop tag="1072" />
-  <stop tag="4626" />
-  <stop tag="1638" />
-  <stop tag="4763" />
-  <stop tag="3996" />
-  <stop tag="4565" />
-  <stop tag="2602" />
-  <stop tag="5615" />
-  <stop tag="8567" />
-  <stop tag="398" />
-  <stop tag="10124" />
-  <stop tag="2000" />
-  <stop tag="2421" />
-  <stop tag="3759" />
-  <stop tag="7309" />
-  <stop tag="2576" />
-  <stop tag="2357" />
-  <stop tag="8927" />
-  <stop tag="5017" />
-  <stop tag="6651" />
-  <stop tag="3234" />
-  <stop tag="2172" />
-  <stop tag="7918" />
-  <stop tag="1504" />
-  <stop tag="6376" />
-  <stop tag="10036" />
-  <stop tag="9986" />
-  <stop tag="1089" />
-  <stop tag="5471" />
-  <stop tag="14567" />
-  <stop tag="5850" />
-  <stop tag="5968" />
-  <stop tag="5253" />
-  <stop tag="5502" />
-  <stop tag="4340" />
-  <stop tag="3199" />
-  <stop tag="7553" />
-  <stop tag="7083" />
-  <stop tag="3120" />
-  <stop tag="3843" />
-  <stop tag="2873" />
-  <stop tag="9467" />
-  <stop tag="4558" />
-  <stop tag="5626" />
-  <stop tag="14306_ar" />
-</direction>
-<direction tag="17_1_WISM" title="North - 17 Birchmount towards Steeles" name="North" useForUI="true">
-  <stop tag="6329" />
-  <stop tag="6606" />
-  <stop tag="1103_ar" />
-</direction>
 <path>
 <point lat="43.77908" lon="-79.29717"/>
 <point lat="43.77713" lon="-79.29635"/>
@@ -371,17 +316,6 @@ Content-Type: text/xml
 <point lat="43.73275" lon="-79.27875"/>
 </path>
 <path>
-<point lat="43.82092" lon="-79.3168"/>
-<point lat="43.81851" lon="-79.31565"/>
-<point lat="43.8164" lon="-79.3146"/>
-<point lat="43.81631" lon="-79.31474"/>
-<point lat="43.8161" lon="-79.31452"/>
-<point lat="43.81391" lon="-79.31363"/>
-<point lat="43.81096" lon="-79.31228"/>
-<point lat="43.80881" lon="-79.31134"/>
-<point lat="43.80717" lon="-79.31059"/>
-</path>
-<path>
 <point lat="43.78345" lon="-79.29917"/>
 <point lat="43.78701" lon="-79.30069"/>
 <point lat="43.79079" lon="-79.3023599"/>
@@ -392,6 +326,17 @@ Content-Type: text/xml
 <point lat="43.80013" lon="-79.30655"/>
 <point lat="43.80033" lon="-79.30671"/>
 <point lat="43.80059" lon="-79.30682"/>
+</path>
+<path>
+<point lat="43.82092" lon="-79.3168"/>
+<point lat="43.81851" lon="-79.31565"/>
+<point lat="43.8164" lon="-79.3146"/>
+<point lat="43.81631" lon="-79.31474"/>
+<point lat="43.8161" lon="-79.31452"/>
+<point lat="43.81391" lon="-79.31363"/>
+<point lat="43.81096" lon="-79.31228"/>
+<point lat="43.80881" lon="-79.31134"/>
+<point lat="43.80717" lon="-79.31059"/>
 </path>
 <path>
 <point lat="43.72742" lon="-79.27704"/>
@@ -682,39 +627,6 @@ Content-Type: text/xml
 <point lat="43.82013" lon="-79.31928"/>
 <point lat="43.81994" lon="-79.32015"/>
 <point lat="43.82029" lon="-79.32026"/>
-</path>
-<path>
-<point lat="43.81355" lon="-79.29789"/>
-<point lat="43.81335" lon="-79.2980199"/>
-<point lat="43.81308" lon="-79.29814"/>
-<point lat="43.81228" lon="-79.3016899"/>
-<point lat="43.81186" lon="-79.30299"/>
-<point lat="43.81175" lon="-79.30329"/>
-<point lat="43.81148" lon="-79.3038399"/>
-<point lat="43.81133" lon="-79.30408"/>
-<point lat="43.81117" lon="-79.3043"/>
-<point lat="43.81096" lon="-79.3045"/>
-<point lat="43.81078" lon="-79.30473"/>
-<point lat="43.81063" lon="-79.30498"/>
-<point lat="43.81032" lon="-79.30561"/>
-<point lat="43.81017" lon="-79.3062099"/>
-<point lat="43.80938" lon="-79.30812"/>
-<point lat="43.80932" lon="-79.30861"/>
-<point lat="43.80865" lon="-79.3110899"/>
-<point lat="43.80786" lon="-79.31078"/>
-<point lat="43.80717" lon="-79.31059"/>
-<point lat="43.8044" lon="-79.30933"/>
-<point lat="43.804" lon="-79.30902"/>
-<point lat="43.8021" lon="-79.30824"/>
-<point lat="43.80172" lon="-79.30799"/>
-<point lat="43.80149" lon="-79.30784"/>
-<point lat="43.80073" lon="-79.30726"/>
-<point lat="43.80064" lon="-79.30705"/>
-<point lat="43.80033" lon="-79.30671"/>
-<point lat="43.80013" lon="-79.30655"/>
-<point lat="43.79966" lon="-79.30624"/>
-<point lat="43.79919" lon="-79.3062"/>
-<point lat="43.79726" lon="-79.3053"/>
 </path>
 </route>
 </body>

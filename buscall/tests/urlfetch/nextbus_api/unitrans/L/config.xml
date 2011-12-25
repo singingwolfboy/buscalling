@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:10 GMT
+Date: Sun, 25 Dec 2011 20:01:52 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1906
+Content-Length: 1991
 Connection: close
 Content-Type: text/xml
 
@@ -16,16 +16,16 @@ Content-Type: text/xml
 <stop tag="22000" title="Hutchison Dr &amp; A St (EB)" lat="38.5400299" lon="-121.7460499" stopId="000"/>
 <stop tag="22013" title="B St &amp; 4th St (NB)" lat="38.54528" lon="-121.74493" stopId="013"/>
 <stop tag="22022" title="B St &amp; 5th St (NB)" lat="38.5469999" lon="-121.74544" stopId="022"/>
-<stop tag="22024" title="B St &amp; 7th St (NB)" lat="38.5496499" lon="-121.7460599" stopId="024"/>
-<stop tag="22121" title="8th St &amp; D St (EB)" lat="38.55093" lon="-121.7440099" stopId="121"/>
+<stop tag="22024" title="B St &amp; 7th St (NB)" lat="38.54965" lon="-121.74606" stopId="024"/>
+<stop tag="22121" title="8th St &amp; D St (EB)" lat="38.5509299" lon="-121.74401" stopId="121"/>
 <stop tag="22119" title="8th St &amp; G St (EB)" lat="38.55142" lon="-121.7412699" stopId="119"/>
 <stop tag="22111" title="8th St &amp; J St (EB)" lat="38.5516999" lon="-121.73892" stopId="111"/>
 <stop tag="22105" title="8th St &amp; L St (EB)" lat="38.55278" lon="-121.7343599" stopId="105"/>
-<stop tag="22102" title="8th St &amp; Chestnut Ln (EB)" lat="38.5532899" lon="-121.73034" stopId="102"/>
-<stop tag="22094" title="Pole Line Rd &amp; 8th St (NB)" lat="38.5539599" lon="-121.72726" stopId="094"/>
-<stop tag="22357" title="Pole Line Rd &amp; Loyola Dr (NB)" lat="38.5561599" lon="-121.72732" stopId="357"/>
+<stop tag="22102" title="8th St &amp; Chestnut Ln (EB)" lat="38.55329" lon="-121.7303399" stopId="102"/>
+<stop tag="22094" title="Pole Line Rd &amp; 8th St (NB)" lat="38.55396" lon="-121.72726" stopId="094"/>
+<stop tag="22357" title="Pole Line Rd &amp; Loyola Dr (NB)" lat="38.55616" lon="-121.72732" stopId="357"/>
 <stop tag="22092" title="Pole Line Rd &amp; Claremont Dr (NB)" lat="38.5614499" lon="-121.73099" stopId="092"/>
-<stop tag="22106" title="Pole Line Rd &amp; Picasso Ave (NB)" lat="38.5643599" lon="-121.73086" stopId="106"/>
+<stop tag="22106" title="Pole Line Rd &amp; Picasso Ave (NB)" lat="38.56436" lon="-121.73086" stopId="106"/>
 <stop tag="22107" title="Donner Ave &amp; Green Meadows (EB)" lat="38.56593" lon="-121.7293499" stopId="107"/>
 <stop tag="22108" title="Fremont Ct &amp; Bidwell St (SB)" lat="38.5673499" lon="-121.72836" stopId="108"/>
 <stop tag="22109" title="Donner Ave &amp; Pole Line Rd (WB)" lat="38.5660899" lon="-121.7295199" stopId="109"/>
@@ -33,7 +33,7 @@ Content-Type: text/xml
 <stop tag="22280" title="Pole Line &amp; Loyola (SB)" lat="38.5572399" lon="-121.7277199" stopId="280"/>
 <stop tag="22281" title="East 8th Street &amp; Pole Line Road (WB)" lat="38.5534299" lon="-121.7276299" stopId="281"/>
 <stop tag="22103" title="8th St &amp; Chestnut Ln (WB)" lat="38.5535099" lon="-121.73131" stopId="103"/>
-<stop tag="22104" title="8th St &amp; L St (WB)" lat="38.5526699" lon="-121.73544" stopId="104"/>
+<stop tag="22104" title="8th St &amp; L St (WB)" lat="38.55267" lon="-121.7354399" stopId="104"/>
 <stop tag="22110" title="8th St &amp; J St (WB)" lat="38.5519199" lon="-121.739" stopId="110"/>
 <stop tag="22118" title="8th St &amp; G St (WB)" lat="38.55159" lon="-121.7412699" stopId="118"/>
 <stop tag="22120" title="8th St &amp; D St (WB)" lat="38.5510099" lon="-121.74472" stopId="120"/>
@@ -77,6 +77,7 @@ Content-Type: text/xml
 </direction>
 <path>
 <point lat="38.56145" lon="-121.73099"/>
+<point lat="38.56188" lon="-121.73114"/>
 <point lat="38.56216" lon="-121.73114"/>
 <point lat="38.56436" lon="-121.73086"/>
 <point lat="38.56603" lon="-121.73086"/>
@@ -115,8 +116,10 @@ Content-Type: text/xml
 <path>
 <point lat="38.547" lon="-121.74544"/>
 <point lat="38.54783" lon="-121.74582"/>
+<point lat="38.54937" lon="-121.74611"/>
 <point lat="38.54965" lon="-121.74606"/>
 <point lat="38.5506699" lon="-121.74637"/>
+<point lat="38.55083" lon="-121.74528"/>
 <point lat="38.55093" lon="-121.74401"/>
 <point lat="38.55142" lon="-121.74127"/>
 <point lat="38.5518" lon="-121.73971"/>
@@ -136,6 +139,7 @@ Content-Type: text/xml
 <point lat="38.55803" lon="-121.72811"/>
 <point lat="38.55786" lon="-121.72794"/>
 <point lat="38.5576" lon="-121.72774"/>
+<point lat="38.55749" lon="-121.7277"/>
 <point lat="38.55724" lon="-121.72772"/>
 <point lat="38.5572" lon="-121.72757"/>
 <point lat="38.55687" lon="-121.72749"/>
@@ -144,7 +148,10 @@ Content-Type: text/xml
 <point lat="38.55362" lon="-121.72736"/>
 <point lat="38.55336" lon="-121.72732"/>
 <point lat="38.55343" lon="-121.72763"/>
+<point lat="38.55336" lon="-121.72953"/>
+<point lat="38.55338" lon="-121.72993"/>
 <point lat="38.55351" lon="-121.73131"/>
+<point lat="38.55339" lon="-121.73178"/>
 <point lat="38.55321" lon="-121.73334"/>
 <point lat="38.5531099" lon="-121.73377"/>
 <point lat="38.55267" lon="-121.73544"/>
@@ -161,6 +168,7 @@ Content-Type: text/xml
 <point lat="38.55159" lon="-121.74127"/>
 <point lat="38.55101" lon="-121.74472"/>
 <point lat="38.5506699" lon="-121.74637"/>
+<point lat="38.55001" lon="-121.74622"/>
 <point lat="38.54893" lon="-121.74617"/>
 </path>
 <path>
@@ -172,6 +180,9 @@ Content-Type: text/xml
 <point lat="38.55181" lon="-121.73791"/>
 <point lat="38.55278" lon="-121.73436"/>
 <point lat="38.55321" lon="-121.73334"/>
+<point lat="38.55335" lon="-121.73221"/>
+<point lat="38.55342" lon="-121.73109"/>
+<point lat="38.55342" lon="-121.73086"/>
 <point lat="38.5532899" lon="-121.73034"/>
 <point lat="38.55336" lon="-121.72732"/>
 <point lat="38.55362" lon="-121.72736"/>
@@ -186,6 +197,7 @@ Content-Type: text/xml
 <point lat="38.55803" lon="-121.72811"/>
 <point lat="38.55814" lon="-121.7282"/>
 <point lat="38.55851" lon="-121.72867"/>
+<point lat="38.55859" lon="-121.72879"/>
 <point lat="38.5594899" lon="-121.73015"/>
 <point lat="38.55954" lon="-121.73025"/>
 <point lat="38.55971" lon="-121.73046"/>
@@ -199,6 +211,7 @@ Content-Type: text/xml
 <path>
 <point lat="38.54893" lon="-121.74617"/>
 <point lat="38.54783" lon="-121.74582"/>
+<point lat="38.54634" lon="-121.74538"/>
 <point lat="38.54505" lon="-121.74513"/>
 <point lat="38.54137" lon="-121.74398"/>
 <point lat="38.54131" lon="-121.74409"/>
@@ -243,6 +256,7 @@ Content-Type: text/xml
 <point lat="38.56609" lon="-121.72952"/>
 <point lat="38.56603" lon="-121.73086"/>
 <point lat="38.56216" lon="-121.73114"/>
+<point lat="38.56188" lon="-121.73114"/>
 <point lat="38.5613699" lon="-121.73116"/>
 <point lat="38.56085" lon="-121.73107"/>
 <point lat="38.56083" lon="-121.73121"/>

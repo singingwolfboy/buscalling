@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:29 GMT
+Date: Sun, 25 Dec 2011 19:59:38 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2317
+Content-Length: 2215
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="50" title="50-Burnhamthorpe" color="ff0000" oppositeColor="ffffff" latMin="43.6367999" latMax="43.6510399" lonMin="-79.58288" lonMax="-79.5241799">
+<route tag="50" title="50-Burnhamthorpe" color="ff0000" oppositeColor="ffffff" latMin="43.64051" latMax="43.6510399" lonMin="-79.58288" lonMax="-79.5241799">
 <stop tag="3728" title="Mill Road Loop" lat="43.6405799" lon="-79.58288" stopId="1249"/>
 <stop tag="9277" title="Burnhamthorpe Road At Old Burnhamthorpe Road West" lat="43.64051" lon="-79.5820599" stopId="0687"/>
 <stop tag="5497" title="Burnhamthorpe Road At Silver Shadow Path" lat="43.6418199" lon="-79.57837" stopId="0688"/>
@@ -33,7 +33,6 @@ Content-Type: text/xml
 <stop tag="9355" title="Central Parkway At Islington Avenue" lat="43.6482599" lon="-79.52527" stopId="0764"/>
 <stop tag="403" title="Bloor Street West At Islington Avenue Farside" lat="43.6446699" lon="-79.5241799" stopId="0526"/>
 <stop tag="14218_ar" title="Islington Station" lat="43.6450999" lon="-79.52482"/>
-<stop tag="9418" title="Silverthorn Collegiate Institute Farside" lat="43.6367999" lon="-79.58075" stopId="1340"/>
 <stop tag="14218" title="Islington Station" lat="43.6450999" lon="-79.52482" stopId="14698"/>
 <stop tag="7277" title="50 Cordova Avenue" lat="43.64775" lon="-79.52432" stopId="1163"/>
 <stop tag="8196" title="Cordova Avenue At Central Parkway" lat="43.64767" lon="-79.52617" stopId="0762"/>
@@ -56,30 +55,6 @@ Content-Type: text/xml
 <stop tag="4535" title="Burnhamthorpe Road At Silver Shadow Path" lat="43.6418299" lon="-79.57884" stopId="0689"/>
 <stop tag="8698" title="Burnhamthorpe Road At Old Burnhamthorpe Road" lat="43.64086" lon="-79.5815799" stopId="13484"/>
 <stop tag="3728_ar" title="Mill Road Loop" lat="43.6405799" lon="-79.58288"/>
-<direction tag="50_0_MMIS" title="East - 50 Burnhamthorpe towards Islington Station" name="East" useForUI="true">
-  <stop tag="9418" />
-  <stop tag="9277" />
-  <stop tag="5497" />
-  <stop tag="6530" />
-  <stop tag="9244" />
-  <stop tag="2923" />
-  <stop tag="3580" />
-  <stop tag="4207" />
-  <stop tag="7907" />
-  <stop tag="713" />
-  <stop tag="10243" />
-  <stop tag="1615" />
-  <stop tag="2356" />
-  <stop tag="2002" />
-  <stop tag="3438" />
-  <stop tag="9932" />
-  <stop tag="6047" />
-  <stop tag="3268" />
-  <stop tag="9534" />
-  <stop tag="9355" />
-  <stop tag="403" />
-  <stop tag="14218_ar" />
-</direction>
 <direction tag="50_1_50" title="West - 50 Burnhamthorpe towards Mill Road" name="West" useForUI="true">
   <stop tag="14218" />
   <stop tag="7277" />
@@ -103,6 +78,30 @@ Content-Type: text/xml
   <stop tag="4535" />
   <stop tag="8698" />
   <stop tag="3728_ar" />
+</direction>
+<direction tag="50_0_50" title="East - 50 Burnhamthorpe towards Islington Station" name="East" useForUI="true">
+  <stop tag="3728" />
+  <stop tag="9277" />
+  <stop tag="5497" />
+  <stop tag="6530" />
+  <stop tag="9244" />
+  <stop tag="2923" />
+  <stop tag="3580" />
+  <stop tag="4207" />
+  <stop tag="7907" />
+  <stop tag="713" />
+  <stop tag="10243" />
+  <stop tag="1615" />
+  <stop tag="2356" />
+  <stop tag="2002" />
+  <stop tag="3438" />
+  <stop tag="9932" />
+  <stop tag="6047" />
+  <stop tag="3268" />
+  <stop tag="9534" />
+  <stop tag="9355" />
+  <stop tag="403" />
+  <stop tag="14218_ar" />
 </direction>
 <path>
 <point lat="43.64626" lon="-79.55944"/>
@@ -193,24 +192,6 @@ Content-Type: text/xml
 <point lat="43.65069" lon="-79.53619"/>
 <point lat="43.65097" lon="-79.53939"/>
 <point lat="43.65104" lon="-79.53961"/>
-</path>
-<path>
-<point lat="43.6368" lon="-79.58075"/>
-<point lat="43.6392" lon="-79.58436"/>
-<point lat="43.63985" lon="-79.58366"/>
-<point lat="43.64004" lon="-79.58342"/>
-<point lat="43.64017" lon="-79.5832"/>
-<point lat="43.64024" lon="-79.58308"/>
-<point lat="43.6403" lon="-79.58291"/>
-<point lat="43.64051" lon="-79.58206"/>
-<point lat="43.64182" lon="-79.57837"/>
-<point lat="43.6423599" lon="-79.57705"/>
-<point lat="43.64243" lon="-79.57599"/>
-<point lat="43.64255" lon="-79.57588"/>
-<point lat="43.6432" lon="-79.57267"/>
-<point lat="43.64406" lon="-79.5689699"/>
-<point lat="43.64437" lon="-79.56739"/>
-<point lat="43.64626" lon="-79.55944"/>
 </path>
 <path>
 <point lat="43.6506" lon="-79.53631"/>

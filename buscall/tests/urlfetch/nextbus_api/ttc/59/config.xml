@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:36 GMT
+Date: Sun, 25 Dec 2011 19:59:48 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5514
+Content-Length: 5414
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="59" title="59-Maple Leaf" color="ff0000" oppositeColor="ffffff" latMin="43.6978399" latMax="43.7156299" lonMin="-79.53272" lonMax="-79.44391">
+<route tag="59" title="59-Maple Leaf" color="ff0000" oppositeColor="ffffff" latMin="43.6978399" latMax="43.71559" lonMin="-79.53272" lonMax="-79.44413">
 <stop tag="9096" title="Oak Street At Weston Road" lat="43.7080899" lon="-79.53257" stopId="5873"/>
 <stop tag="10095" title="Weston Road At Parke Street Farside" lat="43.7059599" lon="-79.53116" stopId="8756"/>
 <stop tag="10172" title="Weston Road At Coulter Avenue" lat="43.70457" lon="-79.5284" stopId="8712"/>
@@ -44,7 +44,7 @@ Content-Type: text/xml
 <stop tag="4572" title="Lawrence Avenue West At Corona Street Farside" lat="43.7143299" lon="-79.45198" stopId="5353"/>
 <stop tag="4829" title="Lawrence Avenue West At Bolingbroke Road" lat="43.7148599" lon="-79.44954" stopId="5343"/>
 <stop tag="1125" title="Lawrence Avenue West At Marlee Avenue" lat="43.71545" lon="-79.4467699" stopId="5389"/>
-<stop tag="14251_ar" title="Lawrence West Station" lat="43.7156299" lon="-79.44391"/>
+<stop tag="14252_ar" title="Lawrence West Station" lat="43.7155899" lon="-79.44413"/>
 <stop tag="7329" title="Culford Road At Lawrence Avenue West Farside" lat="43.7059199" lon="-79.48753" stopId="4930"/>
 <stop tag="9750" title="150 Culford Road" lat="43.7051099" lon="-79.4872299" stopId="9985"/>
 <stop tag="1858" title="Culford Road At Ridge Point Crescent" lat="43.7033399" lon="-79.4867199" stopId="4932"/>
@@ -71,10 +71,10 @@ Content-Type: text/xml
 <stop tag="5559" title="Pelmo Crescent At Longview Drive" lat="43.71081" lon="-79.51082" stopId="5998"/>
 <stop tag="3239" title="Uphill Avenue At Woodward Avenue" lat="43.70955" lon="-79.50898" stopId="6151"/>
 <stop tag="782" title="Uphill Avenue At Church Street" lat="43.7087199" lon="-79.5086199" stopId="6149"/>
-<stop tag="14251" title="Lawrence West Station" lat="43.7156299" lon="-79.44391" stopId="14732"/>
-<stop tag="1492" title="Lawrence Avenue West At Marlee Avenue Farside" lat="43.7155899" lon="-79.44709" stopId="5390"/>
-<stop tag="6966" title="Lawrence Avenue West At Bolingbroke Road" lat="43.71513" lon="-79.4492999" stopId="5344"/>
-<stop tag="1489" title="Lawrence Avenue West At Corona Street Farside" lat="43.7144299" lon="-79.4525099" stopId="5354"/>
+<stop tag="14252" title="Lawrence West Station" lat="43.7155899" lon="-79.44413" stopId="14733"/>
+<stop tag="1492" title="Lawrence Avenue West At Marlee Avenue Farside" lat="43.71559" lon="-79.4470899" stopId="5390"/>
+<stop tag="6966" title="Lawrence Avenue West At Bolingbroke Road" lat="43.7151299" lon="-79.4493" stopId="5344"/>
+<stop tag="1489" title="Lawrence Avenue West At Corona Street Farside" lat="43.7144299" lon="-79.45251" stopId="5354"/>
 <stop tag="5733" title="Lawrence Avenue West At Dufferin Street" lat="43.71422" lon="-79.4543799" stopId="5361"/>
 <stop tag="8765" title="Lawrence Avenue West At Apex Road" lat="43.7134199" lon="-79.4584" stopId="5334"/>
 <stop tag="6925" title="Lawrence Avenue West At Dufflaw Road" lat="43.7128899" lon="-79.46075" stopId="5364"/>
@@ -92,7 +92,7 @@ Content-Type: text/xml
 <stop tag="1907" title="Maple Leaf Drive At Bourdon Avenue" lat="43.71128" lon="-79.4958499" stopId="5543"/>
 <stop tag="5541" title="Maple Leaf Drive At Liscombe Road" lat="43.7107899" lon="-79.49806" stopId="5546"/>
 <stop tag="1952" title="Maple Leaf Drive At Stella Avenue" lat="43.71033" lon="-79.5001299" stopId="5548"/>
-<stop tag="6301" title="Maple Leaf At Opp 290/300 Queens Drive" lat="43.7098099" lon="-79.50245" stopId="11517"/>
+<stop tag="6301" title="Maple Leaf Opposite 290/300 Queens Drive" lat="43.7098099" lon="-79.50245" stopId="11517"/>
 <stop tag="1434" title="Maple Leaf Drive At Jane Street" lat="43.7093599" lon="-79.50533" stopId="5545"/>
 <stop tag="413" title="Church Street At Uphill Avenue" lat="43.70866" lon="-79.5083699" stopId="4886"/>
 <stop tag="6803" title="Uphill Avenue At Woodward Avenue" lat="43.7094099" lon="-79.50881" stopId="6150"/>
@@ -164,10 +164,10 @@ Content-Type: text/xml
   <stop tag="4572" />
   <stop tag="4829" />
   <stop tag="1125" />
-  <stop tag="14251_ar" />
+  <stop tag="14252_ar" />
 </direction>
 <direction tag="59_1_59B/C" title="West - 59b Maple Leaf towards Weston Rd via Benton and Culford and Church" name="West" useForUI="true">
-  <stop tag="14251" />
+  <stop tag="14252" />
   <stop tag="1492" />
   <stop tag="6966" />
   <stop tag="1489" />
@@ -214,7 +214,7 @@ Content-Type: text/xml
   <stop tag="8461_ar" />
 </direction>
 <direction tag="59_1_59A/C" title="West - 59a Maple Leaf towards Weston Rd via Benton and Culford and Gary Dr" name="West" useForUI="true">
-  <stop tag="14251" />
+  <stop tag="14252" />
   <stop tag="1492" />
   <stop tag="6966" />
   <stop tag="1489" />
@@ -304,7 +304,7 @@ Content-Type: text/xml
   <stop tag="4572" />
   <stop tag="4829" />
   <stop tag="1125" />
-  <stop tag="14251_ar" />
+  <stop tag="14252_ar" />
 </direction>
 <direction tag="59_0_59A/C" title="East - 59c Maple Leaf towards Lawrence West Station via  Culford and Benton" name="East" useForUI="true">
   <stop tag="9096" />
@@ -350,10 +350,10 @@ Content-Type: text/xml
   <stop tag="4572" />
   <stop tag="4829" />
   <stop tag="1125" />
-  <stop tag="14251_ar" />
+  <stop tag="14252_ar" />
 </direction>
 <direction tag="59_1_59B" title="West - 59b Maple Leaf towards Weston Rd via Church" name="West" useForUI="true">
-  <stop tag="14251" />
+  <stop tag="14252" />
   <stop tag="1492" />
   <stop tag="6966" />
   <stop tag="1489" />
@@ -422,10 +422,10 @@ Content-Type: text/xml
   <stop tag="4572" />
   <stop tag="4829" />
   <stop tag="1125" />
-  <stop tag="14251_ar" />
+  <stop tag="14252_ar" />
 </direction>
 <direction tag="59_1_59A" title="West - 59 Maple Leaf towards Weston Rd via Gary Dr" name="West" useForUI="true">
-  <stop tag="14251" />
+  <stop tag="14252" />
   <stop tag="1492" />
   <stop tag="6966" />
   <stop tag="1489" />
@@ -460,6 +460,16 @@ Content-Type: text/xml
   <stop tag="3369" />
   <stop tag="9096_ar" />
 </direction>
+<path>
+<point lat="43.7143299" lon="-79.45198"/>
+<point lat="43.71486" lon="-79.44954"/>
+<point lat="43.71521" lon="-79.4484"/>
+<point lat="43.71545" lon="-79.44677"/>
+<point lat="43.7157" lon="-79.44606"/>
+<point lat="43.71593" lon="-79.44497"/>
+<point lat="43.71604" lon="-79.44445"/>
+<point lat="43.71559" lon="-79.44413"/>
+</path>
 <path>
 <point lat="43.70596" lon="-79.53116"/>
 <point lat="43.70514" lon="-79.5294"/>
@@ -500,33 +510,6 @@ Content-Type: text/xml
 <point lat="43.69921" lon="-79.47658"/>
 </path>
 <path>
-<point lat="43.71563" lon="-79.44391"/>
-<point lat="43.71548" lon="-79.44439"/>
-<point lat="43.71545" lon="-79.44457"/>
-<point lat="43.71544" lon="-79.44468"/>
-<point lat="43.71548" lon="-79.44474"/>
-<point lat="43.71557" lon="-79.4448"/>
-<point lat="43.71566" lon="-79.44484"/>
-<point lat="43.71593" lon="-79.44497"/>
-<point lat="43.7157" lon="-79.44606"/>
-<point lat="43.71559" lon="-79.44709"/>
-<point lat="43.71513" lon="-79.4492999"/>
-<point lat="43.71432" lon="-79.45242"/>
-<point lat="43.71443" lon="-79.45251"/>
-<point lat="43.71422" lon="-79.45438"/>
-<point lat="43.7141" lon="-79.45448"/>
-<point lat="43.71394" lon="-79.45553"/>
-<point lat="43.71342" lon="-79.4584"/>
-</path>
-<path>
-<point lat="43.7064499" lon="-79.48692"/>
-<point lat="43.7073899" lon="-79.48254"/>
-<point lat="43.70831" lon="-79.47903"/>
-<point lat="43.70856" lon="-79.4783099"/>
-<point lat="43.70877" lon="-79.47789"/>
-<point lat="43.70884" lon="-79.4774"/>
-</path>
-<path>
 <point lat="43.70009" lon="-79.47264"/>
 <point lat="43.7007199" lon="-79.46961"/>
 <point lat="43.70098" lon="-79.46897"/>
@@ -548,24 +531,12 @@ Content-Type: text/xml
 <point lat="43.71146" lon="-79.4661"/>
 </path>
 <path>
-<point lat="43.7143299" lon="-79.45198"/>
-<point lat="43.71486" lon="-79.44954"/>
-<point lat="43.71521" lon="-79.4484"/>
-<point lat="43.71545" lon="-79.44677"/>
-<point lat="43.7157" lon="-79.44606"/>
-<point lat="43.71593" lon="-79.44497"/>
-<point lat="43.71604" lon="-79.44445"/>
-<point lat="43.71609" lon="-79.4442399"/>
-<point lat="43.71614" lon="-79.44401"/>
-<point lat="43.71619" lon="-79.44376"/>
-<point lat="43.7161199" lon="-79.44356"/>
-<point lat="43.71606" lon="-79.44343"/>
-<point lat="43.71604" lon="-79.4433899"/>
-<point lat="43.71601" lon="-79.44337"/>
-<point lat="43.71595" lon="-79.44336"/>
-<point lat="43.7157399" lon="-79.44337"/>
-<point lat="43.71569" lon="-79.4433899"/>
-<point lat="43.71563" lon="-79.44391"/>
+<point lat="43.7064499" lon="-79.48692"/>
+<point lat="43.7073899" lon="-79.48254"/>
+<point lat="43.70831" lon="-79.47903"/>
+<point lat="43.70856" lon="-79.4783099"/>
+<point lat="43.70877" lon="-79.47789"/>
+<point lat="43.70884" lon="-79.4774"/>
 </path>
 <path>
 <point lat="43.7079" lon="-79.53272"/>
@@ -766,6 +737,25 @@ Content-Type: text/xml
 <point lat="43.70475" lon="-79.52842"/>
 </path>
 <path>
+<point lat="43.71559" lon="-79.44413"/>
+<point lat="43.71548" lon="-79.44439"/>
+<point lat="43.71545" lon="-79.44457"/>
+<point lat="43.71544" lon="-79.44468"/>
+<point lat="43.71548" lon="-79.44474"/>
+<point lat="43.71557" lon="-79.4448"/>
+<point lat="43.71566" lon="-79.44484"/>
+<point lat="43.71593" lon="-79.44497"/>
+<point lat="43.7157" lon="-79.44606"/>
+<point lat="43.71559" lon="-79.44709"/>
+<point lat="43.71513" lon="-79.4492999"/>
+<point lat="43.71432" lon="-79.45242"/>
+<point lat="43.71443" lon="-79.45251"/>
+<point lat="43.71422" lon="-79.45438"/>
+<point lat="43.7141" lon="-79.45448"/>
+<point lat="43.71394" lon="-79.45553"/>
+<point lat="43.71342" lon="-79.4584"/>
+</path>
+<path>
 <point lat="43.7093599" lon="-79.50533"/>
 <point lat="43.70925" lon="-79.50547"/>
 <point lat="43.70866" lon="-79.50837"/>
@@ -809,32 +799,6 @@ Content-Type: text/xml
 <point lat="43.71408" lon="-79.45474"/>
 <point lat="43.71423" lon="-79.45312"/>
 <point lat="43.7143299" lon="-79.45198"/>
-</path>
-<path>
-<point lat="43.70918" lon="-79.50577"/>
-<point lat="43.70971" lon="-79.50245"/>
-<point lat="43.7102" lon="-79.5003"/>
-<point lat="43.71062" lon="-79.49841"/>
-<point lat="43.71108" lon="-79.49637"/>
-<point lat="43.71131" lon="-79.49548"/>
-<point lat="43.71135" lon="-79.49512"/>
-<point lat="43.71135" lon="-79.49477"/>
-<point lat="43.71138" lon="-79.49441"/>
-<point lat="43.71174" lon="-79.4926799"/>
-<point lat="43.71223" lon="-79.49041"/>
-<point lat="43.71235" lon="-79.49014"/>
-<point lat="43.71188" lon="-79.48993"/>
-<point lat="43.71155" lon="-79.48983"/>
-<point lat="43.71073" lon="-79.48969"/>
-<point lat="43.7105" lon="-79.48962"/>
-<point lat="43.71032" lon="-79.48966"/>
-<point lat="43.71018" lon="-79.48959"/>
-<point lat="43.70989" lon="-79.48951"/>
-<point lat="43.70862" lon="-79.48879"/>
-<point lat="43.70818" lon="-79.48854"/>
-<point lat="43.7080399" lon="-79.48838"/>
-<point lat="43.70637" lon="-79.48766"/>
-<point lat="43.7064499" lon="-79.48692"/>
 </path>
 <path>
 <point lat="43.70756" lon="-79.48273"/>
@@ -908,25 +872,6 @@ Content-Type: text/xml
 <point lat="43.70856" lon="-79.4783099"/>
 <point lat="43.70831" lon="-79.47903"/>
 <point lat="43.70756" lon="-79.48273"/>
-</path>
-<path>
-<point lat="43.7143299" lon="-79.45198"/>
-<point lat="43.71486" lon="-79.44954"/>
-<point lat="43.71521" lon="-79.4484"/>
-<point lat="43.71545" lon="-79.44677"/>
-<point lat="43.7157" lon="-79.44606"/>
-<point lat="43.71593" lon="-79.44497"/>
-<point lat="43.71604" lon="-79.44445"/>
-<point lat="43.71609" lon="-79.4442399"/>
-<point lat="43.71614" lon="-79.44401"/>
-<point lat="43.71619" lon="-79.44376"/>
-<point lat="43.7161199" lon="-79.44356"/>
-<point lat="43.71606" lon="-79.44343"/>
-<point lat="43.71604" lon="-79.4433899"/>
-<point lat="43.71601" lon="-79.44337"/>
-<point lat="43.71595" lon="-79.44336"/>
-<point lat="43.7157399" lon="-79.44337"/>
-<point lat="43.71563" lon="-79.44391"/>
 </path>
 </route>
 </body>

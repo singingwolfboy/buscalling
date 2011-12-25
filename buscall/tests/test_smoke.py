@@ -27,7 +27,7 @@ class SmokeTestCase(CustomTestCase):
         assert rv.status.startswith("200"), rv.status
         agency = json.loads(rv.data)
         self.assertEqual(agency['id'], "mbta")
-        assert isinstance(agency['routes'], list)
+        assert isinstance(agency['routes'], dict)
         rv2 = self.app.get('/agencies/mbta', headers={"Accept": "application/json"})
         self.assertEqual(rv.data, rv2.data)
 

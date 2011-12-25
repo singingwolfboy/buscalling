@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:04 GMT
+Date: Sun, 25 Dec 2011 19:59:09 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5497
+Content-Length: 5335
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="12" title="12-Kingston Rd" color="ff0000" oppositeColor="ffffff" latMin="43.6793499" latMax="43.7366499" lonMin="-79.28931" lonMax="-79.2337899">
+<route tag="12" title="12-Kingston Rd" color="ff0000" oppositeColor="ffffff" latMin="43.6807899" latMax="43.7366499" lonMin="-79.28931" lonMax="-79.2337899">
 <stop tag="14305" title="Victoria Park Station" lat="43.6938799" lon="-79.2883" stopId="14788"/>
 <stop tag="14731" title="Victoria Park Avenue At Denton Avenue" lat="43.6931" lon="-79.28931" stopId="14962"/>
 <stop tag="8504" title="Victoria Park Avenue At Danforth Avenue" lat="43.6913699" lon="-79.2885099" stopId="4690"/>
@@ -67,7 +67,7 @@ Content-Type: text/xml
 <stop tag="323" title="Eglinton Avenue East At Midland Avenue Farside" lat="43.7344699" lon="-79.25888" stopId="1036"/>
 <stop tag="5465" title="2466 Eglinton Avenue East (Rainbow Village)" lat="43.7340999" lon="-79.26044" stopId="6365"/>
 <stop tag="9949" title="North Service Road At Eglinton Avenue East" lat="43.73305" lon="-79.2654799" stopId="1038"/>
-<stop tag="14228_ar" title="Kennedy Station" lat="43.7324999" lon="-79.26331"/>
+<stop tag="14232_ar" title="Kennedy Station" lat="43.7325199" lon="-79.26389"/>
 <stop tag="3243" title="Bingham Loop Farside" lat="43.6814999" lon="-79.28485" stopId="13519"/>
 <stop tag="3243_ar" title="Bingham Loop Farside" lat="43.6814999" lon="-79.28485"/>
 <stop tag="2043" title="Brooklawn Avenue At Barkdene Hills" lat="43.7169199" lon="-79.23381" stopId="3377"/>
@@ -106,267 +106,23 @@ Content-Type: text/xml
 <stop tag="3024" title="Kingston Road At St Clair Avenue East Farside" lat="43.7218899" lon="-79.23716" stopId="1565"/>
 <stop tag="3630" title="St Clair Avenue East At Fermoy Road" lat="43.72147" lon="-79.2390399" stopId="1560"/>
 <stop tag="4405" title="Brimley Road At St Clair Avenue East Farside" lat="43.7204999" lon="-79.2413999" stopId="3367"/>
-<stop tag="14228" title="Kennedy Station" lat="43.7324999" lon="-79.26331" stopId="14708"/>
-<stop tag="311" title="2495 Eglinton Avenue East" lat="43.7340399" lon="-79.2598" stopId="1031"/>
+<stop tag="14232" title="Kennedy Station" lat="43.7325199" lon="-79.26389" stopId="14713"/>
+<stop tag="311" title="2495 Eglinton Avenue East" lat="43.73404" lon="-79.2597999" stopId="1031"/>
 <stop tag="8890" title="Eglinton Avenue East At Midland Avenue" lat="43.7343199" lon="-79.25847" stopId="1037"/>
 <stop tag="2447" title="Eglinton Avenue East At Huntington Avenue" lat="43.73489" lon="-79.2558799" stopId="1035"/>
-<stop tag="8986" title="Eglinton Avenue East At Falmouth Avenue" lat="43.7354699" lon="-79.25331" stopId="1032"/>
-<stop tag="6997" title="Eglinton Avenue East At Brimley Road" lat="43.7365199" lon="-79.24828" stopId="2254"/>
-<stop tag="2250" title="Brimley Road At Danforth Road" lat="43.7353199" lon="-79.2475799" stopId="9641"/>
+<stop tag="8986" title="Eglinton Avenue East At Falmouth Avenue" lat="43.73547" lon="-79.2533099" stopId="1032"/>
+<stop tag="6997" title="Eglinton Avenue East At Brimley Road" lat="43.73652" lon="-79.2482799" stopId="2254"/>
+<stop tag="2250" title="Brimley Road At Danforth Road" lat="43.73532" lon="-79.24758" stopId="9641"/>
 <stop tag="9111" title="Brimley Road At Lombardy Crescent" lat="43.7319599" lon="-79.2461699" stopId="9642"/>
 <stop tag="4771" title="Brimley Road At Skagway Avenue" lat="43.72854" lon="-79.24476" stopId="9643"/>
-<stop tag="6168" title="Brimley Road At Comrie Terrace North" lat="43.7261499" lon="-79.2437399" stopId="9644"/>
-<stop tag="2963" title="Brimley Road At Comrie Terrace South" lat="43.72469" lon="-79.24314" stopId="9645"/>
+<stop tag="6168" title="Brimley Road At Comrie Terrace North" lat="43.72615" lon="-79.24374" stopId="9644"/>
+<stop tag="2963" title="Brimley Road At Comrie Terrace South" lat="43.7246899" lon="-79.2431399" stopId="9645"/>
 <stop tag="2526" title="Brimley Road At Minerva Avenue" lat="43.7227299" lon="-79.2423299" stopId="9646"/>
-<stop tag="2328" title="Brimley Road At North Side Stop St Clair Avenue East" lat="43.7210799" lon="-79.2416499" stopId="9647"/>
+<stop tag="2328" title="Brimley Road At St Clair Avenue East" lat="43.72108" lon="-79.24165" stopId="9647"/>
 <stop tag="14780" title="Danforth Avenue At Variety Village" lat="43.6991299" lon="-79.25883" stopId="15012"/>
 <stop tag="14778" title="Birchmount Road At Parkette Place" lat="43.6962699" lon="-79.2637899" stopId="15010"/>
 <stop tag="6965" title="Birchmount Road At Hollis Avenue Farside" lat="43.6948199" lon="-79.2631499" stopId="7552"/>
 <stop tag="2275" title="Birchmount Road At Kingston Road Farside" lat="43.6931399" lon="-79.2624499" stopId="7553"/>
-<stop tag="6277" title="Neil McNeil Secondary School" lat="43.6793499" lon="-79.28337" stopId="11036"/>
-<direction tag="12_1_NMVI" title="West - 12e Kingston Rd Express towards Victoria Park Station" name="West" useForUI="true">
-  <stop tag="6277" />
-  <stop tag="14305_ar" />
-</direction>
-<direction tag="12_0_12" title="East - 12 Kingston Rd towards St Clair and Barkdene Hills" name="East" useForUI="true">
-  <stop tag="14305" />
-  <stop tag="14731" />
-  <stop tag="8504" />
-  <stop tag="2623" />
-  <stop tag="2608" />
-  <stop tag="7921" />
-  <stop tag="8160" />
-  <stop tag="7857" />
-  <stop tag="2966" />
-  <stop tag="8892" />
-  <stop tag="2600" />
-  <stop tag="2801" />
-  <stop tag="7815" />
-  <stop tag="4720" />
-  <stop tag="8516" />
-  <stop tag="9456" />
-  <stop tag="1190" />
-  <stop tag="6012" />
-  <stop tag="6067" />
-  <stop tag="6581" />
-  <stop tag="1949" />
-  <stop tag="6172" />
-  <stop tag="2802" />
-  <stop tag="9445" />
-  <stop tag="7720" />
-  <stop tag="3922" />
-  <stop tag="7014" />
-  <stop tag="4158" />
-  <stop tag="4586" />
-  <stop tag="10330" />
-  <stop tag="6712" />
-  <stop tag="5975" />
-  <stop tag="1757" />
-  <stop tag="2794" />
-  <stop tag="2043_ar" />
-</direction>
-<direction tag="12_1_12*" title="West - 12 Kingston Rd towards Victoria Park Station" name="West" useForUI="true">
-  <stop tag="1430" />
-  <stop tag="7056" />
-  <stop tag="9451" />
-  <stop tag="3024" />
-  <stop tag="3630" />
-  <stop tag="4405" />
-  <stop tag="6241" />
-  <stop tag="1758" />
-  <stop tag="1752" />
-  <stop tag="2746" />
-  <stop tag="9298" />
-  <stop tag="9196" />
-  <stop tag="9987" />
-  <stop tag="5945" />
-  <stop tag="5490" />
-  <stop tag="3801" />
-  <stop tag="1529" />
-  <stop tag="7514" />
-  <stop tag="5532" />
-  <stop tag="2522" />
-  <stop tag="4715" />
-  <stop tag="9436" />
-  <stop tag="7020" />
-  <stop tag="1939" />
-  <stop tag="8903" />
-  <stop tag="999" />
-  <stop tag="3243_IB" />
-  <stop tag="10085" />
-  <stop tag="1468" />
-  <stop tag="3287" />
-  <stop tag="2450" />
-  <stop tag="5105" />
-  <stop tag="14305_ar" />
-</direction>
-<direction tag="12_0_12*" title="East - 12 Kingston Rd towards St Clair and Barkdene Hills" name="East" useForUI="true">
-  <stop tag="14305" />
-  <stop tag="14731" />
-  <stop tag="8504" />
-  <stop tag="2623" />
-  <stop tag="2608" />
-  <stop tag="7921" />
-  <stop tag="8160" />
-  <stop tag="7857" />
-  <stop tag="2966" />
-  <stop tag="8892" />
-  <stop tag="2600" />
-  <stop tag="2801" />
-  <stop tag="7815" />
-  <stop tag="4720" />
-  <stop tag="8516" />
-  <stop tag="9456" />
-  <stop tag="1190" />
-  <stop tag="6012" />
-  <stop tag="6067" />
-  <stop tag="6581" />
-  <stop tag="1949" />
-  <stop tag="6172" />
-  <stop tag="2802" />
-  <stop tag="9445" />
-  <stop tag="7720" />
-  <stop tag="3922" />
-  <stop tag="7014" />
-  <stop tag="4158" />
-  <stop tag="1330" />
-  <stop tag="9472" />
-  <stop tag="5336" />
-  <stop tag="7133" />
-  <stop tag="1430_ar" />
-</direction>
-<direction tag="12_1_12B" title="West - 12b Kingston Rd towards Victoria Park Station via Brimley" name="West" useForUI="true">
-  <stop tag="14228" />
-  <stop tag="311" />
-  <stop tag="8890" />
-  <stop tag="2447" />
-  <stop tag="8986" />
-  <stop tag="6997" />
-  <stop tag="2250" />
-  <stop tag="9111" />
-  <stop tag="4771" />
-  <stop tag="6168" />
-  <stop tag="2963" />
-  <stop tag="2526" />
-  <stop tag="2328" />
-  <stop tag="4405" />
-  <stop tag="6241" />
-  <stop tag="1758" />
-  <stop tag="1752" />
-  <stop tag="2746" />
-  <stop tag="9298" />
-  <stop tag="9196" />
-  <stop tag="9987" />
-  <stop tag="5945" />
-  <stop tag="5490" />
-  <stop tag="3801" />
-  <stop tag="1529" />
-  <stop tag="7514" />
-  <stop tag="5532" />
-  <stop tag="2522" />
-  <stop tag="4715" />
-  <stop tag="9436" />
-  <stop tag="7020" />
-  <stop tag="1939" />
-  <stop tag="8903" />
-  <stop tag="999" />
-  <stop tag="3243_IB" />
-  <stop tag="10085" />
-  <stop tag="1468" />
-  <stop tag="3287" />
-  <stop tag="2450" />
-  <stop tag="5105" />
-  <stop tag="14305_ar" />
-</direction>
-<direction tag="12_0_12B" title="East - 12b Kingston Rd towards Kennedy Station via Brimley" name="East" useForUI="true">
-  <stop tag="14305" />
-  <stop tag="14731" />
-  <stop tag="8504" />
-  <stop tag="2623" />
-  <stop tag="2608" />
-  <stop tag="7921" />
-  <stop tag="8160" />
-  <stop tag="7857" />
-  <stop tag="2966" />
-  <stop tag="8892" />
-  <stop tag="2600" />
-  <stop tag="2801" />
-  <stop tag="7815" />
-  <stop tag="4720" />
-  <stop tag="8516" />
-  <stop tag="9456" />
-  <stop tag="1190" />
-  <stop tag="6012" />
-  <stop tag="6067" />
-  <stop tag="6581" />
-  <stop tag="1949" />
-  <stop tag="6172" />
-  <stop tag="2802" />
-  <stop tag="9445" />
-  <stop tag="7720" />
-  <stop tag="3922" />
-  <stop tag="7014" />
-  <stop tag="4158" />
-  <stop tag="4586" />
-  <stop tag="10330" />
-  <stop tag="10066" />
-  <stop tag="4819" />
-  <stop tag="5249" />
-  <stop tag="4616" />
-  <stop tag="6917" />
-  <stop tag="9536" />
-  <stop tag="317" />
-  <stop tag="4194" />
-  <stop tag="8550" />
-  <stop tag="323" />
-  <stop tag="5465" />
-  <stop tag="9949" />
-  <stop tag="14228_ar" />
-</direction>
-<direction tag="12_1_12A" title="West - 12a Kingston Rd towards Victoria Park Station via Brimley and Variety Village" name="West" useForUI="true">
-  <stop tag="14228" />
-  <stop tag="311" />
-  <stop tag="8890" />
-  <stop tag="2447" />
-  <stop tag="8986" />
-  <stop tag="6997" />
-  <stop tag="2250" />
-  <stop tag="9111" />
-  <stop tag="4771" />
-  <stop tag="6168" />
-  <stop tag="2963" />
-  <stop tag="2526" />
-  <stop tag="2328" />
-  <stop tag="4405" />
-  <stop tag="6241" />
-  <stop tag="1758" />
-  <stop tag="1752" />
-  <stop tag="2746" />
-  <stop tag="9298" />
-  <stop tag="9196" />
-  <stop tag="9987" />
-  <stop tag="14780" />
-  <stop tag="14778" />
-  <stop tag="6965" />
-  <stop tag="2275" />
-  <stop tag="1529" />
-  <stop tag="7514" />
-  <stop tag="5532" />
-  <stop tag="2522" />
-  <stop tag="4715" />
-  <stop tag="9436" />
-  <stop tag="7020" />
-  <stop tag="1939" />
-  <stop tag="8903" />
-  <stop tag="999" />
-  <stop tag="3243_IB" />
-  <stop tag="10085" />
-  <stop tag="1468" />
-  <stop tag="3287" />
-  <stop tag="2450" />
-  <stop tag="5105" />
-  <stop tag="14305_ar" />
-</direction>
 <direction tag="12_0_12A" title="East - 12a Kingston Rd towards Kennedy Station via Variety Village and Brimley" name="East" useForUI="true">
   <stop tag="14305" />
   <stop tag="14731" />
@@ -409,8 +165,194 @@ Content-Type: text/xml
   <stop tag="323" />
   <stop tag="5465" />
   <stop tag="9949" />
-  <stop tag="14228_ar" />
+  <stop tag="14232_ar" />
 </direction>
+<direction tag="12_0_12*" title="East - 12 Kingston Rd towards St Clair and Barkdene Hills" name="East" useForUI="true">
+  <stop tag="14305" />
+  <stop tag="14731" />
+  <stop tag="8504" />
+  <stop tag="2623" />
+  <stop tag="2608" />
+  <stop tag="7921" />
+  <stop tag="8160" />
+  <stop tag="7857" />
+  <stop tag="2966" />
+  <stop tag="8892" />
+  <stop tag="2600" />
+  <stop tag="2801" />
+  <stop tag="7815" />
+  <stop tag="4720" />
+  <stop tag="8516" />
+  <stop tag="9456" />
+  <stop tag="1190" />
+  <stop tag="6012" />
+  <stop tag="6067" />
+  <stop tag="6581" />
+  <stop tag="1949" />
+  <stop tag="6172" />
+  <stop tag="2802" />
+  <stop tag="9445" />
+  <stop tag="7720" />
+  <stop tag="3922" />
+  <stop tag="7014" />
+  <stop tag="4158" />
+  <stop tag="1330" />
+  <stop tag="9472" />
+  <stop tag="5336" />
+  <stop tag="7133" />
+  <stop tag="1430_ar" />
+</direction>
+<direction tag="12_0_12" title="East - 12 Kingston Rd towards St Clair and Barkdene Hills" name="East" useForUI="true">
+  <stop tag="14305" />
+  <stop tag="14731" />
+  <stop tag="8504" />
+  <stop tag="2623" />
+  <stop tag="2608" />
+  <stop tag="7921" />
+  <stop tag="8160" />
+  <stop tag="7857" />
+  <stop tag="2966" />
+  <stop tag="8892" />
+  <stop tag="2600" />
+  <stop tag="2801" />
+  <stop tag="7815" />
+  <stop tag="4720" />
+  <stop tag="8516" />
+  <stop tag="9456" />
+  <stop tag="1190" />
+  <stop tag="6012" />
+  <stop tag="6067" />
+  <stop tag="6581" />
+  <stop tag="1949" />
+  <stop tag="6172" />
+  <stop tag="2802" />
+  <stop tag="9445" />
+  <stop tag="7720" />
+  <stop tag="3922" />
+  <stop tag="7014" />
+  <stop tag="4158" />
+  <stop tag="4586" />
+  <stop tag="10330" />
+  <stop tag="6712" />
+  <stop tag="5975" />
+  <stop tag="1757" />
+  <stop tag="2794" />
+  <stop tag="2043_ar" />
+</direction>
+<direction tag="12_1_BAKR" title="West - 12 Kingston Rd towards St Clair and Barkdene Hills" name="West" useForUI="true">
+  <stop tag="2043" />
+  <stop tag="4311" />
+  <stop tag="6452" />
+  <stop tag="6241" />
+</direction>
+<direction tag="12_1_12A" title="West - 12a Kingston Rd towards Victoria Park Station via Brimley and Variety Village" name="West" useForUI="true">
+  <stop tag="14232" />
+  <stop tag="311" />
+  <stop tag="8890" />
+  <stop tag="2447" />
+  <stop tag="8986" />
+  <stop tag="6997" />
+  <stop tag="2250" />
+  <stop tag="9111" />
+  <stop tag="4771" />
+  <stop tag="6168" />
+  <stop tag="2963" />
+  <stop tag="2526" />
+  <stop tag="2328" />
+  <stop tag="4405" />
+  <stop tag="6241" />
+  <stop tag="1758" />
+  <stop tag="1752" />
+  <stop tag="2746" />
+  <stop tag="9298" />
+  <stop tag="9196" />
+  <stop tag="9987" />
+  <stop tag="14780" />
+  <stop tag="14778" />
+  <stop tag="6965" />
+  <stop tag="2275" />
+  <stop tag="1529" />
+  <stop tag="7514" />
+  <stop tag="5532" />
+  <stop tag="2522" />
+  <stop tag="4715" />
+  <stop tag="9436" />
+  <stop tag="7020" />
+  <stop tag="1939" />
+  <stop tag="8903" />
+  <stop tag="999" />
+  <stop tag="3243_IB" />
+  <stop tag="10085" />
+  <stop tag="1468" />
+  <stop tag="3287" />
+  <stop tag="2450" />
+  <stop tag="5105" />
+  <stop tag="14305_ar" />
+</direction>
+<direction tag="12_1_12*" title="West - 12 Kingston Rd towards Victoria Park Station" name="West" useForUI="true">
+  <stop tag="1430" />
+  <stop tag="7056" />
+  <stop tag="9451" />
+  <stop tag="3024" />
+  <stop tag="3630" />
+  <stop tag="4405" />
+  <stop tag="6241" />
+  <stop tag="1758" />
+  <stop tag="1752" />
+  <stop tag="2746" />
+  <stop tag="9298" />
+  <stop tag="9196" />
+  <stop tag="9987" />
+  <stop tag="5945" />
+  <stop tag="5490" />
+  <stop tag="3801" />
+  <stop tag="1529" />
+  <stop tag="7514" />
+  <stop tag="5532" />
+  <stop tag="2522" />
+  <stop tag="4715" />
+  <stop tag="9436" />
+  <stop tag="7020" />
+  <stop tag="1939" />
+  <stop tag="8903" />
+  <stop tag="999" />
+  <stop tag="3243_IB" />
+  <stop tag="10085" />
+  <stop tag="1468" />
+  <stop tag="3287" />
+  <stop tag="2450" />
+  <stop tag="5105" />
+  <stop tag="14305_ar" />
+</direction>
+<path>
+<point lat="43.6916" lon="-79.26466"/>
+<point lat="43.6903" lon="-79.26703"/>
+<point lat="43.6895" lon="-79.2682899"/>
+<point lat="43.68931" lon="-79.26855"/>
+<point lat="43.68908" lon="-79.2691"/>
+<point lat="43.68802" lon="-79.27067"/>
+<point lat="43.68611" lon="-79.27352"/>
+<point lat="43.68491" lon="-79.2752299"/>
+<point lat="43.68371" lon="-79.27695"/>
+<point lat="43.68288" lon="-79.27797"/>
+<point lat="43.6824299" lon="-79.27878"/>
+<point lat="43.68241" lon="-79.27909"/>
+<point lat="43.68156" lon="-79.28128"/>
+<point lat="43.68145" lon="-79.28133"/>
+<point lat="43.68097" lon="-79.28291"/>
+<point lat="43.68087" lon="-79.28342"/>
+<point lat="43.68086" lon="-79.28357"/>
+<point lat="43.68085" lon="-79.28371"/>
+<point lat="43.68082" lon="-79.2838699"/>
+<point lat="43.68091" lon="-79.28392"/>
+<point lat="43.6808" lon="-79.2840499"/>
+<point lat="43.68072" lon="-79.28495"/>
+<point lat="43.68109" lon="-79.28521"/>
+<point lat="43.6813999" lon="-79.2853499"/>
+<point lat="43.68145" lon="-79.28522"/>
+<point lat="43.68148" lon="-79.2850799"/>
+<point lat="43.6815" lon="-79.28485"/>
+</path>
 <path>
 <point lat="43.7159199" lon="-79.24279"/>
 <point lat="43.71815" lon="-79.24032"/>
@@ -430,6 +372,86 @@ Content-Type: text/xml
 <point lat="43.71523" lon="-79.23909"/>
 <point lat="43.71815" lon="-79.24032"/>
 <point lat="43.718" lon="-79.2409"/>
+</path>
+<path>
+<point lat="43.68079" lon="-79.28362"/>
+<point lat="43.68086" lon="-79.28357"/>
+<point lat="43.68087" lon="-79.28342"/>
+<point lat="43.6809299" lon="-79.28306"/>
+<point lat="43.68135" lon="-79.28146"/>
+<point lat="43.68145" lon="-79.28133"/>
+<point lat="43.68215" lon="-79.27934"/>
+<point lat="43.68254" lon="-79.27855"/>
+<point lat="43.68275" lon="-79.27816"/>
+<point lat="43.68408" lon="-79.27615"/>
+<point lat="43.68567" lon="-79.27392"/>
+<point lat="43.68761" lon="-79.27103"/>
+<point lat="43.68868" lon="-79.26942"/>
+<point lat="43.68931" lon="-79.26855"/>
+<point lat="43.6895" lon="-79.2682899"/>
+<point lat="43.68997" lon="-79.2673499"/>
+<point lat="43.69136" lon="-79.26482"/>
+<point lat="43.6928399" lon="-79.26259"/>
+<point lat="43.69302" lon="-79.26233"/>
+<point lat="43.6936" lon="-79.26248"/>
+</path>
+<path>
+<point lat="43.69324" lon="-79.26188"/>
+<point lat="43.69345" lon="-79.26169"/>
+<point lat="43.69512" lon="-79.25941"/>
+<point lat="43.69618" lon="-79.25802"/>
+<point lat="43.6971599" lon="-79.25703"/>
+<point lat="43.69778" lon="-79.2565"/>
+<point lat="43.69802" lon="-79.25622"/>
+<point lat="43.70086" lon="-79.25449"/>
+<point lat="43.70381" lon="-79.25266"/>
+<point lat="43.7061599" lon="-79.2512"/>
+<point lat="43.70858" lon="-79.24969"/>
+<point lat="43.71022" lon="-79.24873"/>
+<point lat="43.7108" lon="-79.24824"/>
+<point lat="43.71266" lon="-79.2466"/>
+<point lat="43.71394" lon="-79.24506"/>
+<point lat="43.7159199" lon="-79.24279"/>
+</path>
+<path>
+<point lat="43.72189" lon="-79.23716"/>
+<point lat="43.7214699" lon="-79.23904"/>
+<point lat="43.72087" lon="-79.24144"/>
+<point lat="43.7205" lon="-79.2414"/>
+<point lat="43.71833" lon="-79.24039"/>
+<point lat="43.718" lon="-79.2409"/>
+</path>
+<path>
+<point lat="43.71661" lon="-79.23379"/>
+<point lat="43.7167" lon="-79.23363"/>
+<point lat="43.71941" lon="-79.23473"/>
+</path>
+<path>
+<point lat="43.718" lon="-79.2409"/>
+<point lat="43.71582" lon="-79.24337"/>
+<point lat="43.7143" lon="-79.24509"/>
+<point lat="43.71154" lon="-79.24795"/>
+<point lat="43.71106" lon="-79.24838"/>
+<point lat="43.71098" lon="-79.2485"/>
+<point lat="43.7089799" lon="-79.24983"/>
+<point lat="43.70653" lon="-79.25136"/>
+<point lat="43.70416" lon="-79.25282"/>
+<point lat="43.70362" lon="-79.25305"/>
+<point lat="43.70301" lon="-79.25355"/>
+<point lat="43.70211" lon="-79.25479"/>
+<point lat="43.70183" lon="-79.25516"/>
+<point lat="43.70015" lon="-79.257"/>
+<point lat="43.69943" lon="-79.25808"/>
+<point lat="43.6991299" lon="-79.25883"/>
+<point lat="43.69885" lon="-79.2593"/>
+<point lat="43.69715" lon="-79.26381"/>
+<point lat="43.69693" lon="-79.26396"/>
+<point lat="43.69627" lon="-79.26379"/>
+<point lat="43.69482" lon="-79.26315"/>
+<point lat="43.69314" lon="-79.26245"/>
+<point lat="43.69302" lon="-79.26233"/>
+<point lat="43.6917" lon="-79.26434"/>
+<point lat="43.6916" lon="-79.26466"/>
 </path>
 <path>
 <point lat="43.7191" lon="-79.24064"/>
@@ -517,63 +539,7 @@ Content-Type: text/xml
 <point lat="43.73264" lon="-79.26301"/>
 <point lat="43.73254" lon="-79.26301"/>
 <point lat="43.73249" lon="-79.26308"/>
-<point lat="43.7325" lon="-79.26331"/>
-</path>
-<path>
-<point lat="43.72189" lon="-79.23716"/>
-<point lat="43.7214699" lon="-79.23904"/>
-<point lat="43.72087" lon="-79.24144"/>
-<point lat="43.7205" lon="-79.2414"/>
-<point lat="43.71833" lon="-79.24039"/>
-<point lat="43.718" lon="-79.2409"/>
-</path>
-<path>
-<point lat="43.71661" lon="-79.23379"/>
-<point lat="43.7167" lon="-79.23363"/>
-<point lat="43.71941" lon="-79.23473"/>
-</path>
-<path>
-<point lat="43.6916" lon="-79.26466"/>
-<point lat="43.6903" lon="-79.26703"/>
-<point lat="43.6895" lon="-79.2682899"/>
-<point lat="43.68931" lon="-79.26855"/>
-<point lat="43.68908" lon="-79.2691"/>
-<point lat="43.68802" lon="-79.27067"/>
-<point lat="43.68611" lon="-79.27352"/>
-<point lat="43.68491" lon="-79.2752299"/>
-<point lat="43.68371" lon="-79.27695"/>
-<point lat="43.68288" lon="-79.27797"/>
-<point lat="43.6824299" lon="-79.27878"/>
-<point lat="43.68241" lon="-79.27909"/>
-<point lat="43.68156" lon="-79.28128"/>
-<point lat="43.68145" lon="-79.28133"/>
-<point lat="43.68097" lon="-79.28291"/>
-<point lat="43.68087" lon="-79.28342"/>
-<point lat="43.68086" lon="-79.28357"/>
-<point lat="43.68085" lon="-79.28371"/>
-<point lat="43.68082" lon="-79.2838699"/>
-<point lat="43.68091" lon="-79.28392"/>
-<point lat="43.6808" lon="-79.2840499"/>
-<point lat="43.68072" lon="-79.28495"/>
-<point lat="43.68109" lon="-79.28521"/>
-<point lat="43.6813999" lon="-79.2853499"/>
-<point lat="43.68145" lon="-79.28522"/>
-<point lat="43.68148" lon="-79.2850799"/>
-<point lat="43.6815" lon="-79.28485"/>
-</path>
-<path>
-<point lat="43.6815" lon="-79.28485"/>
-<point lat="43.68161" lon="-79.28453"/>
-<point lat="43.68161" lon="-79.28447"/>
-<point lat="43.68161" lon="-79.28443"/>
-<point lat="43.68159" lon="-79.28437"/>
-<point lat="43.6837" lon="-79.28518"/>
-<point lat="43.68491" lon="-79.28568"/>
-<point lat="43.68739" lon="-79.28665"/>
-<point lat="43.69108" lon="-79.2882"/>
-<point lat="43.69264" lon="-79.28879"/>
-<point lat="43.69308" lon="-79.28806"/>
-<point lat="43.69388" lon="-79.2883"/>
+<point lat="43.73252" lon="-79.26389"/>
 </path>
 <path>
 <point lat="43.69388" lon="-79.2883"/>
@@ -595,151 +561,6 @@ Content-Type: text/xml
 <point lat="43.68079" lon="-79.28362"/>
 </path>
 <path>
-<point lat="43.718" lon="-79.2409"/>
-<point lat="43.71582" lon="-79.24337"/>
-<point lat="43.7143" lon="-79.24509"/>
-<point lat="43.71154" lon="-79.24795"/>
-<point lat="43.71106" lon="-79.24838"/>
-<point lat="43.71098" lon="-79.2485"/>
-<point lat="43.7089799" lon="-79.24983"/>
-<point lat="43.70653" lon="-79.25136"/>
-<point lat="43.70416" lon="-79.25282"/>
-<point lat="43.70362" lon="-79.25305"/>
-<point lat="43.70301" lon="-79.25355"/>
-<point lat="43.70252" lon="-79.25418"/>
-<point lat="43.70207" lon="-79.25466"/>
-<point lat="43.70179" lon="-79.25488"/>
-<point lat="43.7015699" lon="-79.25502"/>
-<point lat="43.70125" lon="-79.25517"/>
-<point lat="43.6989" lon="-79.25597"/>
-<point lat="43.69787" lon="-79.25667"/>
-<point lat="43.69766" lon="-79.25673"/>
-<point lat="43.69652" lon="-79.25788"/>
-<point lat="43.69541" lon="-79.2594"/>
-<point lat="43.69321" lon="-79.26224"/>
-<point lat="43.69316" lon="-79.26224"/>
-<point lat="43.6928399" lon="-79.26259"/>
-<point lat="43.69207" lon="-79.26371"/>
-<point lat="43.6916" lon="-79.26466"/>
-</path>
-<path>
-<point lat="43.68079" lon="-79.28362"/>
-<point lat="43.68086" lon="-79.28357"/>
-<point lat="43.68087" lon="-79.28342"/>
-<point lat="43.6809299" lon="-79.28306"/>
-<point lat="43.68135" lon="-79.28146"/>
-<point lat="43.68145" lon="-79.28133"/>
-<point lat="43.68215" lon="-79.27934"/>
-<point lat="43.68254" lon="-79.27855"/>
-<point lat="43.68275" lon="-79.27816"/>
-<point lat="43.68408" lon="-79.27615"/>
-<point lat="43.68567" lon="-79.27392"/>
-<point lat="43.68761" lon="-79.27103"/>
-<point lat="43.68868" lon="-79.26942"/>
-<point lat="43.68931" lon="-79.26855"/>
-<point lat="43.6895" lon="-79.2682899"/>
-<point lat="43.68997" lon="-79.2673499"/>
-<point lat="43.69136" lon="-79.26482"/>
-<point lat="43.6928399" lon="-79.26259"/>
-<point lat="43.69324" lon="-79.26188"/>
-</path>
-<path>
-<point lat="43.7159199" lon="-79.24279"/>
-<point lat="43.71815" lon="-79.24032"/>
-<point lat="43.7191" lon="-79.24064"/>
-</path>
-<path>
-<point lat="43.69324" lon="-79.26188"/>
-<point lat="43.69345" lon="-79.26169"/>
-<point lat="43.69512" lon="-79.25941"/>
-<point lat="43.69618" lon="-79.25802"/>
-<point lat="43.6971599" lon="-79.25703"/>
-<point lat="43.69778" lon="-79.2565"/>
-<point lat="43.69802" lon="-79.25622"/>
-<point lat="43.70086" lon="-79.25449"/>
-<point lat="43.70381" lon="-79.25266"/>
-<point lat="43.7061599" lon="-79.2512"/>
-<point lat="43.70858" lon="-79.24969"/>
-<point lat="43.71022" lon="-79.24873"/>
-<point lat="43.7108" lon="-79.24824"/>
-<point lat="43.71266" lon="-79.2466"/>
-<point lat="43.71394" lon="-79.24506"/>
-<point lat="43.7159199" lon="-79.24279"/>
-</path>
-<path>
-<point lat="43.71772" lon="-79.24021"/>
-<point lat="43.71546" lon="-79.23929"/>
-<point lat="43.71523" lon="-79.23909"/>
-<point lat="43.7154" lon="-79.23837"/>
-<point lat="43.71546" lon="-79.23793"/>
-<point lat="43.71551" lon="-79.23776"/>
-<point lat="43.71586" lon="-79.23611"/>
-<point lat="43.71618" lon="-79.23473"/>
-<point lat="43.71627" lon="-79.23444"/>
-<point lat="43.71638" lon="-79.23416"/>
-<point lat="43.71655" lon="-79.23392"/>
-<point lat="43.71661" lon="-79.23379"/>
-</path>
-<path>
-<point lat="43.67935" lon="-79.28337"/>
-<point lat="43.68044" lon="-79.2839"/>
-<point lat="43.6808" lon="-79.2840499"/>
-<point lat="43.68116" lon="-79.28419"/>
-<point lat="43.68159" lon="-79.28437"/>
-<point lat="43.69287" lon="-79.289"/>
-<point lat="43.69308" lon="-79.28806"/>
-<point lat="43.69388" lon="-79.2883"/>
-</path>
-<path>
-<point lat="43.68079" lon="-79.28362"/>
-<point lat="43.68086" lon="-79.28357"/>
-<point lat="43.68087" lon="-79.28342"/>
-<point lat="43.6809299" lon="-79.28306"/>
-<point lat="43.68135" lon="-79.28146"/>
-<point lat="43.68145" lon="-79.28133"/>
-<point lat="43.68215" lon="-79.27934"/>
-<point lat="43.68254" lon="-79.27855"/>
-<point lat="43.68275" lon="-79.27816"/>
-<point lat="43.68408" lon="-79.27615"/>
-<point lat="43.68567" lon="-79.27392"/>
-<point lat="43.68761" lon="-79.27103"/>
-<point lat="43.68868" lon="-79.26942"/>
-<point lat="43.68931" lon="-79.26855"/>
-<point lat="43.6895" lon="-79.2682899"/>
-<point lat="43.68997" lon="-79.2673499"/>
-<point lat="43.69136" lon="-79.26482"/>
-<point lat="43.6928399" lon="-79.26259"/>
-<point lat="43.69302" lon="-79.26233"/>
-<point lat="43.6936" lon="-79.26248"/>
-</path>
-<path>
-<point lat="43.718" lon="-79.2409"/>
-<point lat="43.71582" lon="-79.24337"/>
-<point lat="43.7143" lon="-79.24509"/>
-<point lat="43.71154" lon="-79.24795"/>
-<point lat="43.71106" lon="-79.24838"/>
-<point lat="43.71098" lon="-79.2485"/>
-<point lat="43.7089799" lon="-79.24983"/>
-<point lat="43.70653" lon="-79.25136"/>
-<point lat="43.70416" lon="-79.25282"/>
-<point lat="43.70362" lon="-79.25305"/>
-<point lat="43.70301" lon="-79.25355"/>
-<point lat="43.70211" lon="-79.25479"/>
-<point lat="43.70183" lon="-79.25516"/>
-<point lat="43.70015" lon="-79.257"/>
-<point lat="43.69943" lon="-79.25808"/>
-<point lat="43.6991299" lon="-79.25883"/>
-<point lat="43.69885" lon="-79.2593"/>
-<point lat="43.69715" lon="-79.26381"/>
-<point lat="43.69693" lon="-79.26396"/>
-<point lat="43.69627" lon="-79.26379"/>
-<point lat="43.69482" lon="-79.26315"/>
-<point lat="43.69314" lon="-79.26245"/>
-<point lat="43.69302" lon="-79.26233"/>
-<point lat="43.6917" lon="-79.26434"/>
-<point lat="43.6916" lon="-79.26466"/>
-</path>
-<path>
 <point lat="43.71941" lon="-79.23473"/>
 <point lat="43.72153" lon="-79.23566"/>
 <point lat="43.72158" lon="-79.23571"/>
@@ -752,27 +573,21 @@ Content-Type: text/xml
 <point lat="43.72189" lon="-79.23716"/>
 </path>
 <path>
-<point lat="43.7191" lon="-79.24064"/>
-<point lat="43.72074" lon="-79.24132"/>
-<point lat="43.72087" lon="-79.24144"/>
-<point lat="43.72126" lon="-79.2393"/>
-<point lat="43.72177" lon="-79.23684"/>
-<point lat="43.7220299" lon="-79.2360099"/>
-<point lat="43.72185" lon="-79.23618"/>
-<point lat="43.72173" lon="-79.23594"/>
-<point lat="43.72168" lon="-79.23584"/>
-<point lat="43.72163" lon="-79.2359"/>
+<point lat="43.6815" lon="-79.28485"/>
+<point lat="43.68161" lon="-79.28453"/>
+<point lat="43.68161" lon="-79.28447"/>
+<point lat="43.68161" lon="-79.28443"/>
+<point lat="43.68159" lon="-79.28437"/>
+<point lat="43.6837" lon="-79.28518"/>
+<point lat="43.68491" lon="-79.28568"/>
+<point lat="43.68739" lon="-79.28665"/>
+<point lat="43.69108" lon="-79.2882"/>
+<point lat="43.69264" lon="-79.28879"/>
+<point lat="43.69308" lon="-79.28806"/>
+<point lat="43.69388" lon="-79.2883"/>
 </path>
 <path>
-<point lat="43.7325" lon="-79.26331"/>
-<point lat="43.73224" lon="-79.26392"/>
-<point lat="43.73223" lon="-79.264"/>
-<point lat="43.73225" lon="-79.26407"/>
-<point lat="43.73229" lon="-79.26411"/>
-<point lat="43.73239" lon="-79.26419"/>
-<point lat="43.73246" lon="-79.26419"/>
-<point lat="43.73252" lon="-79.26416"/>
-<point lat="43.73255" lon="-79.26409"/>
+<point lat="43.73252" lon="-79.26389"/>
 <point lat="43.73281" lon="-79.26327"/>
 <point lat="43.73281" lon="-79.26316"/>
 <point lat="43.73308" lon="-79.26319"/>
@@ -816,6 +631,53 @@ Content-Type: text/xml
 <point lat="43.718" lon="-79.2409"/>
 </path>
 <path>
+<point lat="43.7191" lon="-79.24064"/>
+<point lat="43.72074" lon="-79.24132"/>
+<point lat="43.72087" lon="-79.24144"/>
+<point lat="43.72126" lon="-79.2393"/>
+<point lat="43.72177" lon="-79.23684"/>
+<point lat="43.7220299" lon="-79.2360099"/>
+<point lat="43.72185" lon="-79.23618"/>
+<point lat="43.72173" lon="-79.23594"/>
+<point lat="43.72168" lon="-79.23584"/>
+<point lat="43.72163" lon="-79.2359"/>
+</path>
+<path>
+<point lat="43.68079" lon="-79.28362"/>
+<point lat="43.68086" lon="-79.28357"/>
+<point lat="43.68087" lon="-79.28342"/>
+<point lat="43.6809299" lon="-79.28306"/>
+<point lat="43.68135" lon="-79.28146"/>
+<point lat="43.68145" lon="-79.28133"/>
+<point lat="43.68215" lon="-79.27934"/>
+<point lat="43.68254" lon="-79.27855"/>
+<point lat="43.68275" lon="-79.27816"/>
+<point lat="43.68408" lon="-79.27615"/>
+<point lat="43.68567" lon="-79.27392"/>
+<point lat="43.68761" lon="-79.27103"/>
+<point lat="43.68868" lon="-79.26942"/>
+<point lat="43.68931" lon="-79.26855"/>
+<point lat="43.6895" lon="-79.2682899"/>
+<point lat="43.68997" lon="-79.2673499"/>
+<point lat="43.69136" lon="-79.26482"/>
+<point lat="43.6928399" lon="-79.26259"/>
+<point lat="43.69324" lon="-79.26188"/>
+</path>
+<path>
+<point lat="43.71772" lon="-79.24021"/>
+<point lat="43.71546" lon="-79.23929"/>
+<point lat="43.71523" lon="-79.23909"/>
+<point lat="43.7154" lon="-79.23837"/>
+<point lat="43.71546" lon="-79.23793"/>
+<point lat="43.71551" lon="-79.23776"/>
+<point lat="43.71586" lon="-79.23611"/>
+<point lat="43.71618" lon="-79.23473"/>
+<point lat="43.71627" lon="-79.23444"/>
+<point lat="43.71638" lon="-79.23416"/>
+<point lat="43.71655" lon="-79.23392"/>
+<point lat="43.71661" lon="-79.23379"/>
+</path>
+<path>
 <point lat="43.6936" lon="-79.26248"/>
 <point lat="43.69493" lon="-79.26303"/>
 <point lat="43.6967799" lon="-79.2638"/>
@@ -843,6 +705,39 @@ Content-Type: text/xml
 <point lat="43.71961" lon="-79.23493"/>
 <point lat="43.71703" lon="-79.23374"/>
 <point lat="43.71692" lon="-79.23381"/>
+</path>
+<path>
+<point lat="43.718" lon="-79.2409"/>
+<point lat="43.71582" lon="-79.24337"/>
+<point lat="43.7143" lon="-79.24509"/>
+<point lat="43.71154" lon="-79.24795"/>
+<point lat="43.71106" lon="-79.24838"/>
+<point lat="43.71098" lon="-79.2485"/>
+<point lat="43.7089799" lon="-79.24983"/>
+<point lat="43.70653" lon="-79.25136"/>
+<point lat="43.70416" lon="-79.25282"/>
+<point lat="43.70362" lon="-79.25305"/>
+<point lat="43.70301" lon="-79.25355"/>
+<point lat="43.70252" lon="-79.25418"/>
+<point lat="43.70207" lon="-79.25466"/>
+<point lat="43.70179" lon="-79.25488"/>
+<point lat="43.7015699" lon="-79.25502"/>
+<point lat="43.70125" lon="-79.25517"/>
+<point lat="43.6989" lon="-79.25597"/>
+<point lat="43.69787" lon="-79.25667"/>
+<point lat="43.69766" lon="-79.25673"/>
+<point lat="43.69652" lon="-79.25788"/>
+<point lat="43.69541" lon="-79.2594"/>
+<point lat="43.69321" lon="-79.26224"/>
+<point lat="43.69316" lon="-79.26224"/>
+<point lat="43.6928399" lon="-79.26259"/>
+<point lat="43.69207" lon="-79.26371"/>
+<point lat="43.6916" lon="-79.26466"/>
+</path>
+<path>
+<point lat="43.7159199" lon="-79.24279"/>
+<point lat="43.71815" lon="-79.24032"/>
+<point lat="43.7191" lon="-79.24064"/>
 </path>
 <path>
 <point lat="43.69388" lon="-79.2883"/>

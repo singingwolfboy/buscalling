@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:25 GMT
+Date: Sun, 25 Dec 2011 19:59:34 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5539
+Content-Length: 5522
 Connection: close
 Content-Type: text/xml
 
@@ -73,7 +73,7 @@ Content-Type: text/xml
 <stop tag="6115" title="Opposite 60 Belfield Road Farside" lat="43.70339" lon="-79.5691799" stopId="3341"/>
 <stop tag="7860" title="Belfield Road At Shaft Road" lat="43.7039599" lon="-79.56614" stopId="3343"/>
 <stop tag="699" title="Belfield Road At Kipling Avenue" lat="43.7046199" lon="-79.56378" stopId="3336"/>
-<stop tag="14822_ar" title="Kipling Station At Bus Bay 10" lat="43.6383599" lon="-79.53471"/>
+<stop tag="14822_ar" title="Kipling Station" lat="43.6383599" lon="-79.53471"/>
 <stop tag="14243" title="Kipling Station" lat="43.6382399" lon="-79.53492" stopId="14724"/>
 <stop tag="3435" title="East Service Road At Viking Lane" lat="43.6401499" lon="-79.5340899" stopId="1215"/>
 <stop tag="441" title="Kipling Avenue At Bloor Street West Farside" lat="43.6424099" lon="-79.5354599" stopId="4291"/>
@@ -150,7 +150,7 @@ Content-Type: text/xml
 <stop tag="4003" title="Attwell Drive At Carlingview Drive" lat="43.7032399" lon="-79.60312" stopId="3295"/>
 <stop tag="268" title="Disco Road At Carlingview Drive Farside" lat="43.6998199" lon="-79.60077" stopId="3479"/>
 <stop tag="5109_ar" title="117 Disco Road" lat="43.7002599" lon="-79.59901"/>
-<stop tag="14822" title="Kipling Station At Bus Bay 10" lat="43.6383599" lon="-79.53471" stopId="15052"/>
+<stop tag="14822" title="Kipling Station" lat="43.6383599" lon="-79.53471" stopId="15052"/>
 <direction tag="45_0_45A" title="South - 45 Kipling towards Kipling Station" name="South" useForUI="true">
   <stop tag="5109" />
   <stop tag="267" />
@@ -165,6 +165,57 @@ Content-Type: text/xml
   <stop tag="6115" />
   <stop tag="7860" />
   <stop tag="699" />
+  <stop tag="8051" />
+  <stop tag="2508" />
+  <stop tag="1992" />
+  <stop tag="2198" />
+  <stop tag="7452" />
+  <stop tag="6431" />
+  <stop tag="2599" />
+  <stop tag="4147" />
+  <stop tag="10169" />
+  <stop tag="4492" />
+  <stop tag="961" />
+  <stop tag="3617" />
+  <stop tag="8211" />
+  <stop tag="5351" />
+  <stop tag="3047" />
+  <stop tag="7102" />
+  <stop tag="1567" />
+  <stop tag="6131" />
+  <stop tag="2836" />
+  <stop tag="9772" />
+  <stop tag="2919" />
+  <stop tag="9744" />
+  <stop tag="6395" />
+  <stop tag="8732" />
+  <stop tag="9398" />
+  <stop tag="9502" />
+  <stop tag="14243_ar" />
+</direction>
+<direction tag="45_0_45" title="South - 45 Kipling towards Kipling Station" name="South" useForUI="true">
+  <stop tag="5171" />
+  <stop tag="7471" />
+  <stop tag="3267" />
+  <stop tag="9387" />
+  <stop tag="3534" />
+  <stop tag="9978" />
+  <stop tag="6391" />
+  <stop tag="2382" />
+  <stop tag="3334" />
+  <stop tag="6215" />
+  <stop tag="2585" />
+  <stop tag="9282" />
+  <stop tag="8372" />
+  <stop tag="6918" />
+  <stop tag="7812" />
+  <stop tag="4996" />
+  <stop tag="8601" />
+  <stop tag="14646" />
+  <stop tag="9897" />
+  <stop tag="3072" />
+  <stop tag="3021" />
+  <stop tag="2388" />
   <stop tag="8051" />
   <stop tag="2508" />
   <stop tag="1992" />
@@ -248,57 +299,6 @@ Content-Type: text/xml
   <stop tag="10319" />
   <stop tag="5171_ar" />
 </direction>
-<direction tag="45_0_45" title="South - 45 Kipling towards Kipling Station" name="South" useForUI="true">
-  <stop tag="5171" />
-  <stop tag="7471" />
-  <stop tag="3267" />
-  <stop tag="9387" />
-  <stop tag="3534" />
-  <stop tag="9978" />
-  <stop tag="6391" />
-  <stop tag="2382" />
-  <stop tag="3334" />
-  <stop tag="6215" />
-  <stop tag="2585" />
-  <stop tag="9282" />
-  <stop tag="8372" />
-  <stop tag="6918" />
-  <stop tag="7812" />
-  <stop tag="4996" />
-  <stop tag="8601" />
-  <stop tag="14646" />
-  <stop tag="9897" />
-  <stop tag="3072" />
-  <stop tag="3021" />
-  <stop tag="2388" />
-  <stop tag="8051" />
-  <stop tag="2508" />
-  <stop tag="1992" />
-  <stop tag="2198" />
-  <stop tag="7452" />
-  <stop tag="6431" />
-  <stop tag="2599" />
-  <stop tag="4147" />
-  <stop tag="10169" />
-  <stop tag="4492" />
-  <stop tag="961" />
-  <stop tag="3617" />
-  <stop tag="8211" />
-  <stop tag="5351" />
-  <stop tag="3047" />
-  <stop tag="7102" />
-  <stop tag="1567" />
-  <stop tag="6131" />
-  <stop tag="2836" />
-  <stop tag="9772" />
-  <stop tag="2919" />
-  <stop tag="9744" />
-  <stop tag="6395" />
-  <stop tag="8732" />
-  <stop tag="9398" />
-  <stop tag="9502" />
-  <stop tag="14243_ar" />
-</direction>
 <direction tag="45_1_45A" title="North - 45a Kipling towards Carlingview via Belfied" name="North" useForUI="true">
   <stop tag="14243" />
   <stop tag="3435" />
@@ -354,6 +354,16 @@ Content-Type: text/xml
   <stop tag="5109_ar" />
 </direction>
 <path>
+<point lat="43.72583" lon="-79.5736"/>
+<point lat="43.72355" lon="-79.57252"/>
+<point lat="43.72185" lon="-79.5717"/>
+<point lat="43.71858" lon="-79.57012"/>
+<point lat="43.71543" lon="-79.56863"/>
+<point lat="43.71405" lon="-79.56797"/>
+<point lat="43.71188" lon="-79.56692"/>
+<point lat="43.70926" lon="-79.56565"/>
+</path>
+<path>
 <point lat="43.63836" lon="-79.53471"/>
 <point lat="43.6385099" lon="-79.53464"/>
 <point lat="43.63871" lon="-79.53445"/>
@@ -371,16 +381,6 @@ Content-Type: text/xml
 <point lat="43.69474" lon="-79.5586299"/>
 <point lat="43.70473" lon="-79.56316"/>
 <point lat="43.709" lon="-79.56523"/>
-</path>
-<path>
-<point lat="43.72583" lon="-79.5736"/>
-<point lat="43.72355" lon="-79.57252"/>
-<point lat="43.72185" lon="-79.5717"/>
-<point lat="43.71858" lon="-79.57012"/>
-<point lat="43.71543" lon="-79.56863"/>
-<point lat="43.71405" lon="-79.56797"/>
-<point lat="43.71188" lon="-79.56692"/>
-<point lat="43.70926" lon="-79.56565"/>
 </path>
 <path>
 <point lat="43.69474" lon="-79.5586299"/>
@@ -538,22 +538,6 @@ Content-Type: text/xml
 <point lat="43.73157" lon="-79.57615"/>
 </path>
 <path>
-<point lat="43.709" lon="-79.56523"/>
-<point lat="43.71153" lon="-79.56641"/>
-<point lat="43.71408" lon="-79.56764"/>
-</path>
-<path>
-<point lat="43.74434" lon="-79.58242"/>
-<point lat="43.74662" lon="-79.58348"/>
-<point lat="43.74883" lon="-79.58463"/>
-<point lat="43.7508399" lon="-79.5855799"/>
-<point lat="43.75348" lon="-79.58686"/>
-<point lat="43.75605" lon="-79.58805"/>
-<point lat="43.75829" lon="-79.58912"/>
-<point lat="43.75936" lon="-79.58962"/>
-<point lat="43.75999" lon="-79.59013"/>
-</path>
-<path>
 <point lat="43.70264" lon="-79.5625699"/>
 <point lat="43.69834" lon="-79.56062"/>
 <point lat="43.69701" lon="-79.56001"/>
@@ -565,16 +549,6 @@ Content-Type: text/xml
 <point lat="43.68159" lon="-79.55301"/>
 <point lat="43.67902" lon="-79.55186"/>
 <point lat="43.67737" lon="-79.55113"/>
-</path>
-<path>
-<point lat="43.71408" lon="-79.56764"/>
-<point lat="43.71548" lon="-79.56834"/>
-<point lat="43.71864" lon="-79.56986"/>
-<point lat="43.7216499" lon="-79.5712999"/>
-<point lat="43.72368" lon="-79.57229"/>
-<point lat="43.7257" lon="-79.57324"/>
-<point lat="43.7280299" lon="-79.57438"/>
-<point lat="43.73157" lon="-79.57615"/>
 </path>
 <path>
 <point lat="43.70926" lon="-79.56565"/>
@@ -665,6 +639,17 @@ Content-Type: text/xml
 <point lat="43.66218" lon="-79.54406"/>
 </path>
 <path>
+<point lat="43.74434" lon="-79.58242"/>
+<point lat="43.74662" lon="-79.58348"/>
+<point lat="43.74883" lon="-79.58463"/>
+<point lat="43.7508399" lon="-79.5855799"/>
+<point lat="43.75348" lon="-79.58686"/>
+<point lat="43.75605" lon="-79.58805"/>
+<point lat="43.75829" lon="-79.58912"/>
+<point lat="43.75936" lon="-79.58962"/>
+<point lat="43.75999" lon="-79.59013"/>
+</path>
+<path>
 <point lat="43.66218" lon="-79.54406"/>
 <point lat="43.66524" lon="-79.54544"/>
 <point lat="43.66753" lon="-79.54644"/>
@@ -702,16 +687,14 @@ Content-Type: text/xml
 <point lat="43.72583" lon="-79.5736"/>
 </path>
 <path>
+<point lat="43.709" lon="-79.56523"/>
+<point lat="43.71153" lon="-79.56641"/>
+<point lat="43.71408" lon="-79.56764"/>
+</path>
+<path>
 <point lat="43.70926" lon="-79.56565"/>
 <point lat="43.70501" lon="-79.56376"/>
 <point lat="43.69447" lon="-79.55886"/>
-</path>
-<path>
-<point lat="43.73157" lon="-79.57615"/>
-<point lat="43.73577" lon="-79.57823"/>
-<point lat="43.73825" lon="-79.57966"/>
-<point lat="43.73918" lon="-79.57995"/>
-<point lat="43.74029" lon="-79.58043"/>
 </path>
 </route>
 </body>

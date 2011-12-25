@@ -31,10 +31,27 @@ def save_response(response, file):
         f.write("\n")
         f.write(response.content.replace("\r", ""))
 
+def handle_error(tree, url, func):
+    error = tree.find('Error')
+    if error is None:
+        return False
+    retry = error.attrib.get('shouldRetry')
+    if retry is None:
+        retry = False
+    if not isinstance(retry, bool):
+        retry = retry.lower() == "true"
+    if not retry:
+        raise Exception(error.text.strip())
+    async.map([async.get(url, hooks=dict(response=func))])
+    return True
+
 def handle_agencylist(response):
     logger.info(response.url)
-    save_response(response, os.path.join(FILE_ROOT, "agency_list.xml"))
     agencies_tree = etree.fromstring(response.content)
+    has_error = handle_error(agencies_tree, response.url, handle_agencylist)
+    if has_error:
+        return False
+    save_response(response, os.path.join(FILE_ROOT, "agency_list.xml"))
     agency_ids = agencies_tree.xpath('//agency/@tag')
     requests = []
     for agency_id in agency_ids:
@@ -54,8 +71,11 @@ def get_routelist_handler(agency_id):
         dir = os.path.join(FILE_ROOT, agency_id)
         if not os.path.exists(dir):
             os.mkdir(dir)
-        save_response(response, os.path.join(dir, "route_list.xml"))
         routelist_tree = etree.fromstring(response.content)
+        has_error = handle_error(routelist_tree, response.url, get_routelist_handler(agency_id))
+        if has_error:
+            return False
+        save_response(response, os.path.join(dir, "route_list.xml"))
         route_ids = routelist_tree.xpath('//route/@tag')
         requests = []
         for route_id in route_ids:
@@ -74,6 +94,10 @@ def get_routelist_handler(agency_id):
 def get_routeconfig_handler(agency_id, route_id):
     def handle_routeconfig(response):
         logger.info(response.url)
+        routeconfig_tree = etree.fromstring(response.content)
+        has_error = handle_error(routeconfig_tree, response.url, get_routeconfig_handler(agency_id, route_id))
+        if has_error:
+            return False
         dir = os.path.join(FILE_ROOT, agency_id, route_id)
         if not os.path.exists(dir):
             os.mkdir(dir)

@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:38 GMT
+Date: Sun, 25 Dec 2011 20:01:15 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 6510
+Content-Length: 6481
 Connection: close
 Content-Type: text/xml
 
@@ -12,8 +12,8 @@ Content-Type: text/xml
 <body copyright="All data copyright Toronto Transit Commission 2011.">
 <route tag="303" title="303-Don Mills" color="ff0000" oppositeColor="ffffff" latMin="43.6571599" latMax="43.8111" lonMin="-79.3605" lonMax="-79.33462">
 <stop tag="638" title="Freshmeadow Drive At Don Mills Rd" lat="43.8092399" lon="-79.35865" stopId="2646"/>
-<stop tag="5457" title="Don Mills Road At Cliffwood Road North Side" lat="43.80707" lon="-79.35701" stopId="1916"/>
-<stop tag="2404" title="Don Mills Road At Cliffwood Road South Side" lat="43.8049799" lon="-79.3548999" stopId="1918"/>
+<stop tag="5457" title="Don Mills Road At Cliffwood Road" lat="43.80707" lon="-79.35701" stopId="1916"/>
+<stop tag="2404" title="Don Mills Road At Cliffwood Road" lat="43.8049799" lon="-79.3548999" stopId="1918"/>
 <stop tag="3889" title="Don Mills Road At Pebble Byway" lat="43.80252" lon="-79.3534699" stopId="1960"/>
 <stop tag="4184" title="Don Mills Road At McNicoll Avenue" lat="43.7997799" lon="-79.3542" stopId="1953"/>
 <stop tag="3712" title="Don Mills Road At Bedle Avenue" lat="43.79796" lon="-79.3547999" stopId="1911"/>
@@ -38,16 +38,16 @@ Content-Type: text/xml
 <stop tag="9478" title="Don Mills Road At Mallard Road" lat="43.7482599" lon="-79.3464999" stopId="1951"/>
 <stop tag="3736" title="Don Mills Road At Bond Avenue" lat="43.74647" lon="-79.34603" stopId="1912"/>
 <stop tag="7579" title="Don Mills Road At Chipping Road" lat="43.7448299" lon="-79.3455899" stopId="1914"/>
-<stop tag="1984" title="Don Mills Road At The Donway East North Side" lat="43.7409899" lon="-79.3445899" stopId="1921"/>
+<stop tag="1984" title="Don Mills Road At The Donway East" lat="43.7409899" lon="-79.3445899" stopId="1921"/>
 <stop tag="4938" title="Don Mills Road At Lawrence Avenue East" lat="43.7373099" lon="-79.3435999" stopId="1947"/>
 <stop tag="2768" title="Lawrence Avenue At Don Mills Road" lat="43.7346099" lon="-79.3428699" stopId="1962"/>
-<stop tag="2974" title="Don Mills Road At The Donway West South Side" lat="43.7325399" lon="-79.3423299" stopId="1923"/>
+<stop tag="2974" title="Don Mills Road At The Donway West" lat="43.7325399" lon="-79.3423299" stopId="1923"/>
 <stop tag="4943" title="Don Mills Road At Barber Greene Road" lat="43.72775" lon="-79.34101" stopId="1909"/>
 <stop tag="6896" title="Don Mills Road At Wynford Drive" lat="43.72317" lon="-79.3398" stopId="1978"/>
 <stop tag="5682" title="Don Mills Road At Eglinton Avenue East Farside" lat="43.7200099" lon="-79.33895" stopId="9126"/>
 <stop tag="276" title="Don Mills Road At Rochefort Drive Farside" lat="43.71789" lon="-79.33805" stopId="1964"/>
 <stop tag="6261" title="Don Mills Road At St Dennis Drive (Science Centre)" lat="43.71667" lon="-79.3375" stopId="1973"/>
-<stop tag="9804" title="Don Mills Road At Gateway Boulevard North Side" lat="43.71455" lon="-79.33658" stopId="1935"/>
+<stop tag="9804" title="Don Mills Road At Gateway Boulevard" lat="43.71455" lon="-79.33658" stopId="1935"/>
 <stop tag="4592" title="Opposite 735 Don Mills" lat="43.71129" lon="-79.33511" stopId="1958"/>
 <stop tag="3115" title="Overlea Boulevard At Don Mills Road Farside" lat="43.7098099" lon="-79.33537" stopId="2978"/>
 <stop tag="7561" title="Overlea Boulevard At William Morgan Drive Farside" lat="43.70804" lon="-79.3417399" stopId="2986"/>
@@ -122,17 +122,17 @@ Content-Type: text/xml
 <stop tag="9202" title="57 Thorncliffe Park Drive At Woodvale Apartments" lat="43.70493" lon="-79.34198" stopId="9498"/>
 <stop tag="9404" title="Thorncliffe Park Drive East At Overlea Boulevard Farside" lat="43.7064799" lon="-79.3430599" stopId="8352"/>
 <stop tag="937" title="Overlea Boulevard At William Morgan Drive" lat="43.70785" lon="-79.3415399" stopId="2987"/>
-<stop tag="1049" title="Don Mills Road At Gateway Boulevard South Side Farside" lat="43.71082" lon="-79.33462" stopId="1936"/>
-<stop tag="4777" title="Don Mills Road At Gateway Boulevard North Side" lat="43.7142199" lon="-79.3360899" stopId="1934"/>
+<stop tag="1049" title="Don Mills Road At Gateway Boulevard Farside" lat="43.71082" lon="-79.33462" stopId="1936"/>
+<stop tag="4777" title="Don Mills Road At Gateway Boulevard" lat="43.7142199" lon="-79.3360899" stopId="1934"/>
 <stop tag="5763" title="Don Mills Road At St Dennis Drive (Science Centre)" lat="43.71633" lon="-79.33704" stopId="1972"/>
 <stop tag="7679" title="Don Mills Road At Rochefort Drive" lat="43.71784" lon="-79.3377" stopId="1963"/>
 <stop tag="6077" title="Don Mills Road At Eglinton Avenue East Farside" lat="43.7209899" lon="-79.33879" stopId="9386"/>
 <stop tag="280" title="Don Mills Road At Wynford Drive" lat="43.7228299" lon="-79.3393299" stopId="1977"/>
 <stop tag="8401" title="Don Mills Road At Green Belt Drive Farside" lat="43.72809" lon="-79.34079" stopId="1942"/>
-<stop tag="8421" title="Don Mills Road At The Donway West West Side Farside" lat="43.7325599" lon="-79.3420099" stopId="1922"/>
+<stop tag="8421" title="Don Mills Road At The Donway West Farside" lat="43.7325599" lon="-79.3420099" stopId="1922"/>
 <stop tag="4950" title="1057 Don Mills Road" lat="43.7343099" lon="-79.3424799" stopId="1961"/>
 <stop tag="4096" title="Don Mills Road At Lawrence Avenue East" lat="43.73678" lon="-79.34314" stopId="1946"/>
-<stop tag="1305" title="Don Mills Road At The Donway East North Side" lat="43.7406699" lon="-79.3441899" stopId="1920"/>
+<stop tag="1305" title="Don Mills Road At The Donway East" lat="43.7406699" lon="-79.3441899" stopId="1920"/>
 <stop tag="3286" title="Don Mills Road At Chipping Road" lat="43.7445799" lon="-79.3452299" stopId="1913"/>
 <stop tag="5740" title="Don Mills Road At Legato Court" lat="43.74617" lon="-79.34568" stopId="1948"/>
 <stop tag="2702" title="Don Mills Road At Farmcote Road Farside" lat="43.74813" lon="-79.34619" stopId="1930"/>
@@ -157,8 +157,8 @@ Content-Type: text/xml
 <stop tag="4332" title="Don Mills Road At Bedle Avenue" lat="43.79748" lon="-79.3547099" stopId="1910"/>
 <stop tag="5504" title="Don Mills Road At McNicoll Avenue" lat="43.7994599" lon="-79.35398" stopId="1952"/>
 <stop tag="5214" title="Don Mills Road At Mogul Drive North" lat="43.80239" lon="-79.35321" stopId="1956"/>
-<stop tag="5186" title="Don Mills Road At Cliffwood Road South Side Farside" lat="43.8053699" lon="-79.3549199" stopId="1917"/>
-<stop tag="3405" title="Don Mills Road At Cliffwood Road North Side" lat="43.80693" lon="-79.35662" stopId="1915"/>
+<stop tag="5186" title="Don Mills Road At Cliffwood Road Farside" lat="43.8053699" lon="-79.3549199" stopId="1917"/>
+<stop tag="3405" title="Don Mills Road At Cliffwood Road" lat="43.80693" lon="-79.35662" stopId="1915"/>
 <stop tag="5065" title="Don Mills Road At Freshmeadow Drive" lat="43.80881" lon="-79.35872" stopId="1933"/>
 <stop tag="278" title="Don Mills Road At Steeles Avenue East" lat="43.8109899" lon="-79.3605" stopId="1974"/>
 <stop tag="6399" title="Townsend Road At Steeles Avenue East Farside" lat="43.8111" lon="-79.35727" stopId="6148"/>

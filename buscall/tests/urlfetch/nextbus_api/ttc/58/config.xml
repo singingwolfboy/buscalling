@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:35 GMT
+Date: Sun, 25 Dec 2011 19:59:47 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 7170
+Content-Length: 7161
 Connection: close
 Content-Type: text/xml
 
@@ -41,7 +41,7 @@ Content-Type: text/xml
 <stop tag="3186" title="Scarlett Road At Lockheed Boulevard" lat="43.6998499" lon="-79.5253599" stopId="6045"/>
 <stop tag="451" title="Lawrence Avenue West At Riverstone Drive" lat="43.6983899" lon="-79.52231" stopId="6046"/>
 <stop tag="4884" title="Lawrence Avenue West At Hickory Tree Road" lat="43.6990899" lon="-79.52015" stopId="5377"/>
-<stop tag="7273" title="Lawrence Avenue West At Weston Road East Side" lat="43.69994" lon="-79.5167899" stopId="5414"/>
+<stop tag="7273" title="Lawrence Avenue West At Weston Road" lat="43.69994" lon="-79.5167899" stopId="5414"/>
 <stop tag="4350" title="Lawrence Avenue West At Ralph Street Farside" lat="43.7011099" lon="-79.51172" stopId="5397"/>
 <stop tag="10388" title="Lawrence Avenue West At Pine Street" lat="43.7018799" lon="-79.50841" stopId="5395"/>
 <stop tag="6244" title="Lawrence Avenue East At Jane Street" lat="43.70276" lon="-79.50422" stopId="2824"/>
@@ -94,8 +94,8 @@ Content-Type: text/xml
 <stop tag="4523" title="Lawrence Avenue West At Jane Street" lat="43.70302" lon="-79.5034399" stopId="5379"/>
 <stop tag="8066" title="Lawrence Avenue West At Pine Street" lat="43.7020999" lon="-79.50813" stopId="5396"/>
 <stop tag="9512" title="Lawrence Avenue West At Ralph Street Farside" lat="43.70106" lon="-79.5125999" stopId="5398"/>
-<stop tag="453" title="Lawrence Avenue West At Weston Road East Side" lat="43.7002599" lon="-79.51604" stopId="5415"/>
-<stop tag="2143" title="Lawrence Avenue West At Weston Road West Side Farside" lat="43.7000199" lon="-79.51703" stopId="5413"/>
+<stop tag="453" title="Lawrence Avenue West At Weston Road" lat="43.7002599" lon="-79.51604" stopId="5415"/>
+<stop tag="2143" title="Lawrence Avenue West At Weston Road Farside" lat="43.7000199" lon="-79.51703" stopId="5413"/>
 <stop tag="10259" title="Lawrence Avenue West At Little Avenue" lat="43.6993799" lon="-79.51972" stopId="5387"/>
 <stop tag="4043" title="Lawrence Avenue West At Scarlett Road" lat="43.69831" lon="-79.5230799" stopId="5406"/>
 <stop tag="4130" title="Scarlett Road At Lockheed Boulevard Farside" lat="43.6999699" lon="-79.52517" stopId="6044"/>
@@ -462,6 +462,12 @@ Content-Type: text/xml
   <stop tag="485_ar" />
 </direction>
 <path>
+<point lat="43.69493" lon="-79.55541"/>
+<point lat="43.69565" lon="-79.55234"/>
+<point lat="43.69662" lon="-79.54875"/>
+<point lat="43.69712" lon="-79.54599"/>
+</path>
+<path>
 <point lat="43.70002" lon="-79.51703"/>
 <point lat="43.69938" lon="-79.51972"/>
 <point lat="43.69928" lon="-79.51988"/>
@@ -469,12 +475,6 @@ Content-Type: text/xml
 <point lat="43.69831" lon="-79.5230799"/>
 <point lat="43.69817" lon="-79.52328"/>
 <point lat="43.69997" lon="-79.52517"/>
-</path>
-<path>
-<point lat="43.69493" lon="-79.55541"/>
-<point lat="43.69565" lon="-79.55234"/>
-<point lat="43.69662" lon="-79.54875"/>
-<point lat="43.69712" lon="-79.54599"/>
 </path>
 <path>
 <point lat="43.68954" lon="-79.62191"/>

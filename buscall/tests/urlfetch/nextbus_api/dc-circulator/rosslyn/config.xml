@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:52:54 GMT
+Date: Sun, 25 Dec 2011 19:50:50 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1860
+Content-Length: 1861
 Connection: close
 Content-Type: text/xml
 
@@ -14,7 +14,6 @@ Content-Type: text/xml
 <stop tag="rossmetr" title="Rosslyn Metro Station" lat="38.8971951" lon="-77.07153" stopId="0136"/>
 <stop tag="m34th" title="34th St and M St NW" lat="38.9050201" lon="-77.067573" stopId="0137"/>
 <stop tag="mpoto" title="Potomac St and M St NW" lat="38.9050599" lon="-77.0654409" stopId="0138"/>
-<stop tag="mwisc" title="Wisconsin Ave and M St NW" lat="38.9051199" lon="-77.0623481" stopId="0031"/>
 <stop tag="mjeff" title="Thomas Jefferson St and M St NW" lat="38.9051599" lon="-77.0603853" stopId="0032"/>
 <stop tag="mpenn" title="Penn Ave and 28th St" lat="38.9049514" lon="-77.0572747" stopId="0033"/>
 <stop tag="l24th" title="24th and L St" lat="38.90365" lon="-77.0515929" stopId="0139"/>
@@ -25,6 +24,7 @@ Content-Type: text/xml
 <stop tag="m28th" title="28th and M St NW" lat="38.9052912" lon="-77.0568095" stopId="0145"/>
 <stop tag="m30th" title="30th St and M St NW" lat="38.9052698" lon="-77.0594113" stopId="0146"/>
 <stop tag="m31st" title="31st St and M St NW" lat="38.905253" lon="-77.0616649" stopId="0147"/>
+<stop tag="mwisc" title="Wisconsin Ave and M St NW" lat="38.9052286" lon="-77.0632906" stopId="0148"/>
 <stop tag="m33rd" title="33rd St and M St NW" lat="38.9051633" lon="-77.0659033" stopId="0149"/>
 <direction tag="wb" title="Westbound" name="" useForUI="true">
   <stop tag="n19th" />
@@ -40,7 +40,6 @@ Content-Type: text/xml
   <stop tag="rossmetr" />
   <stop tag="m34th" />
   <stop tag="mpoto" />
-  <stop tag="mwisc" />
   <stop tag="mjeff" />
   <stop tag="mpenn" />
   <stop tag="l24th" />

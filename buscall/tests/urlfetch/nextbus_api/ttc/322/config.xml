@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:52 GMT
+Date: Sun, 25 Dec 2011 20:01:30 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 4009
+Content-Length: 4076
 Connection: close
 Content-Type: text/xml
 
@@ -37,7 +37,7 @@ Content-Type: text/xml
 <stop tag="4247" title="Coxwell Avenue At Hanson Street Farside" lat="43.6795699" lon="-79.3221299" stopId="1792"/>
 <stop tag="10468" title="Coxwell Avenue At Casci Avenue" lat="43.6773499" lon="-79.3211999" stopId="14425"/>
 <stop tag="10181" title="Coxwell Avenue At Fairford Avenue" lat="43.67554" lon="-79.32043" stopId="1791"/>
-<stop tag="10283" title="Coxwell Avenue At Lower Gerrard Street East" lat="43.67312" lon="-79.31943" stopId="1794"/>
+<stop tag="10283" title="Coxwell Avenue At Gerrard Street East" lat="43.67312" lon="-79.31943" stopId="1794"/>
 <stop tag="4644" title="Coxwell Avenue At Robbins Avenue" lat="43.6698799" lon="-79.3180999" stopId="1797"/>
 <stop tag="5873" title="Coxwell Avenue At Dundas Street East" lat="43.6690299" lon="-79.3177599" stopId="1788"/>
 <stop tag="8742" title="Coxwell Avenue At Queen Street East" lat="43.6666899" lon="-79.3167799" stopId="1795"/>
@@ -53,6 +53,7 @@ Content-Type: text/xml
 <stop tag="7957" title="Kingston Road At Beech Avenue" lat="43.6801799" lon="-79.2909" stopId="2766"/>
 <stop tag="4019" title="Kingston Road At Scarborough Road" lat="43.6804699" lon="-79.28719" stopId="2794"/>
 <stop tag="3243" title="Bingham Loop Farside" lat="43.6814999" lon="-79.28485" stopId="13519"/>
+<stop tag="1114" title="Broadview Avenue At Hillside Drive Farside" lat="43.6861699" lon="-79.35611" stopId="13939"/>
 <stop tag="10085" title="Victoria Park Avenue At Winston Avenue" lat="43.6837" lon="-79.28518" stopId="4698"/>
 <stop tag="1468" title="Victoria Park Avenue At Swanwick Avenue" lat="43.6849099" lon="-79.2856799" stopId="4695"/>
 <stop tag="3287" title="Victoria Park Avenue At Gerrard Street East Farside" lat="43.6873899" lon="-79.2866499" stopId="4691"/>
@@ -77,12 +78,12 @@ Content-Type: text/xml
 <stop tag="6027" title="Kingston Road At Columbine Avenue" lat="43.6716799" lon="-79.31036" stopId="2772"/>
 <stop tag="3281" title="Kingston Road At Dundas Street East" lat="43.6700899" lon="-79.31123" stopId="2775"/>
 <stop tag="4577" title="Kingston Road At Queen Street East" lat="43.66799" lon="-79.3122699" stopId="14058"/>
-<stop tag="308" title="Eastern Avenue At Queen Street East South Side Farside" lat="43.6667799" lon="-79.31272" stopId="11181"/>
+<stop tag="308" title="Eastern Avenue At Queen Street East Farside" lat="43.6667799" lon="-79.31272" stopId="11181"/>
 <stop tag="2754" title="Coxwell Avenue At Queen Street East" lat="43.6659399" lon="-79.31631" stopId="11183"/>
 <stop tag="1129" title="Coxwell Avenue At Dundas Street East" lat="43.6685499" lon="-79.3173999" stopId="1787"/>
 <stop tag="5934" title="Coxwell Avenue At Robbins Avenue" lat="43.66978" lon="-79.31791" stopId="1796"/>
 <stop tag="5576" title="Coxwell Avenue At Eastwood Road" lat="43.67271" lon="-79.31911" stopId="1790"/>
-<stop tag="8980" title="Coxwell Avenue At Upper Gerrard Street East" lat="43.6750999" lon="-79.3200999" stopId="1800"/>
+<stop tag="8980" title="Coxwell Avenue At Gerrard Street East" lat="43.6750999" lon="-79.3200999" stopId="1800"/>
 <stop tag="7359" title="Coxwell Avenue At Casci Avenue" lat="43.67734" lon="-79.321" stopId="1783"/>
 <stop tag="8251" title="Coxwell Avenue At Hanson Street" lat="43.6796799" lon="-79.3219999" stopId="1793"/>
 <stop tag="3260" title="Coxwell Avenue At Earl Haig Avenue Farside" lat="43.68147" lon="-79.32272" stopId="9541"/>
@@ -154,6 +155,51 @@ Content-Type: text/xml
   <stop tag="6540" />
   <stop tag="5251" />
   <stop tag="8687" />
+</direction>
+<direction tag="322_0_322Sun" title="South - 322 Coxwell Blue Night towards Victoria Park via Kingston Rd" name="South" useForUI="true">
+  <stop tag="411" />
+  <stop tag="6070" />
+  <stop tag="9364" />
+  <stop tag="2329" />
+  <stop tag="1114" />
+  <stop tag="5662" />
+  <stop tag="4157" />
+  <stop tag="6140" />
+  <stop tag="14568" />
+  <stop tag="9250" />
+  <stop tag="6304" />
+  <stop tag="2906" />
+  <stop tag="5257" />
+  <stop tag="9351" />
+  <stop tag="7222" />
+  <stop tag="1554" />
+  <stop tag="6030" />
+  <stop tag="6480" />
+  <stop tag="418" />
+  <stop tag="9056" />
+  <stop tag="9057" />
+  <stop tag="4623" />
+  <stop tag="6052" />
+  <stop tag="6088" />
+  <stop tag="4247" />
+  <stop tag="10468" />
+  <stop tag="10181" />
+  <stop tag="10283" />
+  <stop tag="4644" />
+  <stop tag="5873" />
+  <stop tag="8742" />
+  <stop tag="490" />
+  <stop tag="4861" />
+  <stop tag="8219" />
+  <stop tag="8597" />
+  <stop tag="4859" />
+  <stop tag="9300" />
+  <stop tag="7795" />
+  <stop tag="1810" />
+  <stop tag="797" />
+  <stop tag="7957" />
+  <stop tag="4019" />
+  <stop tag="3243" />
 </direction>
 <direction tag="322_0_322wd" title="South - 322s Coxwell Blue Night towards Warden via Victoria Park and Danforth" name="South" useForUI="true">
   <stop tag="411" />
@@ -347,6 +393,37 @@ Content-Type: text/xml
 <point lat="43.67968" lon="-79.322"/>
 <point lat="43.68147" lon="-79.32272"/>
 <point lat="43.68321" lon="-79.3234499"/>
+</path>
+<path>
+<point lat="43.67738" lon="-79.35862"/>
+<point lat="43.67922" lon="-79.35813"/>
+<point lat="43.68089" lon="-79.35767"/>
+<point lat="43.681" lon="-79.35772"/>
+<point lat="43.68127" lon="-79.35768"/>
+<point lat="43.68435" lon="-79.35674"/>
+<point lat="43.68617" lon="-79.35611"/>
+<point lat="43.68697" lon="-79.35578"/>
+<point lat="43.68708" lon="-79.35583"/>
+<point lat="43.68854" lon="-79.35525"/>
+<point lat="43.68849" lon="-79.35487"/>
+<point lat="43.68839" lon="-79.35469"/>
+<point lat="43.68841" lon="-79.35444"/>
+<point lat="43.68839" lon="-79.35406"/>
+<point lat="43.68845" lon="-79.3533999"/>
+<point lat="43.68893" lon="-79.35095"/>
+<point lat="43.68932" lon="-79.34897"/>
+<point lat="43.69" lon="-79.34548"/>
+<point lat="43.69052" lon="-79.34286"/>
+<point lat="43.69068" lon="-79.3423399"/>
+<point lat="43.69085" lon="-79.34204"/>
+<point lat="43.69117" lon="-79.34168"/>
+<point lat="43.6912499" lon="-79.3411"/>
+<point lat="43.69192" lon="-79.33802"/>
+<point lat="43.69257" lon="-79.33494"/>
+<point lat="43.69351" lon="-79.33057"/>
+<point lat="43.69391" lon="-79.3284"/>
+<point lat="43.69413" lon="-79.328"/>
+<point lat="43.69179" lon="-79.32714"/>
 </path>
 <path>
 <point lat="43.66594" lon="-79.31631"/>

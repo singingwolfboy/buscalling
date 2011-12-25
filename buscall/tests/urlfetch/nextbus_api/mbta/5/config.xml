@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:55:46 GMT
+Date: Sun, 25 Dec 2011 19:54:17 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2787
+Content-Length: 2779
 Connection: close
 Content-Type: text/xml
 
@@ -18,7 +18,7 @@ Content-Type: text/xml
 <stop tag="25203" title="Old Colony Ave opp Gavin Way" lat="42.3267299" lon="-71.0522" stopId="25203"/>
 <stop tag="25202" title="Preble St @ Vinton St" lat="42.3293399" lon="-71.0530299" stopId="25202"/>
 <stop tag="35202" title="Preble St @ Dorchester Ave" lat="42.3295199" lon="-71.0568199" stopId="35202"/>
-<stop tag="13_0" title="Andrew Sta - Red Line" lat="42.3301499" lon="-71.05765"/>
+<stop tag="13" title="Andrew Sta - Red Line" lat="42.3301499" lon="-71.05765" stopId="00013"/>
 <stop tag="14" title="Dorchester St @ Dorchester Ave" lat="42.3296" lon="-71.05682" stopId="00014"/>
 <stop tag="15" title="Dorchester St @ Vinton St" lat="42.33071" lon="-71.05454" stopId="00015"/>
 <stop tag="16" title="Dorchester St @ Old Colony Ave" lat="42.33163" lon="-71.05292" stopId="00016"/>
@@ -61,7 +61,7 @@ Content-Type: text/xml
 <stop tag="50" title="Dorchester St @ Old Colony Ave" lat="42.3316999" lon="-71.0530599" stopId="00050"/>
 <stop tag="51" title="Dorchester St @ Middle St" lat="42.3307699" lon="-71.05468" stopId="00051"/>
 <stop tag="52" title="Dorchester St @ Dorchester Ave" lat="42.32974" lon="-71.0568099" stopId="00052"/>
-<stop tag="13" title="Andrew Sta - Red Line" lat="42.3301499" lon="-71.05765" stopId="00013"/>
+<stop tag="13_1" title="Andrew Sta - Red Line" lat="42.3301499" lon="-71.05765"/>
 <stop tag="15201" title="Preble St @ Rogers St" lat="42.32922" lon="-71.0553899" stopId="15201"/>
 <stop tag="5201" title="Preble St @ Old Colony Ave" lat="42.32925" lon="-71.05293" stopId="05201"/>
 <stop tag="35201_ar" title="Old Colony Ave @ McDonough Way" lat="42.3284899" lon="-71.05269"/>
@@ -87,7 +87,7 @@ Content-Type: text/xml
   <stop tag="50" />
   <stop tag="51" />
   <stop tag="52" />
-  <stop tag="13" />
+  <stop tag="13_1" />
   <stop tag="15201" />
   <stop tag="5201" />
   <stop tag="35201_ar" />
@@ -100,7 +100,7 @@ Content-Type: text/xml
   <stop tag="25203" />
   <stop tag="25202" />
   <stop tag="35202" />
-  <stop tag="13_0" />
+  <stop tag="13" />
   <stop tag="14" />
   <stop tag="15" />
   <stop tag="16" />
@@ -166,52 +166,6 @@ Content-Type: text/xml
 <point lat="42.3382" lon="-71.03152"/>
 <point lat="42.33853" lon="-71.03158"/>
 <point lat="42.33859" lon="-71.0318999"/>
-</path>
-<path>
-<point lat="42.33015" lon="-71.05765"/>
-<point lat="42.33" lon="-71.05696"/>
-<point lat="42.3299" lon="-71.05696"/>
-<point lat="42.32977" lon="-71.05696"/>
-<point lat="42.3295" lon="-71.05702"/>
-<point lat="42.32961" lon="-71.05691"/>
-<point lat="42.3296" lon="-71.05682"/>
-<point lat="42.32975" lon="-71.05674"/>
-<point lat="42.3301299" lon="-71.05596"/>
-<point lat="42.33035" lon="-71.0554499"/>
-<point lat="42.33043" lon="-71.05528"/>
-<point lat="42.33071" lon="-71.05454"/>
-<point lat="42.33075" lon="-71.05457"/>
-<point lat="42.33086" lon="-71.05435"/>
-<point lat="42.331" lon="-71.05406"/>
-<point lat="42.3311" lon="-71.05389"/>
-<point lat="42.33125" lon="-71.05363"/>
-<point lat="42.33156" lon="-71.05318"/>
-<point lat="42.3316299" lon="-71.05307"/>
-<point lat="42.3316299" lon="-71.05292"/>
-<point lat="42.33172" lon="-71.05292"/>
-<point lat="42.33272" lon="-71.05115"/>
-<point lat="42.33275" lon="-71.05118"/>
-<point lat="42.33291" lon="-71.0509299"/>
-<point lat="42.33299" lon="-71.05082"/>
-<point lat="42.33317" lon="-71.05054"/>
-<point lat="42.3333299" lon="-71.05024"/>
-<point lat="42.33354" lon="-71.04973"/>
-<point lat="42.33362" lon="-71.04956"/>
-<point lat="42.33359" lon="-71.04953"/>
-<point lat="42.33377" lon="-71.04926"/>
-<point lat="42.33385" lon="-71.04907"/>
-<point lat="42.334" lon="-71.04877"/>
-<point lat="42.33421" lon="-71.04828"/>
-<point lat="42.33447" lon="-71.04776"/>
-<point lat="42.3345399" lon="-71.04761"/>
-<point lat="42.3345" lon="-71.04758"/>
-<point lat="42.3346" lon="-71.04749"/>
-<point lat="42.33471" lon="-71.04724"/>
-<point lat="42.33495" lon="-71.04676"/>
-<point lat="42.3352099" lon="-71.04628"/>
-<point lat="42.33535" lon="-71.0459599"/>
-<point lat="42.33542" lon="-71.04575"/>
-<point lat="42.33538" lon="-71.04573"/>
 </path>
 <path>
 <point lat="42.32849" lon="-71.05269"/>
@@ -292,20 +246,45 @@ Content-Type: text/xml
 <point lat="42.3299" lon="-71.05696"/>
 <point lat="42.32977" lon="-71.05696"/>
 <point lat="42.3295" lon="-71.05702"/>
-<point lat="42.3293899" lon="-71.05633"/>
-<point lat="42.3293" lon="-71.05571"/>
-<point lat="42.32927" lon="-71.05538"/>
-<point lat="42.32922" lon="-71.05539"/>
-<point lat="42.32925" lon="-71.05519"/>
-<point lat="42.32923" lon="-71.05473"/>
-<point lat="42.32923" lon="-71.05427"/>
-<point lat="42.32925" lon="-71.05377"/>
-<point lat="42.32925" lon="-71.05349"/>
-<point lat="42.32928" lon="-71.053"/>
-<point lat="42.32925" lon="-71.05293"/>
-<point lat="42.32934" lon="-71.05266"/>
-<point lat="42.32904" lon="-71.05261"/>
-<point lat="42.32849" lon="-71.05269"/>
+<point lat="42.32961" lon="-71.05691"/>
+<point lat="42.3296" lon="-71.05682"/>
+<point lat="42.32975" lon="-71.05674"/>
+<point lat="42.3301299" lon="-71.05596"/>
+<point lat="42.33035" lon="-71.0554499"/>
+<point lat="42.33043" lon="-71.05528"/>
+<point lat="42.33071" lon="-71.05454"/>
+<point lat="42.33075" lon="-71.05457"/>
+<point lat="42.33086" lon="-71.05435"/>
+<point lat="42.331" lon="-71.05406"/>
+<point lat="42.3311" lon="-71.05389"/>
+<point lat="42.33125" lon="-71.05363"/>
+<point lat="42.33156" lon="-71.05318"/>
+<point lat="42.3316299" lon="-71.05307"/>
+<point lat="42.3316299" lon="-71.05292"/>
+<point lat="42.33172" lon="-71.05292"/>
+<point lat="42.33272" lon="-71.05115"/>
+<point lat="42.33275" lon="-71.05118"/>
+<point lat="42.33291" lon="-71.0509299"/>
+<point lat="42.33299" lon="-71.05082"/>
+<point lat="42.33317" lon="-71.05054"/>
+<point lat="42.3333299" lon="-71.05024"/>
+<point lat="42.33354" lon="-71.04973"/>
+<point lat="42.33362" lon="-71.04956"/>
+<point lat="42.33359" lon="-71.04953"/>
+<point lat="42.33377" lon="-71.04926"/>
+<point lat="42.33385" lon="-71.04907"/>
+<point lat="42.334" lon="-71.04877"/>
+<point lat="42.33421" lon="-71.04828"/>
+<point lat="42.33447" lon="-71.04776"/>
+<point lat="42.3345399" lon="-71.04761"/>
+<point lat="42.3345" lon="-71.04758"/>
+<point lat="42.3346" lon="-71.04749"/>
+<point lat="42.33471" lon="-71.04724"/>
+<point lat="42.33495" lon="-71.04676"/>
+<point lat="42.3352099" lon="-71.04628"/>
+<point lat="42.33535" lon="-71.0459599"/>
+<point lat="42.33542" lon="-71.04575"/>
+<point lat="42.33538" lon="-71.04573"/>
 </path>
 <path>
 <point lat="42.33551" lon="-71.04415"/>
@@ -395,6 +374,27 @@ Content-Type: text/xml
 <point lat="42.33551" lon="-71.0417499"/>
 <point lat="42.33555" lon="-71.04176"/>
 <point lat="42.33551" lon="-71.04415"/>
+</path>
+<path>
+<point lat="42.33015" lon="-71.05765"/>
+<point lat="42.33" lon="-71.05696"/>
+<point lat="42.3299" lon="-71.05696"/>
+<point lat="42.32977" lon="-71.05696"/>
+<point lat="42.3295" lon="-71.05702"/>
+<point lat="42.3293899" lon="-71.05633"/>
+<point lat="42.3293" lon="-71.05571"/>
+<point lat="42.32927" lon="-71.05538"/>
+<point lat="42.32922" lon="-71.05539"/>
+<point lat="42.32925" lon="-71.05519"/>
+<point lat="42.32923" lon="-71.05473"/>
+<point lat="42.32923" lon="-71.05427"/>
+<point lat="42.32925" lon="-71.05377"/>
+<point lat="42.32925" lon="-71.05349"/>
+<point lat="42.32928" lon="-71.053"/>
+<point lat="42.32925" lon="-71.05293"/>
+<point lat="42.32934" lon="-71.05266"/>
+<point lat="42.32904" lon="-71.05261"/>
+<point lat="42.32849" lon="-71.05269"/>
 </path>
 </route>
 </body>

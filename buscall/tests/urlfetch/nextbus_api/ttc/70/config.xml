@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:43 GMT
+Date: Sun, 25 Dec 2011 19:59:57 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 3918
+Content-Length: 3919
 Connection: close
 Content-Type: text/xml
 
@@ -52,11 +52,11 @@ Content-Type: text/xml
 <stop tag="5553" title="Oconnor Drive At Curity Avenue" lat="43.7081099" lon="-79.3110099" stopId="5924"/>
 <stop tag="4313" title="850 Oconnor Drive" lat="43.7070599" lon="-79.31177" stopId="11741"/>
 <stop tag="2488" title="Oconnor Drive At St Clair Anenue East" lat="43.70559" lon="-79.3128099" stopId="5935"/>
+<stop tag="2838" title="St Clair Avenue East At Warden Avenue Farside" lat="43.7120699" lon="-79.2815499" stopId="14055"/>
 <stop tag="2096" title="Victoria Park Avenue At Oconnor Drive Farside" lat="43.7228299" lon="-79.30202" stopId="8427"/>
 <stop tag="7775" title="Victoria Park Avenue At Southmead Road Farside" lat="43.7203999" lon="-79.3009599" stopId="8501"/>
 <stop tag="10068" title="Sunrise Avenue At Victoria Park Avenue Farside" lat="43.7195599" lon="-79.30184" stopId="11947"/>
 <stop tag="1827" title="Sunrise Avenue At Oconnor Drive" lat="43.7191699" lon="-79.30366" stopId="11948"/>
-<stop tag="2838" title="St Clair Avenue East At Warden Avenue Farside" lat="43.7120699" lon="-79.2815499" stopId="14055"/>
 <stop tag="14165" title="Coxwell Station" lat="43.6840799" lon="-79.32292" stopId="14643"/>
 <stop tag="7638" title="Coxwell Avenue At Glebeholme Boulevard" lat="43.6857" lon="-79.32448" stopId="4903"/>
 <stop tag="1550" title="Coxwell Avenue At Springdale Boulevard" lat="43.6872099" lon="-79.3251099" stopId="4914"/>
@@ -100,6 +100,35 @@ Content-Type: text/xml
 <stop tag="7929_ar" title="Craigton Drive At Pharmacy Avenue" lat="43.7270999" lon="-79.29843"/>
 <stop tag="2096_ar" title="Victoria Park Avenue At Oconnor Drive Farside" lat="43.7228299" lon="-79.30202"/>
 <stop tag="8624" title="Danforth Avenue At Coxwell Avenue" lat="43.6834799" lon="-79.32345" stopId="0920"/>
+<direction tag="70_0_70B" title="West - 70 O&apos;Connor towards Coxwell Station" name="West" useForUI="true">
+  <stop tag="2096" />
+  <stop tag="7775" />
+  <stop tag="10068" />
+  <stop tag="1827" />
+  <stop tag="14577" />
+  <stop tag="9881" />
+  <stop tag="3582" />
+  <stop tag="3034" />
+  <stop tag="5553" />
+  <stop tag="4313" />
+  <stop tag="2488" />
+  <stop tag="7620" />
+  <stop tag="2581" />
+  <stop tag="7219" />
+  <stop tag="5789" />
+  <stop tag="2018" />
+  <stop tag="2819" />
+  <stop tag="756" />
+  <stop tag="3273" />
+  <stop tag="419" />
+  <stop tag="9221" />
+  <stop tag="6480" />
+  <stop tag="418" />
+  <stop tag="9056" />
+  <stop tag="9057" />
+  <stop tag="4623" />
+  <stop tag="14165_ar" />
+</direction>
 <direction tag="70_0_70A" title="West - 70 O&apos;Connor towards Coxwell Station" name="West" useForUI="true">
   <stop tag="7929" />
   <stop tag="2756" />
@@ -162,34 +191,35 @@ Content-Type: text/xml
   <stop tag="4623" />
   <stop tag="14165_ar" />
 </direction>
-<direction tag="70_0_70B" title="West - 70 O&apos;Connor towards Coxwell Station" name="West" useForUI="true">
-  <stop tag="2096" />
-  <stop tag="7775" />
-  <stop tag="10068" />
-  <stop tag="1827" />
-  <stop tag="14577" />
-  <stop tag="9881" />
-  <stop tag="3582" />
-  <stop tag="3034" />
-  <stop tag="5553" />
-  <stop tag="4313" />
-  <stop tag="2488" />
-  <stop tag="7620" />
-  <stop tag="2581" />
-  <stop tag="7219" />
-  <stop tag="5789" />
-  <stop tag="2018" />
-  <stop tag="2819" />
-  <stop tag="756" />
-  <stop tag="3273" />
-  <stop tag="419" />
-  <stop tag="9221" />
-  <stop tag="6480" />
-  <stop tag="418" />
-  <stop tag="9056" />
-  <stop tag="9057" />
-  <stop tag="4623" />
-  <stop tag="14165_ar" />
+<direction tag="70_1_dc70" title="East - 70 O&apos;Connor towards Warden Station" name="East" useForUI="true">
+  <stop tag="8624" />
+  <stop tag="7638" />
+  <stop tag="1550" />
+  <stop tag="1312" />
+  <stop tag="7587" />
+  <stop tag="9224" />
+  <stop tag="8010" />
+  <stop tag="9760" />
+  <stop tag="8734" />
+  <stop tag="9730" />
+  <stop tag="4088" />
+  <stop tag="2917" />
+  <stop tag="7908" />
+  <stop tag="1663" />
+  <stop tag="6836" />
+  <stop tag="8397" />
+  <stop tag="7959" />
+  <stop tag="1900" />
+  <stop tag="7512" />
+  <stop tag="9711" />
+  <stop tag="5884" />
+  <stop tag="6867" />
+  <stop tag="5863" />
+  <stop tag="3023" />
+  <stop tag="8369" />
+  <stop tag="10263" />
+  <stop tag="9358" />
+  <stop tag="14313_ar" />
 </direction>
 <direction tag="70_1_70A" title="East - 70a O&apos;Connor towards Eglinton" name="East" useForUI="true">
   <stop tag="14165" />
@@ -220,36 +250,6 @@ Content-Type: text/xml
   <stop tag="2924" />
   <stop tag="8414" />
   <stop tag="7929_ar" />
-</direction>
-<direction tag="70_1_dc70" title="East - 70 O&apos;Connor towards Warden Station" name="East" useForUI="true">
-  <stop tag="8624" />
-  <stop tag="7638" />
-  <stop tag="1550" />
-  <stop tag="1312" />
-  <stop tag="7587" />
-  <stop tag="9224" />
-  <stop tag="8010" />
-  <stop tag="9760" />
-  <stop tag="8734" />
-  <stop tag="9730" />
-  <stop tag="4088" />
-  <stop tag="2917" />
-  <stop tag="7908" />
-  <stop tag="1663" />
-  <stop tag="6836" />
-  <stop tag="8397" />
-  <stop tag="7959" />
-  <stop tag="1900" />
-  <stop tag="7512" />
-  <stop tag="9711" />
-  <stop tag="5884" />
-  <stop tag="6867" />
-  <stop tag="5863" />
-  <stop tag="3023" />
-  <stop tag="8369" />
-  <stop tag="10263" />
-  <stop tag="9358" />
-  <stop tag="14313_ar" />
 </direction>
 <path>
 <point lat="43.7058899" lon="-79.31233"/>
@@ -292,22 +292,6 @@ Content-Type: text/xml
 <point lat="43.7046599" lon="-79.31356"/>
 </path>
 <path>
-<point lat="43.69765" lon="-79.32926"/>
-<point lat="43.69776" lon="-79.32948"/>
-<point lat="43.69808" lon="-79.32756"/>
-<point lat="43.6986" lon="-79.32518"/>
-<point lat="43.6990399" lon="-79.32313"/>
-<point lat="43.69937" lon="-79.32155"/>
-<point lat="43.69981" lon="-79.31966"/>
-<point lat="43.69991" lon="-79.31937"/>
-<point lat="43.69996" lon="-79.31914"/>
-<point lat="43.7000699" lon="-79.31911"/>
-<point lat="43.70235" lon="-79.316"/>
-<point lat="43.70445" lon="-79.31366"/>
-<point lat="43.70507" lon="-79.31307"/>
-<point lat="43.7058899" lon="-79.31233"/>
-</path>
-<path>
 <point lat="43.71102" lon="-79.28005"/>
 <point lat="43.71098" lon="-79.28003"/>
 <point lat="43.71084" lon="-79.2805"/>
@@ -324,6 +308,22 @@ Content-Type: text/xml
 <point lat="43.70894" lon="-79.29638"/>
 </path>
 <path>
+<point lat="43.69765" lon="-79.32926"/>
+<point lat="43.69776" lon="-79.32948"/>
+<point lat="43.69808" lon="-79.32756"/>
+<point lat="43.6986" lon="-79.32518"/>
+<point lat="43.6990399" lon="-79.32313"/>
+<point lat="43.69937" lon="-79.32155"/>
+<point lat="43.69981" lon="-79.31966"/>
+<point lat="43.69991" lon="-79.31937"/>
+<point lat="43.69996" lon="-79.31914"/>
+<point lat="43.7000699" lon="-79.31911"/>
+<point lat="43.70235" lon="-79.316"/>
+<point lat="43.70445" lon="-79.31366"/>
+<point lat="43.70507" lon="-79.31307"/>
+<point lat="43.7058899" lon="-79.31233"/>
+</path>
+<path>
 <point lat="43.68348" lon="-79.3234499"/>
 <point lat="43.6857" lon="-79.32448"/>
 <point lat="43.68721" lon="-79.32511"/>
@@ -337,17 +337,6 @@ Content-Type: text/xml
 <path>
 <point lat="43.69733" lon="-79.32942"/>
 <point lat="43.69607" lon="-79.32889"/>
-<point lat="43.69426" lon="-79.32814"/>
-<point lat="43.69179" lon="-79.32714"/>
-<point lat="43.69076" lon="-79.32671"/>
-<point lat="43.68889" lon="-79.32596"/>
-<point lat="43.68743" lon="-79.32538"/>
-<point lat="43.68587" lon="-79.32472"/>
-<point lat="43.68416" lon="-79.32396"/>
-<point lat="43.68434" lon="-79.32311"/>
-<point lat="43.68408" lon="-79.32292"/>
-</path>
-<path>
 <point lat="43.69426" lon="-79.32814"/>
 <point lat="43.69179" lon="-79.32714"/>
 <point lat="43.69076" lon="-79.32671"/>

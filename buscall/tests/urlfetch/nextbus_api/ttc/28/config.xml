@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:13 GMT
+Date: Sun, 25 Dec 2011 19:59:20 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1913
+Content-Length: 1896
 Connection: close
 Content-Type: text/xml
 
@@ -15,8 +15,8 @@ Content-Type: text/xml
 <stop tag="1149" title="Davisville Avenue At Yonge Street Farside" lat="43.6983399" lon="-79.39619" stopId="1882"/>
 <stop tag="730" title="Davisville Avenue At Pailton Crescent" lat="43.69921" lon="-79.3920099" stopId="1867"/>
 <stop tag="7559" title="Davisville Avenue At Acacia Avenue" lat="43.69963" lon="-79.3898299" stopId="1866"/>
-<stop tag="2073" title="Davisville Avenue At Mount Pleasant Avenue West Side" lat="43.7002" lon="-79.3871499" stopId="1878"/>
-<stop tag="6239" title="Davisville Avenue At Mount Pleasant Avenue East Side Farside" lat="43.7003399" lon="-79.38648" stopId="1877"/>
+<stop tag="2073" title="Davisville Avenue At Mount Pleasant Avenue" lat="43.7002" lon="-79.3871499" stopId="1878"/>
+<stop tag="6239" title="Davisville Avenue At Mount Pleasant Avenue Farside" lat="43.7003399" lon="-79.38648" stopId="1877"/>
 <stop tag="737" title="Davisville Avenue At Belle Ayre Boulevard" lat="43.7010099" lon="-79.38344" stopId="1875"/>
 <stop tag="7466" title="Davisville Avenue At Forman Avenue" lat="43.70155" lon="-79.3807599" stopId="1873"/>
 <stop tag="414" title="Cleveland Street At Davisville Avenue Farside" lat="43.7025" lon="-79.3779999" stopId="1772"/>
@@ -34,7 +34,7 @@ Content-Type: text/xml
 <stop tag="5177" title="Davisville Avenue At Clevland Street" lat="43.7022399" lon="-79.37788" stopId="1872"/>
 <stop tag="4995" title="Davisville Avenue At Forman Avenue" lat="43.7017099" lon="-79.38047" stopId="1874"/>
 <stop tag="3264" title="Davisville Avenue At Belle Ayre Boulevard" lat="43.7011599" lon="-79.38313" stopId="1870"/>
-<stop tag="767" title="Davisville Avenue At Mount Pleasant Avenue East Side" lat="43.70045" lon="-79.3866799" stopId="1876"/>
+<stop tag="767" title="Davisville Avenue At Mount Pleasant Avenue" lat="43.70045" lon="-79.3866799" stopId="1876"/>
 <stop tag="6569" title="Davisville Avenue At Mount Pleasant Avenue Farside" lat="43.7002799" lon="-79.38748" stopId="11581"/>
 <stop tag="8365" title="Davisville Avenue At Acacia Avenue" lat="43.6998599" lon="-79.38947" stopId="1865"/>
 <stop tag="7484" title="Davisville Avenue At Salvation Army" lat="43.6991099" lon="-79.39309" stopId="1879"/>
@@ -170,17 +170,6 @@ Content-Type: text/xml
 <point lat="43.68326" lon="-79.36604"/>
 </path>
 <path>
-<point lat="43.6976299" lon="-79.39687"/>
-<point lat="43.69746" lon="-79.39678"/>
-<point lat="43.69737" lon="-79.39646"/>
-<point lat="43.6983" lon="-79.39663"/>
-<point lat="43.69834" lon="-79.39619"/>
-<point lat="43.69921" lon="-79.39201"/>
-<point lat="43.69963" lon="-79.38983"/>
-<point lat="43.7002" lon="-79.38715"/>
-<point lat="43.70034" lon="-79.38648"/>
-</path>
-<path>
 <point lat="43.68326" lon="-79.36604"/>
 <point lat="43.68291" lon="-79.36595"/>
 <point lat="43.6830799" lon="-79.36568"/>
@@ -225,6 +214,17 @@ Content-Type: text/xml
 <point lat="43.70087" lon="-79.37317"/>
 <point lat="43.70299" lon="-79.37412"/>
 <point lat="43.70295" lon="-79.37455"/>
+</path>
+<path>
+<point lat="43.6976299" lon="-79.39687"/>
+<point lat="43.69746" lon="-79.39678"/>
+<point lat="43.69737" lon="-79.39646"/>
+<point lat="43.6983" lon="-79.39663"/>
+<point lat="43.69834" lon="-79.39619"/>
+<point lat="43.69921" lon="-79.39201"/>
+<point lat="43.69963" lon="-79.38983"/>
+<point lat="43.7002" lon="-79.38715"/>
+<point lat="43.70034" lon="-79.38648"/>
 </path>
 </route>
 </body>

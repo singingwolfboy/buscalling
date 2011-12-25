@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:50 GMT
+Date: Sun, 25 Dec 2011 20:00:06 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 8122
+Content-Length: 7869
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="84" title="84-Sheppard West" color="ff0000" oppositeColor="ffffff" latMin="43.7270499" latMax="43.7748999" lonMin="-79.54314" lonMax="-79.41211">
+<route tag="84" title="84-Sheppard West" color="ff0000" oppositeColor="ffffff" latMin="43.73386" latMax="43.7748999" lonMin="-79.54314" lonMax="-79.41211">
 <stop tag="8041" title="Bradstock Road At Weston Road Farside" lat="43.7389799" lon="-79.53913" stopId="4807"/>
 <stop tag="9700" title="Bradstock Road At Rivalda Road" lat="43.73978" lon="-79.5357899" stopId="4806"/>
 <stop tag="7434" title="34 Rivalda Road" lat="43.7371699" lon="-79.5349599" stopId="6012"/>
@@ -33,14 +33,15 @@ Content-Type: text/xml
 <stop tag="6065" title="Sheppard Avenue West At Tuscan Gate" lat="43.7525199" lon="-79.48269" stopId="6089"/>
 <stop tag="2042" title="Sheppard Avenue West At Chesswood Drive" lat="43.75542" lon="-79.4744599" stopId="7271"/>
 <stop tag="3355" title="Sheppard Avenue West At Yukon Lane" lat="43.7519399" lon="-79.4674499" stopId="3109"/>
+<stop tag="14175" title="Downsview Station" lat="43.7493599" lon="-79.46211" stopId="14654"/>
 <stop tag="5024" title="Sheppard Avenue West At Downsview Station East Farside" lat="43.7508399" lon="-79.46013" stopId="11876"/>
 <stop tag="1819" title="Sheppard Avenue West At Wilson Heights" lat="43.75146" lon="-79.4570399" stopId="7299"/>
 <stop tag="8202" title="Sheppard Avenue West At Wilson Heights Farside" lat="43.75177" lon="-79.4556199" stopId="3114"/>
 <stop tag="5996" title="Sheppard Avenue West At Faywood Boulevard" lat="43.75252" lon="-79.4520999" stopId="3110"/>
 <stop tag="6881" title="Sheppard Avenue West At Gorman Park Road" lat="43.75329" lon="-79.4484799" stopId="7283"/>
-<stop tag="4120" title="Sheppard Avenue West At Harlock Boulevard" lat="43.75385" lon="-79.4458899" stopId="7284"/>
+<stop tag="4120" title="Sheppard Avenue West At Harlock Boulevard" lat="43.7538499" lon="-79.44589" stopId="7284"/>
 <stop tag="8193" title="Sheppard Avenue West At Yeomans Road Farside" lat="43.7545199" lon="-79.44277" stopId="7304"/>
-<stop tag="3525" title="Sheppard Avenue East At Bathurst Street" lat="43.75533" lon="-79.4389399" stopId="7263"/>
+<stop tag="3525" title="Sheppard Avenue East At Bathurst Street" lat="43.75533" lon="-79.43894" stopId="7263"/>
 <stop tag="989" title="Sheppard Avenue East At Bathurst Farside" lat="43.7554299" lon="-79.43784" stopId="7264"/>
 <stop tag="9408" title="555 Sheppard Avenue West" lat="43.7560399" lon="-79.43512" stopId="7261"/>
 <stop tag="9606" title="Sheppard Avenue West At Don River Boulevard" lat="43.75652" lon="-79.4329499" stopId="7272"/>
@@ -54,7 +55,7 @@ Content-Type: text/xml
 <stop tag="13999" title="Signet Drive At High Meadow Place" lat="43.7559499" lon="-79.5378499" stopId="14520"/>
 <stop tag="2701" title="Signet Drive At Finch Avenue West Farside" lat="43.7527699" lon="-79.53603" stopId="7498"/>
 <stop tag="5328" title="Opposite 1111 Arrow Road" lat="43.75106" lon="-79.53444" stopId="13458"/>
-<stop tag="7336" title="Arrow Road At Deerhide North Side" lat="43.74962" lon="-79.5330399" stopId="7494"/>
+<stop tag="7336" title="Arrow Road At Deerhide Crescent" lat="43.74962" lon="-79.5330399" stopId="7494"/>
 <stop tag="2852" title="Arrow Road At Deerhide Crescent South" lat="43.74802" lon="-79.53099" stopId="7496"/>
 <stop tag="1271" title="700 Arrow Road" lat="43.7457299" lon="-79.5296" stopId="12926"/>
 <stop tag="5958" title="Arrow Road At Lido Road Farside" lat="43.7415899" lon="-79.5308499" stopId="7501"/>
@@ -97,10 +98,6 @@ Content-Type: text/xml
 <stop tag="3877" title="112 Oakdale Road" lat="43.7412599" lon="-79.5257099" stopId="5875"/>
 <stop tag="1918" title="92 Oakdale Road" lat="43.7399599" lon="-79.5258399" stopId="5878"/>
 <stop tag="6739" title="Oakdale Road At Sheppard Avenue West" lat="43.73742" lon="-79.52464" stopId="5892"/>
-<stop tag="827" title="St Basil The Great College School" lat="43.7270499" lon="-79.53309" stopId="13467"/>
-<stop tag="1732" title="3025 Weston Road" lat="43.7292799" lon="-79.53592" stopId="8690"/>
-<stop tag="9957" title="Weston Road At Mainshep Road Farside" lat="43.7319099" lon="-79.53753" stopId="8745"/>
-<stop tag="7263" title="Weston Road At Sheppard Avenue West" lat="43.73348" lon="-79.53802" stopId="8766"/>
 <stop tag="14292" title="Sheppard-Yonge Station" lat="43.7615599" lon="-79.41211" stopId="14774"/>
 <stop tag="4064" title="Sheppard Avenue West At Beecroft Road Farside" lat="43.7609599" lon="-79.41379" stopId="12192"/>
 <stop tag="1261" title="Sheppard Avenue West At Bangor Road Farside" lat="43.76048" lon="-79.4158299" stopId="7268"/>
@@ -108,7 +105,7 @@ Content-Type: text/xml
 <stop tag="4121" title="Sheppard Avenue West At Senlac Road Farside" lat="43.75884" lon="-79.4231599" stopId="7295"/>
 <stop tag="1960" title="Sheppard Avenue West At Brentwood Avenue" lat="43.7583099" lon="-79.42548" stopId="7269"/>
 <stop tag="6124" title="Sheppard Avenue West At Don River Boulevard Farside" lat="43.7566" lon="-79.4332999" stopId="7273"/>
-<stop tag="4825" title="Opposite Opp 555 Sheppard Avenue West" lat="43.75608" lon="-79.4353599" stopId="7292"/>
+<stop tag="4825" title="Opposite 555 Sheppard Avenue West" lat="43.75608" lon="-79.4353599" stopId="7292"/>
 <stop tag="1094" title="Sheppard Avenue East At Bathurst Street" lat="43.7555699" lon="-79.43805" stopId="7265"/>
 <stop tag="3111" title="Sheppard Avenue East At Bathurst Farside" lat="43.7554899" lon="-79.4393" stopId="7266"/>
 <stop tag="7364" title="Sheppard Avenue West At Hove Street" lat="43.7550699" lon="-79.44127" stopId="7285"/>
@@ -120,7 +117,7 @@ Content-Type: text/xml
 <stop tag="5501" title="Sheppard Avenue West At Banting Avenue" lat="43.7511599" lon="-79.45938" stopId="7262"/>
 <stop tag="14180" title="Downsview Station" lat="43.7490499" lon="-79.46237" stopId="14659"/>
 <stop tag="2365" title="Sheppard Avenue West At Allen Road" lat="43.7505399" lon="-79.4625999" stopId="7275"/>
-<stop tag="538" title="Sheppard Avenue At William R Allen Road (Westside) Farside" lat="43.7502699" lon="-79.46388" stopId="4598"/>
+<stop tag="538" title="Sheppard Avenue At William R Allen Road Farside" lat="43.7502699" lon="-79.46388" stopId="4598"/>
 <stop tag="1632" title="Sheppard Avenue West At Kodiak Crescent South" lat="43.7518599" lon="-79.4669499" stopId="4596"/>
 <stop tag="3554" title="Sheppard Avenue West At Kodiak Crescent North" lat="43.75397" lon="-79.46938" stopId="6076"/>
 <stop tag="6042" title="Sheppard Avenue West At Chesswood Drive" lat="43.7555999" lon="-79.4738" stopId="3108"/>
@@ -149,7 +146,7 @@ Content-Type: text/xml
 <stop tag="9294" title="Arrow Road At Lido Road" lat="43.74146" lon="-79.53064" stopId="7500"/>
 <stop tag="8832" title="Arrow Road At Deerhide Crescent" lat="43.7476399" lon="-79.53026" stopId="7495"/>
 <stop tag="5601" title="1111 Arrow Road" lat="43.75119" lon="-79.53414" stopId="13457"/>
-<stop tag="7571" title="Arrow Road At Finch Avenue West South Side" lat="43.75301" lon="-79.53592" stopId="7497"/>
+<stop tag="7571" title="Arrow Road At Finch Avenue West" lat="43.75301" lon="-79.53592" stopId="7497"/>
 <stop tag="5232" title="Signet Drive At Finch Avenue West Farside" lat="43.7540599" lon="-79.53656" stopId="9668"/>
 <stop tag="13985" title="Signet Drive At High Meadow Place" lat="43.75555" lon="-79.53727" stopId="14519"/>
 <stop tag="9990" title="Signet Drive At Fenmar Drive" lat="43.75833" lon="-79.53875" stopId="8098"/>
@@ -161,7 +158,7 @@ Content-Type: text/xml
 <stop tag="5998" title="Signet Drive At Steeles Avenue West" lat="43.7706" lon="-79.54314" stopId="8102"/>
 <stop tag="5825_ar" title="Rossdean Drive At Steeles Avenue West Farside" lat="43.7710399" lon="-79.54049"/>
 <stop tag="717" title="Oakdale Road At Sheppard Avenue Farside" lat="43.7375499" lon="-79.5245499" stopId="5891"/>
-<stop tag="6154" title="Oakdale Road At Walkway (North Of Sheppard Avenue West)" lat="43.7387199" lon="-79.52534" stopId="5893"/>
+<stop tag="6154" title="Oakdale Road At Walkway North Of Sheppard Avenue West" lat="43.7387199" lon="-79.52534" stopId="5893"/>
 <stop tag="4159" title="Opposite 92 Oakdale Road" lat="43.7398799" lon="-79.5256899" stopId="5890"/>
 <stop tag="4732" title="111 Oakdale Road" lat="43.7412899" lon="-79.52559" stopId="5874"/>
 <stop tag="7181" title="131 Oakdale Road (Eriez)" lat="43.74274" lon="-79.52593" stopId="5881"/>
@@ -194,48 +191,6 @@ Content-Type: text/xml
 <stop tag="3498_IB" title="Norelco Drive At Fenmar Drive" lat="43.7601899" lon="-79.5327599" stopId="7995"/>
 <stop tag="1325_IB" title="Opposite 21 Fenmar Drive" lat="43.7592799" lon="-79.5355" stopId="7752"/>
 <stop tag="8134_ar" title="30 Fenmar Drive" lat="43.7588199" lon="-79.53764"/>
-<direction tag="84_0_ba84" title="East - 84 Sheppard West towards Sheppard-Yonge Station" name="East" useForUI="true">
-  <stop tag="827" />
-  <stop tag="1732" />
-  <stop tag="9957" />
-  <stop tag="7263" />
-  <stop tag="8569" />
-  <stop tag="1099" />
-  <stop tag="6174" />
-  <stop tag="5794" />
-  <stop tag="8363" />
-  <stop tag="536" />
-  <stop tag="1458" />
-  <stop tag="1255" />
-  <stop tag="4295" />
-  <stop tag="6970" />
-  <stop tag="5157" />
-  <stop tag="7655" />
-  <stop tag="4365" />
-  <stop tag="4222" />
-  <stop tag="4662" />
-  <stop tag="6822" />
-  <stop tag="6065" />
-  <stop tag="2042" />
-  <stop tag="3355" />
-  <stop tag="5024" />
-  <stop tag="1819" />
-  <stop tag="8202" />
-  <stop tag="5996" />
-  <stop tag="6881" />
-  <stop tag="4120" />
-  <stop tag="8193" />
-  <stop tag="3525" />
-  <stop tag="989" />
-  <stop tag="9408" />
-  <stop tag="9606" />
-  <stop tag="10248" />
-  <stop tag="9947" />
-  <stop tag="9006" />
-  <stop tag="9945" />
-  <stop tag="1980" />
-  <stop tag="14292_ar" />
-</direction>
 <direction tag="84_0_84Ap" title="East - 84 Sheppard West towards Sheppard-Yonge Station" name="East" useForUI="true">
   <stop tag="5825" />
   <stop tag="8608" />
@@ -276,6 +231,69 @@ Content-Type: text/xml
   <stop tag="6065" />
   <stop tag="2042" />
   <stop tag="3355" />
+  <stop tag="14175" />
+  <stop tag="5024" />
+  <stop tag="1819" />
+  <stop tag="8202" />
+  <stop tag="5996" />
+  <stop tag="6881" />
+  <stop tag="4120" />
+  <stop tag="8193" />
+  <stop tag="3525" />
+  <stop tag="989" />
+  <stop tag="9408" />
+  <stop tag="9606" />
+  <stop tag="10248" />
+  <stop tag="9947" />
+  <stop tag="9006" />
+  <stop tag="9945" />
+  <stop tag="1980" />
+  <stop tag="14292_ar" />
+</direction>
+<direction tag="84_0_84D" title="East - 84 Sheppard West towards Sheppard-Yonge Station" name="East" useForUI="true">
+  <stop tag="8682" />
+  <stop tag="4463" />
+  <stop tag="6458" />
+  <stop tag="1052" />
+  <stop tag="618" />
+  <stop tag="1191" />
+  <stop tag="7073" />
+  <stop tag="1211" />
+  <stop tag="1226" />
+  <stop tag="2484" />
+  <stop tag="3591" />
+  <stop tag="3215" />
+  <stop tag="1235" />
+  <stop tag="10394" />
+  <stop tag="2755" />
+  <stop tag="9199" />
+  <stop tag="4246" />
+  <stop tag="2056" />
+  <stop tag="7152" />
+  <stop tag="9518" />
+  <stop tag="8545" />
+  <stop tag="9992" />
+  <stop tag="3877" />
+  <stop tag="1918" />
+  <stop tag="6739" />
+  <stop tag="6174" />
+  <stop tag="5794" />
+  <stop tag="8363" />
+  <stop tag="536" />
+  <stop tag="1458" />
+  <stop tag="1255" />
+  <stop tag="4295" />
+  <stop tag="6970" />
+  <stop tag="5157" />
+  <stop tag="7655" />
+  <stop tag="4365" />
+  <stop tag="4222" />
+  <stop tag="4662" />
+  <stop tag="6822" />
+  <stop tag="6065" />
+  <stop tag="2042" />
+  <stop tag="3355" />
+  <stop tag="14175" />
   <stop tag="5024" />
   <stop tag="1819" />
   <stop tag="8202" />
@@ -357,111 +375,18 @@ Content-Type: text/xml
   <stop tag="3815" />
   <stop tag="8682_ar" />
 </direction>
-<direction tag="84_0_84D" title="East - 84 Sheppard West towards Sheppard-Yonge Station" name="East" useForUI="true">
-  <stop tag="8682" />
-  <stop tag="4463" />
-  <stop tag="6458" />
-  <stop tag="1052" />
-  <stop tag="618" />
-  <stop tag="1191" />
-  <stop tag="7073" />
-  <stop tag="1211" />
-  <stop tag="1226" />
-  <stop tag="2484" />
-  <stop tag="3591" />
-  <stop tag="3215" />
-  <stop tag="1235" />
-  <stop tag="10394" />
-  <stop tag="2755" />
-  <stop tag="9199" />
-  <stop tag="4246" />
-  <stop tag="2056" />
-  <stop tag="7152" />
-  <stop tag="9518" />
-  <stop tag="8545" />
-  <stop tag="9992" />
-  <stop tag="3877" />
-  <stop tag="1918" />
-  <stop tag="6739" />
-  <stop tag="6174" />
-  <stop tag="5794" />
-  <stop tag="8363" />
-  <stop tag="536" />
-  <stop tag="1458" />
-  <stop tag="1255" />
-  <stop tag="4295" />
-  <stop tag="6970" />
-  <stop tag="5157" />
-  <stop tag="7655" />
-  <stop tag="4365" />
-  <stop tag="4222" />
-  <stop tag="4662" />
-  <stop tag="6822" />
-  <stop tag="6065" />
-  <stop tag="2042" />
-  <stop tag="3355" />
-  <stop tag="5024" />
-  <stop tag="1819" />
-  <stop tag="8202" />
-  <stop tag="5996" />
-  <stop tag="6881" />
-  <stop tag="4120" />
-  <stop tag="8193" />
-  <stop tag="3525" />
-  <stop tag="989" />
-  <stop tag="9408" />
-  <stop tag="9606" />
-  <stop tag="10248" />
-  <stop tag="9947" />
-  <stop tag="9006" />
-  <stop tag="9945" />
-  <stop tag="1980" />
-  <stop tag="14292_ar" />
-</direction>
-<direction tag="84_1_84" title="West - 84 Sheppard West towards Weston Rd" name="West" useForUI="true">
-  <stop tag="14292" />
-  <stop tag="4064" />
-  <stop tag="1261" />
-  <stop tag="1324" />
-  <stop tag="4121" />
-  <stop tag="1960" />
-  <stop tag="6124" />
-  <stop tag="4825" />
-  <stop tag="1094" />
-  <stop tag="3111" />
-  <stop tag="7364" />
-  <stop tag="7185" />
-  <stop tag="7755" />
-  <stop tag="6076" />
-  <stop tag="3696" />
-  <stop tag="4054" />
-  <stop tag="5501" />
-  <stop tag="14180" />
-  <stop tag="2365" />
-  <stop tag="538" />
-  <stop tag="1632" />
-  <stop tag="3554" />
-  <stop tag="6042" />
-  <stop tag="9504" />
-  <stop tag="6125" />
-  <stop tag="3856" />
-  <stop tag="6745" />
-  <stop tag="6056" />
-  <stop tag="537" />
-  <stop tag="981" />
-  <stop tag="7262" />
-  <stop tag="1132" />
-  <stop tag="7458" />
-  <stop tag="5590" />
-  <stop tag="790" />
-  <stop tag="7765" />
-  <stop tag="1351" />
-  <stop tag="2823" />
-  <stop tag="1170" />
-  <stop tag="1319" />
-  <stop tag="2295" />
-  <stop tag="2763" />
-  <stop tag="8041_ar" />
+<direction tag="84_1_SRFE" title="West - 84 Sheppard West towards Sheppard-Yonge Station" name="West" useForUI="true">
+  <stop tag="5825_IB" />
+  <stop tag="8608_IB" />
+  <stop tag="4501_IB" />
+  <stop tag="1784_IB" />
+  <stop tag="1576_IB" />
+  <stop tag="6462_IB" />
+  <stop tag="5710_IB" />
+  <stop tag="6063_IB" />
+  <stop tag="3498_IB" />
+  <stop tag="1325_IB" />
+  <stop tag="8134_ar" />
 </direction>
 <direction tag="84_1_84A" title="West - 84a Sheppard West towards Steeles via Arrow Rd" name="West" useForUI="true">
   <stop tag="14292" />
@@ -542,6 +467,7 @@ Content-Type: text/xml
   <stop tag="6065" />
   <stop tag="2042" />
   <stop tag="3355" />
+  <stop tag="14175" />
   <stop tag="5024" />
   <stop tag="1819" />
   <stop tag="8202" />
@@ -560,18 +486,50 @@ Content-Type: text/xml
   <stop tag="1980" />
   <stop tag="14292_ar" />
 </direction>
-<direction tag="84_1_SRFE" title="West - 84 Sheppard West towards Sheppard-Yonge Station" name="West" useForUI="true">
-  <stop tag="5825_IB" />
-  <stop tag="8608_IB" />
-  <stop tag="4501_IB" />
-  <stop tag="1784_IB" />
-  <stop tag="1576_IB" />
-  <stop tag="6462_IB" />
-  <stop tag="5710_IB" />
-  <stop tag="6063_IB" />
-  <stop tag="3498_IB" />
-  <stop tag="1325_IB" />
-  <stop tag="8134_ar" />
+<direction tag="84_1_84" title="West - 84 Sheppard West towards Weston Rd" name="West" useForUI="true">
+  <stop tag="14292" />
+  <stop tag="4064" />
+  <stop tag="1261" />
+  <stop tag="1324" />
+  <stop tag="4121" />
+  <stop tag="1960" />
+  <stop tag="6124" />
+  <stop tag="4825" />
+  <stop tag="1094" />
+  <stop tag="3111" />
+  <stop tag="7364" />
+  <stop tag="7185" />
+  <stop tag="7755" />
+  <stop tag="6076" />
+  <stop tag="3696" />
+  <stop tag="4054" />
+  <stop tag="5501" />
+  <stop tag="14180" />
+  <stop tag="2365" />
+  <stop tag="538" />
+  <stop tag="1632" />
+  <stop tag="3554" />
+  <stop tag="6042" />
+  <stop tag="9504" />
+  <stop tag="6125" />
+  <stop tag="3856" />
+  <stop tag="6745" />
+  <stop tag="6056" />
+  <stop tag="537" />
+  <stop tag="981" />
+  <stop tag="7262" />
+  <stop tag="1132" />
+  <stop tag="7458" />
+  <stop tag="5590" />
+  <stop tag="790" />
+  <stop tag="7765" />
+  <stop tag="1351" />
+  <stop tag="2823" />
+  <stop tag="1170" />
+  <stop tag="1319" />
+  <stop tag="2295" />
+  <stop tag="2763" />
+  <stop tag="8041_ar" />
 </direction>
 <path>
 <point lat="43.76156" lon="-79.41211"/>
@@ -608,45 +566,6 @@ Content-Type: text/xml
 <point lat="43.75544" lon="-79.43876"/>
 <point lat="43.75541" lon="-79.43907"/>
 <point lat="43.75549" lon="-79.4393"/>
-</path>
-<path>
-<point lat="43.7554299" lon="-79.43784"/>
-<point lat="43.75604" lon="-79.43512"/>
-<point lat="43.75652" lon="-79.43295"/>
-<point lat="43.75809" lon="-79.42619"/>
-<point lat="43.75878" lon="-79.42289"/>
-<point lat="43.75917" lon="-79.42123"/>
-<point lat="43.7598399" lon="-79.41831"/>
-<point lat="43.76036" lon="-79.41597"/>
-<point lat="43.76132" lon="-79.41176"/>
-<point lat="43.76152" lon="-79.41185"/>
-<point lat="43.76151" lon="-79.41192"/>
-<point lat="43.76156" lon="-79.41211"/>
-</path>
-<path>
-<point lat="43.7476399" lon="-79.53026"/>
-<point lat="43.74965" lon="-79.53299"/>
-<point lat="43.75119" lon="-79.5341399"/>
-<point lat="43.75253" lon="-79.53581"/>
-<point lat="43.75301" lon="-79.53592"/>
-<point lat="43.75406" lon="-79.53656"/>
-</path>
-<path>
-<point lat="43.74439" lon="-79.48884"/>
-<point lat="43.74379" lon="-79.49166"/>
-<point lat="43.7427599" lon="-79.49634"/>
-<point lat="43.74165" lon="-79.50129"/>
-<point lat="43.74122" lon="-79.50321"/>
-<point lat="43.74044" lon="-79.50671"/>
-<point lat="43.73981" lon="-79.50952"/>
-<point lat="43.73952" lon="-79.51037"/>
-<point lat="43.73947" lon="-79.5107699"/>
-<point lat="43.73945" lon="-79.51116"/>
-<point lat="43.73952" lon="-79.51186"/>
-<point lat="43.73954" lon="-79.51222"/>
-<point lat="43.73949" lon="-79.51266"/>
-<point lat="43.73956" lon="-79.51295"/>
-<point lat="43.73871" lon="-79.5167"/>
 </path>
 <path>
 <point lat="43.74481" lon="-79.48577"/>
@@ -686,12 +605,40 @@ Content-Type: text/xml
 <point lat="43.75034" lon="-79.46536"/>
 <point lat="43.7502" lon="-79.4649699"/>
 <point lat="43.75014" lon="-79.4645199"/>
-<point lat="43.75013" lon="-79.46401"/>
 <point lat="43.75024" lon="-79.46338"/>
 <point lat="43.7503699" lon="-79.46276"/>
 <point lat="43.75045" lon="-79.46239"/>
 <point lat="43.75002" lon="-79.46224"/>
 <point lat="43.74989" lon="-79.4622"/>
+<point lat="43.74936" lon="-79.46211"/>
+</path>
+<path>
+<point lat="43.7476399" lon="-79.53026"/>
+<point lat="43.74965" lon="-79.53299"/>
+<point lat="43.75119" lon="-79.5341399"/>
+<point lat="43.75253" lon="-79.53581"/>
+<point lat="43.75301" lon="-79.53592"/>
+<point lat="43.75406" lon="-79.53656"/>
+</path>
+<path>
+<point lat="43.74439" lon="-79.48884"/>
+<point lat="43.74379" lon="-79.49166"/>
+<point lat="43.7427599" lon="-79.49634"/>
+<point lat="43.74165" lon="-79.50129"/>
+<point lat="43.74122" lon="-79.50321"/>
+<point lat="43.74044" lon="-79.50671"/>
+<point lat="43.73981" lon="-79.50952"/>
+<point lat="43.73952" lon="-79.51037"/>
+<point lat="43.73947" lon="-79.5107699"/>
+<point lat="43.73945" lon="-79.51116"/>
+<point lat="43.73952" lon="-79.51186"/>
+<point lat="43.73954" lon="-79.51222"/>
+<point lat="43.73949" lon="-79.51266"/>
+<point lat="43.73956" lon="-79.51295"/>
+<point lat="43.73871" lon="-79.5167"/>
+</path>
+<path>
+<point lat="43.74936" lon="-79.46211"/>
 <point lat="43.74925" lon="-79.46199"/>
 <point lat="43.74875" lon="-79.46182"/>
 <point lat="43.74865" lon="-79.4618"/>
@@ -704,6 +651,18 @@ Content-Type: text/xml
 <point lat="43.74877" lon="-79.45992"/>
 <point lat="43.75081" lon="-79.46073"/>
 <point lat="43.7508399" lon="-79.46013"/>
+<point lat="43.75146" lon="-79.45704"/>
+<point lat="43.75177" lon="-79.45562"/>
+<point lat="43.7525199" lon="-79.4521"/>
+<point lat="43.75329" lon="-79.44848"/>
+<point lat="43.75385" lon="-79.44589"/>
+<point lat="43.75452" lon="-79.44277"/>
+<point lat="43.75541" lon="-79.43907"/>
+<point lat="43.75533" lon="-79.43894"/>
+<point lat="43.75544" lon="-79.43876"/>
+<point lat="43.75545" lon="-79.43841"/>
+<point lat="43.7555" lon="-79.4379"/>
+<point lat="43.7554299" lon="-79.43784"/>
 </path>
 <path>
 <point lat="43.75406" lon="-79.53656"/>
@@ -847,21 +806,6 @@ Content-Type: text/xml
 <point lat="43.74439" lon="-79.48884"/>
 </path>
 <path>
-<point lat="43.7508399" lon="-79.46013"/>
-<point lat="43.75146" lon="-79.45704"/>
-<point lat="43.75177" lon="-79.45562"/>
-<point lat="43.7525199" lon="-79.4521"/>
-<point lat="43.75329" lon="-79.44848"/>
-<point lat="43.75385" lon="-79.44589"/>
-<point lat="43.75452" lon="-79.44277"/>
-<point lat="43.75541" lon="-79.43907"/>
-<point lat="43.75533" lon="-79.43894"/>
-<point lat="43.75544" lon="-79.43876"/>
-<point lat="43.75545" lon="-79.43841"/>
-<point lat="43.7555" lon="-79.4379"/>
-<point lat="43.7554299" lon="-79.43784"/>
-</path>
-<path>
 <point lat="43.75549" lon="-79.4393"/>
 <point lat="43.75507" lon="-79.44127"/>
 <point lat="43.75454" lon="-79.44377"/>
@@ -890,24 +834,6 @@ Content-Type: text/xml
 <point lat="43.74837" lon="-79.46214"/>
 <point lat="43.74864" lon="-79.46226"/>
 <point lat="43.7490499" lon="-79.46237"/>
-</path>
-<path>
-<point lat="43.7394" lon="-79.51251"/>
-<point lat="43.73954" lon="-79.51236"/>
-<point lat="43.73945" lon="-79.5113"/>
-<point lat="43.73945" lon="-79.51092"/>
-<point lat="43.7395" lon="-79.51051"/>
-<point lat="43.73956" lon="-79.5098"/>
-<point lat="43.74017" lon="-79.50702"/>
-<point lat="43.74094" lon="-79.50349"/>
-<point lat="43.74136" lon="-79.50161"/>
-<point lat="43.7424899" lon="-79.49653"/>
-<point lat="43.74345" lon="-79.4921899"/>
-<point lat="43.74364" lon="-79.49184"/>
-<point lat="43.74415" lon="-79.48921"/>
-<point lat="43.74466" lon="-79.4872"/>
-<point lat="43.74452" lon="-79.48665"/>
-<point lat="43.74481" lon="-79.48577"/>
 </path>
 <path>
 <point lat="43.75647" lon="-79.5244"/>
@@ -979,22 +905,18 @@ Content-Type: text/xml
 <point lat="43.75517" lon="-79.52403"/>
 </path>
 <path>
-<point lat="43.72705" lon="-79.53309"/>
-<point lat="43.7263499" lon="-79.53558"/>
-<point lat="43.72668" lon="-79.53556"/>
-<point lat="43.72899" lon="-79.53598"/>
-<point lat="43.72924" lon="-79.53606"/>
-<point lat="43.72928" lon="-79.53592"/>
-<point lat="43.72998" lon="-79.5365"/>
-<point lat="43.73025" lon="-79.53665"/>
-<point lat="43.7317899" lon="-79.53765"/>
-<point lat="43.73191" lon="-79.53753"/>
-<point lat="43.73203" lon="-79.53779"/>
-<point lat="43.73301" lon="-79.53807"/>
-<point lat="43.73354" lon="-79.5381699"/>
-<point lat="43.73348" lon="-79.53802"/>
-<point lat="43.7343199" lon="-79.53544"/>
-<point lat="43.73551" lon="-79.52965"/>
+<point lat="43.7554299" lon="-79.43784"/>
+<point lat="43.75604" lon="-79.43512"/>
+<point lat="43.75652" lon="-79.43295"/>
+<point lat="43.75809" lon="-79.42619"/>
+<point lat="43.75878" lon="-79.42289"/>
+<point lat="43.75917" lon="-79.42123"/>
+<point lat="43.7598399" lon="-79.41831"/>
+<point lat="43.76036" lon="-79.41597"/>
+<point lat="43.76132" lon="-79.41176"/>
+<point lat="43.76152" lon="-79.41185"/>
+<point lat="43.76151" lon="-79.41192"/>
+<point lat="43.76156" lon="-79.41211"/>
 </path>
 <path>
 <point lat="43.75517" lon="-79.52403"/>
@@ -1071,6 +993,24 @@ Content-Type: text/xml
 <point lat="43.73715" lon="-79.52358"/>
 <point lat="43.73569" lon="-79.52932"/>
 <point lat="43.73632" lon="-79.52934"/>
+</path>
+<path>
+<point lat="43.7394" lon="-79.51251"/>
+<point lat="43.73954" lon="-79.51236"/>
+<point lat="43.73945" lon="-79.5113"/>
+<point lat="43.73945" lon="-79.51092"/>
+<point lat="43.7395" lon="-79.51051"/>
+<point lat="43.73956" lon="-79.5098"/>
+<point lat="43.74017" lon="-79.50702"/>
+<point lat="43.74094" lon="-79.50349"/>
+<point lat="43.74136" lon="-79.50161"/>
+<point lat="43.7424899" lon="-79.49653"/>
+<point lat="43.74345" lon="-79.4921899"/>
+<point lat="43.74364" lon="-79.49184"/>
+<point lat="43.74415" lon="-79.48921"/>
+<point lat="43.74466" lon="-79.4872"/>
+<point lat="43.74452" lon="-79.48665"/>
+<point lat="43.74481" lon="-79.48577"/>
 </path>
 <path>
 <point lat="43.75301" lon="-79.53592"/>
@@ -1187,10 +1127,6 @@ Content-Type: text/xml
 <point lat="43.75797" lon="-79.53883"/>
 <point lat="43.75595" lon="-79.53785"/>
 <point lat="43.75277" lon="-79.53603"/>
-</path>
-<path>
-<point lat="43.73551" lon="-79.52965"/>
-<point lat="43.7367599" lon="-79.52401"/>
 </path>
 <path>
 <point lat="43.7742" lon="-79.52706"/>

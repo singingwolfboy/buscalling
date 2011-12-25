@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:41 GMT
+Date: Sun, 25 Dec 2011 19:59:55 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 6110
+Content-Length: 6113
 Connection: close
 Content-Type: text/xml
 
@@ -17,7 +17,7 @@ Content-Type: text/xml
 <stop tag="4837" title="Warden Avenue At Bamburgh Circle North" lat="43.8162999" lon="-79.32463" stopId="10566"/>
 <stop tag="1841" title="125 Bamburgh Circle" lat="43.8136199" lon="-79.3243699" stopId="9634"/>
 <stop tag="9718" title="Warden Avenue At Bamburgh Circle South" lat="43.8117699" lon="-79.3235999" stopId="8532"/>
-<stop tag="2587" title="Warden Avenue At Walkway (North McNicoll Avenue)" lat="43.8091599" lon="-79.3223699" stopId="8594"/>
+<stop tag="2587" title="Warden Avenue At Walkway North Of McNicoll Avenue" lat="43.8091599" lon="-79.3223699" stopId="8594"/>
 <stop tag="4847" title="Warden Avenue At McNicoll Avenue" lat="43.80652" lon="-79.32115" stopId="8590"/>
 <stop tag="8966" title="Warden Avenue At Glen Springs Drive" lat="43.8047099" lon="-79.32035" stopId="8570"/>
 <stop tag="10381" title="Warden Avenue At Bridletown Circle North Farside" lat="43.8011899" lon="-79.3186999" stopId="8540"/>
@@ -122,7 +122,7 @@ Content-Type: text/xml
 <stop tag="6051" title="Warden Avenue At Bridletown Circle North" lat="43.8013599" lon="-79.3185199" stopId="8541"/>
 <stop tag="8084" title="Warden Avenue At Glen Springs Drive" lat="43.8046299" lon="-79.3200199" stopId="8569"/>
 <stop tag="6738" title="Warden Avenue At McNicoll Avenue Farside" lat="43.8066899" lon="-79.32101" stopId="8589"/>
-<stop tag="1502" title="Warden Avenue At Walkway (North McNicoll Avenue)" lat="43.8091599" lon="-79.3221599" stopId="8616"/>
+<stop tag="1502" title="Warden Avenue At Walkway North Of McNicoll Avenue" lat="43.8091599" lon="-79.3221599" stopId="8616"/>
 <stop tag="1065" title="Warden Avenue At Bamburgh Circle South" lat="43.8114799" lon="-79.3231799" stopId="8533"/>
 <stop tag="8559" title="3325 Warden Avenue" lat="43.81463" lon="-79.3245" stopId="10533"/>
 <stop tag="2987" title="Warden Avenue At Bamburgh Circle North" lat="43.8160299" lon="-79.32438" stopId="10534"/>
@@ -149,13 +149,68 @@ Content-Type: text/xml
 <stop tag="9429_ar" title="Angus Glen Community Centre" lat="43.8937099" lon="-79.33717"/>
 <stop tag="425" title="3450 Danforth Avenue" lat="43.6941799" lon="-79.27503" stopId="1842"/>
 <stop tag="6513" title="Danforth Road At Landry Avenue" lat="43.69481" lon="-79.2762599" stopId="1863"/>
-<stop tag="4928" title="Warden Avenue At Danforth Road North Side Farside" lat="43.6977799" lon="-79.27497" stopId="1623"/>
+<stop tag="4928" title="Warden Avenue At Danforth Road Farside" lat="43.6977799" lon="-79.27497" stopId="1623"/>
 <stop tag="6848" title="Warden Avenue At Mack Avenue Farside" lat="43.7005299" lon="-79.2760799" stopId="1625"/>
 <stop tag="9242" title="Warden Avenue At Cataraqui Crescent" lat="43.70226" lon="-79.27681" stopId="1622"/>
 <stop tag="14782" title="Warden Avenue At Firvalley Court" lat="43.70383" lon="-79.27746" stopId="15013"/>
 <stop tag="6813" title="Opposite 682 Warden Avenue" lat="43.70562" lon="-79.2782" stopId="1626"/>
 <stop tag="5586" title="689 Warden Avenue" lat="43.7074199" lon="-79.2789799" stopId="1621"/>
 <stop tag="10165" title="Warden Avenue At St Clair Avenue East" lat="43.7115499" lon="-79.2806499" stopId="11982"/>
+<direction tag="68_0_68da" title="South - 68 Warden towards Danforth Ave Extra Fare Required North of Steeles" name="South" useForUI="true">
+  <stop tag="6229" />
+  <stop tag="3687" />
+  <stop tag="876" />
+  <stop tag="4837" />
+  <stop tag="1841" />
+  <stop tag="9718" />
+  <stop tag="2587" />
+  <stop tag="4847" />
+  <stop tag="8966" />
+  <stop tag="10381" />
+  <stop tag="2310" />
+  <stop tag="2849" />
+  <stop tag="7971" />
+  <stop tag="5001" />
+  <stop tag="3344" />
+  <stop tag="7589" />
+  <stop tag="8829" />
+  <stop tag="9600" />
+  <stop tag="8323" />
+  <stop tag="1204" />
+  <stop tag="2414" />
+  <stop tag="7667" />
+  <stop tag="936" />
+  <stop tag="8088" />
+  <stop tag="4533" />
+  <stop tag="9157" />
+  <stop tag="7467" />
+  <stop tag="6542" />
+  <stop tag="2221" />
+  <stop tag="5271" />
+  <stop tag="6302" />
+  <stop tag="2786" />
+  <stop tag="5460" />
+  <stop tag="8450" />
+  <stop tag="4629" />
+  <stop tag="6486" />
+  <stop tag="2579" />
+  <stop tag="4992" />
+  <stop tag="5744" />
+  <stop tag="7386" />
+  <stop tag="5330" />
+  <stop tag="5784" />
+  <stop tag="10148" />
+  <stop tag="4248" />
+  <stop tag="1727" />
+  <stop tag="4050" />
+  <stop tag="1870" />
+  <stop tag="6704" />
+  <stop tag="2925" />
+  <stop tag="2630" />
+  <stop tag="10044" />
+  <stop tag="873" />
+  <stop tag="425_ar" />
+</direction>
 <direction tag="68_1_dd68B" title="North - 68b Warden towards Major Mackenzie Extra Fare Required North of Steeles" name="North" useForUI="true">
   <stop tag="425" />
   <stop tag="6513" />
@@ -296,61 +351,6 @@ Content-Type: text/xml
   <stop tag="4050" />
   <stop tag="14312_ar" />
 </direction>
-<direction tag="68_0_68da" title="South - 68 Warden towards Danforth Ave Extra Fare Required North of Steeles" name="South" useForUI="true">
-  <stop tag="6229" />
-  <stop tag="3687" />
-  <stop tag="876" />
-  <stop tag="4837" />
-  <stop tag="1841" />
-  <stop tag="9718" />
-  <stop tag="2587" />
-  <stop tag="4847" />
-  <stop tag="8966" />
-  <stop tag="10381" />
-  <stop tag="2310" />
-  <stop tag="2849" />
-  <stop tag="7971" />
-  <stop tag="5001" />
-  <stop tag="3344" />
-  <stop tag="7589" />
-  <stop tag="8829" />
-  <stop tag="9600" />
-  <stop tag="8323" />
-  <stop tag="1204" />
-  <stop tag="2414" />
-  <stop tag="7667" />
-  <stop tag="936" />
-  <stop tag="8088" />
-  <stop tag="4533" />
-  <stop tag="9157" />
-  <stop tag="7467" />
-  <stop tag="6542" />
-  <stop tag="2221" />
-  <stop tag="5271" />
-  <stop tag="6302" />
-  <stop tag="2786" />
-  <stop tag="5460" />
-  <stop tag="8450" />
-  <stop tag="4629" />
-  <stop tag="6486" />
-  <stop tag="2579" />
-  <stop tag="4992" />
-  <stop tag="5744" />
-  <stop tag="7386" />
-  <stop tag="5330" />
-  <stop tag="5784" />
-  <stop tag="10148" />
-  <stop tag="4248" />
-  <stop tag="1727" />
-  <stop tag="4050" />
-  <stop tag="1870" />
-  <stop tag="6704" />
-  <stop tag="2925" />
-  <stop tag="2630" />
-  <stop tag="10044" />
-  <stop tag="873" />
-  <stop tag="425_ar" />
-</direction>
 <path>
 <point lat="43.80669" lon="-79.32101"/>
 <point lat="43.80916" lon="-79.32216"/>
@@ -428,16 +428,6 @@ Content-Type: text/xml
 <point lat="43.7235" lon="-79.286"/>
 <point lat="43.72185" lon="-79.28531"/>
 <point lat="43.71973" lon="-79.28438"/>
-</path>
-<path>
-<point lat="43.71444" lon="-79.28214"/>
-<point lat="43.71204" lon="-79.28099"/>
-<point lat="43.71213" lon="-79.28059"/>
-<point lat="43.71207" lon="-79.28022"/>
-<point lat="43.71188" lon="-79.27979"/>
-<point lat="43.71167" lon="-79.27959"/>
-<point lat="43.71152" lon="-79.27987"/>
-<point lat="43.71101" lon="-79.27996"/>
 </path>
 <path>
 <point lat="43.69418" lon="-79.27503"/>
@@ -595,13 +585,6 @@ Content-Type: text/xml
 <point lat="43.75858" lon="-79.30021"/>
 </path>
 <path>
-<point lat="43.73722" lon="-79.29129"/>
-<point lat="43.74042" lon="-79.29261"/>
-<point lat="43.74342" lon="-79.29383"/>
-<point lat="43.74508" lon="-79.2945"/>
-<point lat="43.74815" lon="-79.29575"/>
-</path>
-<path>
 <point lat="43.80669" lon="-79.32101"/>
 <point lat="43.80916" lon="-79.32216"/>
 <point lat="43.81148" lon="-79.3231799"/>
@@ -619,6 +602,13 @@ Content-Type: text/xml
 <point lat="43.82126" lon="-79.3248799"/>
 <point lat="43.82118" lon="-79.3252"/>
 <point lat="43.82098" lon="-79.3250599"/>
+</path>
+<path>
+<point lat="43.73722" lon="-79.29129"/>
+<point lat="43.74042" lon="-79.29261"/>
+<point lat="43.74342" lon="-79.29383"/>
+<point lat="43.74508" lon="-79.2945"/>
+<point lat="43.74815" lon="-79.29575"/>
 </path>
 <path>
 <point lat="43.71812" lon="-79.28342"/>
@@ -642,6 +632,16 @@ Content-Type: text/xml
 <point lat="43.71387" lon="-79.28166"/>
 <point lat="43.71608" lon="-79.28255"/>
 <point lat="43.71812" lon="-79.28342"/>
+</path>
+<path>
+<point lat="43.71444" lon="-79.28214"/>
+<point lat="43.71204" lon="-79.28099"/>
+<point lat="43.71213" lon="-79.28059"/>
+<point lat="43.71207" lon="-79.28022"/>
+<point lat="43.71188" lon="-79.27979"/>
+<point lat="43.71167" lon="-79.27959"/>
+<point lat="43.71152" lon="-79.27987"/>
+<point lat="43.71101" lon="-79.27996"/>
 </path>
 <path>
 <point lat="43.69778" lon="-79.27497"/>
@@ -702,10 +702,6 @@ Content-Type: text/xml
 <point lat="43.69436" lon="-79.27364"/>
 <point lat="43.69429" lon="-79.27401"/>
 <point lat="43.69418" lon="-79.27503"/>
-</path>
-<path>
-<point lat="43.71626" lon="-79.28295"/>
-<point lat="43.71444" lon="-79.28214"/>
 </path>
 <path>
 <point lat="43.71973" lon="-79.28438"/>

@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:56 GMT
+Date: Sun, 25 Dec 2011 20:00:12 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2036
+Content-Length: 2026
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="90" title="90-Vaughan" color="ff0000" oppositeColor="ffffff" latMin="43.6765099" latMax="43.69694" lonMin="-79.44753" lonMax="-79.41558">
+<route tag="90" title="90-Vaughan" color="ff0000" oppositeColor="ffffff" latMin="43.6765099" latMax="43.69694" lonMin="-79.44753" lonMax="-79.41533">
 <stop tag="1730" title="Northcliffe Avenue At Eglinton Avenue West" lat="43.6960199" lon="-79.44753" stopId="11834"/>
 <stop tag="10299" title="Eglinton Avenue West At Glenholme Avenue" lat="43.69667" lon="-79.4454199" stopId="2357"/>
 <stop tag="597" title="Oakwood Avenue At Eglinton Avenue Farside" lat="43.69694" lon="-79.4427" stopId="5904"/>
@@ -27,8 +27,8 @@ Content-Type: text/xml
 <stop tag="5168" title="Vaughan Road At Louise Avenue" lat="43.6847099" lon="-79.4215599" stopId="8416"/>
 <stop tag="8868" title="St Clair Avenue West At Vaughan Road Farside" lat="43.6828299" lon="-79.41931" stopId="14335"/>
 <stop tag="8869" title="St Clair Avenue West At Bathurst Street Farside" lat="43.6831599" lon="-79.41764" stopId="14336"/>
-<stop tag="14296_ar" title="St Clair West Station" lat="43.6841499" lon="-79.41558"/>
-<stop tag="14296" title="St Clair West Station" lat="43.6841499" lon="-79.41558" stopId="14779"/>
+<stop tag="14299_ar" title="St Clair West Station" lat="43.6841499" lon="-79.41533"/>
+<stop tag="14299" title="St Clair West Station" lat="43.6841499" lon="-79.41533" stopId="14782"/>
 <stop tag="8870" title="St Clair Avenue West At Bathurst Street Farside" lat="43.6831399" lon="-79.41889" stopId="14337"/>
 <stop tag="7324" title="Vaughan Road At St Clair Avenue Farside" lat="43.6831699" lon="-79.42061" stopId="8421"/>
 <stop tag="1386" title="Vaughan Road At Louise Avenue" lat="43.6841799" lon="-79.4212299" stopId="8415"/>
@@ -57,7 +57,7 @@ Content-Type: text/xml
   <stop tag="6550" />
   <stop tag="1066" />
   <stop tag="8869_IB" />
-  <stop tag="14296" />
+  <stop tag="14299" />
 </direction>
 <direction tag="90_0_90" title="South - 90 Vaughan towards St Clair West Station" name="South" useForUI="true">
   <stop tag="1730" />
@@ -76,10 +76,10 @@ Content-Type: text/xml
   <stop tag="5168" />
   <stop tag="8868" />
   <stop tag="8869" />
-  <stop tag="14296_ar" />
+  <stop tag="14299_ar" />
 </direction>
 <direction tag="90_1_90" title="North - 90 Vaughan towards Eglinton" name="North" useForUI="true">
-  <stop tag="14296" />
+  <stop tag="14299" />
   <stop tag="8870" />
   <stop tag="7324" />
   <stop tag="1386" />
@@ -98,10 +98,27 @@ Content-Type: text/xml
   <stop tag="1730_ar" />
 </direction>
 <path>
+<point lat="43.68316" lon="-79.41764"/>
+<point lat="43.68377" lon="-79.41522"/>
+<point lat="43.684" lon="-79.41561"/>
+<point lat="43.68415" lon="-79.41533"/>
+</path>
+<path>
 <point lat="43.68314" lon="-79.41889"/>
 <point lat="43.68277" lon="-79.42021"/>
 <point lat="43.68298" lon="-79.4205"/>
 <point lat="43.6831699" lon="-79.42061"/>
+</path>
+<path>
+<point lat="43.68415" lon="-79.41533"/>
+<point lat="43.68425" lon="-79.41573"/>
+<point lat="43.68454" lon="-79.41583"/>
+<point lat="43.68469" lon="-79.41555"/>
+<point lat="43.68471" lon="-79.4152"/>
+<point lat="43.68447" lon="-79.41507"/>
+<point lat="43.68394" lon="-79.4152299"/>
+<point lat="43.68363" lon="-79.41587"/>
+<point lat="43.68314" lon="-79.41889"/>
 </path>
 <path>
 <point lat="43.69222" lon="-79.44025"/>
@@ -133,15 +150,8 @@ Content-Type: text/xml
 <point lat="43.68283" lon="-79.41931"/>
 </path>
 <path>
-<point lat="43.68415" lon="-79.41558"/>
-<point lat="43.68425" lon="-79.41573"/>
-<point lat="43.68454" lon="-79.41583"/>
-<point lat="43.68469" lon="-79.41555"/>
-<point lat="43.68471" lon="-79.4152"/>
-<point lat="43.68447" lon="-79.41507"/>
-<point lat="43.68394" lon="-79.4152299"/>
-<point lat="43.68363" lon="-79.41587"/>
-<point lat="43.68314" lon="-79.41889"/>
+<point lat="43.68283" lon="-79.41931"/>
+<point lat="43.68316" lon="-79.41764"/>
 </path>
 <path>
 <point lat="43.6831699" lon="-79.42061"/>
@@ -178,10 +188,6 @@ Content-Type: text/xml
 <point lat="43.69222" lon="-79.44025"/>
 </path>
 <path>
-<point lat="43.68283" lon="-79.41931"/>
-<point lat="43.68316" lon="-79.41764"/>
-</path>
-<path>
 <point lat="43.69257" lon="-79.4406"/>
 <point lat="43.69265" lon="-79.44083"/>
 <point lat="43.69299" lon="-79.44156"/>
@@ -193,12 +199,6 @@ Content-Type: text/xml
 <point lat="43.69602" lon="-79.44753"/>
 </path>
 <path>
-<point lat="43.68316" lon="-79.41764"/>
-<point lat="43.68377" lon="-79.41522"/>
-<point lat="43.684" lon="-79.41561"/>
-<point lat="43.68415" lon="-79.41558"/>
-</path>
-<path>
 <point lat="43.67651" lon="-79.41559"/>
 <point lat="43.67972" lon="-79.41687"/>
 <point lat="43.68092" lon="-79.41735"/>
@@ -207,7 +207,7 @@ Content-Type: text/xml
 <point lat="43.68339" lon="-79.41713"/>
 <point lat="43.68377" lon="-79.41522"/>
 <point lat="43.684" lon="-79.41561"/>
-<point lat="43.68415" lon="-79.41558"/>
+<point lat="43.68415" lon="-79.41533"/>
 </path>
 <path>
 <point lat="43.69602" lon="-79.44753"/>

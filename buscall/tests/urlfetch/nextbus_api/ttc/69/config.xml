@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:42 GMT
+Date: Sun, 25 Dec 2011 19:59:56 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2425
+Content-Length: 2458
 Connection: close
 Content-Type: text/xml
 
@@ -32,11 +32,12 @@ Content-Type: text/xml
 <stop tag="8285" title="Birchmount Road At St Clair Avenue East Farside" lat="43.7135699" lon="-79.27093" stopId="7560"/>
 <stop tag="5304" title="Birchmount Road At Zenith Drive" lat="43.71121" lon="-79.26994" stopId="7562"/>
 <stop tag="6946" title="Birchmount Road At Newlands Avenue" lat="43.71003" lon="-79.26946" stopId="14142"/>
-<stop tag="3469" title="Birchmount Road At Parnell Avenue Farside" lat="43.7051299" lon="-79.26746" stopId="7555"/>
-<stop tag="5067" title="Birchmount Road At Mack Avenue" lat="43.70175" lon="-79.26605" stopId="7554"/>
+<stop tag="10340" title="Birchmount Road At Danforth Road" lat="43.7072299" lon="-79.26832" stopId="7548"/>
+<stop tag="3469" title="Birchmount Road At Parnell Avenue Farside" lat="43.70513" lon="-79.26746" stopId="7555"/>
+<stop tag="5067" title="Birchmount Road At Mack Avenue" lat="43.7017499" lon="-79.2660499" stopId="7554"/>
 <stop tag="399" title="Birchmount Road At Highview Avenue Farside" lat="43.6997599" lon="-79.2652299" stopId="7549"/>
-<stop tag="1665" title="Birchmount Road At Danforth Avenue" lat="43.69724" lon="-79.26419" stopId="1739"/>
-<stop tag="6965" title="Birchmount Road At Hollis Avenue Farside" lat="43.69482" lon="-79.26315" stopId="7552"/>
+<stop tag="1665" title="Birchmount Road At Danforth Avenue" lat="43.6972399" lon="-79.2641899" stopId="1739"/>
+<stop tag="6965" title="Birchmount Road At Hollis Avenue Farside" lat="43.6948199" lon="-79.2631499" stopId="7552"/>
 <stop tag="2275_ar" title="Birchmount Road At Kingston Road Farside" lat="43.6931399" lon="-79.26245"/>
 <stop tag="2275" title="Birchmount Road At Kingston Road Farside" lat="43.6931399" lon="-79.26245" stopId="7553"/>
 <stop tag="1529" title="Kingston Road At Birchcliff Avenue" lat="43.6915999" lon="-79.26466" stopId="4206"/>
@@ -47,7 +48,7 @@ Content-Type: text/xml
 <stop tag="7124" title="Warden Avenue At Hollis Avenue Farside" lat="43.6931899" lon="-79.2730599" stopId="8572"/>
 <stop tag="2283" title="Warden Avenue At Danforth Avenue" lat="43.69424" lon="-79.2735" stopId="8553"/>
 <stop tag="6489" title="Warden Avenue At Danforth Road" lat="43.6970199" lon="-79.2746499" stopId="8555"/>
-<stop tag="4928" title="Warden Avenue At Danforth Road North Side Farside" lat="43.6977799" lon="-79.27497" stopId="1623"/>
+<stop tag="4928" title="Warden Avenue At Danforth Road Farside" lat="43.6977799" lon="-79.27497" stopId="1623"/>
 <stop tag="6848" title="Warden Avenue At Mack Avenue Farside" lat="43.7005299" lon="-79.2760799" stopId="1625"/>
 <stop tag="9242" title="Warden Avenue At Cataraqui Crescent" lat="43.70226" lon="-79.27681" stopId="1622"/>
 <stop tag="14782" title="Warden Avenue At Firvalley Court" lat="43.70383" lon="-79.27746" stopId="15013"/>
@@ -92,6 +93,7 @@ Content-Type: text/xml
   <stop tag="8285" />
   <stop tag="5304" />
   <stop tag="6946" />
+  <stop tag="10340" />
   <stop tag="3469" />
   <stop tag="5067" />
   <stop tag="399" />
@@ -115,7 +117,7 @@ Content-Type: text/xml
   <stop tag="5626" />
   <stop tag="14311_ar" />
 </direction>
-<direction tag="69_1_69A" title="North - 69 Warden South towards Warden Station" name="North" useForUI="true">
+<direction tag="69_1_69A" title="North - 69a Warden South towards Warden Station" name="North" useForUI="true">
   <stop tag="2275" />
   <stop tag="1529" />
   <stop tag="7514" />
@@ -180,6 +182,15 @@ Content-Type: text/xml
 <point lat="43.71097" lon="-79.27991"/>
 </path>
 <path>
+<point lat="43.70723" lon="-79.26832"/>
+<point lat="43.7051299" lon="-79.26746"/>
+<point lat="43.7017499" lon="-79.26605"/>
+<point lat="43.69976" lon="-79.26523"/>
+<point lat="43.69724" lon="-79.26419"/>
+<point lat="43.69482" lon="-79.26315"/>
+<point lat="43.69314" lon="-79.26245"/>
+</path>
+<path>
 <point lat="43.6936" lon="-79.26248"/>
 <point lat="43.69493" lon="-79.26303"/>
 <point lat="43.6967799" lon="-79.2638"/>
@@ -194,7 +205,7 @@ Content-Type: text/xml
 <point lat="43.71357" lon="-79.27093"/>
 <point lat="43.71121" lon="-79.26994"/>
 <point lat="43.71003" lon="-79.26946"/>
-<point lat="43.7051299" lon="-79.26746"/>
+<point lat="43.70723" lon="-79.26832"/>
 </path>
 <path>
 <point lat="43.69314" lon="-79.26245"/>
@@ -216,14 +227,6 @@ Content-Type: text/xml
 <point lat="43.69424" lon="-79.2735"/>
 <point lat="43.69702" lon="-79.27465"/>
 <point lat="43.69778" lon="-79.27497"/>
-</path>
-<path>
-<point lat="43.7051299" lon="-79.26746"/>
-<point lat="43.7017499" lon="-79.26605"/>
-<point lat="43.69976" lon="-79.26523"/>
-<point lat="43.69724" lon="-79.26419"/>
-<point lat="43.69482" lon="-79.26315"/>
-<point lat="43.69314" lon="-79.26245"/>
 </path>
 <path>
 <point lat="43.68868" lon="-79.26942"/>

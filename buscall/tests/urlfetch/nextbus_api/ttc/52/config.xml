@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:30 GMT
+Date: Sun, 25 Dec 2011 19:59:40 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 6584
+Content-Length: 6569
 Connection: close
 Content-Type: text/xml
 
@@ -27,12 +27,12 @@ Content-Type: text/xml
 <stop tag="6278" title="Opposite 66 The Westway" lat="43.69302" lon="-79.5350499" stopId="6197"/>
 <stop tag="14804" title="The Westway At Trio Avenue Farside" lat="43.69447" lon="-79.53468" stopId="15035"/>
 <stop tag="6562" title="The Westway At Royal York Road" lat="43.6960199" lon="-79.53294" stopId="6198"/>
-<stop tag="1119" title="Lawrence Avenue West At Royal York Road East Side Farside" lat="43.6961799" lon="-79.53218" stopId="5402"/>
+<stop tag="1119" title="Lawrence Avenue West At Royal York Road Farside" lat="43.6961799" lon="-79.53218" stopId="5402"/>
 <stop tag="7694" title="Lawrence Avenue West At Roxaline Street" lat="43.69672" lon="-79.5297899" stopId="5399"/>
 <stop tag="5225" title="Lawrence Avenue West At Westona Street Farside" lat="43.6972999" lon="-79.52698" stopId="5418"/>
 <stop tag="7490" title="Lawrence Avenue West At Scarlett Road" lat="43.6980699" lon="-79.52339" stopId="5405"/>
 <stop tag="4884" title="Lawrence Avenue West At Hickory Tree Road" lat="43.6990899" lon="-79.52015" stopId="5377"/>
-<stop tag="7273" title="Lawrence Avenue West At Weston Road East Side" lat="43.6999399" lon="-79.51679" stopId="5414"/>
+<stop tag="7273" title="Lawrence Avenue West At Weston Road" lat="43.6999399" lon="-79.51679" stopId="5414"/>
 <stop tag="4350" title="Lawrence Avenue West At Ralph Street Farside" lat="43.7011099" lon="-79.51172" stopId="5397"/>
 <stop tag="10388" title="Lawrence Avenue West At Pine Street" lat="43.7018799" lon="-79.50841" stopId="5395"/>
 <stop tag="6244" title="Lawrence Avenue East At Jane Street" lat="43.7027599" lon="-79.50422" stopId="2824"/>
@@ -119,8 +119,8 @@ Content-Type: text/xml
 <stop tag="4523" title="Lawrence Avenue West At Jane Street" lat="43.7030199" lon="-79.50344" stopId="5379"/>
 <stop tag="8066" title="Lawrence Avenue West At Pine Street" lat="43.7020999" lon="-79.50813" stopId="5396"/>
 <stop tag="9512" title="Lawrence Avenue West At Ralph Street Farside" lat="43.7010599" lon="-79.5126" stopId="5398"/>
-<stop tag="453" title="Lawrence Avenue West At Weston Road East Side" lat="43.7002599" lon="-79.51604" stopId="5415"/>
-<stop tag="2143" title="Lawrence Avenue West At Weston Road West Side Farside" lat="43.7000199" lon="-79.51703" stopId="5413"/>
+<stop tag="453" title="Lawrence Avenue West At Weston Road" lat="43.7002599" lon="-79.51604" stopId="5415"/>
+<stop tag="2143" title="Lawrence Avenue West At Weston Road Farside" lat="43.7000199" lon="-79.51703" stopId="5413"/>
 <stop tag="10259" title="Lawrence Avenue West At Little Avenue" lat="43.6993799" lon="-79.51972" stopId="5387"/>
 <stop tag="4043" title="Lawrence Avenue West At Scarlett Road" lat="43.6983099" lon="-79.52308" stopId="5406"/>
 <stop tag="2809" title="Lawrence Avenue West At Westona Street Farside" lat="43.6972599" lon="-79.52786" stopId="5417"/>
@@ -688,14 +688,6 @@ Content-Type: text/xml
 <point lat="43.70276" lon="-79.50422"/>
 </path>
 <path>
-<point lat="43.70302" lon="-79.50344"/>
-<point lat="43.70287" lon="-79.5038299"/>
-<point lat="43.70278" lon="-79.50487"/>
-<point lat="43.7021" lon="-79.50813"/>
-<point lat="43.70106" lon="-79.5126"/>
-<point lat="43.70026" lon="-79.51604"/>
-</path>
-<path>
 <point lat="43.70884" lon="-79.4774"/>
 <point lat="43.70908" lon="-79.47713"/>
 <point lat="43.70926" lon="-79.4766"/>
@@ -703,6 +695,14 @@ Content-Type: text/xml
 <point lat="43.70959" lon="-79.47471"/>
 <point lat="43.71016" lon="-79.47203"/>
 <point lat="43.71146" lon="-79.4661"/>
+</path>
+<path>
+<point lat="43.70302" lon="-79.50344"/>
+<point lat="43.70287" lon="-79.5038299"/>
+<point lat="43.70278" lon="-79.50487"/>
+<point lat="43.7021" lon="-79.50813"/>
+<point lat="43.70106" lon="-79.5126"/>
+<point lat="43.70026" lon="-79.51604"/>
 </path>
 <path>
 <point lat="43.68668" lon="-79.56878"/>

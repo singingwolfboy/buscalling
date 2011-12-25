@@ -1,16 +1,158 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:30 GMT
+Date: Sun, 25 Dec 2011 20:02:12 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 167
+Content-Length: 1176
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Western Kentucky University 2011.">
-<Error shouldRetry="true">
-  System is initializing.
-</Error>
+<route tag="blue" title="Blue" color="1464f4" oppositeColor="ffffff" latMin="36.9827889" latMax="36.9906603" lonMin="-86.4603471" lonMax="-86.4491094">
+<stop tag="sla_d" title="SLA GRAVEL LOT" lat="36.99035" lon="-86.45206" stopId="0009"/>
+<stop tag="centgrav" title="CENTER ST GRAVEL LOT" lat="36.9906603" lon="-86.4491094" stopId="0010"/>
+<stop tag="rock" title="ROCKHOUSE" lat="36.9879218" lon="-86.4505771" stopId="0011"/>
+<stop tag="vall" title="THE VALLEY" lat="36.9876328" lon="-86.4547605" stopId="0012"/>
+<stop tag="duc" title="DUC" lat="36.9851993" lon="-86.4574387" stopId="0013"/>
+<stop tag="keen" title="KEEN HALL" lat="36.9827889" lon="-86.4603471" stopId="0014"/>
+<stop tag="mcmk" title="MCCORMACK HALL" lat="36.98872" lon="-86.45631" stopId="0015"/>
+<stop tag="kentmuse" title="KENTUCKY MUSEUM" lat="36.98916" lon="-86.45431" stopId="0016"/>
+<direction tag="sla" title="SLA Gravel Lot" name="" useForUI="true">
+  <stop tag="keen" />
+  <stop tag="mcmk" />
+  <stop tag="kentmuse" />
+</direction>
+<direction tag="duc" title="DUC" name="" useForUI="true">
+  <stop tag="sla_d" />
+  <stop tag="centgrav" />
+  <stop tag="rock" />
+  <stop tag="vall" />
+  <stop tag="duc" />
+</direction>
+<path>
+<point lat="36.99066" lon="-86.44911"/>
+<point lat="36.99015" lon="-86.44987"/>
+<point lat="36.98952" lon="-86.45081"/>
+<point lat="36.98948" lon="-86.45085"/>
+<point lat="36.98943" lon="-86.45087"/>
+<point lat="36.98938" lon="-86.45087"/>
+<point lat="36.98934" lon="-86.45085"/>
+<point lat="36.98931" lon="-86.45081"/>
+<point lat="36.98922" lon="-86.45068"/>
+<point lat="36.98914" lon="-86.45053"/>
+<point lat="36.98908" lon="-86.45045"/>
+<point lat="36.9885499" lon="-86.44986"/>
+<point lat="36.98849" lon="-86.44982"/>
+<point lat="36.98843" lon="-86.44982"/>
+<point lat="36.98839" lon="-86.44985"/>
+<point lat="36.98792" lon="-86.45058"/>
+</path>
+<path>
+<point lat="36.9895" lon="-86.4534"/>
+<point lat="36.99035" lon="-86.45206"/>
+</path>
+<path>
+<point lat="36.98872" lon="-86.45631"/>
+<point lat="36.98889" lon="-86.45612"/>
+<point lat="36.98895" lon="-86.45603"/>
+<point lat="36.98898" lon="-86.45594"/>
+<point lat="36.989" lon="-86.4558"/>
+<point lat="36.98909" lon="-86.455"/>
+<point lat="36.98916" lon="-86.45431"/>
+</path>
+<path>
+<point lat="36.9876099" lon="-86.45478"/>
+<point lat="36.98739" lon="-86.45496"/>
+<point lat="36.98717" lon="-86.45515"/>
+<point lat="36.98679" lon="-86.45555"/>
+<point lat="36.98654" lon="-86.45581"/>
+<point lat="36.9861999" lon="-86.45623"/>
+<point lat="36.98588" lon="-86.45662"/>
+<point lat="36.98519" lon="-86.45745"/>
+</path>
+<path>
+<point lat="36.98792" lon="-86.45058"/>
+<point lat="36.98789" lon="-86.45064"/>
+<point lat="36.9878799" lon="-86.45069"/>
+<point lat="36.98789" lon="-86.45075"/>
+<point lat="36.98791" lon="-86.4508"/>
+<point lat="36.98794" lon="-86.45086"/>
+<point lat="36.98798" lon="-86.4509099"/>
+<point lat="36.9888" lon="-86.45175"/>
+<point lat="36.98894" lon="-86.45188"/>
+<point lat="36.98899" lon="-86.45195"/>
+<point lat="36.98903" lon="-86.45207"/>
+<point lat="36.98904" lon="-86.45223"/>
+<point lat="36.9890199" lon="-86.45239"/>
+<point lat="36.98899" lon="-86.45272"/>
+<point lat="36.98894" lon="-86.45291"/>
+<point lat="36.98884" lon="-86.45326"/>
+<point lat="36.98875" lon="-86.45347"/>
+<point lat="36.98865" lon="-86.45368"/>
+<point lat="36.98851" lon="-86.45388"/>
+<point lat="36.98837" lon="-86.45407"/>
+<point lat="36.98822" lon="-86.45423"/>
+<point lat="36.9880799" lon="-86.45438"/>
+<point lat="36.9876099" lon="-86.45478"/>
+</path>
+<path>
+<point lat="36.99035" lon="-86.45206"/>
+<point lat="36.9905" lon="-86.4518"/>
+<point lat="36.99103" lon="-86.45099"/>
+<point lat="36.99256" lon="-86.44869"/>
+<point lat="36.99259" lon="-86.44863"/>
+<point lat="36.9925799" lon="-86.44857"/>
+<point lat="36.99256" lon="-86.44853"/>
+<point lat="36.99175" lon="-86.44767"/>
+<point lat="36.9917" lon="-86.44765"/>
+<point lat="36.99165" lon="-86.44764"/>
+<point lat="36.99161" lon="-86.44766"/>
+<point lat="36.99156" lon="-86.4477"/>
+<point lat="36.99066" lon="-86.44911"/>
+</path>
+<path>
+<point lat="36.98519" lon="-86.45745"/>
+<point lat="36.9848" lon="-86.45792"/>
+<point lat="36.98427" lon="-86.45857"/>
+<point lat="36.98381" lon="-86.45912"/>
+<point lat="36.98277" lon="-86.46037"/>
+</path>
+<path>
+<point lat="36.98277" lon="-86.46037"/>
+<point lat="36.9826" lon="-86.46055"/>
+<point lat="36.98238" lon="-86.46081"/>
+<point lat="36.98218" lon="-86.46111"/>
+<point lat="36.98203" lon="-86.4614"/>
+<point lat="36.9819699" lon="-86.46162"/>
+<point lat="36.98199" lon="-86.4616999"/>
+<point lat="36.98203" lon="-86.46175"/>
+<point lat="36.9821" lon="-86.46178"/>
+<point lat="36.98231" lon="-86.46184"/>
+<point lat="36.9825" lon="-86.46187"/>
+<point lat="36.98268" lon="-86.46187"/>
+<point lat="36.98281" lon="-86.46186"/>
+<point lat="36.98294" lon="-86.46184"/>
+<point lat="36.98303" lon="-86.46181"/>
+<point lat="36.98314" lon="-86.46176"/>
+<point lat="36.98362" lon="-86.46151"/>
+<point lat="36.98391" lon="-86.46135"/>
+<point lat="36.98413" lon="-86.46121"/>
+<point lat="36.98439" lon="-86.46101"/>
+<point lat="36.98458" lon="-86.46087"/>
+<point lat="36.98474" lon="-86.46072"/>
+<point lat="36.98503" lon="-86.46042"/>
+<point lat="36.98634" lon="-86.45899"/>
+<point lat="36.98751" lon="-86.45766"/>
+<point lat="36.98801" lon="-86.45711"/>
+<point lat="36.98872" lon="-86.45631"/>
+</path>
+<path>
+<point lat="36.98916" lon="-86.45431"/>
+<point lat="36.98926" lon="-86.45387"/>
+<point lat="36.98938" lon="-86.45359"/>
+<point lat="36.9895" lon="-86.4534"/>
+</path>
+</route>
 </body>

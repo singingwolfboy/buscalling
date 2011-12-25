@@ -1,5 +1,5 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:06 GMT
+Date: Sun, 25 Dec 2011 20:01:47 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
@@ -45,7 +45,7 @@ Content-Type: text/xml
 <stop tag="6461" title="St Clair Avenue West At Russell Hill Road Farside" lat="43.68527" lon="-79.4083699" stopId="8182"/>
 <stop tag="10424" title="St Clair Avenue West At Spadina Road Farside" lat="43.6845199" lon="-79.41167" stopId="14355"/>
 <stop tag="5735" title="St Clair Avenue West At Tweedsmuir Avenue Farside" lat="43.6841299" lon="-79.41361" stopId="4632"/>
-<stop tag="14298" title="St Clair West Station" lat="43.6843099" lon="-79.41527" stopId="14781"/>
+<stop tag="14656" title="St Clair West Station" lat="43.6846199" lon="-79.41564" stopId="14942"/>
 <stop tag="8870" title="St Clair Avenue West At Bathurst Street Farside" lat="43.6831399" lon="-79.41889" stopId="14337"/>
 <stop tag="8867" title="St Clair Avenue West At Vaughan Road Farside" lat="43.6827399" lon="-79.42076" stopId="14334"/>
 <stop tag="14392" title="St Clair Avenue West At Wychwood Avenue Farside" lat="43.68206" lon="-79.4239899" stopId="14871"/>
@@ -57,7 +57,7 @@ Content-Type: text/xml
 <stop tag="14398" title="St Clair Avenue West At Northcliffe Boulevard Farside" lat="43.6783399" lon="-79.44137" stopId="14884"/>
 <stop tag="14399" title="St Clair Avenue West At Dufferin Street Farside" lat="43.6778599" lon="-79.4436" stopId="14886"/>
 <stop tag="14400" title="St Clair Avenue West At Earlscourt Avenue" lat="43.6768999" lon="-79.44794" stopId="14888"/>
-<stop tag="14665" title="St Clair Ave W At Lansdowne Avenue Farside" lat="43.6762699" lon="-79.45106" stopId="13173"/>
+<stop tag="14665" title="St Clair Avenue West At Lansdowne Avenue Farside" lat="43.6762699" lon="-79.45106" stopId="13173"/>
 <stop tag="14667" title="St Clair Avenue West At Caledonia Road Farside" lat="43.67525" lon="-79.4555599" stopId="14932"/>
 <stop tag="14669" title="St Clair Avenue West At Laughton Avenue Farside" lat="43.6746399" lon="-79.45835" stopId="14934"/>
 <stop tag="14671" title="St Clair Avenue West At Silverthorn Avenue Farside" lat="43.67417" lon="-79.4606299" stopId="14936"/>
@@ -73,7 +73,7 @@ Content-Type: text/xml
   <stop tag="6461" />
   <stop tag="10424" />
   <stop tag="5735" />
-  <stop tag="14298" />
+  <stop tag="14656" />
   <stop tag="8870" />
   <stop tag="8867" />
   <stop tag="14392" />
@@ -121,6 +121,31 @@ Content-Type: text/xml
   <stop tag="2189" />
   <stop tag="14295_ar" />
 </direction>
+<path>
+<point lat="43.68462" lon="-79.41564"/>
+<point lat="43.68479" lon="-79.41521"/>
+<point lat="43.68442" lon="-79.41503"/>
+<point lat="43.68377" lon="-79.41528"/>
+<point lat="43.68369" lon="-79.41559"/>
+<point lat="43.68314" lon="-79.41889"/>
+</path>
+<path>
+<point lat="43.68657" lon="-79.40203"/>
+<point lat="43.68586" lon="-79.4054699"/>
+<point lat="43.68527" lon="-79.40837"/>
+<point lat="43.68452" lon="-79.41167"/>
+<point lat="43.68413" lon="-79.41361"/>
+<point lat="43.68369" lon="-79.41559"/>
+<point lat="43.68464" lon="-79.41593"/>
+<point lat="43.68462" lon="-79.41564"/>
+</path>
+<path>
+<point lat="43.68462" lon="-79.41564"/>
+<point lat="43.68442" lon="-79.41503"/>
+<point lat="43.68377" lon="-79.41528"/>
+<point lat="43.68369" lon="-79.41559"/>
+<point lat="43.68314" lon="-79.41889"/>
+</path>
 <path>
 <point lat="43.68462" lon="-79.41544"/>
 <point lat="43.68479" lon="-79.41521"/>
@@ -191,17 +216,6 @@ Content-Type: text/xml
 <point lat="43.68665" lon="-79.40087"/>
 </path>
 <path>
-<point lat="43.68274" lon="-79.42076"/>
-<point lat="43.68206" lon="-79.42399"/>
-<point lat="43.68163" lon="-79.42625"/>
-<point lat="43.68095" lon="-79.42939"/>
-<point lat="43.68018" lon="-79.43303"/>
-<point lat="43.67949" lon="-79.43621"/>
-<point lat="43.67881" lon="-79.43929"/>
-<point lat="43.67834" lon="-79.44137"/>
-<point lat="43.67786" lon="-79.4436"/>
-</path>
-<path>
 <point lat="43.68775" lon="-79.39223"/>
 <point lat="43.68802" lon="-79.39152"/>
 <point lat="43.68822" lon="-79.39136"/>
@@ -212,10 +226,15 @@ Content-Type: text/xml
 <point lat="43.68657" lon="-79.40203"/>
 </path>
 <path>
-<point lat="43.68431" lon="-79.41527"/>
-<point lat="43.68377" lon="-79.41528"/>
-<point lat="43.68369" lon="-79.41559"/>
-<point lat="43.68314" lon="-79.41889"/>
+<point lat="43.68274" lon="-79.42076"/>
+<point lat="43.68206" lon="-79.42399"/>
+<point lat="43.68163" lon="-79.42625"/>
+<point lat="43.68095" lon="-79.42939"/>
+<point lat="43.68018" lon="-79.43303"/>
+<point lat="43.67949" lon="-79.43621"/>
+<point lat="43.67881" lon="-79.43929"/>
+<point lat="43.67834" lon="-79.44137"/>
+<point lat="43.67786" lon="-79.4436"/>
 </path>
 <path>
 <point lat="43.67806" lon="-79.44251"/>
@@ -247,18 +266,6 @@ Content-Type: text/xml
 <point lat="43.68413" lon="-79.41361"/>
 <point lat="43.68369" lon="-79.41559"/>
 <point lat="43.68314" lon="-79.41889"/>
-</path>
-<path>
-<point lat="43.68657" lon="-79.40203"/>
-<point lat="43.68586" lon="-79.4054699"/>
-<point lat="43.68527" lon="-79.40837"/>
-<point lat="43.68452" lon="-79.41167"/>
-<point lat="43.68413" lon="-79.41361"/>
-<point lat="43.68369" lon="-79.41559"/>
-<point lat="43.68464" lon="-79.41593"/>
-<point lat="43.68479" lon="-79.41521"/>
-<point lat="43.68442" lon="-79.41503"/>
-<point lat="43.68431" lon="-79.41527"/>
 </path>
 <path>
 <point lat="43.67638" lon="-79.45008"/>

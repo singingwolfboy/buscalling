@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:59:48 GMT
+Date: Sun, 25 Dec 2011 19:57:35 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5587
+Content-Length: 5588
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright San Francisco Muni 2011.">
-<route tag="44" title="44-O&apos;Shaughnessy" color="ff6633" oppositeColor="000000" latMin="37.72847" latMax="37.7848199" lonMin="-122.4689199" lonMax="-122.37925">
+<route tag="44" title="44-O&apos;Shaughnessy" color="ff6633" oppositeColor="000000" latMin="37.72847" latMax="37.7848199" lonMin="-122.4711" lonMax="-122.37925">
 <stop tag="7269" title="Forest Hill Sta." lat="37.7478399" lon="-122.45879" stopId="17269"/>
 <stop tag="6933" title="Woodside Ave &amp; Balceta Ave" lat="37.74649" lon="-122.45644" stopId="16933"/>
 <stop tag="6935" title="Woodside Ave &amp; Hernandez Ave" lat="37.74628" lon="-122.45559" stopId="16935"/>
@@ -137,7 +137,7 @@ Content-Type: text/xml
 <stop tag="3177" title="6th Ave &amp; Balboa St" lat="37.77715" lon="-122.46392" stopId="13177"/>
 <stop tag="3184" title="6th Ave &amp; Geary Blvd" lat="37.7808799" lon="-122.46418" stopId="13184"/>
 <stop tag="4043" title="Clement St &amp; 6th Ave" lat="37.7828599" lon="-122.4643299" stopId="14043"/>
-<stop tag="7639" title="8th Ave &amp; Clement St" lat="37.7830299" lon="-122.46647" stopId="17639"/>
+<stop tag="3832" title="California St &amp; 12th Ave" lat="37.78445" lon="-122.4711" stopId="13832"/>
 <stop tag="33826" title="California St &amp; 7th Ave" lat="37.7848199" lon="-122.46543" stopId="133826"/>
 <direction tag="44_OB_R" title="Outbound to Hunter&apos;s Point" name="Outbound" useForUI="true">
   <stop tag="3826" />
@@ -267,7 +267,7 @@ Content-Type: text/xml
   <stop tag="3177" />
   <stop tag="3184" />
   <stop tag="4043" />
-  <stop tag="7639" />
+  <stop tag="3832" />
   <stop tag="33826" />
 </direction>
 <path>
@@ -574,9 +574,9 @@ Content-Type: text/xml
 <point lat="37.78088" lon="-122.46418"/>
 <point lat="37.78286" lon="-122.46433"/>
 <point lat="37.78294" lon="-122.46442"/>
-<point lat="37.7830299" lon="-122.46647"/>
-<point lat="37.78279" lon="-122.46762"/>
-<point lat="37.78467" lon="-122.46776"/>
+<point lat="37.78258" lon="-122.47245"/>
+<point lat="37.78445" lon="-122.47259"/>
+<point lat="37.78445" lon="-122.4711"/>
 <point lat="37.78482" lon="-122.46543"/>
 </path>
 <path>

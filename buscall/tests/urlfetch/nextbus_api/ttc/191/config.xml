@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:32 GMT
+Date: Sun, 25 Dec 2011 20:01:07 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 4746
+Content-Length: 4527
 Connection: close
 Content-Type: text/xml
 
@@ -36,8 +36,6 @@ Content-Type: text/xml
 <stop tag="3749" title="Highway 27 At Queens Plate Drive Farside" lat="43.7220999" lon="-79.59806" stopId="11505"/>
 <stop tag="5407" title="Dundas Street West At East Mall Cresent" lat="43.6303899" lon="-79.54917" stopId="2148"/>
 <stop tag="14241_ar" title="Kipling Station" lat="43.6379599" lon="-79.53521"/>
-<stop tag="5183" title="50 Woodbine Downs Boulevard" lat="43.7372199" lon="-79.607" stopId="8932"/>
-<stop tag="4762" title="Woodbine Downs Boulevard At Finch Avenue West" lat="43.7343599" lon="-79.60661" stopId="8933"/>
 <stop tag="6384" title="Royalcrest Road At Highway 27" lat="43.7499999" lon="-79.60944" stopId="11521"/>
 <stop tag="839" title="Steeles Avenue West At Highway 27 Farside" lat="43.7555199" lon="-79.61324" stopId="11522"/>
 <stop tag="7747" title="6807 Steeles Avenue West" lat="43.7560399" lon="-79.61102" stopId="10863"/>
@@ -55,7 +53,7 @@ Content-Type: text/xml
 <stop tag="6721" title="Dundas Street West At East Mall Cresent" lat="43.63069" lon="-79.5489799" stopId="2149"/>
 <stop tag="646" title="Highway 27 At Queens Plate Drive" lat="43.72246" lon="-79.5978" stopId="11504"/>
 <stop tag="5918" title="Humber College Boulevard At Highway 27 Farside" lat="43.7303499" lon="-79.60235" stopId="11272"/>
-<stop tag="14698" title="Humber College Boulevard At Windwood Drive East Side" lat="43.7301299" lon="-79.60478" stopId="14973"/>
+<stop tag="14698" title="Humber College Boulevard At Windwood Drive" lat="43.7301299" lon="-79.60478" stopId="14973"/>
 <stop tag="8802" title="Humber College Boulevard At Humber College" lat="43.7307699" lon="-79.60645" stopId="7859"/>
 <stop tag="7712" title="Humber College Boulevard At Humberline Drive" lat="43.73212" lon="-79.60889" stopId="7860"/>
 <stop tag="7911" title="Finch Avenue West At Humber College Boulevard Farside" lat="43.73394" lon="-79.60935" stopId="14254"/>
@@ -76,10 +74,6 @@ Content-Type: text/xml
 <stop tag="2961" title="Martin Grove Road At Brunello Street" lat="43.75598" lon="-79.6015" stopId="9726"/>
 <stop tag="843" title="Steeles Avenue West At Martin Grove Road Farside" lat="43.7577" lon="-79.6044099" stopId="9835"/>
 <stop tag="3651_ar" title="Steeles Loop At Martin Grove" lat="43.7566699" lon="-79.60784"/>
-<stop tag="6105" title="Humber College At Finch Avenue West Farside" lat="43.7344899" lon="-79.60969" stopId="14253"/>
-<stop tag="647" title="Humber College Boulevard At Carrier Drive" lat="43.7371399" lon="-79.6103299" stopId="11084"/>
-<stop tag="9731" title="Carrier Crescent At Humber College Boulevard Farside" lat="43.7381" lon="-79.6093799" stopId="7596"/>
-<stop tag="5183_ar" title="50 Woodbine Downs Boulevard" lat="43.7372199" lon="-79.607"/>
 <stop tag="2588" title="Dixon Road At Attwell Drive" lat="43.6881399" lon="-79.58655" stopId="4972"/>
 <stop tag="3709" title="Attwell Drive At Carlson Court" lat="43.6891899" lon="-79.58719" stopId="9302"/>
 <stop tag="8834" title="Attwell Drive At Farnboro Road" lat="43.6913299" lon="-79.5874099" stopId="9303"/>
@@ -94,6 +88,69 @@ Content-Type: text/xml
 <stop tag="5006" title="Opposite 6793 Steeles Avenue West" lat="43.7567499" lon="-79.60861" stopId="10854"/>
 <stop tag="9822" title="Opposite 6807 Steeles Avenue West" lat="43.7561699" lon="-79.61123" stopId="10855"/>
 <stop tag="4258_ar" title="Royalcrest Road At Highway 27 Farside" lat="43.7499499" lon="-79.60916"/>
+<direction tag="191_0_191am" title="South - 191 Highway 27 Rocket towards Kipling Station" name="South" useForUI="true">
+  <stop tag="6384" />
+  <stop tag="839" />
+  <stop tag="7747" />
+  <stop tag="6346" />
+  <stop tag="844" />
+  <stop tag="4925" />
+  <stop tag="3214" />
+  <stop tag="7050" />
+  <stop tag="4221" />
+  <stop tag="7565" />
+  <stop tag="8495" />
+  <stop tag="4450" />
+  <stop tag="1657" />
+  <stop tag="3473" />
+  <stop tag="627" />
+  <stop tag="3066" />
+  <stop tag="3793" />
+  <stop tag="5835" />
+  <stop tag="1399" />
+  <stop tag="758" />
+  <stop tag="1367" />
+  <stop tag="648" />
+  <stop tag="9622" />
+  <stop tag="9916" />
+  <stop tag="2207" />
+  <stop tag="3749" />
+  <stop tag="5407" />
+  <stop tag="14241_ar" />
+</direction>
+<direction tag="191_1_191am" title="North - 191 Highway 27 Rocket towards Steeles via Humber College" name="North" useForUI="true">
+  <stop tag="14241" />
+  <stop tag="6721" />
+  <stop tag="2588" />
+  <stop tag="3709" />
+  <stop tag="8834" />
+  <stop tag="993" />
+  <stop tag="9314" />
+  <stop tag="4040" />
+  <stop tag="396" />
+  <stop tag="646" />
+  <stop tag="5918" />
+  <stop tag="14698" />
+  <stop tag="8802" />
+  <stop tag="7712" />
+  <stop tag="7911" />
+  <stop tag="7840" />
+  <stop tag="7766" />
+  <stop tag="2214" />
+  <stop tag="1269" />
+  <stop tag="3319" />
+  <stop tag="560" />
+  <stop tag="3487" />
+  <stop tag="7894" />
+  <stop tag="6386" />
+  <stop tag="750" />
+  <stop tag="9964" />
+  <stop tag="1559" />
+  <stop tag="1078" />
+  <stop tag="10104" />
+  <stop tag="1913" />
+  <stop tag="6384_ar" />
+</direction>
 <direction tag="191_0_191pm" title="South - 191 Highway 27 Rocket towards Kipling Station" name="South" useForUI="true">
   <stop tag="4258" />
   <stop tag="1439" />
@@ -157,36 +214,6 @@ Content-Type: text/xml
   <stop tag="5407" />
   <stop tag="14241_ar" />
 </direction>
-<direction tag="191_0_191am" title="South - 191 Highway 27 Rocket towards Kipling Station" name="South" useForUI="true">
-  <stop tag="6384" />
-  <stop tag="839" />
-  <stop tag="7747" />
-  <stop tag="6346" />
-  <stop tag="844" />
-  <stop tag="4925" />
-  <stop tag="3214" />
-  <stop tag="7050" />
-  <stop tag="4221" />
-  <stop tag="7565" />
-  <stop tag="8495" />
-  <stop tag="4450" />
-  <stop tag="1657" />
-  <stop tag="3473" />
-  <stop tag="627" />
-  <stop tag="3066" />
-  <stop tag="3793" />
-  <stop tag="5835" />
-  <stop tag="1399" />
-  <stop tag="758" />
-  <stop tag="1367" />
-  <stop tag="648" />
-  <stop tag="9622" />
-  <stop tag="9916" />
-  <stop tag="2207" />
-  <stop tag="3749" />
-  <stop tag="5407" />
-  <stop tag="14241_ar" />
-</direction>
 <direction tag="191_1_191pm" title="North - 191 Highway 27 Rocket towards Steeles via Humber College" name="North" useForUI="true">
   <stop tag="14241" />
   <stop tag="6721" />
@@ -215,39 +242,6 @@ Content-Type: text/xml
   <stop tag="5006" />
   <stop tag="9822" />
   <stop tag="4258_ar" />
-</direction>
-<direction tag="191_1_191am" title="North - 191 Highway 27 Rocket towards Steeles via Humber College" name="North" useForUI="true">
-  <stop tag="14241" />
-  <stop tag="6721" />
-  <stop tag="2588" />
-  <stop tag="3709" />
-  <stop tag="8834" />
-  <stop tag="993" />
-  <stop tag="9314" />
-  <stop tag="4040" />
-  <stop tag="396" />
-  <stop tag="646" />
-  <stop tag="5918" />
-  <stop tag="14698" />
-  <stop tag="8802" />
-  <stop tag="7712" />
-  <stop tag="7911" />
-  <stop tag="7840" />
-  <stop tag="7766" />
-  <stop tag="2214" />
-  <stop tag="1269" />
-  <stop tag="3319" />
-  <stop tag="560" />
-  <stop tag="3487" />
-  <stop tag="7894" />
-  <stop tag="6386" />
-  <stop tag="750" />
-  <stop tag="9964" />
-  <stop tag="1559" />
-  <stop tag="1078" />
-  <stop tag="10104" />
-  <stop tag="1913" />
-  <stop tag="6384_ar" />
 </direction>
 <path>
 <point lat="43.73074" lon="-79.60695"/>
@@ -589,34 +583,6 @@ Content-Type: text/xml
 <point lat="43.63796" lon="-79.53521"/>
 </path>
 <path>
-<point lat="43.73035" lon="-79.60235"/>
-<point lat="43.72997" lon="-79.60361"/>
-<point lat="43.72995" lon="-79.60409"/>
-<point lat="43.72998" lon="-79.60448"/>
-<point lat="43.73013" lon="-79.60478"/>
-<point lat="43.7301" lon="-79.60491"/>
-<point lat="43.73077" lon="-79.60645"/>
-</path>
-<path>
-<point lat="43.73077" lon="-79.60645"/>
-<point lat="43.73127" lon="-79.60808"/>
-<point lat="43.73143" lon="-79.60832"/>
-<point lat="43.73212" lon="-79.60889"/>
-<point lat="43.73274" lon="-79.6097"/>
-<point lat="43.73308" lon="-79.60991"/>
-<point lat="43.73332" lon="-79.61001"/>
-<point lat="43.73363" lon="-79.61001"/>
-<point lat="43.73449" lon="-79.60969"/>
-<point lat="43.7352" lon="-79.60975"/>
-<point lat="43.73545" lon="-79.60975"/>
-<point lat="43.73572" lon="-79.60982"/>
-<point lat="43.7371399" lon="-79.61033"/>
-<point lat="43.73783" lon="-79.61076"/>
-<point lat="43.7381" lon="-79.60938"/>
-<point lat="43.73861" lon="-79.60757"/>
-<point lat="43.73722" lon="-79.607"/>
-</path>
-<path>
 <point lat="43.75" lon="-79.60944"/>
 <point lat="43.74983" lon="-79.61006"/>
 <point lat="43.74978" lon="-79.61019"/>
@@ -761,6 +727,15 @@ Content-Type: text/xml
 <point lat="43.7567499" lon="-79.60861"/>
 </path>
 <path>
+<point lat="43.73035" lon="-79.60235"/>
+<point lat="43.72997" lon="-79.60361"/>
+<point lat="43.72995" lon="-79.60409"/>
+<point lat="43.72998" lon="-79.60448"/>
+<point lat="43.73013" lon="-79.60478"/>
+<point lat="43.7301" lon="-79.60491"/>
+<point lat="43.73077" lon="-79.60645"/>
+</path>
+<path>
 <point lat="43.75221" lon="-79.59993"/>
 <point lat="43.75129" lon="-79.60393"/>
 <point lat="43.75054" lon="-79.60713"/>
@@ -777,25 +752,6 @@ Content-Type: text/xml
 <point lat="43.75402" lon="-79.60004"/>
 <point lat="43.75242" lon="-79.59947"/>
 <point lat="43.75106" lon="-79.59881"/>
-</path>
-<path>
-<point lat="43.73722" lon="-79.607"/>
-<point lat="43.736" lon="-79.60642"/>
-<point lat="43.73575" lon="-79.60636"/>
-<point lat="43.73547" lon="-79.60634"/>
-<point lat="43.73436" lon="-79.60661"/>
-<point lat="43.73387" lon="-79.60668"/>
-<point lat="43.73409" lon="-79.6099"/>
-<point lat="43.73372" lon="-79.61012"/>
-<point lat="43.73363" lon="-79.61001"/>
-<point lat="43.73332" lon="-79.61001"/>
-<point lat="43.73308" lon="-79.60991"/>
-<point lat="43.73274" lon="-79.6097"/>
-<point lat="43.7317899" lon="-79.6089"/>
-<point lat="43.73152" lon="-79.60844"/>
-<point lat="43.73136" lon="-79.60821"/>
-<point lat="43.7312" lon="-79.60793"/>
-<point lat="43.73074" lon="-79.60695"/>
 </path>
 <path>
 <point lat="43.74995" lon="-79.60916"/>

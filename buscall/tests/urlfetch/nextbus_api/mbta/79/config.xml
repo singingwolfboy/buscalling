@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:57:41 GMT
+Date: Sun, 25 Dec 2011 19:55:10 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 3279
+Content-Length: 3234
 Connection: close
 Content-Type: text/xml
 
@@ -32,9 +32,12 @@ Content-Type: text/xml
 <stop tag="2292" title="Massachusetts Ave opp Daniels St" lat="42.4242199" lon="-71.17949" stopId="02292"/>
 <stop tag="2293" title="Massachusetts Ave @ Park Ave" lat="42.4243199" lon="-71.1828699" stopId="02293"/>
 <stop tag="7922_ar" title="Arlington Heights Busway" lat="42.4248199" lon="-71.18534"/>
-<stop tag="2251" title="Massachusetts Ave @ Appleton St" lat="42.4235699" lon="-71.17626" stopId="02251"/>
+<stop tag="7922" title="Arlington Heights Busway" lat="42.4248199" lon="-71.18534" stopId="07922"/>
+<stop tag="17922" title="Massachusetts Ave @ Park Ave" lat="42.42424" lon="-71.18319" stopId="17922"/>
+<stop tag="2250" title="Massachusetts Ave @ Daniels St" lat="42.42412" lon="-71.17941" stopId="02250"/>
+<stop tag="2251" title="Massachusetts Ave @ Appleton St" lat="42.4235699" lon="-71.1762599" stopId="02251"/>
 <stop tag="2252" title="Massachusetts Ave @ Pine Ct" lat="42.4227899" lon="-71.1739999" stopId="02252"/>
-<stop tag="2253" title="Massachusetts Ave @ Robbins Rd" lat="42.4210599" lon="-71.1712899" stopId="02253"/>
+<stop tag="2253" title="Massachusetts Ave @ Robbins Rd" lat="42.42106" lon="-71.1712899" stopId="02253"/>
 <stop tag="2254" title="Massachusetts Ave @ Menotomy Rd" lat="42.42018" lon="-71.1696299" stopId="02254"/>
 <stop tag="2255" title="Massachusetts Ave @ Mt Vernon St" lat="42.41888" lon="-71.16713" stopId="02255"/>
 <stop tag="2256" title="Massachusetts Ave @ Lockeland Ave" lat="42.41729" lon="-71.1636399" stopId="02256"/>
@@ -51,33 +54,7 @@ Content-Type: text/xml
 <stop tag="22661" title="Massachusetts Ave @ Thorndike St" lat="42.40268" lon="-71.13848" stopId="22661"/>
 <stop tag="22671" title="Massachusetts Ave @ Lafayette St" lat="42.4016399" lon="-71.1373199" stopId="22671"/>
 <stop tag="141_ar" title="Alewife Station Busway" lat="42.3954299" lon="-71.14248"/>
-<stop tag="7922" title="Arlington Heights Busway" lat="42.4248199" lon="-71.18534" stopId="07922"/>
-<stop tag="17922" title="Massachusetts Ave @ Park Ave" lat="42.42424" lon="-71.18319" stopId="17922"/>
-<stop tag="2250" title="Massachusetts Ave @ Daniels St" lat="42.42412" lon="-71.17941" stopId="02250"/>
-<direction tag="79_0_var0" title="Arlington Heights via Mass. Ave." name="Outbound" useForUI="true">
-  <stop tag="141" />
-  <stop tag="22751" />
-  <stop tag="2275" />
-  <stop tag="2276" />
-  <stop tag="2277" />
-  <stop tag="2278" />
-  <stop tag="2279" />
-  <stop tag="2280" />
-  <stop tag="2281" />
-  <stop tag="2282" />
-  <stop tag="2283" />
-  <stop tag="2284" />
-  <stop tag="2285" />
-  <stop tag="2286" />
-  <stop tag="2287" />
-  <stop tag="2288" />
-  <stop tag="2290" />
-  <stop tag="2291" />
-  <stop tag="2292" />
-  <stop tag="2293" />
-  <stop tag="7922_ar" />
-</direction>
-<direction tag="79_1_var1" title="Alewife Station" name="Inbound" useForUI="true">
+<direction tag="79_1_var0" title="Alewife Station" name="Inbound" useForUI="true">
   <stop tag="7922" />
   <stop tag="17922" />
   <stop tag="2250" />
@@ -100,6 +77,29 @@ Content-Type: text/xml
   <stop tag="22661" />
   <stop tag="22671" />
   <stop tag="141_ar" />
+</direction>
+<direction tag="79_0_var0" title="Arlington Heights via Mass. Ave." name="Outbound" useForUI="true">
+  <stop tag="141" />
+  <stop tag="22751" />
+  <stop tag="2275" />
+  <stop tag="2276" />
+  <stop tag="2277" />
+  <stop tag="2278" />
+  <stop tag="2279" />
+  <stop tag="2280" />
+  <stop tag="2281" />
+  <stop tag="2282" />
+  <stop tag="2283" />
+  <stop tag="2284" />
+  <stop tag="2285" />
+  <stop tag="2286" />
+  <stop tag="2287" />
+  <stop tag="2288" />
+  <stop tag="2290" />
+  <stop tag="2291" />
+  <stop tag="2292" />
+  <stop tag="2293" />
+  <stop tag="7922_ar" />
 </direction>
 <path>
 <point lat="42.41623" lon="-71.157"/>
@@ -210,75 +210,6 @@ Content-Type: text/xml
 <point lat="42.39543" lon="-71.14248"/>
 </path>
 <path>
-<point lat="42.4248199" lon="-71.18534"/>
-<point lat="42.42457" lon="-71.185"/>
-<point lat="42.4245" lon="-71.1844799"/>
-<point lat="42.42441" lon="-71.18391"/>
-<point lat="42.42424" lon="-71.18319"/>
-<point lat="42.42431" lon="-71.18317"/>
-<point lat="42.42428" lon="-71.183"/>
-<point lat="42.4242599" lon="-71.18261"/>
-<point lat="42.42423" lon="-71.18163"/>
-<point lat="42.4241699" lon="-71.17961"/>
-<point lat="42.4241699" lon="-71.17941"/>
-<point lat="42.42412" lon="-71.17941"/>
-<point lat="42.42416" lon="-71.17926"/>
-<point lat="42.42416" lon="-71.17878"/>
-<point lat="42.42414" lon="-71.17834"/>
-<point lat="42.42411" lon="-71.17809"/>
-<point lat="42.42404" lon="-71.1777199"/>
-<point lat="42.42396" lon="-71.17744"/>
-<point lat="42.42357" lon="-71.17626"/>
-<point lat="42.42356" lon="-71.17598"/>
-<point lat="42.42351" lon="-71.1756599"/>
-<point lat="42.42342" lon="-71.17494"/>
-<point lat="42.42335" lon="-71.17471"/>
-<point lat="42.42329" lon="-71.17461"/>
-<point lat="42.4232" lon="-71.17444"/>
-<point lat="42.42283" lon="-71.17395"/>
-<point lat="42.42279" lon="-71.174"/>
-<point lat="42.42253" lon="-71.17355"/>
-<point lat="42.42235" lon="-71.17332"/>
-<point lat="42.42227" lon="-71.17322"/>
-<point lat="42.4219" lon="-71.17271"/>
-<point lat="42.42176" lon="-71.17252"/>
-<point lat="42.42118" lon="-71.17142"/>
-<point lat="42.42109" lon="-71.17126"/>
-<point lat="42.42106" lon="-71.17129"/>
-<point lat="42.42074" lon="-71.17061"/>
-<point lat="42.42049" lon="-71.17007"/>
-<point lat="42.4203" lon="-71.16976"/>
-<point lat="42.42022" lon="-71.16959"/>
-<point lat="42.42018" lon="-71.16963"/>
-<point lat="42.42001" lon="-71.1692"/>
-<point lat="42.41965" lon="-71.16849"/>
-<point lat="42.4193799" lon="-71.16799"/>
-<point lat="42.4193" lon="-71.16783"/>
-<point lat="42.41899" lon="-71.16727"/>
-<point lat="42.41888" lon="-71.16713"/>
-<point lat="42.41892" lon="-71.16709"/>
-<point lat="42.41881" lon="-71.16689"/>
-<point lat="42.41852" lon="-71.16629"/>
-<point lat="42.41831" lon="-71.16584"/>
-<point lat="42.41789" lon="-71.16498"/>
-<point lat="42.41775" lon="-71.16468"/>
-<point lat="42.41755" lon="-71.16422"/>
-<point lat="42.41733" lon="-71.16362"/>
-<point lat="42.41729" lon="-71.16364"/>
-<point lat="42.41729" lon="-71.16351"/>
-<point lat="42.41723" lon="-71.16332"/>
-<point lat="42.41718" lon="-71.16312"/>
-<point lat="42.41711" lon="-71.16273"/>
-<point lat="42.41698" lon="-71.1618"/>
-<point lat="42.41679" lon="-71.16053"/>
-<point lat="42.41674" lon="-71.16054"/>
-<point lat="42.41677" lon="-71.16041"/>
-<point lat="42.41667" lon="-71.15966"/>
-<point lat="42.4166" lon="-71.15913"/>
-<point lat="42.41652" lon="-71.15859"/>
-<point lat="42.41623" lon="-71.157"/>
-</path>
-<path>
 <point lat="42.39543" lon="-71.14248"/>
 <point lat="42.39546" lon="-71.14263"/>
 <point lat="42.39635" lon="-71.14306"/>
@@ -338,57 +269,6 @@ Content-Type: text/xml
 <point lat="42.40575" lon="-71.1422599"/>
 <point lat="42.40595" lon="-71.14251"/>
 <point lat="42.40612" lon="-71.14256"/>
-</path>
-<path>
-<point lat="42.42357" lon="-71.17626"/>
-<point lat="42.42356" lon="-71.17598"/>
-<point lat="42.42351" lon="-71.1756599"/>
-<point lat="42.42342" lon="-71.17494"/>
-<point lat="42.42335" lon="-71.17471"/>
-<point lat="42.42329" lon="-71.17461"/>
-<point lat="42.4232" lon="-71.17444"/>
-<point lat="42.42283" lon="-71.17395"/>
-<point lat="42.42279" lon="-71.174"/>
-<point lat="42.42253" lon="-71.17355"/>
-<point lat="42.42235" lon="-71.17332"/>
-<point lat="42.42227" lon="-71.17322"/>
-<point lat="42.4219" lon="-71.17271"/>
-<point lat="42.42176" lon="-71.17252"/>
-<point lat="42.42118" lon="-71.17142"/>
-<point lat="42.42109" lon="-71.17126"/>
-<point lat="42.42106" lon="-71.17129"/>
-<point lat="42.42074" lon="-71.17061"/>
-<point lat="42.42049" lon="-71.17007"/>
-<point lat="42.4203" lon="-71.16976"/>
-<point lat="42.42022" lon="-71.16959"/>
-<point lat="42.42018" lon="-71.16963"/>
-<point lat="42.42001" lon="-71.1692"/>
-<point lat="42.41965" lon="-71.16849"/>
-<point lat="42.4193799" lon="-71.16799"/>
-<point lat="42.4193" lon="-71.16783"/>
-<point lat="42.41899" lon="-71.16727"/>
-<point lat="42.41888" lon="-71.16713"/>
-<point lat="42.41892" lon="-71.16709"/>
-<point lat="42.41881" lon="-71.16689"/>
-<point lat="42.41852" lon="-71.16629"/>
-<point lat="42.41831" lon="-71.16584"/>
-<point lat="42.41789" lon="-71.16498"/>
-<point lat="42.41775" lon="-71.16468"/>
-<point lat="42.41755" lon="-71.16422"/>
-<point lat="42.41733" lon="-71.16362"/>
-<point lat="42.41729" lon="-71.16364"/>
-<point lat="42.41729" lon="-71.16351"/>
-<point lat="42.41723" lon="-71.16332"/>
-<point lat="42.41718" lon="-71.16312"/>
-<point lat="42.41711" lon="-71.16273"/>
-<point lat="42.41698" lon="-71.1618"/>
-<point lat="42.41679" lon="-71.16053"/>
-<point lat="42.41674" lon="-71.16054"/>
-<point lat="42.41677" lon="-71.16041"/>
-<point lat="42.41667" lon="-71.15966"/>
-<point lat="42.4166" lon="-71.15913"/>
-<point lat="42.41652" lon="-71.15859"/>
-<point lat="42.41623" lon="-71.157"/>
 </path>
 <path>
 <point lat="42.41628" lon="-71.15653"/>
@@ -507,6 +387,75 @@ Content-Type: text/xml
 <point lat="42.4159999" lon="-71.15492"/>
 <point lat="42.4161" lon="-71.15557"/>
 <point lat="42.41628" lon="-71.15653"/>
+</path>
+<path>
+<point lat="42.4248199" lon="-71.18534"/>
+<point lat="42.42457" lon="-71.185"/>
+<point lat="42.4245" lon="-71.1844799"/>
+<point lat="42.42441" lon="-71.18391"/>
+<point lat="42.42424" lon="-71.18319"/>
+<point lat="42.42431" lon="-71.18317"/>
+<point lat="42.42428" lon="-71.183"/>
+<point lat="42.4242599" lon="-71.18261"/>
+<point lat="42.42423" lon="-71.18163"/>
+<point lat="42.4241699" lon="-71.17961"/>
+<point lat="42.4241699" lon="-71.17941"/>
+<point lat="42.42412" lon="-71.17941"/>
+<point lat="42.42416" lon="-71.17926"/>
+<point lat="42.42416" lon="-71.17878"/>
+<point lat="42.42414" lon="-71.17834"/>
+<point lat="42.42411" lon="-71.17809"/>
+<point lat="42.42404" lon="-71.1777199"/>
+<point lat="42.42396" lon="-71.17744"/>
+<point lat="42.42357" lon="-71.17626"/>
+<point lat="42.42356" lon="-71.17598"/>
+<point lat="42.42351" lon="-71.1756599"/>
+<point lat="42.42342" lon="-71.17494"/>
+<point lat="42.42335" lon="-71.17471"/>
+<point lat="42.42329" lon="-71.17461"/>
+<point lat="42.4232" lon="-71.17444"/>
+<point lat="42.42283" lon="-71.17395"/>
+<point lat="42.42279" lon="-71.174"/>
+<point lat="42.42253" lon="-71.17355"/>
+<point lat="42.42235" lon="-71.17332"/>
+<point lat="42.42227" lon="-71.17322"/>
+<point lat="42.4219" lon="-71.17271"/>
+<point lat="42.42176" lon="-71.17252"/>
+<point lat="42.42118" lon="-71.17142"/>
+<point lat="42.42109" lon="-71.17126"/>
+<point lat="42.42106" lon="-71.17129"/>
+<point lat="42.42074" lon="-71.17061"/>
+<point lat="42.42049" lon="-71.17007"/>
+<point lat="42.4203" lon="-71.16976"/>
+<point lat="42.42022" lon="-71.16959"/>
+<point lat="42.42018" lon="-71.16963"/>
+<point lat="42.42001" lon="-71.1692"/>
+<point lat="42.41965" lon="-71.16849"/>
+<point lat="42.4193799" lon="-71.16799"/>
+<point lat="42.4193" lon="-71.16783"/>
+<point lat="42.41899" lon="-71.16727"/>
+<point lat="42.41888" lon="-71.16713"/>
+<point lat="42.41892" lon="-71.16709"/>
+<point lat="42.41881" lon="-71.16689"/>
+<point lat="42.41852" lon="-71.16629"/>
+<point lat="42.41831" lon="-71.16584"/>
+<point lat="42.41789" lon="-71.16498"/>
+<point lat="42.41775" lon="-71.16468"/>
+<point lat="42.41755" lon="-71.16422"/>
+<point lat="42.41733" lon="-71.16362"/>
+<point lat="42.41729" lon="-71.16364"/>
+<point lat="42.41729" lon="-71.16351"/>
+<point lat="42.41723" lon="-71.16332"/>
+<point lat="42.41718" lon="-71.16312"/>
+<point lat="42.41711" lon="-71.16273"/>
+<point lat="42.41698" lon="-71.1618"/>
+<point lat="42.41679" lon="-71.16053"/>
+<point lat="42.41674" lon="-71.16054"/>
+<point lat="42.41677" lon="-71.16041"/>
+<point lat="42.41667" lon="-71.15966"/>
+<point lat="42.4166" lon="-71.15913"/>
+<point lat="42.41652" lon="-71.15859"/>
+<point lat="42.41623" lon="-71.157"/>
 </path>
 </route>
 </body>

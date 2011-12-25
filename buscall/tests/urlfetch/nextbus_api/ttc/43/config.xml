@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:24 GMT
+Date: Sun, 25 Dec 2011 19:59:33 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5043
+Content-Length: 4976
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="43" title="43-Kennedy" color="ff0000" oppositeColor="ffffff" latMin="43.73229" latMax="43.8257599" lonMin="-79.30735" lonMax="-79.25864">
+<route tag="43" title="43-Kennedy" color="ff0000" oppositeColor="ffffff" latMin="43.73229" latMax="43.8257599" lonMin="-79.30683" lonMax="-79.25864">
 <stop tag="710" title="Midland Avenue At Steeles Avenue East Farside" lat="43.8254899" lon="-79.29713" stopId="11251"/>
 <stop tag="6446" title="4150 Midland Avenue" lat="43.8234" lon="-79.29618" stopId="10530"/>
 <stop tag="5090" title="Midland Avenue At Passmore Avenue" lat="43.8209399" lon="-79.2951099" stopId="5732"/>
@@ -65,7 +65,6 @@ Content-Type: text/xml
 <stop tag="9785" title="Progress Avenue At Midland Avenue" lat="43.7730999" lon="-79.27267" stopId="4555"/>
 <stop tag="8253" title="80 Progress Avenue" lat="43.7719999" lon="-79.27586" stopId="4536"/>
 <stop tag="7868" title="Progress Avenue At William Kitchen Road Farside" lat="43.7701299" lon="-79.27924" stopId="4531"/>
-<stop tag="9349" title="Steeles Avenue East At Kennedy Road" lat="43.8234999" lon="-79.30735" stopId="9780"/>
 <stop tag="14229" title="Kennedy Station" lat="43.7324299" lon="-79.26352" stopId="14709"/>
 <stop tag="8469" title="Eglinton Avenue East At Kennedy Road" lat="43.7324099" lon="-79.26775" stopId="2280"/>
 <stop tag="3614" title="Kennedy Road At Treverton Drive Farside" lat="43.73445" lon="-79.26875" stopId="4129"/>
@@ -121,6 +120,35 @@ Content-Type: text/xml
 <stop tag="7252" title="Borough Drive West At Progress Avenue Farside" lat="43.77529" lon="-79.2613399" stopId="3349"/>
 <stop tag="14279_ar" title="Scarborough Centre Station" lat="43.7741499" lon="-79.25864"/>
 <stop tag="3603" title="2885 Kennedy Road" lat="43.8024699" lon="-79.29743" stopId="12137"/>
+<direction tag="43_0_43B" title="South - 43 Kennedy towards Kennedy Station" name="South" useForUI="true">
+  <stop tag="14279" />
+  <stop tag="7848" />
+  <stop tag="1024" />
+  <stop tag="2904" />
+  <stop tag="6731" />
+  <stop tag="9785" />
+  <stop tag="8253" />
+  <stop tag="7868" />
+  <stop tag="3725" />
+  <stop tag="5802" />
+  <stop tag="1179" />
+  <stop tag="5299" />
+  <stop tag="1709" />
+  <stop tag="5280" />
+  <stop tag="4478" />
+  <stop tag="7633" />
+  <stop tag="3999" />
+  <stop tag="1486" />
+  <stop tag="6883" />
+  <stop tag="2430" />
+  <stop tag="1723" />
+  <stop tag="784" />
+  <stop tag="1856" />
+  <stop tag="5907" />
+  <stop tag="7178" />
+  <stop tag="320" />
+  <stop tag="14229_ar" />
+</direction>
 <direction tag="43_0_43" title="South - 43 Kennedy towards Kennedy Station" name="South" useForUI="true">
   <stop tag="710" />
   <stop tag="6446" />
@@ -243,35 +271,6 @@ Content-Type: text/xml
   <stop tag="1707" />
   <stop tag="710_ar" />
 </direction>
-<direction tag="43_0_43B" title="South - 43 Kennedy towards Kennedy Station" name="South" useForUI="true">
-  <stop tag="14279" />
-  <stop tag="7848" />
-  <stop tag="1024" />
-  <stop tag="2904" />
-  <stop tag="6731" />
-  <stop tag="9785" />
-  <stop tag="8253" />
-  <stop tag="7868" />
-  <stop tag="3725" />
-  <stop tag="5802" />
-  <stop tag="1179" />
-  <stop tag="5299" />
-  <stop tag="1709" />
-  <stop tag="5280" />
-  <stop tag="4478" />
-  <stop tag="7633" />
-  <stop tag="3999" />
-  <stop tag="1486" />
-  <stop tag="6883" />
-  <stop tag="2430" />
-  <stop tag="1723" />
-  <stop tag="784" />
-  <stop tag="1856" />
-  <stop tag="5907" />
-  <stop tag="7178" />
-  <stop tag="320" />
-  <stop tag="14229_ar" />
-</direction>
 <path>
 <point lat="43.82353" lon="-79.30683"/>
 <point lat="43.82368" lon="-79.30705"/>
@@ -385,10 +384,6 @@ Content-Type: text/xml
 <point lat="43.82353" lon="-79.30683"/>
 </path>
 <path>
-<point lat="43.8235" lon="-79.30735"/>
-<point lat="43.8171" lon="-79.30423"/>
-</path>
-<path>
 <point lat="43.78311" lon="-79.28801"/>
 <point lat="43.78386" lon="-79.2886"/>
 <point lat="43.78563" lon="-79.28926"/>
@@ -448,20 +443,6 @@ Content-Type: text/xml
 <point lat="43.78163" lon="-79.28722"/>
 <point lat="43.78222" lon="-79.28765"/>
 <point lat="43.78311" lon="-79.28801"/>
-</path>
-<path>
-<point lat="43.8171" lon="-79.30423"/>
-<point lat="43.81301" lon="-79.30242"/>
-<point lat="43.81159" lon="-79.30176"/>
-<point lat="43.8091099" lon="-79.30064"/>
-<point lat="43.80891" lon="-79.30046"/>
-<point lat="43.80764" lon="-79.29996"/>
-<point lat="43.80544" lon="-79.29897"/>
-<point lat="43.80409" lon="-79.29837"/>
-<point lat="43.80207" lon="-79.29733"/>
-<point lat="43.8016999" lon="-79.29707"/>
-<point lat="43.80148" lon="-79.29687"/>
-<point lat="43.80142" lon="-79.29695"/>
 </path>
 <path>
 <point lat="43.82549" lon="-79.29713"/>
@@ -539,20 +520,6 @@ Content-Type: text/xml
 <point lat="43.766" lon="-79.28126"/>
 </path>
 <path>
-<point lat="43.78343" lon="-79.28853"/>
-<point lat="43.78238" lon="-79.2877199"/>
-<point lat="43.78163" lon="-79.28747"/>
-<point lat="43.78042" lon="-79.28684"/>
-<point lat="43.78005" lon="-79.28672"/>
-<point lat="43.77959" lon="-79.28666"/>
-<point lat="43.7774" lon="-79.2858"/>
-<point lat="43.77134" lon="-79.28326"/>
-<point lat="43.76874" lon="-79.28213"/>
-<point lat="43.76726" lon="-79.2814099"/>
-<point lat="43.76633" lon="-79.28118"/>
-<point lat="43.766" lon="-79.28126"/>
-</path>
-<path>
 <point lat="43.80108" lon="-79.29623"/>
 <point lat="43.80126" lon="-79.29658"/>
 <point lat="43.80148" lon="-79.29687"/>
@@ -567,6 +534,20 @@ Content-Type: text/xml
 <point lat="43.81507" lon="-79.30314"/>
 <point lat="43.8167" lon="-79.30388"/>
 <point lat="43.8188699" lon="-79.30479"/>
+</path>
+<path>
+<point lat="43.78343" lon="-79.28853"/>
+<point lat="43.78238" lon="-79.2877199"/>
+<point lat="43.78163" lon="-79.28747"/>
+<point lat="43.78042" lon="-79.28684"/>
+<point lat="43.78005" lon="-79.28672"/>
+<point lat="43.77959" lon="-79.28666"/>
+<point lat="43.7774" lon="-79.2858"/>
+<point lat="43.77134" lon="-79.28326"/>
+<point lat="43.76874" lon="-79.28213"/>
+<point lat="43.76726" lon="-79.2814099"/>
+<point lat="43.76633" lon="-79.28118"/>
+<point lat="43.766" lon="-79.28126"/>
 </path>
 <path>
 <point lat="43.7656" lon="-79.28088"/>

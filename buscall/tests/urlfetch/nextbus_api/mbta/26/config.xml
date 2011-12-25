@@ -1,16 +1,36 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:55:57 GMT
+Date: Sun, 25 Dec 2011 19:54:29 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 3813
+Content-Length: 3802
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright MBTA 2011.">
 <route tag="26" title="26" color="999933" oppositeColor="000000" latMin="42.27802" latMax="42.2901899" lonMin="-71.0869699" lonMax="-71.0643">
+<stop tag="507" title="Gallivan Blvd @ Morton St" lat="42.2786399" lon="-71.07972" stopId="00507"/>
+<stop tag="508" title="Gallivan Blvd opp Arbella Rd" lat="42.27828" lon="-71.0767599" stopId="00508"/>
+<stop tag="509" title="Gallivan Blvd @ Oakridge St" lat="42.27808" lon="-71.0748699" stopId="00509"/>
+<stop tag="510" title="Gallivan Blvd @ Pleasant Hill Ave" lat="42.27802" lon="-71.07257" stopId="00510"/>
+<stop tag="511" title="Washington St @ Gallivan Blvd" lat="42.27896" lon="-71.06953" stopId="00511"/>
+<stop tag="512" title="924 Washington St opp Codman Hill Ave" lat="42.28007" lon="-71.07021" stopId="00512"/>
+<stop tag="514" title="Washington St @ Coolidge Rd" lat="42.2811699" lon="-71.0708499" stopId="00514"/>
+<stop tag="515" title="Washington St @ Fuller St" lat="42.2819199" lon="-71.07117" stopId="00515"/>
+<stop tag="516" title="Washington St @ Burt St" lat="42.2834399" lon="-71.0713999" stopId="00516"/>
+<stop tag="517" title="776 Washington St opp Armadine St" lat="42.28462" lon="-71.0714299" stopId="00517"/>
+<stop tag="518" title="Washington St @ Ashmont St" lat="42.28548" lon="-71.07109" stopId="00518"/>
+<stop tag="519" title="Washington St @ Walton St" lat="42.28716" lon="-71.07117" stopId="00519"/>
+<stop tag="437" title="Washington St @ Welles Ave" lat="42.28809" lon="-71.07108" stopId="00437"/>
+<stop tag="4374" title="Washington St @ Lithgow St" lat="42.2894999" lon="-71.07131" stopId="04374"/>
+<stop tag="426" title="Talbot Ave @ Lithgow St" lat="42.2899199" lon="-71.0698" stopId="00426"/>
+<stop tag="427" title="Talbot Ave @ Brent St" lat="42.2896" lon="-71.0684999" stopId="00427"/>
+<stop tag="428" title="Talbot Ave @ Welles Ave" lat="42.28907" lon="-71.06717" stopId="00428"/>
+<stop tag="429" title="493 Talbot Ave opp Argyle St" lat="42.28776" lon="-71.0654399" stopId="00429"/>
+<stop tag="430" title="Talbot Ave @ Dorchester Ave" lat="42.2858" lon="-71.0643899" stopId="00430"/>
+<stop tag="334_ar" title="Ashmont Station" lat="42.2846499" lon="-71.06449"/>
 <stop tag="494" title="Gallivan Blvd @ Washington St" lat="42.2785099" lon="-71.07051" stopId="00494"/>
 <stop tag="501" title="Gallivan Blvd @ Nevada St" lat="42.2781299" lon="-71.07243" stopId="00501"/>
 <stop tag="497" title="Gallivan Blvd @ Milton Ave" lat="42.27819" lon="-71.07492" stopId="00497"/>
@@ -30,42 +50,12 @@ Content-Type: text/xml
 <stop tag="453" title="Norfolk St @ Chipman St" lat="42.28878" lon="-71.0748399" stopId="00453"/>
 <stop tag="454" title="Norfolk St @ Withington St" lat="42.28917" lon="-71.07313" stopId="00454"/>
 <stop tag="455" title="Norfolk St @ Epping St" lat="42.28981" lon="-71.07239" stopId="00455"/>
-<stop tag="426" title="Talbot Ave @ Lithgow St" lat="42.2899199" lon="-71.0698" stopId="00426"/>
-<stop tag="427" title="Talbot Ave @ Brent St" lat="42.2896" lon="-71.0684999" stopId="00427"/>
-<stop tag="428" title="Talbot Ave @ Welles Ave" lat="42.28907" lon="-71.06717" stopId="00428"/>
-<stop tag="429" title="493 Talbot Ave opp Argyle St" lat="42.28776" lon="-71.0654399" stopId="00429"/>
-<stop tag="430" title="Talbot Ave @ Dorchester Ave" lat="42.2858" lon="-71.0643899" stopId="00430"/>
-<stop tag="334_ar" title="Ashmont Station" lat="42.2846499" lon="-71.06449"/>
-<stop tag="507" title="Gallivan Blvd @ Morton St" lat="42.2786399" lon="-71.07972" stopId="00507"/>
-<stop tag="508" title="Gallivan Blvd opp Arbella Rd" lat="42.27828" lon="-71.0767599" stopId="00508"/>
-<stop tag="509" title="Gallivan Blvd @ Oakridge St" lat="42.27808" lon="-71.0748699" stopId="00509"/>
-<stop tag="510" title="Gallivan Blvd @ Pleasant Hill Ave" lat="42.27802" lon="-71.07257" stopId="00510"/>
-<stop tag="511" title="Washington St @ Gallivan Blvd" lat="42.27896" lon="-71.06953" stopId="00511"/>
-<stop tag="512" title="924 Washington St opp Codman Hill Ave" lat="42.28007" lon="-71.07021" stopId="00512"/>
-<stop tag="514" title="Washington St @ Coolidge Rd" lat="42.2811699" lon="-71.0708499" stopId="00514"/>
-<stop tag="515" title="Washington St @ Fuller St" lat="42.2819199" lon="-71.07117" stopId="00515"/>
-<stop tag="516" title="Washington St @ Burt St" lat="42.2834399" lon="-71.0713999" stopId="00516"/>
-<stop tag="517" title="776 Washington St opp Armadine St" lat="42.28462" lon="-71.0714299" stopId="00517"/>
-<stop tag="518" title="Washington St @ Ashmont St" lat="42.28548" lon="-71.07109" stopId="00518"/>
-<stop tag="519" title="Washington St @ Walton St" lat="42.28716" lon="-71.07117" stopId="00519"/>
-<stop tag="437" title="Washington St @ Welles Ave" lat="42.28809" lon="-71.07108" stopId="00437"/>
-<stop tag="4374" title="Washington St @ Lithgow St" lat="42.2894999" lon="-71.07131" stopId="04374"/>
 <stop tag="334" title="Ashmont Station" lat="42.2846499" lon="-71.06449" stopId="00334"/>
 <stop tag="367" title="Talbot Ave @ Dorchester Ave" lat="42.2858899" lon="-71.0643" stopId="00367"/>
 <stop tag="368" title="Talbot Ave @ Argyle St" lat="42.2880199" lon="-71.06551" stopId="00368"/>
 <stop tag="369" title="Talbot Ave @ Welles Ave" lat="42.28904" lon="-71.06687" stopId="00369"/>
 <stop tag="370" title="Talbot Ave @ Brent St" lat="42.2895899" lon="-71.0681899" stopId="00370"/>
 <stop tag="371" title="Talbot Ave @ Centre St" lat="42.2901899" lon="-71.07098" stopId="00371"/>
-<stop tag="37111" title="Washington St opp Lithgow St" lat="42.28942" lon="-71.0713999" stopId="37111"/>
-<stop tag="487" title="675 Washington St opp Welles Ave" lat="42.28804" lon="-71.0712199" stopId="00487"/>
-<stop tag="488" title="703 Washington St opp Walton St" lat="42.2873499" lon="-71.0712899" stopId="00488"/>
-<stop tag="489" title="Washington St opp Ashmont St" lat="42.28543" lon="-71.0712299" stopId="00489"/>
-<stop tag="490" title="Washington St @ Armadine St" lat="42.2845899" lon="-71.0715699" stopId="00490"/>
-<stop tag="491" title="Washington St @ Stockton St" lat="42.28317" lon="-71.0714799" stopId="00491"/>
-<stop tag="492" title="Washington St @ Fuller St" lat="42.28208" lon="-71.0713499" stopId="00492"/>
-<stop tag="493" title="Washington St @ Ogden St" lat="42.2813199" lon="-71.0710399" stopId="00493"/>
-<stop tag="495" title="Washington St @ Codman Hill Ave" lat="42.27998" lon="-71.0702899" stopId="00495"/>
-<stop tag="494_ar" title="Gallivan Blvd @ Washington St" lat="42.2785099" lon="-71.07051"/>
 <stop tag="431" title="355 Norfolk St opp Withington St" lat="42.2893499" lon="-71.073" stopId="00431"/>
 <stop tag="432" title="Norfolk St @ Darlington St" lat="42.2886999" lon="-71.0754799" stopId="00432"/>
 <stop tag="434" title="Norfolk St @ New England Ave" lat="42.2880699" lon="-71.0777599" stopId="00434"/>
@@ -80,51 +70,17 @@ Content-Type: text/xml
 <stop tag="530" title="Morton St @ W Selden St" lat="42.28041" lon="-71.0828499" stopId="00530"/>
 <stop tag="531" title="Morton St @ Owen St" lat="42.27927" lon="-71.0809599" stopId="00531"/>
 <stop tag="507_ar" title="Gallivan Blvd @ Morton St" lat="42.2786399" lon="-71.07972"/>
-<direction tag="26_1_var1" title="Ashmont Belt via Norfolk St." name="Inbound" useForUI="true">
-  <stop tag="334" />
-  <stop tag="367" />
-  <stop tag="368" />
-  <stop tag="369" />
-  <stop tag="370" />
-  <stop tag="371" />
-  <stop tag="431" />
-  <stop tag="432" />
-  <stop tag="434" />
-  <stop tag="435" />
-  <stop tag="436" />
-  <stop tag="438" />
-  <stop tag="439" />
-  <stop tag="440" />
-  <stop tag="441" />
-  <stop tag="443" />
-  <stop tag="529" />
-  <stop tag="530" />
-  <stop tag="531" />
-  <stop tag="507_ar" />
-</direction>
-<direction tag="26_0_var1" title="Ashmont Belt via Norfolk St." name="Outbound" useForUI="true">
-  <stop tag="507" />
-  <stop tag="508" />
-  <stop tag="509" />
-  <stop tag="510" />
-  <stop tag="511" />
-  <stop tag="512" />
-  <stop tag="514" />
-  <stop tag="515" />
-  <stop tag="516" />
-  <stop tag="517" />
-  <stop tag="518" />
-  <stop tag="519" />
-  <stop tag="437" />
-  <stop tag="4374" />
-  <stop tag="426" />
-  <stop tag="427" />
-  <stop tag="428" />
-  <stop tag="429" />
-  <stop tag="430" />
-  <stop tag="334_ar" />
-</direction>
-<direction tag="26_1_var0" title="Ashmont Belt via Washington St." name="Inbound" useForUI="true">
+<stop tag="37111" title="Washington St opp Lithgow St" lat="42.28942" lon="-71.0713999" stopId="37111"/>
+<stop tag="487" title="675 Washington St opp Welles Ave" lat="42.28804" lon="-71.0712199" stopId="00487"/>
+<stop tag="488" title="703 Washington St opp Walton St" lat="42.2873499" lon="-71.0712899" stopId="00488"/>
+<stop tag="489" title="Washington St opp Ashmont St" lat="42.28543" lon="-71.0712299" stopId="00489"/>
+<stop tag="490" title="Washington St @ Armadine St" lat="42.2845899" lon="-71.0715699" stopId="00490"/>
+<stop tag="491" title="Washington St @ Stockton St" lat="42.28317" lon="-71.0714799" stopId="00491"/>
+<stop tag="492" title="Washington St @ Fuller St" lat="42.28208" lon="-71.0713499" stopId="00492"/>
+<stop tag="493" title="Washington St @ Ogden St" lat="42.2813199" lon="-71.0710399" stopId="00493"/>
+<stop tag="495" title="Washington St @ Codman Hill Ave" lat="42.27998" lon="-71.0702899" stopId="00495"/>
+<stop tag="494_ar" title="Gallivan Blvd @ Washington St" lat="42.2785099" lon="-71.07051"/>
+<direction tag="26_1_var1" title="Ashmont Belt via Washington St." name="Inbound" useForUI="true">
   <stop tag="334" />
   <stop tag="367" />
   <stop tag="368" />
@@ -142,7 +98,7 @@ Content-Type: text/xml
   <stop tag="495" />
   <stop tag="494_ar" />
 </direction>
-<direction tag="26_0_var0" title="Ashmont Belt via Washington St." name="Outbound" useForUI="true">
+<direction tag="26_0_var1" title="Ashmont Belt via Washington St." name="Outbound" useForUI="true">
   <stop tag="494" />
   <stop tag="501" />
   <stop tag="497" />
@@ -169,35 +125,50 @@ Content-Type: text/xml
   <stop tag="430" />
   <stop tag="334_ar" />
 </direction>
-<path>
-<point lat="42.28992" lon="-71.0698"/>
-<point lat="42.28994" lon="-71.06965"/>
-<point lat="42.28981" lon="-71.06902"/>
-<point lat="42.28967" lon="-71.06861"/>
-<point lat="42.28964" lon="-71.0684799"/>
-<point lat="42.2896" lon="-71.0685"/>
-<point lat="42.2896" lon="-71.06835"/>
-<point lat="42.28937" lon="-71.06772"/>
-<point lat="42.28915" lon="-71.0672"/>
-<point lat="42.28907" lon="-71.06717"/>
-<point lat="42.28906" lon="-71.06701"/>
-<point lat="42.28889" lon="-71.0667"/>
-<point lat="42.2886499" lon="-71.06634"/>
-<point lat="42.2884699" lon="-71.06608"/>
-<point lat="42.2879999" lon="-71.0655699"/>
-<point lat="42.28778" lon="-71.0653899"/>
-<point lat="42.28776" lon="-71.06544"/>
-<point lat="42.2874399" lon="-71.06511"/>
-<point lat="42.28678" lon="-71.06475"/>
-<point lat="42.28618" lon="-71.06448"/>
-<point lat="42.28582" lon="-71.06433"/>
-<point lat="42.2858" lon="-71.06439"/>
-<point lat="42.28571" lon="-71.0643"/>
-<point lat="42.28527" lon="-71.06442"/>
-<point lat="42.28489" lon="-71.06453"/>
-<point lat="42.28477" lon="-71.06456"/>
-<point lat="42.28465" lon="-71.06449"/>
-</path>
+<direction tag="26_1_var0" title="Ashmont Belt via Norfolk St." name="Inbound" useForUI="true">
+  <stop tag="334" />
+  <stop tag="367" />
+  <stop tag="368" />
+  <stop tag="369" />
+  <stop tag="370" />
+  <stop tag="371" />
+  <stop tag="431" />
+  <stop tag="432" />
+  <stop tag="434" />
+  <stop tag="435" />
+  <stop tag="436" />
+  <stop tag="438" />
+  <stop tag="439" />
+  <stop tag="440" />
+  <stop tag="441" />
+  <stop tag="443" />
+  <stop tag="529" />
+  <stop tag="530" />
+  <stop tag="531" />
+  <stop tag="507_ar" />
+</direction>
+<direction tag="26_0_var0" title="Ashmont Belt via Norfolk St." name="Outbound" useForUI="true">
+  <stop tag="507" />
+  <stop tag="508" />
+  <stop tag="509" />
+  <stop tag="510" />
+  <stop tag="511" />
+  <stop tag="512" />
+  <stop tag="514" />
+  <stop tag="515" />
+  <stop tag="516" />
+  <stop tag="517" />
+  <stop tag="518" />
+  <stop tag="519" />
+  <stop tag="437" />
+  <stop tag="4374" />
+  <stop tag="426" />
+  <stop tag="427" />
+  <stop tag="428" />
+  <stop tag="429" />
+  <stop tag="430" />
+  <stop tag="334_ar" />
+</direction>
 <path>
 <point lat="42.27851" lon="-71.07051"/>
 <point lat="42.27847" lon="-71.07049"/>
@@ -391,89 +362,33 @@ Content-Type: text/xml
 <point lat="42.28992" lon="-71.0698"/>
 </path>
 <path>
-<point lat="42.28465" lon="-71.06449"/>
-<point lat="42.28475" lon="-71.06444"/>
-<point lat="42.28489" lon="-71.06453"/>
-<point lat="42.28527" lon="-71.06442"/>
-<point lat="42.28571" lon="-71.0643"/>
-<point lat="42.28588" lon="-71.0643599"/>
-<point lat="42.28589" lon="-71.0643"/>
-<point lat="42.28618" lon="-71.06448"/>
-<point lat="42.28678" lon="-71.06475"/>
-<point lat="42.2874399" lon="-71.06511"/>
-<point lat="42.28771" lon="-71.06533"/>
-<point lat="42.28802" lon="-71.06551"/>
-<point lat="42.2879999" lon="-71.0655699"/>
-<point lat="42.2884699" lon="-71.06608"/>
-<point lat="42.2886499" lon="-71.06634"/>
-<point lat="42.28889" lon="-71.0667"/>
-<point lat="42.289" lon="-71.0669099"/>
-<point lat="42.28904" lon="-71.06687"/>
-<point lat="42.28906" lon="-71.06701"/>
-<point lat="42.28915" lon="-71.0672"/>
-<point lat="42.28937" lon="-71.06772"/>
-<point lat="42.2895899" lon="-71.06819"/>
-<point lat="42.28955" lon="-71.06822"/>
-<point lat="42.2896" lon="-71.06835"/>
-<point lat="42.28967" lon="-71.06861"/>
-<point lat="42.28981" lon="-71.06902"/>
+<point lat="42.28992" lon="-71.0698"/>
 <point lat="42.28994" lon="-71.06965"/>
-<point lat="42.29" lon="-71.06985"/>
-<point lat="42.29013" lon="-71.07078"/>
-<point lat="42.29014" lon="-71.07099"/>
-<point lat="42.29019" lon="-71.07098"/>
-<point lat="42.2902" lon="-71.0716"/>
-<point lat="42.28986" lon="-71.07151"/>
-<point lat="42.28943" lon="-71.07135"/>
-<point lat="42.28942" lon="-71.0714"/>
-<point lat="42.28902" lon="-71.07119"/>
-<point lat="42.28872" lon="-71.0711199"/>
-<point lat="42.28851" lon="-71.07111"/>
-<point lat="42.28833" lon="-71.0711199"/>
-<point lat="42.28804" lon="-71.07116"/>
-<point lat="42.28804" lon="-71.07122"/>
-<point lat="42.28795" lon="-71.07117"/>
-<point lat="42.28772" lon="-71.0712"/>
-<point lat="42.28735" lon="-71.0712099"/>
-<point lat="42.28735" lon="-71.07129"/>
-<point lat="42.28725" lon="-71.07122"/>
-<point lat="42.28689" lon="-71.0712099"/>
-<point lat="42.2866799" lon="-71.07117"/>
-<point lat="42.28643" lon="-71.07117"/>
-<point lat="42.28626" lon="-71.07117"/>
-<point lat="42.28598" lon="-71.07115"/>
-<point lat="42.28555" lon="-71.07115"/>
-<point lat="42.28543" lon="-71.07116"/>
-<point lat="42.28543" lon="-71.07123"/>
-<point lat="42.28533" lon="-71.07118"/>
-<point lat="42.28515" lon="-71.07125"/>
-<point lat="42.28505" lon="-71.0712999"/>
-<point lat="42.28459" lon="-71.07157"/>
-<point lat="42.28457" lon="-71.07151"/>
-<point lat="42.28448" lon="-71.07154"/>
-<point lat="42.28433" lon="-71.07157"/>
-<point lat="42.28417" lon="-71.07157"/>
-<point lat="42.28399" lon="-71.07157"/>
-<point lat="42.28388" lon="-71.07155"/>
-<point lat="42.28318" lon="-71.07141"/>
-<point lat="42.28317" lon="-71.0714799"/>
-<point lat="42.28305" lon="-71.0713899"/>
-<point lat="42.28278" lon="-71.07136"/>
-<point lat="42.28254" lon="-71.07135"/>
-<point lat="42.2820899" lon="-71.07128"/>
-<point lat="42.28208" lon="-71.07135"/>
-<point lat="42.2819999" lon="-71.07127"/>
-<point lat="42.2813299" lon="-71.07099"/>
-<point lat="42.28132" lon="-71.07104"/>
-<point lat="42.28099" lon="-71.07084"/>
-<point lat="42.28064" lon="-71.07061"/>
-<point lat="42.28018" lon="-71.07035"/>
-<point lat="42.28" lon="-71.07023"/>
-<point lat="42.27998" lon="-71.07029"/>
-<point lat="42.2793" lon="-71.06981"/>
-<point lat="42.27881" lon="-71.0695099"/>
-<point lat="42.2787" lon="-71.06979"/>
-<point lat="42.27851" lon="-71.07051"/>
+<point lat="42.28981" lon="-71.06902"/>
+<point lat="42.28967" lon="-71.06861"/>
+<point lat="42.28964" lon="-71.0684799"/>
+<point lat="42.2896" lon="-71.0685"/>
+<point lat="42.2896" lon="-71.06835"/>
+<point lat="42.28937" lon="-71.06772"/>
+<point lat="42.28915" lon="-71.0672"/>
+<point lat="42.28907" lon="-71.06717"/>
+<point lat="42.28906" lon="-71.06701"/>
+<point lat="42.28889" lon="-71.0667"/>
+<point lat="42.2886499" lon="-71.06634"/>
+<point lat="42.2884699" lon="-71.06608"/>
+<point lat="42.2879999" lon="-71.0655699"/>
+<point lat="42.28778" lon="-71.0653899"/>
+<point lat="42.28776" lon="-71.06544"/>
+<point lat="42.2874399" lon="-71.06511"/>
+<point lat="42.28678" lon="-71.06475"/>
+<point lat="42.28618" lon="-71.06448"/>
+<point lat="42.28582" lon="-71.06433"/>
+<point lat="42.2858" lon="-71.06439"/>
+<point lat="42.28571" lon="-71.0643"/>
+<point lat="42.28527" lon="-71.06442"/>
+<point lat="42.28489" lon="-71.06453"/>
+<point lat="42.28477" lon="-71.06456"/>
+<point lat="42.28465" lon="-71.06449"/>
 </path>
 <path>
 <point lat="42.28078" lon="-71.08462"/>
@@ -593,6 +508,91 @@ Content-Type: text/xml
 <point lat="42.28091" lon="-71.0849999"/>
 <point lat="42.28082" lon="-71.08461"/>
 <point lat="42.28078" lon="-71.08462"/>
+</path>
+<path>
+<point lat="42.28465" lon="-71.06449"/>
+<point lat="42.28475" lon="-71.06444"/>
+<point lat="42.28489" lon="-71.06453"/>
+<point lat="42.28527" lon="-71.06442"/>
+<point lat="42.28571" lon="-71.0643"/>
+<point lat="42.28588" lon="-71.0643599"/>
+<point lat="42.28589" lon="-71.0643"/>
+<point lat="42.28618" lon="-71.06448"/>
+<point lat="42.28678" lon="-71.06475"/>
+<point lat="42.2874399" lon="-71.06511"/>
+<point lat="42.28771" lon="-71.06533"/>
+<point lat="42.28802" lon="-71.06551"/>
+<point lat="42.2879999" lon="-71.0655699"/>
+<point lat="42.2884699" lon="-71.06608"/>
+<point lat="42.2886499" lon="-71.06634"/>
+<point lat="42.28889" lon="-71.0667"/>
+<point lat="42.289" lon="-71.0669099"/>
+<point lat="42.28904" lon="-71.06687"/>
+<point lat="42.28906" lon="-71.06701"/>
+<point lat="42.28915" lon="-71.0672"/>
+<point lat="42.28937" lon="-71.06772"/>
+<point lat="42.2895899" lon="-71.06819"/>
+<point lat="42.28955" lon="-71.06822"/>
+<point lat="42.2896" lon="-71.06835"/>
+<point lat="42.28967" lon="-71.06861"/>
+<point lat="42.28981" lon="-71.06902"/>
+<point lat="42.28994" lon="-71.06965"/>
+<point lat="42.29" lon="-71.06985"/>
+<point lat="42.29013" lon="-71.07078"/>
+<point lat="42.29014" lon="-71.07099"/>
+<point lat="42.29019" lon="-71.07098"/>
+<point lat="42.2902" lon="-71.0716"/>
+<point lat="42.28986" lon="-71.07151"/>
+<point lat="42.28943" lon="-71.07135"/>
+<point lat="42.28942" lon="-71.0714"/>
+<point lat="42.28902" lon="-71.07119"/>
+<point lat="42.28872" lon="-71.0711199"/>
+<point lat="42.28851" lon="-71.07111"/>
+<point lat="42.28833" lon="-71.0711199"/>
+<point lat="42.28804" lon="-71.07116"/>
+<point lat="42.28804" lon="-71.07122"/>
+<point lat="42.28795" lon="-71.07117"/>
+<point lat="42.28772" lon="-71.0712"/>
+<point lat="42.28735" lon="-71.0712099"/>
+<point lat="42.28735" lon="-71.07129"/>
+<point lat="42.28725" lon="-71.07122"/>
+<point lat="42.28689" lon="-71.0712099"/>
+<point lat="42.2866799" lon="-71.07117"/>
+<point lat="42.28643" lon="-71.07117"/>
+<point lat="42.28626" lon="-71.07117"/>
+<point lat="42.28598" lon="-71.07115"/>
+<point lat="42.28555" lon="-71.07115"/>
+<point lat="42.28543" lon="-71.07116"/>
+<point lat="42.28543" lon="-71.07123"/>
+<point lat="42.28533" lon="-71.07118"/>
+<point lat="42.28515" lon="-71.07125"/>
+<point lat="42.28505" lon="-71.0712999"/>
+<point lat="42.28459" lon="-71.07157"/>
+<point lat="42.28457" lon="-71.07151"/>
+<point lat="42.28448" lon="-71.07154"/>
+<point lat="42.28433" lon="-71.07157"/>
+<point lat="42.28417" lon="-71.07157"/>
+<point lat="42.28399" lon="-71.07157"/>
+<point lat="42.28388" lon="-71.07155"/>
+<point lat="42.28318" lon="-71.07141"/>
+<point lat="42.28317" lon="-71.0714799"/>
+<point lat="42.28305" lon="-71.0713899"/>
+<point lat="42.28278" lon="-71.07136"/>
+<point lat="42.28254" lon="-71.07135"/>
+<point lat="42.2820899" lon="-71.07128"/>
+<point lat="42.28208" lon="-71.07135"/>
+<point lat="42.2819999" lon="-71.07127"/>
+<point lat="42.2813299" lon="-71.07099"/>
+<point lat="42.28132" lon="-71.07104"/>
+<point lat="42.28099" lon="-71.07084"/>
+<point lat="42.28064" lon="-71.07061"/>
+<point lat="42.28018" lon="-71.07035"/>
+<point lat="42.28" lon="-71.07023"/>
+<point lat="42.27998" lon="-71.07029"/>
+<point lat="42.2793" lon="-71.06981"/>
+<point lat="42.27881" lon="-71.0695099"/>
+<point lat="42.2787" lon="-71.06979"/>
+<point lat="42.27851" lon="-71.07051"/>
 </path>
 </route>
 </body>

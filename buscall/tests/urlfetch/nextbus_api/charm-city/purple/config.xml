@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:52:49 GMT
+Date: Sun, 25 Dec 2011 19:50:46 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2259
+Content-Length: 2267
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Charm City Circulator 2011.">
-<route tag="purple" title="Purple" color="4b0082" oppositeColor="ffffff" latMin="39.27483" latMax="39.3080868" lonMin="-76.6163097" lonMax="-76.6120724">
+<route tag="purple" title="Purple" color="4b0082" oppositeColor="ffffff" latMin="39.2748299" latMax="39.3080868" lonMin="-76.6163097" lonMax="-76.6120724">
 <stop tag="pennsta_f" title="310 Penn Station" lat="39.3080868" lon="-76.6163097" stopId="0310"/>
 <stop tag="pennsta311_f" title="311 Penn Station" lat="39.3069897" lon="-76.6147409" stopId="0311"/>
 <stop tag="pres_f" title="312 Preston St" lat="39.304427" lon="-76.6145522" stopId="0312"/>
@@ -25,10 +25,10 @@ Content-Type: text/xml
 <stop tag="lee_f" title="321 Lee St" lat="39.2820923" lon="-76.6131618" stopId="0321"/>
 <stop tag="mont_f" title="322 Montgomery St" lat="39.2800696" lon="-76.6127621" stopId="0322"/>
 <stop tag="cros_f" title="323 Cross St Market" lat="39.2771172" lon="-76.6123994" stopId="0323"/>
-<stop tag="mars_p" title="324 Marshall St" lat="39.27483" lon="-76.61264" stopId="0324"/>
-<stop tag="west_p" title="325 West St" lat="39.275668" lon="-76.6142394" stopId="0325"/>
-<stop tag="henr_p" title="326 Henrietta St" lat="39.2788673" lon="-76.6144387" stopId="0326"/>
-<stop tag="key_p" title="327 Key Highway" lat="39.2804306" lon="-76.612639" stopId="0327"/>
+<stop tag="mars_p" title="324 Marshall St" lat="39.2748299" lon="-76.61264" stopId="0324"/>
+<stop tag="west_p" title="325 West St" lat="39.2756683" lon="-76.6142392" stopId="0325"/>
+<stop tag="henr_p" title="326 Henrietta St" lat="39.2788671" lon="-76.6144387" stopId="0326"/>
+<stop tag="key_p" title="327 Key Highway" lat="39.2804305" lon="-76.612639" stopId="0327"/>
 <stop tag="baltvc_p" title="301 Baltimore Visitor Center" lat="39.2832352" lon="-76.6128397" stopId="0301"/>
 <stop tag="innrharb_p" title="302 Inner Harbor" lat="39.286921" lon="-76.6120724" stopId="0302"/>
 <stop tag="ligh_p" title="303 Light St" lat="39.2888423" lon="-76.6135947" stopId="0303"/>
@@ -39,10 +39,6 @@ Content-Type: text/xml
 <stop tag="eage_p" title="308 Eager St" lat="39.3009496" lon="-76.6158411" stopId="0308"/>
 <stop tag="bidd_p" title="309 Biddle St" lat="39.3033644" lon="-76.6159925" stopId="0309"/>
 <direction tag="pen" title="Penn Station" name="" useForUI="true">
-  <stop tag="mars_p" />
-  <stop tag="west_p" />
-  <stop tag="henr_p" />
-  <stop tag="key_p" />
   <stop tag="baltvc_p" />
   <stop tag="innrharb_p" />
   <stop tag="ligh_p" />
@@ -53,7 +49,7 @@ Content-Type: text/xml
   <stop tag="eage_p" />
   <stop tag="bidd_p" />
 </direction>
-<direction tag="fed" title="Federal Hill" name="" useForUI="true">
+<direction tag="baltvc" title="Visitor Center" name="" useForUI="true">
   <stop tag="pennsta_f" />
   <stop tag="pennsta311_f" />
   <stop tag="pres_f" />
@@ -68,6 +64,10 @@ Content-Type: text/xml
   <stop tag="lee_f" />
   <stop tag="mont_f" />
   <stop tag="cros_f" />
+  <stop tag="mars_p" />
+  <stop tag="west_p" />
+  <stop tag="henr_p" />
+  <stop tag="key_p" />
 </direction>
 <path>
 <point lat="39.28324" lon="-76.61284"/>
@@ -238,14 +238,26 @@ Content-Type: text/xml
 <point lat="39.2748599" lon="-76.61215"/>
 <point lat="39.27485" lon="-76.61219"/>
 <point lat="39.27483" lon="-76.61264"/>
-</path>
-<path>
-<point lat="39.27483" lon="-76.61264"/>
 <point lat="39.27481" lon="-76.61327"/>
 <point lat="39.27478" lon="-76.6140999"/>
 <point lat="39.27478" lon="-76.61415"/>
 <point lat="39.27481" lon="-76.6141899"/>
 <point lat="39.2748599" lon="-76.6142"/>
+<point lat="39.27537" lon="-76.61422"/>
+</path>
+<path>
+<point lat="39.27537" lon="-76.61422"/>
+<point lat="39.27568" lon="-76.61424"/>
+</path>
+<path>
+<point lat="39.28287" lon="-76.61282"/>
+<point lat="39.28324" lon="-76.61284"/>
+</path>
+<path>
+<point lat="39.30748" lon="-76.61627"/>
+<point lat="39.30809" lon="-76.61631"/>
+</path>
+<path>
 <point lat="39.27568" lon="-76.61424"/>
 <point lat="39.27675" lon="-76.61431"/>
 <point lat="39.27782" lon="-76.61438"/>
@@ -266,14 +278,6 @@ Content-Type: text/xml
 <point lat="39.28109" lon="-76.61274"/>
 <point lat="39.28257" lon="-76.6127999"/>
 <point lat="39.28287" lon="-76.61282"/>
-</path>
-<path>
-<point lat="39.28287" lon="-76.61282"/>
-<point lat="39.28324" lon="-76.61284"/>
-</path>
-<path>
-<point lat="39.30748" lon="-76.61627"/>
-<point lat="39.30809" lon="-76.61631"/>
 </path>
 </route>
 </body>

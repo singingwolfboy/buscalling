@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:11 GMT
+Date: Sun, 25 Dec 2011 20:00:35 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 6754
+Content-Length: 6402
 Connection: close
 Content-Type: text/xml
 
@@ -79,7 +79,6 @@ Content-Type: text/xml
 <stop tag="6850" title="Carlingview Drive At Meteor Drive Farside" lat="43.6805299" lon="-79.5928099" stopId="7583"/>
 <stop tag="8064" title="Skymark Avenue At Commerce Boulevard Farside" lat="43.6633999" lon="-79.59254" stopId="11392"/>
 <stop tag="10409" title="Eglinton Avenue West At Commerce Boulevard Farside" lat="43.6627599" lon="-79.59061" stopId="11393"/>
-<stop tag="512" title="Michael Power - St Joseph High School" lat="43.6594999" lon="-79.58299" stopId="11628"/>
 <stop tag="8694" title="Explorer Drive At Skymark Avenue" lat="43.6608899" lon="-79.59556" stopId="11390"/>
 <stop tag="1514" title="2780 Skymark Avenue" lat="43.66236" lon="-79.5942299" stopId="11391"/>
 <stop tag="8064_ar" title="Skymark Avenue At Commerce Boulevard Farside" lat="43.6633999" lon="-79.59254"/>
@@ -155,51 +154,6 @@ Content-Type: text/xml
 <stop tag="341" title="Eglinton Avenue West At Renforth Loop" lat="43.6647699" lon="-79.58876" stopId="11283"/>
 <stop tag="7312" title="Eglinton Avenue West At Commerce Boulevard" lat="43.66278" lon="-79.5910399" stopId="11354"/>
 <stop tag="8675" title="Explorer Drive At Eglinton Avenue West Farside" lat="43.66028" lon="-79.59473" stopId="11389"/>
-<direction tag="112_1_112D" title="North - 112d West Mall towards Eglinton and Skymark" name="North" useForUI="true">
-  <stop tag="14236" />
-  <stop tag="3686" />
-  <stop tag="10129" />
-  <stop tag="2965" />
-  <stop tag="3225" />
-  <stop tag="10385" />
-  <stop tag="6721" />
-  <stop tag="1056" />
-  <stop tag="3722" />
-  <stop tag="3812" />
-  <stop tag="3853" />
-  <stop tag="5730" />
-  <stop tag="9584" />
-  <stop tag="6364" />
-  <stop tag="3106" />
-  <stop tag="4275" />
-  <stop tag="1860" />
-  <stop tag="7253" />
-  <stop tag="1000" />
-  <stop tag="6405" />
-  <stop tag="5009" />
-  <stop tag="6695" />
-  <stop tag="8271" />
-  <stop tag="2644" />
-  <stop tag="4933" />
-  <stop tag="4984" />
-  <stop tag="10252" />
-  <stop tag="1872" />
-  <stop tag="2196" />
-  <stop tag="7237" />
-  <stop tag="4190" />
-  <stop tag="4977" />
-  <stop tag="9558" />
-  <stop tag="6605" />
-  <stop tag="7972" />
-  <stop tag="2201" />
-  <stop tag="511" />
-  <stop tag="341" />
-  <stop tag="7312" />
-  <stop tag="8675" />
-  <stop tag="8694" />
-  <stop tag="1514" />
-  <stop tag="8064_ar" />
-</direction>
 <direction tag="112_0_112Cp" title="South - 112 West Mall towards Kipling Station" name="South" useForUI="true">
   <stop tag="5874" />
   <stop tag="4481" />
@@ -266,6 +220,51 @@ Content-Type: text/xml
   <stop tag="9892" />
   <stop tag="3854" />
   <stop tag="14236_ar" />
+</direction>
+<direction tag="112_1_112D" title="North - 112d West Mall towards Eglinton and Skymark" name="North" useForUI="true">
+  <stop tag="14236" />
+  <stop tag="3686" />
+  <stop tag="10129" />
+  <stop tag="2965" />
+  <stop tag="3225" />
+  <stop tag="10385" />
+  <stop tag="6721" />
+  <stop tag="1056" />
+  <stop tag="3722" />
+  <stop tag="3812" />
+  <stop tag="3853" />
+  <stop tag="5730" />
+  <stop tag="9584" />
+  <stop tag="6364" />
+  <stop tag="3106" />
+  <stop tag="4275" />
+  <stop tag="1860" />
+  <stop tag="7253" />
+  <stop tag="1000" />
+  <stop tag="6405" />
+  <stop tag="5009" />
+  <stop tag="6695" />
+  <stop tag="8271" />
+  <stop tag="2644" />
+  <stop tag="4933" />
+  <stop tag="4984" />
+  <stop tag="10252" />
+  <stop tag="1872" />
+  <stop tag="2196" />
+  <stop tag="7237" />
+  <stop tag="4190" />
+  <stop tag="4977" />
+  <stop tag="9558" />
+  <stop tag="6605" />
+  <stop tag="7972" />
+  <stop tag="2201" />
+  <stop tag="511" />
+  <stop tag="341" />
+  <stop tag="7312" />
+  <stop tag="8675" />
+  <stop tag="8694" />
+  <stop tag="1514" />
+  <stop tag="8064_ar" />
 </direction>
 <direction tag="112_1_112Ca" title="North - 112c West Mall towards Disco Rd" name="North" useForUI="true">
   <stop tag="14236" />
@@ -334,10 +333,6 @@ Content-Type: text/xml
   <stop tag="9097_IB" />
   <stop tag="6850_IB" />
   <stop tag="6895_ar" />
-</direction>
-<direction tag="112_0_112E" title="South - 112e West Mall Express towards Kipling Station" name="South" useForUI="true">
-  <stop tag="512" />
-  <stop tag="14236_ar" />
 </direction>
 <path>
 <point lat="43.65264" lon="-79.57244"/>
@@ -685,37 +680,6 @@ Content-Type: text/xml
 <point lat="43.63734" lon="-79.53595"/>
 </path>
 <path>
-<point lat="43.6595" lon="-79.58299"/>
-<point lat="43.6599" lon="-79.58331"/>
-<point lat="43.66012" lon="-79.58236"/>
-<point lat="43.66025" lon="-79.58194"/>
-<point lat="43.66057" lon="-79.58118"/>
-<point lat="43.66075" lon="-79.58086"/>
-<point lat="43.6603" lon="-79.58034"/>
-<point lat="43.66007" lon="-79.58015"/>
-<point lat="43.65982" lon="-79.58002"/>
-<point lat="43.65896" lon="-79.57963"/>
-<point lat="43.65887" lon="-79.57961"/>
-<point lat="43.65872" lon="-79.57943"/>
-<point lat="43.6581199" lon="-79.57828"/>
-<point lat="43.65789" lon="-79.57795"/>
-<point lat="43.65767" lon="-79.57775"/>
-<point lat="43.65744" lon="-79.57762"/>
-<point lat="43.65721" lon="-79.57754"/>
-<point lat="43.65541" lon="-79.57671"/>
-<point lat="43.65522" lon="-79.57654"/>
-<point lat="43.65518" lon="-79.57655"/>
-<point lat="43.65506" lon="-79.57614"/>
-<point lat="43.65502" lon="-79.57567"/>
-<point lat="43.6550299" lon="-79.57525"/>
-<point lat="43.65533" lon="-79.5732699"/>
-<point lat="43.6552999" lon="-79.57296"/>
-<point lat="43.65518" lon="-79.57267"/>
-<point lat="43.65446" lon="-79.57301"/>
-<point lat="43.65422" lon="-79.57305"/>
-<point lat="43.65264" lon="-79.57244"/>
-</path>
-<path>
 <point lat="43.6660899" lon="-79.58727"/>
 <point lat="43.6665" lon="-79.58932"/>
 <point lat="43.6667" lon="-79.58973"/>
@@ -916,69 +880,6 @@ Content-Type: text/xml
 <point lat="43.66236" lon="-79.59423"/>
 <point lat="43.66372" lon="-79.5928799"/>
 <point lat="43.6634" lon="-79.59254"/>
-</path>
-<path>
-<point lat="43.6595" lon="-79.58299"/>
-<point lat="43.6599" lon="-79.58331"/>
-<point lat="43.66012" lon="-79.58236"/>
-<point lat="43.66025" lon="-79.58194"/>
-<point lat="43.66057" lon="-79.58118"/>
-<point lat="43.66111" lon="-79.58022"/>
-<point lat="43.66135" lon="-79.57966"/>
-<point lat="43.66182" lon="-79.57771"/>
-<point lat="43.6619" lon="-79.5774"/>
-<point lat="43.66201" lon="-79.57706"/>
-<point lat="43.66222" lon="-79.57652"/>
-<point lat="43.66234" lon="-79.57614"/>
-<point lat="43.66269" lon="-79.57475"/>
-<point lat="43.66311" lon="-79.57293"/>
-<point lat="43.66314" lon="-79.57261"/>
-<point lat="43.66308" lon="-79.5723"/>
-<point lat="43.6629" lon="-79.57208"/>
-<point lat="43.66268" lon="-79.57191"/>
-<point lat="43.66194" lon="-79.57152"/>
-<point lat="43.65861" lon="-79.57022"/>
-<point lat="43.65719" lon="-79.56955"/>
-<point lat="43.65511" lon="-79.56834"/>
-<point lat="43.65094" lon="-79.56623"/>
-<point lat="43.64643" lon="-79.56415"/>
-<point lat="43.64559" lon="-79.56368"/>
-<point lat="43.6398" lon="-79.56132"/>
-<point lat="43.63791" lon="-79.5608"/>
-<point lat="43.63604" lon="-79.56046"/>
-<point lat="43.63554" lon="-79.56047"/>
-<point lat="43.63391" lon="-79.56011"/>
-<point lat="43.63362" lon="-79.56001"/>
-<point lat="43.6334" lon="-79.55991"/>
-<point lat="43.6331" lon="-79.55987"/>
-<point lat="43.63204" lon="-79.55944"/>
-<point lat="43.6306" lon="-79.55857"/>
-<point lat="43.63037" lon="-79.5584499"/>
-<point lat="43.63014" lon="-79.55838"/>
-<point lat="43.6299" lon="-79.55837"/>
-<point lat="43.62967" lon="-79.55843"/>
-<point lat="43.62946" lon="-79.55855"/>
-<point lat="43.6288399" lon="-79.55911"/>
-<point lat="43.62861" lon="-79.55923"/>
-<point lat="43.62836" lon="-79.55922"/>
-<point lat="43.62814" lon="-79.55911"/>
-<point lat="43.62808" lon="-79.55867"/>
-<point lat="43.62821" lon="-79.55804"/>
-<point lat="43.62976" lon="-79.55231"/>
-<point lat="43.63005" lon="-79.55124"/>
-<point lat="43.63102" lon="-79.54691"/>
-<point lat="43.63267" lon="-79.54367"/>
-<point lat="43.63295" lon="-79.54328"/>
-<point lat="43.63535" lon="-79.54073"/>
-<point lat="43.63852" lon="-79.538"/>
-<point lat="43.63838" lon="-79.53773"/>
-<point lat="43.63821" lon="-79.53747"/>
-<point lat="43.63794" lon="-79.53721"/>
-<point lat="43.63768" lon="-79.5370499"/>
-<point lat="43.63737" lon="-79.5367799"/>
-<point lat="43.63713" lon="-79.53663"/>
-<point lat="43.63716" lon="-79.53626"/>
-<point lat="43.63734" lon="-79.53595"/>
 </path>
 <path>
 <point lat="43.66193" lon="-79.57715"/>

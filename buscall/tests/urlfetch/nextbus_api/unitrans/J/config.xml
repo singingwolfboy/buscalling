@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:03:09 GMT
+Date: Sun, 25 Dec 2011 20:01:52 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1437
+Content-Length: 1474
 Connection: close
 Content-Type: text/xml
 
@@ -20,13 +20,13 @@ Content-Type: text/xml
 <stop tag="22134" title="Alvarado Ave &amp; Anderson (WB)" lat="38.5622099" lon="-121.7593699" stopId="134"/>
 <stop tag="22136" title="Alvarado Ave &amp; Sycamore (WB)" lat="38.5620999" lon="-121.76325" stopId="136"/>
 <stop tag="22139" title="Sycamore Ln &amp; Pepperwood Apts (NB)" lat="38.5631399" lon="-121.76542" stopId="139"/>
-<stop tag="22140" title="Sycamore Ln &amp; Antelope (NB)" lat="38.5644499" lon="-121.76561" stopId="140"/>
-<stop tag="22142" title="Sycamore Ln &amp; Chaparral Apts (NB)" lat="38.5663099" lon="-121.76556" stopId="142"/>
+<stop tag="22140" title="Sycamore Ln &amp; Antelope (NB)" lat="38.56445" lon="-121.7656099" stopId="140"/>
+<stop tag="22142" title="Sycamore Ln &amp; Chaparral Apts (NB)" lat="38.56631" lon="-121.76556" stopId="142"/>
 <stop tag="22144" title="North Sycamore Loop &amp;  (NB)" lat="38.5682499" lon="-121.76699" stopId="144"/>
-<stop tag="22143" title="Sycamore Ln &amp; Chaparral Apts (SB)" lat="38.5660299" lon="-121.76584" stopId="143"/>
-<stop tag="22141" title="Sycamore Ln &amp; Antelope (SB)" lat="38.56436" lon="-121.7658499" stopId="141"/>
+<stop tag="22143" title="Sycamore Ln &amp; Chaparral Apts (SB)" lat="38.56603" lon="-121.7658399" stopId="143"/>
+<stop tag="22141" title="Sycamore Ln &amp; Antelope (SB)" lat="38.5643599" lon="-121.7658499" stopId="141"/>
 <stop tag="22138" title="Sycamore Ln &amp; Alvarado (SB)" lat="38.56253" lon="-121.76504" stopId="138"/>
-<stop tag="22137" title="Alvarado Ave &amp; Sycamore (EB)" lat="38.56194" lon="-121.7630099" stopId="137"/>
+<stop tag="22137" title="Alvarado Ave &amp; Sycamore (EB)" lat="38.5619399" lon="-121.76301" stopId="137"/>
 <stop tag="22135" title="Alvarado Ave &amp; Anderson (EB)" lat="38.5619999" lon="-121.75955" stopId="135"/>
 <stop tag="22155" title="Anderson Rd &amp; Hanover Dr (SB)" lat="38.5585599" lon="-121.75871" stopId="155"/>
 <stop tag="22156" title="Anderson Rd &amp; Villanova Dr (SB)" lat="38.55592" lon="-121.7587399" stopId="156"/>
@@ -82,6 +82,7 @@ Content-Type: text/xml
 <point lat="38.5668" lon="-121.76583"/>
 <point lat="38.56664" lon="-121.76574"/>
 <point lat="38.56655" lon="-121.76572"/>
+<point lat="38.56638" lon="-121.76571"/>
 <point lat="38.56603" lon="-121.76584"/>
 <point lat="38.56436" lon="-121.76585"/>
 <point lat="38.5636" lon="-121.76573"/>
@@ -95,9 +96,11 @@ Content-Type: text/xml
 <point lat="38.5619299" lon="-121.76408"/>
 <point lat="38.5618399" lon="-121.76399"/>
 <point lat="38.56173" lon="-121.76392"/>
+<point lat="38.56177" lon="-121.76381"/>
 <point lat="38.56194" lon="-121.76301"/>
 <point lat="38.56207" lon="-121.7629"/>
 <point lat="38.5621099" lon="-121.76256"/>
+<point lat="38.56212" lon="-121.76198"/>
 <point lat="38.562" lon="-121.75955"/>
 </path>
 <path>
@@ -127,6 +130,7 @@ Content-Type: text/xml
 <path>
 <point lat="38.562" lon="-121.75955"/>
 <point lat="38.5621" lon="-121.75848"/>
+<point lat="38.56084" lon="-121.75846"/>
 <point lat="38.55856" lon="-121.75871"/>
 </path>
 <path>
@@ -138,6 +142,7 @@ Content-Type: text/xml
 <point lat="38.53917" lon="-121.76083"/>
 <point lat="38.54284" lon="-121.76069"/>
 <point lat="38.54329" lon="-121.76051"/>
+<point lat="38.54374" lon="-121.7602"/>
 <point lat="38.54402" lon="-121.75983"/>
 <point lat="38.54603" lon="-121.75884"/>
 <point lat="38.54627" lon="-121.75877"/>
@@ -160,6 +165,7 @@ Content-Type: text/xml
 <point lat="38.56313" lon="-121.76562"/>
 <point lat="38.56332" lon="-121.7657"/>
 <point lat="38.56342" lon="-121.76572"/>
+<point lat="38.5636" lon="-121.76573"/>
 <point lat="38.56445" lon="-121.76561"/>
 <point lat="38.56631" lon="-121.76556"/>
 <point lat="38.56655" lon="-121.76572"/>

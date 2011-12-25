@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:59:40 GMT
+Date: Sun, 25 Dec 2011 19:57:24 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2123
+Content-Length: 2124
 Connection: close
 Content-Type: text/xml
 
@@ -118,6 +118,13 @@ Content-Type: text/xml
   <stop tag="3094" />
 </direction>
 <path>
+<point lat="37.8022" lon="-122.42489"/>
+<point lat="37.80228" lon="-122.42473"/>
+<point lat="37.79573" lon="-122.42342"/>
+<point lat="37.79786" lon="-122.40668"/>
+<point lat="37.79607" lon="-122.4043"/>
+</path>
+<path>
 <point lat="37.80091" lon="-122.43618"/>
 <point lat="37.80072" lon="-122.43746"/>
 <point lat="37.80044" lon="-122.43967"/>
@@ -148,13 +155,6 @@ Content-Type: text/xml
 <point lat="37.8001099" lon="-122.44128"/>
 <point lat="37.80036" lon="-122.43934"/>
 <point lat="37.80074" lon="-122.43637"/>
-</path>
-<path>
-<point lat="37.8022" lon="-122.42489"/>
-<point lat="37.80228" lon="-122.42473"/>
-<point lat="37.79573" lon="-122.42342"/>
-<point lat="37.79786" lon="-122.40668"/>
-<point lat="37.79607" lon="-122.4043"/>
 </path>
 <path>
 <point lat="37.79607" lon="-122.4043"/>
@@ -195,16 +195,6 @@ Content-Type: text/xml
 <point lat="37.80233" lon="-122.42487"/>
 </path>
 <path>
-<point lat="37.80233" lon="-122.42487"/>
-<point lat="37.80211" lon="-122.42657"/>
-<point lat="37.80191" lon="-122.42818"/>
-<point lat="37.80169" lon="-122.42984"/>
-<point lat="37.80149" lon="-122.43147"/>
-<point lat="37.80131" lon="-122.43286"/>
-<point lat="37.8011" lon="-122.4345"/>
-<point lat="37.80091" lon="-122.43618"/>
-</path>
-<path>
 <point lat="37.7914" lon="-122.39253"/>
 <point lat="37.79061" lon="-122.39342"/>
 <point lat="37.79253" lon="-122.39567"/>
@@ -217,6 +207,16 @@ Content-Type: text/xml
 <point lat="37.79331" lon="-122.40108"/>
 <point lat="37.79428" lon="-122.40131"/>
 <point lat="37.79606" lon="-122.40166"/>
+</path>
+<path>
+<point lat="37.80233" lon="-122.42487"/>
+<point lat="37.80211" lon="-122.42657"/>
+<point lat="37.80191" lon="-122.42818"/>
+<point lat="37.80169" lon="-122.42984"/>
+<point lat="37.80149" lon="-122.43147"/>
+<point lat="37.80131" lon="-122.43286"/>
+<point lat="37.8011" lon="-122.4345"/>
+<point lat="37.80091" lon="-122.43618"/>
 </path>
 </route>
 </body>

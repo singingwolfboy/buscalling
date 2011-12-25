@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:13 GMT
+Date: Sun, 25 Dec 2011 20:00:38 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 7616
+Content-Length: 7205
 Connection: close
 Content-Type: text/xml
 
@@ -22,8 +22,8 @@ Content-Type: text/xml
 <stop tag="6371" title="Eglinton Avenue East At Barbados Boulevard" lat="43.73797" lon="-79.2417399" stopId="2236"/>
 <stop tag="9553" title="Eglinton Avenue East At McCowan Road" lat="43.7386599" lon="-79.23864" stopId="2292"/>
 <stop tag="4960" title="Eglinton Avenue East At Torrance Road" lat="43.73937" lon="-79.2354399" stopId="1039"/>
-<stop tag="5029" title="Eglinton Avenue East At Bellamy Road North Side" lat="43.7400699" lon="-79.23217" stopId="2244"/>
-<stop tag="3679" title="Eglinton Avenue East At Bellamy Road South Side" lat="43.74117" lon="-79.2274099" stopId="2245"/>
+<stop tag="5029" title="Eglinton Avenue East At Bellamy Road" lat="43.7400699" lon="-79.23217" stopId="2244"/>
+<stop tag="3679" title="Eglinton Avenue East At Bellamy Road" lat="43.74117" lon="-79.2274099" stopId="2245"/>
 <stop tag="10142" title="Eglinton Avenue East At Mason Road" lat="43.7416" lon="-79.2254899" stopId="2290"/>
 <stop tag="7424" title="Eglinton Avenue East At Beachell Street" lat="43.74234" lon="-79.2221599" stopId="2241"/>
 <stop tag="3490" title="Eglinton Avenue East At Markham Road" lat="43.74299" lon="-79.2191899" stopId="2289"/>
@@ -133,7 +133,7 @@ Content-Type: text/xml
 <stop tag="715" title="Eglinton Avenue East At Markham Road" lat="43.74336" lon="-79.2185699" stopId="11282"/>
 <stop tag="1933" title="Eglinton Avenue East At Beachell Street" lat="43.7426299" lon="-79.22189" stopId="2242"/>
 <stop tag="10176" title="Eglinton Avenue East At Mason Road" lat="43.74194" lon="-79.2249499" stopId="2291"/>
-<stop tag="2440" title="Eglinton Avenue East At Bellamy Road North Side" lat="43.7404199" lon="-79.23187" stopId="2243"/>
+<stop tag="2440" title="Eglinton Avenue East At Bellamy Road" lat="43.7404199" lon="-79.23187" stopId="2243"/>
 <stop tag="7941" title="Eglinton Avenue East At Torrance Road Farside" lat="43.7395199" lon="-79.23577" stopId="1040"/>
 <stop tag="3042" title="Eglinton Avenue East At McCowan Road" lat="43.73898" lon="-79.2381899" stopId="2293"/>
 <stop tag="4553" title="Eglinton Avenue East At Barbados Boulevard" lat="43.7383299" lon="-79.24111" stopId="2237"/>
@@ -154,133 +154,10 @@ Content-Type: text/xml
 <stop tag="9326" title="Ellesmere Road At Conlins Road Farside" lat="43.78802" lon="-79.1829499" stopId="9472"/>
 <stop tag="7684" title="Ellesmere Road At Military Trail East Farside" lat="43.7866899" lon="-79.18816" stopId="9473"/>
 <stop tag="576" title="Military Trail At Morningside Avenue" lat="43.7890199" lon="-79.19326" stopId="11415"/>
-<stop tag="8036_IB" title="Eglinton Avenue East At Kingston Road" lat="43.7438099" lon="-79.21214" stopId="2283"/>
-<stop tag="4460" title="Kingston Road At Muir Drive Farside" lat="43.74325" lon="-79.2124799" stopId="2787"/>
-<stop tag="1437" title="Kingston Road At Brinloor Boulevard" lat="43.74133" lon="-79.2145099" stopId="2769"/>
-<stop tag="6270" title="Markham Road At Kingston Road Farside" lat="43.73944" lon="-79.21716" stopId="2860"/>
-<stop tag="8243" title="Markham Road At Markanna Drive" lat="43.7406099" lon="-79.2176899" stopId="2861"/>
-<stop tag="322" title="Eglinton Avenue East At Markham Road Farside" lat="43.7431399" lon="-79.2196" stopId="2288"/>
 <stop tag="484_IB" title="U Of T Scarborough Loop At Student Centre" lat="43.7858499" lon="-79.18718" stopId="14114"/>
 <stop tag="6974" title="Military Trail At University Of Toronto Scarborough" lat="43.7859199" lon="-79.18677" stopId="7977"/>
 <stop tag="14228_ar" title="Kennedy Station" lat="43.7324999" lon="-79.26331"/>
 <stop tag="8469" title="Eglinton Avenue East At Kennedy Road" lat="43.7324099" lon="-79.26775" stopId="2280"/>
-<stop tag="9556" title="Pope John Paul Ii Secondary School" lat="43.7906199" lon="-79.1999" stopId="11868"/>
-<direction tag="116_0_116A" title="East - 116a Morningside towards Conlins Rd via Ellesmere" name="East" useForUI="true">
-  <stop tag="14227" />
-  <stop tag="311" />
-  <stop tag="8890" />
-  <stop tag="2447" />
-  <stop tag="8986" />
-  <stop tag="6997" />
-  <stop tag="9602" />
-  <stop tag="3083" />
-  <stop tag="6371" />
-  <stop tag="9553" />
-  <stop tag="4960" />
-  <stop tag="5029" />
-  <stop tag="3679" />
-  <stop tag="10142" />
-  <stop tag="7424" />
-  <stop tag="3490" />
-  <stop tag="4583" />
-  <stop tag="8036" />
-  <stop tag="2309" />
-  <stop tag="4882" />
-  <stop tag="5699" />
-  <stop tag="2012" />
-  <stop tag="4522" />
-  <stop tag="8688" />
-  <stop tag="9437" />
-  <stop tag="6582" />
-  <stop tag="10245" />
-  <stop tag="9239" />
-  <stop tag="1064" />
-  <stop tag="5659" />
-  <stop tag="1692" />
-  <stop tag="4965" />
-  <stop tag="7970" />
-  <stop tag="5082" />
-  <stop tag="8259" />
-  <stop tag="8058" />
-  <stop tag="6947" />
-  <stop tag="8206" />
-  <stop tag="2593" />
-  <stop tag="4892" />
-  <stop tag="8291" />
-  <stop tag="7155" />
-  <stop tag="8262" />
-  <stop tag="8000" />
-  <stop tag="348" />
-  <stop tag="5039" />
-  <stop tag="4939" />
-  <stop tag="3551" />
-  <stop tag="7585" />
-  <stop tag="9675" />
-  <stop tag="4702" />
-  <stop tag="7395_ar" />
-</direction>
-<direction tag="116_1_116kn" title="West - 116 Morningside towards Kennedy/Eglinton" name="West" useForUI="true">
-  <stop tag="14695" />
-  <stop tag="14732" />
-  <stop tag="14090" />
-  <stop tag="6149" />
-  <stop tag="1254" />
-  <stop tag="2138" />
-  <stop tag="2858" />
-  <stop tag="2100" />
-  <stop tag="2131" />
-  <stop tag="8616" />
-  <stop tag="1607" />
-  <stop tag="8509" />
-  <stop tag="1475" />
-  <stop tag="9583" />
-  <stop tag="6275" />
-  <stop tag="2008" />
-  <stop tag="5757" />
-  <stop tag="1076" />
-  <stop tag="9496" />
-  <stop tag="5728" />
-  <stop tag="1046" />
-  <stop tag="4458" />
-  <stop tag="5318" />
-  <stop tag="14616" />
-  <stop tag="14615" />
-  <stop tag="6988" />
-  <stop tag="7081" />
-  <stop tag="6359" />
-  <stop tag="2552" />
-  <stop tag="5843" />
-  <stop tag="6673" />
-  <stop tag="719" />
-  <stop tag="4273" />
-  <stop tag="5081" />
-  <stop tag="6428" />
-  <stop tag="4642" />
-  <stop tag="1471" />
-  <stop tag="10333" />
-  <stop tag="7581" />
-  <stop tag="8916" />
-  <stop tag="2034" />
-  <stop tag="1281" />
-  <stop tag="8596" />
-  <stop tag="715" />
-  <stop tag="1933" />
-  <stop tag="10176" />
-  <stop tag="2440" />
-  <stop tag="7941" />
-  <stop tag="3042" />
-  <stop tag="4553" />
-  <stop tag="2909" />
-  <stop tag="8136" />
-  <stop tag="2463" />
-  <stop tag="317" />
-  <stop tag="4194" />
-  <stop tag="8550" />
-  <stop tag="323" />
-  <stop tag="5465" />
-  <stop tag="9949" />
-  <stop tag="8469" />
-</direction>
 <direction tag="116_0_kn116" title="East - 116 Morningside towards Finch" name="East" useForUI="true">
   <stop tag="320" />
   <stop tag="311" />
@@ -346,13 +223,42 @@ Content-Type: text/xml
   <stop tag="14088" />
   <stop tag="14695_ar" />
 </direction>
-<direction tag="116_1_116B" title="West - 116 Morningside towards Kennedy Station" name="West" useForUI="true">
-  <stop tag="8036_IB" />
-  <stop tag="4460" />
-  <stop tag="1437" />
-  <stop tag="6270" />
-  <stop tag="8243" />
-  <stop tag="322" />
+<direction tag="116_1_116A" title="West - 116 Morningside towards Kennedy Station" name="West" useForUI="true">
+  <stop tag="7395" />
+  <stop tag="1689" />
+  <stop tag="8793" />
+  <stop tag="8302" />
+  <stop tag="9326" />
+  <stop tag="7684" />
+  <stop tag="576" />
+  <stop tag="5757" />
+  <stop tag="1076" />
+  <stop tag="9496" />
+  <stop tag="5728" />
+  <stop tag="1046" />
+  <stop tag="4458" />
+  <stop tag="5318" />
+  <stop tag="14616" />
+  <stop tag="14615" />
+  <stop tag="6988" />
+  <stop tag="7081" />
+  <stop tag="6359" />
+  <stop tag="2552" />
+  <stop tag="5843" />
+  <stop tag="6673" />
+  <stop tag="719" />
+  <stop tag="4273" />
+  <stop tag="5081" />
+  <stop tag="6428" />
+  <stop tag="4642" />
+  <stop tag="1471" />
+  <stop tag="10333" />
+  <stop tag="7581" />
+  <stop tag="8916" />
+  <stop tag="2034" />
+  <stop tag="1281" />
+  <stop tag="8596" />
+  <stop tag="715" />
   <stop tag="1933" />
   <stop tag="10176" />
   <stop tag="2440" />
@@ -370,14 +276,77 @@ Content-Type: text/xml
   <stop tag="9949" />
   <stop tag="14227_ar" />
 </direction>
-<direction tag="116_1_116A" title="West - 116 Morningside towards Kennedy Station" name="West" useForUI="true">
-  <stop tag="7395" />
-  <stop tag="1689" />
-  <stop tag="8793" />
-  <stop tag="8302" />
-  <stop tag="9326" />
-  <stop tag="7684" />
-  <stop tag="576" />
+<direction tag="116_0_116A" title="East - 116a Morningside towards Conlins Rd via Ellesmere" name="East" useForUI="true">
+  <stop tag="14227" />
+  <stop tag="311" />
+  <stop tag="8890" />
+  <stop tag="2447" />
+  <stop tag="8986" />
+  <stop tag="6997" />
+  <stop tag="9602" />
+  <stop tag="3083" />
+  <stop tag="6371" />
+  <stop tag="9553" />
+  <stop tag="4960" />
+  <stop tag="5029" />
+  <stop tag="3679" />
+  <stop tag="10142" />
+  <stop tag="7424" />
+  <stop tag="3490" />
+  <stop tag="4583" />
+  <stop tag="8036" />
+  <stop tag="2309" />
+  <stop tag="4882" />
+  <stop tag="5699" />
+  <stop tag="2012" />
+  <stop tag="4522" />
+  <stop tag="8688" />
+  <stop tag="9437" />
+  <stop tag="6582" />
+  <stop tag="10245" />
+  <stop tag="9239" />
+  <stop tag="1064" />
+  <stop tag="5659" />
+  <stop tag="1692" />
+  <stop tag="4965" />
+  <stop tag="7970" />
+  <stop tag="5082" />
+  <stop tag="8259" />
+  <stop tag="8058" />
+  <stop tag="6947" />
+  <stop tag="8206" />
+  <stop tag="2593" />
+  <stop tag="4892" />
+  <stop tag="8291" />
+  <stop tag="7155" />
+  <stop tag="8262" />
+  <stop tag="8000" />
+  <stop tag="348" />
+  <stop tag="5039" />
+  <stop tag="4939" />
+  <stop tag="3551" />
+  <stop tag="7585" />
+  <stop tag="9675" />
+  <stop tag="4702" />
+  <stop tag="7395_ar" />
+</direction>
+<direction tag="116_1_116" title="West - 116 Morningside towards Kennedy Station" name="West" useForUI="true">
+  <stop tag="14695" />
+  <stop tag="14732" />
+  <stop tag="14090" />
+  <stop tag="6149" />
+  <stop tag="1254" />
+  <stop tag="2138" />
+  <stop tag="2858" />
+  <stop tag="2100" />
+  <stop tag="2131" />
+  <stop tag="8616" />
+  <stop tag="1607" />
+  <stop tag="8509" />
+  <stop tag="1475" />
+  <stop tag="9583" />
+  <stop tag="6275" />
+  <stop tag="2008" />
   <stop tag="5757" />
   <stop tag="1076" />
   <stop tag="9496" />
@@ -602,26 +571,6 @@ Content-Type: text/xml
 <point lat="43.78576" lon="-79.19373"/>
 </path>
 <path>
-<point lat="43.78576" lon="-79.19373"/>
-<point lat="43.78534" lon="-79.19333"/>
-<point lat="43.7805" lon="-79.1914"/>
-<point lat="43.77656" lon="-79.18957"/>
-<point lat="43.77609" lon="-79.18944"/>
-<point lat="43.77604" lon="-79.18929"/>
-<point lat="43.77578" lon="-79.18911"/>
-<point lat="43.77441" lon="-79.18861"/>
-<point lat="43.77283" lon="-79.18793"/>
-<point lat="43.77073" lon="-79.18708"/>
-<point lat="43.7706" lon="-79.18685"/>
-<point lat="43.77034" lon="-79.18677"/>
-<point lat="43.76908" lon="-79.18629"/>
-<point lat="43.76872" lon="-79.18623"/>
-<point lat="43.76862" lon="-79.18635"/>
-<point lat="43.7684" lon="-79.18621"/>
-<point lat="43.7674499" lon="-79.18599"/>
-<point lat="43.76668" lon="-79.18582"/>
-</path>
-<path>
 <point lat="43.73652" lon="-79.24828"/>
 <point lat="43.73669" lon="-79.24807"/>
 <point lat="43.73686" lon="-79.2467099"/>
@@ -682,37 +631,6 @@ Content-Type: text/xml
 <point lat="43.7851799" lon="-79.1931199"/>
 </path>
 <path>
-<point lat="43.80185" lon="-79.19957"/>
-<point lat="43.80267" lon="-79.20005"/>
-<point lat="43.80344" lon="-79.20009"/>
-<point lat="43.80344" lon="-79.2001499"/>
-<point lat="43.80369" lon="-79.20021"/>
-<point lat="43.8056" lon="-79.20094"/>
-<point lat="43.80744" lon="-79.20189"/>
-<point lat="43.80813" lon="-79.20235"/>
-<point lat="43.80875" lon="-79.2025"/>
-<point lat="43.81078" lon="-79.20343"/>
-<point lat="43.8114599" lon="-79.20386"/>
-<point lat="43.81169" lon="-79.20401"/>
-<point lat="43.81192" lon="-79.2042"/>
-<point lat="43.81212" lon="-79.2044"/>
-<point lat="43.8123099" lon="-79.20464"/>
-<point lat="43.81299" lon="-79.20571"/>
-<point lat="43.81319" lon="-79.20613"/>
-<point lat="43.81333" lon="-79.20609"/>
-<point lat="43.81661" lon="-79.21141"/>
-<point lat="43.81788" lon="-79.21356"/>
-<point lat="43.81791" lon="-79.21371"/>
-<point lat="43.81858" lon="-79.21471"/>
-<point lat="43.8189" lon="-79.21485"/>
-<point lat="43.81897" lon="-79.21544"/>
-<point lat="43.81993" lon="-79.2178799"/>
-<point lat="43.81996" lon="-79.21821"/>
-<point lat="43.81992" lon="-79.21861"/>
-<point lat="43.81994" lon="-79.21895"/>
-<point lat="43.81982" lon="-79.22083"/>
-</path>
-<path>
 <point lat="43.7368499" lon="-79.24785"/>
 <point lat="43.73669" lon="-79.24807"/>
 <point lat="43.73665" lon="-79.24876"/>
@@ -739,26 +657,6 @@ Content-Type: text/xml
 <point lat="43.7377899" lon="-79.24345"/>
 <point lat="43.7373" lon="-79.24571"/>
 <point lat="43.7368499" lon="-79.24785"/>
-</path>
-<path>
-<point lat="43.7851799" lon="-79.1931199"/>
-<point lat="43.78534" lon="-79.19333"/>
-<point lat="43.78564" lon="-79.1935"/>
-<point lat="43.78591" lon="-79.1935699"/>
-<point lat="43.78647" lon="-79.19362"/>
-<point lat="43.78726" lon="-79.19361"/>
-<point lat="43.78758" lon="-79.19365"/>
-<point lat="43.78785" lon="-79.19372"/>
-<point lat="43.78884" lon="-79.19399"/>
-<point lat="43.79237" lon="-79.19552"/>
-<point lat="43.79389" lon="-79.19627"/>
-<point lat="43.79439" lon="-79.19636"/>
-<point lat="43.79631" lon="-79.19692"/>
-<point lat="43.79662" lon="-79.19704"/>
-<point lat="43.7976699" lon="-79.19748"/>
-<point lat="43.7990799" lon="-79.19852"/>
-<point lat="43.80008" lon="-79.19881"/>
-<point lat="43.80185" lon="-79.19957"/>
 </path>
 <path>
 <point lat="43.78576" lon="-79.19373"/>
@@ -814,38 +712,6 @@ Content-Type: text/xml
 <point lat="43.7875" lon="-79.1842999"/>
 </path>
 <path>
-<point lat="43.81982" lon="-79.22083"/>
-<point lat="43.81969" lon="-79.22106"/>
-<point lat="43.82031" lon="-79.22118"/>
-<point lat="43.82058" lon="-79.22104"/>
-<point lat="43.82085" lon="-79.22075"/>
-<point lat="43.8213" lon="-79.22041"/>
-<point lat="43.82136" lon="-79.22036"/>
-<point lat="43.8214" lon="-79.22046"/>
-<point lat="43.82147" lon="-79.22057"/>
-<point lat="43.82152" lon="-79.22064"/>
-<point lat="43.82291" lon="-79.22219"/>
-<point lat="43.82354" lon="-79.22266"/>
-<point lat="43.824" lon="-79.22275"/>
-<point lat="43.82465" lon="-79.22312"/>
-<point lat="43.82493" lon="-79.22329"/>
-<point lat="43.82565" lon="-79.22377"/>
-<point lat="43.8257199" lon="-79.22381"/>
-<point lat="43.82567" lon="-79.22403"/>
-<point lat="43.82565" lon="-79.2241"/>
-<point lat="43.82562" lon="-79.22418"/>
-<point lat="43.82558" lon="-79.22445"/>
-<point lat="43.825" lon="-79.2256"/>
-<point lat="43.82472" lon="-79.22681"/>
-<point lat="43.82455" lon="-79.22727"/>
-<point lat="43.82444" lon="-79.22807"/>
-<point lat="43.82437" lon="-79.22839"/>
-<point lat="43.82425" lon="-79.22868"/>
-<point lat="43.82378" lon="-79.22936"/>
-<point lat="43.82303" lon="-79.23013"/>
-<point lat="43.82266" lon="-79.2296999"/>
-</path>
-<path>
 <point lat="43.7851799" lon="-79.1931199"/>
 <point lat="43.78534" lon="-79.19333"/>
 <point lat="43.78646" lon="-79.18844"/>
@@ -857,20 +723,6 @@ Content-Type: text/xml
 <point lat="43.78657" lon="-79.1883"/>
 <point lat="43.78599" lon="-79.18709"/>
 <point lat="43.78585" lon="-79.18718"/>
-</path>
-<path>
-<point lat="43.76937" lon="-79.18624"/>
-<point lat="43.77006" lon="-79.18665"/>
-<point lat="43.77034" lon="-79.18677"/>
-<point lat="43.77042" lon="-79.18665"/>
-<point lat="43.7706" lon="-79.18685"/>
-<point lat="43.77237" lon="-79.18753"/>
-<point lat="43.77462" lon="-79.1885"/>
-<point lat="43.77547" lon="-79.18886"/>
-<point lat="43.77578" lon="-79.18911"/>
-<point lat="43.77604" lon="-79.18929"/>
-<point lat="43.78088" lon="-79.19135"/>
-<point lat="43.7851799" lon="-79.1931199"/>
 </path>
 <path>
 <point lat="43.82266" lon="-79.2296999"/>
@@ -987,6 +839,26 @@ Content-Type: text/xml
 <point lat="43.73489" lon="-79.25588"/>
 <point lat="43.73547" lon="-79.25331"/>
 <point lat="43.73652" lon="-79.24828"/>
+</path>
+<path>
+<point lat="43.7851799" lon="-79.1931199"/>
+<point lat="43.78534" lon="-79.19333"/>
+<point lat="43.78564" lon="-79.1935"/>
+<point lat="43.78591" lon="-79.1935699"/>
+<point lat="43.78647" lon="-79.19362"/>
+<point lat="43.78726" lon="-79.19361"/>
+<point lat="43.78758" lon="-79.19365"/>
+<point lat="43.78785" lon="-79.19372"/>
+<point lat="43.78884" lon="-79.19399"/>
+<point lat="43.79237" lon="-79.19552"/>
+<point lat="43.79389" lon="-79.19627"/>
+<point lat="43.79439" lon="-79.19636"/>
+<point lat="43.79631" lon="-79.19692"/>
+<point lat="43.79662" lon="-79.19704"/>
+<point lat="43.7976699" lon="-79.19748"/>
+<point lat="43.7990799" lon="-79.19852"/>
+<point lat="43.80008" lon="-79.19881"/>
+<point lat="43.80185" lon="-79.19957"/>
 </path>
 <path>
 <point lat="43.78576" lon="-79.19373"/>
@@ -1150,19 +1022,6 @@ Content-Type: text/xml
 <point lat="43.78585" lon="-79.18718"/>
 </path>
 <path>
-<point lat="43.74381" lon="-79.21214"/>
-<point lat="43.74371" lon="-79.21165"/>
-<point lat="43.74404" lon="-79.2126"/>
-<point lat="43.74371" lon="-79.21165"/>
-<point lat="43.74325" lon="-79.21248"/>
-<point lat="43.74133" lon="-79.21451"/>
-<point lat="43.73876" lon="-79.21704"/>
-<point lat="43.73944" lon="-79.21716"/>
-<point lat="43.7406099" lon="-79.21769"/>
-<point lat="43.74317" lon="-79.2189"/>
-<point lat="43.7431399" lon="-79.2196"/>
-</path>
-<path>
 <point lat="43.73229" lon="-79.26712"/>
 <point lat="43.73267" lon="-79.26605"/>
 <point lat="43.73296" lon="-79.26483"/>
@@ -1175,6 +1034,48 @@ Content-Type: text/xml
 <point lat="43.73489" lon="-79.25588"/>
 <point lat="43.73547" lon="-79.25331"/>
 <point lat="43.73652" lon="-79.24828"/>
+</path>
+<path>
+<point lat="43.81982" lon="-79.22083"/>
+<point lat="43.81969" lon="-79.22106"/>
+<point lat="43.82031" lon="-79.22118"/>
+<point lat="43.82058" lon="-79.22104"/>
+<point lat="43.82085" lon="-79.22075"/>
+<point lat="43.8213" lon="-79.22041"/>
+<point lat="43.82136" lon="-79.22036"/>
+<point lat="43.8214" lon="-79.22046"/>
+<point lat="43.82147" lon="-79.22057"/>
+<point lat="43.82152" lon="-79.22064"/>
+<point lat="43.82291" lon="-79.22219"/>
+<point lat="43.82354" lon="-79.22266"/>
+<point lat="43.824" lon="-79.22275"/>
+<point lat="43.82465" lon="-79.22312"/>
+<point lat="43.82493" lon="-79.22329"/>
+<point lat="43.82565" lon="-79.22377"/>
+<point lat="43.8257199" lon="-79.22381"/>
+<point lat="43.82567" lon="-79.22403"/>
+<point lat="43.82565" lon="-79.2241"/>
+<point lat="43.82562" lon="-79.22418"/>
+<point lat="43.82558" lon="-79.22445"/>
+<point lat="43.825" lon="-79.2256"/>
+<point lat="43.82472" lon="-79.22681"/>
+<point lat="43.82455" lon="-79.22727"/>
+<point lat="43.82444" lon="-79.22807"/>
+<point lat="43.82437" lon="-79.22839"/>
+<point lat="43.82425" lon="-79.22868"/>
+<point lat="43.82378" lon="-79.22936"/>
+<point lat="43.82303" lon="-79.23013"/>
+<point lat="43.82266" lon="-79.2296999"/>
+</path>
+<path>
+<point lat="43.79042" lon="-79.1735"/>
+<point lat="43.79033" lon="-79.17341"/>
+<point lat="43.7901" lon="-79.17339"/>
+<point lat="43.78948" lon="-79.17655"/>
+<point lat="43.78896" lon="-79.17879"/>
+<point lat="43.78858" lon="-79.1805"/>
+<point lat="43.78802" lon="-79.18295"/>
+<point lat="43.78669" lon="-79.18816"/>
 </path>
 <path>
 <point lat="43.80185" lon="-79.19957"/>
@@ -1206,16 +1107,6 @@ Content-Type: text/xml
 <point lat="43.81982" lon="-79.22083"/>
 </path>
 <path>
-<point lat="43.79042" lon="-79.1735"/>
-<point lat="43.79033" lon="-79.17341"/>
-<point lat="43.7901" lon="-79.17339"/>
-<point lat="43.78948" lon="-79.17655"/>
-<point lat="43.78896" lon="-79.17879"/>
-<point lat="43.78858" lon="-79.1805"/>
-<point lat="43.78802" lon="-79.18295"/>
-<point lat="43.78669" lon="-79.18816"/>
-</path>
-<path>
 <point lat="43.78585" lon="-79.18718"/>
 <point lat="43.78592" lon="-79.18677"/>
 <point lat="43.78576" lon="-79.18709"/>
@@ -1226,30 +1117,6 @@ Content-Type: text/xml
 <point lat="43.78657" lon="-79.1883"/>
 <point lat="43.78816" lon="-79.1912399"/>
 <point lat="43.78902" lon="-79.19326"/>
-</path>
-<path>
-<point lat="43.7431399" lon="-79.2196"/>
-<point lat="43.74263" lon="-79.22189"/>
-<point lat="43.74194" lon="-79.22495"/>
-<point lat="43.74042" lon="-79.23187"/>
-<point lat="43.73952" lon="-79.23577"/>
-<point lat="43.73898" lon="-79.23819"/>
-<point lat="43.73833" lon="-79.24111"/>
-<point lat="43.7377899" lon="-79.24345"/>
-<point lat="43.7373" lon="-79.24571"/>
-<point lat="43.7368499" lon="-79.24785"/>
-</path>
-<path>
-<point lat="43.7906199" lon="-79.1999"/>
-<point lat="43.7906199" lon="-79.19959"/>
-<point lat="43.79024" lon="-79.19768"/>
-<point lat="43.78929" lon="-79.19441"/>
-<point lat="43.78785" lon="-79.19372"/>
-<point lat="43.78758" lon="-79.19365"/>
-<point lat="43.78726" lon="-79.19361"/>
-<point lat="43.78647" lon="-79.19362"/>
-<point lat="43.78591" lon="-79.1935699"/>
-<point lat="43.78576" lon="-79.19373"/>
 </path>
 </route>
 </body>

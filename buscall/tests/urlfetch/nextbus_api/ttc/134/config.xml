@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:02:21 GMT
+Date: Sun, 25 Dec 2011 20:00:53 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5065
+Content-Length: 5008
 Connection: close
 Content-Type: text/xml
 
@@ -46,7 +46,7 @@ Content-Type: text/xml
 <stop tag="2674" title="257 Finchdene Square" lat="43.8210799" lon="-79.23486" stopId="11550"/>
 <stop tag="9013" title="Finchdene Square At Pullman Court" lat="43.82051" lon="-79.2377399" stopId="11551"/>
 <stop tag="6876" title="Newgale Gate At Finchdene Square Farside" lat="43.81889" lon="-79.2380799" stopId="11552"/>
-<stop tag="5034" title="Opposite 800 A Tapscott Road" lat="43.81994" lon="-79.24042" stopId="11420"/>
+<stop tag="5034" title="Opposite 800 Tapscott Road" lat="43.81994" lon="-79.24042" stopId="11420"/>
 <stop tag="6625" title="Opposite 850 Tapscott Road" lat="43.82221" lon="-79.24143" stopId="10842"/>
 <stop tag="6523" title="1051 Tapscott Road" lat="43.82455" lon="-79.24247" stopId="10843"/>
 <stop tag="9416" title="Tapscott Road At McNicoll Avenue Farside" lat="43.8256599" lon="-79.24425" stopId="10844"/>
@@ -58,13 +58,13 @@ Content-Type: text/xml
 <stop tag="10130" title="Tapscott Road At McNicoll Avenue" lat="43.8260599" lon="-79.2432799" stopId="10851"/>
 <stop tag="9703" title="900 Tapscott Road" lat="43.82424" lon="-79.24247" stopId="10852"/>
 <stop tag="4429" title="850 Tapscott Road" lat="43.8220799" lon="-79.2415399" stopId="10853"/>
-<stop tag="8888" title="800 A Tapscott Road" lat="43.81973" lon="-79.24051" stopId="11421"/>
+<stop tag="8888" title="800 Tapscott Road" lat="43.81973" lon="-79.24051" stopId="11421"/>
 <stop tag="4641" title="Tapscott Road At Newgale Gate Farside" lat="43.81728" lon="-79.23945" stopId="11553"/>
 <stop tag="10352" title="Tapscott Road At Finch Avenue East" lat="43.81442" lon="-79.23737" stopId="11554"/>
 <stop tag="2914" title="Tapscott Road At Melford Drive North Farside" lat="43.81063" lon="-79.2356399" stopId="11555"/>
 <stop tag="8786" title="430 Tapscott Road" lat="43.80909" lon="-79.23496" stopId="11556"/>
 <stop tag="2659" title="Tapscott Road At Crow Trail" lat="43.80761" lon="-79.23285" stopId="11557"/>
-<stop tag="3544" title="Centennial College Loop" lat="43.7849499" lon="-79.22768" stopId="14151"/>
+<stop tag="14829" title="Centennial College" lat="43.7847099" lon="-79.22891" stopId="15053"/>
 <stop tag="14276" title="Scarborough Centre Station" lat="43.7742899" lon="-79.25875" stopId="14757"/>
 <stop tag="9276" title="Triton Road At McCowan Road" lat="43.77532" lon="-79.2529599" stopId="9614"/>
 <stop tag="2541" title="McCowan Road At Progress Avenue Farside" lat="43.77665" lon="-79.25289" stopId="1313"/>
@@ -100,7 +100,7 @@ Content-Type: text/xml
 <stop tag="8182" title="Finchdeme Square East At Torham Place Farside" lat="43.8194599" lon="-79.23321" stopId="10292"/>
 <stop tag="5852" title="Finchdene Square East At Finchdene Square South" lat="43.8174899" lon="-79.2323799" stopId="10293"/>
 <stop tag="3427_ar" title="Finchdene Square At Finch Avenue East" lat="43.8157299" lon="-79.23166"/>
-<stop tag="5034_IB" title="Opposite 800 A Tapscott Road" lat="43.81994" lon="-79.24042" stopId="11420"/>
+<stop tag="5034_IB" title="Opposite 800 Tapscott Road" lat="43.81994" lon="-79.24042" stopId="11420"/>
 <stop tag="6625_IB" title="Opposite 850 Tapscott Road" lat="43.82221" lon="-79.24143" stopId="10842"/>
 <stop tag="6523_IB" title="1051 Tapscott Road" lat="43.82455" lon="-79.24247" stopId="10843"/>
 <stop tag="9416_IB" title="Tapscott Road At McNicoll Avenue Farside" lat="43.8256599" lon="-79.24425" stopId="10844"/>
@@ -112,9 +112,8 @@ Content-Type: text/xml
 <stop tag="10130_IB" title="Tapscott Road At McNicoll Avenue" lat="43.8260599" lon="-79.2432799" stopId="10851"/>
 <stop tag="9703_IB" title="900 Tapscott Road" lat="43.82424" lon="-79.24247" stopId="10852"/>
 <stop tag="4429_IB" title="850 Tapscott Road" lat="43.8220799" lon="-79.2415399" stopId="10853"/>
-<stop tag="8888_IB" title="800 A Tapscott Road" lat="43.81973" lon="-79.24051" stopId="11421"/>
-<stop tag="7855" title="Centennial College - Progress Campus" lat="43.7846199" lon="-79.22923" stopId="14148"/>
-<stop tag="3544_ar" title="Centennial College Loop" lat="43.7849499" lon="-79.22768"/>
+<stop tag="8888_IB" title="800 Tapscott Road" lat="43.81973" lon="-79.24051" stopId="11421"/>
+<stop tag="14829_ar" title="Centennial College" lat="43.7847099" lon="-79.22891"/>
 <stop tag="4489" title="Crow Trail At Horsely Hill Drive" lat="43.80939" lon="-79.2322699" stopId="11545"/>
 <stop tag="6690" title="Crow Trail At Brad Stone Square" lat="43.81107" lon="-79.2327" stopId="11546"/>
 <stop tag="9371" title="Crow Trail At Baldoon Road" lat="43.81322" lon="-79.2320799" stopId="11547"/>
@@ -483,27 +482,6 @@ Content-Type: text/xml
 <point lat="43.81573" lon="-79.23166"/>
 </path>
 <path>
-<point lat="43.78495" lon="-79.22768"/>
-<point lat="43.7850899" lon="-79.2275499"/>
-<point lat="43.78536" lon="-79.22742"/>
-<point lat="43.7855599" lon="-79.22768"/>
-<point lat="43.78529" lon="-79.22871"/>
-<point lat="43.78506" lon="-79.22882"/>
-<point lat="43.78482" lon="-79.22917"/>
-<point lat="43.78457" lon="-79.2294299"/>
-<point lat="43.78438" lon="-79.2296999"/>
-<point lat="43.78426" lon="-79.23002"/>
-<point lat="43.78388" lon="-79.23183"/>
-<point lat="43.78364" lon="-79.23177"/>
-<point lat="43.78346" lon="-79.23193"/>
-<point lat="43.78334" lon="-79.23181"/>
-<point lat="43.78302" lon="-79.2319799"/>
-<point lat="43.78283" lon="-79.23217"/>
-<point lat="43.78219" lon="-79.2330099"/>
-<point lat="43.7817999" lon="-79.23365"/>
-<point lat="43.78166" lon="-79.2348"/>
-</path>
-<path>
 <point lat="43.78166" lon="-79.2348"/>
 <point lat="43.781" lon="-79.23774"/>
 <point lat="43.78071" lon="-79.23887"/>
@@ -740,11 +718,29 @@ Content-Type: text/xml
 <point lat="43.78388" lon="-79.23183"/>
 <point lat="43.78434" lon="-79.22979"/>
 <point lat="43.7845" lon="-79.22951"/>
-<point lat="43.7846199" lon="-79.22923"/>
 <point lat="43.78473" lon="-79.22928"/>
-<point lat="43.78491" lon="-79.22899"/>
-<point lat="43.7848" lon="-79.22861"/>
-<point lat="43.78495" lon="-79.22768"/>
+<point lat="43.7847099" lon="-79.22891"/>
+</path>
+<path>
+<point lat="43.7847099" lon="-79.22891"/>
+<point lat="43.78504" lon="-79.2286699"/>
+<point lat="43.78543" lon="-79.22862"/>
+<point lat="43.78564" lon="-79.22886"/>
+<point lat="43.7856" lon="-79.22918"/>
+<point lat="43.7853" lon="-79.22958"/>
+<point lat="43.78494" lon="-79.22936"/>
+<point lat="43.78464" lon="-79.22935"/>
+<point lat="43.7844399" lon="-79.22958"/>
+<point lat="43.7843" lon="-79.22991"/>
+<point lat="43.78388" lon="-79.23183"/>
+<point lat="43.78364" lon="-79.23177"/>
+<point lat="43.78346" lon="-79.23193"/>
+<point lat="43.78334" lon="-79.23181"/>
+<point lat="43.78302" lon="-79.2319799"/>
+<point lat="43.78283" lon="-79.23217"/>
+<point lat="43.78219" lon="-79.2330099"/>
+<point lat="43.7817999" lon="-79.23365"/>
+<point lat="43.78166" lon="-79.2348"/>
 </path>
 <path>
 <point lat="43.80767" lon="-79.23223"/>

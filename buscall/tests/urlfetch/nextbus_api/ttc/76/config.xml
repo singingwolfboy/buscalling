@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:47 GMT
+Date: Sun, 25 Dec 2011 20:00:01 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2682
+Content-Length: 2684
 Connection: close
 Content-Type: text/xml
 
@@ -68,6 +68,27 @@ Content-Type: text/xml
 <stop tag="1001" title="Royal York Road At Bloor Street West" lat="43.6471799" lon="-79.5111499" stopId="6976"/>
 <stop tag="14272_ar" title="Royal York Station" lat="43.6481" lon="-79.5112899"/>
 <stop tag="4643" title="Portland Street At Royal York Road" lat="43.6191599" lon="-79.49934" stopId="12145"/>
+<direction tag="76_1_76" title="North - 76 Royal York South towards Royal York Station" name="North" useForUI="true">
+  <stop tag="4546" />
+  <stop tag="10215" />
+  <stop tag="7838" />
+  <stop tag="4107" />
+  <stop tag="2092" />
+  <stop tag="1003" />
+  <stop tag="5888" />
+  <stop tag="8415" />
+  <stop tag="4601" />
+  <stop tag="4716" />
+  <stop tag="7537" />
+  <stop tag="6247" />
+  <stop tag="2586" />
+  <stop tag="6134" />
+  <stop tag="12887" />
+  <stop tag="7882" />
+  <stop tag="3891" />
+  <stop tag="1001" />
+  <stop tag="14272_ar" />
+</direction>
 <direction tag="76_0_76B" title="South - 76b Royal York South towards Queensway and Grand Avenue" name="South" useForUI="true">
   <stop tag="14272" />
   <stop tag="3333" />
@@ -89,27 +110,6 @@ Content-Type: text/xml
   <stop tag="4037" />
   <stop tag="10228" />
   <stop tag="4643_ar" />
-</direction>
-<direction tag="76_1_76" title="North - 76 Royal York South towards Royal York Station" name="North" useForUI="true">
-  <stop tag="4546" />
-  <stop tag="10215" />
-  <stop tag="7838" />
-  <stop tag="4107" />
-  <stop tag="2092" />
-  <stop tag="1003" />
-  <stop tag="5888" />
-  <stop tag="8415" />
-  <stop tag="4601" />
-  <stop tag="4716" />
-  <stop tag="7537" />
-  <stop tag="6247" />
-  <stop tag="2586" />
-  <stop tag="6134" />
-  <stop tag="12887" />
-  <stop tag="7882" />
-  <stop tag="3891" />
-  <stop tag="1001" />
-  <stop tag="14272_ar" />
 </direction>
 <direction tag="76_0_76" title="South - 76 Royal York South towards Lake Shore" name="South" useForUI="true">
   <stop tag="14272" />
@@ -254,31 +254,6 @@ Content-Type: text/xml
 <point lat="43.60684" lon="-79.49037"/>
 </path>
 <path>
-<point lat="43.6481" lon="-79.51129"/>
-<point lat="43.64799" lon="-79.51163"/>
-<point lat="43.64779" lon="-79.51154"/>
-<point lat="43.64703" lon="-79.51128"/>
-<point lat="43.64424" lon="-79.51011"/>
-<point lat="43.64223" lon="-79.50926"/>
-<point lat="43.64188" lon="-79.50919"/>
-<point lat="43.64085" lon="-79.50875"/>
-<point lat="43.64056" lon="-79.50868"/>
-<point lat="43.63973" lon="-79.50868"/>
-<point lat="43.63924" lon="-79.50864"/>
-<point lat="43.63911" lon="-79.50856"/>
-<point lat="43.63877" lon="-79.50842"/>
-<point lat="43.63845" lon="-79.50824"/>
-<point lat="43.63778" lon="-79.5075899"/>
-<point lat="43.6375699" lon="-79.5074099"/>
-<point lat="43.63732" lon="-79.50734"/>
-<point lat="43.63714" lon="-79.50714"/>
-<point lat="43.6340999" lon="-79.50596"/>
-<point lat="43.63244" lon="-79.5052"/>
-<point lat="43.63089" lon="-79.50455"/>
-<point lat="43.62894" lon="-79.50375"/>
-<point lat="43.6265" lon="-79.50278"/>
-</path>
-<path>
 <point lat="43.61496" lon="-79.4977399"/>
 <point lat="43.6156099" lon="-79.49809"/>
 <point lat="43.61743" lon="-79.4987699"/>
@@ -305,6 +280,31 @@ Content-Type: text/xml
 <point lat="43.61571" lon="-79.49813"/>
 <point lat="43.61466" lon="-79.49782"/>
 <point lat="43.61234" lon="-79.49684"/>
+</path>
+<path>
+<point lat="43.6481" lon="-79.51129"/>
+<point lat="43.64799" lon="-79.51163"/>
+<point lat="43.64779" lon="-79.51154"/>
+<point lat="43.64703" lon="-79.51128"/>
+<point lat="43.64424" lon="-79.51011"/>
+<point lat="43.64223" lon="-79.50926"/>
+<point lat="43.64188" lon="-79.50919"/>
+<point lat="43.64085" lon="-79.50875"/>
+<point lat="43.64056" lon="-79.50868"/>
+<point lat="43.63973" lon="-79.50868"/>
+<point lat="43.63924" lon="-79.50864"/>
+<point lat="43.63911" lon="-79.50856"/>
+<point lat="43.63877" lon="-79.50842"/>
+<point lat="43.63845" lon="-79.50824"/>
+<point lat="43.63778" lon="-79.5075899"/>
+<point lat="43.6375699" lon="-79.5074099"/>
+<point lat="43.63732" lon="-79.50734"/>
+<point lat="43.63714" lon="-79.50714"/>
+<point lat="43.6340999" lon="-79.50596"/>
+<point lat="43.63244" lon="-79.5052"/>
+<point lat="43.63089" lon="-79.50455"/>
+<point lat="43.62894" lon="-79.50375"/>
+<point lat="43.6265" lon="-79.50278"/>
 </path>
 <path>
 <point lat="43.6215" lon="-79.50045"/>

@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:25 GMT
+Date: Sun, 25 Dec 2011 19:59:34 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1935
+Content-Length: 1928
 Connection: close
 Content-Type: text/xml
 
@@ -22,8 +22,8 @@ Content-Type: text/xml
 <stop tag="5558" title="Kipling Avenue At Warnica Avenue" lat="43.62282" lon="-79.52768" stopId="4385"/>
 <stop tag="9170" title="Kipling Avenue At The Queensway" lat="43.6211499" lon="-79.5270099" stopId="4360"/>
 <stop tag="2881" title="Kipling Avenue At The Queensway Farside" lat="43.6204499" lon="-79.52669" stopId="4362"/>
-<stop tag="6709" title="Kipling Avenue At Torlake Crescent North Side" lat="43.6141999" lon="-79.52379" stopId="4379"/>
-<stop tag="9283" title="Kipling Avenue At Torlake Crescent South Side" lat="43.6116399" lon="-79.5227099" stopId="4381"/>
+<stop tag="6709" title="Kipling Avenue At Torlake Crescent" lat="43.6141999" lon="-79.52379" stopId="4379"/>
+<stop tag="9283" title="Kipling Avenue At Torlake Crescent" lat="43.6116399" lon="-79.5227099" stopId="4381"/>
 <stop tag="2282" title="Kipling Avenue At Horner Avenue" lat="43.60733" lon="-79.52089" stopId="4327"/>
 <stop tag="2102" title="Kipling Avenue At New Toronto Street Farside" lat="43.60363" lon="-79.51932" stopId="4341"/>
 <stop tag="8435" title="Kipling Avenue At Birmingham Street" lat="43.6008199" lon="-79.5181699" stopId="4290"/>
@@ -37,8 +37,8 @@ Content-Type: text/xml
 <stop tag="3866" title="Kipling Avenue At Birmingham Street" lat="43.6005599" lon="-79.51786" stopId="4289"/>
 <stop tag="3764" title="Kipling Avenue At New Toronto Street" lat="43.6038199" lon="-79.5191799" stopId="4342"/>
 <stop tag="3095" title="Kipling Avenue At Horner Avenue" lat="43.6070199" lon="-79.5205199" stopId="4326"/>
-<stop tag="2721" title="Kipling Avenue At Torlake Crescent South Side" lat="43.6114899" lon="-79.5223599" stopId="4380"/>
-<stop tag="3599" title="Kipling Avenue At Torlake Crescent North Side" lat="43.6140099" lon="-79.5234299" stopId="4378"/>
+<stop tag="2721" title="Kipling Avenue At Torlake Crescent" lat="43.6114899" lon="-79.5223599" stopId="4380"/>
+<stop tag="3599" title="Kipling Avenue At Torlake Crescent" lat="43.6140099" lon="-79.5234299" stopId="4378"/>
 <stop tag="1426" title="Kipling Avenue At Evans Avenue Farside" lat="43.6163399" lon="-79.52476" stopId="4307"/>
 <stop tag="2477" title="Kipling Avenue At The Queensway" lat="43.6205699" lon="-79.5263999" stopId="4363"/>
 <stop tag="9759" title="Kipling Avenue At The Queensway Farside" lat="43.6213599" lon="-79.52679" stopId="4361"/>
@@ -122,6 +122,16 @@ Content-Type: text/xml
 <point lat="43.59428" lon="-79.5168"/>
 </path>
 <path>
+<point lat="43.60056" lon="-79.51786"/>
+<point lat="43.60382" lon="-79.51918"/>
+<point lat="43.60702" lon="-79.52052"/>
+<point lat="43.61149" lon="-79.52236"/>
+<point lat="43.61401" lon="-79.52343"/>
+<point lat="43.61489" lon="-79.52395"/>
+<point lat="43.61566" lon="-79.52444"/>
+<point lat="43.61634" lon="-79.52476"/>
+</path>
+<path>
 <point lat="43.62136" lon="-79.52679"/>
 <point lat="43.62267" lon="-79.52739"/>
 <point lat="43.62487" lon="-79.52826"/>
@@ -144,16 +154,6 @@ Content-Type: text/xml
 <point lat="43.63908" lon="-79.53426"/>
 <point lat="43.63868" lon="-79.53487"/>
 <point lat="43.63784" lon="-79.53536"/>
-</path>
-<path>
-<point lat="43.60056" lon="-79.51786"/>
-<point lat="43.60382" lon="-79.51918"/>
-<point lat="43.60702" lon="-79.52052"/>
-<point lat="43.61149" lon="-79.52236"/>
-<point lat="43.61401" lon="-79.52343"/>
-<point lat="43.61489" lon="-79.52395"/>
-<point lat="43.61566" lon="-79.52444"/>
-<point lat="43.61634" lon="-79.52476"/>
 </path>
 <path>
 <point lat="43.61634" lon="-79.52476"/>

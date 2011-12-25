@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:59:19 GMT
+Date: Sun, 25 Dec 2011 19:57:00 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2767
+Content-Length: 2768
 Connection: close
 Content-Type: text/xml
 
@@ -113,7 +113,7 @@ Content-Type: text/xml
   <stop tag="5234" />
   <stop tag="5239" />
 </direction>
-<direction tag="N__OB1" title="Outbound to Ocean Beach via Downtown" name="Outbound" useForUI="true">
+<direction tag="N__OB1" title="Outbound to Ocean Beach  via Downtown" name="Outbound" useForUI="true">
   <stop tag="5240" />
   <stop tag="5237" />
   <stop tag="7145" />
@@ -159,13 +159,6 @@ Content-Type: text/xml
 <point lat="37.76091" lon="-122.49556"/>
 </path>
 <path>
-<point lat="37.79323" lon="-122.39654"/>
-<point lat="37.78879" lon="-122.40213"/>
-<point lat="37.7843" lon="-122.40782"/>
-<point lat="37.77868" lon="-122.41499"/>
-<point lat="37.77523" lon="-122.41934"/>
-</path>
-<path>
 <point lat="37.765" lon="-122.45656"/>
 <point lat="37.76482" lon="-122.45771"/>
 <point lat="37.76456" lon="-122.45769"/>
@@ -181,6 +174,13 @@ Content-Type: text/xml
 <point lat="37.76208" lon="-122.47033"/>
 <point lat="37.76191" lon="-122.47378"/>
 <point lat="37.76174" lon="-122.47682"/>
+</path>
+<path>
+<point lat="37.79323" lon="-122.39654"/>
+<point lat="37.78879" lon="-122.40213"/>
+<point lat="37.7843" lon="-122.40782"/>
+<point lat="37.77868" lon="-122.41499"/>
+<point lat="37.77523" lon="-122.41934"/>
 </path>
 <path>
 <point lat="37.76091" lon="-122.49556"/>

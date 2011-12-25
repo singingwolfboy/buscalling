@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:31 GMT
+Date: Sun, 25 Dec 2011 19:59:41 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 7598
+Content-Length: 7550
 Connection: close
 Content-Type: text/xml
 
@@ -103,7 +103,6 @@ Content-Type: text/xml
 <stop tag="6055" title="Victoria Park Avenue At Steeles Avenue East Farside" lat="43.8150399" lon="-79.34123" stopId="8510"/>
 <stop tag="3149" title="3900 Victoria Park Avenue" lat="43.81289" lon="-79.34022" stopId="9523"/>
 <stop tag="5508_ar" title="Gordon Baker Road At Victoria Park Avenue Farside" lat="43.8107699" lon="-79.33845"/>
-<stop tag="830" title="Brebeuf College School" lat="43.8017499" lon="-79.40262" stopId="14219"/>
 <stop tag="8716" title="Gordon Baker Road At Victoria Park Avenue" lat="43.8108099" lon="-79.3387" stopId="7796"/>
 <stop tag="5359" title="Victoria Park Avenue At Sprint Canada" lat="43.8135" lon="-79.34021" stopId="9522"/>
 <stop tag="8270" title="Steeles Avenue East At Victoria Park Avenue Farside" lat="43.8155799" lon="-79.34216" stopId="8241"/>
@@ -138,7 +137,7 @@ Content-Type: text/xml
 <stop tag="14722" title="Morningside Avenue At Staines Road Farside" lat="43.8197099" lon="-79.22169" stopId="14990"/>
 <stop tag="14723" title="Morningside Avenue At Plantain Way" lat="43.8210999" lon="-79.22666" stopId="14991"/>
 <stop tag="581" title="Nightstar Road At Morningside Avenue Farside" lat="43.8233999" lon="-79.2305099" stopId="13906"/>
-<stop tag="582" title="Morningside Avenue (Extension) At Walkway (West Of Oasis)" lat="43.82657" lon="-79.23288" stopId="14104"/>
+<stop tag="582" title="Morningside Avenue At Walkway South Of Oasis" lat="43.82657" lon="-79.23288" stopId="14104"/>
 <stop tag="4594" title="Oasis Boulevard At Seasons Drive" lat="43.8291" lon="-79.23375" stopId="13907"/>
 <stop tag="8145" title="Seasons Drive At Grosbeak Crescent" lat="43.82988" lon="-79.23026" stopId="13908"/>
 <stop tag="4994" title="Seasons Drive At Canoe Crescent West" lat="43.8292899" lon="-79.22835" stopId="14105"/>
@@ -150,7 +149,7 @@ Content-Type: text/xml
 <stop tag="10457" title="Steeles Avenue East At Staines Road Farside" lat="43.8409599" lon="-79.23268" stopId="14381"/>
 <stop tag="10455" title="Steeles Avenue East At Eastvale Road" lat="43.83816" lon="-79.2450299" stopId="14379"/>
 <stop tag="6920" title="Steeles Avenue East At Markham Road Farside" lat="43.8364899" lon="-79.2521599" stopId="11611"/>
-<stop tag="14612" title="Steeles Ave E At Marydale Avenue" lat="43.8360699" lon="-79.25412" stopId="14603"/>
+<stop tag="14612" title="Steeles Avenue East At Marydale Avenue" lat="43.8360699" lon="-79.25412" stopId="14603"/>
 <stop tag="5121" title="Steeles Avenue East At Walkway East Shadlock Street" lat="43.8351799" lon="-79.25779" stopId="11612"/>
 <stop tag="5463" title="Steeles Avenue East At Shadlock Street" lat="43.83449" lon="-79.2608599" stopId="11613"/>
 <stop tag="1570" title="Opposite 5671 Steeles Avenue East" lat="43.83341" lon="-79.2651299" stopId="11614"/>
@@ -183,77 +182,43 @@ Content-Type: text/xml
 <stop tag="2490" title="Gordon Baker Road At Victoria Park Avenue" lat="43.8113899" lon="-79.33569" stopId="12001"/>
 <stop tag="4006" title="Pharmacy Avenue At Walkway South Of Steeles Avenue" lat="43.8139799" lon="-79.3350799" stopId="9440"/>
 <stop tag="3905" title="Pharmacy Avenue At Steeles Avenue East" lat="43.81582" lon="-79.33593" stopId="12002"/>
-<direction tag="53_1_53A" title="West - 53 Steeles East towards Finch Station" name="West" useForUI="true">
-  <stop tag="14722" />
-  <stop tag="14723" />
-  <stop tag="581" />
-  <stop tag="582" />
-  <stop tag="4594" />
-  <stop tag="8145" />
-  <stop tag="4994" />
-  <stop tag="14721" />
-  <stop tag="14719" />
-  <stop tag="14718" />
-  <stop tag="14715" />
-  <stop tag="10419" />
-  <stop tag="10457" />
-  <stop tag="10455" />
-  <stop tag="6920" />
-  <stop tag="14612" />
-  <stop tag="5121" />
-  <stop tag="5463" />
-  <stop tag="1570" />
-  <stop tag="4999" />
-  <stop tag="8448" />
-  <stop tag="6773" />
-  <stop tag="3789" />
-  <stop tag="2667" />
-  <stop tag="4000" />
-  <stop tag="1354" />
-  <stop tag="7611" />
-  <stop tag="7508" />
-  <stop tag="7445" />
-  <stop tag="6964" />
-  <stop tag="5438" />
-  <stop tag="10301" />
-  <stop tag="1243" />
-  <stop tag="7922" />
-  <stop tag="1166" />
-  <stop tag="6772" />
-  <stop tag="6495" />
-  <stop tag="6755" />
-  <stop tag="1219" />
-  <stop tag="5718" />
-  <stop tag="10166" />
-  <stop tag="8270" />
-  <stop tag="6491" />
-  <stop tag="2144" />
-  <stop tag="8409" />
-  <stop tag="706" />
-  <stop tag="9086" />
-  <stop tag="9797" />
-  <stop tag="9134" />
-  <stop tag="2678" />
-  <stop tag="6059" />
-  <stop tag="9127" />
-  <stop tag="3348" />
-  <stop tag="1824" />
-  <stop tag="5373" />
-  <stop tag="4846" />
-  <stop tag="5622" />
-  <stop tag="6786" />
-  <stop tag="929" />
-  <stop tag="10113" />
-  <stop tag="2726" />
-  <stop tag="831" />
-  <stop tag="5372" />
-  <stop tag="6903" />
-  <stop tag="1843" />
-  <stop tag="9003" />
-  <stop tag="10159" />
-  <stop tag="4271" />
-  <stop tag="900" />
-  <stop tag="14204_ar" />
+<direction tag="53_0_53" title="East - 53 Steeles East towards Pharmacy" name="East" useForUI="true">
+  <stop tag="14204" />
+  <stop tag="1805" />
+  <stop tag="12888" />
+  <stop tag="1100" />
+  <stop tag="9807" />
+  <stop tag="5220" />
+  <stop tag="3152" />
+  <stop tag="5025" />
+  <stop tag="3133" />
+  <stop tag="3170" />
+  <stop tag="7194" />
+  <stop tag="7906" />
+  <stop tag="5229" />
+  <stop tag="3933" />
+  <stop tag="4178" />
+  <stop tag="9717" />
+  <stop tag="8190" />
+  <stop tag="5348" />
+  <stop tag="8507" />
+  <stop tag="953" />
+  <stop tag="6674" />
+  <stop tag="1979" />
+  <stop tag="6812" />
+  <stop tag="4696" />
+  <stop tag="6794" />
+  <stop tag="5356" />
+  <stop tag="4582" />
+  <stop tag="3064" />
+  <stop tag="9177" />
+  <stop tag="8613" />
+  <stop tag="8857" />
+  <stop tag="9131" />
+  <stop tag="8061" />
+  <stop tag="6642" />
+  <stop tag="4438" />
+  <stop tag="8716_ar" />
 </direction>
 <direction tag="53_0_53ASun" title="East - 53a Steeles East towards Staines" name="East" useForUI="true">
   <stop tag="14204" />
@@ -328,79 +293,6 @@ Content-Type: text/xml
   <stop tag="10041" />
   <stop tag="14722_ar" />
 </direction>
-<direction tag="53_1_53r" title="West - 53 Steeles East towards Finch Station" name="West" useForUI="true">
-  <stop tag="5508" />
-  <stop tag="2490" />
-  <stop tag="4006" />
-  <stop tag="3905" />
-  <stop tag="8270" />
-  <stop tag="6491" />
-  <stop tag="2144" />
-  <stop tag="8409" />
-  <stop tag="706" />
-  <stop tag="9086" />
-  <stop tag="9797" />
-  <stop tag="9134" />
-  <stop tag="2678" />
-  <stop tag="6059" />
-  <stop tag="9127" />
-  <stop tag="3348" />
-  <stop tag="1824" />
-  <stop tag="5373" />
-  <stop tag="4846" />
-  <stop tag="5622" />
-  <stop tag="6786" />
-  <stop tag="929" />
-  <stop tag="10113" />
-  <stop tag="2726" />
-  <stop tag="831" />
-  <stop tag="5372" />
-  <stop tag="6903" />
-  <stop tag="1843" />
-  <stop tag="9003" />
-  <stop tag="10159" />
-  <stop tag="4271" />
-  <stop tag="900" />
-  <stop tag="14204_ar" />
-</direction>
-<direction tag="53_0_53" title="East - 53 Steeles East towards Pharmacy" name="East" useForUI="true">
-  <stop tag="14204" />
-  <stop tag="1805" />
-  <stop tag="12888" />
-  <stop tag="1100" />
-  <stop tag="9807" />
-  <stop tag="5220" />
-  <stop tag="3152" />
-  <stop tag="5025" />
-  <stop tag="3133" />
-  <stop tag="3170" />
-  <stop tag="7194" />
-  <stop tag="7906" />
-  <stop tag="5229" />
-  <stop tag="3933" />
-  <stop tag="4178" />
-  <stop tag="9717" />
-  <stop tag="8190" />
-  <stop tag="5348" />
-  <stop tag="8507" />
-  <stop tag="953" />
-  <stop tag="6674" />
-  <stop tag="1979" />
-  <stop tag="6812" />
-  <stop tag="4696" />
-  <stop tag="6794" />
-  <stop tag="5356" />
-  <stop tag="4582" />
-  <stop tag="3064" />
-  <stop tag="9177" />
-  <stop tag="8613" />
-  <stop tag="8857" />
-  <stop tag="9131" />
-  <stop tag="8061" />
-  <stop tag="6642" />
-  <stop tag="4438" />
-  <stop tag="8716_ar" />
-</direction>
 <direction tag="53_0_53BSun" title="East - 53b Steeles East towards Markham" name="East" useForUI="true">
   <stop tag="14204" />
   <stop tag="1805" />
@@ -463,6 +355,113 @@ Content-Type: text/xml
   <stop tag="7660" />
   <stop tag="4294" />
   <stop tag="6654_ar" />
+</direction>
+<direction tag="53_1_53r" title="West - 53 Steeles East towards Finch Station" name="West" useForUI="true">
+  <stop tag="5508" />
+  <stop tag="2490" />
+  <stop tag="4006" />
+  <stop tag="3905" />
+  <stop tag="8270" />
+  <stop tag="6491" />
+  <stop tag="2144" />
+  <stop tag="8409" />
+  <stop tag="706" />
+  <stop tag="9086" />
+  <stop tag="9797" />
+  <stop tag="9134" />
+  <stop tag="2678" />
+  <stop tag="6059" />
+  <stop tag="9127" />
+  <stop tag="3348" />
+  <stop tag="1824" />
+  <stop tag="5373" />
+  <stop tag="4846" />
+  <stop tag="5622" />
+  <stop tag="6786" />
+  <stop tag="929" />
+  <stop tag="10113" />
+  <stop tag="2726" />
+  <stop tag="831" />
+  <stop tag="5372" />
+  <stop tag="6903" />
+  <stop tag="1843" />
+  <stop tag="9003" />
+  <stop tag="10159" />
+  <stop tag="4271" />
+  <stop tag="900" />
+  <stop tag="14204_ar" />
+</direction>
+<direction tag="53_1_53A" title="West - 53 Steeles East towards Finch Station" name="West" useForUI="true">
+  <stop tag="14722" />
+  <stop tag="14723" />
+  <stop tag="581" />
+  <stop tag="582" />
+  <stop tag="4594" />
+  <stop tag="8145" />
+  <stop tag="4994" />
+  <stop tag="14721" />
+  <stop tag="14719" />
+  <stop tag="14718" />
+  <stop tag="14715" />
+  <stop tag="10419" />
+  <stop tag="10457" />
+  <stop tag="10455" />
+  <stop tag="6920" />
+  <stop tag="14612" />
+  <stop tag="5121" />
+  <stop tag="5463" />
+  <stop tag="1570" />
+  <stop tag="4999" />
+  <stop tag="8448" />
+  <stop tag="6773" />
+  <stop tag="3789" />
+  <stop tag="2667" />
+  <stop tag="4000" />
+  <stop tag="1354" />
+  <stop tag="7611" />
+  <stop tag="7508" />
+  <stop tag="7445" />
+  <stop tag="6964" />
+  <stop tag="5438" />
+  <stop tag="10301" />
+  <stop tag="1243" />
+  <stop tag="7922" />
+  <stop tag="1166" />
+  <stop tag="6772" />
+  <stop tag="6495" />
+  <stop tag="6755" />
+  <stop tag="1219" />
+  <stop tag="5718" />
+  <stop tag="10166" />
+  <stop tag="8270" />
+  <stop tag="6491" />
+  <stop tag="2144" />
+  <stop tag="8409" />
+  <stop tag="706" />
+  <stop tag="9086" />
+  <stop tag="9797" />
+  <stop tag="9134" />
+  <stop tag="2678" />
+  <stop tag="6059" />
+  <stop tag="9127" />
+  <stop tag="3348" />
+  <stop tag="1824" />
+  <stop tag="5373" />
+  <stop tag="4846" />
+  <stop tag="5622" />
+  <stop tag="6786" />
+  <stop tag="929" />
+  <stop tag="10113" />
+  <stop tag="2726" />
+  <stop tag="831" />
+  <stop tag="5372" />
+  <stop tag="6903" />
+  <stop tag="1843" />
+  <stop tag="9003" />
+  <stop tag="10159" />
+  <stop tag="4271" />
+  <stop tag="900" />
+  <stop tag="14204_ar" />
 </direction>
 <path>
 <point lat="43.83221" lon="-79.26991"/>
@@ -567,33 +566,6 @@ Content-Type: text/xml
 <point lat="43.81194" lon="-79.35802"/>
 </path>
 <path>
-<point lat="43.83177" lon="-79.27524"/>
-<point lat="43.83494" lon="-79.27607"/>
-<point lat="43.83519" lon="-79.27629"/>
-<point lat="43.83571" lon="-79.27391"/>
-<point lat="43.83578" lon="-79.27368"/>
-<point lat="43.83597" lon="-79.27302"/>
-<point lat="43.83646" lon="-79.27059"/>
-<point lat="43.8368899" lon="-79.26896"/>
-<point lat="43.83688" lon="-79.26861"/>
-<point lat="43.83674" lon="-79.26814"/>
-<point lat="43.83663" lon="-79.2681099"/>
-<point lat="43.83627" lon="-79.26719"/>
-<point lat="43.83616" lon="-79.2667699"/>
-<point lat="43.83622" lon="-79.26619"/>
-<point lat="43.83652" lon="-79.26466"/>
-<point lat="43.83724" lon="-79.26155"/>
-<point lat="43.83742" lon="-79.26101"/>
-<point lat="43.83751" lon="-79.26071"/>
-<point lat="43.8376499" lon="-79.26038"/>
-<point lat="43.8388" lon="-79.25886"/>
-<point lat="43.8389499" lon="-79.25858"/>
-<point lat="43.83899" lon="-79.25827"/>
-<point lat="43.8397" lon="-79.2552"/>
-<point lat="43.83985" lon="-79.2547699"/>
-<point lat="43.84026" lon="-79.25274"/>
-</path>
-<path>
 <point lat="43.80786" lon="-79.3758299"/>
 <point lat="43.80626" lon="-79.38316"/>
 <point lat="43.80569" lon="-79.38565"/>
@@ -624,12 +596,31 @@ Content-Type: text/xml
 <point lat="43.78094" lon="-79.41483"/>
 </path>
 <path>
-<point lat="43.81504" lon="-79.34123"/>
-<point lat="43.814" lon="-79.34061"/>
-<point lat="43.8136" lon="-79.34052"/>
-<point lat="43.81289" lon="-79.34022"/>
-<point lat="43.8106099" lon="-79.33917"/>
-<point lat="43.81077" lon="-79.33845"/>
+<point lat="43.83177" lon="-79.27524"/>
+<point lat="43.83494" lon="-79.27607"/>
+<point lat="43.83519" lon="-79.27629"/>
+<point lat="43.83571" lon="-79.27391"/>
+<point lat="43.83578" lon="-79.27368"/>
+<point lat="43.83597" lon="-79.27302"/>
+<point lat="43.83646" lon="-79.27059"/>
+<point lat="43.8368899" lon="-79.26896"/>
+<point lat="43.83688" lon="-79.26861"/>
+<point lat="43.83674" lon="-79.26814"/>
+<point lat="43.83663" lon="-79.2681099"/>
+<point lat="43.83627" lon="-79.26719"/>
+<point lat="43.83616" lon="-79.2667699"/>
+<point lat="43.83622" lon="-79.26619"/>
+<point lat="43.83652" lon="-79.26466"/>
+<point lat="43.83724" lon="-79.26155"/>
+<point lat="43.83742" lon="-79.26101"/>
+<point lat="43.83751" lon="-79.26071"/>
+<point lat="43.8376499" lon="-79.26038"/>
+<point lat="43.8388" lon="-79.25886"/>
+<point lat="43.8389499" lon="-79.25858"/>
+<point lat="43.83899" lon="-79.25827"/>
+<point lat="43.8397" lon="-79.2552"/>
+<point lat="43.83985" lon="-79.2547699"/>
+<point lat="43.84026" lon="-79.25274"/>
 </path>
 <path>
 <point lat="43.83873" lon="-79.2322499"/>
@@ -934,12 +925,6 @@ Content-Type: text/xml
 <point lat="43.81667" lon="-79.33684"/>
 </path>
 <path>
-<point lat="43.80175" lon="-79.40262"/>
-<point lat="43.80193" lon="-79.40187"/>
-<point lat="43.80296" lon="-79.39734"/>
-<point lat="43.80407" lon="-79.39212"/>
-</path>
-<path>
 <point lat="43.81558" lon="-79.34216"/>
 <point lat="43.81425" lon="-79.34823"/>
 <point lat="43.81134" lon="-79.36053"/>
@@ -1049,6 +1034,14 @@ Content-Type: text/xml
 <point lat="43.81582" lon="-79.33593"/>
 <point lat="43.81684" lon="-79.33649"/>
 <point lat="43.81558" lon="-79.34216"/>
+</path>
+<path>
+<point lat="43.81504" lon="-79.34123"/>
+<point lat="43.814" lon="-79.34061"/>
+<point lat="43.8136" lon="-79.34052"/>
+<point lat="43.81289" lon="-79.34022"/>
+<point lat="43.8106099" lon="-79.33917"/>
+<point lat="43.81077" lon="-79.33845"/>
 </path>
 <path>
 <point lat="43.81134" lon="-79.36053"/>

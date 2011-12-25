@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:09 GMT
+Date: Sun, 25 Dec 2011 19:59:15 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 2287
+Content-Length: 2270
 Connection: close
 Content-Type: text/xml
 
@@ -17,11 +17,11 @@ Content-Type: text/xml
 <stop tag="4247" title="Coxwell Avenue At Hanson Street Farside" lat="43.6795699" lon="-79.3221299" stopId="1792"/>
 <stop tag="10468" title="Coxwell Avenue At Casci Avenue" lat="43.6773499" lon="-79.3211999" stopId="14425"/>
 <stop tag="10181" title="Coxwell Avenue At Fairford Avenue" lat="43.6755399" lon="-79.32043" stopId="1791"/>
-<stop tag="10283" title="Coxwell Avenue At Lower Gerrard Street East" lat="43.67312" lon="-79.31943" stopId="1794"/>
+<stop tag="10283" title="Coxwell Avenue At Gerrard Street East" lat="43.67312" lon="-79.31943" stopId="1794"/>
 <stop tag="4644" title="Coxwell Avenue At Robbins Avenue" lat="43.66988" lon="-79.3181" stopId="1797"/>
 <stop tag="5873" title="Coxwell Avenue At Dundas Street East" lat="43.66903" lon="-79.31776" stopId="1788"/>
 <stop tag="8742" title="Coxwell Avenue At Queen Street East" lat="43.66669" lon="-79.31678" stopId="1795"/>
-<stop tag="308" title="Eastern Avenue At Queen Street East South Side Farside" lat="43.66678" lon="-79.3127199" stopId="11181"/>
+<stop tag="308" title="Eastern Avenue At Queen Street East Farside" lat="43.66678" lon="-79.3127199" stopId="11181"/>
 <stop tag="2754_ar" title="Coxwell Avenue At Queen Street East" lat="43.6659399" lon="-79.31631"/>
 <stop tag="490" title="Queen Street East At Kingston Road" lat="43.6671399" lon="-79.31289" stopId="13461"/>
 <stop tag="4861" title="Kingston Road At Dixon Avenue" lat="43.6697899" lon="-79.31117" stopId="2774"/>
@@ -41,7 +41,7 @@ Content-Type: text/xml
 <stop tag="1129" title="Coxwell Avenue At Dundas Street East" lat="43.6685499" lon="-79.3173999" stopId="1787"/>
 <stop tag="5934" title="Coxwell Avenue At Robbins Avenue" lat="43.66978" lon="-79.31791" stopId="1796"/>
 <stop tag="5576" title="Coxwell Avenue At Eastwood Road" lat="43.67271" lon="-79.31911" stopId="1790"/>
-<stop tag="8980" title="Coxwell Avenue At Upper Gerrard Street East" lat="43.6750999" lon="-79.3201" stopId="1800"/>
+<stop tag="8980" title="Coxwell Avenue At Gerrard Street East" lat="43.6750999" lon="-79.3201" stopId="1800"/>
 <stop tag="7359" title="Coxwell Avenue At Casci Avenue" lat="43.6773399" lon="-79.3209999" stopId="1783"/>
 <stop tag="8251" title="Coxwell Avenue At Hanson Street" lat="43.67968" lon="-79.322" stopId="1793"/>
 <stop tag="3260" title="Coxwell Avenue At Earl Haig Avenue Farside" lat="43.6814699" lon="-79.3227199" stopId="9541"/>
@@ -61,7 +61,7 @@ Content-Type: text/xml
 <stop tag="6027" title="Kingston Road At Columbine Avenue" lat="43.6716799" lon="-79.31036" stopId="2772"/>
 <stop tag="3281" title="Kingston Road At Dundas Street East" lat="43.67009" lon="-79.3112299" stopId="2775"/>
 <stop tag="4577" title="Kingston Road At Queen Street East" lat="43.66799" lon="-79.3122699" stopId="14058"/>
-<stop tag="308_IB" title="Eastern Avenue At Queen Street East South Side Farside" lat="43.6667799" lon="-79.3127199" stopId="11181"/>
+<stop tag="308_IB" title="Eastern Avenue At Queen Street East Farside" lat="43.6667799" lon="-79.3127199" stopId="11181"/>
 <stop tag="438" title="Kingston Road At Glen Manor Drive" lat="43.67999" lon="-79.2935499" stopId="10235"/>
 <direction tag="22_0_22ASun" title="South - 22a Coxwell towards Victoria Park Ave via Kingston Rd" name="South" useForUI="true">
   <stop tag="14166" />
@@ -188,13 +188,6 @@ Content-Type: text/xml
 <point lat="43.67904" lon="-79.29774"/>
 </path>
 <path>
-<point lat="43.66594" lon="-79.31631"/>
-<point lat="43.66855" lon="-79.3174"/>
-<point lat="43.66978" lon="-79.31791"/>
-<point lat="43.67271" lon="-79.31911"/>
-<point lat="43.6751" lon="-79.3201"/>
-</path>
-<path>
 <point lat="43.67904" lon="-79.29774"/>
 <point lat="43.6784" lon="-79.30046"/>
 <point lat="43.67835" lon="-79.30083"/>
@@ -221,6 +214,13 @@ Content-Type: text/xml
 <point lat="43.66613" lon="-79.31332"/>
 <point lat="43.66549" lon="-79.3162"/>
 <point lat="43.66594" lon="-79.31631"/>
+</path>
+<path>
+<point lat="43.66594" lon="-79.31631"/>
+<point lat="43.66855" lon="-79.3174"/>
+<point lat="43.66978" lon="-79.31791"/>
+<point lat="43.67271" lon="-79.31911"/>
+<point lat="43.6751" lon="-79.3201"/>
 </path>
 <path>
 <point lat="43.67875" lon="-79.29836"/>

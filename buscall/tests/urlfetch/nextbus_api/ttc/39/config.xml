@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:21 GMT
+Date: Sun, 25 Dec 2011 19:59:29 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5610
+Content-Length: 5602
 Connection: close
 Content-Type: text/xml
 
@@ -108,8 +108,8 @@ Content-Type: text/xml
 <stop tag="1792" title="Finch Avenue East At Cherokee Boulevard" lat="43.79355" lon="-79.33671" stopId="2503"/>
 <stop tag="2791" title="Seneca College Opposite Seneca Hill Drive" lat="43.7940999" lon="-79.34902" stopId="2549"/>
 <stop tag="2575" title="Finch Avenue East At Skymark Drive" lat="43.79335" lon="-79.3520699" stopId="2552"/>
-<stop tag="1889" title="Finch Avenue East At Don Mills Road East Side" lat="43.7928899" lon="-79.35415" stopId="9128"/>
-<stop tag="4303" title="Finch Avenue East At Don Mills Road West Side Farside" lat="43.7926999" lon="-79.35528" stopId="9617"/>
+<stop tag="1889" title="Finch Avenue East At Don Mills Road" lat="43.7928899" lon="-79.35415" stopId="9128"/>
+<stop tag="4303" title="Finch Avenue East At Don Mills Road Farside" lat="43.7926999" lon="-79.35528" stopId="9617"/>
 <stop tag="5724" title="Finch Avenue East At Brahms Avenue" lat="43.79211" lon="-79.3579299" stopId="2492"/>
 <stop tag="3447" title="Finch Avenue East At Liszt Gate" lat="43.79099" lon="-79.3629499" stopId="2521"/>
 <stop tag="9219" title="Finch Avenue East At Ravel Road" lat="43.79046" lon="-79.3651799" stopId="2544"/>
@@ -342,12 +342,6 @@ Content-Type: text/xml
 <point lat="43.81279" lon="-79.24337"/>
 </path>
 <path>
-<point lat="43.79916" lon="-79.30573"/>
-<point lat="43.79816" lon="-79.3097499"/>
-<point lat="43.79768" lon="-79.31211"/>
-<point lat="43.79695" lon="-79.31544"/>
-</path>
-<path>
 <point lat="43.79252" lon="-79.35506"/>
 <point lat="43.79265" lon="-79.35418"/>
 <point lat="43.79347" lon="-79.35063"/>
@@ -369,6 +363,12 @@ Content-Type: text/xml
 <point lat="43.79273" lon="-79.33335"/>
 <point lat="43.79295" lon="-79.33196"/>
 <point lat="43.79292" lon="-79.3317"/>
+</path>
+<path>
+<point lat="43.79916" lon="-79.30573"/>
+<point lat="43.79816" lon="-79.3097499"/>
+<point lat="43.79768" lon="-79.31211"/>
+<point lat="43.79695" lon="-79.31544"/>
 </path>
 <path>
 <point lat="43.79661" lon="-79.31603"/>
@@ -434,6 +434,16 @@ Content-Type: text/xml
 <point lat="43.79252" lon="-79.35506"/>
 </path>
 <path>
+<point lat="43.79883" lon="-79.30619"/>
+<point lat="43.79954" lon="-79.30354"/>
+<point lat="43.80041" lon="-79.29978"/>
+<point lat="43.80109" lon="-79.29675"/>
+<point lat="43.80173" lon="-79.29441"/>
+<point lat="43.80238" lon="-79.29171"/>
+<point lat="43.8030199" lon="-79.28909"/>
+<point lat="43.80359" lon="-79.28654"/>
+</path>
+<path>
 <point lat="43.78111" lon="-79.41506"/>
 <point lat="43.78128" lon="-79.41524"/>
 <point lat="43.78146" lon="-79.41531"/>
@@ -458,16 +468,6 @@ Content-Type: text/xml
 <point lat="43.78484" lon="-79.39257"/>
 <point lat="43.7849999" lon="-79.39214"/>
 <point lat="43.7857399" lon="-79.38855"/>
-</path>
-<path>
-<point lat="43.79883" lon="-79.30619"/>
-<point lat="43.79954" lon="-79.30354"/>
-<point lat="43.80041" lon="-79.29978"/>
-<point lat="43.80109" lon="-79.29675"/>
-<point lat="43.80173" lon="-79.29441"/>
-<point lat="43.80238" lon="-79.29171"/>
-<point lat="43.8030199" lon="-79.28909"/>
-<point lat="43.80359" lon="-79.28654"/>
 </path>
 <path>
 <point lat="43.80391" lon="-79.28605"/>

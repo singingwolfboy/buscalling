@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 05:57:52 GMT
+Date: Sun, 25 Dec 2011 19:55:23 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 4564
+Content-Length: 4545
 Connection: close
 Content-Type: text/xml
 
@@ -38,14 +38,14 @@ Content-Type: text/xml
 <stop tag="5364" title="Ferry St @ Eastern Ave" lat="42.4243899" lon="-71.06454" stopId="05364"/>
 <stop tag="5365" title="Eastern Ave @ Main St" lat="42.4233899" lon="-71.06721" stopId="05365"/>
 <stop tag="5366" title="Main St @ Centre St" lat="42.4251" lon="-71.06768" stopId="05366"/>
-<stop tag="5342_0" title="Main St opp Pleasant St" lat="42.4261699" lon="-71.06735"/>
+<stop tag="5342" title="Main St opp Pleasant St" lat="42.4261699" lon="-71.06735" stopId="05342"/>
 <stop tag="9215" title="Main St @ Salem St" lat="42.4275799" lon="-71.06696" stopId="09215"/>
 <stop tag="19215" title="Florence St @ Ramsdell Rd" lat="42.4286799" lon="-71.06796" stopId="19215"/>
 <stop tag="5369" title="Florence St @ Washington St" lat="42.4286499" lon="-71.07116" stopId="05369"/>
 <stop tag="53270_ar" title="Malden Ctr Sta East Busway Bay" lat="42.4266299" lon="-71.07411"/>
 <stop tag="53270" title="Malden Ctr Sta East Busway Bay" lat="42.4266299" lon="-71.07411" stopId="53270"/>
 <stop tag="5289" title="Centre St @ Stop &amp; Shop" lat="42.4252499" lon="-71.0703699" stopId="05289"/>
-<stop tag="5342" title="Main St opp Pleasant St" lat="42.42617" lon="-71.06735" stopId="05342"/>
+<stop tag="5342_1" title="Main St opp Pleasant St" lat="42.42617" lon="-71.06735"/>
 <stop tag="5343" title="Ferry St @ Centre St" lat="42.4251499" lon="-71.0652499" stopId="05343"/>
 <stop tag="5344" title="Ferry St @ Eastern Ave" lat="42.42451" lon="-71.0647699" stopId="05344"/>
 <stop tag="5345" title="Ferry St opp Elmwood Pk" lat="42.42305" lon="-71.06248" stopId="05345"/>
@@ -79,7 +79,7 @@ Content-Type: text/xml
 <direction tag="104_1_var0" title="Sullivan Station via Ferry St." name="Inbound" useForUI="true">
   <stop tag="53270" />
   <stop tag="5289" />
-  <stop tag="5342" />
+  <stop tag="5342_1" />
   <stop tag="5343" />
   <stop tag="5344" />
   <stop tag="5345" />
@@ -139,7 +139,7 @@ Content-Type: text/xml
   <stop tag="5364" />
   <stop tag="5365" />
   <stop tag="5366" />
-  <stop tag="5342_0" />
+  <stop tag="5342" />
   <stop tag="9215" />
   <stop tag="19215" />
   <stop tag="5369" />
@@ -336,6 +336,44 @@ Content-Type: text/xml
 <point lat="42.41507" lon="-71.0484"/>
 </path>
 <path>
+<point lat="42.42168" lon="-71.05859"/>
+<point lat="42.42188" lon="-71.05903"/>
+<point lat="42.42205" lon="-71.05941"/>
+<point lat="42.42225" lon="-71.05998"/>
+<point lat="42.42259" lon="-71.06081"/>
+<point lat="42.42259" lon="-71.06096"/>
+<point lat="42.42286" lon="-71.06173"/>
+<point lat="42.42306" lon="-71.06234"/>
+<point lat="42.42313" lon="-71.06254"/>
+<point lat="42.4232299" lon="-71.06297"/>
+<point lat="42.42329" lon="-71.06308"/>
+<point lat="42.42333" lon="-71.06303"/>
+<point lat="42.42389" lon="-71.06406"/>
+<point lat="42.4241" lon="-71.0643599"/>
+<point lat="42.42425" lon="-71.06451"/>
+<point lat="42.42437" lon="-71.0646"/>
+<point lat="42.42439" lon="-71.0645399"/>
+<point lat="42.42445" lon="-71.06466"/>
+<point lat="42.42367" lon="-71.0663299"/>
+<point lat="42.42353" lon="-71.06665"/>
+<point lat="42.42338" lon="-71.06708"/>
+<point lat="42.42339" lon="-71.06721"/>
+<point lat="42.42328" lon="-71.06729"/>
+<point lat="42.42353" lon="-71.0674"/>
+<point lat="42.4238799" lon="-71.06758"/>
+<point lat="42.4241" lon="-71.06768"/>
+<point lat="42.42445" lon="-71.06773"/>
+<point lat="42.42481" lon="-71.06776"/>
+<point lat="42.4251" lon="-71.06774"/>
+<point lat="42.4251" lon="-71.06768"/>
+<point lat="42.42532" lon="-71.06772"/>
+<point lat="42.42562" lon="-71.06767"/>
+<point lat="42.42578" lon="-71.06764"/>
+<point lat="42.426" lon="-71.06752"/>
+<point lat="42.42619" lon="-71.06742"/>
+<point lat="42.42617" lon="-71.06735"/>
+</path>
+<path>
 <point lat="42.42617" lon="-71.06735"/>
 <point lat="42.42631" lon="-71.06734"/>
 <point lat="42.42651" lon="-71.06719"/>
@@ -419,44 +457,6 @@ Content-Type: text/xml
 <point lat="42.41466" lon="-71.0485999"/>
 <point lat="42.41492" lon="-71.04838"/>
 <point lat="42.41489" lon="-71.04832"/>
-</path>
-<path>
-<point lat="42.42168" lon="-71.05859"/>
-<point lat="42.42188" lon="-71.05903"/>
-<point lat="42.42205" lon="-71.05941"/>
-<point lat="42.42225" lon="-71.05998"/>
-<point lat="42.42259" lon="-71.06081"/>
-<point lat="42.42259" lon="-71.06096"/>
-<point lat="42.42286" lon="-71.06173"/>
-<point lat="42.42306" lon="-71.06234"/>
-<point lat="42.42313" lon="-71.06254"/>
-<point lat="42.4232299" lon="-71.06297"/>
-<point lat="42.42329" lon="-71.06308"/>
-<point lat="42.42333" lon="-71.06303"/>
-<point lat="42.42389" lon="-71.06406"/>
-<point lat="42.4241" lon="-71.0643599"/>
-<point lat="42.42425" lon="-71.06451"/>
-<point lat="42.42437" lon="-71.0646"/>
-<point lat="42.42439" lon="-71.0645399"/>
-<point lat="42.42445" lon="-71.06466"/>
-<point lat="42.42367" lon="-71.0663299"/>
-<point lat="42.42353" lon="-71.06665"/>
-<point lat="42.42338" lon="-71.06708"/>
-<point lat="42.42339" lon="-71.06721"/>
-<point lat="42.42328" lon="-71.06729"/>
-<point lat="42.42353" lon="-71.0674"/>
-<point lat="42.4238799" lon="-71.06758"/>
-<point lat="42.4241" lon="-71.06768"/>
-<point lat="42.42445" lon="-71.06773"/>
-<point lat="42.42481" lon="-71.06776"/>
-<point lat="42.4251" lon="-71.06774"/>
-<point lat="42.4251" lon="-71.06768"/>
-<point lat="42.42532" lon="-71.06772"/>
-<point lat="42.42562" lon="-71.06767"/>
-<point lat="42.42578" lon="-71.06764"/>
-<point lat="42.426" lon="-71.06752"/>
-<point lat="42.42619" lon="-71.06742"/>
-<point lat="42.42617" lon="-71.06735"/>
 </path>
 <path>
 <point lat="42.40699" lon="-71.05568"/>

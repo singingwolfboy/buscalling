@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:56 GMT
+Date: Sun, 25 Dec 2011 20:00:12 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 6942
+Content-Length: 6890
 Connection: close
 Content-Type: text/xml
 
@@ -20,7 +20,7 @@ Content-Type: text/xml
 <stop tag="10134" title="Sloane Avenue At Elvaston Drive" lat="43.73012" lon="-79.30978" stopId="8107"/>
 <stop tag="789" title="Sloane Avenue At Trophy Drive" lat="43.7280199" lon="-79.3106599" stopId="8112"/>
 <stop tag="4560" title="Sloane Avenue At Eglinton Avenue East" lat="43.7265399" lon="-79.31334" stopId="8105"/>
-<stop tag="3839" title="Bermondsey Road At Eglinton Avenue East (Farside) Farside" lat="43.7256099" lon="-79.31373" stopId="7535"/>
+<stop tag="3839" title="Bermondsey Road At Eglinton Avenue East Farside" lat="43.7256099" lon="-79.31373" stopId="7535"/>
 <stop tag="4828" title="190 Bermondsey Road Farside" lat="43.7236599" lon="-79.31485" stopId="7542"/>
 <stop tag="3592" title="Bermondsey Road At Bartley Drive" lat="43.71977" lon="-79.31468" stopId="7531"/>
 <stop tag="6271" title="120 Bermondsey Road" lat="43.718" lon="-79.31383" stopId="7528"/>
@@ -69,7 +69,7 @@ Content-Type: text/xml
 <stop tag="10350" title="Underhill Drive At Cornerbrook Drive" lat="43.74384" lon="-79.32608" stopId="8382"/>
 <stop tag="7661" title="Underhill Drive At Roanoke Road" lat="43.74205" lon="-79.3253" stopId="8387"/>
 <stop tag="4299" title="Lawrence Avenue East At Railside Road West Farside" lat="43.74078" lon="-79.32385" stopId="5313"/>
-<stop tag="10194" title="Lawrence Avenue East At Railside Road East Side" lat="43.7410799" lon="-79.3197" stopId="5312"/>
+<stop tag="10194" title="Lawrence Avenue East At Railside Road" lat="43.7410799" lon="-79.3197" stopId="5312"/>
 <stop tag="10210" title="Lawrence Avenue East At Carnforth Road Farside" lat="43.74143" lon="-79.3138199" stopId="5245"/>
 <stop tag="6913" title="Valley Woods Road At York Mills Road Farside" lat="43.7589699" lon="-79.33304" stopId="11527"/>
 <stop tag="5056" title="44 Valley Woods Road" lat="43.7551799" lon="-79.3334199" stopId="11528"/>
@@ -102,7 +102,7 @@ Content-Type: text/xml
 <stop tag="4674" title="125 Bermondsey Road" lat="43.7181999" lon="-79.3137399" stopId="7529"/>
 <stop tag="1914" title="Bermondsey Road At Bartley Drive" lat="43.7195999" lon="-79.31431" stopId="7530"/>
 <stop tag="9188" title="195 Bermondsey Road" lat="43.7238899" lon="-79.31439" stopId="7537"/>
-<stop tag="4915" title="Bermondsey Road At South Side Stop Eglinton Avenue East" lat="43.7255099" lon="-79.31354" stopId="7534"/>
+<stop tag="4915" title="Bermondsey Road At Eglinton Avenue East" lat="43.7255099" lon="-79.31354" stopId="7534"/>
 <stop tag="5886" title="Sloane Avenue At Eglinton Avenue East Farside" lat="43.7264699" lon="-79.31319" stopId="8104"/>
 <stop tag="7353" title="Sloane Avenue At Tinder Crescent" lat="43.7278199" lon="-79.31077" stopId="8111"/>
 <stop tag="9411" title="Sloane Avenue At Elvaston Drive Farside" lat="43.73024" lon="-79.30966" stopId="8106"/>
@@ -150,7 +150,60 @@ Content-Type: text/xml
 <stop tag="739" title="Railside Road At Codeco Court Farside" lat="43.7357699" lon="-79.3270799" stopId="8052"/>
 <stop tag="5021" title="150 Railside Road" lat="43.7377599" lon="-79.32665" stopId="8046"/>
 <stop tag="2528" title="190 Railside Road" lat="43.7395799" lon="-79.32487" stopId="8047"/>
-<direction tag="91_1_91Cam" title="North - 91c Woodbine towards York Mills" name="North" useForUI="true">
+<direction tag="91_0_91C" title="South - 91 Woodbine towards Woodbine Station" name="South" useForUI="true">
+  <stop tag="10256" />
+  <stop tag="5191" />
+  <stop tag="7238" />
+  <stop tag="9007" />
+  <stop tag="6519" />
+  <stop tag="7750" />
+  <stop tag="9304" />
+  <stop tag="7195" />
+  <stop tag="8836" />
+  <stop tag="1888" />
+  <stop tag="8319" />
+  <stop tag="5954" />
+  <stop tag="5088" />
+  <stop tag="2394" />
+  <stop tag="10350" />
+  <stop tag="7661" />
+  <stop tag="4299" />
+  <stop tag="10194" />
+  <stop tag="10210" />
+  <stop tag="869" />
+  <stop tag="749" />
+  <stop tag="9997" />
+  <stop tag="7983" />
+  <stop tag="10360" />
+  <stop tag="10092" />
+  <stop tag="10134" />
+  <stop tag="789" />
+  <stop tag="4560" />
+  <stop tag="3839" />
+  <stop tag="4828" />
+  <stop tag="3592" />
+  <stop tag="6271" />
+  <stop tag="6742" />
+  <stop tag="3496" />
+  <stop tag="10347" />
+  <stop tag="3347" />
+  <stop tag="3704" />
+  <stop tag="2690" />
+  <stop tag="9360" />
+  <stop tag="4313" />
+  <stop tag="2488" />
+  <stop tag="7620" />
+  <stop tag="2581" />
+  <stop tag="3114" />
+  <stop tag="8717" />
+  <stop tag="10378" />
+  <stop tag="9185" />
+  <stop tag="4185" />
+  <stop tag="7799" />
+  <stop tag="2407" />
+  <stop tag="14321_ar" />
+</direction>
+<direction tag="91_1_91A" title="North - 91a Woodbine towards Parkview Hills" name="North" useForUI="true">
   <stop tag="14321" />
   <stop tag="5778" />
   <stop tag="3779" />
@@ -160,47 +213,13 @@ Content-Type: text/xml
   <stop tag="7905" />
   <stop tag="9773" />
   <stop tag="6836" />
-  <stop tag="9790" />
-  <stop tag="5575" />
-  <stop tag="1274" />
-  <stop tag="6548" />
-  <stop tag="7350" />
-  <stop tag="1625" />
-  <stop tag="6449" />
-  <stop tag="2709" />
-  <stop tag="4674" />
-  <stop tag="1914" />
-  <stop tag="9188" />
-  <stop tag="4915" />
-  <stop tag="5886" />
-  <stop tag="7353" />
-  <stop tag="9411" />
-  <stop tag="10227" />
-  <stop tag="8189" />
-  <stop tag="9181" />
-  <stop tag="4587" />
-  <stop tag="7319" />
-  <stop tag="1411" />
-  <stop tag="6702" />
-  <stop tag="2142" />
-  <stop tag="4635" />
-  <stop tag="10171" />
-  <stop tag="8294" />
-  <stop tag="2847" />
-  <stop tag="7404" />
-  <stop tag="7092" />
-  <stop tag="4228" />
-  <stop tag="3013" />
-  <stop tag="6178" />
-  <stop tag="2171" />
-  <stop tag="2406" />
-  <stop tag="6219" />
-  <stop tag="8678" />
-  <stop tag="3167" />
-  <stop tag="3019" />
-  <stop tag="4022" />
-  <stop tag="8879" />
-  <stop tag="6913_ar" />
+  <stop tag="3336" />
+  <stop tag="8549" />
+  <stop tag="742" />
+  <stop tag="4769" />
+  <stop tag="5702" />
+  <stop tag="9875" />
+  <stop tag="4479_ar" />
 </direction>
 <direction tag="91_0_91Cam" title="South - 91 Woodbine towards Woodbine Station" name="South" useForUI="true">
   <stop tag="6913" />
@@ -250,49 +269,16 @@ Content-Type: text/xml
   <stop tag="2407" />
   <stop tag="14321_ar" />
 </direction>
-<direction tag="91_0_91C" title="South - 91 Woodbine towards Woodbine Station" name="South" useForUI="true">
-  <stop tag="10256" />
-  <stop tag="5191" />
-  <stop tag="7238" />
-  <stop tag="9007" />
-  <stop tag="6519" />
-  <stop tag="7750" />
-  <stop tag="9304" />
-  <stop tag="7195" />
-  <stop tag="8836" />
-  <stop tag="1888" />
-  <stop tag="8319" />
-  <stop tag="5954" />
-  <stop tag="5088" />
-  <stop tag="2394" />
-  <stop tag="10350" />
-  <stop tag="7661" />
-  <stop tag="4299" />
-  <stop tag="10194" />
-  <stop tag="10210" />
-  <stop tag="869" />
-  <stop tag="749" />
-  <stop tag="9997" />
-  <stop tag="7983" />
-  <stop tag="10360" />
-  <stop tag="10092" />
-  <stop tag="10134" />
-  <stop tag="789" />
-  <stop tag="4560" />
-  <stop tag="3839" />
-  <stop tag="4828" />
-  <stop tag="3592" />
-  <stop tag="6271" />
-  <stop tag="6742" />
-  <stop tag="3496" />
-  <stop tag="10347" />
-  <stop tag="3347" />
-  <stop tag="3704" />
-  <stop tag="2690" />
-  <stop tag="9360" />
-  <stop tag="4313" />
-  <stop tag="2488" />
-  <stop tag="7620" />
+<direction tag="91_0_91A" title="South - 91 Woodbine towards Woodbine Station" name="South" useForUI="true">
+  <stop tag="4479" />
+  <stop tag="8267" />
+  <stop tag="4188" />
+  <stop tag="6914" />
+  <stop tag="4328" />
+  <stop tag="5406" />
+  <stop tag="1658" />
+  <stop tag="2524" />
+  <stop tag="5748" />
   <stop tag="2581" />
   <stop tag="3114" />
   <stop tag="8717" />
@@ -361,44 +347,6 @@ Content-Type: text/xml
   <stop tag="2407" />
   <stop tag="14321_ar" />
 </direction>
-<direction tag="91_1_91A" title="North - 91a Woodbine towards Parkview Hills" name="North" useForUI="true">
-  <stop tag="14321" />
-  <stop tag="5778" />
-  <stop tag="3779" />
-  <stop tag="3961" />
-  <stop tag="9178" />
-  <stop tag="9307" />
-  <stop tag="7905" />
-  <stop tag="9773" />
-  <stop tag="6836" />
-  <stop tag="3336" />
-  <stop tag="8549" />
-  <stop tag="742" />
-  <stop tag="4769" />
-  <stop tag="5702" />
-  <stop tag="9875" />
-  <stop tag="4479_ar" />
-</direction>
-<direction tag="91_0_91A" title="South - 91 Woodbine towards Woodbine Station" name="South" useForUI="true">
-  <stop tag="4479" />
-  <stop tag="8267" />
-  <stop tag="4188" />
-  <stop tag="6914" />
-  <stop tag="4328" />
-  <stop tag="5406" />
-  <stop tag="1658" />
-  <stop tag="2524" />
-  <stop tag="5748" />
-  <stop tag="2581" />
-  <stop tag="3114" />
-  <stop tag="8717" />
-  <stop tag="10378" />
-  <stop tag="9185" />
-  <stop tag="4185" />
-  <stop tag="7799" />
-  <stop tag="2407" />
-  <stop tag="14321_ar" />
-</direction>
 <direction tag="91_1_91Fam" title="North - 91f Woodbine towards York Mills via Railside" name="North" useForUI="true">
   <stop tag="14321" />
   <stop tag="5778" />
@@ -457,27 +405,58 @@ Content-Type: text/xml
   <stop tag="8879" />
   <stop tag="6913_ar" />
 </direction>
-<path>
-<point lat="43.72561" lon="-79.31373"/>
-<point lat="43.7249399" lon="-79.31387"/>
-<point lat="43.72469" lon="-79.31399"/>
-<point lat="43.72439" lon="-79.31417"/>
-<point lat="43.72366" lon="-79.31485"/>
-<point lat="43.72211" lon="-79.3158"/>
-<point lat="43.72184" lon="-79.31594"/>
-<point lat="43.72161" lon="-79.3159699"/>
-<point lat="43.7213" lon="-79.31592"/>
-<point lat="43.72099" lon="-79.31575"/>
-<point lat="43.72045" lon="-79.31522"/>
-<point lat="43.7197699" lon="-79.31468"/>
-<point lat="43.71979" lon="-79.31458"/>
-<point lat="43.71948" lon="-79.31437"/>
-<point lat="43.718" lon="-79.31383"/>
-<point lat="43.7171" lon="-79.31346"/>
-<point lat="43.7148899" lon="-79.31244"/>
-<point lat="43.71476" lon="-79.31272"/>
-<point lat="43.71481" lon="-79.31281"/>
-</path>
+<direction tag="91_1_91Cam" title="North - 91c Woodbine towards York Mills" name="North" useForUI="true">
+  <stop tag="14321" />
+  <stop tag="5778" />
+  <stop tag="3779" />
+  <stop tag="3961" />
+  <stop tag="9178" />
+  <stop tag="9307" />
+  <stop tag="7905" />
+  <stop tag="9773" />
+  <stop tag="6836" />
+  <stop tag="9790" />
+  <stop tag="5575" />
+  <stop tag="1274" />
+  <stop tag="6548" />
+  <stop tag="7350" />
+  <stop tag="1625" />
+  <stop tag="6449" />
+  <stop tag="2709" />
+  <stop tag="4674" />
+  <stop tag="1914" />
+  <stop tag="9188" />
+  <stop tag="4915" />
+  <stop tag="5886" />
+  <stop tag="7353" />
+  <stop tag="9411" />
+  <stop tag="10227" />
+  <stop tag="8189" />
+  <stop tag="9181" />
+  <stop tag="4587" />
+  <stop tag="7319" />
+  <stop tag="1411" />
+  <stop tag="6702" />
+  <stop tag="2142" />
+  <stop tag="4635" />
+  <stop tag="10171" />
+  <stop tag="8294" />
+  <stop tag="2847" />
+  <stop tag="7404" />
+  <stop tag="7092" />
+  <stop tag="4228" />
+  <stop tag="3013" />
+  <stop tag="6178" />
+  <stop tag="2171" />
+  <stop tag="2406" />
+  <stop tag="6219" />
+  <stop tag="8678" />
+  <stop tag="3167" />
+  <stop tag="3019" />
+  <stop tag="4022" />
+  <stop tag="8879" />
+  <stop tag="6913_ar" />
+</direction>
 <path>
 <point lat="43.69399" lon="-79.31646"/>
 <point lat="43.69287" lon="-79.31598"/>
@@ -593,19 +572,6 @@ Content-Type: text/xml
 <point lat="43.75767" lon="-79.3380899"/>
 </path>
 <path>
-<point lat="43.75767" lon="-79.3380899"/>
-<point lat="43.75777" lon="-79.33797"/>
-<point lat="43.75791" lon="-79.33748"/>
-<point lat="43.75809" lon="-79.33656"/>
-<point lat="43.75823" lon="-79.3359"/>
-<point lat="43.7584" lon="-79.33525"/>
-<point lat="43.75861" lon="-79.3346399"/>
-<point lat="43.75902" lon="-79.33382"/>
-<point lat="43.75951" lon="-79.33269"/>
-<point lat="43.75924" lon="-79.33255"/>
-<point lat="43.75897" lon="-79.33304"/>
-</path>
-<path>
 <point lat="43.74159" lon="-79.30974"/>
 <point lat="43.74091" lon="-79.30934"/>
 <point lat="43.73885" lon="-79.30861"/>
@@ -637,47 +603,12 @@ Content-Type: text/xml
 <point lat="43.7268199" lon="-79.3129"/>
 <point lat="43.7266" lon="-79.31318"/>
 <point lat="43.72654" lon="-79.31334"/>
-<point lat="43.7263499" lon="-79.31337"/>
-<point lat="43.72602" lon="-79.3135099"/>
-<point lat="43.72561" lon="-79.31373"/>
 </path>
 <path>
 <point lat="43.70235" lon="-79.316"/>
 <point lat="43.70445" lon="-79.31366"/>
 <point lat="43.70507" lon="-79.31307"/>
 <point lat="43.7058899" lon="-79.31233"/>
-</path>
-<path>
-<point lat="43.72561" lon="-79.31373"/>
-<point lat="43.7249399" lon="-79.31387"/>
-<point lat="43.72469" lon="-79.31399"/>
-<point lat="43.72439" lon="-79.31417"/>
-<point lat="43.72366" lon="-79.31485"/>
-<point lat="43.72211" lon="-79.3158"/>
-<point lat="43.72184" lon="-79.31594"/>
-<point lat="43.72161" lon="-79.3159699"/>
-<point lat="43.7213" lon="-79.31592"/>
-<point lat="43.72099" lon="-79.31575"/>
-<point lat="43.72045" lon="-79.31522"/>
-<point lat="43.7197699" lon="-79.31468"/>
-<point lat="43.71979" lon="-79.31458"/>
-<point lat="43.71948" lon="-79.31437"/>
-<point lat="43.718" lon="-79.31383"/>
-<point lat="43.7171" lon="-79.31346"/>
-<point lat="43.7148899" lon="-79.31244"/>
-<point lat="43.71476" lon="-79.31272"/>
-<point lat="43.71481" lon="-79.31281"/>
-<point lat="43.71325" lon="-79.31406"/>
-<point lat="43.71162" lon="-79.31536"/>
-<point lat="43.71029" lon="-79.3164199"/>
-<point lat="43.71017" lon="-79.31643"/>
-<point lat="43.7091" lon="-79.31401"/>
-<point lat="43.70798" lon="-79.31135"/>
-<point lat="43.7079" lon="-79.311"/>
-<point lat="43.70706" lon="-79.31177"/>
-<point lat="43.70559" lon="-79.31281"/>
-<point lat="43.70507" lon="-79.31307"/>
-<point lat="43.7046599" lon="-79.31356"/>
 </path>
 <path>
 <point lat="43.72647" lon="-79.31319"/>
@@ -892,6 +823,19 @@ Content-Type: text/xml
 <point lat="43.74819" lon="-79.32637"/>
 </path>
 <path>
+<point lat="43.75767" lon="-79.3380899"/>
+<point lat="43.75777" lon="-79.33797"/>
+<point lat="43.75791" lon="-79.33748"/>
+<point lat="43.75809" lon="-79.33656"/>
+<point lat="43.75823" lon="-79.3359"/>
+<point lat="43.7584" lon="-79.33525"/>
+<point lat="43.75861" lon="-79.3346399"/>
+<point lat="43.75902" lon="-79.33382"/>
+<point lat="43.75951" lon="-79.33269"/>
+<point lat="43.75924" lon="-79.33255"/>
+<point lat="43.75897" lon="-79.33304"/>
+</path>
+<path>
 <point lat="43.74066" lon="-79.31931"/>
 <point lat="43.74037" lon="-79.31947"/>
 <point lat="43.73939" lon="-79.32068"/>
@@ -912,6 +856,30 @@ Content-Type: text/xml
 <point lat="43.73666" lon="-79.32737"/>
 <point lat="43.73693" lon="-79.32726"/>
 <point lat="43.73776" lon="-79.32665"/>
+</path>
+<path>
+<point lat="43.72654" lon="-79.31334"/>
+<point lat="43.7263499" lon="-79.31337"/>
+<point lat="43.72602" lon="-79.3135099"/>
+<point lat="43.72561" lon="-79.31373"/>
+<point lat="43.7249399" lon="-79.31387"/>
+<point lat="43.72469" lon="-79.31399"/>
+<point lat="43.72439" lon="-79.31417"/>
+<point lat="43.72366" lon="-79.31485"/>
+<point lat="43.72211" lon="-79.3158"/>
+<point lat="43.72184" lon="-79.31594"/>
+<point lat="43.72161" lon="-79.3159699"/>
+<point lat="43.7213" lon="-79.31592"/>
+<point lat="43.72099" lon="-79.31575"/>
+<point lat="43.72045" lon="-79.31522"/>
+<point lat="43.7197699" lon="-79.31468"/>
+<point lat="43.71979" lon="-79.31458"/>
+<point lat="43.71948" lon="-79.31437"/>
+<point lat="43.718" lon="-79.31383"/>
+<point lat="43.7171" lon="-79.31346"/>
+<point lat="43.7148899" lon="-79.31244"/>
+<point lat="43.71476" lon="-79.31272"/>
+<point lat="43.71481" lon="-79.31281"/>
 </path>
 <path>
 <point lat="43.74819" lon="-79.32637"/>

@@ -1,16 +1,16 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:16 GMT
+Date: Sun, 25 Dec 2011 19:59:23 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 1515
+Content-Length: 1532
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Toronto Transit Commission 2011.">
-<route tag="33" title="33-Forest Hill" color="ff0000" oppositeColor="ffffff" latMin="43.6839899" latMax="43.7053799" lonMin="-79.4260099" lonMax="-79.41131">
+<route tag="33" title="33-Forest Hill" color="ff0000" oppositeColor="ffffff" latMin="43.68411" latMax="43.7053799" lonMin="-79.4260099" lonMax="-79.41131">
 <stop tag="7640" title="Chaplin Crescent At Roselawn Avenue" lat="43.7053799" lon="-79.42372" stopId="3419"/>
 <stop tag="3485" title="Bathurst Street At Ridge Hill Drive" lat="43.7034599" lon="-79.4260099" stopId="0192"/>
 <stop tag="1242" title="Eglinton Avenue West At Old Forest Hill Road Farside" lat="43.70152" lon="-79.4226299" stopId="2390"/>
@@ -25,18 +25,18 @@ Content-Type: text/xml
 <stop tag="6814" title="Spadina Road At Heath Street" lat="43.6868499" lon="-79.4121299" stopId="4611"/>
 <stop tag="9552" title="Spadina Road At St Clair Avenue West" lat="43.68483" lon="-79.41131" stopId="4615"/>
 <stop tag="5735" title="St Clair Avenue West At Tweedsmuir Avenue Farside" lat="43.68413" lon="-79.4136099" stopId="4632"/>
-<stop tag="14300_ar" title="St Clair West Station" lat="43.6839899" lon="-79.41538"/>
-<stop tag="14300" title="St Clair West Station" lat="43.6839899" lon="-79.41538" stopId="14783"/>
-<stop tag="8875" title="St Clair Avenue West At Tweedsmuir Avenue" lat="43.6841099" lon="-79.41346" stopId="14343"/>
-<stop tag="10432" title="Spadina Road At St Clair Avenue West Farside" lat="43.6851799" lon="-79.4113299" stopId="14364"/>
-<stop tag="1600" title="Spadina Road At Heath Street" lat="43.68671" lon="-79.41189" stopId="4610"/>
-<stop tag="7328" title="Spadina Road At Lonsdale Road" lat="43.68858" lon="-79.41256" stopId="4613"/>
-<stop tag="2929" title="Spadina Road At Strathearn Boulevard" lat="43.6908899" lon="-79.4135199" stopId="4617"/>
-<stop tag="8756" title="Spadina Road At Kilbarry Road" lat="43.69261" lon="-79.41426" stopId="4612"/>
-<stop tag="6019" title="Spadina Road At Hawarden Crescent Farside" lat="43.6944899" lon="-79.4150299" stopId="4609"/>
-<stop tag="2810" title="Spadina Road At Archer Road" lat="43.696" lon="-79.41569" stopId="4606"/>
-<stop tag="3128" title="Spadina Road At Old Forest Hill Road" lat="43.69887" lon="-79.41688" stopId="14321"/>
-<stop tag="4394" title="Spadina Road At Eglinton Avenue West" lat="43.70225" lon="-79.41883" stopId="12795"/>
+<stop tag="14298_ar" title="St Clair West Station" lat="43.6843099" lon="-79.41527"/>
+<stop tag="14298" title="St Clair West Station" lat="43.6843099" lon="-79.41527" stopId="14781"/>
+<stop tag="8875" title="St Clair Avenue West At Tweedsmuir Avenue" lat="43.68411" lon="-79.4134599" stopId="14343"/>
+<stop tag="10432" title="Spadina Road At St Clair Avenue West Farside" lat="43.68518" lon="-79.41133" stopId="14364"/>
+<stop tag="1600" title="Spadina Road At Heath Street" lat="43.6867099" lon="-79.4118899" stopId="4610"/>
+<stop tag="7328" title="Spadina Road At Lonsdale Road" lat="43.6885799" lon="-79.41256" stopId="4613"/>
+<stop tag="2929" title="Spadina Road At Strathearn Boulevard" lat="43.69089" lon="-79.41352" stopId="4617"/>
+<stop tag="8756" title="Spadina Road At Kilbarry Road" lat="43.6926099" lon="-79.4142599" stopId="4612"/>
+<stop tag="6019" title="Spadina Road At Hawarden Crescent Farside" lat="43.69449" lon="-79.41503" stopId="4609"/>
+<stop tag="2810" title="Spadina Road At Archer Road" lat="43.6959999" lon="-79.4156899" stopId="4606"/>
+<stop tag="3128" title="Spadina Road At Old Forest Hill Road" lat="43.6988699" lon="-79.4168799" stopId="14321"/>
+<stop tag="4394" title="Spadina Road At Eglinton Avenue West" lat="43.7022499" lon="-79.4188299" stopId="12795"/>
 <stop tag="3822" title="Chaplin Crescent At Eglinton Avenue West Farside" lat="43.7030299" lon="-79.4179" stopId="3413"/>
 <stop tag="4048" title="75 Chaplin Crescent At Midblock North Of Eglinton" lat="43.7041899" lon="-79.42124" stopId="3415"/>
 <stop tag="4764" title="Chaplin Crescent At Walkway South Of Roselawn" lat="43.70468" lon="-79.42293" stopId="11060"/>
@@ -56,10 +56,10 @@ Content-Type: text/xml
   <stop tag="6814" />
   <stop tag="9552" />
   <stop tag="5735" />
-  <stop tag="14300_ar" />
+  <stop tag="14298_ar" />
 </direction>
 <direction tag="33_1_33" title="North - 33 Forest Hill towards Eglinton (Roselawn)" name="North" useForUI="true">
-  <stop tag="14300" />
+  <stop tag="14298" />
   <stop tag="8875" />
   <stop tag="10432" />
   <stop tag="1600" />
@@ -106,7 +106,7 @@ Content-Type: text/xml
 <point lat="43.68462" lon="-79.41116"/>
 <point lat="43.68413" lon="-79.41361"/>
 <point lat="43.68369" lon="-79.41559"/>
-<point lat="43.68399" lon="-79.41538"/>
+<point lat="43.68431" lon="-79.41527"/>
 </path>
 <path>
 <point lat="43.70538" lon="-79.42372"/>
@@ -121,7 +121,7 @@ Content-Type: text/xml
 <point lat="43.70202" lon="-79.41883"/>
 </path>
 <path>
-<point lat="43.68399" lon="-79.41538"/>
+<point lat="43.68431" lon="-79.41527"/>
 <point lat="43.68377" lon="-79.41528"/>
 <point lat="43.6841099" lon="-79.41346"/>
 <point lat="43.68462" lon="-79.41116"/>

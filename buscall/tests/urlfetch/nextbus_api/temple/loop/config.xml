@@ -1,16 +1,191 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:00:56 GMT
+Date: Sun, 25 Dec 2011 19:59:02 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 160
+Content-Length: 1644
 Connection: close
 Content-Type: text/xml
 
 <?xml version="1.0" encoding="utf-8" ?> 
 <body copyright="All data copyright Temple University 2011.">
-<Error shouldRetry="true">
-  System is initializing.
-</Error>
+<route tag="loop" title="Owl Loop" color="800000" oppositeColor="ffffff" latMin="39.9763605" latMax="39.9855186" lonMin="-75.1601426" lonMax="-75.1497283">
+<stop tag="transhub" title="Transportation Hub" lat="39.9806284" lon="-75.1536481" stopId="01"/>
+<stop tag="weiss" title="Weiss Hall" lat="39.9783901" lon="-75.1555413" stopId="02"/>
+<stop tag="brodberk" title="Broad Street at Berks Mall" lat="39.9818602" lon="-75.1571177" stopId="03"/>
+<stop tag="dining" title="Johnson/Hardwick Dining Hall" lat="39.9841244" lon="-75.1566189" stopId="04"/>
+<stop tag="white" title="White Hall" lat="39.9855186" lon="-75.1564825" stopId="05"/>
+<stop tag="studpav" title="Student Pavilion" lat="39.9818255" lon="-75.1573109" stopId="06"/>
+<stop tag="reccent" title="Liacouras/Recreation Center" lat="39.9786367" lon="-75.1596428" stopId="07"/>
+<stop tag="elmjeff" title="Elmira Jeffries Residence" lat="39.9763605" lon="-75.1601426" stopId="08"/>
+<stop tag="brodoxfd" title="Broad Street &amp; Oxford Street" lat="39.9771496" lon="-75.1581378" stopId="09"/>
+<stop tag="1300dorm" title="1300 Dormitory" lat="39.9783488" lon="-75.1560715" stopId="10"/>
+<stop tag="temptowr" title="Temple Towers" lat="39.9781887" lon="-75.1548698" stopId="11"/>
+<stop tag="kardon" title="Kardon Apartments" lat="39.9793105" lon="-75.1508046" stopId="12"/>
+<stop tag="univapts" title="University Apts" lat="39.9784329" lon="-75.1508958" stopId="13"/>
+<stop tag="temptrain" title="Temple Train Station" lat="39.9807211" lon="-75.1497283" stopId="14"/>
+<stop tag="edberg" title="Edberg-Olson" lat="39.9840279" lon="-75.1514485" stopId="15"/>
+<direction tag="loop" title="Loop" name="" useForUI="true">
+  <stop tag="transhub" />
+  <stop tag="weiss" />
+  <stop tag="brodberk" />
+  <stop tag="dining" />
+  <stop tag="white" />
+  <stop tag="studpav" />
+  <stop tag="reccent" />
+  <stop tag="elmjeff" />
+  <stop tag="brodoxfd" />
+  <stop tag="1300dorm" />
+  <stop tag="temptowr" />
+  <stop tag="kardon" />
+  <stop tag="univapts" />
+  <stop tag="temptrain" />
+  <stop tag="edberg" />
+</direction>
+<path>
+<point lat="39.98062" lon="-75.15365"/>
+<point lat="39.9798199" lon="-75.15384"/>
+<point lat="39.97829" lon="-75.1541699"/>
+<point lat="39.97825" lon="-75.15419"/>
+<point lat="39.97823" lon="-75.15424"/>
+<point lat="39.97823" lon="-75.15433"/>
+<point lat="39.97839" lon="-75.15554"/>
+<point lat="39.97869" lon="-75.15767"/>
+<point lat="39.97871" lon="-75.15772"/>
+<point lat="39.97875" lon="-75.1577499"/>
+<point lat="39.97882" lon="-75.1577499"/>
+<point lat="39.98007" lon="-75.1575"/>
+<point lat="39.98104" lon="-75.15728"/>
+<point lat="39.98185" lon="-75.15712"/>
+<point lat="39.98305" lon="-75.15686"/>
+<point lat="39.98412" lon="-75.15662"/>
+<point lat="39.98456" lon="-75.15652"/>
+<point lat="39.98462" lon="-75.15649"/>
+<point lat="39.98465" lon="-75.15643"/>
+<point lat="39.98465" lon="-75.15636"/>
+<point lat="39.98452" lon="-75.15544"/>
+<point lat="39.98438" lon="-75.15454"/>
+<point lat="39.98438" lon="-75.15446"/>
+<point lat="39.9844099" lon="-75.15441"/>
+<point lat="39.98445" lon="-75.15437"/>
+<point lat="39.98453" lon="-75.1543499"/>
+<point lat="39.98588" lon="-75.15406"/>
+<point lat="39.98595" lon="-75.15406"/>
+<point lat="39.986" lon="-75.1541"/>
+<point lat="39.98603" lon="-75.1541699"/>
+<point lat="39.98628" lon="-75.15603"/>
+<point lat="39.9862899" lon="-75.15615"/>
+<point lat="39.98627" lon="-75.1562299"/>
+<point lat="39.98624" lon="-75.15629"/>
+<point lat="39.98619" lon="-75.15633"/>
+<point lat="39.98604" lon="-75.15637"/>
+<point lat="39.98553" lon="-75.15648"/>
+<point lat="39.98495" lon="-75.15661"/>
+<point lat="39.98449" lon="-75.15671"/>
+<point lat="39.98337" lon="-75.15696"/>
+<point lat="39.98271" lon="-75.15711"/>
+<point lat="39.98183" lon="-75.15731"/>
+<point lat="39.98031" lon="-75.15764"/>
+<point lat="39.9788" lon="-75.15797"/>
+<point lat="39.97874" lon="-75.15799"/>
+<point lat="39.97871" lon="-75.15804"/>
+<point lat="39.97871" lon="-75.1581099"/>
+<point lat="39.9788799" lon="-75.15947"/>
+<point lat="39.97887" lon="-75.15954"/>
+<point lat="39.97882" lon="-75.15958"/>
+<point lat="39.97875" lon="-75.15961"/>
+<point lat="39.97865" lon="-75.15964"/>
+<point lat="39.9778499" lon="-75.1598099"/>
+<point lat="39.97638" lon="-75.16014"/>
+<point lat="39.97609" lon="-75.16018"/>
+<point lat="39.97605" lon="-75.16018"/>
+<point lat="39.97601" lon="-75.16015"/>
+<point lat="39.97599" lon="-75.16009"/>
+<point lat="39.97594" lon="-75.15956"/>
+<point lat="39.97583" lon="-75.15869"/>
+<point lat="39.97583" lon="-75.15861"/>
+<point lat="39.97583" lon="-75.15852"/>
+<point lat="39.97584" lon="-75.15845"/>
+<point lat="39.97587" lon="-75.15841"/>
+<point lat="39.97594" lon="-75.1583799"/>
+<point lat="39.97714" lon="-75.15814"/>
+<point lat="39.97854" lon="-75.15783"/>
+<point lat="39.97857" lon="-75.15781"/>
+<point lat="39.9786" lon="-75.15779"/>
+<point lat="39.9786" lon="-75.15774"/>
+<point lat="39.9786" lon="-75.15767"/>
+<point lat="39.97835" lon="-75.15608"/>
+<point lat="39.97819" lon="-75.15488"/>
+<point lat="39.97792" lon="-75.15276"/>
+<point lat="39.97792" lon="-75.15268"/>
+<point lat="39.97793" lon="-75.1526"/>
+<point lat="39.97797" lon="-75.15255"/>
+<point lat="39.9780299" lon="-75.15252"/>
+<point lat="39.97809" lon="-75.15251"/>
+<point lat="39.97938" lon="-75.15225"/>
+<point lat="39.97943" lon="-75.15222"/>
+<point lat="39.97946" lon="-75.15218"/>
+<point lat="39.97947" lon="-75.1521099"/>
+<point lat="39.97941" lon="-75.15157"/>
+<point lat="39.97931" lon="-75.1508"/>
+</path>
+<path>
+<point lat="39.97931" lon="-75.1508"/>
+<point lat="39.9793" lon="-75.15075"/>
+<point lat="39.9792599" lon="-75.15072"/>
+<point lat="39.97922" lon="-75.15072"/>
+<point lat="39.9785899" lon="-75.15086"/>
+<point lat="39.97789" lon="-75.15102"/>
+<point lat="39.97784" lon="-75.15105"/>
+<point lat="39.97782" lon="-75.1511"/>
+<point lat="39.97783" lon="-75.15119"/>
+<point lat="39.97799" lon="-75.15244"/>
+<point lat="39.97801" lon="-75.15249"/>
+<point lat="39.97805" lon="-75.15251"/>
+<point lat="39.97809" lon="-75.15251"/>
+<point lat="39.97938" lon="-75.15225"/>
+<point lat="39.98017" lon="-75.15209"/>
+<point lat="39.9809399" lon="-75.15194"/>
+<point lat="39.98097" lon="-75.15191"/>
+<point lat="39.98099" lon="-75.15186"/>
+<point lat="39.981" lon="-75.1518"/>
+<point lat="39.98082" lon="-75.15046"/>
+<point lat="39.98072" lon="-75.14972"/>
+<point lat="39.9806" lon="-75.14887"/>
+<point lat="39.9806" lon="-75.14881"/>
+<point lat="39.98063" lon="-75.14876"/>
+<point lat="39.98067" lon="-75.14875"/>
+<point lat="39.98162" lon="-75.14854"/>
+<point lat="39.982" lon="-75.14845"/>
+<point lat="39.98205" lon="-75.14845"/>
+<point lat="39.9821" lon="-75.14847"/>
+<point lat="39.98213" lon="-75.14851"/>
+<point lat="39.98218" lon="-75.1489"/>
+<point lat="39.98231" lon="-75.14993"/>
+<point lat="39.98252" lon="-75.1515"/>
+<point lat="39.98254" lon="-75.1515299"/>
+<point lat="39.98257" lon="-75.15154"/>
+<point lat="39.98261" lon="-75.15154"/>
+<point lat="39.98358" lon="-75.15134"/>
+<point lat="39.98387" lon="-75.15128"/>
+<point lat="39.9839399" lon="-75.15128"/>
+<point lat="39.98398" lon="-75.1513"/>
+<point lat="39.98401" lon="-75.1513499"/>
+<point lat="39.98403" lon="-75.15146"/>
+<point lat="39.98419" lon="-75.15274"/>
+<point lat="39.98419" lon="-75.1528"/>
+<point lat="39.98418" lon="-75.15286"/>
+<point lat="39.98415" lon="-75.1529"/>
+<point lat="39.98408" lon="-75.15292"/>
+<point lat="39.98374" lon="-75.15297"/>
+<point lat="39.9828199" lon="-75.15318"/>
+<point lat="39.98184" lon="-75.15338"/>
+<point lat="39.9812" lon="-75.15352"/>
+</path>
+<path>
+<point lat="39.9812" lon="-75.15352"/>
+<point lat="39.98062" lon="-75.15365"/>
+</path>
+</route>
 </body>

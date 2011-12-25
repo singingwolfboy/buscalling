@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
-Date: Sun, 04 Dec 2011 06:01:37 GMT
+Date: Sun, 25 Dec 2011 19:59:49 GMT
 Server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
 Access-Control-Allow-Origin: *
 Vary: Accept-Encoding
 Content-Encoding: gzip
-Content-Length: 5675
+Content-Length: 5655
 Connection: close
 Content-Type: text/xml
 
@@ -17,7 +17,7 @@ Content-Type: text/xml
 <stop tag="9724" title="Steeles Avenue West At Walkway West Of Kipling Avenue" lat="43.7593199" lon="-79.5929599" stopId="9262"/>
 <stop tag="5978" title="Steeles Avenue West At Kipling Avenue" lat="43.7594199" lon="-79.59008" stopId="9826"/>
 <stop tag="5632" title="Steeles Avenue West At Markbrook Lane" lat="43.7599599" lon="-79.58635" stopId="10866"/>
-<stop tag="3549" title="Steeles Avenue West At Islington Avenue (Westside)" lat="43.76414" lon="-79.5749899" stopId="4643"/>
+<stop tag="3549" title="Steeles Avenue West At Islington Avenue" lat="43.76414" lon="-79.5749899" stopId="4643"/>
 <stop tag="2513" title="Steeles Avenue West At Islington Avenue Farside" lat="43.7643399" lon="-79.57411" stopId="8284"/>
 <stop tag="6490" title="Steeles Avenue West At Footpath East Of Islington" lat="43.7649599" lon="-79.57127" stopId="8272"/>
 <stop tag="7180" title="Steeles Avenue West At Fenmar Drive Farside" lat="43.7666" lon="-79.5637699" stopId="8271"/>
@@ -67,7 +67,7 @@ Content-Type: text/xml
 <stop tag="4271" title="Yonge Street At Drewry Avenue" lat="43.7871899" lon="-79.4175199" stopId="8976"/>
 <stop tag="900" title="5800 Yonge Street" lat="43.7842099" lon="-79.41677" stopId="9013"/>
 <stop tag="14213_ar" title="Finch Station" lat="43.7811999" lon="-79.41494"/>
-<stop tag="915" title="York Lanes At York Boulevard North Side" lat="43.7739199" lon="-79.5019" stopId="14277"/>
+<stop tag="915" title="York Lanes At York Boulevard" lat="43.7739199" lon="-79.5019" stopId="14277"/>
 <stop tag="7271" title="Ian Macdonald Boulevard At Chimneystack Road" lat="43.77621" lon="-79.50054" stopId="11939"/>
 <stop tag="636" title="Steeles Avenue West At Founders Road" lat="43.77896" lon="-79.50413" stopId="4512"/>
 <stop tag="2248" title="Signal Hill Boulevard At Steeles Avenue West" lat="43.7527699" lon="-79.62482" stopId="10860"/>
@@ -133,7 +133,7 @@ Content-Type: text/xml
 <stop tag="5346" title="Keele Street At Chimneystack Road Farside" lat="43.7774699" lon="-79.4947499" stopId="4055"/>
 <stop tag="2059" title="Keele Street At York Boulevard" lat="43.7754" lon="-79.49421" stopId="4035"/>
 <stop tag="2284" title="York Boulevard At Keele Street Farside" lat="43.7750199" lon="-79.49525" stopId="4634"/>
-<stop tag="915_ar" title="York Lanes At York Boulevard North Side" lat="43.7739199" lon="-79.5019"/>
+<stop tag="915_ar" title="York Lanes At York Boulevard" lat="43.7739199" lon="-79.5019"/>
 <stop tag="5006" title="Opposite 6793 Steeles Avenue West" lat="43.7567499" lon="-79.60861" stopId="10854"/>
 <stop tag="9822" title="Opposite 6807 Steeles Avenue West" lat="43.75617" lon="-79.6112299" stopId="10855"/>
 <stop tag="10361" title="Steeles Avenue West At Highway 27 Farside" lat="43.7553899" lon="-79.61484" stopId="10856"/>
@@ -333,6 +333,13 @@ Content-Type: text/xml
 <point lat="43.7742" lon="-79.52706"/>
 </path>
 <path>
+<point lat="43.7763599" lon="-79.51642"/>
+<point lat="43.7777" lon="-79.51054"/>
+<point lat="43.77844" lon="-79.50733"/>
+<point lat="43.77922" lon="-79.50377"/>
+<point lat="43.78161" lon="-79.49376"/>
+</path>
+<path>
 <point lat="43.77347" lon="-79.53161"/>
 <point lat="43.77268" lon="-79.53487"/>
 <point lat="43.77211" lon="-79.5383"/>
@@ -340,13 +347,6 @@ Content-Type: text/xml
 <point lat="43.77149" lon="-79.54065"/>
 <point lat="43.77112" lon="-79.54306"/>
 <point lat="43.77052" lon="-79.54615"/>
-</path>
-<path>
-<point lat="43.7763599" lon="-79.51642"/>
-<point lat="43.7777" lon="-79.51054"/>
-<point lat="43.77844" lon="-79.50733"/>
-<point lat="43.77922" lon="-79.50377"/>
-<point lat="43.78161" lon="-79.49376"/>
 </path>
 <path>
 <point lat="43.78728" lon="-79.46957"/>
@@ -745,6 +745,14 @@ Content-Type: text/xml
 <point lat="43.77052" lon="-79.54615"/>
 </path>
 <path>
+<point lat="43.76434" lon="-79.57411"/>
+<point lat="43.7665999" lon="-79.56377"/>
+<point lat="43.76851" lon="-79.55524"/>
+<point lat="43.76856" lon="-79.55498"/>
+<point lat="43.77011" lon="-79.5468"/>
+<point lat="43.77078" lon="-79.54357"/>
+</path>
+<path>
 <point lat="43.77942" lon="-79.50422"/>
 <point lat="43.77887" lon="-79.50652"/>
 <point lat="43.77788" lon="-79.51084"/>
@@ -754,14 +762,6 @@ Content-Type: text/xml
 <point lat="43.77574" lon="-79.52057"/>
 <point lat="43.77546" lon="-79.52172"/>
 <point lat="43.77547" lon="-79.52208"/>
-</path>
-<path>
-<point lat="43.76434" lon="-79.57411"/>
-<point lat="43.7665999" lon="-79.56377"/>
-<point lat="43.76851" lon="-79.55524"/>
-<point lat="43.76856" lon="-79.55498"/>
-<point lat="43.77011" lon="-79.5468"/>
-<point lat="43.77078" lon="-79.54357"/>
 </path>
 <path>
 <point lat="43.7742" lon="-79.52706"/>
