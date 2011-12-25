@@ -130,3 +130,7 @@ def flush_all():
         return "Flushed"
     else:
         return "Failed"
+
+@app.route("/_ah/warmup")
+def warmup():
+    return render_json(get_agencies())

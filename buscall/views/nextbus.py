@@ -9,7 +9,8 @@ from functools import wraps
 
 __all__ = ['agency_list', 'agency_detail', 'route_list', 'route_detail',
         'direction_list', 'direction_detail', 'stop_list', 'stop_detail',
-        'prediction_list', 'prediction_detail']
+        'prediction_list', 'prediction_detail',
+        'render_json']
 
 def api_list(func):
     @wraps(func)
