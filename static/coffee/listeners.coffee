@@ -260,7 +260,6 @@ $().ready ->
       App.listener.set(o)
   
   class AgencySelectorView      extends SelectorView
-    type: "agency"
     el: "#bus-info .form_field.agency"
     collection: App.agencies
 
@@ -283,7 +282,6 @@ $().ready ->
       @render()
 
   class RouteSelectorView       extends SelectorView
-    type: "route"
     el: "#bus-info .form_field.route"
 
     onFocus: (route, focused) ->
@@ -302,7 +300,6 @@ $().ready ->
       @render()
 
   class DirectionSelectorView   extends SelectorView
-    type: "direction"
     el: "#bus-info .form_field.direction"
 
     onFocus: (direction, focused) ->
@@ -315,7 +312,6 @@ $().ready ->
       @render()
 
   class StopSelectorView        extends SelectorView
-    type: "stop"
     el: "#bus-info .form_field.stop"
 
     onFocus: ->
