@@ -169,9 +169,6 @@ $().ready ->
     model: Route
     url: ->
       @agency.url() + "/routes"
-    # initialize: ->
-      # super
-      # @bind('remove', (-> debugger), @)
 
   class window.DirectionList        extends AbstractCollection
     model: Direction
@@ -188,29 +185,50 @@ $().ready ->
     el: "#map_canvas"
     initialize: ->
       @m = google.maps
+      @model.bind('change:agency', @onAgencyChange, @)
       @model.bind('change:route', @onRouteChange, @)
       @model.bind('change:stop', @onStopChange, @)
       @render()
     render: ->
       @map = new @m.Map(@el,
-        zoom: 10
-        center: new @m.LatLng(42.373, -71.111) # cambridge
+        zoom: 3
+        center: new @m.LatLng(37.0625, -95.677068) # USA
         mapTypeId: @m.MapTypeId.ROADMAP
         disableDefaultUI: true
       )
+      @onAgencyChange(App.listener, App.listener.get('agency'))
       @onRouteChange(App.listener, App.listener.get('route'))
       @onStopChange(App.listener, App.listener.get('stop'))
+
+    onAgencyChange: (listener, agency) ->
+      if agency
+        latMin = agency.get("latMin")
+        lngMin = agency.get("lngMin")
+        latMax = agency.get("latMax")
+        lngMax = agency.get("lngMax")
+        if latMin and lngMin and latMax and lngMax
+          bounds = new @m.LatLngBounds(
+            new @m.LatLng(latMin, lngMin),
+            new @m.LatLng(latMax, lngMax),
+          )
+          @map.fitBounds(bounds)
+      @map
 
     onRouteChange: (listener, route) ->
       if @map.route
         for polyline in @map.route
           polyline.setMap(null)
       if route
-        bounds = new @m.LatLngBounds(
-          new @m.LatLng(route.get("latMin"), route.get("lngMin")),
-          new @m.LatLng(route.get("latMax"), route.get("lngMax"))
-        )
-        @map.fitBounds(bounds)
+        latMin = route.get("latMin")
+        lngMin = route.get("lngMin")
+        latMax = route.get("latMax")
+        lngMax = route.get("lngMax")
+        if latMin and lngMin and latMax and lngMax
+          bounds = new @m.LatLngBounds(
+            new @m.LatLng(latMin, lngMin),
+            new @m.LatLng(latMax, lngMax),
+          )
+          @map.fitBounds(bounds)
         paths = route.get("paths")
         if paths
           route = []
