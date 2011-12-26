@@ -76,16 +76,12 @@ def time_format(time):
 
 @app.template_filter('url_dict')
 def url_dict(obj):
-    try:
+    if not test_defined(obj):
+        return None
+    if hasattr(obj, "_as_url_dict"):
         return obj._as_url_dict()
-    except AttributeError:
-        try:
-            return [o._as_url_dict() for o in obj]
-        except (TypeError, AttributeError):
-            if test_defined(obj):
-                return obj
-            else:
-                return None
+    else:
+        return [o._as_url_dict() for o in obj]
 
 @app.template_filter('json')
 def to_json(obj):
