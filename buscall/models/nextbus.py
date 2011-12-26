@@ -59,25 +59,36 @@ class Agency(AgencyRecord):
         return [get_route(self.id, route_id) for route_id in self.route_ids]
 
     @property
-    @cache.cached(timeout=DAY, key_prefix="agency_geo")
     def geo_range(self):
-        # calculate the extreme values from all routes
-        geo = dict(
-            lat_min = 90,
-            lat_max = -90,
-            lng_min = 180,
-            lng_max = -180,
-        )
-        for route in self.routes:
-            if route.lat_min < geo['lat_min']:
-                geo['lat_min'] = route.lat_min
-            if route.lat_max > geo['lat_max']:
-                geo['lat_max'] = route.lat_max
-            if route.lng_min < geo['lng_min']:
-                geo['lng_min'] = route.lng_min
-            if route.lng_max > geo['lng_max']:
-                geo['lng_max'] = route.lng_max
-        return GeoRange(**geo)
+        # first level cache: local attribute
+        gr = getattr(self, "_geo_range", None)
+        if gr is not None:
+            return gr
+        # second level cache: memcache
+        key = "%s_agency_geo" % (self.id)
+        gr = cache.get(key=key)
+        if gr is None:
+            # do the work: calculate the extreme values from all routes
+            geo = dict(
+                lat_min = 90,
+                lat_max = -90,
+                lng_min = 180,
+                lng_max = -180,
+            )
+            for route in self.routes:
+                if route.lat_min < geo['lat_min']:
+                    geo['lat_min'] = route.lat_min
+                if route.lat_max > geo['lat_max']:
+                    geo['lat_max'] = route.lat_max
+                if route.lng_min < geo['lng_min']:
+                    geo['lng_min'] = route.lng_min
+                if route.lng_max > geo['lng_max']:
+                    geo['lng_max'] = route.lng_max
+            gr = GeoRange(**geo)
+            # save into caches
+            self._geo_range = gr
+            cache.set(key=key, value=gr, timeout=DAY)
+        return gr
 
 RouteRecord = recordtype("Route", ['id', 'agency_id', 'title', 'paths',
     ('geo_range', None), ('direction_ids', [])])
