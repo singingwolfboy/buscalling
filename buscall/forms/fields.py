@@ -1,10 +1,12 @@
 import datetime
 import time
+from ndb import Key
 from itertools import izip
 from wtforms.widgets import Input, TextInput, RadioInput, ListWidget
 from wtforms.fields import Field, FieldList, _unset_value
 from flaskext.wtf import SelectField, TextField, BooleanField, RadioField
-from buscall.models.nextbus import NextbusError, get_agency, get_route
+from buscall.models.nextbus_api import NextbusError
+from buscall.models.nextbus import Agency, Route
 
 __all__ = ['TelInput', 'TelephoneField', 'RadioBooleanField', 'TimeInput', 'TimeField', 'RouteField', 'DirectionField', 'StopField']
 
@@ -104,10 +106,10 @@ class RouteField(MaybeSelectField):
         agency_id = form.agency_id.data
         if agency_id:
             try:
-                agency = get_agency(agency_id)
+                agency = Key(Agency, agency_id).get()
                 choices = []
                 for route_id in agency.route_ids:
-                    route = get_route(agency_id, route_id)
+                    route = Key(Route, route_id).get()
                     choices.append((route.id, route.title))
                 self.choices = choices
             except NextbusError:
@@ -123,8 +125,8 @@ class DirectionField(MaybeSelectField):
     def pre_validate(self, form):
         if form.agency_id.data and form.route_id.data:
             try:
-                route_info = get_route(form.agency_id.data, form.route_id.data)
-                self.choices = [(d.id, d.title) for d in route_info.directions]
+                route = Key(Route, form.route_id.data).get()
+                self.choices = [(d.id, d.title) for d in route.directions]
             except NextbusError:
                 pass
         super(DirectionField, self).pre_validate(form)
@@ -141,7 +143,7 @@ class StopField(MaybeSelectField):
             route_id = form.route_id.data
             direction_id = form.direction_id.data
             try:
-                route = get_route(agency_id, route_id, use_dicts=True)
+                route = Key(Route, route_id).get()
                 self.choices = [(id, route.stops[id].title) for id in route.directions[direction_id].stop_ids]
             except NextbusError:
                 pass

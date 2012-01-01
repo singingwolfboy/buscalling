@@ -1,218 +1,24 @@
 from buscall import app
-from flask import g, Response, url_for
+from ndb import Key
+from flask import g, Response
 from google.appengine.api import urlfetch
 import logging
 import re
 from decimal import Decimal
 from urllib import urlencode
 from buscall import cache
-from buscall.util import clean_booleans, filter_keys
-from recordtype import recordtype
-from .util import GeoRange
 import simplejson as json
 from lxml import etree
 from lxml.etree import ParseError
-from markupsafe import Markup
+from google.appengine.api.datastore_types import GeoPt
+from google.appengine.ext import deferred
+from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
 
 RPC_URL = "http://webservices.nextbus.com/service/publicXMLFeed?"
 # cache durations
 SHORT = 20
 HOUR = 3600
 DAY = 86400
-
-resource_uri = Markup("resource_uri")
-template_id = Markup("{{id}}")
-
-Point = recordtype("Point", ['lat', 'lng'])
-
-AgencyRecord = recordtype("Agency", ['id', 'title', 'region',
-    ('short_title', None), ('route_ids', [])])
-class Agency(AgencyRecord):
-    @property
-    def url(self):
-        return url_for('agency_detail', agency_id=self.id)
-
-    def _as_url_dict(self):
-        d = self._asdict()
-        d[resource_uri] = self.url
-        detail_uri_template = url_for('route_detail', agency_id=self.id, route_id=template_id)
-        # unescape mustaches
-        detail_uri_template = detail_uri_template.replace("%7B", "{").replace("%7D", "}")
-        d['routes'] = dict(
-            list_uri = url_for('route_list', agency_id=self.id),
-            detail_uri_template = detail_uri_template,
-            ids = self.route_ids,
-        )
-        del d['route_ids']
-        # geo range to toplevel
-        if self.geo_range:
-            d['latMin'] = self.geo_range.lat_min
-            d['latMax'] = self.geo_range.lat_max
-            d['lngMin'] = self.geo_range.lng_min
-            d['lngMax'] = self.geo_range.lng_max
-            if 'geo_range' in d:
-                del d['geo_range']
-        return d
-
-    @property
-    def routes(self):
-        return [get_route(self.id, route_id) for route_id in self.route_ids]
-
-    @property
-    def geo_range(self):
-        # first level cache: local attribute
-        gr = getattr(self, "_geo_range", None)
-        if gr is not None:
-            return gr
-        # second level cache: memcache
-        key = "%s_agency_geo" % (self.id)
-        gr = cache.get(key=key)
-        if gr is None:
-            # do the work: calculate the extreme values from all routes
-            geo = dict(
-                lat_min = 90,
-                lat_max = -90,
-                lng_min = 180,
-                lng_max = -180,
-            )
-            for route in self.routes:
-                if route.lat_min < geo['lat_min']:
-                    geo['lat_min'] = route.lat_min
-                if route.lat_max > geo['lat_max']:
-                    geo['lat_max'] = route.lat_max
-                if route.lng_min < geo['lng_min']:
-                    geo['lng_min'] = route.lng_min
-                if route.lng_max > geo['lng_max']:
-                    geo['lng_max'] = route.lng_max
-            gr = GeoRange(**geo)
-            # save into caches
-            self._geo_range = gr
-            cache.set(key=key, value=gr, timeout=DAY)
-        return gr
-
-RouteRecord = recordtype("Route", ['id', 'agency_id', 'title', 'paths',
-    ('geo_range', None), ('direction_ids', [])])
-class Route(RouteRecord):
-    @property
-    def url(self):
-        return url_for('route_detail', agency_id=self.agency_id, route_id=self.id)
-
-    def _as_url_dict(self):
-        d = self._asdict()
-        d[resource_uri] = self.url
-        del d['agency_id']
-        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
-        detail_uri_template = url_for('direction_detail', agency_id=self.agency_id,
-                route_id=self.id, direction_id=template_id)
-        # unescape mustaches
-        detail_uri_template = detail_uri_template.replace("%7B", "{").replace("%7D", "}")
-        d['directions'] = dict(
-            list_uri = url_for('direction_list', agency_id=self.agency_id, route_id=self.id),
-            detail_uri_template = detail_uri_template,
-            ids = self.direction_ids,
-        )
-        del d['direction_ids']
-        # geo range to toplevel
-        if self.geo_range:
-            d['latMin'] = self.lat_min
-            d['latMax'] = self.lat_max
-            d['lngMin'] = self.lng_min
-            d['lngMax'] = self.lng_max
-            if 'geo_range' in d:
-                del d['geo_range']
-        return d
-
-    # proxy to internal geo_range
-    @property
-    def lat_min(self):
-        return self.geo_range.lat_min
-    @property
-    def lat_max(self):
-        return self.geo_range.lat_max
-    @property
-    def lng_min(self):
-        return self.geo_range.lng_min
-    @property
-    def lng_max(self):
-        return self.geo_range.lng_max
-
-DirectionRecord = recordtype("Direction", ['id', 'route_id', 'agency_id', 'title', ('name', ''), ('stop_ids', [])])
-class Direction(DirectionRecord):
-    @property
-    def url(self):
-        return url_for('direction_detail', agency_id=self.agency_id, route_id=self.route_id,
-                direction_id=self.id)
-
-    def _as_url_dict(self):
-        d = self._asdict()
-        d[resource_uri] = self.url
-        del d['agency_id']
-        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
-        del d['route_id']
-        d['route'] = url_for('route_detail', agency_id=self.agency_id, route_id=self.route_id)
-        detail_uri_template = url_for('stop_detail', agency_id=self.agency_id,
-                route_id=self.route_id, direction_id=self.id, stop_id=template_id)
-        # unescape mustaches
-        detail_uri_template = detail_uri_template.replace("%7B", "{").replace("%7D", "}")
-        d['stops'] = dict(
-            list_uri = url_for('stop_list', agency_id=self.agency_id, route_id=self.route_id, direction_id=self.id),
-            detail_uri_template = detail_uri_template,
-            ids = self.stop_ids,
-        )
-        del d['stop_ids']
-        return d
-
-StopRecord = recordtype("Stop", ['id', 'direction_id', 'route_id', 'agency_id', 'title',
-    ('lat', None), ('lng', None)])
-class Stop(StopRecord):
-    @property
-    def url(self):
-        return url_for('stop_detail', agency_id=self.agency_id, route_id=self.route_id,
-                direction_id=self.direction_id, stop_id=self.id)
-
-    def _as_url_dict(self):
-        d = self._asdict()
-        d[resource_uri] = self.url
-        del d['agency_id']
-        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
-        del d['route_id']
-        d['route'] = url_for('route_detail', agency_id=self.agency_id, route_id=self.route_id)
-        del d['direction_id']
-        d['direction'] = url_for('direction_detail', agency_id=self.agency_id,
-                route_id=self.route_id, direction_id=self.direction_id)
-        d['predictions'] = dict(
-            list_uri = url_for('prediction_list', agency_id=self.agency_id,
-                route_id=self.route_id, direction_id=self.direction_id, stop_id=self.id),
-        )
-        return d
-
-PredictedBusRecord = recordtype("PredictedBus", ['agency_id', 'route_id',
-    'direction_id', 'stop_id', 'trip_id', 'minutes', 'vehicle',
-    ('seconds', None), ('block', None),  ('departure', None),
-    ('affected_by_layover', None), ('delayed', None), ('slowness', None)])
-class PredictedBus(PredictedBusRecord):
-    @property
-    def url(self):
-        return url_for('prediction_detail', agency_id=self.agency_id, route_id=self.route_id,
-                direction_id=self.direction_id, stop_id=self.stop_id, trip_id=self.trip_id)
-    @property
-    def id(self):
-        return self.trip_id
-
-    def _as_url_dict(self):
-        d = self._asdict()
-        d[resource_uri] = self.url
-        del d['agency_id']
-        d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
-        del d['route_id']
-        d['route'] = url_for('route_detail', agency_id=self.agency_id, route_id=self.route_id)
-        del d['direction_id']
-        d['direction'] = url_for('direction_detail', agency_id=self.agency_id,
-                route_id=self.route_id, direction_id=self.direction_id)
-        del d['stop_id']
-        d['stop'] = url_for('stop_detail', agency_id=self.agency_id,
-                route_id=self.route_id, direction_id=self.direction_id, stop_id=self.stop_id)
-        return d
 
 class NextbusError(Exception):
     def __init__(self, message, retry):
@@ -304,9 +110,128 @@ def get_predictions_xml(agency_id, route_id, direction_id, stop_id):
         "command": "predictions",
     })
 
-@cache.memoize(get_agencylist_xml.cache_timeout)
-def get_agencies(limit=None, offset=0):
-    agencies = []
+# This runs in a deferred() handler
+def update_agency_and_children(agency_id):
+    al_xml = get_agencylist_xml()
+    try:
+        agencies_tree = etree.fromstring(al_xml)
+    except ParseError, e:
+        app.logger.error(al_xml)
+        raise e
+    expr = '//agency[@id="{id}" or @tag="{id}"][1]'.format(id=agency_id)
+    agency_els = agencies_tree.xpath(expr)
+    try:
+        agency_el = agency_els[0]
+    except IndexError:
+        raise NextbusError("Invalid agency", retry=False)
+    agency_key = Key(Agency, agency_id)
+    agency_min_lat = 90
+    agency_min_lng = 180
+    agency_max_lat = -90
+    agency_max_lng = -180
+    route_keys = []
+    rl_xml = get_routelist_xml(agency_id)
+    try:
+        routelist_tree = etree.fromstring(rl_xml)
+    except ParseError, e:
+        app.logger.error(rl_xml)
+        raise e
+    for route_el in routelist_tree.findall('route'):
+        route_id = route_el.get("id") or route_el.get("tag")
+        route_key = Key(Route, route_id)
+        rc_xml = get_route_xml(agency_id, route_id)
+        try:
+            route_tree = etree.fromstring(rc_xml)
+        except ParseError, e:
+            app.logger.error(rc_xml)
+            raise e
+
+        for stop_el in route_tree.xpath('//route/stop'):
+            stop_id = stop_el.get("id") or stop_el.get("tag")
+            expr = '//route/direction/stop[@id="{id}" or @tag="{id}"]/..'.format(id=stop_id)
+            direction_el = route_tree.xpath(expr)[0]
+            direction_id = direction_el.get("id") or direction_el.get("tag")
+            direction_key = Key(Direction, direction_id)
+            lat = stop_el.get("lat")
+            lng = stop_el.get("lng") or stop_el.get("lon")
+            stop = Stop.get_or_update(id=stop_id,
+                name = stop_el.get("name") or stop_el.get("title"),
+                point = GeoPt(lat, lng),
+                agency_key = agency_key,
+                route_key = route_key,
+                direction_key = direction_key)
+
+        direction_keys = []
+        for direction_el in route_tree.xpath('//route/direction'):
+            direction_id = direction_el.get("id") or direction_el.get("tag")
+            stop_keys = []
+            for stop_el in direction_el.find("stop"):
+                stop_id = stop_el.get("id") or stop_el.get("tag")
+                stop_keys.append(Key(Stop, stop_id))
+            direction = Direction.get_or_update(id=direction_id,
+                name = direction_el.get("name"),
+                title = direction_el.get("title"),
+                agency_key = agency_key,
+                route_key = route_key,
+                stop_keys = stop_keys)
+            direction_keys.append(direction.key)
+
+        min_lat = route_el.get("minLat")
+        if min_lat:
+            min_lat = Decimal(min_lat)
+            if min_lat < agency_min_lat:
+                agency_min_lat = min_lat
+        min_lng = route_el.get("minLng") or route_el.get("minLon")
+        if min_lng:
+            min_lng = Decimal(min_lng)
+            if min_lng < agency_min_lng:
+                agency_min_lng = min_lng
+        max_lat = route_el.get("maxLat")
+        if max_lat:
+            max_lat = Decimal(max_lat)
+            if max_lat > agency_max_lat:
+                agency_max_lat = max_lat
+        max_lng = route_el.get("maxLng") or route_el.get("maxLon")
+        if max_lng:
+            max_lng = Decimal(max_lng)
+            if max_lng > agency_max_lng:
+                agency_max_lng = max_lng
+
+        if min_lat and min_lng:
+            min_point = GeoPt(min_lat, min_lng)
+        else:
+            min_point = None
+        if max_lat and max_lng:
+            max_point = GeoPt(max_lat, max_lng)
+        else:
+            max_point = None
+
+        paths = []
+        for path_el in route_el.findall('path'):
+            subpaths = []
+            for point_el in path_el.findall('point'):
+                lat = point_el.get("lat")
+                lng = point_el.get("lng") or point_el.get("lon")
+                subpaths.append(GeoPt(lat, lng))
+            paths.append(subpaths)
+
+        route = Route.get_or_insert(id=route_id,
+            name = route_el.get("name") or route_el.get("title"),
+            min_pt = min_point,
+            max_pt = max_point,
+            paths = paths,
+            direction_keys = direction_keys)
+        route_keys.append(route.key)
+
+    agency = Agency.get_or_insert(id=agency_id,
+        name = agency_el.get("name") or agency_el.get("title"),
+        short_name = agency_el.get("shortName") or agency_el.get("shortTitle"),
+        region = agency_el.get("region"),
+        min_pt = GeoPt(agency_min_lat, agency_min_lng),
+        max_pt = GeoPt(agency_max_lat, agency_max_lng),
+        route_keys = route_keys)
+
+def fire_agency_deferreds():
     xml = get_agencylist_xml()
     try:
         agencies_tree = etree.fromstring(xml)
@@ -317,159 +242,10 @@ def get_agencies(limit=None, offset=0):
         # FIXME: handle the case where nextbus is unreachable
         return None
     agency_els = agencies_tree.findall('agency')
-    if limit:
-        agency_els = agency_els[offset:offset+limit]
-    else:
-        agency_els = agency_els[offset:]
     for agency_el in agency_els:
         agency_id = agency_el.get("id") or agency_el.get("tag")
-        agency = Agency(id = agency_id, 
-            title = agency_el.get("title"),
-            short_title = agency_el.get("shortTitle"),
-            region = agency_el.get("regionTitle"),
-        )
-        xml = get_routelist_xml(agency_id)
-        try:
-            routelist_tree = etree.fromstring(xml)
-        except ParseError, e:
-            app.logger.error(xml)
-            raise e
-        route_ids = []
-        for route in routelist_tree.findall('route'):
-            route_ids.append(route.get("id") or route.get("tag"))
-        agency.route_ids = route_ids
-        agencies.append(agency)
-    return agencies
-
-def get_agencies_count():
-    xml = get_agencylist_xml()
-    try:
-        agencies_tree = etree.fromstring(xml)
-    except ParseError, e:
-        app.logger.error(xml)
-        raise e
-    return len(agencies_tree.findall('agency'))
-
-@cache.memoize(get_agencies.cache_timeout)
-def get_agency(agency_id):
-    xml = get_agencylist_xml()
-    try:
-        agencies_tree = etree.fromstring(xml)
-    except ParseError, e:
-        app.logger.error(xml)
-        raise e
-    if agencies_tree is None:
-        # FIXME: handle the case where nextbus is unreachable
-        pass
-    expr = '//agency[@id="{id}" or @tag="{id}"][1]'.format(id=agency_id)
-    agency_els = agencies_tree.xpath(expr)
-    try:
-        agency_el = agency_els[0]
-    except IndexError:
-        raise NextbusError("Invalid agency", retry=False)
-    agency = Agency(id = agency_id,
-        title = agency_el.get("title"),
-        short_title = agency_el.get("shortTitle"),
-        region = agency_el.get("regionTitle"),
-    )
-    xml = get_routelist_xml(agency_id)
-    try:
-        routelist_tree = etree.fromstring(xml)
-    except ParseError, e:
-        app.logger.error(xml)
-        raise e
-    route_ids = []
-    for route in routelist_tree.findall('route'):
-        route_ids.append(route.get("id") or route.get("tag"))
-    agency.route_ids = route_ids
-    return agency
-
-@cache.memoize(get_route_xml.cache_timeout)
-def get_route(agency_id, route_id):
-    xml = get_route_xml(agency_id, route_id)
-    try:
-        route_tree = etree.fromstring(xml)
-    except ParseError, e:
-        app.logger.error(xml)
-        raise e
-    route_el = route_tree.find('route')
-    attrs = dict(route_el.attrib)
-    attrs = clean_booleans(attrs)
-    if "tag" in attrs and not "id" in attrs:
-        attrs["id"] = attrs["tag"]
-        del attrs["tag"]
-
-    geo = dict(
-        lat_min = Decimal(attrs.get("latMin")),
-        lat_max = Decimal(attrs.get("latMax")),
-        lng_min = Decimal(attrs.get("lngMin") or attrs.get("lonMin")),
-        lng_max = Decimal(attrs.get("lngMax") or attrs.get("lonMax")),
-    )
-    attrs["geo_range"] = GeoRange(**geo)
-
-    paths = []
-    for path_el in route_el.findall('path'):
-        paths.append([Point(Decimal(p.get("lat")), Decimal(p.get("lon"))) for p in path_el.findall('point')])
-    attrs["paths"] = paths
-    direction_ids = [d.get("id") or d.get("tag") for d in route_el.findall('direction')]
-    attrs["direction_ids"] = direction_ids
-
-    attrs = filter_keys(attrs, Route._fields)
-    attrs['agency_id'] = agency_id
-    return Route(**attrs)
-
-@cache.memoize(get_route_xml.cache_timeout)
-def get_direction(agency_id, route_id, direction_id):
-    xml = get_route_xml(agency_id, route_id)
-    try:
-        route_tree = etree.fromstring(xml)
-    except ParseError, e:
-        app.logger.error(xml)
-        raise e
-    expr = '//route/direction[@id="{id}" or @tag="{id}"][1]'.format(id=direction_id)
-    direction_els = route_tree.xpath(expr)
-    try:
-        direction_el = direction_els[0]
-    except IndexError:
-        raise NextbusError("Invalid direction", retry=False)
-
-    attrs = dict(direction_el.attrib)
-    stop_ids = [s.get("id") or s.get("tag") for s in direction_el]
-    attrs["stop_ids"] = stop_ids
-
-    attrs = filter_keys(attrs, Direction._fields)
-    attrs["agency_id"] = agency_id
-    attrs["route_id"] = route_id
-    attrs["id"] = direction_id
-    return Direction(**attrs)
-
-@cache.memoize(get_route_xml.cache_timeout)
-def get_stop(agency_id, route_id, direction_id, stop_id):
-    xml = get_route_xml(agency_id, route_id)
-    try:
-        route_tree = etree.fromstring(xml)
-    except ParseError, e:
-        app.logger.error(xml)
-        raise e
-    expr = '//route/stop[@id="{id}" or @tag="{id}"]'.format(id=stop_id)
-    stop_els = route_tree.xpath(expr)
-    try:
-        stop_el = stop_els[0]
-    except IndexError:
-        raise NextbusError("Invalid stop", retry=False)
-    attrs = dict(stop_el.attrib)
-    if "lat" in attrs:
-        attrs["lat"] = Decimal(attrs["lat"])
-    if "lon" in attrs:
-        attrs["lng"] = Decimal(attrs["lon"])
-    if "lng" in attrs:
-        attrs["lng"] = Decimal(attrs["lng"])
-    attrs = filter_keys(attrs, Stop._fields)
-    attrs["agency_id"] = agency_id
-    attrs["route_id"] = route_id
-    attrs["direction_id"] = direction_id
-    attrs["id"] = stop_id
-    return Stop(**attrs)
+        if agency_id:
+            deferred.defer(update_agency_and_children, agency_id)
 
 @cache.memoize(get_predictions_xml.cache_timeout)
 def get_predictions(agency_id, route_id, direction_id, stop_id):
@@ -481,7 +257,7 @@ def get_predictions(agency_id, route_id, direction_id, stop_id):
         raise e
     buses = []
     for prediction_el in predictions_tree.xpath('/body/predictions/direction/prediction'):
-        buses.append(PredictedBus(
+        buses.append(BusPrediction(
             agency_id = agency_id,
             route_id = route_id,
             direction_id = direction_id,
@@ -512,7 +288,7 @@ def get_prediction(agency_id, route_id, direction_id, stop_id, trip_id):
         prediction_el = prediction_els[0]
     except IndexError:
         raise NextbusError("Invalid prediction", retry=False)
-    return PredictedBus(
+    return BusPrediction(
         agency_id = agency_id,
         route_id = route_id,
         direction_id = direction_id,

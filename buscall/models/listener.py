@@ -1,7 +1,6 @@
-from google.appengine.api import users, mail
-from google.appengine.ext import db
-from buscall.models import nextbus
-from buscall.models.nextbus import get_agency, get_route,get_predictions, get_route
+from google.appengine.api import mail
+from ndb import model
+from buscall.models.nextbus import Agency, Route, Direction, Stop
 from buscall.models.profile import UserProfile
 from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
 from buscall.models.twilio import notify_by_phone, notify_by_txt
@@ -17,35 +16,35 @@ except ImportError:
 
 NOTIFICATION_CHOICES = (('phone', 'Call'), ('txt', 'Text'), ('email', 'Email'))
 
-class BusListener(db.Model):
-    userprofile = db.ReferenceProperty(UserProfile, collection_name="listeners", required=True)
+class BusListener(model.Model):
+    user_id = model.StringProperty(required=True)
 
     # info about bus stop
-    agency_id = db.StringProperty(required=True, default="mbta")
-    route_id = db.StringProperty(required=True)
-    direction_id = db.StringProperty(required=False)
-    stop_id = db.StringProperty(required=True)
+    agency_key = model.KeyProperty(required=True)
+    route_key = model.KeyProperty(required=True)
+    direction_key = model.KeyProperty(required=False)
+    stop_key = model.KeyProperty(required=True)
 
     # is this a one-time alert, or a recurring alert?
-    recur = db.BooleanProperty(required=True)
+    recur = model.BooleanProperty(required=True)
 
     # when to start listening
     # App Engine doesn't allow inequality filters on multiple entities
     # (such as time is after start and time is before end)
     # so instead we'll use a boolean to determine whether this needs to be checked
-    start = db.TimeProperty(required=True)
+    start = model.TimeProperty(required=True)
     # when all your notifications have been satisfied, set seen=True
-    seen  = db.BooleanProperty(required=True, default=False)
+    seen  = model.BooleanProperty(default=False)
 
     # day of week: since we'll be sorting by this,
     # it actually makes sense to keep them as separate properties
-    mon = db.BooleanProperty(required=True, default=True)
-    tue = db.BooleanProperty(required=True, default=True)
-    wed = db.BooleanProperty(required=True, default=True)
-    thu = db.BooleanProperty(required=True, default=True)
-    fri = db.BooleanProperty(required=True, default=True)
-    sat = db.BooleanProperty(required=True, default=True)
-    sun = db.BooleanProperty(required=True, default=True)
+    mon = model.BooleanProperty(default=True)
+    tue = model.BooleanProperty(default=True)
+    wed = model.BooleanProperty(default=True)
+    thu = model.BooleanProperty(default=True)
+    fri = model.BooleanProperty(default=True)
+    sat = model.BooleanProperty(default=True)
+    sun = model.BooleanProperty(default=True)
 
     @property
     def daily(self):
@@ -88,32 +87,23 @@ class BusListener(db.Model):
                         return "tomorrow"
                     return "on %s" % (day.capitalize())
             return "never" # should never get here
-    
+
     @property
     def agency(self):
-        return nextbus.get_agency(self.agency_id)
-    
+        return self.agency_key.get()
     @property
     def route(self):
-        if not getattr(self, "_route", None):
-            self._route = nextbus.get_route(self.agency_id, self.route_id)
-        return self._route
-    
+        return self.route_key.get()
     @property
     def direction(self):
-        if not getattr(self, "_direction", None):
-            self._direction = nextbus.get_direction(self.agency_id, self.route_id, self.direction_id)
-        return self._direction
-    
+        return self.direction_key.get()
     @property
     def stop(self):
-        if not getattr(self, "_stop", None):
-            self._stop = nextbus.get_stop(self.agency_id, self.route_id, self.direction_id, self.stop_id)
-        return self._stop
-    
+        return self.stop_key.get()
+
     @property
     def id(self):
-        return self.key().id()
+        return self.key.id()
     
     def __str__(self):
         values = {}
@@ -133,7 +123,8 @@ class BusListener(db.Model):
     
     def get_predictions(self):
         "Use the Nextbus API to get route prediction information."
-        return nextbus.get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
+        # return nextbus_api.get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
+        pass
     
     def check_notifications(self):
         self.seen = all((notification.executed for notification in self.notifications))
@@ -149,11 +140,11 @@ class BusListener(db.Model):
         # and then delete yourself
         super(BusListener, self).delete()
 
-class BusNotification(db.Model):
-    listener = db.ReferenceProperty(BusListener, collection_name="notifications", required=True)
-    minutes = db.IntegerProperty(required=True)
-    medium = db.StringProperty(choices=[k for k,v in NOTIFICATION_CHOICES], required=True)
-    executed = db.BooleanProperty(required=True, default=False)
+class BusNotification(model.Model):
+    listener = model.KeyProperty(required=True)
+    minutes = model.IntegerProperty(required=True)
+    medium = model.StringProperty(choices=[k for k,v in NOTIFICATION_CHOICES], required=True)
+    executed = model.BooleanProperty(default=False)
 
     def __str__(self):
         if self.executed:

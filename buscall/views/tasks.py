@@ -2,7 +2,6 @@ import time
 import datetime
 from google.appengine.ext.db import GqlQuery
 from buscall import app
-from buscall.models.nextbus import get_predictions
 from buscall.util import DAYS_OF_WEEK
 from flask import redirect, url_for
 

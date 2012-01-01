@@ -10,7 +10,6 @@ from buscall.util import MAIL_SENDER, READONLY_ERR_MSG, GqlQuery, get_request_fo
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
 from buscall.models.listener import NOTIFICATION_CHOICES
-from buscall.models.nextbus import get_agencies
 from buscall.forms import WaitlistForm, UserProfileForm
 from google.appengine.api import memcache, mail
 from google.appengine.ext import db
@@ -127,6 +126,3 @@ def flush_all():
     else:
         return "Failed"
 
-@app.route("/_ah/warmup")
-def warmup():
-    return render_json(get_agencies())

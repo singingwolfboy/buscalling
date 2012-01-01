@@ -1,10 +1,11 @@
 from __future__ import absolute_import
 
 from buscall import app
+from ndb import Key
 from twilio_api import Account, HTTPErrorAppEngine
 import simplejson as json
 from google.appengine.api import users
-from buscall.models.nextbus import get_predictions, get_route, get_stop
+from buscall.models.nextbus import Route, Stop
 from buscall.decorators import admin_required
 from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
 from buscall.util import DOMAIN, pluralize_minutes
@@ -51,8 +52,8 @@ def sms_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
     user = users.get_current_user()
     app.logger.info("%s (%s) texted %s" % (user.nickname(), user.user_id(), phone_num))
     predictions = get_predictions(agency_id, route_id, direction_id, stop_id)
-    route = get_route(agency_id, route_id)
-    stop = get_stop(agency_id, route_id, direction_id, stop_id)
+    route = Key(Route, route_id).get()
+    stop = Key(Stop, stop_id).get()
     if len(predictions) > 1:
         first = predictions[0]
         rest = predictions[1:]
