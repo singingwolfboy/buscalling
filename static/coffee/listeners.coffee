@@ -255,6 +255,21 @@ $().ready ->
         @map.setZoom(16)
       @map
 
+  class TimeView                extends Backbone.View
+    el: ".form_field.start input"
+    initialize: ->
+      @render()
+    render: ->
+      this.$(@el).timePicker
+        defaultSelected: "7:00 AM"
+        show24Hours: false
+
+    events:
+      "change": "updateTime"
+    updateTime: ->
+      time = this.$(@el).val()
+      @model.set("start": time)
+
   fieldTemplate = _.template("""
     <label for="{{id}}">{{name}}</label>
     <select id="{{id}}" name="{{id}}_id" required>
@@ -387,6 +402,7 @@ $().ready ->
 
     initialize: ->
       App.mapView = new MapView(model: App.listener)
+      App.timeView = new TimeView(model: App.listener)
       App.agenciesView = new AgencySelectorView(collection: App.agencies)
       App.routesView = new RouteSelectorView(collection: App.routes)
       App.directionsView = new DirectionSelectorView(collection: App.directions)
