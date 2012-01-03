@@ -20,9 +20,7 @@ skip_files:
 builtins:
 - datastore_admin: on
 - remote_api: on
-
-inbound_services:
-- warmup
+- deferred: on
 
 libraries:
 - name: jinja2

@@ -1,7 +1,10 @@
+from buscall import app
 from flask import url_for
-from ndb import model
+from ndb import Key, model
 from .util import PathProperty
 from markupsafe import Markup
+from lxml import etree
+from buscall.models.nextbus_api import get_predictions_xml
 
 resource_uri = Markup("resource_uri")
 template_id = Markup("{{id}}")
@@ -16,7 +19,7 @@ class Agency(model.Model):
 
     @property
     def id(self):
-        return self.key.id()
+        return self.key.name()
 
     @property
     def url(self):
@@ -31,29 +34,25 @@ class Agency(model.Model):
         d['routes'] = dict(
             list_uri = url_for('route_list', agency_id=self.id),
             detail_uri_template = detail_uri_template,
-            ids = [key.id() for key in self.route_keys],
+            ids = [key.name().split("|")[-1] for key in self.route_keys],
         )
         del d['route_keys']
-        d['latMin'] = self.min_pt.lat
-        d['lngMin'] = self.min_pt.lng
-        d['latMax'] = self.max_pt.lat
-        d['lngMax'] = self.max_pt.lng
         return d
 
 class Route(model.Model):
     name = model.StringProperty()
     min_pt = model.GeoPtProperty()
     max_pt = model.GeoPtProperty()
-    paths = PathProperty()
+    paths = PathProperty(indexed=False)
     agency_key = model.KeyProperty()
     direction_keys = model.KeyProperty(repeated=True)
 
     @property
     def id(self):
-        return self.key.id()
+        return self.key.name().split("|")[-1]
     @property
     def agency_id(self):
-        return self.agency_key.id()
+        return self.agency_key.name()
 
     @property
     def url(self):
@@ -70,13 +69,9 @@ class Route(model.Model):
         d['directions'] = dict(
             list_uri = url_for('direction_list', agency_id=self.agency_id, route_id=self.id),
             detail_uri_template = detail_uri_template,
-            ids = [key.id() for key in self.direction_keys],
+            ids = [key.name().split("|")[-1] for key in self.direction_keys],
         )
         del d['direction_key']
-        d['latMin'] = self.min_pt.lat
-        d['lngMin'] = self.min_pt.lng
-        d['latMax'] = self.max_pt.lat
-        d['lngMax'] = self.max_pt.lng
         return d
 
 class Direction(model.Model):
@@ -88,13 +83,13 @@ class Direction(model.Model):
 
     @property
     def id(self):
-        return self.key.id()
+        return self.key.name().split("|")[-1]
     @property
     def agency_id(self):
-        return self.agency_key.id()
+        return self.agency_key.name()
     @property
     def route_id(self):
-        return self.route_key.id()
+        return self.route_key.split("|")[-1]
 
     @property
     def url(self):
@@ -115,7 +110,7 @@ class Direction(model.Model):
         d['stops'] = dict(
             list_uri = url_for('stop_list', agency_id=self.agency_id, route_id=self.route_id, direction_id=self.id),
             detail_uri_template = detail_uri_template,
-            ids = [key.id() for key in self.stop_keys],
+            ids = [key.name().split("|")[-1] for key in self.stop_keys],
         )
         del d['stop_keys']
         return d
@@ -129,16 +124,16 @@ class Stop(model.Model):
 
     @property
     def id(self):
-        return self.key.id()
+        return self.key.name().split("|")[-1]
     @property
     def agency_id(self):
-        return self.agency_key.id()
+        return self.agency_key.name()
     @property
     def route_id(self):
-        return self.route_key.id()
+        return self.route_key.name().split("|")[-1]
     @property
     def direction_id(self):
-        return self.direction_key.id()
+        return self.direction_key.name().split("|")[-1]
 
     @property
     def url(self):
@@ -181,16 +176,16 @@ class BusPrediction(model.Model):
 
     @property
     def agency_id(self):
-        return self.agency_key.id()
+        return self.agency_key.name()
     @property
     def route_id(self):
-        return self.route_key.id()
+        return self.route_key.name().split("|")[-1]
     @property
     def direction_id(self):
-        return self.direction_key.id()
+        return self.direction_key.name().split("|")[-1]
     @property
     def stop_id(self):
-        return self.stop_key.id()
+        return self.stop_key.name().split("|")[-1]
 
     @property
     def url(self):
@@ -211,4 +206,58 @@ class BusPrediction(model.Model):
         d['stop'] = url_for('stop_detail', agency_id=self.agency_id,
                 route_id=self.route_id, direction_id=self.direction_id, stop_id=self.stop_id)
         return d
+
+    # OVERRIDING standard query() method
+    @classmethod
+    def query(cls, *args, **kwargs):
+        ctx = {}
+        attributes = ["agency", "route", "direction", "stop"]
+        for node in args:
+            name = getattr(node, "_FilterNode__name", None)
+            op = getattr(node, "_FilterNode__op", None)
+            value = getattr(node, "_FilterNode__value", None)
+            if not name or not op or not value or op != "=":
+                continue
+            for attr in attributes:
+                if name == attr + "_key":
+                    ctx[attr + "_id"] = value.name()
+
+        # check kwargs overrides
+        for attr in attributes:
+            aid = attr + "_id"
+            if aid in kwargs:
+                ctx[aid] = kwargs[aid]
+
+        # pull from API
+        xml = get_predictions_xml(**ctx)
+        try:
+            predictions_tree = etree.fromstring(xml)
+        except etree.ParseError, e:
+            app.logger.error(xml)
+            raise e
+
+        # make objects to return
+        agency_key = Key(Agency, ctx['agency_id'])
+        route_key = Key(Route, "{agency_id}|{route_id}".format(**ctx))
+        direction_key = Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**ctx))
+        stop_key = Key(Stop, "{agency_id}|{route_id}|{direction_id}|{stop_id}".format(**ctx))
+        buses = []
+        for prediction_el in predictions_tree.xpath('/body/predictions/direction/prediction'):
+            buses.append(cls(
+                agency_key = agency_key,
+                route_key = route_key,
+                direction_key = direction_key,
+                stop_key = stop_key,
+                trip_id = prediction_el.get("tripTag"),
+                minutes = int(prediction_el.get("minutes", 0)),
+                seconds = int(prediction_el.get("seconds", 0)),
+                vehicle = prediction_el.get("vehicle"),
+                block = prediction_el.get("block"),
+                departure = prediction_el.get("isDeparture", "").lower() == "true",
+                affected_by_layover = prediction_el.get("affectedByLayover", "").lower() == "true",
+                delayed = prediction_el.get("delayed", "").lower() == "true",
+                slowness = int(prediction_el.get("slowness", 0)),
+            ))
+        return buses
+
 
