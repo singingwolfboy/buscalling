@@ -63,7 +63,7 @@ class BusListenerForm(Form):
     dow = SelectField("Date", choices=this_week_choices, default=today.strftime('%a').lower())
 
     def __init__(self, *args, **kwargs):
-        self.agency_id.choices = [('','')] + [(agency.id, agency.title) for agency in Agency.query()]
+        self.agency_id.choices = [('','')] + [(agency.id, agency.name) for agency in Agency.query()]
         super(BusListenerForm, self).__init__(*args, **kwargs)
 
     def validate(self, *args, **kwargs):

@@ -6,6 +6,7 @@ from .twilio import call_prediction
 from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
 from .profile import update_profile
+from .util import ExtJSONEncoder
 from buscall.util import MAIL_SENDER, READONLY_ERR_MSG, GqlQuery, get_request_format
 from buscall.models import WaitlistEntry, BusListener, UserProfile
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
@@ -85,7 +86,7 @@ def url_dict(obj):
 @app.template_filter('json')
 def to_json(obj):
     if test_defined(obj):
-        return Markup(json.dumps(obj, use_decimal=True))
+        return Markup(json.dumps(obj, use_decimal=True, cls=ExtJSONEncoder))
     return Markup("null")
 
 @app.route('/')
