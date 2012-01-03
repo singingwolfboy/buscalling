@@ -129,7 +129,7 @@ def update_agency_and_children(agency_id):
             direction_id = direction_el.get("id") or direction_el.get("tag")
             direction_key = Key(Direction, "{0}|{1}|{2}".format(agency_id, route_id, direction_id))
             stop_keys = []
-            for stop_el in direction_el.find("stop"):
+            for stop_el in direction_el.findall("stop"):
                 stop_id = stop_el.get("id") or stop_el.get("tag")
                 stop_keys.append(Key(Stop, "{0}|{1}|{2}|{3}".format(agency_id, route_id, direction_id, stop_id)))
             direction = Direction(
@@ -207,15 +207,15 @@ def update_agency_and_children(agency_id):
         route_keys = route_keys)
     agency.put_async().get_result()
 
-    response = dict(
-        status = "success",
-        agencies = 1,
-        routes = route_count,
-        directions = direction_count,
-        stops = stop_count,
-    )
-    if direction_association_warning_count:
-        response["direction association warnings"] = direction_association_warning_count
+    response = {
+        "status": "success",
+        "agencies": 1,
+        "routes": route_count,
+        "directions":  direction_count,
+        "stops": stop_count,
+        "association warnings": direction_association_warning_count,
+    }
+    app.logger.info(response)
     return json.dumps(response)
 
 @app.route('/tasks/nextbus/update')
