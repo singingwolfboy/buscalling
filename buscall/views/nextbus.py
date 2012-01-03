@@ -172,10 +172,11 @@ def prediction_list(agency_id, route_id, direction_id, stop_id, limit, offset):
         return Response(twiml, mimetype="text/xml")
     else:
         count = len(bus_predictions)
-        if limit:
-            bus_predictions = bus_predictions[offset:offset+limit]
-        else:
-            bus_predictions = bus_predictions[offset:]
+        if offset:
+            if limit:
+                bus_predictions = bus_predictions[offset:offset+limit]
+            else:
+                bus_predictions = bus_predictions[offset:]
         return render_json(bus_predictions, limit, offset, count)
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predictions/<trip_id>')
