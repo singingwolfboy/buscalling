@@ -132,10 +132,12 @@ def update_agency_and_children(agency_id):
             for stop_el in direction_el.findall("stop"):
                 stop_id = stop_el.get("id") or stop_el.get("tag")
                 stop_keys.append(Key(Stop, "{0}|{1}|{2}|{3}".format(agency_id, route_id, direction_id, stop_id)))
+            # Nextbus uses "title" as the main name for a direction, and "name" as a secondary:
+            # we use "name" as the main name, and "altname" as a secondary, which makes more sense
             direction = Direction(
                 key = direction_key,
-                name = direction_el.get("name"),
-                title = direction_el.get("title"),
+                name = direction_el.get("title"), # note the switcheroo!
+                altname = direction_el.get("name"),
                 agency_key = agency_key,
                 route_key = route_key,
                 stop_keys = stop_keys)

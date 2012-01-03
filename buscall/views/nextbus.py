@@ -71,7 +71,9 @@ def route_list(agency_id, limit, offset):
 
 @app.route('/agencies/<agency_id>/routes/<route_id>')
 def route_detail(agency_id, route_id):
-    route = Key(Route, route_id).get() or abort(404)
+    fctx = locals() # format context
+    route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
+    route = route_key.get() or abort(404)
     if g.request_format == "json":
         return render_json(route)
     else:
@@ -84,10 +86,10 @@ def route_detail(agency_id, route_id):
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions')
 @api_list
 def direction_list(agency_id, route_id, limit, offset):
+    fctx = locals() # format context
     agency_key = Key(Agency, agency_id)
-    route_key = Key(Route, route_id)
-    directions_qry = Direction.query(Direction.agency_key == agency_key,
-        Direction.route_key == route_key)
+    route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
+    directions_qry = Direction.query(Direction.route_key == route_key)
     if g.request_format == "json":
         directions = directions_qry.iter(limit=limit, offset=offset)
         return render_json(directions, limit, offset, directions_qry.count())
@@ -102,13 +104,17 @@ def direction_list(agency_id, route_id, limit, offset):
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>')
 def direction_detail(agency_id, route_id, direction_id):
-    direction = Key(Direction, direction_id).get() or abort(404)
+    fctx = locals() # format context
+    agency_key = Key(Agency, agency_id)
+    route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
+    direction_key = Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**fctx))
+    direction = direction_key.get() or abort(404)
     if g.request_format == "json":
         return render_json(direction)
     else:
         ctx = dict(
-            agency = Key(Agency, agency_id).get() or abort(404),
-            route = Key(Route, route_id).get() or abort(404),
+            agency = agency_key.get() or abort(404),
+            route = route_key.get() or abort(404),
             direction = direction,
         )
         return render_template('directions/show.html', **ctx)
@@ -116,11 +122,11 @@ def direction_detail(agency_id, route_id, direction_id):
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops')
 @api_list
 def stop_list(agency_id, route_id, direction_id, limit, offset):
+    fctx = locals() # format context
     agency_key = Key(Agency, agency_id)
-    route_key = Key(Route, route_id)
-    direction_key = Key(Direction, direction_id)
-    stops_qry = Stop.query(Stop.agency_key == agency_key, Stop.route_key == route_key,
-        Stop.direction_key == direction_key)
+    route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
+    direction_key = Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**fctx))
+    stops_qry = Stop.query(Stop.direction_key == direction_key)
     if g.request_format == "json":
         stops = stops_qry.iter(limit=limit, offset=offset)
         return render_json(stops, limit, offset, stops_qry.count())
@@ -136,23 +142,21 @@ def stop_list(agency_id, route_id, direction_id, limit, offset):
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>')
 def stop_detail(agency_id, route_id, direction_id, stop_id):
-    stop = Key(Stop, stop_id).get() or abort(404)
+    fctx = locals() # format context
+    stop_key = Key(Stop, "{agency_id}|{route_id}|{direction_id}|{stop_id}".format(**fctx))
+    stop = stop_key.get() or abort(404)
     if g.request_format == "json":
         return render_json(stop)
     else:
         agency_key = Key(Agency, agency_id)
-        route_key = Key(Route, route_id)
-        direction_key = Key(Direction, direction_id)
+        route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
+        direction_key = Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**fctx))
         ctx = dict(
             agency = agency_key.get() or abort(404),
             route = route_key.get() or abort(404),
             direction = direction_key.get() or abort(404),
             stop = stop,
-            bus_predictions = BusPrediction.query(
-                BusPrediction.agency_key == agency_key,
-                BusPrediction.route_key == route_key,
-                BusPrediction.direction_key == direction_key,
-                BusPrediction.stop_key == stop.key)
+            bus_predictions = BusPrediction.query(BusPrediction.stop_key == stop.key)
         )
         return render_template('stops/show.html', **ctx)
 

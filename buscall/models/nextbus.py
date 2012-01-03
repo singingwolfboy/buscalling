@@ -83,7 +83,7 @@ class Route(model.Model):
 
 class Direction(model.Model):
     name = model.StringProperty()
-    title = model.StringProperty()
+    altname = model.StringProperty()
     agency_key = model.KeyProperty()
     route_key = model.KeyProperty()
     stop_keys = model.KeyProperty(repeated=True)
@@ -97,7 +97,7 @@ class Direction(model.Model):
         return self.agency_key.id()
     @property
     def route_id(self):
-        return self.route_key.split("|")[-1]
+        return self.route_key.id().split("|")[-1]
 
     @property
     def url(self):
@@ -232,16 +232,20 @@ class BusPrediction(model.Model):
             if not name or not op or not value or op != "=":
                 continue
             for attr in attributes:
-                if name == attr + "_key":
-                    ctx[attr + "_id"] = value.id().split("|")[-1]
-                elif name == attr + "_id":
-                    ctx[attr + "_id"] = value
+                attr_id = attr+"_id"
+                attr_key = attr+"_key"
+                if name == attr_key:
+                    key_parts = value.id().split("|")
+                    for inner_attr, inner_value in zip(attributes, key_parts):
+                        ctx[inner_attr + "_id"] = inner_value
+                elif name == attr_id:
+                    ctx[attr_id] = value
 
         # check kwargs overrides
         for attr in attributes:
-            aid = attr + "_id"
-            if aid in kwargs:
-                ctx[aid] = kwargs[aid]
+            attr_id = attr + "_id"
+            if attr_id in kwargs:
+                ctx[attr_id] = kwargs[attr_id]
 
         # trip_id should not get passed to get_predictions_xml
         try:
