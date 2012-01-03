@@ -201,7 +201,7 @@ def update_agency_and_children(agency_id):
         key = agency_key,
         name = agency_el.get("name") or agency_el.get("title"),
         short_name = agency_el.get("shortName") or agency_el.get("shortTitle"),
-        region = agency_el.get("region"),
+        region = agency_el.get("region") or agency_el.get("regionTitle"),
         min_pt = GeoPt(agency_min_lat, agency_min_lng),
         max_pt = GeoPt(agency_max_lat, agency_max_lng),
         route_keys = route_keys)
