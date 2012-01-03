@@ -1,16 +1,15 @@
 from buscall import app
 from flask import render_template, request, Response, g, abort
+from .util import render_json
 # from buscall.models import nextbus_api
-from buscall.models.twilio import get_twiml
-import simplejson as json
 from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
+from buscall.models.twilio import get_twiml
 from functools import wraps
 from ndb import Key
 
 __all__ = ['agency_list', 'agency_detail', 'route_list', 'route_detail',
         'direction_list', 'direction_detail', 'stop_list', 'stop_detail',
-        # 'prediction_list', 'prediction_detail',
-        'render_json']
+        'prediction_list', 'prediction_detail']
 
 def api_list(func):
     @wraps(func)
@@ -35,45 +34,6 @@ def api_list(func):
 
         return func(*args, **kwargs)
     return wrapper
-
-def render_json(obj, limit=None, offset=None, count=None):
-    # TODO: pull limit and offset from QueryIterator, rather than being passed in;
-    # calculate count automatically rather than being passed in.
-
-    # get exclusion list
-    exclude = request.args.get('exclude') or request.headers.get('X-Exclude')
-    if exclude:
-        exclusions = [e.strip() for e in exclude.split(",")]
-    else:
-        exclusions = []
-    # get dictionar(ies)
-    def process(model):
-        if hasattr(model, "_as_url_dict"):
-            ret = model._as_url_dict()
-        else:
-            ret = model
-        # remove exclusions
-        for exclusion in exclusions:
-            if exclusion in ret:
-                del ret[exclusion]
-        return ret
-    if isinstance(obj, (list, tuple)):
-        view_obj = [process(o) for o in obj]
-        count = count or len(view_obj)
-    else:
-        view_obj = process(obj)
-    # make response
-    resp = Response(json.dumps(view_obj, use_decimal=True), mimetype="application/json")
-    # include headers
-    if limit is not None:
-        resp.headers.add("X-Limit", limit)
-    if offset is not None:
-        resp.headers.add("X-Offset", offset)
-    if count is not None:
-        resp.headers.add("X-TotalCount", count)
-    if exclusions:
-        resp.headers.add("X-Excluding", ",".join(exclusions))
-    return resp
 
 @app.route('/agencies')
 @api_list
@@ -196,30 +156,43 @@ def stop_detail(agency_id, route_id, direction_id, stop_id):
         )
         return render_template('stops/show.html', **ctx)
 
-"""
 @app.route('/predictions/<agency_id>/<route_id>/<direction_id>/<stop_id>')
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predictions')
 @api_list
 def prediction_list(agency_id, route_id, direction_id, stop_id, limit, offset):
-    predictions = nextbus_api.get_predictions(agency_id, route_id, direction_id, stop_id)
+    # Note that because the query() method was overridden on the BusPrediction class,
+    # bus_predictions is NOT a Query object, but a list of BusPrediction objects.
+    bus_predictions = BusPrediction.query(
+        agency_id = agency_id,
+        route_id = route_id,
+        direction_id = direction_id,
+        stop_id = stop_id)
     if g.request_format == "twiml":
-        twiml = get_twiml(predictions)
+        twiml = get_twiml(bus_predictions)
         return Response(twiml, mimetype="text/xml")
     else:
-        count = len(predictions)
+        count = len(bus_predictions)
         if limit:
-            predictions = predictions[offset:offset+limit]
+            bus_predictions = bus_predictions[offset:offset+limit]
         else:
-            predictions = predictions[offset:]
-        return render_json(predictions, limit, offset, count)
+            bus_predictions = bus_predictions[offset:]
+        return render_json(bus_predictions, limit, offset, count)
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>/predictions/<trip_id>')
 def prediction_detail(agency_id, route_id, direction_id, stop_id, trip_id):
-    prediction = nextbus_api.get_prediction(agency_id, route_id, direction_id, stop_id, trip_id)
+    bus_predictions = BusPrediction.query(
+        agency_id = agency_id,
+        route_id = route_id,
+        direction_id = direction_id,
+        stop_id = stop_id,
+        trip_id = trip_id)
+    try:
+        bus_prediction = bus_predictions[0]
+    except IndexError:
+        abort(404)
     if g.request_format == "twiml":
-        twiml = get_twiml(prediction)
+        twiml = get_twiml(bus_prediction)
         return Response(twiml, mimetype="text/xml")
     else:
-        return render_json(prediction)
+        return render_json(bus_prediction)
 
-"""
