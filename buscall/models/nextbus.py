@@ -16,6 +16,7 @@ class Agency(model.Model):
     min_pt = model.GeoPtProperty()
     max_pt = model.GeoPtProperty()
     route_keys = model.KeyProperty(repeated=True)
+    last_updated = model.DateTimeProperty(auto_now=True)
 
     @property
     def id(self):
@@ -28,6 +29,7 @@ class Agency(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        del d['last_updated']
         detail_uri_template = url_for('route_detail', agency_id=self.id, route_id=template_id)
         # unescape mustaches
         detail_uri_template = detail_uri_template.replace("%7B", "{").replace("%7D", "}")
@@ -46,6 +48,7 @@ class Route(model.Model):
     paths = PathProperty(indexed=False)
     agency_key = model.KeyProperty()
     direction_keys = model.KeyProperty(repeated=True)
+    last_updated = model.DateTimeProperty(auto_now=True)
 
     @property
     def id(self):
@@ -61,6 +64,7 @@ class Route(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        del d['last_updated']
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
         detail_uri_template = url_for('direction_detail', agency_id=self.agency_id,
                 route_id=self.id, direction_id=template_id)
@@ -80,6 +84,7 @@ class Direction(model.Model):
     agency_key = model.KeyProperty()
     route_key = model.KeyProperty()
     stop_keys = model.KeyProperty(repeated=True)
+    last_updated = model.DateTimeProperty(auto_now=True)
 
     @property
     def id(self):
@@ -99,6 +104,7 @@ class Direction(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        del d['last_updated']
         del d['agency_key']
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
         del d['route_key']
@@ -121,6 +127,7 @@ class Stop(model.Model):
     agency_key = model.KeyProperty()
     route_key = model.KeyProperty()
     direction_key = model.KeyProperty()
+    last_updated = model.DateTimeProperty(auto_now=True)
 
     @property
     def id(self):
@@ -143,6 +150,7 @@ class Stop(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        del d['last_updated']
         del d['agency_key']
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
         del d['route_key']
