@@ -205,7 +205,7 @@ def update_agency_and_children(agency_id):
         min_pt = GeoPt(agency_min_lat, agency_min_lng),
         max_pt = GeoPt(agency_max_lat, agency_max_lng),
         route_keys = route_keys)
-    agency.put_async()
+    agency.put_async().get_result()
 
     response = dict(
         status = "success",
