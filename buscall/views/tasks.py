@@ -191,6 +191,7 @@ def update_agency_and_children(agency_id):
             min_pt = min_point,
             max_pt = max_point,
             paths = paths,
+            agency_key = agency_key,
             direction_keys = direction_keys)
         route.put()
         route_count += 1
