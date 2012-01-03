@@ -121,7 +121,7 @@ def update_agency_and_children(agency_id):
                 agency_key = agency_key,
                 route_key = route_key,
                 direction_key = direction_key)
-            stop.put()
+            stop.put_async()
             stop_count += 1
 
         direction_keys = []
@@ -139,7 +139,7 @@ def update_agency_and_children(agency_id):
                 agency_key = agency_key,
                 route_key = route_key,
                 stop_keys = stop_keys)
-            direction.put()
+            direction.put_async()
             direction_count += 1
             direction_keys.append(direction_key)
 
@@ -193,7 +193,7 @@ def update_agency_and_children(agency_id):
             paths = paths,
             agency_key = agency_key,
             direction_keys = direction_keys)
-        route.put()
+        route.put_async()
         route_count += 1
         route_keys.append(route_key)
 
@@ -205,7 +205,7 @@ def update_agency_and_children(agency_id):
         min_pt = GeoPt(agency_min_lat, agency_min_lng),
         max_pt = GeoPt(agency_max_lat, agency_max_lng),
         route_keys = route_keys)
-    agency.put()
+    agency.put_async()
 
     response = dict(
         status = "success",
