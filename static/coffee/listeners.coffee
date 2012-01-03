@@ -202,14 +202,12 @@ $().ready ->
 
     onAgencyChange: (listener, agency) ->
       if agency
-        latMin = agency.get("latMin")
-        lngMin = agency.get("lngMin")
-        latMax = agency.get("latMax")
-        lngMax = agency.get("lngMax")
-        if latMin and lngMin and latMax and lngMax
+        minPt = agency.get("min_pt")
+        maxPt = agency.get("max_pt")
+        if minPt.length and maxPt.length
           bounds = new @m.LatLngBounds(
-            new @m.LatLng(latMin, lngMin),
-            new @m.LatLng(latMax, lngMax),
+            new @m.LatLng(minPt[0], minPt[1]),
+            new @m.LatLng(maxPt[0], maxPt[1]),
           )
           @map.fitBounds(bounds)
       @map
@@ -219,21 +217,19 @@ $().ready ->
         for polyline in @map.route
           polyline.setMap(null)
       if route
-        latMin = route.get("latMin")
-        lngMin = route.get("lngMin")
-        latMax = route.get("latMax")
-        lngMax = route.get("lngMax")
-        if latMin and lngMin and latMax and lngMax
+        minPt = route.get("min_pt")
+        maxPt = route.get("max_pt")
+        if minPt.length and maxPt.length
           bounds = new @m.LatLngBounds(
-            new @m.LatLng(latMin, lngMin),
-            new @m.LatLng(latMax, lngMax),
+            new @m.LatLng(minPt[0], minPt[1]),
+            new @m.LatLng(maxPt[0], maxPt[1]),
           )
           @map.fitBounds(bounds)
         paths = route.get("paths")
         if paths
           route = []
           for subpath in paths
-            latlngs = [new @m.LatLng(point.lat, point.lng) for point in subpath]
+            latlngs = [new @m.LatLng(point[0], point[1]) for point in subpath]
             route.push(new @m.Polyline(
               path: latlngs
               map: @map
@@ -247,9 +243,10 @@ $().ready ->
       if @map.stop
         @map.stop.setMap(null)
       if stop
+        point = stop.get("point")
         @map.stop = new @m.Marker
-          position: new @m.LatLng stop.get("lat"), stop.get("lng")
-          title: stop.get("title")
+          position: new @m.LatLng point[0], point[1]
+          title: stop.get("name")
           map: @map
       else
         @map.stop = null
@@ -266,7 +263,7 @@ $().ready ->
     </select>
   """)
   optionTemplate = _.template("""
-    <option value="{{id}}"{% if(focused) { %} selected="selected"{% } %}>{{title}}</option>
+    <option value="{{id}}"{% if(focused) { %} selected="selected"{% } %}>{{name}}</option>
   """)
   class SelectorView            extends Backbone.View
     className: "form_field"

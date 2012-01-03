@@ -29,6 +29,7 @@ class Agency(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        d['id'] = self.id
         del d['last_updated']
         detail_uri_template = url_for('route_detail', agency_id=self.id, route_id=template_id)
         # unescape mustaches
@@ -64,6 +65,7 @@ class Route(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        d['id'] = self.id
         del d['last_updated']
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
         del d['agency_key']
@@ -105,6 +107,7 @@ class Direction(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        d['id'] = self.id
         del d['last_updated']
         del d['agency_key']
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
@@ -151,6 +154,7 @@ class Stop(model.Model):
     def _as_url_dict(self):
         d = self._to_dict()
         d[resource_uri] = self.url
+        d['id'] = self.id
         del d['last_updated']
         del d['agency_key']
         d['agency'] = url_for('agency_detail', agency_id=self.agency_id)
