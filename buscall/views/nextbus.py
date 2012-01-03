@@ -20,8 +20,8 @@ def api_list(func):
                 kwargs['limit'] = int(limit)
             except (ValueError, TypeError):
                 kwargs['limit'] = 20
-        if kwargs['limit'] < 0:
-            kwargs['limit'] = 0
+        if kwargs['limit'] < 1:
+            kwargs['limit'] = None
 
         if not 'offset' in kwargs:
             offset = request.args.get('offset') or request.headers.get('X-Offset')
@@ -29,8 +29,8 @@ def api_list(func):
                 kwargs['offset'] = int(offset)
             except (ValueError, TypeError):
                 kwargs['offset'] = 0
-        if kwargs['offset'] < 0:
-            kwargs['offset'] = 0
+        if kwargs['offset'] < 1:
+            kwargs['offset'] = None
 
         return func(*args, **kwargs)
     return wrapper
