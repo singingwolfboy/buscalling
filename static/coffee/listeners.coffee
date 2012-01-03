@@ -15,7 +15,6 @@ $().ready ->
       route: null
       direction: null
       stop: null
-    ###
     relations: [{
       type: Backbone.HasOne
       key: 'agency'
@@ -32,8 +31,15 @@ $().ready ->
       type: Backbone.HasOne
       key: 'stop'
       relatedModel: 'Stop'
+    }, {
+      type: Backbone.HasMany
+      key: 'notifications'
+      relatedModel: 'Notification'
+      collectionType: 'NotificationList'
+      reverseRelation: {
+        key: 'listener'
+      }
     }]
-    ###
 
     initialize: ->
       @bind('change:agency', @changeAgency, @)
@@ -82,6 +88,11 @@ $().ready ->
       if prevStop != stop
         prevStop?.set("focused": false)
         stop?.set("focused": true)
+
+  class window.Notification     extends Backbone.RelationalModel
+    defaults:
+      medium: "phone"
+      minutes: 5
 
   class window.AbstractModel    extends Backbone.RelationalModel
     # name required
@@ -137,6 +148,9 @@ $().ready ->
 
   class window.Stop             extends AbstractModel
     name: "Stop"
+
+  class window.NotificationList     extends Backbone.Collection
+    model: Notification
 
   class window.AbstractCollection   extends Backbone.Collection
     sync: Backbone.memoized_sync
@@ -204,7 +218,7 @@ $().ready ->
       if agency
         minPt = agency.get("min_pt")
         maxPt = agency.get("max_pt")
-        if minPt.length and maxPt.length
+        if minPt?.length and maxPt?.length
           bounds = new @m.LatLngBounds(
             new @m.LatLng(minPt[0], minPt[1]),
             new @m.LatLng(maxPt[0], maxPt[1]),
@@ -219,7 +233,7 @@ $().ready ->
       if route
         minPt = route.get("min_pt")
         maxPt = route.get("max_pt")
-        if minPt.length and maxPt.length
+        if minPt?.length and maxPt?.length
           bounds = new @m.LatLngBounds(
             new @m.LatLng(minPt[0], minPt[1]),
             new @m.LatLng(maxPt[0], maxPt[1]),
