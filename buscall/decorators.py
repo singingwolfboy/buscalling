@@ -40,7 +40,6 @@ def admin_required(func):
     """
     @wraps(func)
     def decorated_view(*args, **kwargs):
-        user = users.get_current_user()
         if not users.is_current_user_admin():
             abort(403)
         return func(*args, **kwargs)
@@ -54,7 +53,7 @@ def check_user_payment(func):
         pass
     @wraps(func)
     def decorated_notification(listener, minutes=None):
-        userprofile = listener.userprofile
+        userprofile = listener.profile_key.get()
         subscribed = userprofile.subscribed
         credits = userprofile.credits
         if not subscribed and credits < 1:

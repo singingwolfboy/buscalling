@@ -1,4 +1,5 @@
 from buscall import app
+from ndb import Key
 from flask import render_template, request, flash, redirect, url_for, g, abort
 from .tasks import poll, reset_seen_flags
 from .nextbus import *
@@ -7,12 +8,12 @@ from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
 from .profile import update_profile
 from .util import ExtJSONEncoder
-from buscall.util import MAIL_SENDER, READONLY_ERR_MSG, GqlQuery, get_request_format
-from buscall.models import WaitlistEntry, BusListener, UserProfile
+from buscall.util import READONLY_ERR_MSG, get_request_format
+from buscall.models import UserProfile
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
 from buscall.models.listener import NOTIFICATION_CHOICES
-from buscall.forms import WaitlistForm, UserProfileForm
-from google.appengine.api import memcache, mail
+from buscall.forms import UserProfileForm
+from google.appengine.api import memcache
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api.capabilities import CapabilitySet
@@ -59,12 +60,10 @@ def inject_auth_urls():
 
 @app.before_request
 def update_userprofile_last_login():
-    g.readonly = CapabilitySet('datastore_v3', capabilities=['write']).is_enabled()
-    if not g.readonly:
-        profile = UserProfile.get_current_profile()
-        if profile:
-            profile.last_access = datetime.datetime.now()
-            db.put_async(profile)
+    profile = UserProfile.get_current_profile()
+    if profile:
+        profile.last_access = datetime.datetime.now()
+        profile.put_async()
 
 @app.before_request
 def set_request_format():
@@ -93,11 +92,14 @@ def to_json(obj):
 def page_root():
     user = users.get_current_user()
     if user:
-        profile = UserProfile.get_by_user(user)
+        user_id = user.user_id()
+        profile_key = Key(UserProfile, user_id)
+        profile = profile_key.get()
         if not profile:
             # this user's first login
             try:
-                profile = UserProfile.get_or_insert_by_user(user)
+                profile = UserProfile(key=profile_key, user_id=user_id)
+                profile.put()
                 # Flash a welcome message, and redirect to new listener form
                 flash("Welcome! To set up your first bus alert, just fill out this form.")
             except CapabilityDisabledError:

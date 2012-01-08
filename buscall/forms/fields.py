@@ -1,12 +1,10 @@
 import datetime
 import time
 from ndb import Key
-from itertools import izip
-from wtforms.widgets import Input, TextInput, RadioInput, ListWidget
-from wtforms.fields import Field, FieldList, _unset_value
-from flaskext.wtf import SelectField, TextField, BooleanField, RadioField
-from buscall.models.nextbus_api import NextbusError
-from buscall.models.nextbus import Agency, Route
+from wtforms.widgets import Input, TextInput
+from wtforms.fields import Field
+from flaskext.wtf import SelectField, TextField, RadioField
+from buscall.models.nextbus import Agency, Route, Direction, Stop
 
 __all__ = ['TelInput', 'TelephoneField', 'RadioBooleanField', 'TimeInput', 'TimeField', 'RouteField', 'DirectionField', 'StopField']
 
@@ -91,60 +89,67 @@ class TimeField(Field):
                     self.data = datetime.time(*timetuple[3:6])
                     return
                 except ValueError:
-                    pass #try the next format
+                    pass  # try the next format
             # if we got here, we weren't able to serialize the data at all.
             self.data = None
             raise
 
+class AgencyField(MaybeSelectField):
+    def __init__(self, *args, **kwargs):
+        if not 'choices' in kwargs:
+            kwargs['choices'] = [('', '')]
+        super(AgencyField, self).__init__(*args, **kwargs)
+
+    def pre_validate(self, form):
+        self.choices = [(agency.id, agency.name)
+                for agency in
+                Agency.query()]
+        super(AgencyField, self).pre_validate(form)
+
 class RouteField(MaybeSelectField):
     def __init__(self, *args, **kwargs):
         if not 'choices' in kwargs:
-            kwargs['choices'] = [('','')]
+            kwargs['choices'] = [('', '')]
         super(RouteField, self).__init__(*args, **kwargs)
 
     def pre_validate(self, form):
         agency_id = form.agency_id.data
         if agency_id:
-            try:
-                agency = Key(Agency, agency_id).get()
-                choices = []
-                for route_id in agency.route_ids:
-                    route = Key(Route, route_id).get()
-                    choices.append((route.id, route.title))
-                self.choices = choices
-            except NextbusError:
-                pass
+            agency_key = Key(Agency, agency_id)
+            self.choices = [(route.id, route.name)
+                    for route in
+                    Route.query(Route.agency_key == agency_key)]
         super(RouteField, self).pre_validate(form)
 
 class DirectionField(MaybeSelectField):
     def __init__(self, *args, **kwargs):
         if not 'choices' in kwargs:
-            kwargs['choices'] = [('','')]
+            kwargs['choices'] = [('', '')]
         super(DirectionField, self).__init__(*args, **kwargs)
 
     def pre_validate(self, form):
-        if form.agency_id.data and form.route_id.data:
-            try:
-                route = Key(Route, form.route_id.data).get()
-                self.choices = [(d.id, d.title) for d in route.directions]
-            except NextbusError:
-                pass
+        agency_id = form.agency_id.data
+        route_id = form.route_id.data
+        if agency_id and route_id:
+            route_key = Key(Route, "{0}|{1}".format(agency_id, route_id))
+            self.choices = [(direction.id, direction.name)
+                    for direction in
+                    Direction.query(Direction.route_key == route_key)]
         super(DirectionField, self).pre_validate(form)
 
 class StopField(MaybeSelectField):
     def __init__(self, *args, **kwargs):
         if not 'choices' in kwargs:
-            kwargs['choices'] = [('','')]
+            kwargs['choices'] = [('', '')]
         super(StopField, self).__init__(*args, **kwargs)
 
     def pre_validate(self, form):
-        if form.agency_id.data and form.route_id.data and form.direction_id.data:
-            agency_id = form.agency_id.data
-            route_id = form.route_id.data
-            direction_id = form.direction_id.data
-            try:
-                route = Key(Route, route_id).get()
-                self.choices = [(id, route.stops[id].title) for id in route.directions[direction_id].stop_ids]
-            except NextbusError:
-                pass
+        agency_id = form.agency_id.data
+        route_id = form.route_id.data
+        direction_id = form.direction_id.data
+        if agency_id and route_id and direction_id:
+            direction_key = Key(Direction, "{0}|{1}|{2}".format(agency_id, route_id, direction_id))
+            self.choices = [(stop.id, stop.name)
+                    for stop in
+                    Stop.query(Stop.direction_key == direction_key)]
         super(StopField, self).pre_validate(form)

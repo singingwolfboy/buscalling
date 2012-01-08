@@ -2,58 +2,53 @@
 from flask import request
 import decimal
 from google.appengine.ext import db
-from google.appengine.ext.db import GqlQuery as TruthyGqlQuery
-class GqlQuery(TruthyGqlQuery):
-    def __nonzero__(self):
-        return self.count(1) != 0
+from ndb import model
 
 DAYS_OF_WEEK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 MAIL_SENDER = "Bus Calling <noreply@buscalling.appspotmail.com>"
 DOMAIN = "http://www.buscalling.com"
 READONLY_ERR_MSG = """
-    Our database is currently in read-only mode. You can poke around and 
+    Our database is currently in read-only mode. You can poke around and
     explore the website, but nothing you do will be saved. Sorry about this:
     We'll be back to normal soon!
 """
 
-def decimalproperty_factory(precision=2):
-    """
-    Returns a DecimalProperty class that stores decimals using 
-    fixed-point arithmetic, for a given precision.
-    """
-    class DecimalProperty(db.Property):
-        data_type = decimal.Decimal
-        prec = precision
+class DecimalModel(model.Model):
+    int = model.IntegerProperty(required=True)
+    exp = model.IntegerProperty(default=1)
+    sign = model.BooleanProperty(default=True)
 
-        def get_value_for_datastore(self, model_instance):
-            d = super(DecimalProperty, self).get_value_for_datastore(model_instance)
-            value = int(d._int)
-            # if we were passed a decimal with smaller precision, bump it up
-            # to the level we want.
-            # Don't forget that d._exp is negative: 1.23 => 123 * 10**-2
-            value = value * 10**(self.prec - abs(d._exp))
-            return value
+    def __init__(self, value, **kwargs):
+        if isinstance(value, (basestring, int)):
+            value = decimal.Decimal(value)
+        if isinstance(value, decimal.Decimal):
+            kwargs["int"] = int(value._int)
+            kwargs["exp"] = int(value._exp)
+            kwargs["sign"] = bool(value._sign)
+        else:
+            kwargs["key"] = value
+        super(DecimalModel, self).__init__(**kwargs)
 
-        def make_value_from_datastore(self, value):
-            s = str(value)
-            decimal_str = "%s.%s" % (s[0:self.prec], s[self.prec:])
-            return decimal.Decimal(decimal_str)
+    def _to_decimal(self):
+        d = decimal.Decimal()
+        d._int = str(self.int)
+        d._exp = self.exp
+        d._sign = int(self.sign)
+        return d
 
-        def validate(self, value):
-            value = super(DecimalProperty, self).validate(value)
-            if value is None:
-                return value
-            if isinstance(value, basestring):
-                value = decimal.Decimal(value)
-            if not isinstance(value, decimal.Decimal):
-                raise db.BadValueError("Property %s must be a Decimal or string." % self.name)
-            if abs(value._exp) > self.prec:
-                raise db.BadValueError("Property %s can save at most %d digits of precision" % (self.name, self.prec))
-            return value
-    
-    return DecimalProperty
+class DecimalProperty(model.StructuredProperty):
+    def __init__(self, **kwds):
+        super(DecimalProperty, self).__init__(DecimalModel, **kwds)
 
-CurrencyProperty = decimalproperty_factory(2)
+    def _validate(self, value):
+        assert isinstance(value, decimal.Decimal)
+
+    def _to_base_type(self, value):
+        return DecimalModel(value)
+
+    def _from_base_type(self, value):
+        return value._to_decimal()
+
 
 # based on http://flask.pocoo.org/snippets/45/
 def get_request_format():

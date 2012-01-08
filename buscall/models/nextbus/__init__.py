@@ -1,10 +1,10 @@
 from buscall import app
 from flask import url_for
 from ndb import Key, model
-from .util import PathProperty
+from buscall.models.util import PathProperty
 from markupsafe import Markup
 from lxml import etree
-from buscall.models.nextbus_api import get_predictions_xml
+from .api import get_predictions_xml
 
 resource_uri = Markup("resource_uri")
 template_id = Markup("{{id}}")

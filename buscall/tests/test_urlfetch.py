@@ -1,41 +1,56 @@
-from __future__ import with_statement
 import datetime
+from ndb import Key
 from buscall import app
 from buscall.models import nextbus, twilio
-from buscall.models.listener import BusListener, BusNotification
+from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
 from buscall.models.profile import UserProfile
+from buscall.models.listener import ScheduledNotification
 from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
 from buscall.tests.util import CustomTestCase
 from google.appengine.ext import testbed
 
 from fixture import DataSet, DataTestCase
-import datetime
-from google.appengine.api.users import User
 
 class UserProfileData(DataSet):
     class test_profile:
-        user = User("test@example.com")
+        user_id = "test@example.com"
         subscribed = True
         credits = 8
         joined = datetime.datetime(2010, 2, 3, 10, 32, 45)
-        last_login = datetime.datetime(2011, 7, 14, 7, 0, 0)
+        last_access = datetime.datetime(2011, 7, 14, 7, 0, 0)
 
     class with_phone:
-        user = User("phone@example.com")
+        user_id = "phone@example.com"
         subscribed = True
         credits = 0
         phone = "999-888-7777"
         joined = datetime.datetime(2011, 2, 9, 10, 11, 12)
-        last_login = datetime.datetime(2011, 6, 10, 10, 15)
+        last_access = datetime.datetime(2011, 6, 10, 10, 15)
+
+class ScheduledNotificationData(DataSet):
+    class cron_bus_20_min:
+        minutes_before = 20
+        medium = "email"
+        has_executed = False
+
+    class seen_bus_phone_notification:
+        minutes_before = 5
+        medium = "phone"
+        has_executed = False
+
+cron_bus_notification = ScheduledNotification(
+        minutes_before=20, medium="email", has_executed=False)
+seen_bus_notification = ScheduledNotification(
+        minutes_before=5, medium="phone", has_executed=False)
 
 class BusListenerData(DataSet):
     class cron_bus:
-        userprofile = UserProfileData.test_profile
-        agency_id = "mbta"
-        route_id = "26"
-        direction_id = "26_1_var1"
-        stop_id = "492"
+        profile_key = Key(UserProfile, "test@example.com")
+        agency_key = Key(Agency, "mbta")
+        route_key = Key(Route, "26")
+        direction_key = Key(Direction, "26_1_var1")
+        stop_key = Key(Stop, "492")
         recur = True
         mon = False
         tue = False
@@ -45,7 +60,7 @@ class BusListenerData(DataSet):
         sat = True
         sun = True
         start = datetime.time(15,00) # 3:00 PM
-        seen = False
+        scheduled_notifications = [cron_bus_notification]
 
     class seen_bus:
         userprofile = UserProfileData.with_phone
@@ -63,29 +78,18 @@ class BusListenerData(DataSet):
         sun = True
         start = datetime.time(4,0)
         seen = True
-
-class BusNotificationData(DataSet):
-    class cron_bus_20_min:
-        listener = BusListenerData.cron_bus
-        minutes = 20
-        medium = "email"
-        executed = False
-
-    class seen_bus_phone_notification:
-        listener = BusListenerData.seen_bus
-        minutes = 5
-        medium = "phone"
-        executed = False
+        scheduled_notifications = [seen_bus_notification]
 
 class UrlfetchTestCase(CustomTestCase, DataTestCase):
-    datasets = [UserProfileData, BusListenerData, BusNotificationData]
+    datasets = [UserProfileData, BusListenerData] #  , ScheduledNotificationData]
 
     def test_predictions(self):
         agency_id = "mbta"
         route_id = "26"
         direction_id = "26_1_var1"
         stop_id = "492"
-        predictions = nextbus.get_predictions(agency_id, route_id, direction_id, stop_id)
+        predictions = BusPrediction.query(agency_id=agency_id, route_id=route_id,
+                direction_id=direction_id, stop_id=stop_id)
         self.assertEqual(len(predictions), 3)
     
     def test_cron_no_listeners(self):
@@ -117,7 +121,9 @@ class UrlfetchTestCase(CustomTestCase, DataTestCase):
         assert url in self.urlfetch_history
 
     def test_phone_notification(self):
-        notification = BusNotification.gql("WHERE medium = :medium AND executed = False", medium="phone").fetch(1)[0]
+        notification = ScheduledNotification.query(
+                ScheduledNotification.medium == "phone",
+                ScheduledNotification.has_executed == False)[0]
         with app.test_request_context('/tasks/poll'):
             result = twilio.notify_by_phone(notification.listener)
             self.assertEqual(result['to'], notification.listener.userprofile.phone)

@@ -1,7 +1,6 @@
 from google.appengine.api import mail
 from ndb import model
-from buscall.models.nextbus import Agency, Route, Direction, Stop
-from buscall.models.profile import UserProfile
+from buscall.models.nextbus import BusPrediction
 from buscall.util import DAYS_OF_WEEK, MAIL_SENDER
 from buscall.models.twilio import notify_by_phone, notify_by_txt
 from buscall.decorators import check_user_payment
@@ -16,14 +15,47 @@ except ImportError:
 
 NOTIFICATION_CHOICES = (('phone', 'Call'), ('txt', 'Text'), ('email', 'Email'))
 
+class ScheduledNotification(model.Model):
+    minutes_before = model.IntegerProperty(required=True)
+    medium = model.StringProperty(choices=[k for k, v in NOTIFICATION_CHOICES], required=True)
+    has_executed = model.BooleanProperty(default=False)
+
+    def __str__(self):
+        if self.has_executed:
+            status = "executed"
+        else:
+            status = "not executed"
+        return "%s %d minutes before via %s, %s" % \
+            (self.__class__.__name__, self.minutes_before, self.medium, status)
+
+    def notify(self, listener, prediction):
+        minutes = getattr(prediction, "minutes", None) or self.minutes_before
+
+        if self.medium == "email":
+            notify_by_email(listener, minutes)
+        elif self.medium == "phone":
+            notify_by_phone(listener, minutes)
+        elif self.medium == "txt":
+            notify_by_txt(listener, minutes)
+        else:
+            raise NotImplementedError
+
+        self.has_executed = True
+        self.put()
+
 class BusListener(model.Model):
-    user_id = model.StringProperty(required=True)
+    profile_key = model.KeyProperty(required=True)
+    enabled = model.BooleanProperty(default=True)
 
     # info about bus stop
     agency_key = model.KeyProperty(required=True)
     route_key = model.KeyProperty(required=True)
-    direction_key = model.KeyProperty(required=False)
+    direction_key = model.KeyProperty(required=True)
     stop_key = model.KeyProperty(required=True)
+
+    # the scheduled notifications themselves
+    scheduled_notifications = model.StructuredProperty(
+            ScheduledNotification, repeated=True)
 
     # is this a one-time alert, or a recurring alert?
     recur = model.BooleanProperty(required=True)
@@ -31,10 +63,9 @@ class BusListener(model.Model):
     # when to start listening
     # App Engine doesn't allow inequality filters on multiple entities
     # (such as time is after start and time is before end)
-    # so instead we'll use a boolean to determine whether this needs to be checked
+    # so instead we use a booleans on listeners to determine if
+    # they need to be checked.
     start = model.TimeProperty(required=True)
-    # when all your notifications have been satisfied, set seen=True
-    seen  = model.BooleanProperty(default=False)
 
     # day of week: since we'll be sorting by this,
     # it actually makes sense to keep them as separate properties
@@ -69,13 +100,13 @@ class BusListener(model.Model):
                 return "every weekday"
             if self.weekends:
                 return "every weekend"
-            
-            day_names =  [day.capitalize() for day in DAYS_OF_WEEK]
+
+            day_names = [day.capitalize() for day in DAYS_OF_WEEK]
             day_vals = [getattr(self, day) for day in DAYS_OF_WEEK]
             if not any(day_vals):
-                return "never" # should never get here
+                return "never"  # should never get here
             return "every %s" % (humanize_list(compress(day_names, day_vals)),)
-        
+
         else:
             today = datetime.date.today()
             tomorrow = today + datetime.timedelta(days=1)
@@ -86,7 +117,7 @@ class BusListener(model.Model):
                     if i == tomorrow.weekday():
                         return "tomorrow"
                     return "on %s" % (day.capitalize())
-            return "never" # should never get here
+            return "never"  # should never get here
 
     @property
     def agency(self):
@@ -104,60 +135,19 @@ class BusListener(model.Model):
     @property
     def id(self):
         return self.key.id()
-    
-    def __str__(self):
-        values = {}
-        for prop in self.properties().keys():
-            values[prop] = getattr(self, prop, None)
-        for time in [u'start']:
-            try:
-                values[time] = values[time].time()
-            except AttributeError:
-                pass
-        values[u'class'] = self.__class__.__name__
-        values[u'user'] = self.userprofile.user
-        values[u'repeat'] = self.repeat_descriptor
-        return "%(class)s for %(user)s: %(agency_id)s %(route_id)s " \
-            "%(direction_id)s %(stop_id)s %(start)s %(repeat)s" \
-            % values
-    
+
     def get_predictions(self):
         "Use the Nextbus API to get route prediction information."
-        # return nextbus_api.get_predictions(self.agency_id, self.route_id, self.direction_id, self.stop_id)
-        pass
-    
-    def check_notifications(self):
-        self.seen = all((notification.executed for notification in self.notifications))
-        if self.seen and not self.recur:
-            self.delete()
-        else:
-            self.put()
-    
-    def delete(self):
-        # delete all your associated notifications first
-        for notification in self.notifications:
-            notification.delete()
-        # and then delete yourself
-        super(BusListener, self).delete()
+        return BusPrediction.query(
+            agency_key = self.agency_key,
+            route_key = self.route_key,
+            direction_key = self.direction_key,
+            stop_key = self.stop_key)
 
-class BusNotification(model.Model):
-    listener = model.KeyProperty(required=True)
-    minutes = model.IntegerProperty(required=True)
-    medium = model.StringProperty(choices=[k for k,v in NOTIFICATION_CHOICES], required=True)
-    executed = model.BooleanProperty(default=False)
-
-    def __str__(self):
-        if self.executed:
-            status = "executed"
-        else:
-            status = "not executed"
-        return "%s for <%s>, %d minutes before via %s, %s" % \
-            (self.__class__.__name__, self.listener, self.minutes, self.medium, status)
-
-    def execute(self, minutes=None):
+    def fire_notifications(self, minutes=None):
         "minutes parameter is the actual prediction time"
-        userprofile = self.listener.userprofile
-        if not userprofile.subscribed and userprofile.credits < 1:
+        profile = self.profile_key.get()
+        if not profile.subscribed and profile.credits < 1:
             # no money, no notification
             return
 

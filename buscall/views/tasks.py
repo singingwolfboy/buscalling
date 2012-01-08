@@ -1,4 +1,3 @@
-import time
 import datetime
 from google.appengine.ext.db import GqlQuery
 from buscall import app
@@ -7,54 +6,53 @@ from flask import redirect, url_for
 from google.appengine.api.datastore_types import GeoPt
 from google.appengine.ext import deferred
 from buscall.models.nextbus import Agency, Route, Direction, Stop
+from buscall.models.listener import BusListener
 from ndb import Key
 from decimal import Decimal
 from lxml import etree
 import simplejson as json
-from buscall.models.nextbus_api import NextbusError
-from buscall.models.nextbus_api import get_agencylist_xml, get_routelist_xml, get_route_xml
+from buscall.models.nextbus.api import NextbusError
+from buscall.models.nextbus.api import get_agencylist_xml, get_routelist_xml, get_route_xml
 
 @app.route('/tasks/poll')
-def poll(struct_time=None):
+def poll(time=None):
     """
     This function is the workhorse of the whole application. When called,
     it checks the current time, pulls listeners from the datastore that are
     currently active, and then polls the bus routes for those listeners.
     This function is designed to be run once a minute (or more!) through cron.
     """
-    if struct_time is None:
-        struct_time = time.localtime() # current time
+    if time is None:
+        time = datetime.datetime.utcnow()  # current time
 
     # get all currently active listeners
-    listeners = GqlQuery("SELECT * FROM BusListener WHERE " +
-        DAYS_OF_WEEK[struct_time.tm_wday] + " = True AND start <= :time AND seen = False",
-        time="TIME(%d, %d, %d)" % (struct_time.tm_hour, struct_time.tm_min, struct_time.tm_sec))
+    weekday = DAYS_OF_WEEK[time.weekday()]
+    listeners = BusListener.query(
+            getattr(BusListener, weekday) == True,
+            BusListener.start <= time,
+            BusListener.scheduled_notifications.has_executed == False,
+            BusListener.enabled == True)
     for listener in listeners:
-        if not listener.start <= datetime.time(struct_time.tm_hour, struct_time.tm_min, struct_time.tm_sec):
-            continue # should have been filtered out by GqlQuery, but wasn't
         predictions = listener.get_predictions()
-        for notification in listener.notifications:
-            for bus in predictions:
-                if notification.minutes == bus.minutes:
-                    notification.execute(bus.minutes)
+        for scheduled_notification in listener.scheduled_notifications:
+            for prediction in predictions:
+                if scheduled_notification.minutes_before == prediction.minutes:
+                    scheduled_notification.notify(listener, prediction)
 
     return redirect(url_for("lander"), 303)
 
 @app.route('/tasks/reset_seen_flags')
 def reset_seen_flags():
-    seen = GqlQuery("SELECT * FROM BusListener WHERE seen = True")
-    for listener in seen:
+    listeners = BusListener.query(BusListener.scheduled_notifications.has_executed == True)
+    for listener in listeners:
         if listener.recur:
-            # reset the "seen" flag
-            listener.seen = False
+            # reset the "has_executed" flag on all scheduled notifications
+            for scheduled_notification in listener.scheduled_notifications:
+                scheduled_notification.has_executed = False
             listener.put()
         else:
             # the listener has run, and it shouldn't run again, so delete it
             listener.delete()
-    executed = GqlQuery("SELECT * FROM BusNotification WHERE executed = True")
-    for notification in executed:
-        notification.executed = False
-        notification.put()
     return redirect(url_for("lander"), 303)
 
 # This runs in a deferred() handler

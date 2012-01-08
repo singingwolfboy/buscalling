@@ -17,13 +17,13 @@
         </form>
       </div>
       <div class="listener-info">
-        <div><strong>{{listener.stop.title}}</strong> at around {{listener.start|timeformat}}</div>
-        <div>Bus <strong>{{listener.route.title}}</strong> toward {{listener.direction.title}}</div>
+        <div><strong>{{listener.stop.name}}</strong> at around {{listener.start|timeformat}}</div>
+        <div>Bus <strong>{{listener.route.name}}</strong> toward {{listener.direction.name}}</div>
         <div class="notifications-wrap">Notifications:
-          {% if listener.notifications %}
+          {% if listener.scheduled_notifications %}
             <ul class="notifications">
-            {% for notification in listener.notifications %}
-              <li>{{medium_map[notification.medium] | lower}} {{notification.minutes}}min{% if not loop.last %},{% endif %}</li>
+            {% for notification in listener.scheduled_notifications %}
+              <li>{{medium_map[notification.medium] | lower}} {{notification.minutes_before}}min{% if not loop.last %},{% endif %}</li>
             {% endfor %}
             </ul>
           {% else %}

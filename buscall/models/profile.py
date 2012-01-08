@@ -1,28 +1,31 @@
 from google.appengine.api import users
-from google.appengine.ext import db
-from collections import defaultdict
-from buscall.util import GqlQuery
+from ndb import model, Key
+from buscall.models.listener import BusListener
 
-class UserProfile(db.Expando):
-    user = db.UserProperty(required=True)
+class UserProfile(model.Model):
+    user_id = model.StringProperty(required=True)
 
     # reporting/historical
-    joined = db.DateTimeProperty(required=True, auto_now_add=True)
-    last_access = db.DateTimeProperty(required=True, auto_now=True)
-    total_listeners_created = db.IntegerProperty(required=True, default=0)
+    joined = model.DateTimeProperty(required=True, auto_now_add=True)
+    last_access = model.DateTimeProperty(required=True, auto_now=True)
+    total_listeners_created = model.IntegerProperty(default=0)
 
     # money-related properties
     # freeloader starts as True, becomes False as soon as they spend any money at all
-    freeloader = db.BooleanProperty(required=True, default=True)
+    freeloader = model.BooleanProperty(default=True)
     # whether the user is currently a paid subscriber
-    subscribed = db.BooleanProperty(required=True, default=False)
+    subscribed = model.BooleanProperty(default=False)
     # one-off pickup credits (new users get 5 as a free trial)
-    credits = db.IntegerProperty(required=True, default=5)
+    credits = model.IntegerProperty(default=5)
 
     # optional properties
-    phone = db.PhoneNumberProperty()
-    first_name = db.StringProperty()
-    last_name = db.StringProperty()
+    phone = model.StringProperty()
+    first_name = model.StringProperty()
+    last_name = model.StringProperty()
+
+    @property
+    def user(self):
+        return users.User(self.user_id)
 
     # pass-throughs
     @property
@@ -39,57 +42,39 @@ class UserProfile(db.Expando):
         else:
             return self.user.nickname()
     @property
-    def user_id(self):
-        return self.user.user_id()
-    @property
     def federated_identity(self):
         return self.user.federated_identity()
     @property
     def federated_provider(self):
         return self.user.federated_provider()
-    
-    # set key_name to user's ID or email address
-    def __init__(self, *args, **kwargs):
-        if not 'key' in kwargs and not 'key_name' in kwargs:
-            kwargs['key_name'] = UserProfile.get_key_name_from_user(kwargs['user'])
-        db.Model.__init__(self, *args, **kwargs)
-    
+
     @property
-    def id(self):
-        return self.user_id
+    def listeners(self):
+        return BusListener.query(BusListener.profile_key == self.key)
 
     def __cmp__(self, othr):
         if not isinstance(othr, UserProfile):
             return NotImplemented
         # we won't compare last_access, since that always changes
-        return cmp((self.user, self.subscribed, self.credits, self.joined, self.phone, self.first_name, self.last_name),
-                   (othr.user, othr.subscribed, othr.credits, othr.joined, othr.phone, othr.first_name, othr.last_name))
+        return cmp((self.user_id, self.subscribed, self.credits, self.joined, self.phone, self.first_name, self.last_name),
+                   (othr.user_id, othr.subscribed, othr.credits, othr.joined, othr.phone, othr.first_name, othr.last_name))
 
     def phone_required(self):
         for listener in self.listeners:
-            for notification in listener.notifications:
+            for notification in listener.scheduled_notifications:
                 if notification.medium in ['phone', 'txt']:
                     return True
         return False
-    
-    @classmethod
-    def get_key_name_from_user(cls, user):
-        return user.user_id() or user.email()
 
     @classmethod
     def get_by_user(cls, user):
-        key_name = cls.get_key_name_from_user(user)
-        return cls.get_by_key_name(key_name)
-    
+        key = Key(UserProfile, user.user_id())
+        return key.get()
+
     @classmethod
     def get_current_profile(cls):
         user = users.get_current_user()
         if user:
             return cls.get_by_user(user)
-        else:
-            return None
-    
-    @classmethod
-    def get_or_insert_by_user(cls, user):
-        key_name = cls.get_key_name_from_user(user)
-        return cls.get_or_insert(key_name, user=user)
+        return None
+

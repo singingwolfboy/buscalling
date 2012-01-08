@@ -1,26 +1,24 @@
-from google.appengine.api import users
-from google.appengine.ext import db
-from buscall.models.profile import UserProfile
-from buscall.util import CurrencyProperty
+from ndb import model
+from buscall.util import DecimalProperty
 
-class Subscription(db.Model):
-    userprofile = db.ReferenceProperty(UserProfile, required=True, collection_name="subscriptions")
-    processor = db.StringProperty(required=True, choices=['paypal', 'amazon'])
-    subscription_id = db.StringProperty(required=True)
-    active = db.BooleanProperty(required=True, default=True)
-    start_track_id = db.StringProperty()
-    end_track_id = db.StringProperty()
-    start_date = db.DateTimeProperty(required=True)
-    end_date = db.DateTimeProperty()
-    amount = CurrencyProperty(required=True)
+class Subscription(model.Model):
+    profile_key = model.KeyProperty(required=True)
+    processor = model.StringProperty(required=True, choices=['paypal', 'amazon'])
+    subscription_id = model.StringProperty(required=True)
+    active = model.BooleanProperty(default=True)
+    start_track_id = model.StringProperty()
+    end_track_id = model.StringProperty()
+    start_date = model.DateTimeProperty(required=True)
+    end_date = model.DateTimeProperty()
+    amount = DecimalProperty(required=True)
 
-class Payment(db.Model):
-    processor = db.StringProperty(required=True, choices=['paypal', 'amazon'])
-    subscription = db.ReferenceProperty(Subscription, collection_name="payments")
-    transaction_id = db.StringProperty(required=True)
-    date = db.DateTimeProperty(required=True)
-    amount = CurrencyProperty(required=True)
-    status = db.StringProperty(required=True)
-    track_id = db.StringProperty()
-    item_id = db.IntegerProperty()
-    quantity = db.IntegerProperty() # the default is NOT 1, it is None, aka unknown
+class Payment(model.Model):
+    processor = model.StringProperty(required=True, choices=['paypal', 'amazon'])
+    subscription_key = model.KeyProperty()
+    transaction_id = model.StringProperty(required=True)
+    date = model.DateTimeProperty(required=True)
+    amount = DecimalProperty(required=True)
+    status = model.StringProperty(required=True)
+    track_id = model.StringProperty()
+    item_id = model.IntegerProperty()
+    quantity = model.IntegerProperty()  # the default is NOT 1, it is None, aka unknown

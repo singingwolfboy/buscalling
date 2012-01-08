@@ -1,9 +1,8 @@
-from flask import g
-from flaskext.wtf import Form, DecimalField, SelectField, BooleanField, TextField, HiddenField, RadioField
+from flaskext.wtf import Form, DecimalField, SelectField, BooleanField, TextField
 from flaskext.wtf import HiddenInput, FieldList, FormField, IntegerField
 from flaskext.wtf import Required, Optional, Regexp, Length
 from flaskext.wtf.html5 import EmailField
-from buscall.forms.fields import TimeField, RouteField, DirectionField, StopField, TelephoneField, RadioBooleanField, MaybeRadioField
+from buscall.forms.fields import TimeField, AgencyField, RouteField, DirectionField, StopField, TelephoneField, RadioBooleanField
 from buscall.models.listener import NOTIFICATION_CHOICES
 from buscall.models.nextbus import Agency
 from buscall.util import DAYS_OF_WEEK
@@ -39,7 +38,7 @@ this_week_choices = [(day.strftime('%a').lower(), weekday_choice_text_format(day
 
 
 class BusListenerForm(Form):
-    agency_id = SelectField("Agency", choices=[('', '')],
+    agency_id = AgencyField("Agency",
         id="agency", validators=[Required()])
     route_id = RouteField("Route",
         id="route", validators=[Required()])

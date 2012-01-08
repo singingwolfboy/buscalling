@@ -1,7 +1,6 @@
 from buscall import app
 from flask import render_template, request, Response, g, abort
 from .util import render_json
-# from buscall.models import nextbus_api
 from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
 from buscall.models.twilio import get_twiml
 from functools import wraps
@@ -71,7 +70,7 @@ def route_list(agency_id, limit, offset):
 
 @app.route('/agencies/<agency_id>/routes/<route_id>')
 def route_detail(agency_id, route_id):
-    fctx = locals() # format context
+    fctx = locals()  # format context
     route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
     route = route_key.get() or abort(404)
     if g.request_format == "json":
@@ -86,7 +85,7 @@ def route_detail(agency_id, route_id):
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions')
 @api_list
 def direction_list(agency_id, route_id, limit, offset):
-    fctx = locals() # format context
+    fctx = locals()  # format context
     agency_key = Key(Agency, agency_id)
     route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
     directions_qry = Direction.query(Direction.route_key == route_key)
@@ -104,7 +103,7 @@ def direction_list(agency_id, route_id, limit, offset):
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>')
 def direction_detail(agency_id, route_id, direction_id):
-    fctx = locals() # format context
+    fctx = locals()  # format context
     agency_key = Key(Agency, agency_id)
     route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
     direction_key = Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**fctx))
@@ -122,7 +121,7 @@ def direction_detail(agency_id, route_id, direction_id):
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops')
 @api_list
 def stop_list(agency_id, route_id, direction_id, limit, offset):
-    fctx = locals() # format context
+    fctx = locals()  # format context
     agency_key = Key(Agency, agency_id)
     route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
     direction_key = Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**fctx))
@@ -142,7 +141,7 @@ def stop_list(agency_id, route_id, direction_id, limit, offset):
 
 @app.route('/agencies/<agency_id>/routes/<route_id>/directions/<direction_id>/stops/<stop_id>')
 def stop_detail(agency_id, route_id, direction_id, stop_id):
-    fctx = locals() # format context
+    fctx = locals()  # format context
     stop_key = Key(Stop, "{agency_id}|{route_id}|{direction_id}|{stop_id}".format(**fctx))
     stop = stop_key.get() or abort(404)
     if g.request_format == "json":
@@ -178,7 +177,8 @@ def prediction_list(agency_id, route_id, direction_id, stop_id, limit, offset):
         count = len(bus_predictions)
         if offset:
             if limit:
-                bus_predictions = bus_predictions[offset:offset+limit]
+                end = offset + limit
+                bus_predictions = bus_predictions[offset:end]
             else:
                 bus_predictions = bus_predictions[offset:]
         return render_json(bus_predictions, limit, offset, count)
