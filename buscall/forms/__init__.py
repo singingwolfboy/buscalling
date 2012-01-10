@@ -85,7 +85,7 @@ class BusListenerForm(Form):
 
 tel_validator = Regexp(r"^[0-9 \-+()]+$", messages={"invalid": "Contains invalid characters."})
 
-class UserProfileForm(Form):
+class UserForm(Form):
     first_name = TextField(validators=[Optional()])
     last_name  = TextField(validators=[Optional()])
     phone = TelephoneField("Phone", validators=[Optional(), Length(min=7), tel_validator])

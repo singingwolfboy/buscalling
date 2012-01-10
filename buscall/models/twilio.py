@@ -48,7 +48,7 @@ def notify_by_phone(listener, minutes=None):
         format="twiml")
     call_info = {
         'From': PHONE_NUMBER,
-        'To': listener.userprofile.phone,
+        'To': listener.user.phone,
         'Url': url,
         'Method': 'GET',
     }
@@ -84,7 +84,7 @@ def notify_by_txt(listener, minutes=None):
 
     sms_info = {
         'From': PHONE_NUMBER,
-        'To': listener.userprofile.phone,
+        'To': listener.user.phone,
         'Body': body,
     }
     return json.loads(account.request(

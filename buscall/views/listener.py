@@ -1,10 +1,9 @@
 from buscall import app
 from ndb import Key
-from flask import render_template, request, flash, redirect, url_for, abort, g
+from flask import render_template, request, flash, redirect, url_for, abort
 from ..decorators import login_required
-from google.appengine.api import users
 from buscall.models.listener import BusListener, ScheduledNotification
-from buscall.models.profile import UserProfile
+from buscall.models.user import User
 from buscall.models.nextbus import Agency, Route, Direction, Stop
 from buscall.forms import BusListenerForm
 from buscall.util import DAYS_OF_WEEK, READONLY_ERR_MSG
@@ -12,9 +11,8 @@ from buscall.util import DAYS_OF_WEEK, READONLY_ERR_MSG
 @app.route('/listeners')
 @login_required
 def index_listeners():
-    user = users.get_current_user()
-    profile_key = Key(UserProfile, user.user_id())
-    listeners = BusListener.query(BusListener.profile_key == profile_key)
+    user = User.get_current_user()
+    listeners = BusListener.query(BusListener.user_key == user.key)
     return render_template('listeners/index.html', listeners=listeners)
 
 @app.route('/listeners/new', methods=['GET', 'POST'])
@@ -31,10 +29,9 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
     agencies = Agency.query()
     form = BusListenerForm(request.form)
     if form.validate_on_submit():
-        user = users.get_current_user()
-        profile_key =Key(UserProfile, user.user_id())
+        user = User.get_current_user()
         params = {
-            "profile_key": profile_key,
+            "user_key": user.key,
             "agency_key": Key(Agency, form.data["agency_id"]),
             "route_key": Key(Route, "{agency_id}|{route_id}".format(**form.data)),
             "direction_key": Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**form.data)),
@@ -64,9 +61,8 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
         listener.scheduled_notifications = notifications
         listener.put()
 
-        profile = profile_key.get()
-        profile.total_listeners_created += 1
-        profile.put()
+        user.total_listeners_created += 1
+        user.put()
 
         flash("Alert created!", category="success")
         return redirect(url_for("lander"), 303)
@@ -81,12 +77,12 @@ def new_listener(agency_id="mbta", route_id=None, direction_id=None, stop_id=Non
 @app.route('/listeners/<int:listener_id>', methods=['DELETE'])
 @login_required
 def destroy_listener(listener_id):
-    user = users.get_current_user()
-    profile_key = Key(UserProfile, user.user_id())
-    listener = BusListener.get_by_id(listener_id)
+    user = User.get_current_user()
+    listener_key = Key(BusListener, listener_id)
+    listener = listener_key.get()
     if not listener:
         abort(404)
-    if listener.profile_key != profile_key:
+    if listener.user_key != user.key:
         abort(401)
     listener.key.delete()
     flash('Alert deleted!', category="success")

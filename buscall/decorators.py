@@ -53,18 +53,16 @@ def check_user_payment(func):
         pass
     @wraps(func)
     def decorated_notification(listener, minutes=None):
-        userprofile = listener.profile_key.get()
-        subscribed = userprofile.subscribed
-        credits = userprofile.credits
-        if not subscribed and credits < 1:
+        user = listener.user
+        if not user.subscribed and user.credits < 1:
             # no money, no notification
             return noop
         # otherwise notify
         result = func(listener, minutes)
-        if not subscribed:
+        if not user.subscribed:
             # deduct a credit
-            userprofile.credits = credits - 1
-            userprofile.put()
+            user.credits = credits - 1
+            user.put()
         # and return the original result
         return result
     return decorated_notification

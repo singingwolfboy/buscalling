@@ -1,9 +1,10 @@
 from google.appengine.api import users
-from ndb import model, Key
+from ndb import model
 from buscall.models.listener import BusListener
 
-class UserProfile(model.Model):
-    user_id = model.StringProperty(required=True)
+class User(model.Model):
+    google_id = model.StringProperty()
+    primary_email = model.StringProperty(required=True)
 
     # reporting/historical
     joined = model.DateTimeProperty(required=True, auto_now_add=True)
@@ -24,15 +25,13 @@ class UserProfile(model.Model):
     last_name = model.StringProperty()
 
     @property
-    def user(self):
-        return users.User(self.user_id)
+    def google_user(self):
+        if self.google_id:
+            return users.User(self.google_id)
+        return None
 
-    # pass-throughs
     @property
-    def email(self):
-        return self.user.email()
-    @property
-    def name(self):
+    def full_name(self):
         if self.first_name and self.last_name:
             return "%s %s" % (self.first_name, self.last_name)
         elif self.first_name:
@@ -40,24 +39,11 @@ class UserProfile(model.Model):
         elif self.last_name:
             return self.last_name
         else:
-            return self.user.nickname()
-    @property
-    def federated_identity(self):
-        return self.user.federated_identity()
-    @property
-    def federated_provider(self):
-        return self.user.federated_provider()
+            return self.primary_email
 
     @property
     def listeners(self):
-        return BusListener.query(BusListener.profile_key == self.key)
-
-    def __cmp__(self, othr):
-        if not isinstance(othr, UserProfile):
-            return NotImplemented
-        # we won't compare last_access, since that always changes
-        return cmp((self.user_id, self.subscribed, self.credits, self.joined, self.phone, self.first_name, self.last_name),
-                   (othr.user_id, othr.subscribed, othr.credits, othr.joined, othr.phone, othr.first_name, othr.last_name))
+        return BusListener.query(BusListener.user_key == self.key)
 
     def phone_required(self):
         for listener in self.listeners:
@@ -67,14 +53,28 @@ class UserProfile(model.Model):
         return False
 
     @classmethod
-    def get_by_user(cls, user):
-        key = Key(UserProfile, user.user_id())
-        return key.get()
+    def get_from_google_user(cls, user):
+        return User.query(User.google_id == user.user_id()).get()
 
     @classmethod
-    def get_current_profile(cls):
+    def create_from_google_user(cls, user):
+        return cls(
+            google_id = user.user_id(),
+            primary_email = user.email(),
+        )
+
+    @classmethod
+    def get_current_user(cls):
         user = users.get_current_user()
         if user:
-            return cls.get_by_user(user)
+            return cls.get_from_google_user(user)
         return None
+
+    def matches_current_google_user(self):
+        if not self.google_id:
+            return None
+        google_user = users.get_current_user()
+        if not google_user:
+            return False
+        return google_user.user_id() == self.google_id
 

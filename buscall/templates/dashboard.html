@@ -7,7 +7,7 @@
 {% block main %}
   <a href="{{url_for('new_listener')}}" class="create-listener top">Add Alert</a>
   <h2 id="page-heading">Your Bus Alerts</h2>
-  {% set listener_map = profile.listeners|groupby('agency') %}
+  {% set listener_map = user.listeners|groupby('agency') %}
   {% macro render_listener(listener) -%}
     <li>
       <div class="aside">

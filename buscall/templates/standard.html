@@ -7,38 +7,38 @@
     <h1><a href="{{ url_for('dashboard') }}">Bus Calling</a></h1>
     <h2><a href="{{ url_for('dashboard') }}">Time management before the coffee kicks in.</a></h2>
     <div id="auth-info">
-    {% if profile %}
-      <span class="email">{{profile.email}}</span> |
+    {% if user %}
+      <span class="email">{{user.email}}</span> |
       <a href="{{ logout_url }}">Log out</a>
     {% else %}
       <a href="{{ login_url }}">Log in</a>
     {% endif %}
     </div>
   </div>
-  {% if profile %}
+  {% if user %}
     <ul id="tabs">
       <li id="payment-tab"><a href="#">
-        {% if profile.subscribed %}
+        {% if user.subscribed %}
           You are subscribed.
         {% else %}
-          {% if profile.credits > 1 %}
-            You have {{profile.credits}} pickups remaining.
-          {% elif profile.credits == 1 %}
-            You have only {{profile.credits}} pickups remaining.
+          {% if user.credits > 1 %}
+            You have {{user.credits}} pickups remaining.
+          {% elif user.credits == 1 %}
+            You have only {{user.credits}} pickups remaining.
           {% else %}
             Your account is disabled.
           {% endif %}
         {% endif %}
         <span class="arrow">▼</span>
       </a></li>
-      <li id="profile-tab"><a href="#">
+      <li id="user-tab"><a href="#">
         Edit Profile 
         <span class="arrow">▼</span>
       </a></li>
     </ul>
   {% endif %}
   </header>
-  {% if profile %}
+  {% if user %}
     <div id="dropdowns">
       <div id="payment-dropdown" class="dropdown">
         <div class="dropdown-internal">
@@ -48,16 +48,16 @@
             {% set HTTP_HOST = "buscalling.appspot.com" %}
           {% endif %}
           <img src="https://www.paypal.com/en_US/Marketing/i/banner/bnr_payments_120x30_y.gif" id="paypal-logo" alt="Payments by PayPal" />
-          {% if profile.subscribed %}
+          {% if user.subscribed %}
             <p>You are subscribed. All your pickups are free!</p>
             <a href="{{paypal_url}}?cmd=_subscr-find&amp;alias={{ paypal_button_id.unsubscribe }}" id="subscription-button-wrap">
               <img id="unsubscribe-button" class="subscription-button" src="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" alt="Unsubscribe">
             </a>
             <p>If you decide to unsubscribe, you can pay per-pickup, instead. Pickups credited to your account never expire.
-            {% if profile.credits == 1 %}
-              You have {{profile.credits}} pickup left, but since you're subscribed, you don't need it.
+            {% if user.credits == 1 %}
+              You have {{user.credits}} pickup left, but since you're subscribed, you don't need it.
             {% else %}
-              You have {{profile.credits}} pickups left, but since you're subscribed, you don't need them.
+              You have {{user.credits}} pickups left, but since you're subscribed, you don't need them.
             {% endif %}
             </p>
           {% else %}
@@ -67,7 +67,7 @@
               <div style="display:none;">
                 <input type="hidden" name="cmd" value="_s-xclick" />
                 <input type="hidden" name="hosted_button_id" value="{{ paypal_button_id.subscribe }}" />
-                <input type="hidden" name="custom" value="{{profile.user_id}}" />
+                <input type="hidden" name="custom" value="{{user.id}}" />
                 <input type="hidden" name="notify_url" value="https://{{ HTTP_HOST }}{{ url_for('paypal_ipn') }}" />
               </div>
               <button type="submit" id="subscribe-button" class="subscription-button">
@@ -79,10 +79,10 @@
 
             <p>If you don't take the bus very often, you can pay per pickup rather than per month. If you have no remaining pickups on your account and you do not have an active subscription, you will not receive any notifications.</p>
             <p id="credits-left">
-            {% if profile.credits == 1 %}
-              You have {{profile.credits}} pickup left.
+            {% if user.credits == 1 %}
+              You have {{user.credits}} pickup left.
             {% else %}
-              You have {{profile.credits}} pickups left.
+              You have {{user.credits}} pickups left.
             {% endif %}
             </p>
           {% endif %}
@@ -92,7 +92,7 @@
                 <div style="display:none;">
                   <input type="hidden" name="cmd" value="_s-xclick" />
                   <input type="hidden" name="hosted_button_id" value="{{ paypal_button_id.pickups_1 }}" />
-                  <input type="hidden" name="custom" value="{{profile.user_id}}" />
+                  <input type="hidden" name="custom" value="{{user.id}}" />
                   <input type="hidden" name="notify_url" value="https://{{ HTTP_HOST }}{{ url_for('paypal_ipn') }}" />
                 </div>
                 <button type="submit">
@@ -106,7 +106,7 @@
                 <div style="display:none;">
                   <input type="hidden" name="cmd" value="_s-xclick" />
                   <input type="hidden" name="hosted_button_id" value="{{ paypal_button_id.pickups_6 }}" />
-                  <input type="hidden" name="custom" value="{{profile.user_id}}" />
+                  <input type="hidden" name="custom" value="{{user.id}}" />
                   <input type="hidden" name="notify_url" value="https://{{ HTTP_HOST }}{{ url_for('paypal_ipn') }}" />
                 </div>
                 <button type="submit">
@@ -119,15 +119,15 @@
           <a href="#" id="payment-dropdown-cancel" class="dropdown-cancel">Cancel</a>
         </div>
       </div>
-      <div id="profile-dropdown" class="dropdown">
-        <form class="dropdown-internal" method="POST" action="{{ url_for("update_profile", profile_id=profile.id) }}">
-          {{profile_form.hidden_tag()}}
+      <div id="user-dropdown" class="dropdown">
+        <form class="dropdown-internal" method="POST" action="{{ url_for("update_user", user_id=user.id) }}">
+          {{user_form.hidden_tag()}}
           <input type="hidden" name="_method" value="PUT" />
-          {{ with_errors(profile_form.first_name) }}
-          {{ with_errors(profile_form.last_name) }}
-          {{ with_errors(profile_form.phone) }}
+          {{ with_errors(user_form.first_name) }}
+          {{ with_errors(user_form.last_name) }}
+          {{ with_errors(user_form.phone) }}
           <input type="submit" value="Update" />
-          <a href="#" id="profile-dropdown-cancel" class="dropdown-cancel">Cancel</a>
+          <a href="#" id="user-dropdown-cancel" class="dropdown-cancel">Cancel</a>
         </form>
       </div>
     </div>

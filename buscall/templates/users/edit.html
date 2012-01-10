@@ -1,8 +1,8 @@
 {% extends 'standard.html' %}
-{% block title %}Edit Profile | {{super()}}{% endblock %}
+{% block title %}Edit User | {{super()}}{% endblock %}
 {% block main %}
-<h1>Edit Profile</h1>
-<form method="POST" action="{{ url_for("update_profile", profile_id=profile.id) }}">
+<h1>Edit User</h1>
+<form method="POST" action="{{ url_for("update_user", user_id=user.id) }}">
     {{form.hidden_tag()}}
     <input type="hidden" name="_method" value="PUT" />
     {{ with_errors(form.first_name) }}

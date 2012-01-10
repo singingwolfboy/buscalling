@@ -44,7 +44,7 @@ class ScheduledNotification(model.Model):
         self.put()
 
 class BusListener(model.Model):
-    profile_key = model.KeyProperty(required=True)
+    user_key = model.KeyProperty(required=True)
     enabled = model.BooleanProperty(default=True)
 
     # info about bus stop
@@ -120,6 +120,9 @@ class BusListener(model.Model):
             return "never"  # should never get here
 
     @property
+    def user(self):
+        return self.user_key.get()
+    @property
     def agency(self):
         return self.agency_key.get()
     @property
@@ -146,8 +149,8 @@ class BusListener(model.Model):
 
     def fire_notifications(self, minutes=None):
         "minutes parameter is the actual prediction time"
-        profile = self.profile_key.get()
-        if not profile.subscribed and profile.credits < 1:
+        user = self.user
+        if not user.subscribed and user.credits < 1:
             # no money, no notification
             return
 
@@ -175,5 +178,5 @@ def notify_by_email(listener, minutes=None):
     subject = "ALERT: %s bus, %s" % (listener.route.title, listener.stop.title)
     body = "Your bus is coming in %d minutes." % (minutes)
     mail.send_mail(sender=MAIL_SENDER,
-        to=listener.userprofile.email,
+        to=listener.user.email,
         subject=subject, body=body)

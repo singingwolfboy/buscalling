@@ -6,13 +6,13 @@ from .nextbus import *
 from .twilio import call_prediction
 from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
-from .profile import update_profile
+from .user import update_user
 from .util import ExtJSONEncoder
 from buscall.util import READONLY_ERR_MSG, get_request_format
-from buscall.models import UserProfile
+from buscall.models import User
 from buscall.models.paypal import url as paypal_url, button_id as paypal_button_id
 from buscall.models.listener import NOTIFICATION_CHOICES
-from buscall.forms import UserProfileForm
+from buscall.forms import UserForm
 from google.appengine.api import memcache
 from google.appengine.ext import db
 from google.appengine.api import users
@@ -26,10 +26,10 @@ from markupsafe import Markup
 
 @app.context_processor
 def inject_base_vars():
-    profile = UserProfile.get_current_profile()
+    user = User.get_current_user()
     return {
-        "profile": profile,
-        "profile_form": UserProfileForm(request.form, profile),
+        "user": user,
+        "user_form": UserForm(request.form, user),
         "paypal_url": paypal_url,
         "paypal_button_id": paypal_button_id,
         "medium_map": dict(NOTIFICATION_CHOICES),
@@ -59,11 +59,11 @@ def inject_auth_urls():
     return dict(login_url=login_url, logout_url=logout_url)
 
 @app.before_request
-def update_userprofile_last_login():
-    profile = UserProfile.get_current_profile()
-    if profile:
-        profile.last_access = datetime.datetime.now()
-        profile.put_async()
+def update_user_last_access():
+    user = User.get_current_user()
+    if user:
+        user.last_access = datetime.datetime.utcnow()
+        user.put_async()
 
 @app.before_request
 def set_request_format():
@@ -90,16 +90,14 @@ def to_json(obj):
 
 @app.route('/')
 def page_root():
-    user = users.get_current_user()
-    if user:
-        user_id = user.user_id()
-        profile_key = Key(UserProfile, user_id)
-        profile = profile_key.get()
-        if not profile:
+    google_user = users.get_current_user()
+    if google_user:
+        user = User.get_from_google_user(google_user)
+        if not user:
             # this user's first login
             try:
-                profile = UserProfile(key=profile_key, user_id=user_id)
-                profile.put()
+                user = User.create_from_google_user(google_user)
+                user.put()
                 # Flash a welcome message, and redirect to new listener form
                 flash("Welcome! To set up your first bus alert, just fill out this form.")
             except CapabilityDisabledError:
@@ -108,7 +106,7 @@ def page_root():
         else:
             # If the user has listeners with notifications that rely on a phone number,
             # but they have not entered their phone number, we should warn them of this.
-            if not profile.phone and profile.phone_required():
+            if not user.phone and user.phone_required():
                 flash("At least one of your alerts is set up to notify you "
                     "via phone or text message, but you have not set up your "
                     "phone number yet. To do so, click on \"Edit Profile\" above.",

@@ -1,3 +1,3 @@
 from .waitlist import WaitlistEntry
-from .profile import UserProfile
+from .user import User
 from .listener import BusListener, ScheduledNotification

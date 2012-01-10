@@ -2,7 +2,7 @@ from ndb import model
 from buscall.util import DecimalProperty
 
 class Subscription(model.Model):
-    profile_key = model.KeyProperty(required=True)
+    user_key = model.KeyProperty(required=True)
     processor = model.StringProperty(required=True, choices=['paypal', 'amazon'])
     subscription_id = model.StringProperty(required=True)
     active = model.BooleanProperty(default=True)
