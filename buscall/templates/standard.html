@@ -8,7 +8,7 @@
     <h2><a href="{{ url_for('dashboard') }}">Time management before the coffee kicks in.</a></h2>
     <div id="auth-info">
     {% if user %}
-      <span class="email">{{user.email}}</span> |
+      <span class="email">{{user.primary_email}}</span> |
       <a href="{{ logout_url }}">Log out</a>
     {% else %}
       <a href="{{ login_url }}">Log in</a>
