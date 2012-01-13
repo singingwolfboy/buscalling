@@ -1,3 +1,4 @@
+from tests.util import CustomTestCase
 import datetime
 from ndb import Key
 from buscall import app
@@ -7,7 +8,6 @@ from buscall.models.profile import UserProfile
 from buscall.models.listener import ScheduledNotification
 from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
-from buscall.tests.util import CustomTestCase
 from google.appengine.ext import testbed
 
 from fixture import DataSet, DataTestCase

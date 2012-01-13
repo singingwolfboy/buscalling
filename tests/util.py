@@ -1,4 +1,5 @@
 import os
+import sys
 import unittest
 import simplejson as json
 from httplib import HTTPResponse
@@ -9,11 +10,18 @@ from google.appengine.api.capabilities import capability_stub
 from google.appengine.ext import testbed
 from google.appengine.api.urlfetch_stub import \
   _API_CALL_DEADLINE, _API_CALL_VALIDATE_CERTIFICATE_DEFAULT
-from fixture import DataTestCase
+from fixture import DataTestCase, GoogleDatastoreFixture, NamedDataStyle
+import buscall
 try:
-  from urlparse import parse_qs
+    from urlparse import parse_qs
 except ImportError:
-  from cgi import parse_qs
+    from cgi import parse_qs
+
+
+PROJECT_ROOT = os.path.dirname(__file__)
+URLFETCH_ROOT = os.path.join(PROJECT_ROOT, "tests", "urlfetch")
+LIB_ROOT = os.path.join(PROJECT_ROOT, "lib")
+sys.path.insert(0, LIB_ROOT)
 
 # need to set AUTH_DOMAIN before we can create User objects,
 # so just do this on import
@@ -123,10 +131,9 @@ class CustomTestbed(testbed.Testbed):
 
 class CustomTestCase(unittest.TestCase):
     def __init__(self, *args, **kwargs):
-        if "custom_urlfetch_root" in kwargs:
-            self.custom_urlfetch_root = kwargs.pop("custom_urlfetch_root")
-        else:
-            self.custom_urlfetch_root = None
+        self.app = buscall.app.test_client()
+        self.fixture = GoogleDatastoreFixture(env=buscall.models, style=NamedDataStyle())
+        self.custom_urlfetch_root = kwargs.get("root", URLFETCH_ROOT)
         super(CustomTestCase, self).__init__(*args, **kwargs)
 
     def setUp(self):
