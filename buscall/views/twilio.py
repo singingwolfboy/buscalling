@@ -5,7 +5,7 @@ from ndb import Key
 from twilio_api import Account, HTTPErrorAppEngine
 import simplejson as json
 from google.appengine.api import users
-from buscall.models.nextbus import Route, Stop
+from buscall.models.nextbus import Route, Stop, BusPrediction
 from buscall.decorators import admin_required
 from buscall.credentials import ACCOUNT_SID, ACCOUNT_TOKEN, PHONE_NUMBER
 from buscall.util import DOMAIN, pluralize_minutes
@@ -20,7 +20,7 @@ account = Account(ACCOUNT_SID, ACCOUNT_TOKEN)
 def call_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
     user = users.get_current_user()
     app.logger.info("%s (%s) called %s" % (user.nickname(), user.user_id(), phone_num))
-    url = DOMAIN + url_for('prediction_list', agency_id=agency_id, 
+    url = DOMAIN + url_for('prediction_list', agency_id=agency_id,
         route_id=route_id, direction_id=direction_id, stop_id=stop_id, format="twiml")
     call_info = {
         'From': PHONE_NUMBER,
@@ -51,16 +51,28 @@ def call_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
 def sms_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
     user = users.get_current_user()
     app.logger.info("%s (%s) texted %s" % (user.nickname(), user.user_id(), phone_num))
-    predictions = get_predictions(agency_id, route_id, direction_id, stop_id)
+    predictions = BusPrediction.query(
+            agency_id=agency_id,
+            route_id=route_id,
+            direction_id=direction_id,
+            stop_id=stop_id)
     route = Key(Route, route_id).get()
+    if route:
+        route_name = route.name
+    else:
+        route_name = "<unknown route>"
     stop = Key(Stop, stop_id).get()
+    if stop:
+        stop_name = stop.name
+    else:
+        stop_name = "<unknown stop>"
     if len(predictions) > 1:
         first = predictions[0]
         rest = predictions[1:]
         body = "%s until %s arrives at %s. %d more buses: %s." % (
-            pluralize_minutes(first.minutes), 
-            route.title, 
-            stop.title,
+            pluralize_minutes(first.minutes),
+            route_name,
+            stop_name,
             len(rest),
             ", ".join([pluralize_minutes(bus.minutes) for bus in rest]),
         )
@@ -69,12 +81,12 @@ def sms_prediction(agency_id, route_id, direction_id, stop_id, phone_num):
         next = predictions[1]
         body = "%s until %s arrives at %s. One more bus in %s." % (
             pluralize_minutes(first.minutes),
-            route.title,
-            stop.title,
+            route_name,
+            stop_name,
             pluralize_minutes(next.minutes),
         )
     else:
-        body = "No buses predicted (%s, %s)" % (route.title, stop.title)
+        body = "No buses predicted (%s, %s)" % (route.name, stop.name)
 
     sms_info = {
         'From': PHONE_NUMBER,

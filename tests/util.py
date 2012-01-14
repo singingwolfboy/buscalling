@@ -18,7 +18,7 @@ except ImportError:
     from cgi import parse_qs
 
 
-PROJECT_ROOT = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 URLFETCH_ROOT = os.path.join(PROJECT_ROOT, "tests", "urlfetch")
 LIB_ROOT = os.path.join(PROJECT_ROOT, "lib")
 sys.path.insert(0, LIB_ROOT)

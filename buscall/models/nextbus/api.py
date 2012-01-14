@@ -35,7 +35,7 @@ def retry_nextbus_api(retries):
                     return func(*args, **kwargs)
                 except NextbusError, e:
                     if not e.retry:
-                        raise e
+                        raise
                     last_err = e
                     # exponential backoff
                     time.sleep((2**n) + (random.randint(0, 1000) / 1000))

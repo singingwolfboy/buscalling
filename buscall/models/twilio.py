@@ -40,11 +40,11 @@ def get_twiml(prediction):
 @check_user_payment
 def notify_by_phone(listener, minutes=None):
     print listener
-    url = DOMAIN + url_for('prediction_list', 
-        agency_id=listener.agency.id, 
-        route_id=listener.route.id, 
-        direction_id=listener.direction.id, 
-        stop_id=listener.stop.id, 
+    url = DOMAIN + url_for('prediction_list',
+        agency_id=listener.agency.id,
+        route_id=listener.route.id,
+        direction_id=listener.direction.id,
+        stop_id=listener.stop.id,
         format="twiml")
     call_info = {
         'From': PHONE_NUMBER,

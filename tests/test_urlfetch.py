@@ -2,10 +2,10 @@ from tests.util import CustomTestCase
 import datetime
 from ndb import Key
 from buscall import app
-from buscall.models import nextbus, twilio
+from buscall.models import twilio
 from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
 from buscall.models.user import User
-from buscall.models.listener import ScheduledNotification
+from buscall.models.listener import BusListener
 from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
 from google.appengine.ext import testbed
@@ -34,15 +34,10 @@ class ScheduledNotificationData(DataSet):
         medium = "email"
         has_executed = False
 
-    class seen_bus_phone_notification:
+    class phone_notification:
         minutes_before = 5
         medium = "phone"
         has_executed = False
-
-cron_bus_notification = ScheduledNotification(
-        minutes_before=20, medium="email", has_executed=False)
-seen_bus_notification = ScheduledNotification(
-        minutes_before=5, medium="phone", has_executed=False)
 
 class BusListenerData(DataSet):
     class cron_bus:
@@ -60,9 +55,9 @@ class BusListenerData(DataSet):
         sat = True
         sun = True
         start = datetime.time(15,00) # 3:00 PM
-        scheduled_notifications = [cron_bus_notification]
+        scheduled_notifications = [ScheduledNotificationData.cron_bus_20_min]
 
-    class seen_bus:
+    class another_bus:
         user_key = Key(User, "phone@example.com")
         agency_key = Key(Agency, "mbta")
         route_key = Key(Route, "mbta|70")
@@ -77,8 +72,7 @@ class BusListenerData(DataSet):
         sat = False
         sun = True
         start = datetime.time(4,0)
-        seen = True
-        scheduled_notifications = [seen_bus_notification]
+        scheduled_notifications = [ScheduledNotificationData.phone_notification]
 
 class UrlfetchTestCase(CustomTestCase, DataTestCase):
     datasets = [UserData, BusListenerData] #  , ScheduledNotificationData]
@@ -96,7 +90,7 @@ class UrlfetchTestCase(CustomTestCase, DataTestCase):
         mail_stub = self.testbed.get_stub(testbed.MAIL_SERVICE_NAME)
         quiet_moment = datetime.datetime(2011, 7, 2, 0, 0, 0) # Midnight on Sat, July 2
         with app.test_request_context('/tasks/poll'):
-            poll(quiet_moment.timetuple())
+            poll(quiet_moment)
             messages = mail_stub.get_sent_messages()
             self.assertEqual(len(messages), 0)
     
@@ -104,10 +98,10 @@ class UrlfetchTestCase(CustomTestCase, DataTestCase):
         mail_stub = self.testbed.get_stub(testbed.MAIL_SERVICE_NAME)
         active_moment = datetime.datetime(2011, 7, 2, 15, 10, 24) # 3:10:24 on Sat, July 2
         with app.test_request_context('/tasks/poll'):
-            poll(active_moment.timetuple())
+            poll(active_moment)
             messages = mail_stub.get_sent_messages()
             self.assertEqual(len(messages), 1)
-    
+
     def test_call_prediction(self):
         self.login("bill@gmail.com", admin=True)
         self.app.get('/call/mbta/26/26_1_var1/492/9999999999')
@@ -121,9 +115,9 @@ class UrlfetchTestCase(CustomTestCase, DataTestCase):
         assert url in self.urlfetch_history
 
     def test_phone_notification(self):
-        notification = ScheduledNotification.query(
-                ScheduledNotification.medium == "phone",
-                ScheduledNotification.has_executed == False)[0]
+        listener = BusListener.query(
+                BusListener.scheduled_notifications.medium == "phone",
+                BusListener.scheduled_notifications.has_executed == False).get()
         with app.test_request_context('/tasks/poll'):
-            result = twilio.notify_by_phone(notification.listener)
-            self.assertEqual(result['to'], notification.listener.userprofile.phone)
+            result = twilio.notify_by_phone(listener)
+            self.assertEqual(result['to'], listener.user.phone)

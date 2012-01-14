@@ -179,10 +179,10 @@ class BusPrediction(model.Model):
     seconds = model.IntegerProperty()
     vehicle = model.StringProperty()
     block = model.StringProperty()
-    departure = model.StringProperty()
-    affected_by_layover = model.BooleanProperty(default=False)
-    delayed = model.StringProperty()
-    slowness = model.StringProperty()
+    is_departure = model.BooleanProperty()
+    is_affected_by_layover = model.BooleanProperty(default=False)
+    is_delayed = model.BooleanProperty()
+    slowness = model.IntegerProperty()
 
     _use_datastore = False # magic variable indicating that this should only
         # be saved to and retrieved from memcache, not the datastore
@@ -257,9 +257,9 @@ class BusPrediction(model.Model):
         xml = get_predictions_xml(**ctx)
         try:
             predictions_tree = etree.fromstring(xml)
-        except etree.ParseError, e:
+        except etree.ParseError:
             app.logger.error(xml)
-            raise e
+            raise
 
         # make objects to return
         agency_key = Key(Agency, ctx['agency_id'])
@@ -279,9 +279,9 @@ class BusPrediction(model.Model):
                 seconds = int(prediction_el.get("seconds", 0)),
                 vehicle = prediction_el.get("vehicle"),
                 block = prediction_el.get("block"),
-                departure = prediction_el.get("isDeparture", "").lower() == "true",
-                affected_by_layover = prediction_el.get("affectedByLayover", "").lower() == "true",
-                delayed = prediction_el.get("delayed", "").lower() == "true",
+                is_departure = prediction_el.get("isDeparture", "").lower() == "true",
+                is_affected_by_layover = prediction_el.get("affectedByLayover", "").lower() == "true",
+                is_delayed = prediction_el.get("delayed", "").lower() == "true",
                 slowness = int(prediction_el.get("slowness", 0)),
             )
 

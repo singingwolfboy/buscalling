@@ -15,21 +15,21 @@ from buscall.models.nextbus.api import NextbusError
 from buscall.models.nextbus.api import get_agencylist_xml, get_routelist_xml, get_route_xml
 
 @app.route('/tasks/poll')
-def poll(time=None):
+def poll(dt=None):
     """
     This function is the workhorse of the whole application. When called,
     it checks the current time, pulls listeners from the datastore that are
     currently active, and then polls the bus routes for those listeners.
     This function is designed to be run once a minute (or more!) through cron.
     """
-    if time is None:
-        time = datetime.datetime.utcnow()  # current time
+    if dt is None:
+        dt = datetime.datetime.utcnow()  # current time
 
     # get all currently active listeners
-    weekday = DAYS_OF_WEEK[time.weekday()]
+    weekday = DAYS_OF_WEEK[dt.weekday()]
     listeners = BusListener.query(
             getattr(BusListener, weekday) == True,
-            BusListener.start <= time,
+            BusListener.start <= dt.time(),
             BusListener.scheduled_notifications.has_executed == False,
             BusListener.enabled == True)
     for listener in listeners:
