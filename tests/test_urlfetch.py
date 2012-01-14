@@ -4,7 +4,7 @@ from ndb import Key
 from buscall import app
 from buscall.models import nextbus, twilio
 from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
-from buscall.models.profile import UserProfile
+from buscall.models.user import User
 from buscall.models.listener import ScheduledNotification
 from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
@@ -12,16 +12,16 @@ from google.appengine.ext import testbed
 
 from fixture import DataSet, DataTestCase
 
-class UserProfileData(DataSet):
-    class test_profile:
-        user_id = "test@example.com"
+class UserData(DataSet):
+    class test_user:
+        primary_email = "test@example.com"
         subscribed = True
         credits = 8
         joined = datetime.datetime(2010, 2, 3, 10, 32, 45)
         last_access = datetime.datetime(2011, 7, 14, 7, 0, 0)
 
     class with_phone:
-        user_id = "phone@example.com"
+        primary_email = "phone@example.com"
         subscribed = True
         credits = 0
         phone = "999-888-7777"
@@ -46,11 +46,11 @@ seen_bus_notification = ScheduledNotification(
 
 class BusListenerData(DataSet):
     class cron_bus:
-        profile_key = Key(UserProfile, "test@example.com")
+        user_key = Key(User, "test@example.com")
         agency_key = Key(Agency, "mbta")
-        route_key = Key(Route, "26")
-        direction_key = Key(Direction, "26_1_var1")
-        stop_key = Key(Stop, "492")
+        route_key = Key(Route, "mbta|26")
+        direction_key = Key(Direction, "mbta|26|26_1_var1")
+        stop_key = Key(Stop, "mbta|26|26_1_var1|492")
         recur = True
         mon = False
         tue = False
@@ -63,11 +63,11 @@ class BusListenerData(DataSet):
         scheduled_notifications = [cron_bus_notification]
 
     class seen_bus:
-        userprofile = UserProfileData.with_phone
-        agency_id = "mbta"
-        route_id = "70"
-        direction_id = "70_1_var0"
-        stop_id = "88333"
+        user_key = Key(User, "phone@example.com")
+        agency_key = Key(Agency, "mbta")
+        route_key = Key(Route, "mbta|70")
+        direction_key = Key(Direction, "mbta|70|70_1_var0")
+        stop_key = Key(Stop, "mbta|70|70_1_var0|88333")
         recur = True
         mon = True
         tue = False
@@ -81,7 +81,7 @@ class BusListenerData(DataSet):
         scheduled_notifications = [seen_bus_notification]
 
 class UrlfetchTestCase(CustomTestCase, DataTestCase):
-    datasets = [UserProfileData, BusListenerData] #  , ScheduledNotificationData]
+    datasets = [UserData, BusListenerData] #  , ScheduledNotificationData]
 
     def test_predictions(self):
         agency_id = "mbta"
