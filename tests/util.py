@@ -10,8 +10,9 @@ from google.appengine.api.capabilities import capability_stub
 from google.appengine.ext import testbed
 from google.appengine.api.urlfetch_stub import \
   _API_CALL_DEADLINE, _API_CALL_VALIDATE_CERTIFICATE_DEFAULT
-from fixture import DataTestCase, GoogleDatastoreFixture, NamedDataStyle
 import buscall
+from ndb import Key
+from buscall.models.user import User
 try:
     from urlparse import parse_qs
 except ImportError:
@@ -56,7 +57,8 @@ class CustomURLFetchServiceStub(urlfetch_stub.URLFetchServiceStub):
         if parts.netloc == "webservices.nextbus.com":
             rel_path = self._get_nextbus_path(parse_qs(parts.query))
             if not rel_path: return None
-            return open(os.path.join(os.path.dirname(__file__), rel_path))
+            return open(rel_path)
+            # return open(os.path.join(os.path.dirname(__file__), rel_path))
         elif parts.netloc == "api.twilio.com":
             return self._get_twilio_response(parse_qs(payload))
 
@@ -132,7 +134,6 @@ class CustomTestbed(testbed.Testbed):
 class CustomTestCase(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         self.app = buscall.app.test_client()
-        self.fixture = GoogleDatastoreFixture(env=buscall.models, style=NamedDataStyle())
         self.custom_urlfetch_root = kwargs.get("root", URLFETCH_ROOT)
         super(CustomTestCase, self).__init__(*args, **kwargs)
 
@@ -148,24 +149,25 @@ class CustomTestCase(unittest.TestCase):
 
         # make sure we start out logged out
         self.logout()
-        
-        # do some black magic to detect if we're also subclassing from fixture.DataTestCase
-        if DataTestCase in self.__class__.__mro__:
-            DataTestCase.setUp(self)
-    
+
     def tearDown(self):
         self.testbed.deactivate()
-  
-    def login(self, email, admin=False, user_id=None):
-        os.environ['USER_EMAIL'] = email
+
+    def login(self, email, admin=False, user_id=None, create_user=True):
         if user_id:
-            os.environ['USER_ID'] = str(user_id)
+            user_id = int(user_id)
         else:
-            os.environ['USER_ID'] = str(abs(hash(email)))
-        if admin:
-          os.environ['USER_IS_ADMIN'] = "1"
-        else:
-          os.environ['USER_IS_ADMIN'] = "0"
+            user_id = abs(hash(email))
+        os.environ['USER_EMAIL'] = email
+        os.environ['USER_ID'] = str(user_id)
+        os.environ['USER_IS_ADMIN'] = str(int(bool(admin))) # must be "0" or "1"
+        if create_user:
+            user_key = Key(User, user_id)
+            user = user_key.get()
+            if not user:
+                user = User(key=user_key, primary_email = email)
+                user.put()
+            return user
   
     def logout(self):
         for key in ['USER_EMAIL', 'USER_ID', 'USER_IS_ADMIN']:

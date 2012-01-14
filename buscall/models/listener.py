@@ -142,10 +142,10 @@ class BusListener(model.Model):
     def get_predictions(self):
         "Use the Nextbus API to get route prediction information."
         return BusPrediction.query(
-            agency_key = self.agency_key,
-            route_key = self.route_key,
-            direction_key = self.direction_key,
-            stop_key = self.stop_key)
+            BusPrediction.agency_key == self.agency_key,
+            BusPrediction.route_key == self.route_key,
+            BusPrediction.direction_key == self.direction_key,
+            BusPrediction.stop_key == self.stop_key)
 
     def fire_notifications(self, minutes=None):
         "minutes parameter is the actual prediction time"
@@ -175,8 +175,18 @@ def notify_by_email(listener, minutes=None):
     if minutes is None:
         predictions = listener.get_predictions()
         minutes = predictions.buses[0].minutes
-    subject = "ALERT: %s bus, %s" % (listener.route.title, listener.stop.title)
+    route = listener.route
+    if route:
+        route_name = route.name
+    else:
+        route_name = "<unknown route>"
+    stop = listener.stop
+    if stop:
+        stop_name = stop.name
+    else:
+        stop_name = "<unknown stop>"
+    subject = "ALERT: %s bus, %s" % (route_name, stop_name)
     body = "Your bus is coming in %d minutes." % (minutes)
     mail.send_mail(sender=MAIL_SENDER,
-        to=listener.user.email,
+        to=listener.user.primary_email,
         subject=subject, body=body)

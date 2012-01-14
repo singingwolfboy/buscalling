@@ -5,132 +5,103 @@ from buscall import app
 from buscall.models import twilio
 from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
 from buscall.models.user import User
-from buscall.models.listener import BusListener
+from buscall.models.listener import BusListener, ScheduledNotification
 from buscall.views.tasks import poll
 from buscall.credentials import ACCOUNT_SID
 from google.appengine.ext import testbed
 
-from fixture import DataSet, DataTestCase
+class UrlfetchTestCase(CustomTestCase):
+    def setUp(self):
+        super(UrlfetchTestCase, self).setUp()
+        mbta = Agency(id="mbta",
+                name="MBTA",
+                route_keys = [Key(Route, "mbta|26"), Key(Route, "mbta|70")])
+        mbta_key = mbta.put()
+        r26 = Route(id="mbta|26",
+                name="26",
+                agency_key=mbta_key,
+                direction_keys=[Key(Direction, "mbta|26|26_1_var1")])
+        r26_key = r26.put()
+        r70 = Route(id="mbta|70",
+                name="70",
+                agency_key=mbta_key,
+                direction_keys=[Key(Direction, "mbta|70|70_1_var0")])
+        r70_key = r70.put()
+        outbound = Direction(id="mbta|26|26_1_var1",
+                name="outbound",
+                agency_key=mbta_key,
+                route_key=r26_key,
+                stop_keys=[Key(Stop, "mbta|26|26_1_var1|492")])
+        outbound_key = outbound.put()
+        inbound = Direction(id="mbta|70|70_1_var0",
+                name="inbound",
+                agency_key=mbta_key,
+                route_key=r70_key,
+                stop_keys=[Key(Stop, "mbta|70|70_1_var0|88333")])
+        inbound_key = inbound.put()
+        my_house = Stop(id="mbta|26|26_1_var1|492",
+                name="my house",
+                agency_key=mbta_key,
+                route_key=r26_key,
+                direction_key=outbound_key)
+        my_house_key = my_house.put()
+        your_house = Stop(id="mbta|70|70_1_var0|88333",
+                name="your house",
+                agency_key=mbta_key,
+                route_key=r70_key,
+                direction_key=inbound_key)
+        your_house_key = your_house.put()
 
-class AgencyData(DataSet):
-    class mbta:
-        id = "mbta"
-        name = "MBTA"
-        # route_keys = [RouteData.r26, RouteData.r70]
+        test_user = User(
+                primary_email="test@example.com",
+                subscribed=True,
+                credits=8,
+                joined=datetime.datetime(2010, 2, 3, 10, 32, 45),
+                last_access=datetime.datetime(2011, 7, 14, 7, 0, 0))
+        test_user_key = test_user.put()
+        test_user_phone = User(
+                primary_email="phone@example.com",
+                subscribed=True,
+                credits=0,
+                phone="999-888-7777",
+                joined=datetime.datetime(2011, 2, 9, 10, 11, 12),
+                last_access=datetime.datetime(2011, 6, 10, 10, 15))
+        test_user_phone_key = test_user_phone.put()
 
-class RouteData(DataSet):
-    class r26:
-        id = "mbta|26"
-        name = "26"
-        agency_key = AgencyData.mbta
-        # direction_keys = [DirectionData.inbound]
-
-    class r70:
-        id = "mbta|70"
-        name = "70"
-        agency_key = AgencyData.mbta
-        # direction_keys = [DirectionData.outbound]
-
-AgencyData.mbta.route_keys = [RouteData.r26, RouteData.r70]
-
-class DirectionData(DataSet):
-    class inbound:
-        id = "mbta|26|26_1_var1"
-        name = "inbound"
-        agency_key = AgencyData.mbta
-        route_key = RouteData.r26
-
-    class outbound:
-        id = "mbta|70|70_1_var0"
-        name = "outbound"
-        agency_key = AgencyData.mbta
-        route_key = RouteData.r70
-
-RouteData.r26.direction_keys = [DirectionData.inbound]
-RouteData.r70.direction_keys = [DirectionData.outbound]
-
-class StopData(DataSet):
-    class my_house:
-        id = "mbta|26|26_1_var1|492"
-        name = "my house"
-        agency_key = AgencyData.mbta
-        route_key = RouteData.r26
-        direction_key = DirectionData.inbound
-
-    class your_house:
-        id = "mbta|70|70_1_var0|88333"
-        name = "your house"
-        agency_key = AgencyData.mbta
-        route_key = RouteData.r70
-        direction_key = DirectionData.outbound
-
-DirectionData.inbound.stop_keys = [StopData.my_house]
-DirectionData.outbound.stop_keys = [StopData.your_house]
-
-class UserData(DataSet):
-    class test_user:
-        primary_email = "test@example.com"
-        subscribed = True
-        credits = 8
-        joined = datetime.datetime(2010, 2, 3, 10, 32, 45)
-        last_access = datetime.datetime(2011, 7, 14, 7, 0, 0)
-
-    class with_phone:
-        primary_email = "phone@example.com"
-        subscribed = True
-        credits = 0
-        phone = "999-888-7777"
-        joined = datetime.datetime(2011, 2, 9, 10, 11, 12)
-        last_access = datetime.datetime(2011, 6, 10, 10, 15)
-
-class ScheduledNotificationData(DataSet):
-    class cron_bus_20_min:
-        minutes_before = 20
-        medium = "email"
-        has_executed = False
-
-    class phone_notification:
-        minutes_before = 5
-        medium = "phone"
-        has_executed = False
-
-class BusListenerData(DataSet):
-    class cron_bus:
-        user_key = UserData.test_user
-        agency_key = AgencyData.mbta
-        route_key = RouteData.r26
-        direction_key = DirectionData.inbound
-        stop_key = StopData.my_house
-        recur = True
-        mon = False
-        tue = False
-        wed = False
-        thu = False
-        fri = False
-        sat = True
-        sun = True
-        start = datetime.time(15,00) # 3:00 PM
-        scheduled_notifications = [ScheduledNotificationData.cron_bus_20_min]
-
-    class another_bus:
-        user_key = UserData.with_phone
-        agency_key = AgencyData.mbta
-        route_key = RouteData.r70
-        direction_key = DirectionData.outbound
-        stop_key = StopData.your_house
-        recur = True
-        mon = True
-        tue = False
-        wed = True
-        thu = False
-        fri = True
-        sat = False
-        sun = True
-        start = datetime.time(4,0)
-        scheduled_notifications = [ScheduledNotificationData.phone_notification]
-
-class UrlfetchTestCase(CustomTestCase, DataTestCase):
-    datasets = [UserData, BusListenerData] #  , ScheduledNotificationData]
+        notify_email = ScheduledNotification(
+                minutes_before=20,
+                medium="email",
+                has_executed=False)
+        notify_phone = ScheduledNotification(
+                minutes_before=5,
+                medium="phone",
+                has_executed=False)
+        cron_bus = BusListener(
+                user_key=test_user_key,
+                agency_key=mbta_key,
+                route_key=r26_key,
+                direction_key=outbound_key,
+                stop_key=my_house_key,
+                recur=True,
+                sat=True,
+                sun=True,
+                start = datetime.time(15, 00), # 3:00 PM
+                scheduled_notifications=[notify_email])
+        cron_bus_key = cron_bus.put()
+        another_bus = BusListener(
+                user_key=test_user_phone_key,
+                agency_key=mbta_key,
+                route_key=r70_key,
+                direction_key=outbound_key,
+                stop_key=your_house_key,
+                recur=True,
+                mon=True,
+                wed=True,
+                fri=True,
+                sun=True,
+                start=datetime.time(4, 0),
+                scheduled_notifications=[notify_phone])
+        another_bus_key = another_bus.put()
 
     def test_predictions(self):
         agency_id = "mbta"
@@ -140,7 +111,7 @@ class UrlfetchTestCase(CustomTestCase, DataTestCase):
         predictions = BusPrediction.query(agency_id=agency_id, route_id=route_id,
                 direction_id=direction_id, stop_id=stop_id)
         self.assertEqual(len(predictions), 3)
-    
+
     def test_cron_no_listeners(self):
         mail_stub = self.testbed.get_stub(testbed.MAIL_SERVICE_NAME)
         quiet_moment = datetime.datetime(2011, 7, 2, 0, 0, 0) # Midnight on Sat, July 2

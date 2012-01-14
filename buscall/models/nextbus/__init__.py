@@ -227,7 +227,7 @@ class BusPrediction(model.Model):
         attributes = ["agency", "route", "direction", "stop", "trip"]
         for node in args:
             name = getattr(node, "_FilterNode__name", None)
-            op = getattr(node, "_FilterNode__op", None)
+            op = getattr(node, "_FilterNode__op", None) or getattr(node, "_FilterNode__opsymbol", None)
             value = getattr(node, "_FilterNode__value", None)
             if not name or not op or not value or op != "=":
                 continue
@@ -235,7 +235,7 @@ class BusPrediction(model.Model):
                 attr_id = attr+"_id"
                 attr_key = attr+"_key"
                 if name == attr_key:
-                    key_parts = value.id().split("|")
+                    key_parts = value.name().split("|")
                     for inner_attr, inner_value in zip(attributes, key_parts):
                         ctx[inner_attr + "_id"] = inner_value
                 elif name == attr_id:

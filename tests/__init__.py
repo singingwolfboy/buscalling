@@ -20,17 +20,12 @@ except ImportError:
 def all_tests_suite():
     return unittest.TestLoader().loadTestsFromNames([
         'tests.test_buslistener',
-        'tests.test_datastore',
         'tests.test_urlfetch',
         'tests.test_new_listener_form',
         'tests.test_smoke',
     ])
 
 def main():
-    # need to set AUTH_DOMAIN before we can create User objects
-    # if not 'AUTH_DOMAIN' in os.environ:
-    #     os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
-    
     runner = unittest.TextTestRunner()
     suite = all_tests_suite()
     runner.run(suite)
