@@ -57,11 +57,19 @@ class User(model.Model):
         return User.query(User.google_id == user.user_id()).get()
 
     @classmethod
+    def get_from_email(cls, email):
+        return User.query(User.primary_email == email).get()
+
+    @classmethod
     def create_from_google_user(cls, user):
         return cls(
             google_id = user.user_id(),
             primary_email = user.email(),
         )
+
+    @classmethod
+    def create_from_email(cls, email):
+        return cls(primary_email=email)
 
     @classmethod
     def get_current_user(cls):
