@@ -12,6 +12,61 @@ from google.appengine.ext import testbed
 
 from fixture import DataSet, DataTestCase
 
+class AgencyData(DataSet):
+    class mbta:
+        id = "mbta"
+        name = "MBTA"
+        # route_keys = [RouteData.r26, RouteData.r70]
+
+class RouteData(DataSet):
+    class r26:
+        id = "mbta|26"
+        name = "26"
+        agency_key = AgencyData.mbta
+        # direction_keys = [DirectionData.inbound]
+
+    class r70:
+        id = "mbta|70"
+        name = "70"
+        agency_key = AgencyData.mbta
+        # direction_keys = [DirectionData.outbound]
+
+AgencyData.mbta.route_keys = [RouteData.r26, RouteData.r70]
+
+class DirectionData(DataSet):
+    class inbound:
+        id = "mbta|26|26_1_var1"
+        name = "inbound"
+        agency_key = AgencyData.mbta
+        route_key = RouteData.r26
+
+    class outbound:
+        id = "mbta|70|70_1_var0"
+        name = "outbound"
+        agency_key = AgencyData.mbta
+        route_key = RouteData.r70
+
+RouteData.r26.direction_keys = [DirectionData.inbound]
+RouteData.r70.direction_keys = [DirectionData.outbound]
+
+class StopData(DataSet):
+    class my_house:
+        id = "mbta|26|26_1_var1|492"
+        name = "my house"
+        agency_key = AgencyData.mbta
+        route_key = RouteData.r26
+        direction_key = DirectionData.inbound
+
+    class your_house:
+        id = "mbta|70|70_1_var0|88333"
+        name = "your house"
+        agency_key = AgencyData.mbta
+        route_key = RouteData.r70
+        direction_key = DirectionData.outbound
+
+DirectionData.inbound.stop_keys = [StopData.my_house]
+DirectionData.outbound.stop_keys = [StopData.your_house]
+
 class UserData(DataSet):
     class test_user:
         primary_email = "test@example.com"
@@ -41,11 +96,11 @@ class ScheduledNotificationData(DataSet):
 
 class BusListenerData(DataSet):
     class cron_bus:
-        user_key = Key(User, "test@example.com")
-        agency_key = Key(Agency, "mbta")
-        route_key = Key(Route, "mbta|26")
-        direction_key = Key(Direction, "mbta|26|26_1_var1")
-        stop_key = Key(Stop, "mbta|26|26_1_var1|492")
+        user_key = UserData.test_user
+        agency_key = AgencyData.mbta
+        route_key = RouteData.r26
+        direction_key = DirectionData.inbound
+        stop_key = StopData.my_house
         recur = True
         mon = False
         tue = False
@@ -58,11 +113,11 @@ class BusListenerData(DataSet):
         scheduled_notifications = [ScheduledNotificationData.cron_bus_20_min]
 
     class another_bus:
-        user_key = Key(User, "phone@example.com")
-        agency_key = Key(Agency, "mbta")
-        route_key = Key(Route, "mbta|70")
-        direction_key = Key(Direction, "mbta|70|70_1_var0")
-        stop_key = Key(Stop, "mbta|70|70_1_var0|88333")
+        user_key = UserData.with_phone
+        agency_key = AgencyData.mbta
+        route_key = RouteData.r70
+        direction_key = DirectionData.outbound
+        stop_key = StopData.your_house
         recur = True
         mon = True
         tue = False
