@@ -56,13 +56,14 @@ def agency_detail(agency_id):
 @api_list
 def route_list(agency_id, limit, offset):
     agency_key = Key(Agency, agency_id)
+    agency = agency_key.get() or abort(404)
     routes_qry = Route.query(Route.agency_key == agency_key)
     if g.request_format == "json":
         routes = routes_qry.iter(limit=limit, offset=offset)
         return render_json(routes, limit, offset, routes_qry.count())
     else:
         ctx = dict(
-            agency = agency_key.get() or abort(404),
+            agency = agency,
             routes = routes_qry,
             # count = routes_qry.count(),
         )
@@ -87,15 +88,17 @@ def route_detail(agency_id, route_id):
 def direction_list(agency_id, route_id, limit, offset):
     fctx = locals()  # format context
     agency_key = Key(Agency, agency_id)
+    agency = agency_key.get() or abort(404)
     route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
+    route = route_key.get() or abort(404)
     directions_qry = Direction.query(Direction.route_key == route_key)
     if g.request_format == "json":
         directions = directions_qry.iter(limit=limit, offset=offset)
         return render_json(directions, limit, offset, directions_qry.count())
     else:
         ctx = dict(
-            agency = agency_key.get() or abort(404),
-            route = route_key.get() or abort(404),
+            agency = agency,
+            route = route,
             directions = directions_qry,
             # count = directions_qry.count(),
         )
@@ -123,17 +126,20 @@ def direction_detail(agency_id, route_id, direction_id):
 def stop_list(agency_id, route_id, direction_id, limit, offset):
     fctx = locals()  # format context
     agency_key = Key(Agency, agency_id)
+    agency = agency_key.get() or abort(404)
     route_key = Key(Route, "{agency_id}|{route_id}".format(**fctx))
+    route = route_key.get() or abort(404)
     direction_key = Key(Direction, "{agency_id}|{route_id}|{direction_id}".format(**fctx))
+    direction = direction_key.get() or abort(404)
     stops_qry = Stop.query(Stop.direction_key == direction_key)
     if g.request_format == "json":
         stops = stops_qry.iter(limit=limit, offset=offset)
         return render_json(stops, limit, offset, stops_qry.count())
     else:
         ctx = dict(
-            agency = agency_key.get() or abort(404),
-            route = route_key.get() or abort(404),
-            direction = direction_key.get() or abort(404),
+            agency = agency,
+            route = route,
+            direction = direction,
             stops = stops_qry,
             # count = stops_qry.count(),
         )
