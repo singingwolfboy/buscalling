@@ -1,0 +1,20 @@
+HTTP/1.1 200 OK
+content-length: 404
+content-encoding: gzip
+vary: Accept-Encoding
+server: Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+x-pad: avoid browser bug
+date: Sat, 14 Jan 2012 20:25:06 GMT
+access-control-allow-origin: *
+content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2012.">
+<predictions agencyTitle="MBTA" routeTitle="70" routeTag="70" stopTitle="Carter St opp Commuter Rail Station" stopTag="88333">
+  <direction title="Cedarwood via Watertown &amp; Waltham">
+  <prediction epochTime="1326573330646" seconds="624" minutes="10" isDeparture="false" dirTag="70_0_var0" vehicle="0733" block="T70_8" tripTag="17074372" />
+  <prediction epochTime="1326575551090" seconds="2844" minutes="47" isDeparture="false" affectedByLayover="true" dirTag="70_0_var0" vehicle="0600" block="T70_17" tripTag="17074445" />
+  <prediction epochTime="1326578311216" seconds="5605" minutes="93" isDeparture="false" affectedByLayover="true" dirTag="70_0_var0" vehicle="0607" block="T70_13" tripTag="17074350" />
+  </direction>
+</predictions>
+</body>
