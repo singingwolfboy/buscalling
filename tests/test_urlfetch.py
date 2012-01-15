@@ -13,44 +13,10 @@ from google.appengine.ext import testbed
 class UrlfetchTestCase(CustomTestCase):
     def setUp(self):
         super(UrlfetchTestCase, self).setUp()
-        mbta = Agency(id="mbta",
-                name="MBTA",
-                route_keys = [Key(Route, "mbta|26"), Key(Route, "mbta|70")])
-        mbta_key = mbta.put()
-        r26 = Route(id="mbta|26",
-                name="26",
-                agency_key=mbta_key,
-                direction_keys=[Key(Direction, "mbta|26|26_1_var1")])
-        r26_key = r26.put()
-        r70 = Route(id="mbta|70",
-                name="70",
-                agency_key=mbta_key,
-                direction_keys=[Key(Direction, "mbta|70|70_1_var0")])
-        r70_key = r70.put()
-        outbound = Direction(id="mbta|26|26_1_var1",
-                name="outbound",
-                agency_key=mbta_key,
-                route_key=r26_key,
-                stop_keys=[Key(Stop, "mbta|26|26_1_var1|492")])
-        outbound_key = outbound.put()
-        inbound = Direction(id="mbta|70|70_1_var0",
-                name="inbound",
-                agency_key=mbta_key,
-                route_key=r70_key,
-                stop_keys=[Key(Stop, "mbta|70|70_1_var0|88333")])
-        inbound_key = inbound.put()
-        my_house = Stop(id="mbta|26|26_1_var1|492",
-                name="my house",
-                agency_key=mbta_key,
-                route_key=r26_key,
-                direction_key=outbound_key)
-        my_house_key = my_house.put()
-        your_house = Stop(id="mbta|70|70_1_var0|88333",
-                name="your house",
-                agency_key=mbta_key,
-                route_key=r70_key,
-                direction_key=inbound_key)
-        your_house_key = your_house.put()
+        mbta_key, r26_key, r26_dir_key, r26_stop_key = self.build_bus_entities(
+                "mbta", "26", "26_1_var1", "492")
+        mbta_key, r70_key, r70_dir_key, r70_stop_key = self.build_bus_entities(
+                "mbta", "70", "70_1_var0", "88333")
 
         test_user = User(
                 primary_email="test@example.com",
@@ -80,8 +46,8 @@ class UrlfetchTestCase(CustomTestCase):
                 user_key=test_user_key,
                 agency_key=mbta_key,
                 route_key=r26_key,
-                direction_key=outbound_key,
-                stop_key=my_house_key,
+                direction_key=r26_dir_key,
+                stop_key=r26_stop_key,
                 recur=True,
                 sat=True,
                 sun=True,
@@ -92,8 +58,8 @@ class UrlfetchTestCase(CustomTestCase):
                 user_key=test_user_phone_key,
                 agency_key=mbta_key,
                 route_key=r70_key,
-                direction_key=outbound_key,
-                stop_key=your_house_key,
+                direction_key=r70_dir_key,
+                stop_key=r70_stop_key,
                 recur=True,
                 mon=True,
                 wed=True,

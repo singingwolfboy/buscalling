@@ -13,6 +13,7 @@ from google.appengine.api.urlfetch_stub import \
 import buscall
 from ndb import Key
 from buscall.models.user import User
+from buscall.models.nextbus import Agency, Route, Direction, Stop
 try:
     from urlparse import parse_qs
 except ImportError:
@@ -152,6 +153,59 @@ class CustomTestCase(unittest.TestCase):
 
     def tearDown(self):
         self.testbed.deactivate()
+
+    def build_bus_entities(self, agency_id, route_id=None, direction_id=None, stop_id=None):
+        if agency_id:
+            agency_key = Key(Agency, agency_id)
+        else:
+            agency_key = None
+        if route_id:
+            route_key = Key(Route, "{0}|{1}".format(agency_id, route_id))
+        else:
+            route_key = None
+        if direction_id:
+            direction_key = Key(Direction, "{0}|{1}|{2}".format(agency_id, route_id, direction_id))
+        else:
+            direction_key = None
+        if stop_id:
+            stop_key = Key(Stop, "{0}|{1}|{2}|{3}".format(agency_id, route_id, direction_id, stop_id))
+        else:
+            stop_key = None
+
+        groups = (
+            (agency_key, Agency, route_key, "route_keys"),
+            (route_key, Route, direction_key, "direction_keys"),
+            (direction_key, Direction, stop_key, "stop_keys"),
+            (stop_key, Stop, None, None),
+        )
+        for obj_key, obj_cls, subkey, subkeys_attr in groups:
+            if not obj_key:
+                continue
+            obj = obj_key.get()
+            if obj:
+                if subkey and subkeys_attr:
+                    subkeys = getattr(obj, subkeys_attr, [])
+                    if subkey not in subkeys:
+                        subkeys.append(subkey)
+                        setattr(obj, subkeys_attr, subkeys)
+                        obj.put()
+            else:
+                obj_id = obj_key.id().split("|")[-1]
+                kwargs = {
+                    "key": obj_key,
+                    "name": obj_id,
+                }
+                if subkeys_attr:
+                    if subkey:
+                        kwargs[subkeys_attr] = [subkey]
+                    else:
+                        kwargs[subkeys_attr] = []
+                obj = obj_cls(**kwargs)
+                obj.put()
+
+        # return keys that are not None
+        keys = [agency_key, route_key, direction_key, stop_key]
+        return [k for k in keys if k is not None]
 
     def login(self, email, admin=False, user_id=None, create_user=True):
         if user_id:
