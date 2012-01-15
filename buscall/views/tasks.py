@@ -58,21 +58,57 @@ def reset_seen_flags():
 # This runs in a deferred() handler
 @app.route('/tasks/nextbus/update/<agency_id>')
 def update_agency_and_children(agency_id):
+    return load_nextbus_entities_for_agency(agency_id, routes=True, directions=True, stops=True)
+
+def load_nextbus_entities_for_agency(agency_id, routes=True, directions=True, stops=True):
+    """
+    Insert entities into datastore based on the information from Nextbus.
+    This function is designed to run both as a background task on the live
+    site, and as a utility function for testing (in which case it should use
+    the cached Nextbus responses on disk rather than actually contacting
+    www.nextbus.com). This function requires a single agency_id as a string,
+    but for the other parameters, passing different values indicates different
+    behavior:
+
+    * True means load all the entities we can find for that entity type, given
+      the parents we have. Passing routes=True means load all routes for
+      this agency. Passing passing directions=True with routes="70" means
+      load all directions within the 70 bus route only.
+    * a list of strings means only load the entities with the given ids.
+      Passing routes=["70"] means only load the 70 bus route.
+      Passing routes=["70", "556"] means only load the 70 bus and the 556
+      bus routes.
+    * an integer means to load up to that many entities, and no more, per parent.
+      Precisely which entities get loaded is undefined. If the parent defines
+      fewer entities than the integer specified, all of them are loaded.
+      For example, if we pass routes=["70", "556"], directions=2, and the 70 bus
+      defines 5 directions while the 556 bus defines 1, then 2 directions for
+      the 70 bus will be loaded, and the single direction on the 556 bus will
+      also be loaded. Note that passing 0 is functionally identical to passing
+      False.
+    * False means to not load any entities of the given type. This halts processing:
+      if you define routes=False, then no directions or stops will be loaded,
+      regardless of what arguments you specify for them.
+
+    For this function, all arguments default to True, since that's what we want
+    when running this function in production on the task queue.
+    """
     stop_count = 0
     direction_count = 0
     route_count = 0
+    direction_association_warning_count = 0
     al_xml = get_agencylist_xml()
     try:
         agencies_tree = etree.fromstring(al_xml)
-    except etree.ParseError, e:
+    except etree.ParseError:
         app.logger.error(al_xml)
-        raise e
+        raise
     expr = '//agency[@id="{id}" or @tag="{id}"][1]'.format(id=agency_id)
     agency_els = agencies_tree.xpath(expr)
     try:
         agency_el = agency_els[0]
     except IndexError:
-        raise NextbusError("Invalid agency", retry=False)
+        raise NextbusError("Invalid agency: {0}".format(agency_id), retry=False)
     agency_key = Key(Agency, agency_id)
     agency_min_lat = 90
     agency_min_lng = 180
@@ -82,22 +118,48 @@ def update_agency_and_children(agency_id):
     rl_xml = get_routelist_xml(agency_id)
     try:
         routelist_tree = etree.fromstring(rl_xml)
-    except etree.ParseError, e:
+    except etree.ParseError:
         app.logger.error(rl_xml)
-        raise e
-    for route_stub_el in routelist_tree.findall('route'):
+        raise
+
+    # check limitations for unit tests
+    if routes:
+        route_stub_els = routelist_tree.findall('route')
+        if isinstance(routes, int):
+            route_stub_els = route_stub_els[0:routes]
+        elif isinstance(routes, (list, tuple)):
+            def on_list(route_stub_el):
+                route_id = route_stub_el.get("id") or route_stub_el.get("tag")
+                return route_id in routes
+            route_stub_els = filter(on_list, route_stub_els)
+    else:
+        route_stub_els = []
+
+    for route_stub_el in route_stub_els:
         route_id = route_stub_el.get("id") or route_stub_el.get("tag")
         route_key = Key(Route, "{0}|{1}".format(agency_id, route_id))
         rc_xml = get_route_xml(agency_id, route_id)
         try:
             route_tree = etree.fromstring(rc_xml)
-        except etree.ParseError, e:
+        except etree.ParseError:
             app.logger.error(rc_xml)
-            raise e
+            raise
         route_el = route_tree.find('route')
 
-        direction_association_warning_count = 0
-        for stop_el in route_tree.xpath('//route/stop'):
+        # check limitations for unit tests
+        if stops:
+            stop_els = route_tree.xpath('//route/stop')
+            if isinstance(stops, int):
+                stop_els = stop_els[0:stops]
+            elif isinstance(stops, (list, tuple)):
+                def on_list(stop_el):
+                    stop_id = stop_el.get("id") or stop_el.get("tag")
+                    return stop_id in stops
+                stop_els = filter(on_list, stop_els)
+        else:
+            stop_els = []
+
+        for stop_el in stop_els:
             stop_id = stop_el.get("id") or stop_el.get("tag")
             expr = '//route/direction/stop[@id="{id}" or @tag="{id}"]/..'.format(id=stop_id)
             direction_els = route_tree.xpath(expr)
@@ -122,8 +184,21 @@ def update_agency_and_children(agency_id):
             stop.put_async()
             stop_count += 1
 
+        # check limitations for unit tests
+        if directions:
+            direction_els = route_tree.xpath('//route/direction')
+            if isinstance(directions, int):
+                direction_els = direction_els[0:directions]
+            elif isinstance(directions, (list, tuple)):
+                def on_list(direction_el):
+                    direction_id = direction_el.get("id") or direction_el.get("tag")
+                    return direction_id in directions
+                direction_els = filter(on_list, direction_els)
+        else:
+            direction_els = []
+
         direction_keys = []
-        for direction_el in route_tree.xpath('//route/direction'):
+        for direction_el in direction_els:
             direction_id = direction_el.get("id") or direction_el.get("tag")
             direction_key = Key(Direction, "{0}|{1}|{2}".format(agency_id, route_id, direction_id))
             stop_keys = []
@@ -197,13 +272,21 @@ def update_agency_and_children(agency_id):
         route_count += 1
         route_keys.append(route_key)
 
+    if agency_min_lat < 90 and agency_min_lng < 180:
+        min_pt = GeoPt(agency_min_lat, agency_min_lng)
+    else:
+        min_pt = None
+    if agency_max_lat > -90 and agency_max_lng > -180:
+        max_pt = GeoPt(agency_max_lat, agency_max_lng)
+    else:
+        max_pt = None
     agency = Agency(
         key = agency_key,
         name = agency_el.get("name") or agency_el.get("title"),
         short_name = agency_el.get("shortName") or agency_el.get("shortTitle"),
         region = agency_el.get("region") or agency_el.get("regionTitle"),
-        min_pt = GeoPt(agency_min_lat, agency_min_lng),
-        max_pt = GeoPt(agency_max_lat, agency_max_lng),
+        min_pt = min_pt,
+        max_pt = max_pt,
         route_keys = route_keys)
     agency.put_async().get_result()
 
@@ -223,9 +306,9 @@ def fire_agency_deferreds():
     xml = get_agencylist_xml()
     try:
         agencies_tree = etree.fromstring(xml)
-    except etree.ParseError, e:
+    except etree.ParseError:
         app.logger.error(xml)
-        raise e
+        raise
     if agencies_tree is None:
         # FIXME: handle the case where nextbus is unreachable
         return None

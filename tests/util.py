@@ -1,4 +1,5 @@
 import os
+import os.path
 import sys
 import unittest
 import simplejson as json
@@ -206,6 +207,68 @@ class CustomTestCase(unittest.TestCase):
         # return keys that are not None
         keys = [agency_key, route_key, direction_key, stop_key]
         return [k for k in keys if k is not None]
+
+    def build_entities_from_urlfetch_files(self, agencies=False,
+            routes=False, directions=False, stops=False):
+        """
+        A reminder if the possible values you can pass for each argument:
+
+        * True means load all the entities we can find for that entity type, given
+          the parents we have. Passing routes=True means load all routes for
+          this agency. Passing passing directions=True with routes="70" means
+          load all directions within the 70 bus route only.
+        * a string, or a list of strings, means only load the entities with the
+          given id or ids. Passing routes="70" means only load the 70 bus route.
+          Passing routes=["70", "556"] means only load the 70 bus and the 556
+          bus routes.
+        * an integer means to load up to that many entities, and no more, per parent.
+          Precisely which entities get loaded is undefined. If the parent defines
+          fewer entities than the integer specified, all of them are loaded.
+          For example, if we pass routes=["70", "556"], directions=2, and the 70 bus
+          defines 5 directions while the 556 bus defines 1, then 2 directions for
+          the 70 bus will be loaded, and the single direction on the 556 bus will
+          also be loaded. Note that passing 0 is functionally identical to passing
+          False.
+        * False means to not load any entities of the given type. This halts processing:
+          if you define routes=False, then no directions or stops will be loaded,
+          regardless of what arguments you specify for them.
+
+        For this function, since it's only used for unit testing, all arguments
+        default to False.
+        """
+        if not agencies:
+            return
+
+        # Late import so that we don't pull this function unless we need to.
+        # Importing from buscall pulls a whole bunch of other imports, so
+        # if we don't need to set up a lot of nextbus entities, we won't call
+        # this build_entities_from_urlfetch_files function and do all that work.
+        from buscall.views.tasks import load_nextbus_entities_for_agency
+
+        # turn strings into a list of one entry
+        if isinstance(agencies, basestring):
+            agencies = [agencies]
+        if isinstance(routes, basestring):
+            routes = [routes]
+        if isinstance(directions, basestring):
+            directions = [directions]
+        if isinstance(stops, basestring):
+            stops = [stops]
+
+        # get a list of actual agency ids
+        if isinstance(agencies, (list, tuple)):
+            agency_ids = agencies
+        else:
+            NEXTBUS_ROOT = os.path.join(URLFETCH_ROOT, "nextbus_api")
+            agency_ids = [d for d in os.listdir(NEXTBUS_ROOT)
+                    if os.path.isdir(os.path.join(NEXTBUS_ROOT, d))]
+            if isinstance(agencies, int) and len(agency_ids) > agencies:
+                agency_ids = agency_ids[0:agencies]
+
+        # call our imported function
+        for agency_id in agency_ids:
+            load_nextbus_entities_for_agency(agency_id=agency_id, routes=routes,
+                    directions=directions, stops=stops)
 
     def login(self, email, admin=False, user_id=None, create_user=True):
         if user_id:
