@@ -1,10 +1,9 @@
 import datetime
-from google.appengine.ext.db import GqlQuery
+import random
 from buscall import app
 from buscall.util import DAYS_OF_WEEK
 from flask import redirect, url_for
 from google.appengine.api.datastore_types import GeoPt
-from google.appengine.ext import deferred
 from buscall.models.nextbus import Agency, Route, Direction, Stop
 from buscall.models.listener import BusListener
 from ndb import Key
@@ -13,6 +12,7 @@ from lxml import etree
 import simplejson as json
 from buscall.models.nextbus.api import NextbusError
 from buscall.models.nextbus.api import get_agencylist_xml, get_routelist_xml, get_route_xml
+from google.appengine.api import taskqueue
 
 @app.route('/tasks/poll')
 def poll(dt=None):
@@ -55,8 +55,7 @@ def reset_seen_flags():
             listener.delete()
     return redirect(url_for("lander"), 303)
 
-# This runs in a deferred() handler
-@app.route('/tasks/nextbus/update/<agency_id>')
+@app.route('/tasks/nextbus/update/<agency_id>', methods=["POST"])
 def update_agency_and_children(agency_id):
     return load_nextbus_entities_for_agency(agency_id, routes=True, directions=True, stops=True)
 
@@ -301,8 +300,8 @@ def load_nextbus_entities_for_agency(agency_id, routes=True, directions=True, st
     app.logger.info(response)
     return json.dumps(response)
 
-@app.route('/tasks/nextbus/update')
-def fire_agency_deferreds():
+@app.route('/tasks/nextbus/update', methods=["POST"])
+def add_agency_update_tasks():
     xml = get_agencylist_xml()
     try:
         agencies_tree = etree.fromstring(xml)
@@ -317,7 +316,9 @@ def fire_agency_deferreds():
     for agency_el in agency_els:
         agency_id = agency_el.get("id") or agency_el.get("tag")
         if agency_id:
-            deferred.defer(update_agency_and_children, agency_id)
+            taskqueue.add(name=agency_id,
+                countdown=random.randint(0, 120),  # wait up to two minutes
+                url=url_for('update_agency_and_children', agency_id=agency_id))
             agencies.append(agency_id)
 
     response = dict(

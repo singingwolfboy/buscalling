@@ -147,7 +147,11 @@ class CustomTestCase(unittest.TestCase):
         self.testbed.init_custom_urlfetch_stub(enable=True, root=self.custom_urlfetch_root)
         self.testbed.init_mail_stub()
         self.testbed.init_user_stub()
+        self.testbed.init_taskqueue_stub()
         self.testbed.init_capability_stub()
+
+        # needed for task queue tests
+        os.environ['HTTP_HOST'] = "localhost"
 
         # make sure we start out logged out
         self.logout()
@@ -285,16 +289,16 @@ class CustomTestCase(unittest.TestCase):
                 user = User(key=user_key, primary_email = email)
                 user.put()
             return user
-  
+
     def logout(self):
         for key in ['USER_EMAIL', 'USER_ID', 'USER_IS_ADMIN']:
             if key in os.environ:
                 del os.environ[key]
-  
+
     @property
     def urlfetch_history(self):
         return self.testbed.get_stub(testbed.URLFETCH_SERVICE_NAME).history
-  
+
     @property
     def urlfetch_responses(self):
         return self.testbed.get_stub(testbed.URLFETCH_SERVICE_NAME).responses
