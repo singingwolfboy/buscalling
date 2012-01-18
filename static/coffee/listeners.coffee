@@ -33,9 +33,9 @@ $().ready ->
       relatedModel: 'Stop'
     }, {
       type: Backbone.HasMany
-      key: 'notifications'
-      relatedModel: 'Notification'
-      collectionType: 'NotificationList'
+      key: 'scheduled_notifications'
+      relatedModel: 'ScheduledNotification'
+      collectionType: 'ScheduledNotificationList'
       reverseRelation: {
         key: 'listener'
       }
@@ -89,7 +89,7 @@ $().ready ->
         prevStop?.set("focused": false)
         stop?.set("focused": true)
 
-  class window.Notification     extends Backbone.RelationalModel
+  class window.ScheduledNotification     extends Backbone.RelationalModel
     defaults:
       medium: "phone"
       minutes: 5
@@ -149,8 +149,8 @@ $().ready ->
   class window.Stop             extends AbstractModel
     name: "Stop"
 
-  class window.NotificationList     extends Backbone.Collection
-    model: Notification
+  class window.ScheduledNotificationList     extends Backbone.Collection
+    model: ScheduledNotification
 
   class window.AbstractCollection   extends Backbone.Collection
     sync: Backbone.memoized_sync
