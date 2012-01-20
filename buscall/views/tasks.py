@@ -124,7 +124,9 @@ def load_nextbus_entities_for_agency(agency_id, routes=True, directions=True, st
     # check limitations for unit tests
     if routes:
         route_stub_els = routelist_tree.findall('route')
-        if isinstance(routes, int):
+        if routes is True:
+            pass
+        elif isinstance(routes, int):
             route_stub_els = route_stub_els[0:routes]
         elif isinstance(routes, (list, tuple)):
             def on_list(route_stub_el):
@@ -148,7 +150,9 @@ def load_nextbus_entities_for_agency(agency_id, routes=True, directions=True, st
         # check limitations for unit tests
         if stops:
             stop_els = route_tree.xpath('//route/stop')
-            if isinstance(stops, int):
+            if stops is True:
+                pass
+            elif isinstance(stops, int):
                 stop_els = stop_els[0:stops]
             elif isinstance(stops, (list, tuple)):
                 def on_list(stop_el):
@@ -186,7 +190,9 @@ def load_nextbus_entities_for_agency(agency_id, routes=True, directions=True, st
         # check limitations for unit tests
         if directions:
             direction_els = route_tree.xpath('//route/direction')
-            if isinstance(directions, int):
+            if directions is True:
+                pass
+            elif isinstance(directions, int):
                 direction_els = direction_els[0:directions]
             elif isinstance(directions, (list, tuple)):
                 def on_list(direction_el):
