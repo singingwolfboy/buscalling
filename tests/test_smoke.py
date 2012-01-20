@@ -26,19 +26,25 @@ class SmokeTestCase(CustomTestCase):
         # before its loaded into the datastore, should get a 404
         assert rv.status.startswith("404"), rv.status
         # load it in, get 200
-        # assert rv.status.startswith("200"), rv.status
-        # agency = json.loads(rv.data)
-        # self.assertEqual(agency['id'], "mbta")
-        # assert isinstance(agency['routes'], dict)
-        # rv2 = self.app.get('/agencies/mbta', headers={"Accept": "application/json"})
-        # self.assertEqual(rv.data, rv2.data)
+        self.build_entities_from_urlfetch_files(agencies="mbta")
+        rv = self.app.get('/agencies/mbta?format=json')
+        assert rv.status.startswith("200"), rv.status
+        agency = json.loads(rv.data)
+        self.assertEqual(agency['id'], "mbta")
+        rv2 = self.app.get('/agencies/mbta', headers={"Accept": "application/json"})
+        self.assertEqual(rv.data, rv2.data)
 
     def test_api_routes(self):
         rv = self.app.get('/agencies/mbta/routes?format=json')
         # before it's loaded into the datastore, should get a 404
         assert rv.status.startswith("404"), rv.status
         # load it in, test that it works
-        # assert rv.status.startswith("200"), rv.status
-        # routes = json.loads(rv.data)
-        # assert isinstance(routes, list)
+        self.build_entities_from_urlfetch_files(agencies="mbta", routes=True)
+        agency_resp = self.app.get('/agencies/mbta', headers={"Accept": "application/json"})
+        agency = json.loads(agency_resp.data)
+        assert isinstance(agency['routes'], dict)
+        rv = self.app.get('/agencies/mbta/routes?format=json')
+        assert rv.status.startswith("200"), rv.status
+        routes = json.loads(rv.data)
+        assert isinstance(routes, list)
 
