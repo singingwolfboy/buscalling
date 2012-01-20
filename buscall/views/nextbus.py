@@ -1,38 +1,13 @@
 from buscall import app
-from flask import render_template, request, Response, g, abort
-from .util import render_json
+from flask import render_template, Response, g, abort
+from .util import render_json, api_list
 from buscall.models.nextbus import Agency, Route, Direction, Stop, BusPrediction
 from buscall.models.twilio import get_twiml
-from functools import wraps
 from ndb import Key
 
 __all__ = ['agency_list', 'agency_detail', 'route_list', 'route_detail',
         'direction_list', 'direction_detail', 'stop_list', 'stop_detail',
         'prediction_list', 'prediction_detail']
-
-def api_list(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if not 'limit' in kwargs:
-            limit = request.args.get('limit') or request.headers.get('X-Limit')
-            try:
-                kwargs['limit'] = int(limit)
-            except (ValueError, TypeError):
-                kwargs['limit'] = 20
-        if kwargs['limit'] < 1:
-            kwargs['limit'] = None
-
-        if not 'offset' in kwargs:
-            offset = request.args.get('offset') or request.headers.get('X-Offset')
-            try:
-                kwargs['offset'] = int(offset)
-            except (ValueError, TypeError):
-                kwargs['offset'] = 0
-        if kwargs['offset'] < 1:
-            kwargs['offset'] = None
-
-        return func(*args, **kwargs)
-    return wrapper
 
 @app.route('/agencies')
 @api_list

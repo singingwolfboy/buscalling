@@ -1,5 +1,6 @@
 import datetime
 import ndb
+from functools import wraps
 from simplejson.encoder import JSONEncoder
 import simplejson as json
 from google.appengine.api.datastore_types import GeoPt
@@ -56,3 +57,26 @@ def render_json(obj, limit=None, offset=None, count=None):
         resp.headers.add("X-Excluding", ",".join(exclusions))
     return resp
 
+def api_list(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if not 'limit' in kwargs:
+            limit = request.args.get('limit') or request.headers.get('X-Limit')
+            try:
+                kwargs['limit'] = int(limit)
+            except (ValueError, TypeError):
+                kwargs['limit'] = 20
+        if kwargs['limit'] < 1:
+            kwargs['limit'] = None
+
+        if not 'offset' in kwargs:
+            offset = request.args.get('offset') or request.headers.get('X-Offset')
+            try:
+                kwargs['offset'] = int(offset)
+            except (ValueError, TypeError):
+                kwargs['offset'] = 0
+        if kwargs['offset'] < 1:
+            kwargs['offset'] = None
+
+        return func(*args, **kwargs)
+    return wrapper
