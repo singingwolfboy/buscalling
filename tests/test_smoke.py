@@ -26,29 +26,31 @@ class SmokeTestCase(CustomTestCase):
         get_json = partial(self.app.get, headers={"Accept": "application/json"})
 
         # before its loaded into the datastore, should get a 404
-        rv = self.app.get('/agencies/mbta?format=json')
+        rv = get_json('/agencies/mbta')
         assert rv.status.startswith("404"), rv.status
+
         # load it in, get 200
         self.build_entities_from_urlfetch_files(agencies="mbta")
-        rv = self.app.get('/agencies/mbta?format=json')
+        rv = get_json('/agencies/mbta')
         assert rv.status.startswith("200"), rv.status
+        self.assertEqual(rv.data,
+                self.app.get('/agencies/mbta?format=json').data)
         agency = json.loads(rv.data)
         self.assertEqual(agency['id'], "mbta")
-        rv2 = get_json('/agencies/mbta')
-        self.assertEqual(rv.data, rv2.data)
 
     def test_api_routes(self):
         get_json = partial(self.app.get, headers={"Accept": "application/json"})
 
         # before it's loaded into the datastore, should get a 404
-        rv = self.app.get('/agencies/mbta/routes?format=json')
+        rv = get_json('/agencies/mbta/routes')
         assert rv.status.startswith("404"), rv.status
-        rv = self.app.get('/agencies/mbta/routes/70?format=json')
+        rv = get_json('/agencies/mbta/routes/70')
         assert rv.status.startswith("404"), rv.status
 
         # load it in, test that it works
         self.build_entities_from_urlfetch_files(agencies="mbta", routes=True)
         agency_resp = get_json('/agencies/mbta')
+        assert agency_resp.status.startswith("200"), agency_resp.status
         agency = json.loads(agency_resp.data)
         self.assertIsInstance(agency['routes'], dict)
 
@@ -76,9 +78,23 @@ class SmokeTestCase(CustomTestCase):
         self.build_entities_from_urlfetch_files(agencies="mbta", routes="70", directions=True)
         rv = get_json('/agencies/mbta/routes/70')
         assert rv.status.startswith("200"), rv.status
+        self.assertEqual(rv.data,
+                self.app.get('/agencies/mbta/routes/70?format=json').data)
         route = json.loads(rv.data)
         self.assertIsInstance(route['directions'], dict)
 
-        rv = self.app.get('agencies/mbta/routes/70/directions')
+        rv = get_json('agencies/mbta/routes/70/directions')
         assert rv.status.startswith("200"), rv.status
+        self.assertEqual(rv.data,
+                self.app.get('agencies/mbta/routes/70/directions?format=json').data)
+        directions = json.loads(rv.data)
+        self.assertIsInstance(directions, list)
+
+        direction_resp = get_json('/agencies/mbta/routes/70/directions/70_0_var0')
+        assert direction_resp.status.startswith("200"), direction_resp.status
+        self.assertEqual(direction_resp.data,
+                self.app.get('/agencies/mbta/routes/70/directions/70_0_var0?format=json').data)
+        direction = json.loads(direction_resp.data)
+        self.assertIsInstance(direction, dict)
+        self.assertEqual(direction['id'], "70_0_var0")
 
