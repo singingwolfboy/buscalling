@@ -1,6 +1,8 @@
 from google.appengine.api import users
 from ndb import model
+from flask import url_for
 from buscall.models.listener import BusListener
+from .util import resource_uri, template_id
 
 class User(model.Model):
     google_id = model.StringProperty()
@@ -23,6 +25,14 @@ class User(model.Model):
     phone = model.StringProperty()
     first_name = model.StringProperty()
     last_name = model.StringProperty()
+
+    @property
+    def id(self):
+        return self.key.id()
+
+    @property
+    def url(self):
+        return url_for("user_show", user_id=self.id)
 
     @property
     def google_user(self):
@@ -85,4 +95,23 @@ class User(model.Model):
         if not google_user:
             return False
         return google_user.user_id() == self.google_id
+
+    def _as_url_dict(self):
+        public = ("primary_email", "joined")
+        private = ("google_id", "last_access", "subscribed", "credits",
+                "first_name", "last_name", "phone")
+        if self.matches_current_google_user():
+            include = public + private
+        else:
+            include = public
+        d = self._to_dict(include=include)
+        d['id'] = self.id
+        d[resource_uri] = self.url
+        detail_uri_template = url_for('listener_detail', listener_id=12345).replace("12345", template_id)
+        d['listeners'] = dict(
+            list_uri = url_for('listeners_for_user', user_id=self.id),
+            detail_uri_template = detail_uri_template,
+            ids = [listener.id for listener in self.listeners],
+        )
+        return d
 

@@ -120,7 +120,7 @@
         </div>
       </div>
       <div id="user-dropdown" class="dropdown">
-        <form class="dropdown-internal" method="POST" action="{{ url_for("update_user", user_id=user.id) }}">
+        <form class="dropdown-internal" method="POST" action="{{ url_for("user_update", user_id=user.id) }}">
           {{user_form.hidden_tag()}}
           <input type="hidden" name="_method" value="PUT" />
           {{ with_errors(user_form.first_name) }}

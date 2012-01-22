@@ -2,11 +2,12 @@ from buscall import app
 from ndb import Key
 from flask import render_template, request, flash, redirect, url_for, abort
 from ..decorators import login_required
+from .util import render_json
 from buscall.models.listener import BusListener, ScheduledNotification
 from buscall.models.user import User
 from buscall.models.nextbus import Agency, Route, Direction, Stop
 from buscall.forms import BusListenerForm
-from buscall.util import DAYS_OF_WEEK, READONLY_ERR_MSG
+from buscall.util import DAYS_OF_WEEK
 
 @app.route('/listeners')
 @login_required
@@ -14,6 +15,15 @@ def index_listeners():
     user = User.get_current_user()
     listeners = BusListener.query(BusListener.user_key == user.key)
     return render_template('listeners/index.html', listeners=listeners)
+
+@app.route('/listeners/<int:listener_id>')
+@login_required
+def listener_detail(listener_id):
+    listener_key = Key(BusListener, listener_id)
+    listener = listener_key.get()
+    if not listener:
+        abort(404)
+    return render_json(listener)
 
 @app.route('/listeners/new', methods=['GET', 'POST'])
 @login_required

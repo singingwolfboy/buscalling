@@ -1,6 +1,10 @@
 from ndb.model import JsonProperty
 from google.appengine.api.datastore_types import typename, GeoPt
 from google.appengine.api.datastore_errors import BadValueError
+from markupsafe import Markup
+
+resource_uri = Markup("resource_uri")
+template_id = Markup("{{id}}")
 
 class PathProperty(JsonProperty):
     """

@@ -1,13 +1,9 @@
 from buscall import app
 from flask import url_for
 from ndb import Key, model
-from buscall.models.util import PathProperty
-from markupsafe import Markup
+from buscall.models.util import PathProperty, resource_uri, template_id
 from lxml import etree
 from .api import get_predictions_xml
-
-resource_uri = Markup("resource_uri")
-template_id = Markup("{{id}}")
 
 class Agency(model.Model):
     name = model.StringProperty()

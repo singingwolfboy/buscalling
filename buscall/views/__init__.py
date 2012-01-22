@@ -3,10 +3,10 @@ from ndb import Key
 from flask import render_template, request, flash, redirect, url_for, g, abort
 from .tasks import poll, reset_seen_flags
 from .nextbus import *
+from .user import *
 from .twilio import call_prediction
 from .listener import index_listeners, new_listener
 from .paypal import paypal_ipn
-from .user import update_user
 from .util import ExtJSONEncoder
 from buscall.util import READONLY_ERR_MSG, get_request_format
 from buscall.models import User
