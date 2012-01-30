@@ -8,7 +8,7 @@ class MethodRewriteMiddleware(object):
     the actual HTTP method used in making the request. For example, if
     a browser makes an HTTP POST request while specifying _method=PUT,
     it will be treated as a PUT request instead.
-    
+
     This follows the convention established and used by Ruby on Rails
     (Rack::MethodOverride). It is designed for standard web browsers, 
     which can only submit HTTP forms using either the GET or POST methods.
