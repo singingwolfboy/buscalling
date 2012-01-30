@@ -274,14 +274,14 @@ $().ready ->
     initialize: ->
       @render()
     render: ->
-      this.$(@el).timePicker
+      @$el.timePicker
         defaultSelected: "7:00 AM"
         show24Hours: false
 
     events:
       "change": "updateTime"
     updateTime: ->
-      time = this.$(@el).val()
+      time = @$el.val()
       @model.set("start": time)
 
   fieldTemplate = _.template("""
@@ -303,7 +303,7 @@ $().ready ->
           optionTemplate(model.toJSON())
       else
         options = []
-      $(this.el).html(fieldTemplate(
+      @$el.html(fieldTemplate(
         id: @collection.model.name.toLowerCase()
         name: @collection.model.name
         options: options.join("")
