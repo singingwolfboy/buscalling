@@ -42,10 +42,10 @@ $().ready ->
     }]
 
     initialize: ->
-      @bind('change:agency', @changeAgency, @)
-      @bind('change:route', @changeRoute, @)
-      @bind('change:direction', @changeDirection, @)
-      @bind('change:stop', @changeStop, @)
+      @on('change:agency', @changeAgency, @)
+      @on('change:route', @changeRoute, @)
+      @on('change:direction', @changeDirection, @)
+      @on('change:stop', @changeStop, @)
 
     changeAgency: (listener, agency) ->
       prevAgency = listener.previous("agency")
@@ -59,10 +59,10 @@ $().ready ->
       if prevRoute != route
         if prevRoute
           prevRoute.set("focused": false)
-          prevRoute.unbind("change", @triggerRouteChange)
+          prevRoute.off("change", @triggerRouteChange)
         if route
           route.set("focused": true)
-          route.bind("change", @triggerRouteChange, @)
+          route.on("change", @triggerRouteChange, @)
         listener.set("direction": null).set("stop": null)
 
     triggerRouteChange: =>
@@ -103,7 +103,7 @@ $().ready ->
     url: -> @get('resource_uri')
     sync: Backbone.memoized_sync
     initialize: ->
-      @bind('change:focused', @focusChange, @)
+      @on('change:focused', @focusChange, @)
     focusChange: (model, focused) ->
       if focused
         o = {}
@@ -165,7 +165,7 @@ $().ready ->
       return index
 
     initialize: ->
-      @bind('reset', @onReset, @)
+      @on('reset', @onReset, @)
 
     onReset: (models) ->
       @order = models.pluck("id")
@@ -199,9 +199,9 @@ $().ready ->
     el: "#map_canvas"
     initialize: ->
       @m = google.maps
-      @model.bind('change:agency', @onAgencyChange, @)
-      @model.bind('change:route', @onRouteChange, @)
-      @model.bind('change:stop', @onStopChange, @)
+      @model.on('change:agency', @onAgencyChange, @)
+      @model.on('change:route', @onRouteChange, @)
+      @model.on('change:stop', @onStopChange, @)
       @render()
     render: ->
       @map = new @m.Map(@el,
@@ -312,19 +312,19 @@ $().ready ->
 
     initialize: ->
       if @collection
-        @collection.bind('reset', @render, @)
-        @collection.bind('change:focused', @onFocus, @)
+        @collection.on('reset', @render, @)
+        @collection.on('change:focused', @onFocus, @)
       @render()
 
     setCollection: (collection) ->
       return if @collection == collection
       if @collection
-        @collection.unbind('reset', @render)
-        @collection.unbind('change:focused', @onFocus)
+        @collection.off('reset', @render)
+        @collection.off('change:focused', @onFocus)
       @collection = collection
       if @collection
-        @collection.bind('reset', @render, @)
-        @collection.bind('change:focused', @onFocus, @)
+        @collection.on('reset', @render, @)
+        @collection.on('change:focused', @onFocus, @)
       @render()
 
     events:
