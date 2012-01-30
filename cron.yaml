@@ -6,3 +6,7 @@ cron:
 - url: /tasks/reset_seen_flags
   description: Reset the "seen" flags on all bus listeners every night
   schedule: "every day 00:00"
+
+- url: /tasks/nextbus/update
+  description: Pull agency/route information from Nextbus API into datastore
+  schedule: "every day 01:00"
