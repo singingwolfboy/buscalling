@@ -52,7 +52,11 @@ $().ready ->
       if prevAgency != agency
         prevAgency?.set("focused": false)
         agency?.set("focused": true)
-        listener.set("route": null).set("direction": null).set("stop": null)
+        listener.set(
+          "route": null
+          "direction": null
+          "stop": null
+        )
 
     changeRoute: (listener, route) ->
       prevRoute = listener.previous("route")
@@ -63,7 +67,10 @@ $().ready ->
         if route
           route.set("focused": true)
           route.on("change", @triggerRouteChange, @)
-        listener.set("direction": null).set("stop": null)
+        listener.set(
+          "direction": null
+          "stop": null
+        )
 
     triggerRouteChange: =>
       prevRoute = @previous("route")
@@ -81,7 +88,9 @@ $().ready ->
       if prevDirection != direction
         prevDirection?.set("focused": false)
         direction?.set("focused": true)
-        listener.set("stop": null)
+        listener.set(
+          "stop": null
+        )
 
     changeStop: (listener, stop) ->
       prevStop = listener.previous("stop")
