@@ -1,5 +1,417 @@
 window.App = window.App || {} # hold instances
 
+class window.Listener         extends Backbone.RelationalModel
+  defaults:
+    agency: null
+    route: null
+    direction: null
+    stop: null
+  relations: [{
+    type: Backbone.HasOne
+    key: 'agency'
+    relatedModel: 'Agency'
+  }, {
+    type: Backbone.HasOne
+    key: 'route'
+    relatedModel: 'Route'
+  }, {
+    type: Backbone.HasOne
+    key: 'direction'
+    relatedModel: 'Direction'
+  }, {
+    type: Backbone.HasOne
+    key: 'stop'
+    relatedModel: 'Stop'
+  }, {
+    type: Backbone.HasMany
+    key: 'scheduled_notifications'
+    relatedModel: 'ScheduledNotification'
+    collectionType: 'ScheduledNotificationList'
+    reverseRelation: {
+      key: 'listener'
+    }
+  }]
+
+  initialize: ->
+    @on('change:agency', @changeAgency, @)
+    @on('change:route', @changeRoute, @)
+    @on('change:direction', @changeDirection, @)
+    @on('change:stop', @changeStop, @)
+
+  changeAgency: (listener, agency) ->
+    prevAgency = listener.previous("agency")
+    if prevAgency != agency
+      prevAgency?.set("focused": false)
+      agency?.set("focused": true)
+      listener.set(
+        "route": null
+        "direction": null
+        "stop": null
+      )
+
+  changeRoute: (listener, route) ->
+    prevRoute = listener.previous("route")
+    if prevRoute != route
+      if prevRoute
+        prevRoute.set("focused": false)
+        prevRoute.off("change", @triggerRouteChange)
+      if route
+        route.set("focused": true)
+        route.on("change", @triggerRouteChange, @)
+      listener.set(
+        "direction": null
+        "stop": null
+      )
+
+  triggerRouteChange: =>
+    prevRoute = @previous("route")
+    route = @get("route")
+    if route
+      prevDirections = prevRoute.get('directions')
+      if prevDirections?.length
+        route.set('directions', prevDirections)
+      else
+        route.get('directions').fetch()
+      @trigger("change:route", @, route)
+
+  changeDirection: (listener, direction) ->
+    prevDirection = listener.previous("direction")
+    if prevDirection != direction
+      prevDirection?.set("focused": false)
+      direction?.set("focused": true)
+      listener.set(
+        "stop": null
+      )
+
+  changeStop: (listener, stop) ->
+    prevStop = listener.previous("stop")
+    if prevStop != stop
+      prevStop?.set("focused": false)
+      stop?.set("focused": true)
+
+class window.ScheduledNotification     extends Backbone.RelationalModel
+  defaults:
+    medium: "phone"
+    minutes: 5
+
+class window.AbstractModel    extends Backbone.RelationalModel
+  # name required
+  defaults:
+    id: ""
+    title: ""
+    focused: false
+  url: -> @get('resource_uri')
+  sync: Backbone.memoized_sync
+  initialize: ->
+    @on('change:focused', @focusChange, @)
+  focusChange: (model, focused) ->
+    if focused
+      o = {}
+      o[@name.toLowerCase()] = model
+      App.listener.set(o)
+
+class window.Agency           extends AbstractModel
+  name: "Agency"
+  relations: [{
+    type: Backbone.HasMany
+    key: 'routes'
+    relatedModel: 'Route'
+    collectionType: 'RouteList'
+    reverseRelation: {
+      key: 'agency'
+    }
+  }]
+
+class window.Route            extends AbstractModel
+  name: "Route"
+  relations: [{
+    type: Backbone.HasMany
+    key: 'directions'
+    relatedModel: 'Direction'
+    collectionType: 'DirectionList'
+    reverseRelation: {
+      key: 'route'
+    }
+  }]
+
+class window.Direction        extends AbstractModel
+  name: "Direction"
+  relations: [{
+    type: Backbone.HasMany
+    key: 'stops'
+    relatedModel: 'Stop'
+    collectionType: 'StopList'
+    reverseRelation: {
+      key: 'direction'
+    }
+  }]
+
+class window.Stop             extends AbstractModel
+  name: "Stop"
+
+class window.ScheduledNotificationList     extends Backbone.Collection
+  model: ScheduledNotification
+
+class window.AbstractCollection   extends Backbone.Collection
+  sync: Backbone.memoized_sync
+  order: []
+  comparator: (model) =>
+    id = model.get("id")
+    return unless id
+    index = @order.indexOf(id)
+    if index < 0
+      index = @order.length
+      @order.push(id)
+    return index
+
+  initialize: ->
+    @on('reset', @onReset, @)
+
+  onReset: (models) ->
+    @order = models.pluck("id")
+    if @xhr and @xhr.state() == "pending"
+      @xhr.abort()
+    o = {}
+    o[@model.name.toLowerCase()] = null
+    App.listener.set(o)
+
+class window.AgencyList           extends AbstractCollection
+  model: Agency
+  url: "/agencies"
+
+class window.RouteList            extends AbstractCollection
+  model: Route
+  url: ->
+    @agency.url() + "/routes"
+
+class window.DirectionList        extends AbstractCollection
+  model: Direction
+  url: ->
+    @route.url() + "/directions"
+
+class window.StopList             extends AbstractCollection
+  model: Stop
+  url: ->
+    @direction.url() + "/stops"
+
+### Templates and Views ###
+class MapView                 extends Backbone.View
+  el: "#map_canvas"
+  initialize: ->
+    @m = google.maps
+    @model.on('change:agency', @onAgencyChange, @)
+    @model.on('change:route', @onRouteChange, @)
+    @model.on('change:stop', @onStopChange, @)
+    @render()
+  render: ->
+    @map = new @m.Map(@el,
+      zoom: 3
+      center: new @m.LatLng(37.0625, -95.677068) # USA
+      mapTypeId: @m.MapTypeId.ROADMAP
+      disableDefaultUI: true
+    )
+    @onAgencyChange(App.listener, App.listener.get('agency'))
+    @onRouteChange(App.listener, App.listener.get('route'))
+    @onStopChange(App.listener, App.listener.get('stop'))
+
+  onAgencyChange: (listener, agency) ->
+    if agency
+      minPt = agency.get("min_pt")
+      maxPt = agency.get("max_pt")
+      if minPt?.length and maxPt?.length
+        bounds = new @m.LatLngBounds(
+          new @m.LatLng(minPt[0], minPt[1]),
+          new @m.LatLng(maxPt[0], maxPt[1]),
+        )
+        @map.fitBounds(bounds)
+    @map
+
+  onRouteChange: (listener, route) ->
+    if @map.route
+      for polyline in @map.route
+        polyline.setMap(null)
+    if route
+      minPt = route.get("min_pt")
+      maxPt = route.get("max_pt")
+      if minPt?.length and maxPt?.length
+        bounds = new @m.LatLngBounds(
+          new @m.LatLng(minPt[0], minPt[1]),
+          new @m.LatLng(maxPt[0], maxPt[1]),
+        )
+        @map.fitBounds(bounds)
+      paths = route.get("paths")
+      if paths
+        route = []
+        for subpath in paths
+          latlngs = [new @m.LatLng(point[0], point[1]) for point in subpath]
+          route.push(new @m.Polyline(
+            path: latlngs
+            map: @map
+          ))
+        @map.route = route
+    else
+      @map.route = []
+    @map
+
+  onStopChange: (listener, stop) ->
+    if @map.stop
+      @map.stop.setMap(null)
+    if stop
+      point = stop.get("point")
+      @map.stop = new @m.Marker
+        position: new @m.LatLng point[0], point[1]
+        title: stop.get("name")
+        map: @map
+    else
+      @map.stop = null
+    if @map.stop
+      @map.panTo(@map.stop.getPosition())
+      @map.setZoom(16)
+    @map
+
+class TimeView                extends Backbone.View
+  el: ".form_field.start input"
+  initialize: ->
+    @render()
+  render: ->
+    @$el.timePicker
+      defaultSelected: "7:00 AM"
+      show24Hours: false
+
+  events:
+    "change": "updateTime"
+  updateTime: ->
+    time = @$el.val()
+    @model.set("start": time)
+
+class SelectorView            extends Backbone.View
+  className: "form_field"
+  id: -> @collection.model.name.toLowerCase() + "_id"
+  render: ->
+    if @collection
+      options = @collection.map (model) ->
+        App.optionTemplate(model.toJSON())
+    else
+      options = []
+    @$el.html(App.fieldTemplate(
+      id: @collection.model.name.toLowerCase()
+      name: @collection.model.name
+      options: options.join("")
+    ))
+    return this
+
+  initialize: ->
+    if @collection
+      @collection.on('reset', @render, @)
+      @collection.on('change:focused', @onFocus, @)
+    @render()
+
+  setCollection: (collection) ->
+    return if @collection == collection
+    if @collection
+      @collection.off('reset', @render)
+      @collection.off('change:focused', @onFocus)
+    @collection = collection
+    if @collection
+      @collection.on('reset', @render, @)
+      @collection.on('change:focused', @onFocus, @)
+    @render()
+
+  events:
+    "change select": "changeSelect"
+  
+  changeSelect: ->
+    id = this.$("select").val()
+    o = {}
+    o[@collection.model.name.toLowerCase()] = @collection.get(id)
+    App.listener.set(o)
+
+class AgencySelectorView      extends SelectorView
+  el: "#bus-info .form_field.agency"
+  collection: App.agencies
+
+  onFocus: (agency, focused) ->
+    if focused
+      routes = agency.get('routes')
+      App.routesView.setCollection(routes)
+      if routes
+        # Don't fetch paths for the collection: it's too much information.
+        # We'll fetch the "paths" attribute when a route is selected.
+        routes.xhr = routes.fetch(
+          headers:
+            "X-Limit": 0
+            "X-Exclude": "paths"
+        )
+    else
+      App.routesView.collection.reset()
+    App.directionsView.collection.reset()
+    App.stopsView.collection.reset()
+    @render()
+
+class RouteSelectorView       extends SelectorView
+  el: "#bus-info .form_field.route"
+
+  onFocus: (route, focused) ->
+    if focused
+      collection = route.collection
+      route.xhr = route.fetch( # get "paths" attribute
+        success: ->
+          collection.add(route)
+      )
+      directions = route.get('directions')
+      App.directionsView.setCollection(directions)
+      directions.xhr = directions.fetch() if directions
+    else
+      App.directionsView.collection.reset()
+    App.stopsView.collection.reset()
+    @render()
+
+class DirectionSelectorView   extends SelectorView
+  el: "#bus-info .form_field.direction"
+
+  onFocus: (direction, focused) ->
+    if focused
+      stops = direction.get('stops')
+      App.stopsView.setCollection(stops)
+      stops.xhr = stops.fetch() if stops
+    else
+      App.stopsView.collection.reset()
+    @render()
+
+class StopSelectorView        extends SelectorView
+  el: "#bus-info .form_field.stop"
+
+  onFocus: ->
+    @render()
+
+### Router ###
+class window.Router           extends Backbone.Router
+  routes:
+    ":agency_id" :                                "setAgency"
+    ":agency_id/:route_id" :                      "setRoute"
+    ":agency_id/:route_id/:direction_id" :        "setDirection"
+    ":agency_id/:route_id/:direction_id/:stop_id":"setStop"
+  
+  setAgency: (agency_id) ->
+    App.listener.set("agency": App.agencies.get(agency_id))
+  setRoute: (agency_id, route_id) ->
+    @setAgency(agency_id)
+    App.listener.set("route": App.routes.get(route_id))
+  setDirection: (agency_id, route_id, direction_id) ->
+    @setRoute(agency_id, route_id)
+    App.listener.set("direction": App.directions.get(direction_id))
+  setStop: (agency_id, route_id, direction_id, stop_id) ->
+    @setDirection(agency_id, route_id, direction_id)
+    App.listener.set("stop", App.stops.get(stop_id))
+
+  initialize: ->
+    App.mapView = new MapView(model: App.listener)
+    App.timeView = new TimeView(model: App.listener)
+    App.agenciesView = new AgencySelectorView(collection: App.agencies)
+    App.routesView = new RouteSelectorView(collection: App.routes)
+    App.directionsView = new DirectionSelectorView(collection: App.directions)
+    App.stopsView = new StopSelectorView(collection: App.stops)
+
 $().ready ->
   $.ajaxSetup
     headers:
@@ -8,428 +420,16 @@ $().ready ->
     interpolate : /\{\{(.+?)\}\}/g,
     evaluate : /\{\%(.+?)\%\}/g
   }
-
-  class window.Listener         extends Backbone.RelationalModel
-    defaults:
-      agency: null
-      route: null
-      direction: null
-      stop: null
-    relations: [{
-      type: Backbone.HasOne
-      key: 'agency'
-      relatedModel: 'Agency'
-    }, {
-      type: Backbone.HasOne
-      key: 'route'
-      relatedModel: 'Route'
-    }, {
-      type: Backbone.HasOne
-      key: 'direction'
-      relatedModel: 'Direction'
-    }, {
-      type: Backbone.HasOne
-      key: 'stop'
-      relatedModel: 'Stop'
-    }, {
-      type: Backbone.HasMany
-      key: 'scheduled_notifications'
-      relatedModel: 'ScheduledNotification'
-      collectionType: 'ScheduledNotificationList'
-      reverseRelation: {
-        key: 'listener'
-      }
-    }]
-
-    initialize: ->
-      @on('change:agency', @changeAgency, @)
-      @on('change:route', @changeRoute, @)
-      @on('change:direction', @changeDirection, @)
-      @on('change:stop', @changeStop, @)
-
-    changeAgency: (listener, agency) ->
-      prevAgency = listener.previous("agency")
-      if prevAgency != agency
-        prevAgency?.set("focused": false)
-        agency?.set("focused": true)
-        listener.set(
-          "route": null
-          "direction": null
-          "stop": null
-        )
-
-    changeRoute: (listener, route) ->
-      prevRoute = listener.previous("route")
-      if prevRoute != route
-        if prevRoute
-          prevRoute.set("focused": false)
-          prevRoute.off("change", @triggerRouteChange)
-        if route
-          route.set("focused": true)
-          route.on("change", @triggerRouteChange, @)
-        listener.set(
-          "direction": null
-          "stop": null
-        )
-
-    triggerRouteChange: =>
-      prevRoute = @previous("route")
-      route = @get("route")
-      if route
-        prevDirections = prevRoute.get('directions')
-        if prevDirections?.length
-          route.set('directions', prevDirections)
-        else
-          route.get('directions').fetch()
-        @trigger("change:route", @, route)
-
-    changeDirection: (listener, direction) ->
-      prevDirection = listener.previous("direction")
-      if prevDirection != direction
-        prevDirection?.set("focused": false)
-        direction?.set("focused": true)
-        listener.set(
-          "stop": null
-        )
-
-    changeStop: (listener, stop) ->
-      prevStop = listener.previous("stop")
-      if prevStop != stop
-        prevStop?.set("focused": false)
-        stop?.set("focused": true)
-
-  class window.ScheduledNotification     extends Backbone.RelationalModel
-    defaults:
-      medium: "phone"
-      minutes: 5
-
-  class window.AbstractModel    extends Backbone.RelationalModel
-    # name required
-    defaults:
-      id: ""
-      title: ""
-      focused: false
-    url: -> @get('resource_uri')
-    sync: Backbone.memoized_sync
-    initialize: ->
-      @on('change:focused', @focusChange, @)
-    focusChange: (model, focused) ->
-      if focused
-        o = {}
-        o[@name.toLowerCase()] = model
-        App.listener.set(o)
-  
-  class window.Agency           extends AbstractModel
-    name: "Agency"
-    relations: [{
-      type: Backbone.HasMany
-      key: 'routes'
-      relatedModel: 'Route'
-      collectionType: 'RouteList'
-      reverseRelation: {
-        key: 'agency'
-      }
-    }]
-
-  class window.Route            extends AbstractModel
-    name: "Route"
-    relations: [{
-      type: Backbone.HasMany
-      key: 'directions'
-      relatedModel: 'Direction'
-      collectionType: 'DirectionList'
-      reverseRelation: {
-        key: 'route'
-      }
-    }]
-
-  class window.Direction        extends AbstractModel
-    name: "Direction"
-    relations: [{
-      type: Backbone.HasMany
-      key: 'stops'
-      relatedModel: 'Stop'
-      collectionType: 'StopList'
-      reverseRelation: {
-        key: 'direction'
-      }
-    }]
-
-  class window.Stop             extends AbstractModel
-    name: "Stop"
-
-  class window.ScheduledNotificationList     extends Backbone.Collection
-    model: ScheduledNotification
-
-  class window.AbstractCollection   extends Backbone.Collection
-    sync: Backbone.memoized_sync
-    order: []
-    comparator: (model) =>
-      id = model.get("id")
-      return unless id
-      index = @order.indexOf(id)
-      if index < 0
-        index = @order.length
-        @order.push(id)
-      return index
-
-    initialize: ->
-      @on('reset', @onReset, @)
-
-    onReset: (models) ->
-      @order = models.pluck("id")
-      if @xhr and @xhr.state() == "pending"
-        @xhr.abort()
-      o = {}
-      o[@model.name.toLowerCase()] = null
-      App.listener.set(o)
-
-  class window.AgencyList           extends AbstractCollection
-    model: Agency
-    url: "/agencies"
-
-  class window.RouteList            extends AbstractCollection
-    model: Route
-    url: ->
-      @agency.url() + "/routes"
-
-  class window.DirectionList        extends AbstractCollection
-    model: Direction
-    url: ->
-      @route.url() + "/directions"
-
-  class window.StopList             extends AbstractCollection
-    model: Stop
-    url: ->
-      @direction.url() + "/stops"
-
-  ### Templates and Views ###
-  class MapView                 extends Backbone.View
-    el: "#map_canvas"
-    initialize: ->
-      @m = google.maps
-      @model.on('change:agency', @onAgencyChange, @)
-      @model.on('change:route', @onRouteChange, @)
-      @model.on('change:stop', @onStopChange, @)
-      @render()
-    render: ->
-      @map = new @m.Map(@el,
-        zoom: 3
-        center: new @m.LatLng(37.0625, -95.677068) # USA
-        mapTypeId: @m.MapTypeId.ROADMAP
-        disableDefaultUI: true
-      )
-      @onAgencyChange(App.listener, App.listener.get('agency'))
-      @onRouteChange(App.listener, App.listener.get('route'))
-      @onStopChange(App.listener, App.listener.get('stop'))
-
-    onAgencyChange: (listener, agency) ->
-      if agency
-        minPt = agency.get("min_pt")
-        maxPt = agency.get("max_pt")
-        if minPt?.length and maxPt?.length
-          bounds = new @m.LatLngBounds(
-            new @m.LatLng(minPt[0], minPt[1]),
-            new @m.LatLng(maxPt[0], maxPt[1]),
-          )
-          @map.fitBounds(bounds)
-      @map
-
-    onRouteChange: (listener, route) ->
-      if @map.route
-        for polyline in @map.route
-          polyline.setMap(null)
-      if route
-        minPt = route.get("min_pt")
-        maxPt = route.get("max_pt")
-        if minPt?.length and maxPt?.length
-          bounds = new @m.LatLngBounds(
-            new @m.LatLng(minPt[0], minPt[1]),
-            new @m.LatLng(maxPt[0], maxPt[1]),
-          )
-          @map.fitBounds(bounds)
-        paths = route.get("paths")
-        if paths
-          route = []
-          for subpath in paths
-            latlngs = [new @m.LatLng(point[0], point[1]) for point in subpath]
-            route.push(new @m.Polyline(
-              path: latlngs
-              map: @map
-            ))
-          @map.route = route
-      else
-        @map.route = []
-      @map
-
-    onStopChange: (listener, stop) ->
-      if @map.stop
-        @map.stop.setMap(null)
-      if stop
-        point = stop.get("point")
-        @map.stop = new @m.Marker
-          position: new @m.LatLng point[0], point[1]
-          title: stop.get("name")
-          map: @map
-      else
-        @map.stop = null
-      if @map.stop
-        @map.panTo(@map.stop.getPosition())
-        @map.setZoom(16)
-      @map
-
-  class TimeView                extends Backbone.View
-    el: ".form_field.start input"
-    initialize: ->
-      @render()
-    render: ->
-      @$el.timePicker
-        defaultSelected: "7:00 AM"
-        show24Hours: false
-
-    events:
-      "change": "updateTime"
-    updateTime: ->
-      time = @$el.val()
-      @model.set("start": time)
-
-  fieldTemplate = _.template("""
+  App.fieldTemplate = _.template("""
     <label for="{{id}}">{{name}}</label>
     <select id="{{id}}" name="{{id}}_id" required>
       <option value=""></option> 
       {{options}}
     </select>
   """)
-  optionTemplate = _.template("""
+  App.optionTemplate = _.template("""
     <option value="{{id}}"{% if(focused) { %} selected="selected"{% } %}>{{name}}</option>
   """)
-  class SelectorView            extends Backbone.View
-    className: "form_field"
-    id: -> @collection.model.name.toLowerCase() + "_id"
-    render: ->
-      if @collection
-        options = @collection.map (model) ->
-          optionTemplate(model.toJSON())
-      else
-        options = []
-      @$el.html(fieldTemplate(
-        id: @collection.model.name.toLowerCase()
-        name: @collection.model.name
-        options: options.join("")
-      ))
-      return this
-
-    initialize: ->
-      if @collection
-        @collection.on('reset', @render, @)
-        @collection.on('change:focused', @onFocus, @)
-      @render()
-
-    setCollection: (collection) ->
-      return if @collection == collection
-      if @collection
-        @collection.off('reset', @render)
-        @collection.off('change:focused', @onFocus)
-      @collection = collection
-      if @collection
-        @collection.on('reset', @render, @)
-        @collection.on('change:focused', @onFocus, @)
-      @render()
-
-    events:
-      "change select": "changeSelect"
-    
-    changeSelect: ->
-      id = this.$("select").val()
-      o = {}
-      o[@collection.model.name.toLowerCase()] = @collection.get(id)
-      App.listener.set(o)
-  
-  class AgencySelectorView      extends SelectorView
-    el: "#bus-info .form_field.agency"
-    collection: App.agencies
-
-    onFocus: (agency, focused) ->
-      if focused
-        routes = agency.get('routes')
-        App.routesView.setCollection(routes)
-        if routes
-          # Don't fetch paths for the collection: it's too much information.
-          # We'll fetch the "paths" attribute when a route is selected.
-          routes.xhr = routes.fetch(
-            headers:
-              "X-Limit": 0
-              "X-Exclude": "paths"
-          )
-      else
-        App.routesView.collection.reset()
-      App.directionsView.collection.reset()
-      App.stopsView.collection.reset()
-      @render()
-
-  class RouteSelectorView       extends SelectorView
-    el: "#bus-info .form_field.route"
-
-    onFocus: (route, focused) ->
-      if focused
-        collection = route.collection
-        route.xhr = route.fetch( # get "paths" attribute
-          success: ->
-            collection.add(route)
-        )
-        directions = route.get('directions')
-        App.directionsView.setCollection(directions)
-        directions.xhr = directions.fetch() if directions
-      else
-        App.directionsView.collection.reset()
-      App.stopsView.collection.reset()
-      @render()
-
-  class DirectionSelectorView   extends SelectorView
-    el: "#bus-info .form_field.direction"
-
-    onFocus: (direction, focused) ->
-      if focused
-        stops = direction.get('stops')
-        App.stopsView.setCollection(stops)
-        stops.xhr = stops.fetch() if stops
-      else
-        App.stopsView.collection.reset()
-      @render()
-
-  class StopSelectorView        extends SelectorView
-    el: "#bus-info .form_field.stop"
-
-    onFocus: ->
-      @render()
-  
-  ### Router ###
-  class window.Router           extends Backbone.Router
-    routes:
-      ":agency_id" :                                "setAgency"
-      ":agency_id/:route_id" :                      "setRoute"
-      ":agency_id/:route_id/:direction_id" :        "setDirection"
-      ":agency_id/:route_id/:direction_id/:stop_id":"setStop"
-    
-    setAgency: (agency_id) ->
-      App.listener.set("agency": App.agencies.get(agency_id))
-    setRoute: (agency_id, route_id) ->
-      @setAgency(agency_id)
-      App.listener.set("route": App.routes.get(route_id))
-    setDirection: (agency_id, route_id, direction_id) ->
-      @setRoute(agency_id, route_id)
-      App.listener.set("direction": App.directions.get(direction_id))
-    setStop: (agency_id, route_id, direction_id, stop_id) ->
-      @setDirection(agency_id, route_id, direction_id)
-      App.listener.set("stop", App.stops.get(stop_id))
-
-    initialize: ->
-      App.mapView = new MapView(model: App.listener)
-      App.timeView = new TimeView(model: App.listener)
-      App.agenciesView = new AgencySelectorView(collection: App.agencies)
-      App.routesView = new RouteSelectorView(collection: App.routes)
-      App.directionsView = new DirectionSelectorView(collection: App.directions)
-      App.stopsView = new StopSelectorView(collection: App.stops)
 
   # Create these outside of the Router initialize function, so that 
   # they are created *first*
