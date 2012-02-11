@@ -18,9 +18,7 @@ skip_files:
 - ^(.*/)?\.DS_Store
 
 builtins:
-- datastore_admin: on
 - remote_api: on
-- deferred: on
 
 libraries:
 - name: jinja2
